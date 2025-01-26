@@ -1,8 +1,9 @@
 import 'package:educationapk/allpage.dart';
+import 'package:educationapk/login.dart';
+import 'package:educationapk/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
+import 'package:google_nav_bar/google_nav_bar.dart';
 
 class Myhome extends StatefulWidget {
   const Myhome({super.key});
@@ -41,21 +42,38 @@ class _MyMainHomeState extends State<MyMainHome> {
     "Events",
     "Map",
   ];
+
+  int _selectedIndex = 0;
+
+  // Method to handle item taps
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index; // Update the selected index
+    });
+  }
+  List _pages = [
+
+    MyMainHome(),
+    MyLogin(),
+    Signup(),
+    MainScrollPage()
+
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: Stack(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/blueback.jpg'), // Path to your background image
-                  fit: BoxFit.cover,
+      body: ListView(
+        children:[ Stack(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/blueback.jpg'), // Path to your background image
+                    fit: BoxFit.cover,
+                  ),
                 ),
-              ),
-              child: SingleChildScrollView(
-                child: Container(
+                child: SingleChildScrollView(
                   child: Column(
                     children: [
                       Row( mainAxisAlignment: MainAxisAlignment.center,
@@ -123,9 +141,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 borderSide: BorderSide(color: Colors.blue),// Focused border color
                                 borderRadius: BorderRadius.circular(35)
                             ),
-
+                  
                           ),
-
+                  
                         ),
                       ),
                       Row(
@@ -134,7 +152,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                         ],
                       ),
                       SizedBox(height: 15,),
-
+                  
                       SizedBox(
                         height: 83,
                         child: Row(
@@ -187,6 +205,203 @@ class _MyMainHomeState extends State<MyMainHome> {
                           ],
                         ),
                       ),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            Container(
+                  
+                                padding: EdgeInsets.all(10),
+                                margin: EdgeInsets.all(15),
+                                height: 200,
+                                width: 190,
+                                decoration:
+                                BoxDecoration(
+                                  color: Color(0xFFFF789F), // Background color
+                                  borderRadius: BorderRadius.circular(20),// Rounded corners
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Color(0xFFFF789F), // Shadow color
+                                      blurRadius: 15, // Shadow blur radius
+                                      offset: Offset(0, 4), // Shadow offset
+                                    ),
+                                  ],
+                                ),
+                  
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                          child:
+                                          Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
+                                        ),
+                                        SizedBox(width: 105,),
+                                        Container(
+                                          child:
+                                          Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text('App',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                            Text('Designing',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin'),),
+                                        SizedBox(width: 23,),
+                                        Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin'),),
+                                      ],
+                                    )
+                                  ],
+                                )
+                            ),
+                            Container(
+                  
+                                padding: EdgeInsets.all(10),
+                                margin: EdgeInsets.all(12),
+                                height: 200,
+                                width: 155,
+                                decoration:
+                                BoxDecoration(
+                                  color: Color(0x6E6EFFAB), // Background color
+                                  borderRadius: BorderRadius.circular(20),// Rounded corners
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Color(0x6E6EFFAB), // Shadow color
+                                      blurRadius: 15, // Shadow blur radius
+                                      offset: Offset(0, 4), // Shadow offset
+                                    ),
+                                  ],
+                                ),
+                  
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                          child:
+                                          Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
+                                        ),
+                                        SizedBox(width: 70,),
+                                        Container(
+                                          child:
+                                          Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 8,),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text('Teachers',style: TextStyle(fontSize: 24,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                        Text('68 Members',style: TextStyle(fontSize: 14,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                  
+                                      ],
+                                    )
+                                  ],
+                                )
+                            ),
+                  
+                          ],
+                        ),
+                      ),
+                  
+                      //blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container
+                  
+                      Container(
+                  
+                          padding: EdgeInsets.all(10),
+                          margin: EdgeInsets.all(12),
+                          height: 160,
+                          width: 375,
+                          decoration:
+                          BoxDecoration(
+                            color: Colors.lightBlueAccent, // Background color
+                            borderRadius: BorderRadius.circular(20),// Rounded corners
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.lightBlueAccent, // Shadow color
+                                blurRadius: 20, // Shadow blur radius
+                                offset: Offset(0, 4), // Shadow offset
+                              ),
+                            ],
+                          ),
+                  
+                          child: Column(mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Container(
+                                    child:
+                                    Icon(Icons.person_pin,size: 45,color: Colors.black),
+                                  ),
+                                  SizedBox(width: 12,),
+                                  Column(mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Deep',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
+                                      Text('Designer',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+                                    ],
+                                  ),
+                                  SizedBox(width: 177,),
+                                  Container(
+                                    child:
+                                    Icon(Icons.arrow_forward_ios_outlined,size: 35,color: Colors.black),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 12,),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(' Course',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
+                                      Text('App Development',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 16),),
+                                      Text(' 3 Months',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 13),),
+                                    ],
+                                  ),
+                                  SizedBox(width: 40,),
+                                  SizedBox(
+                                      child: Container(
+                                        height: 70,
+                                        width: 2,
+                                        color: Colors.black,
+                                      )
+                                  ),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('    Tools',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
+                                      Text('   Flutter , Dart',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 16),),
+                                      Text('     Firebase',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 13),),
+                                    ],
+                                  ),
+                                ],
+                              )
+                            ],
+                          )
+                      ),
+
+                      //Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra
+
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
@@ -300,11 +515,14 @@ class _MyMainHomeState extends State<MyMainHome> {
                           ],
                         ),
                       ),
+
+                      //blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container
+
                       Container(
 
                           padding: EdgeInsets.all(10),
                           margin: EdgeInsets.all(12),
-                          height: 200,
+                          height: 160,
                           width: 375,
                           decoration:
                           BoxDecoration(
@@ -343,7 +561,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 20,),
+                              SizedBox(height: 12,),
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -351,15 +569,15 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text(' Course',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 20),),
-                                      Text('App Development',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 18),),
-                                      Text(' 3 Months',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 15),),
+                                      Text(' Course',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
+                                      Text('App Development',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 16),),
+                                      Text(' 3 Months',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 13),),
                                     ],
                                   ),
-                                  SizedBox(width: 30,),
+                                  SizedBox(width: 40,),
                                   SizedBox(
                                       child: Container(
-                                        height: 100,
+                                        height: 70,
                                         width: 2,
                                         color: Colors.black,
                                       )
@@ -368,9 +586,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('    Tools',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 20),),
-                                      Text('   Flutter , Dart',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 18),),
-                                      Text('     Firebase',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 15),),
+                                      Text('    Tools',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
+                                      Text('   Flutter , Dart',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 16),),
+                                      Text('     Firebase',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 13),),
                                     ],
                                   ),
                                 ],
@@ -378,13 +596,536 @@ class _MyMainHomeState extends State<MyMainHome> {
                             ],
                           )
                       ),
+
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            Container(
+
+                                padding: EdgeInsets.all(10),
+                                margin: EdgeInsets.all(15),
+                                height: 200,
+                                width: 190,
+                                decoration:
+                                BoxDecoration(
+                                  color: Color(0xFFFF789F), // Background color
+                                  borderRadius: BorderRadius.circular(20),// Rounded corners
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Color(0xFFFF789F), // Shadow color
+                                      blurRadius: 15, // Shadow blur radius
+                                      offset: Offset(0, 4), // Shadow offset
+                                    ),
+                                  ],
+                                ),
+
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                          child:
+                                          Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
+                                        ),
+                                        SizedBox(width: 105,),
+                                        Container(
+                                          child:
+                                          Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text('App',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                            Text('Designing',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin'),),
+                                        SizedBox(width: 23,),
+                                        Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin'),),
+                                      ],
+                                    )
+                                  ],
+                                )
+                            ),
+                            Container(
+
+                                padding: EdgeInsets.all(10),
+                                margin: EdgeInsets.all(12),
+                                height: 200,
+                                width: 155,
+                                decoration:
+                                BoxDecoration(
+                                  color: Color(0x6E6EFFAB), // Background color
+                                  borderRadius: BorderRadius.circular(20),// Rounded corners
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Color(0x6E6EFFAB), // Shadow color
+                                      blurRadius: 15, // Shadow blur radius
+                                      offset: Offset(0, 4), // Shadow offset
+                                    ),
+                                  ],
+                                ),
+
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                          child:
+                                          Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
+                                        ),
+                                        SizedBox(width: 70,),
+                                        Container(
+                                          child:
+                                          Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 8,),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text('Teachers',style: TextStyle(fontSize: 24,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                        Text('68 Members',style: TextStyle(fontSize: 14,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+
+                                      ],
+                                    )
+                                  ],
+                                )
+                            ),
+
+                          ],
+                        ),
+                      ),
+
+                      //blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container
+
+                      Container(
+
+                          padding: EdgeInsets.all(10),
+                          margin: EdgeInsets.all(12),
+                          height: 160,
+                          width: 375,
+                          decoration:
+                          BoxDecoration(
+                            color: Colors.lightBlueAccent, // Background color
+                            borderRadius: BorderRadius.circular(20),// Rounded corners
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.lightBlueAccent, // Shadow color
+                                blurRadius: 20, // Shadow blur radius
+                                offset: Offset(0, 4), // Shadow offset
+                              ),
+                            ],
+                          ),
+
+                          child: Column(mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Container(
+                                    child:
+                                    Icon(Icons.person_pin,size: 45,color: Colors.black),
+                                  ),
+                                  SizedBox(width: 12,),
+                                  Column(mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Deep',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
+                                      Text('Designer',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+                                    ],
+                                  ),
+                                  SizedBox(width: 177,),
+                                  Container(
+                                    child:
+                                    Icon(Icons.arrow_forward_ios_outlined,size: 35,color: Colors.black),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 12,),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(' Course',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
+                                      Text('App Development',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 16),),
+                                      Text(' 3 Months',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 13),),
+                                    ],
+                                  ),
+                                  SizedBox(width: 40,),
+                                  SizedBox(
+                                      child: Container(
+                                        height: 70,
+                                        width: 2,
+                                        color: Colors.black,
+                                      )
+                                  ),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('    Tools',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
+                                      Text('   Flutter , Dart',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 16),),
+                                      Text('     Firebase',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 13),),
+                                    ],
+                                  ),
+                                ],
+                              )
+                            ],
+                          )
+                      ),
+
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            Container(
+
+                                padding: EdgeInsets.all(10),
+                                margin: EdgeInsets.all(15),
+                                height: 200,
+                                width: 190,
+                                decoration:
+                                BoxDecoration(
+                                  color: Color(0xFFFF789F), // Background color
+                                  borderRadius: BorderRadius.circular(20),// Rounded corners
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Color(0xFFFF789F), // Shadow color
+                                      blurRadius: 5, // Shadow blur radius
+                                      offset: Offset(0, 4), // Shadow offset
+                                    ),
+                                  ],
+                                ),
+
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                          child:
+                                          Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
+                                        ),
+                                        SizedBox(width: 105,),
+                                        Container(
+                                          child:
+                                          Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text('App',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                            Text('Designing',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin'),),
+                                        SizedBox(width: 23,),
+                                        Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin'),),
+                                      ],
+                                    )
+                                  ],
+                                )
+                            ),
+                            Container(
+
+                                padding: EdgeInsets.all(10),
+                                margin: EdgeInsets.all(12),
+                                height: 200,
+                                width: 155,
+                                decoration:
+                                BoxDecoration(
+                                  color: Color(0x6E6EFFAB), // Background color
+                                  borderRadius: BorderRadius.circular(20),// Rounded corners
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Color(0x6E6EFFAB), // Shadow color
+                                      blurRadius: 5, // Shadow blur radius
+                                      offset: Offset(0, 4), // Shadow offset
+                                    ),
+                                  ],
+                                ),
+
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                          child:
+                                          Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
+                                        ),
+                                        SizedBox(width: 70,),
+                                        Container(
+                                          child:
+                                          Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 8,),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text('Teachers',style: TextStyle(fontSize: 24,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                        Text('68 Members',style: TextStyle(fontSize: 14,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+
+                                      ],
+                                    )
+                                  ],
+                                )
+                            ),
+                            Container(
+
+                                padding: EdgeInsets.all(10),
+                                margin: EdgeInsets.all(12),
+                                height: 200,
+                                width: 155,
+                                decoration:
+                                BoxDecoration(
+                                  color: Color(0x6E6EFFAB), // Background color
+                                  borderRadius: BorderRadius.circular(20),// Rounded corners
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Color(0x6E6EFFAB), // Shadow color
+                                      blurRadius: 15, // Shadow blur radius
+                                      offset: Offset(0, 4), // Shadow offset
+                                    ),
+                                  ],
+                                ),
+
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                          child:
+                                          Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
+                                        ),
+                                        SizedBox(width: 70,),
+                                        Container(
+                                          child:
+                                          Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 8,),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text('Teachers',style: TextStyle(fontSize: 24,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                        Text('68 Members',style: TextStyle(fontSize: 14,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+
+                                      ],
+                                    )
+                                  ],
+                                )
+                            ),
+                            Container(
+
+                                padding: EdgeInsets.all(10),
+                                margin: EdgeInsets.all(12),
+                                height: 200,
+                                width: 155,
+                                decoration:
+                                BoxDecoration(
+                                  color: Color(0x6E6EFFAB), // Background color
+                                  borderRadius: BorderRadius.circular(20),// Rounded corners
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Color(0x6E6EFFAB), // Shadow color
+                                      blurRadius: 15, // Shadow blur radius
+                                      offset: Offset(0, 4), // Shadow offset
+                                    ),
+                                  ],
+                                ),
+
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                          child:
+                                          Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
+                                        ),
+                                        SizedBox(width: 70,),
+                                        Container(
+                                          child:
+                                          Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 8,),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text('Teachers',style: TextStyle(fontSize: 24,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                        Text('68 Members',style: TextStyle(fontSize: 14,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+
+                                      ],
+                                    )
+                                  ],
+                                )
+                            ),
+
+                          ],
+                        ),
+                      ),
+
+                      //blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container
+
+                      Container(
+
+                          padding: EdgeInsets.all(10),
+                          margin: EdgeInsets.all(12),
+                          height: 160,
+                          width: 375,
+                          decoration:
+                          BoxDecoration(
+                            color: Colors.lightBlueAccent, // Background color
+                            borderRadius: BorderRadius.circular(20),// Rounded corners
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.lightBlueAccent, // Shadow color
+                                blurRadius: 5, // Shadow blur radius
+                                offset: Offset(0, 4), // Shadow offset
+                              ),
+                            ],
+                          ),
+
+                          child: Column(mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Container(
+                                    child:
+                                    Icon(Icons.person_pin,size: 45,color: Colors.black),
+                                  ),
+                                  SizedBox(width: 12,),
+                                  Column(mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Deep',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
+                                      Text('Designer',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+                                    ],
+                                  ),
+                                  SizedBox(width: 177,),
+                                  Container(
+                                    child:
+                                    Icon(Icons.arrow_forward_ios_outlined,size: 35,color: Colors.black),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 12,),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(' Course',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
+                                      Text('App Development',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 16),),
+                                      Text(' 3 Months',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 13),),
+                                    ],
+                                  ),
+                                  SizedBox(width: 40,),
+                                  SizedBox(
+                                      child: Container(
+                                        height: 70,
+                                        width: 2,
+                                        color: Colors.black,
+                                      )
+                                  ),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('    Tools',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
+                                      Text('   Flutter , Dart',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 16),),
+                                      Text('     Firebase',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 13),),
+                                    ],
+                                  ),
+                                ],
+                              )
+                            ],
+                          )
+                      ),
+
+
+
+
+
+
+
+
                     ],
                   ),
                 ),
               ),
-            ),
-          ]
+            ]
+        ),
+        ]
       ),
+      bottomNavigationBar: Container(
+        height: 70,
+        child: GNav(
+          backgroundColor: Colors.black87,
+          color: Colors.white,
+          activeColor: Colors.blue,
+          tabBackgroundColor: Colors.lightBlueAccent[100]!,
+          gap: 1,
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+          onTabChange: (index) =>_onItemTapped(index),
+          tabs: [
+            GButton(icon: Icons.home,text: 'Home',textStyle: TextStyle(fontFamily: 'sans-serif-light'),),
+            GButton(icon: Icons.bar_chart,text: 'Features',textStyle: TextStyle(fontFamily: 'sans-serif-light'),),
+            GButton(icon: Icons.add_chart,text: 'Attendance',textStyle: TextStyle(fontFamily: 'sans-serif-light'),),
+            GButton(icon: Icons.person,text: 'Profile',textStyle: TextStyle(fontFamily: 'sans-serif-light'),),
+
+          ],
+        ),
+      )
+
+
+
+
+
     );
   }
 }

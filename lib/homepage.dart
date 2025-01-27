@@ -1,7 +1,5 @@
 import 'package:educationapk/allpage.dart';
-import 'package:educationapk/login.dart';
 import 'package:educationapk/profilepage.dart';
-import 'package:educationapk/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';

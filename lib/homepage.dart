@@ -1,5 +1,6 @@
 import 'package:educationapk/allpage.dart';
 import 'package:educationapk/login.dart';
+import 'package:educationapk/profilepage.dart';
 import 'package:educationapk/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -50,15 +51,20 @@ class _MyMainHomeState extends State<MyMainHome> {
     setState(() {
       _selectedIndex = index; // Update the selected index
     });
+  switch (index){
+    case 0:
+      break;
+    case 1:
+      break;
+    case 2:
+      break;
+    case 3:if (index == 3){
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>Profilepage()));
+    }
+      break;
   }
-  List _pages = [
-
-    MyMainHome(),
-    MyLogin(),
-    Signup(),
-    MainScrollPage()
-
-  ];
+  }
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -1102,21 +1108,21 @@ class _MyMainHomeState extends State<MyMainHome> {
         ),
         ]
       ),
-      bottomNavigationBar: Container(
+      bottomNavigationBar: SizedBox(
         height: 70,
         child: GNav(
-          backgroundColor: Colors.black87,
+          backgroundColor: Colors.transparent,
           color: Colors.white,
           activeColor: Colors.blue,
           tabBackgroundColor: Colors.lightBlueAccent[100]!,
-          gap: 1,
+          gap: 5,
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
           onTabChange: (index) =>_onItemTapped(index),
           tabs: [
-            GButton(icon: Icons.home,text: 'Home',textStyle: TextStyle(fontFamily: 'sans-serif-light'),),
-            GButton(icon: Icons.bar_chart,text: 'Features',textStyle: TextStyle(fontFamily: 'sans-serif-light'),),
-            GButton(icon: Icons.add_chart,text: 'Attendance',textStyle: TextStyle(fontFamily: 'sans-serif-light'),),
-            GButton(icon: Icons.person,text: 'Profile',textStyle: TextStyle(fontFamily: 'sans-serif-light'),),
+            GButton(icon: Icons.home,iconSize: 25,text: 'Home',textStyle: TextStyle(fontFamily: 'sans-serif-light'),),
+            GButton(icon: Icons.bar_chart,iconSize: 25,text: 'Features',textStyle: TextStyle(fontFamily: 'sans-serif-light'),),
+            GButton(icon: Icons.add_chart,iconSize: 25,text: 'Application',textStyle: TextStyle(fontFamily: 'sans-serif-light'),),
+            GButton(icon: Icons.person,iconSize: 25,text: 'Profile',textStyle: TextStyle(fontFamily: 'sans-serif-light'),),
 
           ],
         ),

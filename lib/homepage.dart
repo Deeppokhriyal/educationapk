@@ -49,7 +49,7 @@ class _MyMainHomeState extends State<MyMainHome> {
     setState(() {
       _selectedIndex = index; // Update the selected index
     });
-  switch (_selectedIndex) {
+   switch (_selectedIndex) {
     case 0:
       break;
     case 1:
@@ -176,8 +176,10 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     child: GestureDetector(
                                       onTap: () {
                                         if (listName[index] == "All") {
-                                          Get.to(()=>MainScrollPage());
-                                        }
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(builder: (context) => MainScrollPage()),
+                                          );                                        }
                                       },
                                       child: Container(
                                         width: 125,
@@ -1128,12 +1130,6 @@ class _MyMainHomeState extends State<MyMainHome> {
           ],
         ),
       )
-
-
-
-
-
     );
   }
 }
-

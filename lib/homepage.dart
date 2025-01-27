@@ -43,22 +43,26 @@ class _MyMainHomeState extends State<MyMainHome> {
   ];
 
   int _selectedIndex = 0;
+  int _tapCount = 0;
   // Method to handle item taps
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index; // Update the selected index
     });
-  switch (index){
+  switch (_selectedIndex) {
     case 0:
       break;
     case 1:
       break;
     case 2:
       break;
-    case 3:if (_selectedIndex == 3){
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>Profilepage()));
-    }
-      break;
+    case 3:
+      if (_selectedIndex == index) {
+        _tapCount++;
+        if(_tapCount==2){Navigator.push(
+          context, MaterialPageRoute(builder: (context) => Profilepage()));
+          _tapCount = 0;}
+      }
   }
   }
  

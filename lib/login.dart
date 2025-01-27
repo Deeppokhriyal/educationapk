@@ -1,10 +1,14 @@
 import 'package:educationapk/signup.dart';
-import 'package:educationapk/startingpage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:educationapk/startingpage.dart';
 
 class MyLogin extends StatelessWidget {
-  const MyLogin({super.key});
+
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -41,9 +45,10 @@ class MyLogin extends StatelessWidget {
                           child: Column(
                             children: [
                               TextField( cursorColor: Colors.black,style: TextStyle( fontFamily: 'sans-serif-light'),
+                                controller: usernameController,
                                 decoration: InputDecoration(
                                   fillColor: Colors.pink,
-                                  hintText: 'Enter your Email',
+                                  hintText: 'Enter your Name',
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(35)
                                   ),
@@ -55,7 +60,7 @@ class MyLogin extends StatelessWidget {
                               ),
                               SizedBox(height: 30,),
                               TextField(style: TextStyle( fontFamily: 'sans-serif-light'),
-
+                                controller: passwordController,
                                 cursorColor: Colors.black,
                                 obscureText: true,
                                 decoration: InputDecoration(
@@ -83,7 +88,8 @@ class MyLogin extends StatelessWidget {
                                   style: ElevatedButton.styleFrom(
                                     foregroundColor: Colors.black, backgroundColor: Colors.black, // Set the text color here
                                   ),  onPressed: () {
-                                  Get.to(()=>MyHomePage());
+                                    login(context);
+                                  // Get.to(()=>MyHomePage());
                                 },
                                   child: Text('Login',style: TextStyle(color: Colors.white, fontSize: 16,fontFamily: 'sans-serif-light'),),
                                 ),
@@ -155,5 +161,17 @@ class MyLogin extends StatelessWidget {
             )
         )
     );
+  }
+  void login(BuildContext context) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? storedUsername = prefs.getString("username");
+    String? storedPassword = prefs.getString("password");
+    print(storedPassword);
+    print(storedUsername);
+    if (usernameController.text == storedUsername && passwordController.text == storedPassword) {
+      // Navigate to home screen
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage()));
+
+    }
   }
 }

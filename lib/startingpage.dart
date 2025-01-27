@@ -45,11 +45,11 @@ class _MyHomePageState extends State<MyHomePage> {
               Text('The only study app\n   you\'ll ever need', style: TextStyle(fontFamily: 'sans-serif-medium',fontWeight: FontWeight.bold,fontSize: 35, color: Colors.black),),
               SizedBox(height: 15,),
               Text('Upload class study materials,create\n      electronic flashcards to study.', style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 17, color: Colors.black),),
-              SizedBox(height: 70),
+              SizedBox(height: 50),
               Container( decoration: BoxDecoration(color: Colors.black,borderRadius: BorderRadius.circular(35),border: Border.all(width: 6)),
                 child: TextButton(
                   onPressed: () {
-                    Get.to(()=>MyMainHome());
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> MyMainHome()));
                   },
                   child: Text('Let\'s start',style: TextStyle(fontSize: 20, color: Colors.white), // Customize text style
                   ),

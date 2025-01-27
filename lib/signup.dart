@@ -1,9 +1,12 @@
 import 'package:educationapk/controllers/signupController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Signup extends StatelessWidget {
 
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context){
@@ -16,9 +19,18 @@ class Signup extends StatelessWidget {
   }
 }
 
-class MySignUpPage extends StatelessWidget {
+class MySignUpPage extends StatefulWidget {
 
+  @override
+  State<MySignUpPage> createState() => _MySignUpPageState();
+}
+
+class _MySignUpPageState extends State<MySignUpPage> {
   final SignupController controller=Get.put(tag: 'SignupController',SignupController());
+
+TextEditingController usernameController=TextEditingController();
+
+TextEditingController passwordController=TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +56,9 @@ class MySignUpPage extends StatelessWidget {
               padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.25,right: 30,left: 30),
               child: Column(
                 children: [
-                  TextField( cursorColor: Colors.black,style: TextStyle( fontFamily: 'sans-serif-light'),
+                  TextField(
+                    controller: usernameController,
+                    cursorColor: Colors.black,style: TextStyle( fontFamily: 'sans-serif-light'),
                     decoration: InputDecoration(
                       fillColor: Colors.pink,
                       hintText: 'Enter your Name',
@@ -59,7 +73,6 @@ class MySignUpPage extends StatelessWidget {
                   ),
                   SizedBox(height: 30,),
                   TextField(style: TextStyle( fontFamily: 'sans-serif-light'),
-
                     cursorColor: Colors.black,
                     obscureText: true,
                     decoration: InputDecoration(
@@ -76,9 +89,9 @@ class MySignUpPage extends StatelessWidget {
                   ),
                   SizedBox(height: 30,),
                   TextField(style: TextStyle( fontFamily: 'sans-serif-light'),
-
-                    cursorColor: Colors.black,
+                    controller: passwordController,
                     obscureText: true,
+                    cursorColor: Colors.black,
                     decoration: InputDecoration(
                       fillColor: Colors.grey[100],
                       hintText: 'Enter your Password',
@@ -96,7 +109,8 @@ class MySignUpPage extends StatelessWidget {
                     width: double.infinity, // Full width
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        signup(context);
+                        // Navigator.pop(context);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black, // Set background color to black
@@ -175,5 +189,14 @@ class MySignUpPage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void signup(BuildContext context) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString("username", usernameController.text);
+    await prefs.setString("password", passwordController.text);
+
+    // Navigate back to login screen
+    Navigator.pop(context);
   }
 }

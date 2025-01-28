@@ -99,7 +99,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                       CircleAvatar(
                                         radius: 30,
                                         backgroundImage: AssetImage(
-                                      'assets/images/user.png'),
+                                            'assets/images/user.png'),
                                       ),
                                       SizedBox(height: 16),
                                       Text(
@@ -133,13 +133,13 @@ class _MyMainHomeState extends State<MyMainHome> {
                           child: Container(
                             padding: EdgeInsets.only(left: 10,top: 50),
                             child: CircleAvatar(
-                                  radius: 20,
-                                  backgroundImage: AssetImage(
-                                      'assets/images/user.png'),
-                                ),
+                              radius: 20,
+                              backgroundImage: AssetImage(
+                                  'assets/images/user.png'),
+                            ),
                           ),
                         ),
-                        SizedBox(width: 20,),
+                        SizedBox(width: 23,),
                         Column(crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
@@ -150,7 +150,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                           ],
                         ),
                         Container(
-                          padding: EdgeInsets.only(left: 120,top: 50),
+                          padding: EdgeInsets.only(left: 160,top: 50),
                           child:
                           PopupMenuButton<String>(
                             onSelected: (String value) {

@@ -3,34 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Signup extends StatelessWidget {
-
-  final TextEditingController usernameController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-
-  @override
-  Widget build(BuildContext context){
-    return GetMaterialApp(
-      color: Colors.white,
-      debugShowCheckedModeBanner: false,
-      title: 'signup page',
-      home: MySignUpPage(),
-    );
-  }
-}
-
 class MySignUpPage extends StatefulWidget {
-
   @override
   State<MySignUpPage> createState() => _MySignUpPageState();
 }
-
 class _MySignUpPageState extends State<MySignUpPage> {
   final SignupController controller=Get.put(tag: 'SignupController',SignupController());
-
-TextEditingController usernameController=TextEditingController();
-
-TextEditingController passwordController=TextEditingController();
+    TextEditingController usernameController=TextEditingController();
+    TextEditingController passwordController=TextEditingController();
 
   @override
   Widget build(BuildContext context) {

@@ -88,6 +88,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                             showDialog(
                               context: context,
                               builder: (context) => Dialog(
+                                backgroundColor: Colors.white,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20),
                                 ),
@@ -97,21 +98,22 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       CircleAvatar(
-                                        radius: 30,
+                                        backgroundColor: Colors.black12,
+                                        radius: 35,
                                         backgroundImage: AssetImage(
                                             'assets/images/user.png'),
                                       ),
                                       SizedBox(height: 16),
                                       Text(
                                         'Deepak',
-                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                                        style: TextStyle(fontSize: 20, fontFamily:'sans-serif-light'),
                                       ),
-                                      SizedBox(height: 8),
+                                      SizedBox(height: 6),
                                       Text(
                                         'Information Technology',
-                                        style: TextStyle(color: Colors.grey),
+                                        style: TextStyle(color: Colors.grey,fontFamily: 'sans-serif-thin'),
                                       ),
-                                      SizedBox(height: 16),
+                                      SizedBox(height: 15),
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                         children: [
@@ -119,7 +121,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                             onPressed: () {
                                               Navigator.of(context).pop();
                                             },
-                                            child: Text('Close'),
+                                            child: Text('Close',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 14),),
                                           ),
                                         ],
                                       ),
@@ -131,8 +133,9 @@ class _MyMainHomeState extends State<MyMainHome> {
 
                           },
                           child: Container(
-                            padding: EdgeInsets.only(left: 10,top: 50),
+                            padding: EdgeInsets.only(left: 13,top: 50),
                             child: CircleAvatar(
+                              backgroundColor: Colors.lightBlueAccent,
                               radius: 20,
                               backgroundImage: AssetImage(
                                   'assets/images/user.png'),

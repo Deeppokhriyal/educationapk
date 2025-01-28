@@ -27,7 +27,9 @@ class Profilepage extends StatelessWidget {
                               padding: EdgeInsets.only(left: 10,top: 25),
                               child: Row(
                                 children: [
-                                  IconButton(onPressed: (){}, icon: Icon(LineAwesomeIcons.angle_left_solid,size: 30,color: Colors.white,)),
+                                  IconButton(onPressed: (){
+                                    Navigator.pop(context);
+                                  }, icon: Icon(LineAwesomeIcons.angle_left_solid,size: 30,color: Colors.white,)),
                                   SizedBox(width: 5,),
                                   Text('Profile', style: TextStyle(fontFamily: 'sans-serif-light',letterSpacing: 0.2,color: Colors.white),),
                                 ],

@@ -83,11 +83,63 @@ class _MyMainHomeState extends State<MyMainHome> {
                   children: [
                     Row( mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          padding: EdgeInsets.only(left: 20,top: 50),
-                          child: Image.asset('assets/images/user.png',height: 30,color: Colors.white),
+                        GestureDetector(
+                          onTap:(){
+                            showDialog(
+                              context: context,
+                              builder: (context) => Dialog(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      CircleAvatar(
+                                        radius: 30,
+                                        backgroundImage: AssetImage(
+                                      'assets/images/user.png'),
+                                      ),
+                                      SizedBox(height: 16),
+                                      Text(
+                                        'Deepak',
+                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                                      ),
+                                      SizedBox(height: 8),
+                                      Text(
+                                        'Information Technology',
+                                        style: TextStyle(color: Colors.grey),
+                                      ),
+                                      SizedBox(height: 16),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: Text('Close'),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            );
+
+                          },
+                          child: Container(
+                            padding: EdgeInsets.only(left: 10,top: 50),
+                            child: CircleAvatar(
+                                  radius: 20,
+                                  backgroundImage: AssetImage(
+                                      'assets/images/user.png'),
+                                ),
+                          ),
                         ),
-                        SizedBox(width: 23,),
+                        SizedBox(width: 20,),
                         Column(crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
@@ -98,7 +150,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                           ],
                         ),
                         Container(
-                          padding: EdgeInsets.only(left: 160,top: 50),
+                          padding: EdgeInsets.only(left: 120,top: 50),
                           child:
                           PopupMenuButton<String>(
                             onSelected: (String value) {

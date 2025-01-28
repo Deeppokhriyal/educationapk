@@ -1,3 +1,4 @@
+import 'package:educationapk/updateprofile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -58,7 +59,9 @@ class Profilepage extends StatelessWidget {
                   SizedBox(height: 20,),
                   SizedBox(
                     width: 200,
-                    child: ElevatedButton(onPressed: (){},
+                    child: ElevatedButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>UpdateProfilePage()));
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.amber, side: BorderSide.none, shape:  StadiumBorder()),
                       child: Text("Edit Profile",style: TextStyle(color: Colors.black),),

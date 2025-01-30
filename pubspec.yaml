@@ -50,7 +50,7 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/images/logo.png"
+  image_path: "assets/images/logonew.jpg"
 
 
   # The "flutter_lints" package below contains a set of recommended lints to
@@ -65,20 +65,24 @@ flutter_icons:
 
 # The following section is specific to Flutter packages.
 flutter:
+  uses-material-design: true
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
-  uses-material-design: true
+
 
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
 
+  
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
   # For details regarding adding assets from package dependencies, see
+
+
   # https://flutter.dev/to/asset-from-package
 
   # To add custom fonts to your application, add a fonts section here,
@@ -86,10 +90,14 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: nexaheavy
+      fonts:
+         - asset: fonts/Nexa-Heavy.ttf
+
+    - family: nexalight
+      fonts:
+        - asset: fonts/Nexa-ExtraLight.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

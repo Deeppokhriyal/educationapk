@@ -1,4 +1,7 @@
 import 'package:educationapk/allpage.dart';
+import 'package:educationapk/login.dart';
+import 'package:educationapk/popupmenu/privacypolicies.dart';
+import 'package:educationapk/popupmenu/termscondition.dart';
 import 'package:educationapk/profilepage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -99,21 +102,26 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     children: [
                                       CircleAvatar(
                                         backgroundColor: Colors.black12,
-                                        radius: 35,
+                                        radius: 40,
                                         backgroundImage: AssetImage(
-                                            'assets/images/user.png'),
+                                            'assets/images/profile.png'),
                                       ),
                                       SizedBox(height: 16),
                                       Text(
-                                        'Deepak',
-                                        style: TextStyle(fontSize: 20, fontFamily:'sans-serif-light'),
+                                        'Deepak Pokhriyal',
+                                        style: TextStyle(fontSize: 17, fontFamily:'sans-serif-light'),
                                       ),
                                       SizedBox(height: 6),
                                       Text(
-                                        'Information Technology',
+                                        'I.T. 3rd Year',
                                         style: TextStyle(color: Colors.grey,fontFamily: 'sans-serif-thin'),
                                       ),
-                                      SizedBox(height: 15),
+                                      SizedBox(height: 6),
+                                      Text(
+                                        'Govt. Polytechnic Kashipur',
+                                        style: TextStyle(color: Colors.grey,fontFamily: 'sans-serif-thin'),
+                                      ),
+                                      SizedBox(height: 25),
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                         children: [
@@ -153,7 +161,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                           ],
                         ),
                         Container(
-                          padding: EdgeInsets.only(left: 160,top: 50),
+                          padding: EdgeInsets.only(left: 165,top: 50),
                           child:
                           PopupMenuButton<String>(
                             onSelected: (String value) {
@@ -163,14 +171,21 @@ class _MyMainHomeState extends State<MyMainHome> {
                             itemBuilder: (BuildContext context) {
                               return [
                                 PopupMenuItem<String>(
+                                  onTap: (){
+                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Termscondition()));
+                                  },
                                   value: 'Profile',
-                                  child: Text('Profile', style: TextStyle(fontSize: 15,fontFamily: 'sans-serif-thin')),
+                                  child: Text('Terms and \nCondition\'s', style: TextStyle(fontSize: 15,fontFamily: 'sans-serif-thin')),
                                 ),
                                 PopupMenuItem<String>(
+                                  onTap: (){
+                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Privacypolicies()));
+                                  },
                                   value: 'Settings',
-                                  child: Text('Settings', style: TextStyle(fontSize: 15,fontFamily: 'sans-serif-thin')),
+                                  child: Text('Privacy  Policies', style: TextStyle(fontSize: 15,fontFamily: 'sans-serif-thin')),
                                 ),
                                 PopupMenuItem<String>(
+                                  onTap: (){Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MyLogin()));},
                                   value: 'Logout',
                                   child: Text('Logout', style: TextStyle(fontSize: 15,fontFamily: 'sans-serif-thin')),
                                 ),

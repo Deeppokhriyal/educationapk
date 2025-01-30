@@ -1,3 +1,4 @@
+import 'package:educationapk/login.dart';
 import 'package:educationapk/updateprofile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
@@ -41,7 +42,7 @@ class Profilepage extends StatelessWidget {
                                   width: 100, height: 100,
                                   child: ClipRRect(
                                       borderRadius:BorderRadius.circular(100) ,
-                                      child: Image(image: AssetImage("assets/images/facebook.png"))),
+                                      child: Image (image: AssetImage("assets/images/profile.png",))),
                                 ),
                               ),
                               Positioned(
@@ -52,7 +53,7 @@ class Profilepage extends StatelessWidget {
                                   height: 25,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(100),
-                                    color: Colors.amber,
+                                    color: Colors.yellow[700],
                                   ),
                                   child: Icon(LineAwesomeIcons.pencil_alt_solid, size: 18, color: Colors.black),
                                 ),
@@ -71,7 +72,7 @@ class Profilepage extends StatelessWidget {
                             },
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.lightBlueAccent, side: BorderSide.none, shape:  StadiumBorder()),
-                              child: Text("Edit Profile",style: TextStyle(color: Colors.black),),
+                              child: Text("Edit Profile",style: TextStyle(color: Colors.black,fontFamily: 'sans-serif-light',fontSize: 16),),
                             )
                         ),
                         SizedBox(height: 30),
@@ -89,7 +90,9 @@ class Profilepage extends StatelessWidget {
                         const SizedBox(height: 10,),
                         ProfileMenuWidget(title: "Information",textColor: Colors.white, icon: LineAwesomeIcons.info_solid,onPress: (){},),
                         ProfileMenuWidget(title: "Logout",icon: LineAwesomeIcons.sign_out_alt_solid,textColor:Colors.red,endIcon: false,
-                          onPress: (){},),
+                          onPress: (){
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MyLogin()));
+                          },),
                       ],
                     ),
                   ),

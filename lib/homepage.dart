@@ -1,6 +1,7 @@
 import 'package:educationapk/allpage.dart';
 import 'package:educationapk/devpage.dart';
 import 'package:educationapk/login.dart';
+import 'package:educationapk/map.dart';
 import 'package:educationapk/popupmenu/privacypolicies.dart';
 import 'package:educationapk/popupmenu/termscondition.dart';
 import 'package:educationapk/profilepage.dart';
@@ -85,6 +86,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                   ),
                 ),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row( mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -95,10 +97,10 @@ class _MyMainHomeState extends State<MyMainHome> {
                               builder: (context) => Dialog(
                                 backgroundColor: Colors.white,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(25),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(16.0),
+                                  padding: const EdgeInsets.all(15.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
@@ -145,10 +147,10 @@ class _MyMainHomeState extends State<MyMainHome> {
                           child: Container(
                             padding: EdgeInsets.only(left: 13,top: 50),
                             child: CircleAvatar(
-                              backgroundColor: Colors.lightBlueAccent,
+                              backgroundColor: Colors.black12,
                               radius: 20,
                               backgroundImage: AssetImage(
-                                  'assets/images/user.png'),
+                                  'assets/images/profile.png'),
                             ),
                           ),
                         ),
@@ -249,12 +251,22 @@ class _MyMainHomeState extends State<MyMainHome> {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(builder: (context) => MainScrollPage()),
-                                        );                                        }
+                                        );
+                                      }
                                       if (listName[index] == "Programming") {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(builder: (context) => programmingpage()),
-                                        );                                        }
+                                        );
+                                      }
+                                      if (listName[index] == "Map") {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => MyMap()),
+                                        );
+                                      }
+
+
                                     },
                                     child: Container(
                                       width: 125,
@@ -267,7 +279,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                         border: Border.all(color: Colors.black12, width: 1),
                                         boxShadow: [
                                           BoxShadow(
-                                            color: Colors.lightBlueAccent,
+                                            color: Colors.deepPurple.shade600,
                                             blurRadius: 15,
                                             offset: Offset(0, 4),
                                           ),
@@ -295,69 +307,69 @@ class _MyMainHomeState extends State<MyMainHome> {
                         children: [
                           Container(
 
-                              padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.all(15),
-                              height: 200,
-                              width: 190,
-                              decoration:
-                              BoxDecoration(
-                                color: Color(0xFFFF789F), // Background color
-                                borderRadius: BorderRadius.circular(20),// Rounded corners
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Color(0xFFFF789F), // Shadow color
-                                    blurRadius: 15, // Shadow blur radius
-                                    offset: Offset(0, 4), // Shadow offset
-                                  ),
-                                ],
-                              ),
+                            padding: EdgeInsets.all(10),
+                            margin: EdgeInsets.all(15),
+                            height: 200,
+                            width: 190,
+                            decoration:
+                            BoxDecoration(
+                              color: Colors.pinkAccent, // Background color
+                              borderRadius: BorderRadius.circular(20),// Rounded corners
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.pinkAccent, // Shadow color
+                                  blurRadius: 15, // Shadow blur radius
+                                  offset: Offset(0, 2), // Shadow offset
+                                ),
+                              ],
+                            ),
 
-                              child:  GestureDetector(
+                            child:  GestureDetector(
                                 onTap: (){
                                   Navigator.push(context, MaterialPageRoute(builder: (context)=>Devpage()));
                                 },
                                 child: Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Container(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                          child:
+                                          Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
+                                        ),
+                                        SizedBox(width: 105,),
+                                        Container(
+                                          child:
+                                          GestureDetector(
+                                            onTap: (){
+                                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Devpage()));
+                                            },
                                             child:
-                                            Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
+                                            Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
                                           ),
-                                          SizedBox(width: 105,),
-                                          Container(
-                                            child:
-                                            GestureDetector(
-                                              onTap: (){
-                                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Devpage()));
-                                              },
-                                              child:
-                                              Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Text('App',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                              Text('Designing',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin'),),
-                                          SizedBox(width: 23,),
-                                          Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin'),),
-                                        ],
-                                      )
-                                    ],
-                                  )
-                              ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text('App',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                            Text('Designing',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin'),),
+                                        SizedBox(width: 23,),
+                                        Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin'),),
+                                      ],
+                                    )
+                                  ],
+                                )
+                            ),
                           ),
                           Container(
 
@@ -367,13 +379,13 @@ class _MyMainHomeState extends State<MyMainHome> {
                               width: 155,
                               decoration:
                               BoxDecoration(
-                                color: Colors.green.shade400, // Background color
+                                color: Colors.yellowAccent.shade200, // Background color
                                 borderRadius: BorderRadius.circular(20),// Rounded corners
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.green.shade400, // Shadow color
+                                    color: Colors.yellowAccent, // Shadow color
                                     blurRadius: 15, // Shadow blur radius
-                                    offset: Offset(0, 4), // Shadow offset
+                                    offset: Offset(0, 2), // Shadow offset
                                   ),
                                 ],
                               ),
@@ -409,13 +421,79 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 ],
                               )
                           ),
+                          Container(
 
+                            padding: EdgeInsets.all(10),
+                            margin: EdgeInsets.all(15),
+                            height: 200,
+                            width: 190,
+                            decoration:
+                            BoxDecoration(
+                              color: Colors.lightGreenAccent, // Background color
+                              borderRadius: BorderRadius.circular(20),// Rounded corners
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.lightGreenAccent, // Shadow color
+                                  blurRadius: 15, // Shadow blur radius
+                                  offset: Offset(0, 2), // Shadow offset
+                                ),
+                              ],
+                            ),
+
+                            child:  GestureDetector(
+                                onTap: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Devpage()));
+                                },
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                          child:
+                                          Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
+                                        ),
+                                        SizedBox(width: 105,),
+                                        Container(
+                                          child:
+                                          GestureDetector(
+                                            onTap: (){
+                                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Devpage()));
+                                            },
+                                            child:
+                                            Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text('App',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                            Text('Designing',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin'),),
+                                        SizedBox(width: 23,),
+                                        Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin'),),
+                                      ],
+                                    )
+                                  ],
+                                )
+                            ),
+                          ),
                         ],
                       ),
                     ),
 
                     //blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container
 
+                    SizedBox(height: 10,),
                     Container(
 
                         padding: EdgeInsets.all(10),
@@ -494,859 +572,33 @@ class _MyMainHomeState extends State<MyMainHome> {
                           ],
                         )
                     ),
-
-                    //Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra Extra
-
+                    Container(
+                      padding: EdgeInsets.all(15),
+                      child:
+                      Divider(height: 25,),
+                    ),
+                    Text('  Gallery',style: TextStyle(fontSize: 29,fontFamily: 'nexaheavy',color: Colors.lightBlueAccent),),
+                    Text('    Govt. Polytechnic Kashipur',style: TextStyle(fontSize: 15,fontFamily: 'nexalight',color: Colors.lightBlueAccent),),
+                    SizedBox(height: 10,),
                     SingleChildScrollView(
+                      padding: EdgeInsets.all(15),
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
-                          Container(
-
-                            padding: EdgeInsets.all(10),
-                            margin: EdgeInsets.all(15),
-                            height: 200,
-                            width: 190,
-                            decoration:
-                            BoxDecoration(
-                              color: Color(0xFFFF789F), // Background color
-                              borderRadius: BorderRadius.circular(20),// Rounded corners
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0xFFFF789F), // Shadow color
-                                  blurRadius: 15, // Shadow blur radius
-                                  offset: Offset(0, 4), // Shadow offset
-                                ),
-                              ],
-                            ),
-
-                            child:  GestureDetector(
-                                onTap: (){
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Devpage()));
-                                },
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Container(
-                                          child:
-                                          Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                        ),
-                                        SizedBox(width: 105,),
-                                        Container(
-                                          child:
-                                          GestureDetector(
-                                            onTap: (){
-                                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Devpage()));
-                                            },
-                                            child:
-                                            Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Text('App',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                            Text('Designing',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin'),),
-                                        SizedBox(width: 23,),
-                                        Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin'),),
-                                      ],
-                                    )
-                                  ],
-                                )
-                            ),
-                          ),
-                          Container(
-
-                              padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.all(12),
-                              height: 200,
-                              width: 155,
-                              decoration:
-                              BoxDecoration(
-                                color: Colors.green.shade400, // Background color
-                                borderRadius: BorderRadius.circular(20),// Rounded corners
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.green.shade400, // Shadow color
-                                    blurRadius: 15, // Shadow blur radius
-                                    offset: Offset(0, 4), // Shadow offset
-                                  ),
-                                ],
-                              ),
-
-                              child: Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Container(
-                                        child:
-                                        Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                      ),
-                                      SizedBox(width: 70,),
-                                      Container(
-                                        child:
-                                        Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(height: 8,),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text('Teachers',style: TextStyle(fontSize: 24,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                      Text('68 Members',style: TextStyle(fontSize: 14,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-
-                                    ],
-                                  )
-                                ],
-                              )
-                          ),
-
+                          Image.asset('assets/images/man.png',height: 200,),
+                          SizedBox(width: 30,),
+                          Image.asset('assets/images/woman.png',height: 200,),
+                          SizedBox(width: 30,),
+                          Image.asset('assets/images/man.png',height: 200,),
+                          SizedBox(width: 30,),
+                          Image.asset('assets/images/woman.png',height: 200,),
+                          SizedBox(width: 30,),
+                          Image.asset('assets/images/man.png',height: 200,),
+                          SizedBox(width: 30,),
+                          Image.asset('assets/images/woman.png',height: 200,),
                         ],
                       ),
                     ),
-
-                    //blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container
-
-                    Container(
-
-                        padding: EdgeInsets.all(10),
-                        margin: EdgeInsets.all(12),
-                        height: 160,
-                        width: 375,
-                        decoration:
-                        BoxDecoration(
-                          color: Colors.lightBlueAccent, // Background color
-                          borderRadius: BorderRadius.circular(20),// Rounded corners
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.lightBlueAccent, // Shadow color
-                              blurRadius: 20, // Shadow blur radius
-                              offset: Offset(0, 4), // Shadow offset
-                            ),
-                          ],
-                        ),
-
-                        child: Column(mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Container(
-                                  child:
-                                  Icon(Icons.person_pin,size: 45,color: Colors.black),
-                                ),
-                                SizedBox(width: 12,),
-                                Column(mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Deep',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
-                                    Text('Designer',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                  ],
-                                ),
-                                SizedBox(width: 177,),
-                                Container(
-                                  child:
-                                  Icon(Icons.arrow_forward_ios_outlined,size: 35,color: Colors.black),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 12,),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(' Course',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
-                                    Text('App Development',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 16),),
-                                    Text(' 3 Months',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 13),),
-                                  ],
-                                ),
-                                SizedBox(width: 40,),
-                                SizedBox(
-                                    child: Container(
-                                      height: 70,
-                                      width: 2,
-                                      color: Colors.black,
-                                    )
-                                ),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('    Tools',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
-                                    Text('   Flutter , Dart',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 16),),
-                                    Text('     Firebase',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 13),),
-                                  ],
-                                ),
-                              ],
-                            )
-                          ],
-                        )
-                    ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          Container(
-
-                            padding: EdgeInsets.all(10),
-                            margin: EdgeInsets.all(15),
-                            height: 200,
-                            width: 190,
-                            decoration:
-                            BoxDecoration(
-                              color: Color(0xFFFF789F), // Background color
-                              borderRadius: BorderRadius.circular(20),// Rounded corners
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0xFFFF789F), // Shadow color
-                                  blurRadius: 15, // Shadow blur radius
-                                  offset: Offset(0, 4), // Shadow offset
-                                ),
-                              ],
-                            ),
-
-                            child:  GestureDetector(
-                                onTap: (){
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Devpage()));
-                                },
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Container(
-                                          child:
-                                          Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                        ),
-                                        SizedBox(width: 105,),
-                                        Container(
-                                          child:
-                                          GestureDetector(
-                                            onTap: (){
-                                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Devpage()));
-                                            },
-                                            child:
-                                            Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Text('App',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                            Text('Designing',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin'),),
-                                        SizedBox(width: 23,),
-                                        Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin'),),
-                                      ],
-                                    )
-                                  ],
-                                )
-                            ),
-                          ),
-                          Container(
-
-                              padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.all(12),
-                              height: 200,
-                              width: 155,
-                              decoration:
-                              BoxDecoration(
-                                color: Colors.green.shade400, // Background color
-                                borderRadius: BorderRadius.circular(20),// Rounded corners
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.green.shade400, // Shadow color
-                                    blurRadius: 15, // Shadow blur radius
-                                    offset: Offset(0, 4), // Shadow offset
-                                  ),
-                                ],
-                              ),
-
-                              child: Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Container(
-                                        child:
-                                        Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                      ),
-                                      SizedBox(width: 70,),
-                                      Container(
-                                        child:
-                                        Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(height: 8,),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text('Teachers',style: TextStyle(fontSize: 24,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                      Text('68 Members',style: TextStyle(fontSize: 14,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-
-                                    ],
-                                  )
-                                ],
-                              )
-                          ),
-
-                        ],
-                      ),
-                    ),
-
-                    //blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container
-
-                    Container(
-
-                        padding: EdgeInsets.all(10),
-                        margin: EdgeInsets.all(12),
-                        height: 160,
-                        width: 375,
-                        decoration:
-                        BoxDecoration(
-                          color: Colors.lightBlueAccent, // Background color
-                          borderRadius: BorderRadius.circular(20),// Rounded corners
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.lightBlueAccent, // Shadow color
-                              blurRadius: 20, // Shadow blur radius
-                              offset: Offset(0, 4), // Shadow offset
-                            ),
-                          ],
-                        ),
-
-                        child: Column(mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Container(
-                                  child:
-                                  Icon(Icons.person_pin,size: 45,color: Colors.black),
-                                ),
-                                SizedBox(width: 12,),
-                                Column(mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Deep',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
-                                    Text('Designer',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                  ],
-                                ),
-                                SizedBox(width: 177,),
-                                Container(
-                                  child:
-                                  Icon(Icons.arrow_forward_ios_outlined,size: 35,color: Colors.black),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 12,),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(' Course',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
-                                    Text('App Development',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 16),),
-                                    Text(' 3 Months',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 13),),
-                                  ],
-                                ),
-                                SizedBox(width: 40,),
-                                SizedBox(
-                                    child: Container(
-                                      height: 70,
-                                      width: 2,
-                                      color: Colors.black,
-                                    )
-                                ),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('    Tools',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
-                                    Text('   Flutter , Dart',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 16),),
-                                    Text('     Firebase',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 13),),
-                                  ],
-                                ),
-                              ],
-                            )
-                          ],
-                        )
-                    ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          Container(
-
-                            padding: EdgeInsets.all(10),
-                            margin: EdgeInsets.all(15),
-                            height: 200,
-                            width: 190,
-                            decoration:
-                            BoxDecoration(
-                              color: Color(0xFFFF789F), // Background color
-                              borderRadius: BorderRadius.circular(20),// Rounded corners
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0xFFFF789F), // Shadow color
-                                  blurRadius: 15, // Shadow blur radius
-                                  offset: Offset(0, 4), // Shadow offset
-                                ),
-                              ],
-                            ),
-
-                            child:  GestureDetector(
-                                onTap: (){
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Devpage()));
-                                },
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Container(
-                                          child:
-                                          Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                        ),
-                                        SizedBox(width: 105,),
-                                        Container(
-                                          child:
-                                          GestureDetector(
-                                            onTap: (){
-                                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Devpage()));
-                                            },
-                                            child:
-                                            Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Text('App',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                            Text('Designing',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin'),),
-                                        SizedBox(width: 23,),
-                                        Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin'),),
-                                      ],
-                                    )
-                                  ],
-                                )
-                            ),
-                          ),
-                          Container(
-
-                              padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.all(12),
-                              height: 200,
-                              width: 155,
-                              decoration:
-                              BoxDecoration(
-                                color: Colors.green.shade400, // Background color
-                                borderRadius: BorderRadius.circular(20),// Rounded corners
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.green.shade400, // Shadow color
-                                    blurRadius: 15, // Shadow blur radius
-                                    offset: Offset(0, 4), // Shadow offset
-                                  ),
-                                ],
-                              ),
-
-                              child: Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Container(
-                                        child:
-                                        Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                      ),
-                                      SizedBox(width: 70,),
-                                      Container(
-                                        child:
-                                        Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(height: 8,),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text('Teachers',style: TextStyle(fontSize: 24,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                      Text('68 Members',style: TextStyle(fontSize: 14,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-
-                                    ],
-                                  )
-                                ],
-                              )
-                          ),
-                          Container(
-
-                            padding: EdgeInsets.all(10),
-                            margin: EdgeInsets.all(15),
-                            height: 200,
-                            width: 190,
-                            decoration:
-                            BoxDecoration(
-                              color: Color(0xFFFF789F), // Background color
-                              borderRadius: BorderRadius.circular(20),// Rounded corners
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0xFFFF789F), // Shadow color
-                                  blurRadius: 15, // Shadow blur radius
-                                  offset: Offset(0, 4), // Shadow offset
-                                ),
-                              ],
-                            ),
-
-                            child:  GestureDetector(
-                                onTap: (){
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Devpage()));
-                                },
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Container(
-                                          child:
-                                          Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                        ),
-                                        SizedBox(width: 105,),
-                                        Container(
-                                          child:
-                                          GestureDetector(
-                                            onTap: (){
-                                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Devpage()));
-                                            },
-                                            child:
-                                            Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Text('App',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                            Text('Designing',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin'),),
-                                        SizedBox(width: 23,),
-                                        Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin'),),
-                                      ],
-                                    )
-                                  ],
-                                )
-                            ),
-                          ),
-                          Container(
-
-                              padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.all(12),
-                              height: 200,
-                              width: 155,
-                              decoration:
-                              BoxDecoration(
-                                color: Colors.green.shade400, // Background color
-                                borderRadius: BorderRadius.circular(20),// Rounded corners
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.green.shade400, // Shadow color
-                                    blurRadius: 15, // Shadow blur radius
-                                    offset: Offset(0, 4), // Shadow offset
-                                  ),
-                                ],
-                              ),
-
-                              child: Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Container(
-                                        child:
-                                        Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                      ),
-                                      SizedBox(width: 70,),
-                                      Container(
-                                        child:
-                                        Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(height: 8,),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text('Teachers',style: TextStyle(fontSize: 24,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                      Text('68 Members',style: TextStyle(fontSize: 14,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-
-                                    ],
-                                  )
-                                ],
-                              )
-                          ),
-
-                          Container(
-
-                            padding: EdgeInsets.all(10),
-                            margin: EdgeInsets.all(15),
-                            height: 200,
-                            width: 190,
-                            decoration:
-                            BoxDecoration(
-                              color: Color(0xFFFF789F), // Background color
-                              borderRadius: BorderRadius.circular(20),// Rounded corners
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0xFFFF789F), // Shadow color
-                                  blurRadius: 15, // Shadow blur radius
-                                  offset: Offset(0, 4), // Shadow offset
-                                ),
-                              ],
-                            ),
-
-                            child:  GestureDetector(
-                                onTap: (){
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Devpage()));
-                                },
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Container(
-                                          child:
-                                          Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                        ),
-                                        SizedBox(width: 105,),
-                                        Container(
-                                          child:
-                                          GestureDetector(
-                                            onTap: (){
-                                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Devpage()));
-                                            },
-                                            child:
-                                            Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Text('App',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                            Text('Designing',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin'),),
-                                        SizedBox(width: 23,),
-                                        Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin'),),
-                                      ],
-                                    )
-                                  ],
-                                )
-                            ),
-                          ),
-                          Container(
-
-                              padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.all(12),
-                              height: 200,
-                              width: 155,
-                              decoration:
-                              BoxDecoration(
-                                color: Colors.green.shade400, // Background color
-                                borderRadius: BorderRadius.circular(20),// Rounded corners
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.green.shade400, // Shadow color
-                                    blurRadius: 15, // Shadow blur radius
-                                    offset: Offset(0, 4), // Shadow offset
-                                  ),
-                                ],
-                              ),
-
-                              child: Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Container(
-                                        child:
-                                        Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                      ),
-                                      SizedBox(width: 70,),
-                                      Container(
-                                        child:
-                                        Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(height: 8,),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text('Teachers',style: TextStyle(fontSize: 24,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                      Text('68 Members',style: TextStyle(fontSize: 14,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-
-                                    ],
-                                  )
-                                ],
-                              )
-                          ),
-
-
-                        ],
-                      ),
-                    ),
-
-                    //blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container
-
-                    Container(
-
-                        padding: EdgeInsets.all(10),
-                        margin: EdgeInsets.all(12),
-                        height: 160,
-                        width: 375,
-                        decoration:
-                        BoxDecoration(
-                          color: Colors.lightBlueAccent, // Background color
-                          borderRadius: BorderRadius.circular(20),// Rounded corners
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.lightBlueAccent, // Shadow color
-                              blurRadius: 20, // Shadow blur radius
-                              offset: Offset(0, 4), // Shadow offset
-                            ),
-                          ],
-                        ),
-
-                        child: Column(mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Container(
-                                  child:
-                                  Icon(Icons.person_pin,size: 45,color: Colors.black),
-                                ),
-                                SizedBox(width: 12,),
-                                Column(mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Deep',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
-                                    Text('Designer',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                  ],
-                                ),
-                                SizedBox(width: 177,),
-                                Container(
-                                  child:
-                                  Icon(Icons.arrow_forward_ios_outlined,size: 35,color: Colors.black),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 12,),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(' Course',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
-                                    Text('App Development',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 16),),
-                                    Text(' 3 Months',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 13),),
-                                  ],
-                                ),
-                                SizedBox(width: 40,),
-                                SizedBox(
-                                    child: Container(
-                                      height: 70,
-                                      width: 2,
-                                      color: Colors.black,
-                                    )
-                                ),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('    Tools',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
-                                    Text('   Flutter , Dart',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 16),),
-                                    Text('     Firebase',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 13),),
-                                  ],
-                                ),
-                              ],
-                            )
-                          ],
-                        )
-                    ),
-                    //blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container
                   ],
                 ),
               ),

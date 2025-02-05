@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';import 'package:url_launcher/url_launcher.dart';
 
 class Devpage extends StatelessWidget {
+  final String url = "facebook.com";
+
+  Future<void> _launchURL() async {
+    Uri uri = Uri.parse(url);
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      throw "Could not launch $url";
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -118,15 +126,8 @@ class Devpage extends StatelessWidget {
                               children: [
                                 Text(' Developer\'s Profile : ', style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.greenAccent,letterSpacing: 1,wordSpacing: 1),),
                                   GestureDetector(
-                                  onTap: () {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text('Image Tapped!')),
-                                  );
-                                  },
-                                  child: Image.asset('assets/images/tap1.png', // Replace with your image URL
-                                  width: 150,
-                                  height: 50,
-                                  ),
+                                    onTap: _launchURL,
+                                    child: Image.asset('assets/images/tap1.png',height: 50,width: 150,),
                                   ),
                               ],
                             ),
@@ -135,7 +136,7 @@ class Devpage extends StatelessWidget {
                               alignment: Alignment.center,
                               child:
                               Text('Contributes',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 25,color: Colors.lightBlueAccent),),
-                            )
+                            ),
                           ],
                         ),
                         )

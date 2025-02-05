@@ -9,7 +9,9 @@ class UpdateProfilePage extends StatelessWidget {
     var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(onPressed: (){}, icon: Icon(LineAwesomeIcons.angle_left_solid)),
+        leading: IconButton(onPressed: (){
+          Navigator.pop(context);
+        }, icon: Icon(LineAwesomeIcons.angle_left_solid)),
         title: Text('Edit Profile', style: TextStyle(fontWeight: FontWeight.normal,letterSpacing: 0.2),),
         actions: [
           IconButton(onPressed: (){}, icon: Icon(isDark? LineAwesomeIcons.sun : LineAwesomeIcons.moon))

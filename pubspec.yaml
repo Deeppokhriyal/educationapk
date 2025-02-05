@@ -37,6 +37,10 @@ dependencies:
   shared_preferences:
   line_awesome_flutter:
   firebase_core:
+  firebase_auth:
+  cloud_firestore:
+  provider:
+  google_sign_in:
 
 
 
@@ -79,6 +83,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/logos/
 
   
   # An image asset can refer to one or more resolution-specific "variants", see

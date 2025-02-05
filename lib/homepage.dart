@@ -4,6 +4,7 @@ import 'package:educationapk/login.dart';
 import 'package:educationapk/popupmenu/privacypolicies.dart';
 import 'package:educationapk/popupmenu/termscondition.dart';
 import 'package:educationapk/profilepage.dart';
+import 'package:educationapk/programmingpage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
@@ -248,6 +249,11 @@ class _MyMainHomeState extends State<MyMainHome> {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(builder: (context) => MainScrollPage()),
+                                        );                                        }
+                                      if (listName[index] == "Programming") {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => programmingpage()),
                                         );                                        }
                                     },
                                     child: Container(

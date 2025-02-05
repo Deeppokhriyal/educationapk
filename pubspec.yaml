@@ -31,10 +31,13 @@ dependencies:
   flutter:
     sdk: flutter
   get: ^4.6.5
+  cupertino_http:
   responsive_framework: ^1.5.1
   google_nav_bar:
   shared_preferences:
   line_awesome_flutter:
+  firebase_core:
+
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -46,6 +49,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: ^0.13.1 # Add a version here
+
 
 flutter_icons:
   android: true

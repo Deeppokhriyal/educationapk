@@ -313,11 +313,11 @@ class _MyMainHomeState extends State<MyMainHome> {
                             width: 190,
                             decoration:
                             BoxDecoration(
-                              color: Colors.pinkAccent, // Background color
+                              color: Colors.deepOrangeAccent, // Background color
                               borderRadius: BorderRadius.circular(20),// Rounded corners
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.pinkAccent, // Shadow color
+                                  color: Colors.deepOrangeAccent, // Shadow color
                                   blurRadius: 15, // Shadow blur radius
                                   offset: Offset(0, 2), // Shadow offset
                                 ),
@@ -379,7 +379,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                               width: 155,
                               decoration:
                               BoxDecoration(
-                                color: Colors.yellowAccent.shade200, // Background color
+                                color: Colors.yellowAccent.shade400, // Background color
                                 borderRadius: BorderRadius.circular(20),// Rounded corners
                                 boxShadow: [
                                   BoxShadow(
@@ -577,8 +577,8 @@ class _MyMainHomeState extends State<MyMainHome> {
                       child:
                       Divider(height: 25,),
                     ),
-                    Text('  Gallery',style: TextStyle(fontSize: 29,fontFamily: 'nexaheavy',color: Colors.lightBlueAccent),),
-                    Text('    Govt. Polytechnic Kashipur',style: TextStyle(fontSize: 15,fontFamily: 'nexalight',color: Colors.lightBlueAccent),),
+                    Text('  Gallery',style: TextStyle(fontSize: 29,fontFamily: 'nexaheavy',color: Colors.white),),
+                    Text('   Govt. Polytechnic Kashipur',style: TextStyle(fontSize: 16,fontFamily: 'nexalight',color: Colors.lightBlueAccent),),
                     SizedBox(height: 10,),
                     SingleChildScrollView(
                       padding: EdgeInsets.all(15),

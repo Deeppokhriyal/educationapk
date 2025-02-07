@@ -9,8 +9,8 @@ class MySignUpPage extends StatefulWidget {
 }
 class _MySignUpPageState extends State<MySignUpPage> {
   final SignupController controller=Get.put(tag: 'SignupController',SignupController());
-    TextEditingController usernameController=TextEditingController();
-    TextEditingController passwordController=TextEditingController();
+  TextEditingController usernameController=TextEditingController();
+  TextEditingController passwordController=TextEditingController();
 
   @override
   Widget build(BuildContext context) {

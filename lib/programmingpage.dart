@@ -1,5 +1,4 @@
 import 'package:educationapk/c_page.dart';
-import 'package:educationapk/html_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -122,15 +121,7 @@ class _programmingpageState extends State<programmingpage> {
     ],
     ),
     SizedBox(width: 68,),
-      InkWell(
-          onTap : () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => html_page()),
-            );
-          },
-          child: Icon(Icons.arrow_forward_ios_outlined,size: 20,color: Colors.black)
-      ),
+    Icon(Icons.arrow_forward_ios_outlined,size: 20,color: Colors.black),
     ],
     ),
     Row(

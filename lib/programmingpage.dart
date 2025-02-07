@@ -26,7 +26,7 @@ class _programmingpageState extends State<programmingpage> {
         Container(
             padding: EdgeInsets.all(10),
             margin: EdgeInsets.all(17),
-            height: 110,
+            height: 100,
             width: 370,
             decoration:
             BoxDecoration(
@@ -79,7 +79,7 @@ class _programmingpageState extends State<programmingpage> {
           Container(
               padding: EdgeInsets.all(10),
               margin: EdgeInsets.all(17),
-              height: 110,
+              height: 100,
               width: 370,
               decoration:
               BoxDecoration(
@@ -106,7 +106,7 @@ class _programmingpageState extends State<programmingpage> {
                           Text('HTML',style: TextStyle(
                               fontFamily: 'sans-serif-light',fontSize: 22,fontWeight:FontWeight.bold),
                           ),
-                          Text('Markup Language',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
+                          Text(' Hypertext Markup Language',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
                         ],
                       ),
                       SizedBox(width: 68,),
@@ -132,7 +132,7 @@ class _programmingpageState extends State<programmingpage> {
           Container(
               padding: EdgeInsets.all(10),
               margin: EdgeInsets.all(17),
-              height: 110,
+              height: 100,
               width: 370,
               decoration:
               BoxDecoration(
@@ -159,7 +159,7 @@ class _programmingpageState extends State<programmingpage> {
                           Text('CSS',style: TextStyle(
                               fontFamily: 'sans-serif-light',fontSize: 22,fontWeight:FontWeight.bold),
                           ),
-                          Text(' Style Sheet Language',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
+                          Text(' Cascading Style Sheet',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
                         ],
                       ),
                       SizedBox(width: 89,),
@@ -182,11 +182,10 @@ class _programmingpageState extends State<programmingpage> {
           ),
 
           SizedBox(height: 10,),
-
           Container(
               padding: EdgeInsets.all(10),
               margin: EdgeInsets.all(17),
-              height: 110,
+              height: 100,
               width: 370,
               decoration:
               BoxDecoration(
@@ -200,22 +199,24 @@ class _programmingpageState extends State<programmingpage> {
                   ),
                 ],
               ),
-              child: Column(
+              child: Column(mainAxisAlignment: MainAxisAlignment.start,
+                // crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image(image:AssetImage('assets/logos/js.png'),height:56,width: 85,),
-
+                      Image(image:AssetImage('assets/logos/js logo.png'),height: 46,width: 100,),
+                      // SizedBox(width: 1,),
                       Column(mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('JS',style: TextStyle(
                               fontFamily: 'sans-serif-light',fontSize: 22,fontWeight:FontWeight.bold),
                           ),
-                          Text(' Interpreted Programming Language',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
+                          Text(' JavaScript',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
                         ],
                       ),
-                      SizedBox(width: 3,),
+                      SizedBox(width: 100,),
                       Icon(Icons.arrow_forward_ios_outlined,size: 20,color: Colors.black),
                     ],
                   ),
@@ -226,7 +227,7 @@ class _programmingpageState extends State<programmingpage> {
                         Text('Brendan Eichin',style: TextStyle(
                             fontFamily: 'sans-serif-light',fontSize: 20,fontWeight:FontWeight.normal),
                         ),
-                        SizedBox(width: 135,),
+                        SizedBox(width: 130,),
                         Text(' 1995',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 13),),
                       ]
                   ),
@@ -238,7 +239,7 @@ class _programmingpageState extends State<programmingpage> {
           Container(
               padding: EdgeInsets.all(10),
               margin: EdgeInsets.all(17),
-              height: 110,
+              height: 100,
               width: 370,
               decoration:
               BoxDecoration(
@@ -265,10 +266,10 @@ class _programmingpageState extends State<programmingpage> {
                           Text('C++',style: TextStyle(
                               fontFamily: 'sans-serif-light',fontSize: 22,fontWeight:FontWeight.bold),
                           ),
-                          Text(' Object-Oriented Programming Language',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
+                          Text(' Programming language',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
                         ],
                       ),
-                      SizedBox(width: 1,),
+                      SizedBox(width: 89,),
                       Icon(Icons.arrow_forward_ios_outlined,size: 20,color: Colors.black),
                     ],
                   ),
@@ -291,7 +292,7 @@ class _programmingpageState extends State<programmingpage> {
           Container(
               padding: EdgeInsets.all(10),
               margin: EdgeInsets.all(17),
-              height: 110,
+              height: 100,
               width: 370,
               decoration:
               BoxDecoration(
@@ -318,12 +319,10 @@ class _programmingpageState extends State<programmingpage> {
                           Text('Python',style: TextStyle(
                               fontFamily: 'sans-serif-light',fontSize: 22,fontWeight:FontWeight.bold),
                           ),
-                          Text(' Interpreted Programming Language',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
-
                           // Text(' Programming language',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
                         ],
                       ),
-                      SizedBox(width: 15,),
+                      SizedBox(width: 155,),
                       Icon(Icons.arrow_forward_ios_outlined,size: 20,color: Colors.black),
                     ],
                   ),
@@ -346,7 +345,7 @@ class _programmingpageState extends State<programmingpage> {
           Container(
               padding: EdgeInsets.all(10),
               margin: EdgeInsets.all(17),
-              height: 110,
+              height: 100,
               width: 370,
               decoration:
               BoxDecoration(
@@ -373,11 +372,10 @@ class _programmingpageState extends State<programmingpage> {
                           Text('Java',style: TextStyle(
                               fontFamily: 'sans-serif-light',fontSize: 22,fontWeight:FontWeight.bold),
                           ),
-                          Text(' High-Level, O-O-P Language',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
-// Text(' Programming language',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
+                          // Text(' Programming language',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
                         ],
                       ),
-                      SizedBox(width: 68,),
+                      SizedBox(width: 168,),
                       Icon(Icons.arrow_forward_ios_outlined,size: 20,color: Colors.black),
                     ],
                   ),
@@ -400,7 +398,7 @@ class _programmingpageState extends State<programmingpage> {
           Container(
               padding: EdgeInsets.all(10),
               margin: EdgeInsets.all(17),
-              height: 110,
+              height: 100,
               width: 370,
               decoration:
               BoxDecoration(
@@ -427,10 +425,10 @@ class _programmingpageState extends State<programmingpage> {
                           Text('PHP',style: TextStyle(
                               fontFamily: 'sans-serif-light',fontSize: 22,fontWeight:FontWeight.bold),
                           ),
-                          Text(' Server-Side Scripting Language',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
+                          Text(' Hypertext Preprocessor',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
                         ],
                       ),
-                      SizedBox(width: 49,),
+                      SizedBox(width: 89,),
                       Icon(Icons.arrow_forward_ios_outlined,size: 20,color: Colors.black),
                     ],
                   ),
@@ -453,7 +451,7 @@ class _programmingpageState extends State<programmingpage> {
           Container(
               padding: EdgeInsets.all(10),
               margin: EdgeInsets.all(17),
-              height: 110,
+              height: 100,
               width: 370,
               decoration:
               BoxDecoration(
@@ -506,7 +504,7 @@ class _programmingpageState extends State<programmingpage> {
           Container(
               padding: EdgeInsets.all(10),
               margin: EdgeInsets.all(17),
-              height: 110,
+              height: 100,
               width: 370,
               decoration:
               BoxDecoration(
@@ -533,10 +531,10 @@ class _programmingpageState extends State<programmingpage> {
                           Text('. Net',style: TextStyle(
                               fontFamily: 'sans-serif-light',fontSize: 22,fontWeight:FontWeight.bold),
                           ),
-                          Text(' Software Development Framework',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
+                          Text(' Dot Net',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
                         ],
                       ),
-                      SizedBox(width: 39,),
+                      SizedBox(width: 179,),
                       Icon(Icons.arrow_forward_ios_outlined,size: 20,color: Colors.black),
                     ],
                   ),

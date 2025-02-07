@@ -41,11 +41,13 @@ class _MyHomePageState extends State<MyHomePage> {
               Container(
                 margin: EdgeInsets.fromLTRB(20, 25, 20, 20),
                 child: Image.asset('assets/images/startrow.jpg', alignment: Alignment.center,),
-              ),SizedBox(height: 25,),
+              ),SizedBox(height: 20,),
               Text('The only study app\n   you\'ll ever need', style: TextStyle(fontFamily: 'sans-serif-medium',fontWeight: FontWeight.bold,fontSize: 35, color: Colors.black),),
-              SizedBox(height: 15,),
-              Text('Upload class study materials,create\n      electronic flashcards to study.', style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 17, color: Colors.black),),
-              SizedBox(height: 50),
+              SizedBox(height: 25,),
+              Text('             Uploaded all study materials,\n'
+                  'create and explore the polyverse with us and\n'
+                  '      learn some programming knowledge.', style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 17, color: Colors.black),),
+              SizedBox(height: 55),
               Container( decoration: BoxDecoration(color: Colors.black,borderRadius: BorderRadius.circular(35),border: Border.all(width: 6)),
                 child: TextButton(
                   onPressed: () {

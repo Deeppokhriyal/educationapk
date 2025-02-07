@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Devpage extends StatelessWidget {
   const Devpage({super.key});
@@ -119,8 +119,14 @@ class Devpage extends StatelessWidget {
                                   children: [
                                     Text(' Developer\'s Profile : ', style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.greenAccent,letterSpacing: 1,wordSpacing: 1),),
                                     GestureDetector(
-                                      child: Image.asset('assets/images/tap1.png',height: 50,width: 150,),
+                                      onTap: () => _launchURL('https://www.youtube.com/'),
+                                      child: Icon(
+                                        Icons.link, // Use any icon you prefer
+                                        color: Colors.white,
+                                        size: 30.0,
+                                      ),
                                     ),
+
                                   ],
                                 ),
                                 Divider(),
@@ -144,4 +150,11 @@ class Devpage extends StatelessWidget {
   }
 }
 
-
+void _launchURL(String url) async {
+  final Uri uri = Uri.parse(url);
+  if (await canLaunch(uri.toString())) {
+    await launch(uri.toString());
+  } else {
+    throw 'Could not launch $url';
+  }
+}

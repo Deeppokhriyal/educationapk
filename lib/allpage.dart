@@ -1,4 +1,8 @@
+import 'package:educationapk/allpages/map.dart';
+import 'package:educationapk/allpages/programmingpage.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 class MainScrollPage extends StatefulWidget {
   @override
   State<MainScrollPage> createState() => _MainScrollPageState();
@@ -11,7 +15,7 @@ Widget build(BuildContext context) {
           children:[ Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/images/blueback.jpg'), // Path to your background image
+                  image: NetworkImage('https://img.freepik.com/premium-photo/abstract-purple-blue-wavy-background_1174990-284497.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
                   fit: BoxFit.cover
               ),
             ),
@@ -26,13 +30,13 @@ Widget build(BuildContext context) {
                         width: 370,
                         decoration:
                         BoxDecoration(
-                          color: Colors.white54, // Background color
+                          color: Colors.lightBlueAccent, // Background color
                           borderRadius: BorderRadius.circular(20),// Rounded corners
                           boxShadow: [
                             BoxShadow(
                               color: Colors.lightBlueAccent, // Shadow color
                               blurRadius: 8, // Shadow blur radius
-                              offset: Offset(0, 6), // Shadow offset
+                              offset: Offset(0, 7), // Shadow offset
                             ),
                           ],
                         ),
@@ -65,7 +69,7 @@ Widget build(BuildContext context) {
                         width: 370,
                         decoration:
                         BoxDecoration(
-                          color: Colors.white54,  // Background color
+                          color: Colors.lightBlueAccent,  // Background color
                           borderRadius: BorderRadius.circular(20),// Rounded corners
                           boxShadow: [
                             BoxShadow(
@@ -75,25 +79,30 @@ Widget build(BuildContext context) {
                             ),
                           ],
                         ),
-                        child: Column(mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Icon(Icons.language,size: 45,color: Colors.black),
-                                SizedBox(width: 12,),
-                                Column(mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Programming',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
-                                    Text(' Languages',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
-                                  ],
-                                ),
-                                SizedBox(width: 89,),
-                                Icon(Icons.arrow_forward_ios_outlined,size: 35,color: Colors.black),
-                              ],
-                            ),
-                          ],
+                        child: GestureDetector(
+                          onTap: (){
+                            Get.to(Programmingpage());
+                          },
+                          child: Column(mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.language,size: 45,color: Colors.black),
+                                  SizedBox(width: 12,),
+                                  Column(mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Programming',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
+                                      Text(' Languages',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
+                                    ],
+                                  ),
+                                  SizedBox(width: 89,),
+                                  Icon(Icons.arrow_forward_ios_outlined,size: 35,color: Colors.black),
+                                ],
+                              ),
+                            ],
+                          ),
                         )
                     ),
                     SizedBox(height: 15,),
@@ -104,7 +113,7 @@ Widget build(BuildContext context) {
                         width: 370,
                         decoration:
                         BoxDecoration(
-                          color: Colors.white54,  // Background color
+                          color: Colors.lightBlueAccent,  // Background color
                           borderRadius: BorderRadius.circular(20),// Rounded corners
                           boxShadow: [
                             BoxShadow(
@@ -143,7 +152,7 @@ Widget build(BuildContext context) {
                         width: 370,
                         decoration:
                         BoxDecoration(
-                          color: Colors.white54,  // Background color
+                          color: Colors.lightBlueAccent,  // Background color
                           borderRadius: BorderRadius.circular(20),// Rounded corners
                           boxShadow: [
                             BoxShadow(
@@ -182,7 +191,7 @@ Widget build(BuildContext context) {
                         width: 370,
                         decoration:
                         BoxDecoration(
-                          color: Colors.white54, // Background color
+                          color: Colors.lightBlueAccent, // Background color
                           borderRadius: BorderRadius.circular(20),// Rounded corners
                           boxShadow: [
                             BoxShadow(
@@ -221,7 +230,7 @@ Widget build(BuildContext context) {
                         width: 370,
                         decoration:
                         BoxDecoration(
-                          color: Colors.white54,  // Background color
+                          color: Colors.lightBlueAccent,  // Background color
                           borderRadius: BorderRadius.circular(20),// Rounded corners
                           boxShadow: [
                             BoxShadow(
@@ -231,25 +240,31 @@ Widget build(BuildContext context) {
                             ),
                           ],
                         ),
-                        child: Column(mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Icon(Icons.map_sharp,size: 45,color: Colors.black),
-                                SizedBox(width: 12,),
-                                Column(mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Map',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
-                                    Text(' Govt. Poly Kashipur',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
-                                  ],
-                                ),
-                                SizedBox(width: 105,),
-                                Icon(Icons.arrow_forward_ios_outlined,size: 35,color: Colors.black),
-                              ],
-                            ),
-                          ],
+                        child: GestureDetector(
+                          onTap: (){
+                            // Navigator.push(context, MaterialPageRoute(builder: (context)=>MyMap()));
+                            Get.to(MyMap());
+                          },
+                          child: Column(mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.map_sharp,size: 45,color: Colors.black),
+                                  SizedBox(width: 12,),
+                                  Column(mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Map',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
+                                      Text(' Govt. Poly Kashipur',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
+                                    ],
+                                  ),
+                                  SizedBox(width: 105,),
+                                  Icon(Icons.arrow_forward_ios_outlined,size: 35,color: Colors.black),
+                                ],
+                              ),
+                            ],
+                          ),
                         )
                     ),
                     SizedBox(height: 15,),

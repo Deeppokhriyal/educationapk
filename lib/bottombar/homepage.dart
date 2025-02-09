@@ -1,11 +1,11 @@
 import 'package:educationapk/allpage.dart';
+import 'package:educationapk/allpages/programmingpage.dart';
 import 'package:educationapk/bottombar/application.dart';
 import 'package:educationapk/devpage.dart';
 import 'package:educationapk/allpages/map.dart';
 import 'package:educationapk/popupmenu/privacypolicies.dart';
 import 'package:educationapk/popupmenu/termscondition.dart';
 import 'package:educationapk/bottombar/profilepage.dart';
-import 'package:educationapk/allpages/programmingpage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
@@ -87,7 +87,7 @@ class _MyMainHomeState extends State<MyMainHome> {
               Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/backgrounds/dback5.jpg'), // Path to your background image
+                    image: NetworkImage('https://img.freepik.com/free-vector/blue-neon-synthewave-patterned-background-vector_53876-173388.jpg?t=st=1739081466~exp=1739085066~hmac=3767aae32e89a299f5f28c3761bdde2e0e673ba4c5c2ee188098a18da91aeda2&w=360'), // Path to your background image
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -265,7 +265,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                       if (listName[index] == "Programming") {
                                         Navigator.push(
                                           context,
-                                          MaterialPageRoute(builder: (context) => programmingpage()),
+                                          MaterialPageRoute(builder: (context) => Programmingpage()),
                                         );
                                       }
                                       if (listName[index] == "Map") {

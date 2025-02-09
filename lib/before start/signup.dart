@@ -1,8 +1,7 @@
+import 'package:educationapk/before%20start/login.dart';
 import 'package:educationapk/controllers/signupController.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MySignUpPage extends StatefulWidget {
@@ -12,7 +11,23 @@ class MySignUpPage extends StatefulWidget {
 class _MySignUpPageState extends State<MySignUpPage> {
   final SignupController controller=Get.put(tag: 'SignupController',SignupController());
   TextEditingController usernameController=TextEditingController();
+  TextEditingController numberController=TextEditingController();
   TextEditingController passwordController=TextEditingController();
+
+  String? selectedValue; // Variable to hold the selected branch
+
+  // List of items for the dropdown (Branches)
+  final List<String> items = [
+    'Information Technology',
+    'Agriculture Engineering',
+    'Chemical Engineering',
+    'Chemical Paint',
+    'Civil',
+    'Computer Science Engineering',
+    'Electronics Engineering',
+    'Mechanical Engineering',
+    'Pharmacy',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -23,24 +38,50 @@ class _MySignUpPageState extends State<MySignUpPage> {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/backgrounds/dback22.jpg'), // Path to your background image
+                image: NetworkImage('https://img.freepik.com/free-vector/abstract-colorful-low-poly-triangle-shapes_361591-4167.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
                 fit: BoxFit.cover,
               ),
             ),
           ),
           Container(
-            padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.08,left: 30),
+            padding: EdgeInsets.only(left: 25,top: 50),
+              child: IconButton(onPressed: (){
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MyLogin()));
+              }, icon: Icon(Icons.arrow_back_ios,size: 30,),)
+          ),
+
+          Container(
+            padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.12,left: 30),
             child: Text('Welcome !\nCreate you Account', style: TextStyle( color: Colors.black, fontSize: 38, fontFamily: 'sans-serif-thin'),),
           ),
 
           SingleChildScrollView(
             child: Container(
-              padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.25,right: 30,left: 30),
+              padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.26,right: 30,left: 30),
               child: Column(
                 children: [
+                  Divider(color: Colors.black,),
+                  DropdownButton<String>(
+                    style: TextStyle(color: Colors.purple, fontSize: 20, fontFamily: 'nexalight'),
+                    borderRadius: BorderRadius.circular(35),
+                    value: selectedValue, // Current selected value
+                    hint: Text('Select Your Branch',), // Hint text
+                    items: items.map((String item) {
+                      return DropdownMenuItem<String>(
+                        value: item,
+                        child: Text(item),
+                      );
+                    }).toList(),
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        selectedValue = newValue; // Update the selected value
+                      });
+                    },
+                  ),
+                  SizedBox(height: 20,),
                   TextField(
                     controller: usernameController,
-                    cursorColor: Colors.black,style: TextStyle( fontFamily: 'sans-serif-light'),
+                    cursorColor: Colors.black,style: TextStyle( fontFamily: 'nexalight'),
                     decoration: InputDecoration(
                       fillColor: Colors.pink,
                       hintText: 'Enter your Name',
@@ -54,13 +95,13 @@ class _MySignUpPageState extends State<MySignUpPage> {
                     ),
                   ),
                   SizedBox(height: 30,),
-                  TextField(style: TextStyle( fontFamily: 'sans-serif-light'),
-                    cursorColor: Colors.black,
-                    obscureText: true,
+                  TextField(
+                    controller: numberController,
+                    cursorColor: Colors.black,style: TextStyle( fontFamily: 'nexalight'),
                     decoration: InputDecoration(
-                      fillColor: Colors.grey[100],
-                      hintText: 'Enter your Email',
-                      border: OutlineInputBorder( // Unfocused border color
+                      fillColor: Colors.pink,
+                      hintText: 'Enter your Email or Number',
+                      border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(35)
                       ),
                       focusedBorder: OutlineInputBorder(
@@ -70,7 +111,7 @@ class _MySignUpPageState extends State<MySignUpPage> {
                     ),
                   ),
                   SizedBox(height: 30,),
-                  TextField(style: TextStyle( fontFamily: 'sans-serif-light'),
+                  TextField(style: TextStyle( fontFamily: 'nexalight'),
                     controller: passwordController,
                     obscureText: true,
                     cursorColor: Colors.black,
@@ -82,7 +123,8 @@ class _MySignUpPageState extends State<MySignUpPage> {
                       ),
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.blue),// Focused border color
-                          borderRadius: BorderRadius.circular(35)
+
+                         borderRadius: BorderRadius.circular(35)
                       ),
                     ),
                   ),
@@ -103,15 +145,6 @@ class _MySignUpPageState extends State<MySignUpPage> {
                     ),
                   ),
                   SizedBox(height: 25,),
-                  ElevatedButton(
-                    onPressed: () async {
-                      User? user = await signInWithGoogle();
-                      if (user != null) {
-                        print('User  signed in: ${user.displayName}');
-                      }
-                    },
-                    child: Text('Sign in with Google',style: TextStyle(color: Colors.black, fontSize: 16,fontFamily: 'sans-serif-light'),textAlign: TextAlign.right,),
-                  ),
                   // Container(
                   //   padding: EdgeInsets.only(left: 12,top: 20),
                   //   child: Text('Or Sign up with',style: TextStyle(color: Colors.black, fontSize: 16,fontFamily: 'sans-serif-light'),textAlign: TextAlign.right,)                     ,
@@ -127,7 +160,7 @@ class _MySignUpPageState extends State<MySignUpPage> {
                             foregroundColor: Colors.black, backgroundColor: Colors.white, // Set the text color here
                           ),
                           onPressed: () {},
-                          child: Image.asset('assets/images/facebook.png', height: 30,),
+                          child: Image.network('https://cdn-icons-png.flaticon.com/128/5968/5968764.png', height: 30,),
                         ),
                       ),
                       SizedBox(width: 30,),
@@ -142,7 +175,7 @@ class _MySignUpPageState extends State<MySignUpPage> {
                             MaterialPageRoute(builder: (context) => MySignUpPage(),),
                           );
                         },
-                          child: Image.asset('assets/images/search.png', height: 29,),
+                          child: Image.network('https://cdn-icons-png.flaticon.com/128/281/281764.png', height: 29,),
                         ),
                       ),
                       SizedBox(width: 30,),
@@ -153,7 +186,7 @@ class _MySignUpPageState extends State<MySignUpPage> {
                             foregroundColor: Colors.black, backgroundColor: Colors.white, // Set the text color here
                           ),
                           onPressed: () {},
-                          child: Image.asset('assets/images/apple.png', height: 30,),
+                          child: Image.network('https://cdn-icons-png.flaticon.com/128/731/731985.png', height: 30,),
                         ),
                       ),
                     ],
@@ -162,14 +195,14 @@ class _MySignUpPageState extends State<MySignUpPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Already Have an Account?', style: TextStyle(color: Colors.black,fontSize: 14,fontFamily: 'sans-serif-light'),),
+                      Text('Already Have an Account?', style: TextStyle(color: Colors.black,fontSize: 14,fontFamily: 'nexalight'),),
                       SizedBox(width: 50,),
 
                       InkWell(
                         onTap: (){
                           Navigator.pop(context);
                         },
-                        child: Text('Log in'),
+                        child: Text('Log in',style: TextStyle(color: Colors.blue,fontSize: 18),),
                       )
                     ],
                   ),
@@ -185,6 +218,7 @@ class _MySignUpPageState extends State<MySignUpPage> {
   void signup(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString("username", usernameController.text);
+    await prefs.setString("number", numberController.text);
     await prefs.setString("password", passwordController.text);
 
     // Navigate back to login screen
@@ -192,20 +226,5 @@ class _MySignUpPageState extends State<MySignUpPage> {
   }
 }
 
-Future<User?> signInWithGoogle() async {
-  final GoogleSignIn googleSignIn = GoogleSignIn();
-  final GoogleSignInAccount? googleUser  = await googleSignIn.signIn();
-  final GoogleSignInAuthentication? googleAuth = await googleUser ?.authentication;
 
-  final credential = GoogleAuthProvider.credential(
-    accessToken: googleAuth?.accessToken,
-    idToken: googleAuth?.idToken,
-  );
 
-  return (await FirebaseAuth.instance.signInWithCredential(credential)).user;
-}
-
-Future<void> signOut() async {
-  await FirebaseAuth.instance.signOut();
-  await GoogleSignIn().signOut();
-}

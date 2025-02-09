@@ -16,7 +16,7 @@ class Devpage extends StatelessWidget {
                     Container(
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage('assets/backgrounds/dback1.jpg'), // Path to your background image
+                          image: NetworkImage('https://img.freepik.com/free-vector/mobile_677411-3678.jpg?t=st=1739080959~exp=1739084559~hmac=69d84f244cb9d825cc717c87e14c84c6022999df70ce8add916f4e47e234d59a&w=360'),// Path to your background image
                           fit: BoxFit.cover,
                         ),
                       ),

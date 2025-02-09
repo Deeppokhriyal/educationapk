@@ -34,7 +34,7 @@ class _LeaveApplicationState extends State<LeaveApplication> {
         children:[ Container(
           decoration:  BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/backgrounds/dback3.jpg'), // Path to your background image
+              image: NetworkImage('https://img.freepik.com/free-vector/pink-neon-synthwave-patterned-social-story-template-vector_53876-176441.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
               fit: BoxFit.cover,
             ),
           ),

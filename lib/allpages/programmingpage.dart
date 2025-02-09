@@ -1,14 +1,14 @@
 import 'package:educationapk/programmingpage/c_page.dart';
 import 'package:educationapk/programmingpage/html_page.dart';
 import 'package:flutter/material.dart';
-class programmingpage extends StatefulWidget {
-  const programmingpage({super.key});
+class Programmingpage extends StatefulWidget {
+  const Programmingpage({super.key});
 
   @override
-  State<programmingpage> createState() => _programmingpageState();
+  State<Programmingpage> createState() => _ProgrammingpageState();
 }
 
-class _programmingpageState extends State<programmingpage> {
+class _ProgrammingpageState extends State<Programmingpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +17,7 @@ class _programmingpageState extends State<programmingpage> {
           children:[ Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/backgrounds/dback9.jpg'), // Path to your background image
+                  image: NetworkImage('https://img.freepik.com/free-vector/mobile_677411-3480.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
                   fit: BoxFit.cover
               ),
             ),

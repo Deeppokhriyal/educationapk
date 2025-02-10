@@ -265,7 +265,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                       if (listName[index] == "Programming") {
                                         Navigator.push(
                                           context,
-                                          MaterialPageRoute(builder: (context) => Programmingpage()),
+                                          MaterialPageRoute(builder: (context) => programmingpage()),
                                         );
                                       }
                                       if (listName[index] == "Map") {

@@ -37,23 +37,22 @@ class cpage extends StatelessWidget {
                             children: [
                               Text('Description -',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 25,color: Colors.lightBlueAccent),),
                               SizedBox(height: 15,),
-                              Text('JavaScript is the programming language of the web.'
-                                  ' \n\nIt can update and change both HTML and CSS'
-                                  '\n\nIt can calculate, manipulate and validate data.',
+                              Text('C++ is a cross-platform language that \ncan be used to create high-\nperformance applications.\n\nC++ was developed by BjarneStroustrup, \nas an extension to the C language.'
+                                   '\n\nC++ gives programmers a high \nlevel of control over system \nresources and memory.\n\nThe language was updated 5 \nmajor times in 2011, 2014, \n2017, 2020, and 2023 to \nC++11, C++14, C++17, C++20, \nand C++23.',
                                 style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white ),),
                               SizedBox(height: 20,),
-                              Text('Roadmap to Learn''\nJS -',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 25,color: Colors.lightBlueAccent),),
+                              Text('Roadmap to Learn''\nC++  -',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 25,color: Colors.lightBlueAccent),),
                               SizedBox(height: 10,),
-                              Text('Phase 1: Building Foundations🥇',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 18,color: Colors.greenAccent,fontWeight: FontWeight.bold),),
+                              Text('(From scratch to to intermediate in just 5 steps)',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 18,color: Colors.greenAccent,fontWeight: FontWeight.bold),),
                               SizedBox(height: 10,),
-                              Text('JavaScript Basics',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white,fontWeight: FontWeight.bold),),
+                              Text('❏ STEP 1',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white,fontWeight: FontWeight.bold),),
                               SizedBox(height: 10,),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Icon(Icons.circle,size: 10,color: Colors.blue,),
                                   SizedBox(width: 20,),
-                                  Text('Set up your development \nenvironment with Node.js \nand Visual Studio Code.',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white,fontWeight: FontWeight.normal),)
+                                  Text('While learning a language we should \nbe familiar with some basic \nsyntax of input ( cin>> ) and \noutput ( cout<< ).After that \nwe should know what are \nthe variables and expressions',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white,fontWeight: FontWeight.normal),)
                                 ],
                               ),
                               SizedBox(height: 10,),

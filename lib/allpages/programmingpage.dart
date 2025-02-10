@@ -1,8 +1,10 @@
-import 'package:educationapk/c_page.dart';
-import 'package:educationapk/html_page.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+
+import '../programmingpage/c_page.dart';
+import '../programmingpage/html_page.dart';
 class programmingpage extends StatefulWidget {
   const programmingpage({super.key});
 

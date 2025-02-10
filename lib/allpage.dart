@@ -81,7 +81,7 @@ Widget build(BuildContext context) {
                         ),
                         child: GestureDetector(
                           onTap: (){
-                            Get.to(Programmingpage());
+                            Get.to(programmingpage());
                           },
                           child: Column(mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,

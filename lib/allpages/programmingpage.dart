@@ -2,6 +2,7 @@
 import 'package:educationapk/programmingpage/c++_page.dart';
 import 'package:educationapk/programmingpage/css_page.dart';
 import 'package:educationapk/programmingpage/js_page.dart';
+import 'package:educationapk/programmingpage/python_page.dart';
 import 'package:flutter/material.dart';
 
 import '../programmingpage/c_page.dart';
@@ -370,7 +371,15 @@ class _programmingpageState extends State<programmingpage> {
                                   ],
                                 ),
                                 SizedBox(width: 155,),
-                                Icon(Icons.arrow_forward_ios_outlined,size: 20,color: Colors.black),
+                                InkWell(
+                                    onTap : () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => python_page()),
+                                      );
+                                    },
+                                    child: Icon(Icons.arrow_forward_ios_outlined,size: 20,color: Colors.black)
+                                ),
                               ],
                             ),
                             Row(

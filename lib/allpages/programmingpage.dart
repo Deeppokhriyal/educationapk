@@ -1,9 +1,12 @@
 
+import 'package:educationapk/programmingpage/.net_page.dart';
 import 'package:educationapk/programmingpage/c++_page.dart';
 import 'package:educationapk/programmingpage/css_page.dart';
 import 'package:educationapk/programmingpage/java_page.dart';
 import 'package:educationapk/programmingpage/js_page.dart';
+import 'package:educationapk/programmingpage/php_page.dart';
 import 'package:educationapk/programmingpage/python_page.dart';
+import 'package:educationapk/programmingpage/xml_page.dart';
 import 'package:flutter/material.dart';
 
 import '../programmingpage/c_page.dart';
@@ -24,7 +27,7 @@ class _programmingpageState extends State<programmingpage> {
           children:[ Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/images/blueback.jpg'), // Path to your background image
+                  image: NetworkImage('https://img.freepik.com/free-vector/mobile_677411-3480.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_incoming'), // Path to your background image
                   fit: BoxFit.cover
               ),
             ),
@@ -62,7 +65,7 @@ class _programmingpageState extends State<programmingpage> {
                                     Text('C',style: TextStyle(
                                         fontFamily: 'sans-serif-light',fontSize: 22,fontWeight:FontWeight.bold),
                                     ),
-                                    Text(' Programming language',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
+                                    Text(' Programming Language',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
                                   ],
                                 ),
                                 SizedBox(width: 89,),
@@ -184,7 +187,7 @@ class _programmingpageState extends State<programmingpage> {
     Text('CSS',style: TextStyle(
     fontFamily: 'sans-serif-light',fontSize: 22,fontWeight:FontWeight.bold),
     ),
-    Text(' Cascading Style Sheet',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
+    Text(' Stylesheet Language',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
     ],
     ),
     SizedBox(width: 89,),
@@ -216,7 +219,7 @@ class _programmingpageState extends State<programmingpage> {
 
     SizedBox(height: 10,),
     Container(
-    padding: EdgeInsets.all(10),
+    padding: EdgeInsets.only(top:5,left: 2),
     margin: EdgeInsets.all(17),
     height: 110,
     width: 370,
@@ -235,31 +238,33 @@ class _programmingpageState extends State<programmingpage> {
     child: Column(mainAxisAlignment: MainAxisAlignment.start,
     // crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-    Row(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-    Image(image:AssetImage('assets/logos/js logo.png'),height: 46,width: 100,),
-    // SizedBox(width: 1,),
-    Column(mainAxisAlignment: MainAxisAlignment.start,
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-    Text('JS',style: TextStyle(
-    fontFamily: 'sans-serif-light',fontSize: 22,fontWeight:FontWeight.bold),
-    ),
-    Text(' JavaScript',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
-    ],
-    ),
-    SizedBox(width: 100,),
-      InkWell(
-          onTap : () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => js_page()),
-            );
-          },
-          child: Icon(Icons.arrow_forward_ios_outlined,size: 20,color: Colors.black)
+    SingleChildScrollView(scrollDirection: Axis.horizontal,
+      child: Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+      Image(image:NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAXaZgOP8Dt5J05vGncrxXkY6VJKoi1_lsFw&s'),height: 46,width: 80,),
+      // SizedBox(width: 1,),
+      Column(mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+      Text('JS',style: TextStyle(
+      fontFamily: 'sans-serif-light',fontSize: 22,fontWeight:FontWeight.bold),
       ),
-    ],
+      Text(' Interpreted Programming Language',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
+      ],
+      ),
+      SizedBox(width: 100,),
+        InkWell(
+            onTap : () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => js_page()),
+              );
+            },
+            child: Icon(Icons.arrow_forward_ios_outlined,size: 20,color: Colors.black)
+        ),
+      ],
+      ),
     ),
     Row(
     mainAxisAlignment: MainAxisAlignment.start,
@@ -494,7 +499,15 @@ class _programmingpageState extends State<programmingpage> {
                                   ],
                                 ),
                                 SizedBox(width: 89,),
-                                Icon(Icons.arrow_forward_ios_outlined,size: 20,color: Colors.black),
+                                InkWell(
+                                    onTap : () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => php_page()),
+                                      );
+                                    },
+                                    child: Icon(Icons.arrow_forward_ios_outlined,size: 20,color: Colors.black)
+                                ),
                               ],
                             ),
                             Row(
@@ -547,7 +560,15 @@ class _programmingpageState extends State<programmingpage> {
                                   ],
                                 ),
                                 SizedBox(width: 66,),
-                                Icon(Icons.arrow_forward_ios_outlined,size: 20,color: Colors.black),
+                                InkWell(
+                                    onTap : () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => xml_page()),
+                                      );
+                                    },
+                                    child: Icon(Icons.arrow_forward_ios_outlined,size: 20,color: Colors.black)
+                                ),
                               ],
                             ),
                             Row(
@@ -600,7 +621,15 @@ class _programmingpageState extends State<programmingpage> {
                                   ],
                                 ),
                                 SizedBox(width: 179,),
-                                Icon(Icons.arrow_forward_ios_outlined,size: 20,color: Colors.black),
+                                InkWell(
+                                    onTap : () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => net_page()),
+                                      );
+                                    },
+                                    child: Icon(Icons.arrow_forward_ios_outlined,size: 20,color: Colors.black)
+                                ),
                               ],
                             ),
                             Row(

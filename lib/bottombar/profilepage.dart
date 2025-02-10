@@ -1,6 +1,7 @@
-import 'package:educationapk/login.dart';
-import 'package:educationapk/updateprofile.dart';
+import 'package:educationapk/before%20start/login.dart';
+import 'package:educationapk/bottombar/updateprofile.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
@@ -91,7 +92,7 @@ class Profilepage extends StatelessWidget {
                         ProfileMenuWidget(title: "Information",textColor: Colors.white, icon: LineAwesomeIcons.info_solid,onPress: (){},),
                         ProfileMenuWidget(title: "Logout",icon: LineAwesomeIcons.sign_out_alt_solid,textColor:Colors.red,endIcon: false,
                           onPress: (){
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MyLogin()));
+                          Get.offAll(()=>MyLogin());
                           },),
                       ],
                     ),

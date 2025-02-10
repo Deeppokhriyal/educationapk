@@ -31,7 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   get: ^4.6.5
-  responsive_framework: ^1.5.1
+  pin_code_fields: ^8.0.1
   google_nav_bar:
   shared_preferences:
   line_awesome_flutter:
@@ -43,6 +43,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   url_launcher: ^6.3.1
   firebase_auth: ^5.4.2
+  google_sign_in: ^6.2.2
+  google_fonts: ^6.2.1
+  responsive_framework: ^1.5.1
+
 
 dev_dependencies:
   flutter_lints:

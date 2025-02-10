@@ -1,8 +1,9 @@
-import 'package:educationapk/signup.dart';
+import 'package:educationapk/before%20start/signup.dart';
+import 'package:educationapk/before%20start/teacherpanel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:educationapk/startingpage.dart';
+import 'package:educationapk/before%20start/startingpage.dart';
 
 class MyLogin extends StatelessWidget {
 
@@ -12,16 +13,16 @@ class MyLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
+    return Scaffold(
             backgroundColor: Colors.white,
             body: Stack(
                 children: [
                   Container(
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('assets/images/back4.jpg'), // Path to your background image
+                        image:
+                        NetworkImage('https://img.freepik.com/free-vector/abstract-colorful-low-poly-triangle-shapes_361591-4115.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
+                        // Path to your background image
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -29,11 +30,11 @@ class MyLogin extends StatelessWidget {
                   ListView( shrinkWrap: true,
                     children: [
                       Container(
-                          margin: EdgeInsets.fromLTRB(15, 30, 270, 0),
+                          margin: EdgeInsets.fromLTRB(5, 30, 310, 0),
                           child: Icon(Icons.arrow_back_ios,size: 30,)
                       ),
 
-                      SizedBox(height: 15,),
+                      SizedBox(height: 20,),
                       Container(
                         padding: EdgeInsets.only(right: 30,left: 30),
                         child: Text('Welcome\nGlad to see you.', style: TextStyle( color: Colors.black, fontSize: 40, fontFamily: 'sans-serif-thin'),),
@@ -48,7 +49,7 @@ class MyLogin extends StatelessWidget {
                                 controller: usernameController,
                                 decoration: InputDecoration(
                                   fillColor: Colors.pink,
-                                  hintText: 'Enter your Name',
+                                  hintText: 'Enter your Email or Number',
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(35)
                                   ),
@@ -59,7 +60,7 @@ class MyLogin extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(height: 30,),
-                              TextField(style: TextStyle( fontFamily: 'sans-serif-light'),
+                              TextField(style: TextStyle( fontFamily: 'nexalight'),
                                 controller: passwordController,
                                 cursorColor: Colors.black,
                                 obscureText: true,
@@ -77,7 +78,7 @@ class MyLogin extends StatelessWidget {
                               ),
                               Container(
                                 padding: EdgeInsets.only(left: 215,top: 20),
-                                child: Text('Forget Password?',style: TextStyle(color: Colors.black,fontSize: 12,fontFamily: 'sans-serif-light'),textAlign: TextAlign.right,)                     ,
+                                child: Text('Forget Password?',style: TextStyle(color: Colors.black,fontSize: 12,fontFamily: 'nexalight'),textAlign: TextAlign.right,)                     ,
                               ),
 
                               SizedBox(height: 25,),
@@ -94,10 +95,24 @@ class MyLogin extends StatelessWidget {
                                   child: Text('Login',style: TextStyle(color: Colors.white, fontSize: 16,fontFamily: 'sans-serif-light'),),
                                 ),
                               ),
-                              SizedBox(height: 25,),
+                              SizedBox(height: 30,),
+                              SizedBox(
+                                height: 50,
+                                width: 450,
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    foregroundColor: Colors.black, backgroundColor: Colors.lightBlueAccent, // Set the text color here
+                                  ),  onPressed: () {
+                                  Get.to(MySignUpPage());
+                                  // Get.to(()=>MyHomePage());
+                                },
+                                  child: Text('Sign up',style: TextStyle(color: Colors.white, fontSize: 16,fontFamily: 'sans-serif-light'),),
+                                ),
+                              ),
+                              SizedBox(height: 20,),
                               Container(
                                 padding: EdgeInsets.only(left: 12,top: 20),
-                                child: Text('Or Login with',style: TextStyle(color: Colors.black, fontSize: 16,fontFamily: 'sans-serif-light'),textAlign: TextAlign.right,)                     ,
+                                child: Text('Or Login with',style: TextStyle(color: Colors.black, fontSize: 16,fontFamily: 'nexalight'),textAlign: TextAlign.right,)                     ,
                               ),
                               SizedBox(height: 39,),
                               Row(
@@ -110,18 +125,19 @@ class MyLogin extends StatelessWidget {
                                         foregroundColor: Colors.black, backgroundColor: Colors.white, // Set the text color here
                                       ),
                                       onPressed: () {},
-                                      child: Image.asset('assets/images/facebook.png', height: 30,),
+                                      child: Image.network('https://cdn-icons-png.flaticon.com/128/5968/5968764.png', height: 30,),
                                     ),
                                   ),
                                   SizedBox(width: 30,),
                                   SizedBox(
                                     height: 46,
                                     child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        foregroundColor: Colors.black, backgroundColor: Colors.white, // Set the text color here
-                                      ),  onPressed: () {},
-                                      child: Image.asset('assets/images/search.png', height: 29,),
+                                      onPressed: () {
+                                      },
+                                      child: Image.network('https://cdn-icons-png.flaticon.com/128/281/281764.png', height: 29,),
                                     ),
+
+
                                   ),
                                   SizedBox(width: 30,),
                                   SizedBox(
@@ -131,25 +147,25 @@ class MyLogin extends StatelessWidget {
                                         foregroundColor: Colors.black, backgroundColor: Colors.white, // Set the text color here
                                       ),
                                       onPressed: () {},
-                                      child: Image.asset('assets/images/apple.png', height: 30,),
+                                      child: Image.network('https://cdn-icons-png.flaticon.com/128/731/731985.png', height: 30,),
                                     ),
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 80,),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text('Don\'t Have an Account?', style: TextStyle(color: Colors.black,fontSize: 14,fontFamily: 'sans-serif-light'),),
-                                  SizedBox(width: 50,),
+                              SizedBox(height: 50,),
 
-                                  InkWell(
-                                    onTap: () {
-                                      Get.to(()=>MySignUpPage());
-                                    },
-                                    child: Text('Sign Up'),
-                                  )
-                                ],
+                              SizedBox(
+                                height: 50,
+                                width: 450,
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    foregroundColor: Colors.black, backgroundColor: Colors.green, // Set the text color here
+                                  ),  onPressed: () {
+                                  Get.to(Teacherpanel());
+                                  // Get.to(()=>MyHomePage());
+                                },
+                                  child: Text('Teacher Panel',style: TextStyle(color: Colors.white, fontSize: 16,fontFamily: 'sans-serif-light'),),
+                                ),
                               ),
                             ],
                           ),
@@ -160,7 +176,7 @@ class MyLogin extends StatelessWidget {
                 ]
             )
         )
-    );
+    ;
   }
   void login(BuildContext context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -175,3 +191,4 @@ class MyLogin extends StatelessWidget {
     }
   }
 }
+

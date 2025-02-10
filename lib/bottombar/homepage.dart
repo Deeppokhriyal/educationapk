@@ -1,11 +1,11 @@
 import 'package:educationapk/allpage.dart';
+import 'package:educationapk/allpages/programmingpage.dart';
+import 'package:educationapk/bottombar/application.dart';
 import 'package:educationapk/devpage.dart';
-import 'package:educationapk/login.dart';
-import 'package:educationapk/map.dart';
+import 'package:educationapk/allpages/map.dart';
 import 'package:educationapk/popupmenu/privacypolicies.dart';
 import 'package:educationapk/popupmenu/termscondition.dart';
-import 'package:educationapk/profilepage.dart';
-import 'package:educationapk/programmingpage.dart';
+import 'package:educationapk/bottombar/profilepage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
@@ -60,6 +60,12 @@ class _MyMainHomeState extends State<MyMainHome> {
     case 1:
       break;
     case 2:
+      if (_selectedIndex == index) {
+        _tapCount++;
+        if(_tapCount==2){Navigator.push(
+            context, MaterialPageRoute(builder: (context) => LeaveApplication()));
+        _tapCount = 0;}
+      }
       break;
     case 3:
       if (_selectedIndex == index) {
@@ -74,14 +80,14 @@ class _MyMainHomeState extends State<MyMainHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       body: ListView(
         children:[ Stack(
             children: [
               Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/images/blueback.jpg'), // Path to your background image
+                    image: NetworkImage('https://img.freepik.com/free-vector/blue-neon-synthewave-patterned-background-vector_53876-173388.jpg?t=st=1739081466~exp=1739085066~hmac=3767aae32e89a299f5f28c3761bdde2e0e673ba4c5c2ee188098a18da91aeda2&w=360'), // Path to your background image
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -189,7 +195,10 @@ class _MyMainHomeState extends State<MyMainHome> {
                                   child: Text('Privacy  Policies', style: TextStyle(fontSize: 15,fontFamily: 'sans-serif-thin')),
                                 ),
                                 PopupMenuItem<String>(
-                                  onTap: (){Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MyLogin()));},
+                                  onTap: (){
+
+                                    // Navigator.push(context, MaterialPageRoute(builder: (context)=>MyLogin()));
+                                  },
                                   value: 'Logout',
                                   child: Text('Logout', style: TextStyle(fontSize: 15,fontFamily: 'sans-serif-thin')),
                                 ),
@@ -256,7 +265,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                       if (listName[index] == "Programming") {
                                         Navigator.push(
                                           context,
-                                          MaterialPageRoute(builder: (context) => programmingpage()),
+                                          MaterialPageRoute(builder: (context) => Programmingpage()),
                                         );
                                       }
                                       if (listName[index] == "Map") {
@@ -313,11 +322,11 @@ class _MyMainHomeState extends State<MyMainHome> {
                             width: 190,
                             decoration:
                             BoxDecoration(
-                              color: Colors.deepOrangeAccent, // Background color
+                              color: Colors.lightGreenAccent, // Background color
                               borderRadius: BorderRadius.circular(20),// Rounded corners
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.deepOrangeAccent, // Shadow color
+                                  color: Colors.lightGreenAccent, // Shadow color
                                   blurRadius: 15, // Shadow blur radius
                                   offset: Offset(0, 2), // Shadow offset
                                 ),

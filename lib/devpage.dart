@@ -16,7 +16,7 @@ class Devpage extends StatelessWidget {
                     Container(
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage('assets/images/blueback.jpg'), // Path to your background image
+                          image: NetworkImage('https://img.freepik.com/free-vector/mobile_677411-3678.jpg?t=st=1739080959~exp=1739084559~hmac=69d84f244cb9d825cc717c87e14c84c6022999df70ce8add916f4e47e234d59a&w=360'),// Path to your background image
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -57,22 +57,22 @@ class Devpage extends StatelessWidget {
                                     children: [
                                       TextSpan(
                                         text:"Hello, I'm Deepak Pokhriyal, currently pursuing a diploma in Information Technology 6th Semester. "
-                                            "As a member of the Celestial Group, my technical expertise is split between ", style: TextStyle(fontFamily: 'nexalight',fontSize: 16,color: Colors.white,letterSpacing: 1,wordSpacing: 1),
+                                            "As a member of the Celestial Group, my technical expertise is split between ", style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white,letterSpacing: 1,wordSpacing: 1),
                                       ),
                                       TextSpan(
-                                        text: 'frontend (55%) ', style: TextStyle(fontFamily: 'nexaheavy',fontSize: 16,color: Colors.green.shade400,letterSpacing: 1,wordSpacing: 1),
+                                        text: 'frontend (55%) ', style: TextStyle(fontFamily: 'nexaheavy',fontSize: 18,color: Colors.green.shade400,letterSpacing: 1,wordSpacing: 1),
                                       ),
                                       TextSpan(
-                                        text: 'and ', style: TextStyle(fontFamily: 'nexalight',fontSize: 16,color: Colors.white,letterSpacing: 1,wordSpacing: 1),
+                                        text: 'and ', style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white,letterSpacing: 1,wordSpacing: 1),
                                       ),
                                       TextSpan(
-                                        text: 'backend (45%) ', style: TextStyle(fontFamily: 'nexaheavy',fontSize: 16,color: Colors.green.shade400,letterSpacing: 1,wordSpacing: 1),
+                                        text: 'backend (45%) ', style: TextStyle(fontFamily: 'nexaheavy',fontSize: 18,color: Colors.green.shade400,letterSpacing: 1,wordSpacing: 1),
                                       ),
                                       TextSpan(
                                         text: "development. "
                                             "My programming skills encompass HTML, Dart, CSS, JavaScript, Kotlin, and Java. Furthermore,"
                                             " I have hands-on experience with Flutter for frontend development and Firebase and MySQL for backend development.",
-                                        style: TextStyle(fontFamily: 'nexalight',fontSize: 16,color: Colors.white,letterSpacing: 1,wordSpacing: 1),
+                                        style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white,letterSpacing: 1,wordSpacing: 1),
                                       ),
                                     ]
                                 )
@@ -93,22 +93,22 @@ class Devpage extends StatelessWidget {
                                     children: [
                                       TextSpan(
                                         text:"Hello, I'm Shivanshi Mishra, currently pursuing a diploma in Information Technology 6th Semester. "
-                                            "As a member of the Celestial Group, my technical expertise is split between ", style: TextStyle(fontFamily: 'nexalight',fontSize: 16,color: Colors.white,letterSpacing: 1,wordSpacing: 1),
+                                            "As a member of the Celestial Group, my technical expertise is split between ", style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white,letterSpacing: 1,wordSpacing: 1),
                                       ),
                                       TextSpan(
-                                        text: 'frontend (45%) ', style: TextStyle(fontFamily: 'nexaheavy',fontSize: 16,color: Colors.green.shade400,letterSpacing: 1,wordSpacing: 1),
+                                        text: 'frontend (45%) ', style: TextStyle(fontFamily: 'nexaheavy',fontSize: 18,color: Colors.green.shade400,letterSpacing: 1,wordSpacing: 1),
                                       ),
                                       TextSpan(
-                                        text: 'and ', style: TextStyle(fontFamily: 'nexalight',fontSize: 16,color: Colors.white,letterSpacing: 1,wordSpacing: 1),
+                                        text: 'and ', style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white,letterSpacing: 1,wordSpacing: 1),
                                       ),
                                       TextSpan(
-                                        text: 'backend (55%) ', style: TextStyle(fontFamily: 'nexaheavy',fontSize: 16,color: Colors.green.shade400,letterSpacing: 1,wordSpacing: 1),
+                                        text: 'backend (55%) ', style: TextStyle(fontFamily: 'nexaheavy',fontSize: 18,color: Colors.green.shade400,letterSpacing: 1,wordSpacing: 1),
                                       ),
                                       TextSpan(
                                         text: "development. "
                                             "My programming skills encompass HTML, Dart, CSS, JavaScript, Kotlin, and Java. Furthermore,"
                                             " I have hands-on experience with Flutter for frontend development and Firebase and MySQL for backend development.",
-                                        style: TextStyle(fontFamily: 'nexalight',fontSize: 16,color: Colors.white,letterSpacing: 1,wordSpacing: 1),
+                                        style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white,letterSpacing: 1,wordSpacing: 1),
                                       ),
                                     ]
                                 )

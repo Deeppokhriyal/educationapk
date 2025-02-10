@@ -1,4 +1,4 @@
-import 'package:educationapk/homepage.dart';
+import 'package:educationapk/bottombar/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 class Starting extends StatefulWidget {

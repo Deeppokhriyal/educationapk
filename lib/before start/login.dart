@@ -1,5 +1,5 @@
 import 'package:educationapk/before%20start/signup.dart';
-import 'package:educationapk/before%20start/teacherpanel.dart';
+import 'package:educationapk/teacherpanel/before%20start/teacherpanel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';

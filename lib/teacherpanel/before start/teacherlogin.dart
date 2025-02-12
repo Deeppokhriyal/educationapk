@@ -1,5 +1,8 @@
-import 'package:educationapk/before%20start/teacherpanel.dart';
+import 'package:educationapk/teacherpanel/homepage.dart';
+import 'package:educationapk/teacherpanel/before%20start/teacherpanel.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:educationapk/before%20start/startingpage.dart';
 
@@ -93,8 +96,8 @@ class Teacherlogin extends StatelessWidget {
                               style: ElevatedButton.styleFrom(
                                 foregroundColor: Colors.black, backgroundColor: Colors.green, // Set the text color here
                               ),  onPressed: () {
-                              login(context);
-                              // Get.to(()=>MyHomePage());
+
+                              Get.to(()=>TeacherHome());
                             },
                               child: Text('Login',style: TextStyle(color: Colors.white, fontSize: 16,fontFamily: 'sans-serif-light'),),
                             ),

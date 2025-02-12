@@ -1,12 +1,15 @@
 import 'package:educationapk/allpage.dart';
 import 'package:educationapk/allpages/programmingpage.dart';
 import 'package:educationapk/bottombar/application.dart';
+import 'package:educationapk/collegeinfo.dart';
 import 'package:educationapk/devpage.dart';
 import 'package:educationapk/allpages/map.dart';
+import 'package:educationapk/eventpage.dart';
 import 'package:educationapk/popupmenu/privacypolicies.dart';
 import 'package:educationapk/popupmenu/termscondition.dart';
 import 'package:educationapk/bottombar/profilepage.dart';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 class Myhome extends StatefulWidget {
@@ -80,14 +83,14 @@ class _MyMainHomeState extends State<MyMainHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: ListView(
         children:[ Stack(
             children: [
               Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: NetworkImage('https://img.freepik.com/free-vector/blue-neon-synthewave-patterned-background-vector_53876-173388.jpg?t=st=1739081466~exp=1739085066~hmac=3767aae32e89a299f5f28c3761bdde2e0e673ba4c5c2ee188098a18da91aeda2&w=360'), // Path to your background image
+                    image: NetworkImage('https://img.freepik.com/premium-vector/abstract-background-gradient-modern-design_677411-3120.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid '), // Path to your background image
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -124,12 +127,12 @@ class _MyMainHomeState extends State<MyMainHome> {
                                       SizedBox(height: 6),
                                       Text(
                                         'I.T. 3rd Year',
-                                        style: TextStyle(color: Colors.grey,fontFamily: 'sans-serif-thin'),
+                                        style: TextStyle(color: Colors.grey[300],fontFamily: 'sans-serif-thin'),
                                       ),
                                       SizedBox(height: 6),
                                       Text(
                                         'Govt. Polytechnic Kashipur',
-                                        style: TextStyle(color: Colors.grey,fontFamily: 'sans-serif-thin'),
+                                        style: TextStyle(color: Colors.grey[300],fontFamily: 'sans-serif-thin'),
                                       ),
                                       SizedBox(height: 25),
                                       Row(
@@ -288,9 +291,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                                         border: Border.all(color: Colors.black12, width: 1),
                                         boxShadow: [
                                           BoxShadow(
-                                            color: Colors.deepPurple.shade600,
-                                            blurRadius: 15,
-                                            offset: Offset(0, 4),
+                                            color: Colors.deepPurple.shade200,
+                                            blurRadius: 10,
+                                            offset: Offset(0, 6),
                                           ),
                                         ],
                                       ),
@@ -322,11 +325,11 @@ class _MyMainHomeState extends State<MyMainHome> {
                             width: 190,
                             decoration:
                             BoxDecoration(
-                              color: Colors.lightGreenAccent, // Background color
+                              color: Color(0xCCCCCCFF), // Background color
                               borderRadius: BorderRadius.circular(20),// Rounded corners
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.lightGreenAccent, // Shadow color
+                                  color: Color(0xCCCCCCFF), // Shadow color
                                   blurRadius: 15, // Shadow blur radius
                                   offset: Offset(0, 2), // Shadow offset
                                 ),
@@ -388,11 +391,11 @@ class _MyMainHomeState extends State<MyMainHome> {
                               width: 155,
                               decoration:
                               BoxDecoration(
-                                color: Colors.yellowAccent.shade400, // Background color
+                                color: Color(0xbbbefed1), // Background color
                                 borderRadius: BorderRadius.circular(20),// Rounded corners
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.yellowAccent, // Shadow color
+                                    color: Color(0xbbbefed1), // Shadow color
                                     blurRadius: 15, // Shadow blur radius
                                     offset: Offset(0, 2), // Shadow offset
                                   ),
@@ -438,11 +441,11 @@ class _MyMainHomeState extends State<MyMainHome> {
                             width: 190,
                             decoration:
                             BoxDecoration(
-                              color: Colors.lightGreenAccent, // Background color
+                              color: Color(0xbbbed3fe), // Background color
                               borderRadius: BorderRadius.circular(20),// Rounded corners
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.lightGreenAccent, // Shadow color
+                                  color: Color(0xbbbed3fe), // Shadow color
                                   blurRadius: 15, // Shadow blur radius
                                   offset: Offset(0, 2), // Shadow offset
                                 ),
@@ -451,7 +454,7 @@ class _MyMainHomeState extends State<MyMainHome> {
 
                             child:  GestureDetector(
                                 onTap: (){
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Devpage()));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Eventpage()));
                                 },
                                 child: Column(
                                   children: [
@@ -466,7 +469,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                           child:
                                           GestureDetector(
                                             onTap: (){
-                                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Devpage()));
+                                              Navigator.push(context, MaterialPageRoute(builder: (context)=>Eventpage()));
                                             },
                                             child:
                                             Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
@@ -511,74 +514,82 @@ class _MyMainHomeState extends State<MyMainHome> {
                         width: 375,
                         decoration:
                         BoxDecoration(
-                          color: Colors.lightBlueAccent, // Background color
+                          color: Color(0xfffebee3), // Background color
                           borderRadius: BorderRadius.circular(20),// Rounded corners
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.lightBlueAccent, // Shadow color
+                              color: Color(0xfffebee3), // Shadow color
                               blurRadius: 20, // Shadow blur radius
                               offset: Offset(0, 4), // Shadow offset
                             ),
                           ],
                         ),
 
-                        child: Column(mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Container(
-                                  child:
-                                  Icon(Icons.person_pin,size: 45,color: Colors.black),
-                                ),
-                                SizedBox(width: 12,),
-                                Column(mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Deep',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
-                                    Text('Designer',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                  ],
-                                ),
-                                SizedBox(width: 177,),
-                                Container(
-                                  child:
-                                  Icon(Icons.arrow_forward_ios_outlined,size: 35,color: Colors.black),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 12,),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(' Course',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
-                                    Text('App Development',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 16),),
-                                    Text(' 3 Months',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 13),),
-                                  ],
-                                ),
-                                SizedBox(width: 40,),
-                                SizedBox(
-                                    child: Container(
-                                      height: 70,
-                                      width: 2,
-                                      color: Colors.black,
-                                    )
-                                ),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('    Tools',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
-                                    Text('   Flutter , Dart',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 16),),
-                                    Text('     Firebase',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 13),),
-                                  ],
-                                ),
-                              ],
-                            )
-                          ],
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Collegeinfo()));
+                          },
+                          child: Column(mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Container(
+                                    child:
+                                      Image.asset('assets/images/clgbglogo.png',height: 50,),
+                                    // Icon(Icons.school,size: 45,color: Colors.black),
+                                  ),
+                                  SizedBox(width: 12,),
+                                  Column(mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Government',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
+                                      Text('Polytechnic Kashipur',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
+                                    ],
+                                  ),
+                                  SizedBox(width: 20,),
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Collegeinfo()));
+                                    },
+                                      child: Icon(Icons.arrow_forward_ios_outlined,size: 30,color: Colors.black)),
+                                ],
+                              ),
+                              SizedBox(height: 12,),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(' 9 Branches',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
+                                      Text('Engineering',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 16),),
+                                      Text('Pharmacy',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 13),),
+                                    ],
+                                  ),
+                                  SizedBox(width: 40,),
+                                  SizedBox(
+                                      child: Container(
+                                        height: 70,
+                                        width: 2,
+                                        color: Colors.black,
+                                      )
+                                  ),
+                                  SizedBox(width: 10,),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Hostels',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
+                                      Text('Boys',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 16),),
+                                      Text('Girls',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 13),),
+                                    ],
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
                         )
                     ),
                     Container(
@@ -587,7 +598,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                       Divider(height: 25,),
                     ),
                     Text('  Gallery',style: TextStyle(fontSize: 29,fontFamily: 'nexaheavy',color: Colors.white),),
-                    Text('   Govt. Polytechnic Kashipur',style: TextStyle(fontSize: 16,fontFamily: 'nexalight',color: Colors.lightBlueAccent),),
+                    Text('   Govt. Polytechnic Kashipur',style: TextStyle(fontSize: 16,fontFamily: 'nexaheavy',color: Colors.lightBlueAccent),),
                     SizedBox(height: 10,),
                     SingleChildScrollView(
                       padding: EdgeInsets.all(15),

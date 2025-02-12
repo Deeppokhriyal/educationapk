@@ -169,7 +169,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                               ],
                             ),
                             Container(
-                              padding: EdgeInsets.only(left: 155,top: 50),
+                              padding: EdgeInsets.only(left: 150,top: 50),
                               child:
                               PopupMenuButton<String>(
                                 onSelected: (String value) {
@@ -202,7 +202,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     ),
                                   ];
                                 },
-                                icon: Icon(Icons.menu,size: 30,color: Colors.black), // Icon to display
+                                icon: Icon(Icons.menu,size: 28,color: Colors.black), // Icon to display
                                 elevation: 5, // Shadow elevation
                                 color: Colors.white, // Background color
                                 offset: Offset(0, 45), // Positioning of the menu
@@ -215,7 +215,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                           children: [
                             Column(
                               children: [
-                                Text("   Let's Explore\n       The Polyverse",style: TextStyle(fontSize: 44,fontFamily:'sans-serif-thin',color: Colors.white),),
+                                Text("   Let's Explore\n       The Polyverse",style: TextStyle(fontSize: 44,fontFamily:'sans-serif-thin',color: Colors.black),),
                               ],
                             ),
                           ],

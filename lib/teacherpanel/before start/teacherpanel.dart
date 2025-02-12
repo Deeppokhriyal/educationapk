@@ -1,5 +1,5 @@
-import 'package:educationapk/before%20start/teacherlogin.dart';
-import 'package:educationapk/before%20start/teacherotp.dart';
+import 'package:educationapk/teacherpanel/before%20start/teacherlogin.dart';
+import 'package:educationapk/teacherpanel/before%20start/teacherotp.dart';
 import 'package:educationapk/controllers/signupController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

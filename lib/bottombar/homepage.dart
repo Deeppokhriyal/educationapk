@@ -480,7 +480,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             Text('Events',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                            Text('Information',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                            Text('Information',style: TextStyle(fontSize: 28,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
                                           ],
                                         ),
                                       ],

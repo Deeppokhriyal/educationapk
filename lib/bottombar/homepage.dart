@@ -43,8 +43,8 @@ class _MyMainHomeState extends State<MyMainHome> {
     "Programming",
     "Attendance",
     "Branches",
-    "Events",
     "Map",
+    "Hostel",
   ];
 
   int _selectedIndex = 0;
@@ -479,17 +479,17 @@ class _MyMainHomeState extends State<MyMainHome> {
                                         Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            Text('App',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                            Text('Designing',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                            Text('Events',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                            Text('Information',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
                                           ],
                                         ),
                                       ],
                                     ),
                                     Row(
                                       children: [
-                                        Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin'),),
+                                        Text('Holidays',style: TextStyle(fontFamily: 'sans-serif-thin'),),
                                         SizedBox(width: 23,),
-                                        Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin'),),
+                                        Text('Calender',style: TextStyle(fontFamily: 'sans-serif-thin'),),
                                       ],
                                     )
                                   ],

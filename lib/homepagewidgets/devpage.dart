@@ -34,35 +34,35 @@ class Devpage extends StatelessWidget {
                       child: Column(
                         children: [
                           Container(
-                            padding: EdgeInsets.only(top: 50),
+                            padding: EdgeInsets.only(top: 30),
                             child:Image.asset('assets/images/mylogobg.png'),
                           ),
                           SizedBox(height: 30,),
-                          Container( padding: EdgeInsets.all(20),
+                          Container( padding: EdgeInsets.all(10),
                             child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text('Dear Users -',style: TextStyle(fontFamily: 'nexalight',fontSize: 23,color: Colors.lightBlueAccent ),),
-                                SizedBox(height: 25,),
+                                SizedBox(height: 15,),
                                 Text('Welcome you to our application! ,We are excited to have you here! '
                                     '\nDeveloped by Team Celestial \nour application is built using the Flutter framework and Dart programming language to provide you with a seamless and enjoyable experience.'
                                     ' \n\nThank you for choosing us!',style: TextStyle(fontFamily: 'nexalight',fontSize: 15,color: Colors.white ),),
-                                SizedBox(height: 50,),
+                                SizedBox(height: 20,),
                                 Divider(),
-                                SizedBox(height: 16,),
+                                SizedBox(height: 10,),
                                 Image.asset('assets/images/devlogo.png'),
-                                SizedBox(height: 16,),
+                                SizedBox(height: 10,),
                                 Divider(),
-                                SizedBox(height: 50,),
+                                SizedBox(height: 20,),
                                 Container(
                                   child: Row(
                                     children: [
                                       Image.asset('assets/images/deeppro.png',height: 70,),
-                                      SizedBox(width: 60,),
+                                      SizedBox(width: 30,),
                                       Text('Deepak Pokhriyal',style: TextStyle(fontFamily: 'nexalight',fontSize: 25,color: Colors.lightBlueAccent),),
                                     ],
                                   ),
                                 ),
-                                SizedBox(height: 35,),
+                                SizedBox(height: 15,),
                                 RichText(text:  TextSpan(
                                     children: [
                                       TextSpan(
@@ -87,12 +87,12 @@ class Devpage extends StatelessWidget {
                                     ]
                                 )
                                 ),
-                                SizedBox(height: 70),
+                                SizedBox(height: 30),
                                 Container(
                                   child: Row(
                                     children: [
                                       Text('Shivanshi Mishra',style: TextStyle(fontFamily: 'nexalight',fontSize: 25,color: Colors.lightBlueAccent),),
-                                      SizedBox(width: 65,),
+                                      SizedBox(width: 30,),
                                       Image.asset('assets/images/shivipro-modified.png',height: 70,),
                                     ],
                                   ),
@@ -127,10 +127,10 @@ class Devpage extends StatelessWidget {
                                 Divider(),
                                 Row(
                                   children: [
-                                    Text(' Developer\'s Profile : ', style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.greenAccent,letterSpacing: 1,wordSpacing: 1),),
+                                    Text(' Developer\'s Profile : ', style: TextStyle(fontFamily: 'nexalight',fontSize: 10,color: Colors.greenAccent,letterSpacing: 1,wordSpacing: 1),),
                                     GestureDetector(
                                       onTap: _launchURL,
-                                      child: Image.asset('assets/images/tap1.png',height: 50,width: 150,),
+                                      child: Image.asset('assets/images/tap1.png',height: 10,width: 100,),
                                     ),
                                   ],
                                 ),
@@ -138,7 +138,7 @@ class Devpage extends StatelessWidget {
                                 Container(
                                   alignment: Alignment.center,
                                   child:
-                                  Text('Contributes',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 25,color: Colors.lightBlueAccent),),
+                                  Text('Contributes',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 10,color: Colors.lightBlueAccent),),
                                 ),
                               ],
                             ),

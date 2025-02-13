@@ -7,7 +7,6 @@ import 'package:educationapk/allpages/Study/civil_syllabus.dart';
 import 'package:educationapk/allpages/Study/cse_syllabus.dart';
 import 'package:educationapk/allpages/Study/electronic_syllabus.dart';
 import 'package:educationapk/allpages/Study/pharmacy_syllabus.dart';
-import 'package:educationapk/allpages/programmingpage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -105,30 +104,25 @@ Widget build(BuildContext context) {
                               ),
                             ],
                           ),
-                          child: GestureDetector(
-                            onTap: (){
-                              Get.to(programmingpage());
-                            },
-                            child: Column(mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    Icon(Icons.palette_outlined,size: 40,color: Colors.black),
-                                    SizedBox(width: 12,),
-                                    Column(mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text('Chemical \nTechnology',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
-                                        Text('(Paint)',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 22),),
-                                      ],
-                                    ),
-                                    SizedBox(width: 106,),
-                                    Icon(Icons.arrow_forward_ios_outlined,size: 25,color: Colors.black),
-                                  ],
-                                ),
-                              ],
-                            ),
+                          child: Column(mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.palette_outlined,size: 40,color: Colors.black),
+                                  SizedBox(width: 12,),
+                                  Column(mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Chemical \nTechnology',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
+                                      Text('(Paint)',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 22),),
+                                    ],
+                                  ),
+                                  SizedBox(width: 106,),
+                                  Icon(Icons.arrow_forward_ios_outlined,size: 25,color: Colors.black),
+                                ],
+                              ),
+                            ],
                           )
                       ),
                     ),

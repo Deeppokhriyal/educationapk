@@ -1,15 +1,14 @@
 import 'package:educationapk/allpage.dart';
 import 'package:educationapk/allpages/programmingpage.dart';
 import 'package:educationapk/bottombar/application.dart';
-import 'package:educationapk/collegeinfo.dart';
-import 'package:educationapk/devpage.dart';
+import 'package:educationapk/homepagewidgets/collegeinfo.dart';
+import 'package:educationapk/homepagewidgets/devpage.dart';
 import 'package:educationapk/allpages/map.dart';
-import 'package:educationapk/eventpage.dart';
+import 'package:educationapk/homepagewidgets/eventpage.dart';
 import 'package:educationapk/popupmenu/privacypolicies.dart';
 import 'package:educationapk/popupmenu/termscondition.dart';
 import 'package:educationapk/bottombar/profilepage.dart';
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 class Myhome extends StatefulWidget {
@@ -331,7 +330,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 BoxShadow(
                                   color: Color(0xCCCCCCFF), // Shadow color
                                   blurRadius: 15, // Shadow blur radius
-                                  offset: Offset(0, 2), // Shadow offset
+                                  offset: Offset(0, 6), // Shadow offset
                                 ),
                               ],
                             ),
@@ -397,7 +396,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                   BoxShadow(
                                     color: Color(0xbbbefed1), // Shadow color
                                     blurRadius: 15, // Shadow blur radius
-                                    offset: Offset(0, 2), // Shadow offset
+                                    offset: Offset(0, 6), // Shadow offset
                                   ),
                                 ],
                               ),
@@ -441,13 +440,13 @@ class _MyMainHomeState extends State<MyMainHome> {
                             width: 190,
                             decoration:
                             BoxDecoration(
-                              color: Color(0xbbbed3fe), // Background color
+                              color: Color(0x8d8dc5fd), // Background color
                               borderRadius: BorderRadius.circular(20),// Rounded corners
                               boxShadow: [
                                 BoxShadow(
-                                  color: Color(0xbbbed3fe), // Shadow color
+                                  color: Color(0x8d8dc5fd), // Shadow color
                                   blurRadius: 15, // Shadow blur radius
-                                  offset: Offset(0, 2), // Shadow offset
+                                  offset: Offset(0, 6), // Shadow offset
                                 ),
                               ],
                             ),
@@ -510,7 +509,7 @@ class _MyMainHomeState extends State<MyMainHome> {
 
                         padding: EdgeInsets.all(10),
                         margin: EdgeInsets.all(12),
-                        height: 160,
+                        height: 180,
                         width: 375,
                         decoration:
                         BoxDecoration(
@@ -520,7 +519,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                             BoxShadow(
                               color: Color(0xfffebee3), // Shadow color
                               blurRadius: 20, // Shadow blur radius
-                              offset: Offset(0, 4), // Shadow offset
+                              offset: Offset(0, 6), // Shadow offset
                             ),
                           ],
                         ),

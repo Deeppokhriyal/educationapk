@@ -6,7 +6,7 @@ class TeachersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text('hello i\'m teacher login page')),
+      body: Center(child: Text('hello i\'m teacher login page')), 
     );
   }
 }

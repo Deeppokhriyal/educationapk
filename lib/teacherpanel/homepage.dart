@@ -1,6 +1,6 @@
 import 'package:educationapk/bottombar/application.dart';
 import 'package:educationapk/bottombar/homepage.dart';
-import 'package:educationapk/devpage.dart';
+import 'package:educationapk/homepagewidgets/devpage.dart';
 import 'package:educationapk/popupmenu/privacypolicies.dart';
 import 'package:educationapk/popupmenu/termscondition.dart';
 import 'package:educationapk/bottombar/profilepage.dart';

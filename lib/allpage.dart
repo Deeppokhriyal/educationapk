@@ -1,3 +1,4 @@
+import 'package:educationapk/allpages/Study/branches.dart';
 import 'package:educationapk/allpages/map.dart';
 import 'package:educationapk/allpages/programmingpage.dart';
 import 'package:flutter/material.dart';
@@ -40,25 +41,30 @@ Widget build(BuildContext context) {
                             ),
                           ],
                         ),
-                        child: Column(mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Icon(Icons.border_all,size: 45,color: Colors.black),
-                                SizedBox(width: 12,),
-                                Column(mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Study',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
-                                    Text(' Material',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
-                                  ],
-                                ),
-                                SizedBox(width: 162,),
-                                Icon(Icons.arrow_forward_ios_outlined,size: 35,color: Colors.black),
-                              ],
-                            ),
-                          ],
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.to(Branches());
+                          },
+                          child: Column(mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.border_all,size: 45,color: Colors.black),
+                                  SizedBox(width: 12,),
+                                  Column(mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Study',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
+                                      Text(' Material',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
+                                    ],
+                                  ),
+                                  SizedBox(width: 162,),
+                                  Icon(Icons.arrow_forward_ios_outlined,size: 35,color: Colors.black),
+                                ],
+                              ),
+                            ],
+                          ),
                         )
                     ),
                     SizedBox(height: 15,),

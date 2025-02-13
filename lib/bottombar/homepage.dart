@@ -11,6 +11,8 @@ import 'package:educationapk/bottombar/profilepage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
+import '../allpages/Study/branches.dart';
+
 class Myhome extends StatefulWidget {
   const Myhome({super.key});
 
@@ -262,6 +264,12 @@ class _MyMainHomeState extends State<MyMainHome> {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(builder: (context) => MainScrollPage()),
+                                        );
+                                      }
+                                      if (listName[index] == "Study") {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) =>Branches()),
                                         );
                                       }
                                       if (listName[index] == "Programming") {

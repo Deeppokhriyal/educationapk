@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Devpage extends StatelessWidget {
-  const Devpage({super.key});
+  final String url = "https://celestial-deepak.vercel.app/";
+
+  void _launchURL() async {
+    final Uri uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } else {
+      print("Could not launch $url");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -119,6 +129,7 @@ class Devpage extends StatelessWidget {
                                   children: [
                                     Text(' Developer\'s Profile : ', style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.greenAccent,letterSpacing: 1,wordSpacing: 1),),
                                     GestureDetector(
+                                      onTap: _launchURL,
                                       child: Image.asset('assets/images/tap1.png',height: 50,width: 150,),
                                     ),
                                   ],

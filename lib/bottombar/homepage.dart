@@ -91,7 +91,7 @@ class _MyMainHomeState extends State<MyMainHome> {
               Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: NetworkImage('https://img.freepik.com/premium-vector/abstract-background-gradient-modern-design_677411-3120.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid '), // Path to your background image
+                    image: NetworkImage('https://img.freepik.com/free-vector/neon-synthwave-border-dark-purple-poster-template-vector_53876-170448.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
                     fit: BoxFit.cover,
                   ),
                 ),

@@ -225,7 +225,7 @@ class Collegeinfo extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'And 2nd Gate is from Albert memorial school road.',
+                          'And 2nd Gate is Backside of Udairaj field.',
                           style: TextStyle(
                             fontFamily: 'nexalight',
                             fontSize: 14,
@@ -254,21 +254,20 @@ class Collegeinfo extends StatelessWidget {
                           'Facilities :',
                           style: TextStyle(
                               fontFamily: 'nexaheavy',
-                              fontSize: 30,
+                              fontSize: 40,
                               color: Colors.lightBlueAccent,
                               fontWeight: FontWeight.bold),
                         ),
-                        Divider(height: 10,),
 
-                        SizedBox(
-                          height: 20,
-                        ),
+                        Divider(height: 15,),
+
+
 
                         Text(
                           'Digital Library -',
                           style: TextStyle(
                               fontFamily: 'nexaheavy',
-                              fontSize: 20,
+                              fontSize: 25,
                               color: Colors.greenAccent,
                               fontWeight: FontWeight.bold),
                         ),
@@ -385,7 +384,7 @@ class Collegeinfo extends StatelessWidget {
                           'I.T Infrastructure -',
                           style: TextStyle(
                               fontFamily: 'nexaheavy',
-                              fontSize: 20,
+                              fontSize: 25,
                               color: Colors.greenAccent,
                               fontWeight: FontWeight.bold),
                         ),
@@ -506,7 +505,7 @@ class Collegeinfo extends StatelessWidget {
                           'Laboratories -',
                           style: TextStyle(
                               fontFamily: 'nexaheavy',
-                              fontSize: 20,
+                              fontSize: 25,
                               color: Colors.greenAccent,
                               fontWeight: FontWeight.bold),
                         ),
@@ -603,7 +602,7 @@ class Collegeinfo extends StatelessWidget {
                           'Boys Hostel -',
                           style: TextStyle(
                               fontFamily: 'nexaheavy',
-                              fontSize: 20,
+                              fontSize: 25,
                               color: Colors.greenAccent,
                               fontWeight: FontWeight.bold),
                         ),
@@ -737,7 +736,7 @@ class Collegeinfo extends StatelessWidget {
                           'Girls Hostel -',
                           style: TextStyle(
                               fontFamily: 'nexaheavy',
-                              fontSize: 20,
+                              fontSize: 25,
                               color: Colors.greenAccent,
                               fontWeight: FontWeight.bold),
                         ),
@@ -838,7 +837,7 @@ class Collegeinfo extends StatelessWidget {
                           'Sports -',
                           style: TextStyle(
                               fontFamily: 'nexaheavy',
-                              fontSize: 20,
+                              fontSize: 25,
                               color: Colors.greenAccent,
                               fontWeight: FontWeight.bold),
                         ),
@@ -903,7 +902,7 @@ class Collegeinfo extends StatelessWidget {
                           'Medical/Hospital -',
                           style: TextStyle(
                               fontFamily: 'nexaheavy',
-                              fontSize: 20,
+                              fontSize: 25,
                               color: Colors.greenAccent,
                               fontWeight: FontWeight.bold),
                         ),
@@ -969,7 +968,7 @@ class Collegeinfo extends StatelessWidget {
                           'Guest Room/Waiting Room -',
                           style: TextStyle(
                               fontFamily: 'nexaheavy',
-                              fontSize: 20,
+                              fontSize: 25,
                               color: Colors.greenAccent,
                               fontWeight: FontWeight.bold),
                         ),
@@ -1035,7 +1034,7 @@ class Collegeinfo extends StatelessWidget {
                           'Digital Classes -',
                           style: TextStyle(
                               fontFamily: 'nexaheavy',
-                              fontSize: 20,
+                              fontSize: 25,
                               color: Colors.greenAccent,
                               fontWeight: FontWeight.bold),
                         ),
@@ -1079,7 +1078,7 @@ class Collegeinfo extends StatelessWidget {
                           'Training and Placement Cell -',
                           style: TextStyle(
                               fontFamily: 'nexaheavy',
-                              fontSize: 20,
+                              fontSize: 25,
                               color: Colors.greenAccent,
                               fontWeight: FontWeight.bold),
                         ),

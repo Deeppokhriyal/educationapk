@@ -19,7 +19,7 @@ Widget build(BuildContext context) {
           children:[ Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: NetworkImage('https://img.freepik.com/free-photo/high-angle-vibrant-colorful-paper-shape_23-2148428711.jpg?ga=GA1.1.1037380694.1733420579&semt=ais_authors_boost'), // Path to your background image
+                  image: NetworkImage('https://img.freepik.com/free-photo/laptop-notepad-black-background-with-neon-light-flat-lay_169016-26820.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
                   fit: BoxFit.cover
               ),
             ),
@@ -70,7 +70,7 @@ Widget build(BuildContext context) {
                                   Column(mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('Agriculture \nEngineering',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
+                                      Text('Agriculture \nEngineering',style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
                                       // Text(' Material',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
                                     ],
                                   ),
@@ -90,7 +90,7 @@ Widget build(BuildContext context) {
                       child: Container(
                           padding: EdgeInsets.all(10),
                           margin: EdgeInsets.all(17),
-                          height: 107,
+                          height: 127,
                           width: 370,
                           decoration:
                           BoxDecoration(
@@ -114,8 +114,8 @@ Widget build(BuildContext context) {
                                   Column(mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('Chemical \nTechnology',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
-                                      Text('(Paint)',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 22),),
+                                      Text('Chemical \nTechnology',style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
+                                      Text('(Paint)',style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
                                     ],
                                   ),
                                   SizedBox(width: 106,),
@@ -158,7 +158,7 @@ Widget build(BuildContext context) {
                                   Column(mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('Chemical \nEngineering',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
+                                      Text('Chemical \nEngineering',style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
                                     ],
                                   ),
                                   SizedBox(width: 110,),
@@ -201,7 +201,7 @@ Widget build(BuildContext context) {
                                   Column(mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('Civil \nEngineering',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
+                                      Text('Civil \nEngineering',style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
                                              ],
                                   ),
                                   SizedBox(width: 110,),
@@ -244,10 +244,10 @@ Widget build(BuildContext context) {
                                   Column(mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('Computer Science \n& Engineering',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
+                                      Text('Computer Science \n& Engineering',style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
                                          ],
                                   ),
-                                  SizedBox(width: 51,),
+                                  SizedBox(width: 30,),
                                   Icon(Icons.arrow_forward_ios_outlined,size: 25,color: Colors.black),
                                 ],
                               ),
@@ -287,7 +287,7 @@ Widget build(BuildContext context) {
                                   Column(mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('Electronics \nEngineering',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
+                                      Text('Electronics \nEngineering',style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
                                          ],
                                   ),
                                   SizedBox(width: 105,),
@@ -330,7 +330,7 @@ Widget build(BuildContext context) {
                                   Column(mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('Information \nTechnology',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
+                                      Text('Information \nTechnology',style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
                                     ],
                                   ),
                                   SizedBox(width: 105,),
@@ -373,7 +373,7 @@ Widget build(BuildContext context) {
                                   Column(mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('Mechanical \nEngineering',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
+                                      Text('Mechanical \nEngineering',style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
                                     ],
                                   ),
                                   SizedBox(width: 105,),
@@ -416,10 +416,10 @@ Widget build(BuildContext context) {
                                   Column(mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('Pharmacy',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
+                                      Text('Pharmacy',style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
                                     ],
                                   ),
-                                  SizedBox(width: 105,),
+                                  SizedBox(width: 125,),
                                   Icon(Icons.arrow_forward_ios_outlined,size: 25,color: Colors.black),
                                 ],
                               ),

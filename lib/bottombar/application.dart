@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class LeaveApplication extends StatefulWidget {
   @override
@@ -19,11 +21,35 @@ class _LeaveApplicationState extends State<LeaveApplication> {
       // Firestore.instance.collection('leave_applications').add({
       //   'studentId': 'student_id',
       //   'teacherId': 'teacher_id',
-      //   'leaveDate': leaveDate,
+      //   'leaveDate': leaveDate, 
       //   'reason': reason,
       //   'status': 'Pending',
       // });
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Application Submitted',style: TextStyle(fontSize: 15,fontFamily: 'nexalight',color: Colors.lightBlueAccent),)));
+
+      Get.snackbar(
+        "Thank you",
+        "Application Submitted Successfully",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.black26,
+        colorText: Colors.lightBlueAccent,
+        snackStyle: SnackStyle.FLOATING,
+        titleText: Text(
+          "Thank you",
+          style: TextStyle(
+            fontFamily: 'nexaheavy', // Use a sans-serif font family
+            color: Colors.lightBlueAccent,
+            fontSize: 18
+          ),
+        ),
+        messageText: Text(
+          "Application Submitted Successfully",
+          style: TextStyle(
+            fontFamily: 'nexalight', // Use a sans-serif font family
+            fontSize: 15,
+            color: Colors.lightBlueAccent,
+          ),
+        ),
+      );
     }
   }
 

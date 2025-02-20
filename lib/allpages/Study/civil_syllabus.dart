@@ -1,26 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 class CivilSyllabus extends StatelessWidget {
   final List<Map<String, String>> links = [
-    {"title": "Engineering Ist Year",
-      "url": "https://drive.google.com/file/d/1bCgIcKi6WNbZIgu2QcxCmLJjkGZULUoQ/view?usp=drive_link"},
-    {"title": "Civil Engineering-III Sem",
-      "url": "https://drive.google.com/file/d/1GuYgU8dYfzQ4VRVmuG_MqGu3P2DqiUkl/view?usp=drive_link"},
-    {"title": "Civil Engineering-IV Sem",
-      "url" : "https://drive.google.com/file/d/1Sifrar_EXwjX54LTVxvJNZHcYWye0IYy/view?usp=drive_link"},
-    {"title": "Civil Engineering-V Sem",
-      "url": "https://drive.google.com/file/d/1IDP97568Qa_TehffokpQP8FMTBE7JLDf/view?usp=drive_link"},
-    {"title": "Civil Engineering-VI Sem",
-      "url": "https://drive.google.com/file/d/1zsUoLeBrFCQda-WhGfIYgeS2DF13OTgS/view?usp=drive_link"},
+    {
+      "title": "Engineering Ist Year",
+      "url": "https://drive.google.com/uc?export=download&id=1bCgIcKi6WNbZIgu2QcxCmLJjkGZULUoQ"
+    },
+    {
+      "title": "Civil Engineering-III Sem",
+      "url": "https://drive.google.com/uc?export=download&id=1GuYgU8dYfzQ4VRVmuG_MqGu3P2DqiUkl"
+    },
+    {
+      "title": "Civil Engineering-IV Sem",
+      "url": "https://drive.google.com/uc?export=download&id=1Sifrar_EXwjX54LTVxvJNZHcYWye0IYy"
+    },
+    {
+      "title": "Civil Engineering-V Sem",
+      "url": "https://drive.google.com/uc?export=download&id=1IDP97568Qa_TehffokpQP8FMTBE7JLDf"
+    },
+    {
+      "title": "Civil Engineering-VI Sem",
+      "url": "https://drive.google.com/uc?export=download&id=1zsUoLeBrFCQda-WhGfIYgeS2DF13OTgS"
+    },
   ];
 
   void _launchURL(String url) async {
     final Uri uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    } else {
-      print("Could not launch $url");
+
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      debugPrint("Could not launch $url");
     }
   }
 
@@ -31,7 +39,7 @@ class CivilSyllabus extends StatelessWidget {
             children:[ Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: NetworkImage('https://img.freepik.com/free-photo/close-up-lines-pink-paper-textured-background_23-2147981573.jpg?ga=GA1.1.1037380694.1733420579&semt=ais_authors_boost'), // Path to your background image
+                    image: NetworkImage('https://img.freepik.com/premium-photo/creative-glowing-circuit-texture-technology-hardware-concept-3d-rendering_670147-51951.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
                     fit: BoxFit.cover
                 ),
               ),
@@ -40,7 +48,7 @@ class CivilSyllabus extends StatelessWidget {
                   padding: EdgeInsets.only(top: 20),
                   alignment: Alignment.center,
                   margin: EdgeInsets.all(10.0),
-                  height: 109,
+                  height: 135,
                   child: Text(
                     'All Semesters \nSyllabus',
                     style: TextStyle(
@@ -62,7 +70,7 @@ class CivilSyllabus extends StatelessWidget {
                                 child: Container(
                                   padding: EdgeInsets.all(10),
                                   margin: EdgeInsets.all(17),
-                                  height: 90,
+                                  height: 130,
                                   width: 370,
                                   decoration:
                                   BoxDecoration(

@@ -30,7 +30,7 @@ class ChemSyllabus extends StatelessWidget {
             children:[ Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: NetworkImage('https://img.freepik.com/premium-photo/creative-glowing-circuit-texture-technology-hardware-concept-3d-rendering_670147-51951.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
+                    image: NetworkImage('https://img.freepik.com/premium-photo/abstract-brown-background-with-some-smooth-lines-it_943657-3007.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
                     fit: BoxFit.cover
                 ),
               ),

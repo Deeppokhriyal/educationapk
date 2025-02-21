@@ -26,7 +26,9 @@ class Devpage extends StatelessWidget {
                     Container(
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: NetworkImage('https://img.freepik.com/free-vector/mobile_677411-3678.jpg?t=st=1739080959~exp=1739084559~hmac=69d84f244cb9d825cc717c87e14c84c6022999df70ce8add916f4e47e234d59a&w=360'),// Path to your background image
+                          image: NetworkImage(
+                              'https://img.freepik.com/free-photo/abstract-gradient-neon-lights_23-2149279124.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_authors_boost'), // Path to your background image
+                           // image: NetworkImage('https://img.freepik.com/premium-photo/tiles-art-illustration_732004-8.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'),// Path to your background image
                           fit: BoxFit.cover,
                         ),
                       ),

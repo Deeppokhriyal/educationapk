@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-class CivilSyllabus extends StatelessWidget {
+class CivilSyllabus1 extends StatelessWidget {
   final List<Map<String, String>> links = [
     {
       "title": "Engineering Ist Year",
@@ -39,7 +39,7 @@ class CivilSyllabus extends StatelessWidget {
             children:[ Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: NetworkImage('https://img.freepik.com/premium-photo/abstract-brown-background-with-some-smooth-lines-it_943657-3007.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
+                    image: NetworkImage('https://img.freepik.com/free-vector/emerald-green-curve-frame-template-vector_53876-162345.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
                     fit: BoxFit.cover
                 ),
               ),
@@ -74,11 +74,11 @@ class CivilSyllabus extends StatelessWidget {
                                   width: 370,
                                   decoration:
                                   BoxDecoration(
-                                    color: Color(0xfffebebe), // Background color
+                                    color: Colors.greenAccent, // Background color
                                     borderRadius: BorderRadius.circular(20), // Rounded corners
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Color(0xfffebebe), // Shadow color
+                                        color: Colors.brown, // Shadow color
                                         blurRadius: 8, // Shadow blur radius
                                         offset: Offset(0, 2), // Shadow offset
                                       ),

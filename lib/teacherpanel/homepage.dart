@@ -163,13 +163,13 @@ class _MyMainHomeState extends State<MyMainHome> {
                               children: [
                                 Container(
                                   padding: EdgeInsets.only(top: 50),
-                                  child: Text('Name ?', style: TextStyle(fontSize: 17,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold,color: Colors.black),),
+                                  child: Text('Namskaram', style: TextStyle(fontSize: 13,fontFamily: 'sans-serif-thin',fontWeight: FontWeight.bold,color: Colors.black),),
                                 ),
-                                Text('Good Morning', style: TextStyle(fontSize: 14,fontFamily: 'sans-serif-thin',color:Colors.black),),
+                                Text('Mr. Deepak Pokhriyal', style: TextStyle(fontSize: 15,fontFamily: 'sans-serif-light',color:Colors.black),),
                               ],
                             ),
                             Container(
-                              padding: EdgeInsets.only(left: 150,top: 50),
+                              padding: EdgeInsets.only(left: 120,top: 50),
                               child:
                               PopupMenuButton<String>(
                                 onSelected: (String value) {

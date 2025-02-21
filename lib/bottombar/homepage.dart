@@ -91,7 +91,7 @@ class _MyMainHomeState extends State<MyMainHome> {
               Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: NetworkImage('https://img.freepik.com/free-vector/neon-synthwave-border-dark-purple-poster-template-vector_53876-170448.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
+                    image: NetworkImage('https://img.freepik.com/premium-photo/gradient-color-background-colorful-vibrant-colors-multicolored-bright-colors-radiant-spectrum_955379-14351.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -128,12 +128,12 @@ class _MyMainHomeState extends State<MyMainHome> {
                                       SizedBox(height: 6),
                                       Text(
                                         'I.T. 3rd Year',
-                                        style: TextStyle(color: Colors.grey[300],fontFamily: 'sans-serif-thin'),
+                                        style: TextStyle(color: Colors.black,fontFamily: 'sans-serif-thin'),
                                       ),
                                       SizedBox(height: 6),
                                       Text(
                                         'Govt. Polytechnic Kashipur',
-                                        style: TextStyle(color: Colors.grey[300],fontFamily: 'sans-serif-thin'),
+                                        style: TextStyle(color: Colors.black,fontFamily: 'sans-serif-thin'),
                                       ),
                                       SizedBox(height: 25),
                                       Row(
@@ -169,13 +169,13 @@ class _MyMainHomeState extends State<MyMainHome> {
                           children: [
                             Container(
                               padding: EdgeInsets.only(top: 50),
-                              child: Text('Name ?', style: TextStyle(fontSize: 17,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold,color: Colors.white),),
+                              child: Text('Hii Dear,', style: TextStyle(fontSize: 13,fontFamily: 'nexaheavy',fontWeight: FontWeight.bold,color: Colors.white),),
                             ),
-                            Text('Good Morning', style: TextStyle(fontSize: 13,fontFamily: 'sans-serif-thin',color:Colors.white),),
+                            Text('Deepak Pokhriyal', style: TextStyle(fontSize: 15,fontFamily: 'nexalight',color:Colors.white),),
                           ],
                         ),
                         Container(
-                          padding: EdgeInsets.only(left: 155,top: 50),
+                          padding: EdgeInsets.only(left: 135,top: 50),
                           child:
                           PopupMenuButton<String>(
                             onSelected: (String value) {
@@ -299,8 +299,8 @@ class _MyMainHomeState extends State<MyMainHome> {
                                         boxShadow: [
                                           BoxShadow(
                                             color: Colors.deepPurple.shade200,
-                                            blurRadius: 10,
-                                            offset: Offset(0, 6),
+                                            blurRadius: 5,
+                                            offset: Offset(0, 4),
                                           ),
                                         ],
                                       ),
@@ -327,20 +327,14 @@ class _MyMainHomeState extends State<MyMainHome> {
                           Container(
 
                             padding: EdgeInsets.all(10),
-                            margin: EdgeInsets.all(15),
+                            margin: EdgeInsets.only(left: 10),
                             height: 200,
                             width: 190,
                             decoration:
                             BoxDecoration(
-                              color: Color(0xCCCCCCFF), // Background color
-                              borderRadius: BorderRadius.circular(20),// Rounded corners
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0xCCCCCCFF), // Shadow color
-                                  blurRadius: 15, // Shadow blur radius
-                                  offset: Offset(0, 6), // Shadow offset
-                                ),
-                              ],
+                              color: Colors.purple[200], // Background color
+                              // color: Color(0xCCCCCCFF), // Background color
+                              borderRadius: BorderRadius.circular(25),// Rounded corners
                             ),
 
                             child:  GestureDetector(
@@ -353,7 +347,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                       children: [
                                         Container(
                                           child:
-                                          Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
+                                          Icon(Icons.timelapse_rounded,size: 30,color: Colors.black),
                                         ),
                                         SizedBox(width: 105,),
                                         Container(
@@ -368,6 +362,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                         ),
                                       ],
                                     ),
+                                    SizedBox(height: 10,),
                                     Row(
                                       children: [
                                         Column(
@@ -379,10 +374,17 @@ class _MyMainHomeState extends State<MyMainHome> {
                                         ),
                                       ],
                                     ),
+                                    SizedBox(height: 7,),
                                     Row(
                                       children: [
-                                        Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin'),),
-                                        SizedBox(width: 23,),
+                                        Text('106 Days',style: TextStyle(fontFamily: 'sans-serif-thin'),),
+                                        SizedBox(width: 7,),
+                                        Container(
+                                          height: 18,
+                                          width: 1,
+                                          color: Colors.black,
+                                        ),
+                                        SizedBox(width: 7,),
                                         Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin'),),
                                       ],
                                     )
@@ -393,20 +395,14 @@ class _MyMainHomeState extends State<MyMainHome> {
                           Container(
 
                               padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.all(12),
+                              margin: EdgeInsets.only(left: 8),
                               height: 200,
                               width: 155,
                               decoration:
                               BoxDecoration(
-                                color: Color(0xbbbefed1), // Background color
-                                borderRadius: BorderRadius.circular(20),// Rounded corners
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Color(0xbbbefed1), // Shadow color
-                                    blurRadius: 15, // Shadow blur radius
-                                    offset: Offset(0, 6), // Shadow offset
-                                  ),
-                                ],
+                                color: Colors.greenAccent, // Background color
+                                // color: Color(0xbbbefed1), // Background color
+                                borderRadius: BorderRadius.circular(25),// Rounded corners
                               ),
 
                               child: Column(
@@ -415,7 +411,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     children: [
                                       Container(
                                         child:
-                                        Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
+                                        Icon(Icons.person_pin_rounded,size: 30,color: Colors.black),
                                       ),
                                       SizedBox(width: 70,),
                                       Container(
@@ -443,20 +439,13 @@ class _MyMainHomeState extends State<MyMainHome> {
                           Container(
 
                             padding: EdgeInsets.all(10),
-                            margin: EdgeInsets.all(15),
+                            margin: EdgeInsets.only(left: 8),
                             height: 200,
                             width: 190,
                             decoration:
                             BoxDecoration(
-                              color: Color(0x8d8dc5fd), // Background color
-                              borderRadius: BorderRadius.circular(20),// Rounded corners
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0x8d8dc5fd), // Shadow color
-                                  blurRadius: 15, // Shadow blur radius
-                                  offset: Offset(0, 6), // Shadow offset
-                                ),
-                              ],
+                              color: Colors.blueAccent[200], // Background color
+                              borderRadius: BorderRadius.circular(25),// Rounded corners
                             ),
 
                             child:  GestureDetector(
@@ -469,7 +458,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                       children: [
                                         Container(
                                           child:
-                                          Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
+                                          Icon(Icons.event,size: 30,color: Colors.black),
                                         ),
                                         SizedBox(width: 105,),
                                         Container(
@@ -512,24 +501,17 @@ class _MyMainHomeState extends State<MyMainHome> {
 
                     //blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container
 
-                    SizedBox(height: 10,),
                     Container(
 
-                        padding: EdgeInsets.all(10),
-                        margin: EdgeInsets.all(12),
-                        height: 180,
-                        width: 375,
+                        padding: EdgeInsets.all(15),
+                        margin: EdgeInsets.only(left: 10,top: 15),
+                        height: 190,
+                        width: 385,
                         decoration:
                         BoxDecoration(
                           color: Color(0xfffebee3), // Background color
-                          borderRadius: BorderRadius.circular(20),// Rounded corners
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color(0xfffebee3), // Shadow color
-                              blurRadius: 20, // Shadow blur radius
-                              offset: Offset(0, 6), // Shadow offset
-                            ),
-                          ],
+                          borderRadius: BorderRadius.circular(30),// Rounded corners
+
                         ),
 
                         child: GestureDetector(

@@ -36,6 +36,7 @@ dependencies:
   shared_preferences:
   line_awesome_flutter:
   firebase_core:
+  cloud_firestore:
 
 
 

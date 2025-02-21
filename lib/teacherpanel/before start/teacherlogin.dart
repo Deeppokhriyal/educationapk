@@ -1,15 +1,49 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/teacherpanel/homepage.dart';
 import 'package:educationapk/teacherpanel/before%20start/teacherpanel.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:educationapk/before%20start/startingpage.dart';
 
-class Teacherlogin extends StatelessWidget {
+class TeacherLogin extends StatefulWidget {
+  @override
+  _TeacherLoginState createState() => _TeacherLoginState();
+}
 
+class _TeacherLoginState extends State<TeacherLogin> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  bool isLoading = false;
+  bool isPasswordVisible = false;
+
+  Future<void> loginTeacher(BuildContext context) async {
+    setState(() => isLoading = true);
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: usernameController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+
+      DocumentSnapshot userDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userCredential.user!.uid)
+          .get();
+
+      if (userDoc.exists && userDoc['role'] == 'teacher') {
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => TeacherHome()));
+      } else {
+        showError("Not a Teacher Account!");
+      }
+    } catch (e) {
+      showError("Invalid Email or Password");
+    }
+    setState(() => isLoading = false);
+  }
+
+  void showError(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message, style: TextStyle(color: Colors.white)), backgroundColor: Colors.red),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +89,7 @@ class Teacherlogin extends StatelessWidget {
                             controller: usernameController,
                             decoration: InputDecoration(
                               fillColor: Colors.pink,
-                              hintText: 'Enter your Email or Number',
+                              hintText: 'Enter your Email',
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(35)
                               ),
@@ -69,10 +103,14 @@ class Teacherlogin extends StatelessWidget {
                           TextField(style: TextStyle( fontFamily: 'nexalight'),
                             controller: passwordController,
                             cursorColor: Colors.black,
-                            obscureText: true,
+                            obscureText:!isPasswordVisible,
                             decoration: InputDecoration(
                               fillColor: Colors.grey[100],
                               hintText: 'Enter your Password',
+                              suffixIcon: IconButton(
+                                icon: Icon(isPasswordVisible ? Icons.visibility : Icons.visibility_off),
+                                onPressed: () => setState(() => isPasswordVisible = !isPasswordVisible),
+                              ),
                               border: OutlineInputBorder( // Unfocused border color
                                   borderRadius: BorderRadius.circular(35)
                               ),
@@ -87,18 +125,16 @@ class Teacherlogin extends StatelessWidget {
                             padding: EdgeInsets.only(left: 215,top: 20),
                             child: Text('Forget Password?',style: TextStyle(color: Colors.black,fontSize: 12,fontFamily: 'nexalight'),textAlign: TextAlign.right,)                     ,
                           ),
-
-                          SizedBox(height: 35,),
+                          isLoading
+                              ? CircularProgressIndicator()
+                          :SizedBox(height: 35,),
                           SizedBox(
                             height: 50,
                             width: 450,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 foregroundColor: Colors.black, backgroundColor: Colors.green, // Set the text color here
-                              ),  onPressed: () {
-
-                              Get.to(()=>TeacherHome());
-                            },
+                              ),  onPressed: () => loginTeacher(context),
                               child: Text('Login',style: TextStyle(color: Colors.white, fontSize: 16,fontFamily: 'sans-serif-light'),),
                             ),
                           ),
@@ -118,17 +154,17 @@ class Teacherlogin extends StatelessWidget {
     )
     ;
   }
-  void login(BuildContext context) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? storedUsername = prefs.getString("username");
-    String? storedPassword = prefs.getString("password");
-    print(storedPassword);
-    print(storedUsername);
-    if (usernameController.text == storedUsername && passwordController.text == storedPassword) {
-      // Navigate to home screen
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage()));
-
-    }
-  }
-}
+//   void login(BuildContext context) async {
+//     SharedPreferences prefs = await SharedPreferences.getInstance();
+//     String? storedUsername = prefs.getString("username");
+//     String? storedPassword = prefs.getString("password");
+//     print(storedPassword);
+//     print(storedUsername);
+//     if (usernameController.text == storedUsername && passwordController.text == storedPassword) {
+//       // Navigate to home screen
+//       Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage()));
+//
+//     }
+//   }
+ }
 

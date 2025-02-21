@@ -1,8 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/before%20start/login.dart';
 import 'package:educationapk/controllers/signupController.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class MySignUpPage extends StatefulWidget {
   @override
@@ -11,8 +12,41 @@ class MySignUpPage extends StatefulWidget {
 class _MySignUpPageState extends State<MySignUpPage> {
   final SignupController controller=Get.put(tag: 'SignupController',SignupController());
   TextEditingController usernameController=TextEditingController();
-  TextEditingController numberController=TextEditingController();
+  TextEditingController nameController=TextEditingController();
   TextEditingController passwordController=TextEditingController();
+
+  Future<void> signUpStudent() async {
+    if (nameController.text.isEmpty ||
+        usernameController.text.isEmpty ||
+        passwordController.text.isEmpty ||
+        selectedValue == null) {
+      print("Please fill in all fields");
+      return;
+    }
+
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+          email: usernameController.text.trim(), // Assuming this is email
+          password: passwordController.text);
+
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userCredential.user!.uid)
+          .set({
+        'email': usernameController.text.trim(),
+        'name': nameController.text.trim(),
+        'branch': selectedValue,
+        'role': 'student',
+      });
+
+      print("Student Signed Up Successfully");
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyLogin()));
+    } catch (e) {
+      print("Error: $e");
+    }
+  }
+
 
   String? selectedValue; // Variable to hold the selected branch
 
@@ -80,7 +114,7 @@ class _MySignUpPageState extends State<MySignUpPage> {
                   ),
                   SizedBox(height: 20,),
                   TextField(
-                    controller: usernameController,
+                    controller: nameController,
                     cursorColor: Colors.black,style: TextStyle( fontFamily: 'nexalight'),
                     decoration: InputDecoration(
                       fillColor: Colors.pink,
@@ -96,11 +130,11 @@ class _MySignUpPageState extends State<MySignUpPage> {
                   ),
                   SizedBox(height: 30,),
                   TextField(
-                    controller: numberController,
+                    controller: usernameController,
                     cursorColor: Colors.black,style: TextStyle( fontFamily: 'nexalight'),
                     decoration: InputDecoration(
                       fillColor: Colors.pink,
-                      hintText: 'Enter your Email or Number',
+                      hintText: 'Enter your Email',
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(35)
                       ),
@@ -132,10 +166,7 @@ class _MySignUpPageState extends State<MySignUpPage> {
                   SizedBox(
                     width: double.infinity, // Full width
                     child: ElevatedButton(
-                      onPressed: () {
-                        signup(context);
-                        // Navigator.pop(context);
-                      },
+                      onPressed: () =>signUpStudent(),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black, // Set background color to black
                         padding: EdgeInsets.symmetric(vertical: 15), // Button height
@@ -215,15 +246,15 @@ class _MySignUpPageState extends State<MySignUpPage> {
     );
   }
 
-  void signup(BuildContext context) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString("username", usernameController.text);
-    await prefs.setString("number", numberController.text);
-    await prefs.setString("password", passwordController.text);
-
-    // Navigate back to login screen
-    Navigator.pop(context);
-  }
+  // void signup(BuildContext context) async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   await prefs.setString("username", usernameController.text);
+  //   await prefs.setString("number", numberController.text);
+  //   await prefs.setString("password", passwordController.text);
+  //
+  //   // Navigate back to login screen
+  //   Navigator.pop(context);
+  // }
 }
 
 

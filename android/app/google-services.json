@@ -12,7 +12,20 @@
           "package_name": "com.example.educationapk"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "990132845704-1lo33nbvheqhbhrelot1lo9joe2qsqge.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.educationapk",
+            "certificate_hash": "a9bafce24129ea6fc02f5db4c90156f6ec50ea18"
+          }
+        },
+        {
+          "client_id": "990132845704-l7j22adt64r1ti16v4abg7ujqjp6ld9m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyByU6O4GGCvNqoZKtrc47fY0CDM7EYZ1tw"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "990132845704-l7j22adt64r1ti16v4abg7ujqjp6ld9m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

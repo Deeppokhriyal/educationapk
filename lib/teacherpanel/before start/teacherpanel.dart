@@ -1,9 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/teacherpanel/before%20start/teacherlogin.dart';
-import 'package:educationapk/teacherpanel/before%20start/teacherotp.dart';
 import 'package:educationapk/controllers/signupController.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Teacherpanel extends StatefulWidget {
   @override
@@ -14,6 +14,48 @@ class _TeacherpanelState extends State<Teacherpanel> {
   final SignupController controller = Get.put(tag: 'SignupController', SignupController());
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+  Future<void> signUpTeacher() async {
+    print("DEBUG: Email: '${usernameController.text.trim()}'");
+    print("DEBUG: Password: '${passwordController.text.trim()}'");
+    print("DEBUG: Selected Branch: '$selectedValue'");
+    print("DEBUG: Selected Post: '$selectedPosts'");
+
+    if (usernameController.text.isEmpty ||
+        passwordController.text.isEmpty ||
+        selectedValue == null ||
+        selectedPosts == null) {
+      print("DEBUG: One or more fields are empty!");
+      return;
+    }
+
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+          email: usernameController.text.trim(),
+          password: passwordController.text.trim(),
+      );
+
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userCredential.user!.uid)
+          .set({
+        'email': usernameController.text.trim(),
+        'branch': selectedValue,
+        'post': selectedPosts,
+        'role': 'teacher',
+      });
+
+      print("DEBUG: Teacher Signed Up Successfully");
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => TeacherLogin()),
+      );
+    } catch (e) {
+      print("DEBUG: Error: $e");
+    }
+  }
+
 
 
   String? selectedPosts;
@@ -120,11 +162,12 @@ class _TeacherpanelState extends State<Teacherpanel> {
                   ),
                   SizedBox(height: 30,),
                   TextField(style: TextStyle( fontFamily: 'nexalight'),
+                    controller: usernameController,
                     cursorColor: Colors.black,
                     obscureText: true,
                     decoration: InputDecoration(
                       fillColor: Colors.grey[100],
-                      hintText: 'Enter your Email or Password',
+                      hintText: 'Enter your Email',
                       border: OutlineInputBorder( // Unfocused border color
                           borderRadius: BorderRadius.circular(35)
                       ),
@@ -155,9 +198,7 @@ class _TeacherpanelState extends State<Teacherpanel> {
                   SizedBox(
                     width: double.infinity, // Full width
                     child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>OtpVerificationPage()));
-                      },
+                      onPressed: () => signUpTeacher(),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green, // Set background color to black
                         padding: EdgeInsets.symmetric(vertical: 15), // Button height
@@ -175,7 +216,7 @@ class _TeacherpanelState extends State<Teacherpanel> {
 
                       InkWell(
                         onTap: (){
-                         Get.to(Teacherlogin());
+                         Get.to(TeacherLogin());
                         },
                         child: Text('Log in',style: TextStyle(color: Colors.green,fontSize: 18),),
                       )
@@ -190,13 +231,13 @@ class _TeacherpanelState extends State<Teacherpanel> {
     );
   }
 
-  void signup(BuildContext context) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString("username", usernameController.text);
-    await prefs.setString("password", passwordController.text);
-
-    // Navigate back to login screen
-    Navigator.pop(context);
-  }
+  // void signup(BuildContext context) async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   await prefs.setString("username", usernameController.text);
+  //   await prefs.setString("password", passwordController.text);
+  //
+  //   // Navigate back to login screen
+  //   Navigator.pop(context);
+  // }
 }
 

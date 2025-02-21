@@ -1,15 +1,74 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/before%20start/signup.dart';
 import 'package:educationapk/teacherpanel/before%20start/teacherpanel.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:educationapk/before%20start/startingpage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class MyLogin extends StatelessWidget {
+class MyLogin extends StatefulWidget {
+  @override
+  _MyLoginState createState() => _MyLoginState();
+}
 
+class _MyLoginState extends State<MyLogin> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  bool isLoading = false;
+  bool isPasswordVisible = false;
+  bool rememberMe = false;
 
+  @override
+  void initState() {
+    super.initState();
+    _loadSavedCredentials();
+  }
+
+  Future<void> _loadSavedCredentials() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      usernameController.text = prefs.getString("username") ?? "";
+      passwordController.text = prefs.getString("password") ?? "";
+      rememberMe = prefs.getBool("rememberMe") ?? false;
+    });
+  }
+
+  Future<void> loginStudent(BuildContext context) async {
+    setState(() => isLoading = true);
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: usernameController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+
+      DocumentSnapshot userDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userCredential.user!.uid)
+          .get();
+
+      if (userDoc.exists && userDoc['role'] == 'student') {
+        if (rememberMe) {
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+          prefs.setString("username", usernameController.text);
+          prefs.setString("password", passwordController.text);
+          prefs.setBool("rememberMe", true);
+        }
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage()));
+      } else {
+        showError("Not a Student Account!");
+      }
+    } catch (e) {
+      showError("Invalid Email or Password");
+    }
+    setState(() => isLoading = false);
+  }
+
+  void showError(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message, style: TextStyle(color: Colors.white)), backgroundColor: Colors.red),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +108,7 @@ class MyLogin extends StatelessWidget {
                                 controller: usernameController,
                                 decoration: InputDecoration(
                                   fillColor: Colors.pink,
-                                  hintText: 'Enter your Email or Number',
+                                  hintText: 'Enter your Email',
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(35)
                                   ),
@@ -63,10 +122,14 @@ class MyLogin extends StatelessWidget {
                               TextField(style: TextStyle( fontFamily: 'nexalight'),
                                 controller: passwordController,
                                 cursorColor: Colors.black,
-                                obscureText: true,
+                                obscureText:!isPasswordVisible,
                                 decoration: InputDecoration(
                                   fillColor: Colors.grey[100],
                                   hintText: 'Enter your Password',
+                                  suffixIcon: IconButton(
+                                    icon: Icon(isPasswordVisible ? Icons.visibility : Icons.visibility_off),
+                                    onPressed: () => setState(() => isPasswordVisible = !isPasswordVisible),
+                                  ),
                                   border: OutlineInputBorder( // Unfocused border color
                                       borderRadius: BorderRadius.circular(35)
                                   ),
@@ -80,18 +143,25 @@ class MyLogin extends StatelessWidget {
                                 padding: EdgeInsets.only(left: 215,top: 20),
                                 child: Text('Forget Password?',style: TextStyle(color: Colors.black,fontSize: 12,fontFamily: 'nexalight'),textAlign: TextAlign.right,)                     ,
                               ),
-
-                              SizedBox(height: 25,),
+                              Row(
+                                children: [
+                                  Checkbox(
+                                    value: rememberMe,
+                                    onChanged: (value) => setState(() => rememberMe = value!),
+                                  ),
+                                  Text("Remember Me")
+                                ],
+                              ),
+                              isLoading
+                                  ? CircularProgressIndicator()
+                              :SizedBox(height: 25,),
                               SizedBox(
                                 height: 50,
                                 width: 450,
                                 child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                     foregroundColor: Colors.black, backgroundColor: Colors.black, // Set the text color here
-                                  ),  onPressed: () {
-                                    login(context);
-                                  // Get.to(()=>MyHomePage());
-                                },
+                                  ),  onPressed: () => loginStudent(context),
                                   child: Text('Login',style: TextStyle(color: Colors.white, fontSize: 16,fontFamily: 'sans-serif-light'),),
                                 ),
                               ),
@@ -178,17 +248,17 @@ class MyLogin extends StatelessWidget {
         )
     ;
   }
-  void login(BuildContext context) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? storedUsername = prefs.getString("username");
-    String? storedPassword = prefs.getString("password");
-    print(storedPassword);
-    print(storedUsername);
-    if (usernameController.text == storedUsername && passwordController.text == storedPassword) {
-      // Navigate to home screen
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage()));
-
-    }
-  }
+  // void login(BuildContext context) async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   String? storedUsername = prefs.getString("username");
+  //   String? storedPassword = prefs.getString("password");
+  //   print(storedPassword);
+  //   print(storedUsername);
+  //   if (usernameController.text == storedUsername && passwordController.text == storedPassword) {
+  //     // Navigate to home screen
+  //     Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage()));
+  //
+  //   }
+  // }
 }
 

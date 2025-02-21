@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/before%20start/signup.dart';
+import 'package:educationapk/teacherpanel/before%20start/teacherotp.dart';
 import 'package:educationapk/teacherpanel/before%20start/teacherpanel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -139,22 +140,30 @@ class _MyLoginState extends State<MyLogin> {
                                   ),
                                 ),
                               ),
-                              Container(
-                                padding: EdgeInsets.only(left: 215,top: 20),
-                                child: Text('Forget Password?',style: TextStyle(color: Colors.black,fontSize: 12,fontFamily: 'nexalight'),textAlign: TextAlign.right,)                     ,
+                              SizedBox(height: 8,),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  GestureDetector(
+                                    onTap: (){
+                                      Get.to(OtpVerificationPage());
+                                    },
+                                      child: Text('Forget Password?',style: TextStyle(color: Colors.black,fontSize: 13,fontFamily: 'nexaheavy'),textAlign: TextAlign.right,)),
+                                ],
                               ),
                               Row(
                                 children: [
                                   Checkbox(
                                     value: rememberMe,
                                     onChanged: (value) => setState(() => rememberMe = value!),
+                                    activeColor: Colors.green,
                                   ),
-                                  Text("Remember Me")
+                                  Text("Remember Me",style: TextStyle(fontFamily: 'nexalight'),)
                                 ],
                               ),
                               isLoading
                                   ? CircularProgressIndicator()
-                              :SizedBox(height: 25,),
+                              :SizedBox(height: 15,),
                               SizedBox(
                                 height: 50,
                                 width: 450,

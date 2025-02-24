@@ -37,6 +37,7 @@ dependencies:
   line_awesome_flutter:
   firebase_core:
   cloud_firestore:
+  intl: ^0.18.1
 
 
 

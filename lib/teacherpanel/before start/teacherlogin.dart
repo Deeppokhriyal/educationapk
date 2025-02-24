@@ -3,6 +3,7 @@ import 'package:educationapk/teacherpanel/homepage.dart';
 import 'package:educationapk/teacherpanel/before%20start/teacherpanel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class TeacherLogin extends StatefulWidget {
   @override
@@ -12,8 +13,25 @@ class TeacherLogin extends StatefulWidget {
 class _TeacherLoginState extends State<TeacherLogin> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
   bool isLoading = false;
   bool isPasswordVisible = false;
+  bool rememberMe = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _SavedCredentials();
+  }
+
+  Future<void> _SavedCredentials() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      usernameController.text = prefs.getString("username") ?? "";
+      passwordController.text = prefs.getString("password") ?? "";
+      rememberMe = prefs.getBool("rememberMe") ?? false;
+    });
+  }
 
   Future<void> loginTeacher(BuildContext context) async {
     setState(() => isLoading = true);
@@ -21,6 +39,7 @@ class _TeacherLoginState extends State<TeacherLogin> {
       UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: usernameController.text.trim(),
         password: passwordController.text.trim(),
+
       );
 
       DocumentSnapshot userDoc = await FirebaseFirestore.instance
@@ -29,6 +48,12 @@ class _TeacherLoginState extends State<TeacherLogin> {
           .get();
 
       if (userDoc.exists && userDoc['role'] == 'teacher') {
+        if (rememberMe) {
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+          prefs.setString("username", usernameController.text);
+          prefs.setString("password", passwordController.text);
+          prefs.setBool("rememberMe", true);
+        }
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => TeacherHome()));
       } else {
         showError("Not a Teacher Account!");
@@ -124,6 +149,16 @@ class _TeacherLoginState extends State<TeacherLogin> {
                           Container(
                             padding: EdgeInsets.only(left: 215,top: 20),
                             child: Text('Forget Password?',style: TextStyle(color: Colors.black,fontSize: 12,fontFamily: 'nexalight'),textAlign: TextAlign.right,)                     ,
+                          ),
+                          Row(
+                            children: [
+                              Checkbox(
+                                value: rememberMe,
+                                onChanged: (value) => setState(() => rememberMe = value!),
+                                activeColor: Colors.green,
+                              ),
+                              Text("Remember Me",style: TextStyle(fontFamily: 'nexalight'),)
+                            ],
                           ),
                           isLoading
                               ? CircularProgressIndicator()

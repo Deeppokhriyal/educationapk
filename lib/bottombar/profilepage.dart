@@ -1,11 +1,43 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/before%20start/login.dart';
 import 'package:educationapk/bottombar/updateprofile.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-class Profilepage extends StatelessWidget {
+class Profilepage extends StatefulWidget {
+
+  @override
+  State<Profilepage> createState() => _ProfilepageState();
+}
+
+class _ProfilepageState extends State<Profilepage> {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  String name = "Loading...";
+  String profileImage = "assets/images/profile.png";
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUserData();
+  }
+
+  void fetchUserData() async {
+    User? user = auth.currentUser;
+    if (user != null) {
+      DocumentSnapshot userData =
+      await firestore.collection("users").doc(user.uid).get();
+      if (userData.exists) {
+        setState(() {
+          name = userData["name"];
+          profileImage = userData["profileImage"];
+        });
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,9 +73,10 @@ class Profilepage extends StatelessWidget {
                                 padding: EdgeInsets.only(left: 140,top: 100),
                                 child: SizedBox(
                                   width: 100, height: 100,
-                                  child: ClipRRect(
-                                      borderRadius:BorderRadius.circular(100) ,
-                                      child: Image (image: AssetImage("assets/images/profile.png",))),
+                                  child:  CircleAvatar(
+                                    radius: 50,
+                                    backgroundImage: NetworkImage(profileImage),
+                                  ),
                                 ),
                               ),
                               Positioned(
@@ -62,9 +95,9 @@ class Profilepage extends StatelessWidget {
                             ]
                         ),
                         SizedBox(height: 10),
-                        Text('Deep',style: TextStyle(fontFamily: 'sans-serif-light',color: Colors.white,fontSize: 20),),
-                        SizedBox(height: 10,),
-                        Text('Information Technology',style: TextStyle(fontFamily: 'sans-serif-thin',color: Colors.white),),
+                        Text(name,style: TextStyle(fontFamily: 'sans-serif-light',color: Colors.white,fontSize: 20),),
+                        // SizedBox(height: 10,),
+                        // Text('Information Technology',style: TextStyle(fontFamily: 'sans-serif-thin',color: Colors.white),),
                         SizedBox(height: 20,),
                         SizedBox(
                             width: 200,

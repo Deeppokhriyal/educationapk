@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/allpage.dart';
 import 'package:educationapk/allpages/programmingpage.dart';
 import 'package:educationapk/bottombar/application.dart';
@@ -8,36 +9,18 @@ import 'package:educationapk/homepagewidgets/eventpage.dart';
 import 'package:educationapk/popupmenu/privacypolicies.dart';
 import 'package:educationapk/popupmenu/termscondition.dart';
 import 'package:educationapk/bottombar/profilepage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 import '../allpages/Study/branches.dart';
 
-class Myhome extends StatefulWidget {
-  const Myhome({super.key});
 
-  @override
-  State<Myhome> createState() => _MyhomeState();
-}
-
-class _MyhomeState extends State<Myhome> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyMainHome(),
-      debugShowCheckedModeBanner: false,
-      title: 'home page',
-    );
-  }
-}
 class MyMainHome extends StatefulWidget {
-  const MyMainHome({super.key});
 
   @override
   State<MyMainHome> createState() => _MyMainHomeState();
+
 }
 
 class _MyMainHomeState extends State<MyMainHome> {
@@ -80,7 +63,34 @@ class _MyMainHomeState extends State<MyMainHome> {
       }
   }
   }
- 
+
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+  String userName = "";
+  String userProfileImage = "";
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUserData();
+  }
+
+  void fetchUserData() async {
+    User? user = auth.currentUser;
+    if (user != null) {
+      DocumentSnapshot userData =
+      await firestore.collection("users").doc(user.uid).get();
+      if (userData.exists) {
+        setState(() {
+          userName = userData["name"];
+          userProfileImage = userData["profileImage"];
+        });
+      }
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -117,12 +127,14 @@ class _MyMainHomeState extends State<MyMainHome> {
                                       CircleAvatar(
                                         backgroundColor: Colors.black12,
                                         radius: 40,
-                                        backgroundImage: AssetImage(
-                                            'assets/images/profile.png'),
+                                        backgroundImage: userProfileImage.isNotEmpty
+                                            ? NetworkImage(userProfileImage)
+                                            : AssetImage('assets/images/profile.png')
+                                        as ImageProvider,
                                       ),
                                       SizedBox(height: 16),
                                       Text(
-                                        'Deepak Pokhriyal',
+                                        userName.isNotEmpty ? userName : "Guest",
                                         style: TextStyle(fontSize: 17, fontFamily:'sans-serif-light'),
                                       ),
                                       SizedBox(height: 6),
@@ -159,8 +171,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                             child: CircleAvatar(
                               backgroundColor: Colors.black12,
                               radius: 20,
-                              backgroundImage: AssetImage(
-                                  'assets/images/profile.png'),
+                              backgroundImage: userProfileImage.isNotEmpty
+                                  ? NetworkImage(userProfileImage)
+                                  : AssetImage('assets/images/profile.png') as ImageProvider,
                             ),
                           ),
                         ),
@@ -171,7 +184,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                               padding: EdgeInsets.only(top: 50),
                               child: Text('Hii Dear,', style: TextStyle(fontSize: 13,fontFamily: 'nexaheavy',fontWeight: FontWeight.bold,color: Colors.white),),
                             ),
-                            Text('Deepak Pokhriyal', style: TextStyle(fontSize: 15,fontFamily: 'nexalight',color:Colors.white),),
+                            Text( userName.isNotEmpty ? userName : "Guest", style: TextStyle(fontSize: 15,fontFamily: 'nexalight',color:Colors.white),),
                           ],
                         ),
                         Container(

@@ -1,4 +1,5 @@
 import 'package:educationapk/bottombar/application.dart';
+import 'package:educationapk/bottombar/history.dart';
 import 'package:educationapk/bottombar/homepage.dart';
 import 'package:educationapk/homepagewidgets/devpage.dart';
 import 'package:educationapk/popupmenu/privacypolicies.dart';
@@ -248,7 +249,7 @@ class _MyMainHomeState extends State<MyMainHome> {
 
                                     child:  GestureDetector(
                                         onTap: (){
-                                          Get.to(()=>Devpage());
+                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Devpage()));
                                         },
                                         child: Column(
                                           children: [
@@ -263,7 +264,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                                   child:
                                                   GestureDetector(
                                                     onTap: (){
-                                                      Get.to(()=>Devpage());
+                                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Devpage()));
                                                     },
                                                     child:
                                                     Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
@@ -381,7 +382,7 @@ class _MyMainHomeState extends State<MyMainHome> {
 
                                     child:  GestureDetector(
                                         onTap: (){
-                                          Get.to(()=>AttendanceScreen());
+                                         Get.to(()=>AttendanceScreen());
                                         },
                                         child: Column(
                                           children: [
@@ -442,9 +443,7 @@ class _MyMainHomeState extends State<MyMainHome> {
 
                                     child:  GestureDetector(
                                         onTap: (){
-                                          print("ftghbjnkml,./");
                                           Get.to(()=>LeaveApplicationsList());
-                                          // Navigator.push(context, MaterialPageRoute(builder: (context)=>LeaveApplicationsList() ));
                                         },
                                         child: Column(
                                           children: [
@@ -509,7 +508,7 @@ class _MyMainHomeState extends State<MyMainHome> {
 
                                     child:  GestureDetector(
                                         onTap: (){
-                                          Get.to(()=>AssignmentsPage());
+                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>AssignmentsPage()));
                                         },
                                         child: Column(
                                           children: [
@@ -570,7 +569,7 @@ class _MyMainHomeState extends State<MyMainHome> {
 
                                     child:  GestureDetector(
                                         onTap: (){
-                                          Get.to(()=>Myhome());
+                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>MyMainHome()));
                                         },
                                         child: Column(
                                           children: [
@@ -647,7 +646,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                               child:
                                               GestureDetector(
                                                 onTap: (){
-                                                  Get.to(()=>SyllabusPage());
+                                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>SyllabusPage()));
                                                 },
                                                 child:
                                                 Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
@@ -698,7 +697,7 @@ class _MyMainHomeState extends State<MyMainHome> {
 
                                     child:  GestureDetector(
                                         onTap: (){
-                                          Get.to(()=>StudentProfilePage());
+                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>StudentProfilePage()));
                                         },
                                         child: Column(
                                           children: [

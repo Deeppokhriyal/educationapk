@@ -86,7 +86,8 @@ class Termscondition extends StatelessWidget {
                 SizedBox(height: 20,),
                 Text('14. Contact Information',style: TextStyle(fontSize: 20,fontFamily: 'sans-serif-light',color: Colors.lightBlueAccent),),
                 SizedBox(height: 10,),
-                Text('-For any questions regarding these Terms and Conditions, please contact us at:\nEmail: support@teamcelestial.com',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 15,color: Colors.white),),
+                Text('-For any questions regarding these Terms and Conditions, please contact us at',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 15,color: Colors.white),),
+                Text('mail : teamcelestialmail.com',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 18,color: Colors.pink),),
                 SizedBox(height: 20,),
 
               ],

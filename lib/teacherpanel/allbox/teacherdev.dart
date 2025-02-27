@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class Devpage extends StatelessWidget {
+class Teacherdev extends StatelessWidget {
   final String url = "https://celestial-deepak.vercel.app/";
 
   void _launchURL() async {
@@ -27,7 +27,7 @@ class Devpage extends StatelessWidget {
                         image: DecorationImage(
                           image: NetworkImage(
                               'https://img.freepik.com/free-photo/abstract-gradient-neon-lights_23-2149279124.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_authors_boost'), // Path to your background image
-                           // image: NetworkImage('https://img.freepik.com/premium-photo/tiles-art-illustration_732004-8.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'),// Path to your background image
+                          // image: NetworkImage('https://img.freepik.com/premium-photo/tiles-art-illustration_732004-8.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'),// Path to your background image
                           fit: BoxFit.cover,
                         ),
                       ),

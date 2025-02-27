@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:educationapk/teacherpanel/homepage.dart';
+import 'package:educationapk/teacherpanel/bottombar/homepage.dart';
 import 'package:educationapk/teacherpanel/before%20start/teacherpanel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +11,8 @@ class TeacherLogin extends StatefulWidget {
 }
 
 class _TeacherLoginState extends State<TeacherLogin> {
-  final TextEditingController usernameController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController teacherusernameController = TextEditingController();
+  final TextEditingController teacherpasswordController = TextEditingController();
 
   bool isLoading = false;
   bool isPasswordVisible = false;
@@ -21,14 +21,14 @@ class _TeacherLoginState extends State<TeacherLogin> {
   @override
   void initState() {
     super.initState();
-    _SavedCredentials();
+    _savedCredentials();
   }
 
-  Future<void> _SavedCredentials() async {
+  Future<void> _savedCredentials() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      usernameController.text = prefs.getString("username") ?? "";
-      passwordController.text = prefs.getString("password") ?? "";
+      teacherusernameController.text = prefs.getString("username") ?? "";
+      teacherpasswordController.text = prefs.getString("password") ?? "";
       rememberMe = prefs.getBool("rememberMe") ?? false;
     });
   }
@@ -37,8 +37,8 @@ class _TeacherLoginState extends State<TeacherLogin> {
     setState(() => isLoading = true);
     try {
       UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: usernameController.text.trim(),
-        password: passwordController.text.trim(),
+        email: teacherusernameController.text.trim(),
+        password: teacherpasswordController.text.trim(),
 
       );
 
@@ -50,8 +50,8 @@ class _TeacherLoginState extends State<TeacherLogin> {
       if (userDoc.exists && userDoc['role'] == 'teacher') {
         if (rememberMe) {
           SharedPreferences prefs = await SharedPreferences.getInstance();
-          prefs.setString("username", usernameController.text);
-          prefs.setString("password", passwordController.text);
+          prefs.setString("username", teacherusernameController.text);
+          prefs.setString("password", teacherpasswordController.text);
           prefs.setBool("rememberMe", true);
         }
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => TeacherHome()));
@@ -111,7 +111,7 @@ class _TeacherLoginState extends State<TeacherLogin> {
                       child: Column(
                         children: [
                           TextField( cursorColor: Colors.black,style: TextStyle( fontFamily: 'nexalight'),
-                            controller: usernameController,
+                            controller: teacherusernameController,
                             decoration: InputDecoration(
                               fillColor: Colors.pink,
                               hintText: 'Enter your Email',
@@ -126,7 +126,7 @@ class _TeacherLoginState extends State<TeacherLogin> {
                           ),
                           SizedBox(height: 30,),
                           TextField(style: TextStyle( fontFamily: 'nexalight'),
-                            controller: passwordController,
+                            controller: teacherpasswordController,
                             cursorColor: Colors.black,
                             obscureText:!isPasswordVisible,
                             decoration: InputDecoration(

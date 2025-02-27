@@ -14,7 +14,7 @@ class _SecondyearState extends State<Secondyear> {
     {"rollNo": "2", "name": "Megha Bahukhandi"},
     {"rollNo": "3", "name": "Kavita"},
     {"rollNo": "4", "name": "Vishal Kumar"},
-    {"rollNo": "5", "name": "Dheerak Joshi"},
+    {"rollNo": "5", "name": "Dheeraj Joshi"},
     {"rollNo": "6", "name": "Himanshu Chauhan"},
     {"rollNo": "7", "name": "Jyoti Rani"},
     {"rollNo": "8", "name": "Krishna Kanhaiya Joshi"},
@@ -111,7 +111,7 @@ class _SecondyearState extends State<Secondyear> {
     String today = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent[100],
+      backgroundColor: Colors.green[200],
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
         title: Text("Today's Date : $today",style: TextStyle(fontFamily: 'nexaheavy',fontSize: 20),), // Show current date

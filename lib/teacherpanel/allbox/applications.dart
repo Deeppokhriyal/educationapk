@@ -2,16 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-
-import '../homepage.dart';
+import '../bottombar/homepage.dart';
 
 class LeaveApplicationsList extends StatefulWidget {
   @override
   _LeaveApplicationsListState createState() => _LeaveApplicationsListState();
 }
 
-class _LeaveApplicationsListState
-    extends State<LeaveApplicationsList> {
+class _LeaveApplicationsListState extends State<LeaveApplicationsList> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   @override
@@ -37,7 +35,6 @@ class _LeaveApplicationsListState
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Center(child: CircularProgressIndicator());
                   }
-
                   if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
                     return Center(
                       child: Column(
@@ -108,12 +105,26 @@ class _LeaveApplicationsListState
                         margin:
                             EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                         child: ListTile(
-                          title: Text("Submitted By: ${data['submitBy']}",style: TextStyle(fontFamily: 'nexaheavy',color: Colors.black,fontSize: 18),),
+                          title: Text(
+                            "Submitted By: ${data['submitBy']}",
+                            style: TextStyle(
+                                fontFamily: 'nexaheavy',
+                                color: Colors.black,
+                                fontSize: 18),
+                          ),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("Leave Date: ${data['leaveDate']}",style: TextStyle(fontFamily: 'nexalight',color: Colors.lightBlueAccent,fontSize: 16)),
-                              Text("Reason: ${data['leaveReason']}",style: TextStyle(fontFamily: 'nexalight',color: Colors.lightBlueAccent,fontSize: 16)),
+                              Text("Leave Date: ${data['leaveDate']}",
+                                  style: TextStyle(
+                                      fontFamily: 'nexalight',
+                                      color: Colors.lightBlueAccent,
+                                      fontSize: 16)),
+                              Text("Reason: ${data['leaveReason']}",
+                                  style: TextStyle(
+                                      fontFamily: 'nexalight',
+                                      color: Colors.lightBlueAccent,
+                                      fontSize: 16)),
                             ],
                           ),
                         ),
@@ -125,6 +136,6 @@ class _LeaveApplicationsListState
             )
           ],
         )
-        );
+    );
   }
 }

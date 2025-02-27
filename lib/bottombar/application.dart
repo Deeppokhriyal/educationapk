@@ -150,7 +150,7 @@ class _LeaveApplicationState extends State<LeaveApplication> {
                               controller: _submitByController,
                               style: TextStyle(color: Colors.white),
                               decoration: InputDecoration(
-                                labelText: 'Submit to',
+                                labelText: 'Submit by',
                                 labelStyle: TextStyle(color: Colors.white,fontFamily: 'nexalight'),
                               ),
                               validator: (value) => value!.isEmpty ? 'Enter the Submission to' : null,

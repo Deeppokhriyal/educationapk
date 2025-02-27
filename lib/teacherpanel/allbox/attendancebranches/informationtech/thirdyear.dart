@@ -77,7 +77,7 @@ class _ThirdyearState extends State<Thirdyear> {
       attendanceStatus[studentRollNo] = status;
     });
 
-    await prefs.setString("attendance_third_1${studentRollNo}_$today", status);
+    await prefs.setString("attendance_third_${studentRollNo}_$today", status);
 
     Get.snackbar(
       "Attendance",
@@ -110,7 +110,7 @@ class _ThirdyearState extends State<Thirdyear> {
     String today = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent[100],
+      backgroundColor: Colors.green[200],
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
         title: Text("Today's Date : $today",style: TextStyle(fontFamily: 'nexaheavy',fontSize: 20),), // Show current date

@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/allpage.dart';
+import 'package:educationapk/allpages/attendance.dart';
 import 'package:educationapk/allpages/programmingpage.dart';
+import 'package:educationapk/bottombar/alarmscheduler.dart';
 import 'package:educationapk/bottombar/application.dart';
 import 'package:educationapk/homepagewidgets/collegeinfo.dart';
 import 'package:educationapk/homepagewidgets/devpage.dart';
@@ -11,6 +13,8 @@ import 'package:educationapk/popupmenu/termscondition.dart';
 import 'package:educationapk/bottombar/profilepage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 import '../allpages/Study/branches.dart';
@@ -45,6 +49,12 @@ class _MyMainHomeState extends State<MyMainHome> {
     case 0:
       break;
     case 1:
+      if (_selectedIndex == index) {
+        _tapCount++;
+        if(_tapCount==2){Navigator.push(
+            context, MaterialPageRoute(builder: (context) => AlarmScheduler()));
+        _tapCount = 0;}
+      }
       break;
     case 2:
       if (_selectedIndex == index) {
@@ -58,7 +68,7 @@ class _MyMainHomeState extends State<MyMainHome> {
       if (_selectedIndex == index) {
         _tapCount++;
         if(_tapCount==2){Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Profilepage()));
+          context, MaterialPageRoute(builder: (context) => ProfilePage()));
           _tapCount = 0;}
       }
   }
@@ -69,6 +79,8 @@ class _MyMainHomeState extends State<MyMainHome> {
 
   String userName = "";
   String userProfileImage = "";
+  String userBio = "";
+  String userBranch = "";
 
   @override
   void initState() {
@@ -85,6 +97,8 @@ class _MyMainHomeState extends State<MyMainHome> {
         setState(() {
           userName = userData["name"];
           userProfileImage = userData["profileImage"];
+          userBio = userData["bio"];
+          userBranch = userData["branch"];
         });
       }
     }
@@ -101,7 +115,7 @@ class _MyMainHomeState extends State<MyMainHome> {
               Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: NetworkImage('https://img.freepik.com/premium-photo/gradient-color-background-colorful-vibrant-colors-multicolored-bright-colors-radiant-spectrum_955379-14351.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
+                    image: NetworkImage('https://img.freepik.com/free-vector/dark-blue-blurred-background_1034-589.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -115,13 +129,14 @@ class _MyMainHomeState extends State<MyMainHome> {
                             showDialog(
                               context: context,
                               builder: (context) => Dialog(
-                                backgroundColor: Colors.white,
+                                backgroundColor: Colors.teal[100],
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(25),
+                                  borderRadius: BorderRadius.circular(50),
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.all(15.0),
                                   child: Column(
+
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       CircleAvatar(
@@ -134,18 +149,22 @@ class _MyMainHomeState extends State<MyMainHome> {
                                       ),
                                       SizedBox(height: 16),
                                       Text(
-                                        userName.isNotEmpty ? userName : "Guest",
-                                        style: TextStyle(fontSize: 17, fontFamily:'sans-serif-light'),
+                                        userName.isNotEmpty ? userName : "name",
+                                        style: TextStyle(fontSize: 17, fontFamily:'nexaheavy'),
                                       ),
                                       SizedBox(height: 6),
                                       Text(
-                                        'I.T. 3rd Year',
-                                        style: TextStyle(color: Colors.black,fontFamily: 'sans-serif-thin'),
+                                        userBio.isNotEmpty ? userBio : "bio",
+                                        style: TextStyle(color: Colors.black,fontFamily: 'nexalight'),
+                                      ),SizedBox(height: 6),
+                                      Text(
+                                        userBranch.isNotEmpty ? userBranch : "branch",
+                                        style: TextStyle(color: Colors.black,fontFamily: 'nexalight'),
                                       ),
                                       SizedBox(height: 6),
                                       Text(
                                         'Govt. Polytechnic Kashipur',
-                                        style: TextStyle(color: Colors.black,fontFamily: 'sans-serif-thin'),
+                                        style: TextStyle(color: Colors.black,fontFamily: 'nexaheavy'),
                                       ),
                                       SizedBox(height: 25),
                                       Row(
@@ -184,7 +203,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                               padding: EdgeInsets.only(top: 50),
                               child: Text('Hii Dear,', style: TextStyle(fontSize: 13,fontFamily: 'nexaheavy',fontWeight: FontWeight.bold,color: Colors.white),),
                             ),
-                            Text( userName.isNotEmpty ? userName : "Guest", style: TextStyle(fontSize: 15,fontFamily: 'nexalight',color:Colors.white),),
+                            Text( userName.isNotEmpty ? userName : "User", style: TextStyle(fontSize: 15,fontFamily: 'nexalight',color:Colors.white),),
                           ],
                         ),
                         Container(
@@ -278,23 +297,27 @@ class _MyMainHomeState extends State<MyMainHome> {
                                           context,
                                           MaterialPageRoute(builder: (context) => MainScrollPage()),
                                         );
+                                      }if (listName[index] == "Attendance") {
+                                        Get.to(()=> AttendancePage()
+                                        );
+                                      }if (listName[index] == "Branches") {
+                                        Get.to(()=>MainScrollPage()
+                                        );
                                       }
                                       if (listName[index] == "Study") {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (context) =>Branches()),
+                                        Get.to(()=>Branches()
                                         );
                                       }
                                       if (listName[index] == "Programming") {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (context) => programmingpage()),
+                                        Get.to(()=>programmingpage()
                                         );
                                       }
                                       if (listName[index] == "Map") {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (context) => MyMap()),
+                                        Get.to(()=>MyMap()
+                                        );
+                                      }
+                                      if (listName[index] == "Hostels") {
+                                       Get.to(()=>MyMap()
                                         );
                                       }
 

@@ -293,9 +293,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                   child: GestureDetector(
                                     onTap: () {
                                       if (listName[index] == "All") {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (context) => MainScrollPage()),
+                                        Get.to(()=> MainScrollPage()
                                         );
                                       }if (listName[index] == "Attendance") {
                                         Get.to(()=> AttendancePage()
@@ -363,14 +361,23 @@ class _MyMainHomeState extends State<MyMainHome> {
                           Container(
 
                             padding: EdgeInsets.all(10),
-                            margin: EdgeInsets.only(left: 10),
+                            margin: EdgeInsets.only(left: 15),
                             height: 200,
                             width: 190,
                             decoration:
                             BoxDecoration(
-                              color: Colors.purple[200], // Background color
+                              color: Color(0xFF00BFA6),
+                              // color: Colors.purple[200], // Background color
                               // color: Color(0xCCCCCCFF), // Background color
                               borderRadius: BorderRadius.circular(25),// Rounded corners
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0xFF00BFA6).withOpacity(0.5), // Shadow Color
+                                  spreadRadius: 3, // Spread (Kitna failaaye)
+                                  blurRadius: 10, // Blur (Kitna soft ho)
+                                  offset: Offset(0, 4), // Shadow ka direction (X, Y)
+                                ),
+                              ],
                             ),
 
                             child:  GestureDetector(
@@ -431,14 +438,23 @@ class _MyMainHomeState extends State<MyMainHome> {
                           Container(
 
                               padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.only(left: 8),
+                              margin: EdgeInsets.all(15),
                               height: 200,
                               width: 155,
                               decoration:
                               BoxDecoration(
-                                color: Colors.greenAccent, // Background color
-                                // color: Color(0xbbbefed1), // Background color
+                                // color: Color(0xFFFFC107),
+                                // color: Colors.greenAccent, // Background color
+                                color: Color(0xFFFFAB91), // Background color
                                 borderRadius: BorderRadius.circular(25),// Rounded corners
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color(0xFFFFAB91).withOpacity(0.5), // Shadow Color
+                                    spreadRadius: 3, // Spread (Kitna failaaye)
+                                    blurRadius: 10, // Blur (Kitna soft ho)
+                                    offset: Offset(0, 4), // Shadow ka direction (X, Y)
+                                  ),
+                                ],
                               ),
 
                               child: Column(
@@ -475,13 +491,23 @@ class _MyMainHomeState extends State<MyMainHome> {
                           Container(
 
                             padding: EdgeInsets.all(10),
-                            margin: EdgeInsets.only(left: 8),
+                            margin: EdgeInsets.only(right: 15),
                             height: 200,
                             width: 190,
                             decoration:
                             BoxDecoration(
-                              color: Colors.blueAccent[200], // Background color
-                              borderRadius: BorderRadius.circular(25),// Rounded corners
+                              color: Color(0xFF90CAF9), // Background color
+                              // color: Colors.blueAccent[200], // Background color
+                              borderRadius: BorderRadius.circular(25),
+                              // Rounded corners
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0xFF90CAF9).withOpacity(0.5), // Shadow Color
+                                  spreadRadius: 3, // Spread (Kitna failaaye)
+                                  blurRadius: 10, // Blur (Kitna soft ho)
+                                  offset: Offset(0, 4), // Shadow ka direction (X, Y)
+                                ),
+                              ],
                             ),
 
                             child:  GestureDetector(
@@ -540,13 +566,22 @@ class _MyMainHomeState extends State<MyMainHome> {
                     Container(
 
                         padding: EdgeInsets.all(15),
-                        margin: EdgeInsets.only(left: 10,top: 15),
+                        margin: EdgeInsets.all( 15),
                         height: 190,
                         width: 385,
                         decoration:
                         BoxDecoration(
-                          color: Color(0xfffebee3), // Background color
-                          borderRadius: BorderRadius.circular(30),// Rounded corners
+                          color: Color(0xFFCE93D8),// Background color
+                          // color: Color(0xfffebee3), // Background color
+                          borderRadius: BorderRadius.circular(30),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0xFFCE93D8).withOpacity(0.5), // Shadow Color
+                              spreadRadius: 3, // Spread (Kitna failaaye)
+                              blurRadius: 10, // Blur (Kitna soft ho)
+                              offset: Offset(0, 4), // Shadow ka direction (X, Y)
+                            ),
+                          ],// Rounded corners
 
                         ),
 
@@ -588,7 +623,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text(' 9 Branches',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
+                                      Text('9 Branches',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
                                       Text('Engineering',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 16),),
                                       Text('Pharmacy',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 13),),
                                     ],

@@ -1,6 +1,9 @@
+import 'package:educationapk/bottombar/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 FlutterLocalNotificationsPlugin();
@@ -121,22 +124,43 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Scheduler",
-          style: TextStyle(fontFamily: 'nexaheavy', fontSize: 28),
+      body:
+Stack(
+  children: [
+    Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: NetworkImage('https://img.freepik.com/premium-photo/blur-colorful-background-gradient-blurred-colorful-with-grain-noise-effect_558873-4565.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
+          fit: BoxFit.cover,
         ),
       ),
-      body: Padding(
+      child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
+
+            SizedBox(height: 20,),
+            Row(
+              children: [
+                GestureDetector(
+                    onTap: () {
+                      Get.offAll(()=>MyMainHome());
+                    },
+                    child: Icon(Icons.arrow_back,size: 35,)),
+                SizedBox(width: 30,),
+                Text(
+                  "Task's Scheduler",
+                  style: TextStyle(fontFamily: 'nexaheavy', fontSize: 28),
+                ),
+              ],
+            ),
+            SizedBox(height: 20,),
             TextField(
               style: const TextStyle(fontFamily: 'nexalight',fontSize: 20),
               controller: descriptionController,
               decoration: const InputDecoration(
                 labelText: "Create your Own Task",
-                labelStyle: TextStyle(fontFamily: 'nexaheavy', color: Colors.blue,fontSize: 18),
+                labelStyle: TextStyle(fontFamily: 'nexaheavy', color: Colors.blue,fontSize: 19),
                 focusedBorder: UnderlineInputBorder( // Blue underline when focused
                   borderSide: BorderSide(color: Colors.blue, width: 2.0),
                 ),
@@ -158,17 +182,17 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
             const SizedBox(height: 30),
             Text(
               selectedTime != null
-                  ? "Selected Time: ${selectedTime!.format(context)}"
+                  ? "Selected Time = ${selectedTime!.format(context)}"
                   : "Selected Time = _ _ : _ _",
-              style: const TextStyle(fontFamily: 'nexalight',fontSize: 16),
+              style: const TextStyle(fontFamily: 'nexalight',fontSize: 18),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 40),
             ElevatedButton(
               onPressed: _addTask,
               child: const Text(
                 "Add Task",
                 style: TextStyle(
-                    fontFamily: 'nexaheavy', fontSize: 18, color: Colors.blue),
+                    fontFamily: 'nexaheavy', fontSize: 20, color: Colors.blue),
               ),
             ),
             const SizedBox(height: 40),
@@ -198,6 +222,9 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
           ],
         ),
       ),
+    ),
+  ],
+)
     );
   }
 }

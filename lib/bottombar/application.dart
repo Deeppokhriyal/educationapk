@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/bottombar/history.dart';
 import 'package:flutter/material.dart';
@@ -101,106 +102,109 @@ class _LeaveApplicationState extends State<LeaveApplication> {
             ),
             child: Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  SizedBox(height: 40),
-                  Row(children: [
-                    IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: Icon(Icons.arrow_back_ios, color: Colors.white),
-                    ),
-                    Text(
-                      ' Leave Application',
-                      style: TextStyle(fontFamily: 'nexalight', fontSize: 24, color: Colors.white),
-                    ),
-                  ]),
-                  SizedBox(height: 20),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: Form(
-                        key: _formKey, // ✅ Wrap Form with _formKey
-                        child: Column(
-                          children: [
-                            DropdownButtonFormField<String>(
+              child: SlideInUp(
+                duration: Duration(milliseconds: 400),
+                child: Column(
+                  children: [
+                    SizedBox(height: 40),
+                    Row(children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+                      ),
+                      Text(
+                        ' Leave Application',
+                        style: TextStyle(fontFamily: 'nexalight', fontSize: 24, color: Colors.white),
+                      ),
+                    ]),
+                    SizedBox(height: 20),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Form(
+                          key: _formKey, // ✅ Wrap Form with _formKey
+                          child: Column(
+                            children: [
+                              DropdownButtonFormField<String>(
 
-                              decoration: InputDecoration(
-                                labelText: 'Select Your Branch',
-                                labelStyle: TextStyle(color: Colors.white,fontFamily: 'nexalight'),
+                                decoration: InputDecoration(
+                                  labelText: 'Select Your Branch',
+                                  labelStyle: TextStyle(color: Colors.white,fontFamily: 'nexalight'),
+                                ),
+                                style: TextStyle(color: Colors.purple, fontSize: 20,fontFamily: 'nexalight'),
+                                borderRadius: BorderRadius.circular(40),
+                                value: selectedValue,
+                                items: items.map((String item) {
+                                  return DropdownMenuItem<String>(
+                                    value: item,
+                                    child: Text(item),
+                                  );
+                                }).toList(),
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    selectedValue = newValue;
+                                  });
+                                },
+                                validator: (value) => value == null ? 'Please select your branch' : null,
                               ),
-                              style: TextStyle(color: Colors.purple, fontSize: 20,fontFamily: 'nexalight'),
-                              borderRadius: BorderRadius.circular(40),
-                              value: selectedValue,
-                              items: items.map((String item) {
-                                return DropdownMenuItem<String>(
-                                  value: item,
-                                  child: Text(item),
-                                );
-                              }).toList(),
-                              onChanged: (String? newValue) {
-                                setState(() {
-                                  selectedValue = newValue;
-                                });
-                              },
-                              validator: (value) => value == null ? 'Please select your branch' : null,
-                            ),
-                            SizedBox(height: 20),
-                            TextFormField(
-                              controller: _submitByController,
-                              style: TextStyle(color: Colors.white),
-                              decoration: InputDecoration(
-                                labelText: 'Submit by',
-                                labelStyle: TextStyle(color: Colors.white,fontFamily: 'nexalight'),
+                              SizedBox(height: 20),
+                              TextFormField(
+                                controller: _submitByController,
+                                style: TextStyle(color: Colors.white),
+                                decoration: InputDecoration(
+                                  labelText: 'Submit by',
+                                  labelStyle: TextStyle(color: Colors.white,fontFamily: 'nexalight'),
+                                ),
+                                validator: (value) => value!.isEmpty ? 'Enter the Submission to' : null,
                               ),
-                              validator: (value) => value!.isEmpty ? 'Enter the Submission to' : null,
-                            ),
-                            SizedBox(height: 20),
-                            TextFormField(
-                              controller: _leaveDateController,
-                              style: TextStyle(color: Colors.white),
-                              readOnly: true, // Prevent keyboard pop-up
-                              onTap: _pickDate, // ✅ Open date picker on tap
-                              decoration: InputDecoration(
-                                labelText: 'Leave Date',
-                                labelStyle: TextStyle(color: Colors.white,fontFamily: 'nexalight'),
-                                suffixIcon: Icon(Icons.calendar_today, color: Colors.white),
+                              SizedBox(height: 20),
+                              TextFormField(
+                                controller: _leaveDateController,
+                                style: TextStyle(color: Colors.white),
+                                readOnly: true, // Prevent keyboard pop-up
+                                onTap: _pickDate, // ✅ Open date picker on tap
+                                decoration: InputDecoration(
+                                  labelText: 'Leave Date',
+                                  labelStyle: TextStyle(color: Colors.white,fontFamily: 'nexalight'),
+                                  suffixIcon: Icon(Icons.calendar_today, color: Colors.white),
+                                ),
+                                validator: (value) => value!.isEmpty ? 'Enter a valid leave date' : null,
                               ),
-                              validator: (value) => value!.isEmpty ? 'Enter a valid leave date' : null,
-                            ),
-                            SizedBox(height: 30),
-                            TextFormField(
-                              controller: _leaveReasonController,
-                              style: TextStyle(color: Colors.white),
-                              decoration: InputDecoration(
-                                labelText: 'Reason',
-                                labelStyle: TextStyle(color: Colors.white,fontFamily: 'nexalight'),
-                                hintText: 'Enter your reason for application',
-                                contentPadding: EdgeInsets.symmetric(vertical: 60.0, horizontal: 10.0),
-                                hintStyle: TextStyle(color: Colors.white54, fontSize: 15),
-                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(35)),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.blue),
-                                  borderRadius: BorderRadius.circular(35),
+                              SizedBox(height: 30),
+                              TextFormField(
+                                controller: _leaveReasonController,
+                                style: TextStyle(color: Colors.white),
+                                decoration: InputDecoration(
+                                  labelText: 'Reason',
+                                  labelStyle: TextStyle(color: Colors.white,fontFamily: 'nexalight'),
+                                  hintText: 'Enter your reason for application',
+                                  contentPadding: EdgeInsets.symmetric(vertical: 60.0, horizontal: 10.0),
+                                  hintStyle: TextStyle(color: Colors.white54, fontSize: 15),
+                                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(35)),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.blue),
+                                    borderRadius: BorderRadius.circular(35),
+                                  ),
+                                ),
+                                maxLines: 3,
+                                validator: (value) => value!.isEmpty ? 'Enter a reason for application' : null,
+                              ),
+                              SizedBox(height: 20),
+                              ElevatedButton(
+                                onPressed: submitLeaveApplication,
+                                child: Text(
+                                  'Submit',
+                                  style: TextStyle(fontFamily: 'nexaheavy', fontSize: 20, color: Colors.blue),
                                 ),
                               ),
-                              maxLines: 3,
-                              validator: (value) => value!.isEmpty ? 'Enter a reason for application' : null,
-                            ),
-                            SizedBox(height: 20),
-                            ElevatedButton(
-                              onPressed: submitLeaveApplication,
-                              child: Text(
-                                'Submit',
-                                style: TextStyle(fontFamily: 'nexaheavy', fontSize: 20, color: Colors.blue),
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),
@@ -210,9 +214,11 @@ class _LeaveApplicationState extends State<LeaveApplication> {
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) => ApplicationHistory()));
         },
-        child: Icon(Icons.history, color: Colors.purpleAccent, size: 33),
         tooltip: 'History',
         backgroundColor: Colors.white,
+        child: SlideInDown(
+            duration: Duration(milliseconds: 500),
+            child: Icon(Icons.history, color: Colors.purpleAccent, size: 33)),
       ),
     );
   }

@@ -1,7 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Secondyear extends StatefulWidget {
   @override
@@ -9,100 +8,66 @@ class Secondyear extends StatefulWidget {
 }
 
 class _SecondyearState extends State<Secondyear> {
-  final List<Map<String, String>> students = [
-    {"rollNo": "1", "name": "Prakash Singh"},
-    {"rollNo": "2", "name": "Megha Bahukhandi"},
-    {"rollNo": "3", "name": "Kavita"},
-    {"rollNo": "4", "name": "Vishal Kumar"},
-    {"rollNo": "5", "name": "Dheeraj Joshi"},
-    {"rollNo": "6", "name": "Himanshu Chauhan"},
-    {"rollNo": "7", "name": "Jyoti Rani"},
-    {"rollNo": "8", "name": "Krishna Kanhaiya Joshi"},
-    {"rollNo": "9", "name": "Lakshita Sharma"},
-    {"rollNo": "10", "name": "Mayank Singh"},
-    {"rollNo": "11", "name": "Rahul Singh Bisht"},
-    {"rollNo": "12", "name": "Aman Diktiya"},
-    {"rollNo": "13", "name": "Amit Negi"},
-    {"rollNo": "14", "name": "Vinita"},
-    {"rollNo": "15", "name": "Tanish Negi"},
-    {"rollNo": "17", "name": "Harsh Bhatt"},
-    {"rollNo": "16", "name": "Himanshu Rawat"},
-    {"rollNo": "18", "name": "Rahul Singh Rawat"},
-    {"rollNo": "19", "name": "Rajat"},
-    {"rollNo": "20", "name": "Saloni Das"},
-    {"rollNo": "21", "name": "Saurabh Singh"},
-    {"rollNo": "22", "name": "Payal Negi"},
-    {"rollNo": "23", "name": "Rahul Chandra"},
-    {"rollNo": "24", "name": "Shivank"},
-    {"rollNo": "25", "name": "Abhishek Kashyap"},
-    {"rollNo": "26", "name": "Paras Kumar"},
-    {"rollNo": "27", "name": "Jyoti Sanwal"},
-    {"rollNo": "28", "name": "Aarti Mehra"},
-    {"rollNo": "29", "name": "Amit Bisht"},
-    {"rollNo": "30", "name": "Gaurav Rawat"},
-    {"rollNo": "31", "name": "Harsh Ghai"},
-    {"rollNo": "32", "name": "Krishna Pal"},
-    {"rollNo": "33", "name": "Lalit Kumar"},
-    {"rollNo": "34", "name": "Pankaj Kumar"},
-    {"rollNo": "35", "name": "Pinky"},
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  // ✅ Ensured "id" values are correctly formatted and displayed
+  List<Map<String, dynamic>> students = [
+    {"id": 1, "name": "Prakash Singh", 'status': 'Absent'},
+    {"id": 2, "name": "Megha Bahukhandi", 'status': 'Absent'},
+    {"id": 3, "name": "Kavita", 'status': 'Absent'},
+    {"id": 4, "name": "Vishal Kumar", 'status': 'Absent'},
+    {"id": 5, "name": "Dheeraj Joshi", 'status': 'Absent'},
+    {"id": 6, "name": "Himanshu Chauhan", 'status': 'Absent'},
+    {"id": 7, "name": "Jyoti Rani", 'status': 'Absent'},
+    {"id": 8, "name": "Kanhaiya Joshi", 'status': 'Absent'},
+    {"id": 9, "name": "Lakshita Sharma", 'status': 'Absent'},
+    {"id": 10, "name": "Mayank Singh", 'status': 'Absent'},
+    {"id": 11, "name": "Rahul Singh Bisht", 'status': 'Absent'},
+    {"id": 12, "name": "Aman Diktiya", 'status': 'Absent'},
+    {"id": 13, "name": "Amit Negi", 'status': 'Absent'},
+    {"id": 14, "name": "Vinita", 'status': 'Absent'},
+    {"id": 15, "name": "Tanish Negi", 'status': 'Absent'},
+    {"id": 16, "name": "Himanshu Rawat", 'status': 'Absent'},
+    {"id": 17, "name": "Harsh Bhatt", 'status': 'Absent'},
+    {"id": 18, "name": "Rahul Singh Rawat", 'status': 'Absent'},
+    {"id": 19, "name": "Rajat", 'status': 'Absent'},
+    {"id": 20, "name": "Saloni Das", 'status': 'Absent'},
+    {"id": 21, "name": "Saurabh Singh", 'status': 'Absent'},
+    {"id": 22, "name": "Payal Negi", 'status': 'Absent'},
+    {"id": 23, "name": "Rahul Chandra", 'status': 'Absent'},
+    {"id": 24, "name": "Shivank", 'status': 'Absent'},
+    {"id": 25, "name": "Abhishek Kashyap", 'status': 'Absent'},
+    {"id": 26, "name": "Paras Kumar", 'status': 'Absent'},
+    {"id": 27, "name": "Jyoti Sanwal", 'status': 'Absent'},
+    {"id": 28, "name": "Aarti Mehra", 'status': 'Absent'},
+    {"id": 29, "name": "Amit Bisht", 'status': 'Absent'},
+    {"id": 30, "name": "Gaurav Rawat", 'status': 'Absent'},
+    {"id": 31, "name": "Harsh Ghai", 'status': 'Absent'},
+    {"id": 32, "name": "Krishna Pal", 'status': 'Absent'},
+    {"id": 33, "name": "Lalit Kumar", 'status': 'Absent'},
+    {"id": 34, "name": "Pankaj Kumar", 'status': 'Absent'},
+    {"id": 35, "name": "Pinky", 'status': 'Absent'},
   ];
 
-  Map<String, String> attendanceStatus = {}; // Store attendance per student
 
-  @override
-  void initState() {
-    super.initState();
-    loadAttendanceData();
-  }
+  // Function to update attendance in Firestore
+  Future<void> markAttendance() async {
+    String todayDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
-// Load saved attendance from SharedPreferences
-  Future<void> loadAttendanceData() async {
-    final prefs = await SharedPreferences.getInstance();
-    String today = DateFormat('yyyy-MM-dd').format(DateTime.now());
+    List<Map<String, dynamic>> attendanceList = students.map((student) {
+      return {
+        "id": student['id'],
+        "name": student['name'],
+        "status": student['status']
+      };
+    }).toList();
 
-    setState(() {
-      for (var student in students) {
-        String key = "attendance_second_${student['rollNo']}_$today";
-        attendanceStatus[student['rollNo']!] =
-            prefs.getString(key) ?? "Not Marked";
-      }
-    });
-  }
-
-// Save attendance data with the date
-  Future<void> markAttendance(String studentRollNo, String status) async {
-    final prefs = await SharedPreferences.getInstance();
-    String today = DateFormat('yyyy-MM-dd').format(DateTime.now());
-
-    setState(() {
-      attendanceStatus[studentRollNo] = status;
+    await _firestore.collection("attendance2ndyear").doc(todayDate).set({
+      "attendance": attendanceList,
     });
 
-    await prefs.setString("attendance_second_${studentRollNo}_$today", status);
-
-    Get.snackbar(
-      "Attendance",
-      "Student $studentRollNo is marked $status",
-      backgroundColor: status == "Present" ? Colors.green : Colors.red,
-      colorText: Colors.white,
-      snackPosition: SnackPosition.TOP,
-      titleText: Text(
-        "Attendance",
-        style: TextStyle(
-          fontFamily: 'NexaLight',
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
-        ),
-      ),
-      messageText: Text(
-        "Roll no. $studentRollNo is $status in $today",
-        style: TextStyle(
-          fontFamily: 'NexaLight',
-          fontSize: 14,
-          color: Colors.white,
-        ),
-      ),
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text("Attendance saved successfully!")),
     );
   }
 
@@ -111,80 +76,91 @@ class _SecondyearState extends State<Secondyear> {
     String today = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
     return Scaffold(
-      backgroundColor: Colors.green[200],
+      backgroundColor: Colors.green[100],
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
-        title: Text("Today's Date : $today",style: TextStyle(fontFamily: 'nexaheavy',fontSize: 20),), // Show current date
+        title: Text("Today's Date: $today", style: TextStyle(fontFamily: 'nexaheavy', fontSize: 20)),
       ),
-      body: ListView.builder(
-        padding: EdgeInsets.all(10),
-        itemCount: students.length,
-        itemBuilder: (context, index) {
-          final student = students[index];
-          String status = attendanceStatus[student["rollNo"]!] ?? "Not Marked";
-
-          return Card(
-            elevation: 10,
-            margin: EdgeInsets.symmetric(vertical: 8),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(40),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    "${student["rollNo"]}. ${student["name"]!}",
-                    style: TextStyle(
-                      fontFamily: 'Nexaheavy',
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-
-                    ),
+      body:
+      Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: students.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  margin: EdgeInsets.symmetric(horizontal: 15, vertical: 6),
+                  padding: EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: Colors.black, width: 1),
+                    borderRadius: BorderRadius.circular(45),
                   ),
-                  SizedBox(height: 10),
-                  Text(
-                    "Status: $status",
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: status == "Present"
-                          ? Colors.green
-                          : status == "Absent"
-                              ? Colors.red
-                              : Colors.grey,
-                      fontWeight: FontWeight.bold,
-                        fontFamily: 'nexalight'
-
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          markAttendance(student["rollNo"]!, "Present");
-                        },
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.green),
-                        child: Text("Present",style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white),),
+                      // ✅ Ensure ID is properly converted to string before displaying
+                      Text(
+                        "${students[index]['id'].toString()}. ${students[index]['name']}",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'nexaheavy',
+                          color: students[index]['status'] == 'Present'
+                              ? Colors.green
+                              : students[index]['status'] == 'Absent'
+                              ? Colors.red
+                              : Colors.black, // ✅ Default to black if no selection
+                        ),
                       ),
-                      ElevatedButton(
-                        onPressed: () {
-                          markAttendance(student["rollNo"]!, "Absent");
+
+                      // ✅ Dropdown for attendance selection
+                      DropdownButton<String>(
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontFamily: 'nexalight'
+                        ),
+                        borderRadius: BorderRadius.circular(35), // ✅ Rounded corners
+                        hint: Text(
+                          'Select',
+                          style: TextStyle(
+                              fontFamily: 'nexalight',
+                              color: Colors.black,
+                              fontSize: 18
+                          ),
+                        ),
+                        value: students[index]['status'] == "Present" || students[index]['status'] == "Absent"
+                            ? students[index]['status']
+                            : null, // ✅ Initially set to null for hint to appear
+                        items: ["Present", "Absent"].map((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            students[index]['status'] = newValue!;
+                          });
                         },
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.red),
-                        child: Text("Absent",style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white),),
                       ),
+
+
                     ],
                   ),
-                ],
-              ),
+                );
+              },
+
             ),
-          );
-        },
+          ),
+          SizedBox(height: 10),
+          ElevatedButton(
+            onPressed: markAttendance,
+            child: Text("Submit Attendance",style: TextStyle(fontFamily: 'nexaheavy',fontSize: 19,color: Colors.blue),),
+          ),
+          SizedBox(height: 20),
+        ],
       ),
     );
   }

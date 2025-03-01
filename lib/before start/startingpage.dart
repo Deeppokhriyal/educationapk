@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:educationapk/bottombar/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -36,30 +37,32 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor:Colors.white,
       body: ListView(
         children: [
-          Column(
-            children: [
-              Container(
-                margin: EdgeInsets.fromLTRB(20, 25, 20, 20),
-                child: Image.asset('assets/images/startrow.jpg', alignment: Alignment.center,),
-              ),SizedBox(height: 20,),
-              Text('The only study app\n   you\'ll ever need', style: TextStyle(fontFamily: 'sans-serif-medium',fontWeight: FontWeight.bold,fontSize: 35, color: Colors.black),),
-              SizedBox(height: 25,),
-              Text('             Uploaded all study materials,\n'
-                  'create and explore the polyverse with us and\n'
-                  '      learn some programming knowledge.', style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 17, color: Colors.black),),
-              SizedBox(height: 55),
-              Container( decoration: BoxDecoration(color: Colors.black,borderRadius: BorderRadius.circular(35),border: Border.all(width: 6)),
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> MyMainHome()));
-                  },
-                  child: Text('Let\'s start',style: TextStyle(fontSize: 20, color: Colors.white), // Customize text style
-                  ),
-                ),
-              )
-            ],
+          FadeIn(
+            duration: Duration(milliseconds: 1200),
+            child: Column(
+                children: [
+                  Container(
+                    margin: EdgeInsets.fromLTRB(20, 25, 20, 20),
+                    child: Image.asset('assets/images/startrow.jpg', alignment: Alignment.center,),
+                  ),SizedBox(height: 20,),
+                  Text('The only study app\n   you\'ll ever need', style: TextStyle(fontFamily: 'sans-serif-medium',fontWeight: FontWeight.bold,fontSize: 35, color: Colors.black),),
+                  SizedBox(height: 25,),
+                  Text('             Uploaded all study materials,\n'
+                      'create and explore the polyverse with us and\n'
+                      '      learn some programming knowledge.', style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 17, color: Colors.black),),
+                  SizedBox(height: 55),
+                  Container( decoration: BoxDecoration(color: Colors.black,borderRadius: BorderRadius.circular(35),border: Border.all(width: 6)),
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> MyMainHome()));
+                      },
+                      child: Text('Let\'s start',style: TextStyle(fontSize: 20, color: Colors.white), // Customize text style
+                      ),
+                    ),
+                  )
+                ],
+              ),
           ),
-
         ]    ),
     );
   }

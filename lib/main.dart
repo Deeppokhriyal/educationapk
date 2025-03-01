@@ -1,5 +1,7 @@
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
+import 'package:animate_do/animate_do.dart';
 import 'package:educationapk/before%20start/login.dart';
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -7,11 +9,21 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'dart:async';
 import 'package:get/get.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   AndroidAlarmManager.initialize();
   FirebaseAuth.instance.setSettings(appVerificationDisabledForTesting: true);
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  await FirebaseAppCheck.instance.activate(
+    androidProvider: AndroidProvider.playIntegrity, // (Android ke liye)
+  );
+
+
   runApp(MyApp());
 }
 
@@ -35,7 +47,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 1), () {
+    Timer(Duration(milliseconds: 1200), () {
       Get.off(() => MyLogin()); // Ensures proper back navigation
     });
   }
@@ -45,7 +57,9 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Image.asset("assets/images/logo.png"),
+        child: FadeIn(
+            duration: Duration(milliseconds: 600),
+            child: Image.asset("assets/images/logo.png")),
       ),
     );
   }
@@ -74,3 +88,5 @@ void triggerAlarm() async {
     generalNotificationDetails,
   );
 }
+
+

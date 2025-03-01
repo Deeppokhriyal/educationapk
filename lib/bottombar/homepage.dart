@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/allpage.dart';
 import 'package:educationapk/allpages/attendance.dart';
 import 'package:educationapk/allpages/programmingpage.dart';
-import 'package:educationapk/bottombar/alarmscheduler.dart';
 import 'package:educationapk/bottombar/application.dart';
+import 'package:educationapk/bottombar/schedulerstart.dart';
 import 'package:educationapk/homepagewidgets/collegeinfo.dart';
 import 'package:educationapk/homepagewidgets/devpage.dart';
 import 'package:educationapk/allpages/map.dart';
@@ -52,7 +52,7 @@ class _MyMainHomeState extends State<MyMainHome> {
       if (_selectedIndex == index) {
         _tapCount++;
         if(_tapCount==2){Navigator.push(
-            context, MaterialPageRoute(builder: (context) => AlarmScheduler()));
+            context, MaterialPageRoute(builder: (context) => Schedulerstart()));
         _tapCount = 0;}
       }
       break;
@@ -315,6 +315,10 @@ class _MyMainHomeState extends State<MyMainHome> {
                                         );
                                       }
                                       if (listName[index] == "Hostels") {
+
+
+
+
                                        Get.to(()=>MyMap()
                                         );
                                       }

@@ -573,15 +573,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                                           children: [
                                             Row(
                                               children: [
-                                                Container(
-                                                  child:
-                                                  Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                                ),
+                                                Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
                                                 SizedBox(width: 97,),
-                                                Container(
-                                                  child:
-                                                  Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                                ),
+                                                Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
                                               ],
                                             ),
                                             SizedBox(height: 10,),
@@ -808,7 +802,7 @@ class _MyMainHomeState extends State<MyMainHome> {
               GButton(icon: Icons.add_chart,iconSize: 25,text: 'Application',textStyle: TextStyle(fontFamily: 'sans-serif-light'),),
               GButton(icon: Icons.person,iconSize: 25,text: 'Profile',textStyle: TextStyle(fontFamily: 'sans-serif-light'),),
 
-            ],
+            ],      
           ),
         )
     );

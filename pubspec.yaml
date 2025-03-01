@@ -40,6 +40,7 @@ dependencies:
   firebase_core:
   cloud_firestore:
   intl:
+  visibility_detector:
   firebase_storage:
   image_picker:
   cupertino_icons:
@@ -48,6 +49,8 @@ dependencies:
   google_sign_in: ^6.2.2
   google_fonts: ^6.2.1
   responsive_framework: ^1.5.1
+  animate_do:
+  firebase_app_check:
 
 dev_dependencies:
   flutter_lints:

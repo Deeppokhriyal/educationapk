@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:educationapk/bottombar/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -6,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-FlutterLocalNotificationsPlugin();
+    FlutterLocalNotificationsPlugin();
 
 void triggerAlarm() async {
   var androidDetails = const AndroidNotificationDetails(
@@ -14,7 +15,8 @@ void triggerAlarm() async {
     'Alarm Notifications',
     importance: Importance.max,
     priority: Priority.high,
-    sound: RawResourceAndroidNotificationSound('alarm'), // Ensure "alarm.mp3" exists in `res/raw`
+    sound: RawResourceAndroidNotificationSound(
+        'alarm'), // Ensure "alarm.mp3" exists in `res/raw`
   );
 
   var generalNotificationDetails = NotificationDetails(android: androidDetails);
@@ -42,9 +44,9 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
   void initState() {
     super.initState();
     var initializationSettingsAndroid =
-    const AndroidInitializationSettings('@mipmap/ic_launcher');
+        const AndroidInitializationSettings('@mipmap/ic_launcher');
     var initializationSettings =
-    InitializationSettings(android: initializationSettingsAndroid);
+        InitializationSettings(android: initializationSettingsAndroid);
     flutterLocalNotificationsPlugin.initialize(initializationSettings);
   }
 
@@ -73,7 +75,9 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
 
     if (isSet) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Alarm set for ${time.format(context)}: $description")),
+        SnackBar(
+            content:
+                Text("Alarm set for ${time.format(context)}: $description")),
       );
       print("✅ Alarm scheduled for ${scheduledTime.toLocal()} - $description");
     } else {
@@ -86,7 +90,7 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
 
   Future<void> _pickTime(BuildContext context) async {
     TimeOfDay? picked =
-    await showTimePicker(context: context, initialTime: TimeOfDay.now());
+        await showTimePicker(context: context, initialTime: TimeOfDay.now());
     if (picked != null) {
       setState(() {
         selectedTime = picked;
@@ -124,113 +128,161 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:
-Stack(
-  children: [
-    Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: NetworkImage('https://img.freepik.com/premium-photo/blur-colorful-background-gradient-blurred-colorful-with-grain-noise-effect_558873-4565.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
+      body: Stack(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(
+                    'https://img.freepik.com/premium-photo/gray-white-simple-background-texture-2_961581-1501.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704'),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
 
-            SizedBox(height: 20,),
-            Row(
-              children: [
-                GestureDetector(
-                    onTap: () {
-                      Get.offAll(()=>MyMainHome());
-                    },
-                    child: Icon(Icons.arrow_back,size: 35,)),
-                SizedBox(width: 30,),
-                Text(
-                  "Task's Scheduler",
-                  style: TextStyle(fontFamily: 'nexaheavy', fontSize: 28),
-                ),
-              ],
-            ),
-            SizedBox(height: 20,),
-            TextField(
-              style: const TextStyle(fontFamily: 'nexalight',fontSize: 20),
-              controller: descriptionController,
-              decoration: const InputDecoration(
-                labelText: "Create your Own Task",
-                labelStyle: TextStyle(fontFamily: 'nexaheavy', color: Colors.blue,fontSize: 19),
-                focusedBorder: UnderlineInputBorder( // Blue underline when focused
-                  borderSide: BorderSide(color: Colors.blue, width: 2.0),
-                ),
-                enabledBorder: UnderlineInputBorder( // Grey underline when not focused
-                  borderSide: BorderSide(color: Colors.grey, width: 1.5),
-                ),// Label color
-              ),
-            ),
+          // Scrollable Content to Prevent Overflow
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 50),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start, // Align left properly
+                children: [
+                  // Header Row (Back Button + Title)
+                  SlideInRight(
+                    duration: const Duration(milliseconds: 500),
+                    child: Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Get.offAll(() => MyMainHome());
+                          },
+                          child: const Icon(Icons.arrow_back, size: 35),
+                        ),
+                        const SizedBox(width: 20),
+                        const Text(
+                          "Task's Scheduler",
+                          style: TextStyle(fontFamily: 'nexaheavy', fontSize: 28),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 30),
 
-            const SizedBox(height: 30),
-            ElevatedButton(
-              onPressed: () => _pickTime(context),
-              child: const Text(
-                "Select Time",
-                style: TextStyle(
-                    fontFamily: 'nexaheavy', fontSize: 18, color: Colors.blue),
+                  // TextField
+                  SlideInUp(
+                    duration: const Duration(milliseconds: 700),
+                    child: TextField(
+                      style: const TextStyle(fontFamily: 'nexalight', fontSize: 20),
+                      controller: descriptionController,
+                      decoration: const InputDecoration(
+                        labelText: "Create your Own Task",
+                        labelStyle: TextStyle(
+                          fontFamily: 'nexaheavy',
+                          color: Colors.blue,
+                          fontSize: 19,
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey, width: 1.5),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+
+                  // Select Time Button
+                  SlideInUp(
+                    duration: const Duration(milliseconds: 700),
+                    child: ElevatedButton(
+                      onPressed: () => _pickTime(context),
+                      child: const Text(
+                        "Select Time",
+                        style: TextStyle(
+                          fontFamily: 'nexaheavy',
+                          fontSize: 18,
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+
+                  // Selected Time Text
+                  SlideInUp(
+                    duration: const Duration(milliseconds: 700),
+                    child: Text(
+                      selectedTime != null
+                          ? "Selected Time = ${selectedTime!.format(context)}"
+                          : "Selected Time = _ _ : _ _",
+                      style: const TextStyle(fontFamily: 'nexalight', fontSize: 18),
+                    ),
+                  ),
+                  const SizedBox(height: 45),
+
+                  // Add Task Button
+                  SlideInUp(
+                    duration: const Duration(milliseconds: 700),
+                    child: ElevatedButton(
+                      onPressed: _addTask,
+                      child: const Text(
+                        "Add Task",
+                        style: TextStyle(
+                          fontFamily: 'nexaheavy',
+                          fontSize: 20,
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+
+                  // Task List (Fixed Layout Issues)
+                  SizedBox(
+                    height: 300, // Set height to prevent overflow
+                    child: ListView.builder(
+                      itemCount: tasks.length,
+                      shrinkWrap: true, // Important to fit inside Column
+                      physics: const NeverScrollableScrollPhysics(), // Prevent double scrolling
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          title: Text(
+                            "${tasks[index]["taskNumber"]}. ${tasks[index]["description"]}",
+                            style: const TextStyle(
+                              fontFamily: 'nexalight',
+                              color: Colors.black,
+                              fontSize: 18,
+                            ),
+                          ),
+                          subtitle: Text(
+                            tasks[index]["time"].format(context),
+                            style: const TextStyle(
+                              fontFamily: 'nexaheavy',
+                              color: Colors.blue,
+                              fontSize: 18,
+                            ),
+                          ),
+                          trailing: IconButton(
+                            icon: const Icon(Icons.delete, color: Colors.red),
+                            onPressed: () => _deleteTask(index),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 30),
-            Text(
-              selectedTime != null
-                  ? "Selected Time = ${selectedTime!.format(context)}"
-                  : "Selected Time = _ _ : _ _",
-              style: const TextStyle(fontFamily: 'nexalight',fontSize: 18),
-            ),
-            const SizedBox(height: 40),
-            ElevatedButton(
-              onPressed: _addTask,
-              child: const Text(
-                "Add Task",
-                style: TextStyle(
-                    fontFamily: 'nexaheavy', fontSize: 20, color: Colors.blue),
-              ),
-            ),
-            const SizedBox(height: 40),
-            Expanded(
-              child: ListView.builder(
-                itemCount: tasks.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(
-                      "${tasks[index]["taskNumber"]}. ${tasks[index]["description"]}",
-                      style: const TextStyle(
-                          fontFamily: 'nexalight', color: Colors.black,fontSize: 18),
-                    ),
-                    subtitle: Text(
-                      tasks[index]["time"].format(context),
-                      style: const TextStyle(
-                          fontFamily: 'nexaheavy', color: Colors.blue,fontSize: 18),
-                    ),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.delete, color: Colors.red),
-                      onPressed: () => _deleteTask(index),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
-      ),
-    ),
-  ],
-)
-    );
+          ),
+        ],
+      ),);
   }
 }
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await AndroidAlarmManager.initialize(); // 🔹 Ensure alarm manager is initialized
+  await AndroidAlarmManager
+      .initialize(); // 🔹 Ensure alarm manager is initialized
   runApp(MaterialApp(home: AlarmScheduler()));
 }

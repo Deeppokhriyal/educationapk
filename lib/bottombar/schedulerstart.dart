@@ -1,21 +1,98 @@
+import 'package:educationapk/bottombar/alarmscheduler.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:animate_do/animate_do.dart'; // Import animation package
 
 class Schedulerstart extends StatelessWidget {
   const Schedulerstart({super.key});
 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: Stack(
         children: [
-          Text('Hey Dear'), SizedBox(height: 20,),
-          Text('Let\'s Create'), SizedBox(height: 20,),
-          Text('Your Own'), SizedBox(height: 20,),
-          Text('Schedule'), SizedBox(height: 20,),
-          Text('Presenting'), SizedBox(height: 20,),
-          Text('Task Scheduler'), SizedBox(height: 20,),
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage('https://img.freepik.com/free-vector/white-3d-modern-background-design_53876-87395.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: Padding(
+                padding: const EdgeInsets.only(top: 110,left: 30,right: 30),
+                child: Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SlideInRight(
+                        duration: Duration(milliseconds: 1000),
+                        child: Text('Hey Dear',
+                            style: TextStyle(fontSize: 35, fontFamily: 'nexalight')),
+                      ),
+                      SlideInLeft(
+                        duration: Duration(milliseconds: 1000),
+                        child: Text('Let\'s Create',
+                            style: TextStyle(fontSize: 35, fontFamily: 'nexalight')),
+                      ),
+                      SizedBox(height: 20),
+                      SlideInRight(
+                        duration: Duration(milliseconds: 1200),
+                        child: Text('Your Own',
+                            style: TextStyle(fontSize: 35, fontFamily: 'nexalight')),
+                      ),
+                      SlideInLeft(
+                        duration: Duration(milliseconds: 1200),
+                        child: Text('Schedule',
+                            style: TextStyle(fontSize: 35, fontFamily: 'nexalight')),
+                      ),
+                      SizedBox(height: 70),
+                      SlideInDown(
+                        duration: Duration(milliseconds: 1200),
+                        child: Text('Presenting',
+                            style: TextStyle(fontSize: 38, fontFamily: 'nexaheavy',color: Colors.grey)),
+                      ),
+                      SizedBox(height: 20),
+                      SlideInLeft(
+                        duration: Duration(milliseconds: 1200),
+                        child: Text('Task',
+                            style: TextStyle(fontSize: 38, fontFamily: 'nexaheavy',color: Colors.green)),
+                      ),
+                      SlideInRight(
+                        duration: Duration(milliseconds: 1200),
+                        child: Text('Scheduler',
+                            style: TextStyle(fontSize: 38, fontFamily: 'nexaheavy',color: Colors.green)),
+                      ),
+                      SizedBox(height: 60),
+                      BounceInUp(
+                          duration: Duration(milliseconds: 1500),
+                          child: Container( decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(35),),
+                            child: TextButton(
+                              onPressed: () {
+                                Get.to(()=>AlarmScheduler());
+                              },
+                              child: Row( mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text('Create',style: TextStyle(fontSize: 30, color: Colors.white,fontFamily: 'nexaheavy'), // Customize text style
+                                  ),
+                                  SizedBox(width: 20,),
+                                  Icon(Icons.arrow_forward,color: Colors.white,size: 35,),
+                                ],
+                              ),
+                            ),
+                          )
+
+                      ),
+                    ],
+                  ),
+                )
+            ),
+          ),
         ],
-      ),
+      )
+
     );
   }
 }

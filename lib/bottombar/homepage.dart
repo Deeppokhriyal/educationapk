@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/allpage.dart';
-import 'package:educationapk/allpages/attendance.dart';
+import 'package:educationapk/allpages/AttendancePage/attendance.dart';
 import 'package:educationapk/allpages/programmingpage.dart';
 import 'package:educationapk/bottombar/application.dart';
 import 'package:educationapk/bottombar/schedulerstart.dart';
@@ -296,7 +296,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                         Get.to(()=> MainScrollPage()
                                         );
                                       }if (listName[index] == "Attendance") {
-                                        Get.to(()=> AttendancePage()
+                                        Get.to(()=> AttendanceHistory()
                                         );
                                       }if (listName[index] == "Branches") {
                                         Get.to(()=>MainScrollPage()

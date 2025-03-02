@@ -1,5 +1,5 @@
 import 'package:educationapk/allpages/Study/branches.dart';
-import 'package:educationapk/allpages/attendance.dart';
+import 'package:educationapk/allpages/AttendancePage/attendance.dart';
 import 'package:educationapk/allpages/map.dart';
 import 'package:educationapk/allpages/programmingpage.dart';
 import 'package:flutter/material.dart';
@@ -132,7 +132,7 @@ Widget build(BuildContext context) {
                         ),
                         child: GestureDetector(
                           onTap: (){
-                            Get.to(AttendancePage());
+                            Get.to(AttendanceHistory());
                           },child:
                           Column(mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,

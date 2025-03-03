@@ -1,8 +1,6 @@
-import 'package:educationapk/bottombar/application.dart';
 import 'package:educationapk/homepagewidgets/devpage.dart';
 import 'package:educationapk/popupmenu/privacypolicies.dart';
 import 'package:educationapk/popupmenu/termscondition.dart';
-import 'package:educationapk/bottombar/profilepage.dart';
 import 'package:educationapk/teacherpanel/allbox/applications.dart';
 import 'package:educationapk/teacherpanel/allbox/assignments.dart';
 import 'package:educationapk/teacherpanel/allbox/attendance.dart';
@@ -12,7 +10,6 @@ import 'package:educationapk/teacherpanel/allbox/teachers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 
 class TeacherHome extends StatefulWidget {
   const TeacherHome({super.key});
@@ -42,35 +39,6 @@ class MyMainHome extends StatefulWidget {
 }
 
 class _MyMainHomeState extends State<MyMainHome> {
-
-
-  int _selectedIndex = 0;
-  int _tapCount = 0;
-  // Method to handle item taps
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index; // Update the selected index
-    });
-    switch (_selectedIndex) {
-      case 0:
-        break;
-      case 1:
-        break;
-      case 2:
-        if (_selectedIndex == index) {
-          _tapCount++;
-          if(_tapCount==2){Get.to(()=>LeaveApplication());
-          _tapCount = 0;}
-        }
-        break;
-      case 3:
-        if (_selectedIndex == index) {
-          _tapCount++;
-          if(_tapCount==2){Get.to(()=>ProfilePage());
-          _tapCount = 0;}
-        }
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -769,8 +737,8 @@ class _MyMainHomeState extends State<MyMainHome> {
                         ),
                         Container(
 
-                          alignment: Alignment.center,
-                          width: double.infinity,
+                            alignment: Alignment.center,
+                            width: double.infinity,
                             decoration: BoxDecoration(
                               color: Colors.grey,
                               border: Border.all(),
@@ -786,25 +754,6 @@ class _MyMainHomeState extends State<MyMainHome> {
             ),
             ]
         ),
-        bottomNavigationBar: SizedBox(
-          height: 70,
-          child: GNav(
-            backgroundColor: Colors.black,
-            color: Colors.white,
-            activeColor: Colors.blue,
-            tabBackgroundColor: Colors.lightBlueAccent[100]!,
-            gap: 5,
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-            onTabChange: (index) =>_onItemTapped(index),
-            tabs: [
-              GButton(icon: Icons.home,iconSize: 25,text: 'Home',textStyle: TextStyle(fontFamily: 'sans-serif-light'),),
-              GButton(icon: Icons.bar_chart,iconSize: 25,text: 'Features',textStyle: TextStyle(fontFamily: 'sans-serif-light'),),
-              GButton(icon: Icons.add_chart,iconSize: 25,text: 'Application',textStyle: TextStyle(fontFamily: 'sans-serif-light'),),
-              GButton(icon: Icons.person,iconSize: 25,text: 'Profile',textStyle: TextStyle(fontFamily: 'sans-serif-light'),),
-
-            ],      
-          ),
-        )
     );
   }
 }

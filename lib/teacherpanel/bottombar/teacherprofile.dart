@@ -50,8 +50,8 @@ class _TeacherprofileState extends State<Teacherprofile> {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(
-                    'assets/images/blueback.jpg'), // Path to your background image
+                image: NetworkImage(
+                    'https://img.freepik.com/free-vector/pink-neon-synthwave-patterned-social-story-template-vector_53876-176441.jpg'), // Path to your background image
                 fit: BoxFit.cover,
               ),
             ),

@@ -21,7 +21,7 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
 
   File? _image;
   String imageUrl = "";
-  bool isLoading = false; // 🔹 For showing loading indicator
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -29,23 +29,22 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
     _loadUserData();
   }
 
-  /// 🔹 Load Existing User Data from Firestore
   Future<void> _loadUserData() async {
     User? user = auth.currentUser;
     if (user != null) {
-      DocumentSnapshot userData = await firestore.collection("users").doc(user.uid).get();
+      DocumentSnapshot userData =
+      await firestore.collection("users").doc(user.uid).get();
       if (userData.exists) {
         setState(() {
-          nameController.text = userData['name'] ?? "";
-          bioController.text = userData['bio'] ?? "";
-          branchController.text = userData['branch'] ?? "";
-          imageUrl = userData['profileImage'] ?? "";
+          nameController.text = userData["name"] ?? "";
+          bioController.text = userData["bio"] ?? "";
+          branchController.text = userData["branch"] ?? "";
+          imageUrl = userData["profileImage"] ?? "";
         });
       }
     }
   }
 
-  /// 🔹 Pick Image from Gallery
   Future<void> pickImage() async {
     final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
@@ -55,44 +54,50 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
     }
   }
 
-  /// 🔹 Upload Image to Firebase Storage & Update Firestore
-  Future<void> uploadImage() async {
-    User? user = auth.currentUser;
-    if (user != null && _image != null) {
+  Future<void> uploadProfileData() async {
+    try {
+      User? user = FirebaseAuth.instance.currentUser;
+      if (user == null) return;
+
       setState(() => isLoading = true);
+      String uid = user.uid;
+      String newImageUrl = imageUrl;
 
-      try {
-        String uid = user.uid;
+      if (_image != null) {
         Reference ref = storage.ref().child("profileImages/$uid.jpg");
-
         UploadTask uploadTask = ref.putFile(_image!);
+
         TaskSnapshot snapshot = await uploadTask;
-        String newImageUrl = await snapshot.ref.getDownloadURL();
-
-        // ✅ Update Firestore with new Image URL
-        await firestore.collection("users").doc(uid).update({
-          "profileImage": newImageUrl,
-        });
-
-        setState(() {
-          imageUrl = newImageUrl;
-          _image = null;
-          isLoading = false;
-        });
-
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Profile image updated successfully!")),
-        );
-      } catch (e) {
-        setState(() => isLoading = false);
-        print("Image upload failed: $e");
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Image upload failed! Try again.")),
-        );
+        newImageUrl = await snapshot.ref.getDownloadURL();
       }
-    } else {
+
+      await firestore.collection("users").doc(uid).update({
+        "profileImage": newImageUrl,
+        "name": nameController.text,
+        "bio": bioController.text,
+        "branch": branchController.text,
+      });
+
+      setState(() {
+        imageUrl = newImageUrl;
+        _image = null;
+        isLoading = false;
+      });
+
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("No image selected!")),
+        SnackBar(
+          content: Text("Profile updated successfully!"),
+          backgroundColor: Colors.green,
+        ),
+      );
+    } catch (e) {
+      setState(() => isLoading = false);
+      print("Error Uploading Image: $e");
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Profile update failed! Try again."),
+          backgroundColor: Colors.red,
+        ),
       );
     }
   }
@@ -106,13 +111,12 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: NetworkImage(
-                    'https://img.freepik.com/free-vector/dark-blue-blurred-background_1034-589.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'),
+                    'https://img.freepik.com/free-vector/dark-blue-blurred-background_1034-589.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(height: 70),
                 Center(
@@ -142,11 +146,8 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                               color: Colors.yellow[700],
                               border: Border.all(color: Colors.white, width: 2),
                             ),
-                            child: Icon(
-                              LineAwesomeIcons.pencil_alt_solid,
-                              size: 18,
-                              color: Colors.white,
-                            ),
+                            child: Icon(LineAwesomeIcons.pencil_alt_solid,
+                                size: 18, color: Colors.white),
                           ),
                         ),
                       ),
@@ -158,53 +159,41 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Column(
                     children: [
-                      TextField(
-                        controller: nameController,
-                        style: TextStyle(fontSize: 20, color: Colors.white),
-                        decoration: InputDecoration(
-                          labelText: "Enter New Username",
-                          labelStyle: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                      TextField(
-                        controller: bioController,
-                        style: TextStyle(fontSize: 20, color: Colors.white),
-                        decoration: InputDecoration(
-                          labelText: "Enter your Bio",
-                          labelStyle: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                      TextField(
-                        controller: branchController,
-                        style: TextStyle(fontSize: 20, color: Colors.white),
-                        decoration: InputDecoration(
-                          labelText: "Enter your Branch",
-                          labelStyle: TextStyle(color: Colors.white),
-                        ),
-                      ),
+                      buildTextField("Enter New Username", nameController),
+                      buildTextField("Enter your Bio", bioController),
+                      buildTextField("Enter your Branch", branchController),
                     ],
                   ),
                 ),
                 SizedBox(height: 60),
                 isLoading
-                    ? CircularProgressIndicator() // 🔹 Show loading indicator while uploading
+                    ? CircularProgressIndicator()
                     : ElevatedButton(
-                  onPressed: uploadImage,
+                  onPressed: uploadProfileData,
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+                    padding:
+                    EdgeInsets.symmetric(horizontal: 30, vertical: 12),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(45),
-                    ),
+                        borderRadius: BorderRadius.circular(45)),
                   ),
-                  child: Text(
-                    "Update",
-                    style: TextStyle(fontSize: 20, color: Colors.black),
-                  ),
+                  child: Text("Update",
+                      style: TextStyle(fontSize: 20, color: Colors.black)),
                 ),
               ],
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget buildTextField(String label, TextEditingController controller) {
+    return TextField(
+      controller: controller,
+      style: TextStyle(fontSize: 20, color: Colors.white),
+      decoration: InputDecoration(
+        labelText: label,
+        labelStyle: TextStyle(color: Colors.white),
       ),
     );
   }

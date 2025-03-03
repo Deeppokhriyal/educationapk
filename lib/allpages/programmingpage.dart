@@ -1,4 +1,3 @@
-
 import 'package:educationapk/programmingpage/.net_page.dart';
 import 'package:educationapk/programmingpage/c++_page.dart';
 import 'package:educationapk/programmingpage/css_page.dart';
@@ -57,7 +56,7 @@ class _programmingpageState extends State<programmingpage> {
                           children: [
                             Row(
                               children: [
-                                Image(image:AssetImage('assets/logos/C logo.png'),height: 46,width: 50,),
+                                Image(image:NetworkImage('https://w7.pngwing.com/pngs/503/848/png-transparent-javascript-computer-icons-software-developer-cascading-style-sheets-javascript-logo-angle-text-rectangle-thumbnail.png'),height: 46,width: 50,),
                                 SizedBox(width: 12,),
                                 Column(mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,

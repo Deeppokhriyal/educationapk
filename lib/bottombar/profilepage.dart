@@ -144,11 +144,11 @@ class _ProfilePageState extends State<ProfilePage> {
                                               UpdateProfilePage()),
                                     );
                                   },
-                                  child: Text("Edit Profile",style: TextStyle(fontFamily: 'nexaheavy',fontSize: 16),),
+                                  child: Text("Edit Profile",style: TextStyle(fontFamily: 'nexaheavy',fontSize: 16,color: Colors.black),),
                                 ),
                                 Divider(color: Colors.grey, height: 35),
                                 SlideInLeft(
-                                  duration: Duration(milliseconds: 600),
+                                  duration: Duration(milliseconds: 300),
                                   child: Text(
                                     'Personal Information',
                                     style: TextStyle(
@@ -160,7 +160,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                 SizedBox(
                                   width: 10,
                                 ),
-                                SlideInRight(child: Column(
+                                SlideInRight(
+                                    duration: Duration(milliseconds: 300),
+                                    child: Column(
                                   children: [
                                     ProfileMenuWidget(
                                         title: "Email",
@@ -196,7 +198,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 )),
                                 Divider(color: Colors.grey, height: 35),
                                 SlideInLeft(
-                                  duration: Duration(milliseconds: 600),
+                                  duration: Duration(milliseconds: 400),
                                   child: Text(
                                     'Utilities',
                                     style: TextStyle(
@@ -208,8 +210,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                 SizedBox(
                                   width: 10,
                                 ),
-                                SlideInLeft(
-                                  duration: Duration(milliseconds: 600),
+                                SlideInRight(
+                                  duration: Duration(milliseconds: 400),
                                   child: Container(
                                       padding: EdgeInsets.all(15),
                                       child: Column(
@@ -286,7 +288,7 @@ class ProfileMenuWidget extends StatelessWidget {
       title: Text(title,
           style: TextStyle(color: textColor, fontFamily: 'nexaheavy',fontSize: 17)),
       subtitle: Text(value, style: TextStyle(color: Colors.grey, fontFamily: 'nexalight',fontSize: 15)),
-      trailing: Icon(Icons.edit, color: Colors.pinkAccent),
+      trailing: Icon(Icons.edit, color: Colors.white),
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:educationapk/teacherpanel/bottombar/homepage.dart';
 import 'package:educationapk/teacherpanel/before%20start/teacherpanel.dart';
+import 'package:educationapk/teacherpanel/bottombar/teacherbottom.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -54,7 +54,7 @@ class _TeacherLoginState extends State<TeacherLogin> {
           prefs.setString("password", teacherpasswordController.text);
           prefs.setBool("rememberMe", true);
         }
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => TeacherHome()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Teacherbar()));
       } else {
         showError("Not a Teacher Account!");
       }

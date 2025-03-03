@@ -1,5 +1,5 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:educationapk/bottombar/homepage.dart';
+import 'package:educationapk/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 class Starting extends StatefulWidget {
@@ -54,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Container( decoration: BoxDecoration(color: Colors.black,borderRadius: BorderRadius.circular(35),border: Border.all(width: 6)),
                     child: TextButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> MyMainHome()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> Bottombar()));
                       },
                       child: Text('Let\'s start',style: TextStyle(fontSize: 20, color: Colors.white), // Customize text style
                       ),

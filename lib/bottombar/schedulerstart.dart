@@ -28,46 +28,46 @@ class Schedulerstart extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SlideInRight(
-                        duration: Duration(milliseconds: 1000),
-                        child: Text('Hey Dear',
-                            style: TextStyle(fontSize: 35, fontFamily: 'nexalight')),
+                        duration: Duration(milliseconds: 300),
+                        child: Text('Hey',
+                            style: TextStyle(fontSize: 32, fontFamily: 'nexalight')),
                       ),
                       SlideInLeft(
-                        duration: Duration(milliseconds: 1000),
+                        duration: Duration(milliseconds: 300),
                         child: Text('Let\'s Create',
-                            style: TextStyle(fontSize: 35, fontFamily: 'nexalight')),
+                            style: TextStyle(fontSize: 32, fontFamily: 'nexalight')),
                       ),
                       SizedBox(height: 20),
                       SlideInRight(
-                        duration: Duration(milliseconds: 1200),
+                        duration: Duration(milliseconds: 500),
                         child: Text('Your Own',
-                            style: TextStyle(fontSize: 35, fontFamily: 'nexalight')),
+                            style: TextStyle(fontSize: 33, fontFamily: 'nexalight')),
                       ),
                       SlideInLeft(
-                        duration: Duration(milliseconds: 1200),
+                        duration: Duration(milliseconds: 500),
                         child: Text('Schedule',
-                            style: TextStyle(fontSize: 35, fontFamily: 'nexalight')),
+                            style: TextStyle(fontSize: 33, fontFamily: 'nexalight')),
                       ),
-                      SizedBox(height: 70),
+                      SizedBox(height: 75),
                       SlideInDown(
-                        duration: Duration(milliseconds: 1200),
+                        duration: Duration(milliseconds: 600),
                         child: Text('Presenting',
-                            style: TextStyle(fontSize: 38, fontFamily: 'nexaheavy',color: Colors.grey)),
+                            style: TextStyle(fontSize: 38, fontFamily: 'nexaheavy',color: Colors.black54)),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 10),
                       SlideInLeft(
-                        duration: Duration(milliseconds: 1200),
+                        duration: Duration(milliseconds: 700),
                         child: Text('Task',
                             style: TextStyle(fontSize: 38, fontFamily: 'nexaheavy',color: Colors.green)),
                       ),
                       SlideInRight(
-                        duration: Duration(milliseconds: 1200),
+                        duration: Duration(milliseconds: 700),
                         child: Text('Scheduler',
                             style: TextStyle(fontSize: 38, fontFamily: 'nexaheavy',color: Colors.green)),
                       ),
                       SizedBox(height: 60),
                       BounceInUp(
-                          duration: Duration(milliseconds: 1500),
+                          duration: Duration(milliseconds: 1000),
                           child: Container( decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(35),),
                             child: TextButton(
                               onPressed: () {

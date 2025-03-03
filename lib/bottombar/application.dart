@@ -1,6 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:educationapk/bottombar/history.dart';
 import 'package:flutter/material.dart';
 
 class LeaveApplication extends StatefulWidget {
@@ -10,15 +9,12 @@ class LeaveApplication extends StatefulWidget {
 
 class _LeaveApplicationState extends State<LeaveApplication> {
   final _formKey = GlobalKey<FormState>();
-
   TextEditingController _submitByController = TextEditingController();
   TextEditingController _leaveDateController = TextEditingController();
   TextEditingController _leaveReasonController = TextEditingController();
-
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  String? selectedValue; // Selected branch value
+  String? selectedValue;
 
-  // List of Branches for Dropdown
   final List<String> items = [
     'Information Technology',
     'Agriculture Engineering',
@@ -28,10 +24,9 @@ class _LeaveApplicationState extends State<LeaveApplication> {
     'Computer Science Engineering',
     'Electronics Engineering',
     'Mechanical Engineering',
-    'Pharmacy',
+    'Pharmacy'
   ];
 
-  // Function to pick date
   Future<void> _pickDate() async {
     DateTime? picked = await showDatePicker(
       context: context,
@@ -39,15 +34,13 @@ class _LeaveApplicationState extends State<LeaveApplication> {
       firstDate: DateTime(2020),
       lastDate: DateTime(2030),
     );
-
     if (picked != null) {
       setState(() {
-        _leaveDateController.text = "${picked.toLocal()}".split(' ')[0]; // YYYY-MM-DD format
+        _leaveDateController.text = "${picked.toLocal()}".split(' ')[0];
       });
     }
   }
 
-  // Function to submit leave application
   Future<void> submitLeaveApplication() async {
     if (_formKey.currentState!.validate()) {
       if (selectedValue == null) {
@@ -59,28 +52,27 @@ class _LeaveApplicationState extends State<LeaveApplication> {
 
       try {
         await _firestore.collection('leave_applications').add({
-          'branch': selectedValue, // Save selected branch
+          'branch': selectedValue,
           'submitBy': _submitByController.text,
           'leaveDate': _leaveDateController.text,
           'leaveReason': _leaveReasonController.text,
           'submittedAt': FieldValue.serverTimestamp(),
+          'status': 'Pending' // Default status
         });
 
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Leave application submitted successfully!')),
         );
 
-        // Clear fields after submission
         _submitByController.clear();
         _leaveDateController.clear();
         _leaveReasonController.clear();
         setState(() {
-          selectedValue = null; // Reset dropdown
+          selectedValue = null;
         });
       } catch (e) {
-        print("Error submitting leave application: $e");
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error submitting application. Try again!',style: TextStyle(fontFamily: 'nexalight'),)),
+          SnackBar(content: Text('Error submitting application. Try again!')),
         );
       }
     }
@@ -114,39 +106,44 @@ class _LeaveApplicationState extends State<LeaveApplication> {
                         },
                         icon: Icon(Icons.arrow_back_ios, color: Colors.white),
                       ),
-                      Text(
-                        ' Leave Application',
-                        style: TextStyle(fontFamily: 'nexalight', fontSize: 24, color: Colors.white),
-                      ),
+                      Text(' Leave Application',
+                          style: TextStyle(
+                              fontFamily: 'nexalight',
+                              fontSize: 24,
+                              color: Colors.white)),
                     ]),
                     SizedBox(height: 20),
                     Expanded(
                       child: SingleChildScrollView(
                         child: Form(
-                          key: _formKey, // ✅ Wrap Form with _formKey
+                          key: _formKey,
                           child: Column(
                             children: [
                               DropdownButtonFormField<String>(
-
                                 decoration: InputDecoration(
                                   labelText: 'Select Your Branch',
-                                  labelStyle: TextStyle(color: Colors.white,fontFamily: 'nexalight'),
+                                  labelStyle: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: 'nexalight'),
                                 ),
-                                style: TextStyle(color: Colors.purple, fontSize: 20,fontFamily: 'nexalight'),
+                                style: TextStyle(
+                                    color: Colors.purple,
+                                    fontSize: 20,
+                                    fontFamily: 'nexalight'),
                                 borderRadius: BorderRadius.circular(40),
                                 value: selectedValue,
                                 items: items.map((String item) {
                                   return DropdownMenuItem<String>(
-                                    value: item,
-                                    child: Text(item),
-                                  );
+                                      value: item, child: Text(item));
                                 }).toList(),
                                 onChanged: (String? newValue) {
                                   setState(() {
                                     selectedValue = newValue;
                                   });
                                 },
-                                validator: (value) => value == null ? 'Please select your branch' : null,
+                                validator: (value) => value == null
+                                    ? 'Please select your branch'
+                                    : null,
                               ),
                               SizedBox(height: 20),
                               TextFormField(
@@ -154,22 +151,31 @@ class _LeaveApplicationState extends State<LeaveApplication> {
                                 style: TextStyle(color: Colors.white),
                                 decoration: InputDecoration(
                                   labelText: 'Submit by',
-                                  labelStyle: TextStyle(color: Colors.white,fontFamily: 'nexalight'),
+                                  labelStyle: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: 'nexalight'),
                                 ),
-                                validator: (value) => value!.isEmpty ? 'Enter the Submission to' : null,
+                                validator: (value) => value!.isEmpty
+                                    ? 'Enter the Submission to'
+                                    : null,
                               ),
                               SizedBox(height: 20),
                               TextFormField(
                                 controller: _leaveDateController,
                                 style: TextStyle(color: Colors.white),
-                                readOnly: true, // Prevent keyboard pop-up
-                                onTap: _pickDate, // ✅ Open date picker on tap
+                                readOnly: true,
+                                onTap: _pickDate,
                                 decoration: InputDecoration(
                                   labelText: 'Leave Date',
-                                  labelStyle: TextStyle(color: Colors.white,fontFamily: 'nexalight'),
-                                  suffixIcon: Icon(Icons.calendar_today, color: Colors.white),
+                                  labelStyle: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: 'nexalight'),
+                                  suffixIcon: Icon(Icons.calendar_today,
+                                      color: Colors.white),
                                 ),
-                                validator: (value) => value!.isEmpty ? 'Enter a valid leave date' : null,
+                                validator: (value) => value!.isEmpty
+                                    ? 'Enter a valid leave date'
+                                    : null,
                               ),
                               SizedBox(height: 30),
                               TextFormField(
@@ -177,27 +183,36 @@ class _LeaveApplicationState extends State<LeaveApplication> {
                                 style: TextStyle(color: Colors.white),
                                 decoration: InputDecoration(
                                   labelText: 'Reason',
-                                  labelStyle: TextStyle(color: Colors.white,fontFamily: 'nexalight'),
+                                  labelStyle: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: 'nexalight'),
                                   hintText: 'Enter your reason for application',
-                                  contentPadding: EdgeInsets.symmetric(vertical: 60.0, horizontal: 10.0),
-                                  hintStyle: TextStyle(color: Colors.white54, fontSize: 15),
-                                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(35)),
+                                  contentPadding: EdgeInsets.symmetric(
+                                      vertical: 60.0, horizontal: 10.0),
+                                  hintStyle: TextStyle(
+                                      color: Colors.white54, fontSize: 15),
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(35)),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(color: Colors.blue),
                                     borderRadius: BorderRadius.circular(35),
                                   ),
                                 ),
                                 maxLines: 3,
-                                validator: (value) => value!.isEmpty ? 'Enter a reason for application' : null,
+                                validator: (value) => value!.isEmpty
+                                    ? 'Enter a reason for application'
+                                    : null,
                               ),
                               SizedBox(height: 20),
                               ElevatedButton(
                                 onPressed: submitLeaveApplication,
-                                child: Text(
-                                  'Submit',
-                                  style: TextStyle(fontFamily: 'nexaheavy', fontSize: 20, color: Colors.blue),
-                                ),
+                                child: Text('Submit',
+                                    style: TextStyle(
+                                        fontFamily: 'nexaheavy',
+                                        fontSize: 20,
+                                        color: Colors.blue)),
                               ),
+                              SizedBox(height: 20),
                             ],
                           ),
                         ),
@@ -210,15 +225,45 @@ class _LeaveApplicationState extends State<LeaveApplication> {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => ApplicationHistory()));
+      floatingActionButton: SlideInDown(
+        duration: Duration(milliseconds: 300),
+        child: FloatingActionButton(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => LeaveStatusPage()));
+          },
+          tooltip: 'History',
+          backgroundColor: Colors.white,
+          child: Icon(Icons.history, color: Colors.purpleAccent, size: 33),
+        ),
+      ),
+    );
+  }
+}
+
+class LeaveStatusPage extends StatelessWidget {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Leave Application Status')),
+      body: StreamBuilder(
+        stream: _firestore.collection('leave_applications').snapshots(),
+        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (!snapshot.hasData)
+            return Center(child: CircularProgressIndicator());
+          return ListView(
+            children: snapshot.data!.docs.map((doc) {
+              return ListTile(
+                title: Text(doc['submitBy']),
+                subtitle: Text('Status: ${doc['status']}'),
+              );
+            }).toList(),
+          );
         },
-        tooltip: 'History',
-        backgroundColor: Colors.white,
-        child: SlideInDown(
-            duration: Duration(milliseconds: 500),
-            child: Icon(Icons.history, color: Colors.purpleAccent, size: 33)),
       ),
     );
   }

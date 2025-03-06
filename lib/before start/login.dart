@@ -257,17 +257,5 @@ class _MyLoginState extends State<MyLogin> {
         )
     ;
   }
-  // void login(BuildContext context) async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   String? storedUsername = prefs.getString("username");
-  //   String? storedPassword = prefs.getString("password");
-  //   print(storedPassword);
-  //   print(storedUsername);
-  //   if (usernameController.text == storedUsername && passwordController.text == storedPassword) {
-  //     // Navigate to home screen
-  //     Navigator.push(context, MaterialPageRoute(builder: (context)=>MyHomePage()));
-  //
-  //   }
-  // }
 }
 

@@ -1,8 +1,10 @@
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
-import 'package:animate_do/animate_do.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/before%20start/login.dart';
 import 'package:educationapk/bottombar/homepage.dart';
+import 'package:educationapk/teacherpanel/bottombar/teacherbottom.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -12,9 +14,10 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'bottombar/application.dart';
 import 'bottombar/profilepage.dart';
 import 'bottombar/schedulerstart.dart';
+import 'controllers/user_controller.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-    FlutterLocalNotificationsPlugin();
+FlutterLocalNotificationsPlugin();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,14 +25,15 @@ void main() async {
   await AndroidAlarmManager.initialize();
 
   var androidInitialize =
-      const AndroidInitializationSettings('@mipmap/ic_launcher');
+  const AndroidInitializationSettings('@mipmap/ic_launcher');
   var initializationSettings =
-      InitializationSettings(android: androidInitialize);
+  InitializationSettings(android: androidInitialize);
   await flutterLocalNotificationsPlugin.initialize(initializationSettings);
 
   await FirebaseAppCheck.instance.activate(
     androidProvider: AndroidProvider.playIntegrity,
   );
+  Get.put(UserController());
   runApp(MyApp());
 }
 
@@ -47,14 +51,36 @@ class SplashScreen extends StatefulWidget {
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
-
 class _SplashScreenState extends State<SplashScreen> {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
+
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(milliseconds: 1200), () {
+    checkLoginStatus();
+  }
+
+  void checkLoginStatus() async {
+    User? user = auth.currentUser;
+
+    if (user != null) {
+      DocumentSnapshot userData = await firestore.collection("users").doc(user.uid).get();
+
+      if (userData.exists) {
+        String role = userData['role'];
+
+        if (role == "teacher") {
+          Get.off(() => Teacherbar());
+        } else if (role == "student") {
+          Get.off(() => Bottombar());
+        } else {
+          Get.off(() => MyLogin());
+        }
+      }
+    } else {
       Get.off(() => MyLogin());
-    });
+    }
   }
 
   @override
@@ -62,10 +88,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: FadeIn(
-          duration: const Duration(milliseconds: 600),
-          child: Image.asset("assets/images/logo.png"),
-        ),
+        child: CircularProgressIndicator(),
       ),
     );
   }
@@ -90,6 +113,17 @@ void triggerAlarm() async {
     '⏰ Alarm!',
     "It's time for your task!",
     generalNotificationDetails,
+  );
+}
+
+Future<void> scheduleAlarm(DateTime alarmTime) async {
+  print("✅ Alarm scheduled for \$alarmTime");
+  await AndroidAlarmManager.oneShotAt(
+    alarmTime,
+    0, // Unique ID
+    triggerAlarm,
+    exact: true,
+    wakeup: true,
   );
 }
 
@@ -142,4 +176,3 @@ class _BottombarState extends State<Bottombar> {
     );
   }
 }
-

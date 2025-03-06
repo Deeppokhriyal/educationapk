@@ -52,15 +52,24 @@ class _MySignUpPageState extends State<MySignUpPage> {
 
   // List of items for the dropdown (Branches)
   final List<String> items = [
-    'Information Technology',
-    'Agriculture Engineering',
-    'Chemical Engineering',
-    'Chemical Paint',
-    'Civil',
-    'Computer Science Engineering',
-    'Electronics Engineering',
-    'Mechanical Engineering',
-    'Pharmacy',
+    // 'Information Technology',
+    // 'Agriculture Engineering',
+    // 'Chemical Engineering',
+    // 'Chemical Paint',
+    // 'Civil',
+    // 'Computer Science Engineering',
+    // 'Electronics Engineering',
+    // 'Mechanical Engineering',
+    // 'Pharmacy',
+    'IT',
+    'AGRICULTURE',
+    'CHEMICAL',
+    'PAINT',
+    'CIVIL',
+    'CSE',
+    'ELEX',
+    'MECH',
+    'PHARMACY',
   ];
 
   @override

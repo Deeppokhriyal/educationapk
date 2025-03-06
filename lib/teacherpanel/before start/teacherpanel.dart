@@ -30,15 +30,27 @@ class _TeacherpanelState extends State<Teacherpanel> {
     }
 
     try {
-      UserCredential userCredential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-          email: usernameController.text.trim(),
-          password: passwordController.text.trim(),
+      // Show loading dialog
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) {
+          return Center(child: CircularProgressIndicator());
+        },
       );
 
+      UserCredential userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+        email: usernameController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+
+      String userId = userCredential.user!.uid;
+
+      // Save data in "users" collection
       await FirebaseFirestore.instance
           .collection('users')
-          .doc(userCredential.user!.uid)
+          .doc(userId)
           .set({
         'email': usernameController.text.trim(),
         'branch': selectedValue,
@@ -46,33 +58,54 @@ class _TeacherpanelState extends State<Teacherpanel> {
         'role': 'teacher',
       });
 
+      // Save data in "teachers" collection
+      await FirebaseFirestore.instance
+          .collection('teachers')
+          .doc(userId)
+          .set({
+        'teacherId': userId,
+        'email': usernameController.text.trim(),
+        'branch': selectedValue,
+        'post': selectedPosts,
+        'createdAt': FieldValue.serverTimestamp(),
+      });
+
       print("DEBUG: Teacher Signed Up Successfully");
+
+      // Dismiss the loader
+      Navigator.pop(context);
+
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => TeacherLogin()),
       );
     } catch (e) {
-      print("DEBUG: Error: $e");
+      // Dismiss the loader in case of error
+      Navigator.pop(context);
+
+      if (e is FirebaseAuthException) {
+        print("DEBUG: Firebase Auth Error: ${e.code} - ${e.message}");
+      } else if (e is FirebaseException) {
+        print("DEBUG: Firestore Error: ${e.code} - ${e.message}");
+      } else {
+        print("DEBUG: General Error: $e");
+      }
     }
   }
 
-
-
   String? selectedPosts;
   String? selectedValue; // Variable to hold the selected branch
-   // Variable to hold the selected post
 
-  // List of items for the dropdown (Branches)
   final List<String> items = [
-    'Information Technology',
-    'Agriculture Engineering',
-    'Chemical Engineering',
-    'Chemical Paint',
-    'Civil',
-    'Computer Science Engineering',
-    'Electronics Engineering',
-    'Mechanical Engineering',
-    'Pharmacy',
+    'IT',
+    'AGRICULTURE',
+    'CHEMICAL',
+    'PAINT',
+    'CIVIL',
+    'CSE',
+    'ELEX',
+    'MECH',
+    'PHARMACY',
   ];
 
   // List of posts for the dropdown
@@ -164,7 +197,6 @@ class _TeacherpanelState extends State<Teacherpanel> {
                   TextField(style: TextStyle( fontFamily: 'nexalight'),
                     controller: usernameController,
                     cursorColor: Colors.black,
-                    obscureText: true,
                     decoration: InputDecoration(
                       fillColor: Colors.grey[100],
                       hintText: 'Enter your Email',
@@ -230,14 +262,5 @@ class _TeacherpanelState extends State<Teacherpanel> {
       ),
     );
   }
-
-  // void signup(BuildContext context) async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   await prefs.setString("username", usernameController.text);
-  //   await prefs.setString("password", passwordController.text);
-  //
-  //   // Navigate back to login screen
-  //   Navigator.pop(context);
-  // }
 }
 

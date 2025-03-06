@@ -1,15 +1,16 @@
 import 'package:educationapk/homepagewidgets/devpage.dart';
+import 'package:educationapk/homepagewidgets/images/fullscreen1.dart';
 import 'package:educationapk/popupmenu/privacypolicies.dart';
 import 'package:educationapk/popupmenu/termscondition.dart';
 import 'package:educationapk/teacherpanel/allbox/applications.dart';
 import 'package:educationapk/teacherpanel/allbox/assignments.dart';
 import 'package:educationapk/teacherpanel/allbox/attendance.dart';
 import 'package:educationapk/teacherpanel/allbox/students%20profile.dart';
+import 'package:educationapk/teacherpanel/allbox/studentview.dart';
 import 'package:educationapk/teacherpanel/allbox/syllabus.dart';
 import 'package:educationapk/teacherpanel/allbox/teachers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class TeacherHome extends StatefulWidget {
   const TeacherHome({super.key});
@@ -139,7 +140,6 @@ class _MyMainHomeState extends State<MyMainHome> {
                               PopupMenuButton<String>(
                                 onSelected: (String value) {
                                   // Handle menu item selection
-                                  print('Selected: $value');
                                 },
                                 itemBuilder: (BuildContext context) {
                                   return [
@@ -219,20 +219,14 @@ class _MyMainHomeState extends State<MyMainHome> {
                                           children: [
                                             Row(
                                               children: [
-                                                Container(
-                                                  child:
-                                                  Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                                ),
+                                                Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
                                                 SizedBox(width: 97,),
-                                                Container(
+                                                GestureDetector(
+                                                  onTap: (){
+                                                    Get.to(()=>Devpage());
+                                                  },
                                                   child:
-                                                  GestureDetector(
-                                                    onTap: (){
-                                                      Get.to(()=>Devpage());
-                                                    },
-                                                    child:
-                                                    Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                                  ),
+                                                  Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
                                                 ),
                                               ],
                                             ),
@@ -287,15 +281,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                                           children: [
                                             Row(
                                               children: [
-                                                Container(
-                                                  child:
-                                                  Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                                ),
+                                                Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
                                                 SizedBox(width: 97,),
-                                                Container(
-                                                  child:
-                                                  Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                                ),
+                                                Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
                                               ],
                                             ),
                                             SizedBox(height: 10,),
@@ -352,15 +340,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                                           children: [
                                             Row(
                                               children: [
-                                                Container(
-                                                  child:
-                                                  Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                                ),
+                                                Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
                                                 SizedBox(width: 97,),
-                                                Container(
-                                                  child:
-                                                  Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                                ),
+                                                Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
                                               ],
                                             ),
                                             SizedBox(height: 10,),
@@ -407,7 +389,6 @@ class _MyMainHomeState extends State<MyMainHome> {
 
                                     child:  GestureDetector(
                                         onTap: (){
-                                          print("ftghbjnkml,./");
                                           Get.to(()=>LeaveApplicationsList());
                                           // Navigator.push(context, MaterialPageRoute(builder: (context)=>LeaveApplicationsList() ));
                                         },
@@ -415,15 +396,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                                           children: [
                                             Row(
                                               children: [
-                                                Container(
-                                                  child:
-                                                  Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                                ),
+                                                Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
                                                 SizedBox(width: 97,),
-                                                Container(
-                                                  child:
-                                                  Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                                ),
+                                                Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
                                               ],
                                             ),
                                             SizedBox(height: 10,),
@@ -480,15 +455,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                                           children: [
                                             Row(
                                               children: [
-                                                Container(
-                                                  child:
-                                                  Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                                ),
+                                                Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
                                                 SizedBox(width: 97,),
-                                                Container(
-                                                  child:
-                                                  Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                                ),
+                                                Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
                                               ],
                                             ),
                                             SizedBox(height: 10,),
@@ -535,7 +504,7 @@ class _MyMainHomeState extends State<MyMainHome> {
 
                                     child:  GestureDetector(
                                         onTap: (){
-                                          Get.to(()=>MyMainHome());
+                                          Get.to(()=>Studentview());
                                         },
                                         child: Column(
                                           children: [
@@ -597,20 +566,14 @@ class _MyMainHomeState extends State<MyMainHome> {
                                       children: [
                                         Row(
                                           children: [
-                                            Container(
-                                              child:
-                                              Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                            ),
+                                            Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
                                             SizedBox(width: 97,),
-                                            Container(
+                                            GestureDetector(
+                                              onTap: (){
+                                                Get.to(()=>SyllabusPage());
+                                              },
                                               child:
-                                              GestureDetector(
-                                                onTap: (){
-                                                  Get.to(()=>SyllabusPage());
-                                                },
-                                                child:
-                                                Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                              ),
+                                              Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
                                             ),
                                           ],
                                         ),
@@ -663,15 +626,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                                           children: [
                                             Row(
                                               children: [
-                                                Container(
-                                                  child:
-                                                  Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                                ),
+                                                Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
                                                 SizedBox(width: 97,),
-                                                Container(
-                                                  child:
-                                                  Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                                ),
+                                                Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
                                               ],
                                             ),
                                             SizedBox(height: 10,),
@@ -721,17 +678,173 @@ class _MyMainHomeState extends State<MyMainHome> {
                           scrollDirection: Axis.horizontal,
                           child: Row(
                             children: [
-                              Image.asset('assets/images/man.png',height: 200,),
-                              SizedBox(width: 30,),
-                              Image.asset('assets/images/woman.png',height: 200,),
-                              SizedBox(width: 30,),
-                              Image.asset('assets/images/man.png',height: 200,),
-                              SizedBox(width: 30,),
-                              Image.asset('assets/images/woman.png',height: 200,),
-                              SizedBox(width: 30,),
-                              Image.asset('assets/images/man.png',height: 200,),
-                              SizedBox(width: 30,),
-                              Image.asset('assets/images/woman.png',height: 200,),
+                              GestureDetector(
+                                onTap: () {
+                                  Get.to(()=>Fullscreen(img: 'assets/images/clg7.jpg',tag: 'clg7Image',),);
+                                },
+                                child: Column(
+                                  children: [
+                                    Hero(
+                                      tag: 'clg7Image', // Unique Hero tag
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(35),
+                                        child: Image.asset(
+                                          'assets/images/clg7.jpg',
+                                          height: 200,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    Text('Academic Block',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white),),
+
+
+                                  ],
+                                ),
+                              ),
+                              SizedBox(width: 15,),
+                              GestureDetector(
+                                onTap: () {
+                                  Get.to(()=>Fullscreen(img: 'assets/images/clg6.jpg',tag: 'clg6Image',),);
+
+                                },
+                                child: Column(
+                                  children: [
+                                    Hero(
+                                      tag: 'clg6Image', // Unique Hero tag
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(35),
+                                        child: Image.asset(
+                                          'assets/images/clg6.jpg',
+                                          height: 200,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    Text('IT Block',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white),),
+
+                                  ],
+                                ),
+                              ),
+                              SizedBox(width: 15,),
+                              GestureDetector(
+                                onTap: () {
+                                  Get.to(()=>Fullscreen(img: 'assets/images/clg3.jpg',tag: 'clg3Image',),);
+
+                                },
+                                child: Column(
+                                  children: [
+                                    Hero(
+                                      tag: 'clg3Image', // Unique Hero tag
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(35),
+                                        child: Image.asset(
+                                          'assets/images/clg3.jpg',
+                                          height: 200,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    Text('Digital Library',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white),),
+
+                                  ],
+                                ),
+                              ),
+                              SizedBox(width: 15,),
+                              GestureDetector(
+                                onTap: () {
+                                  Get.to(()=>Fullscreen(img: 'assets/images/clg4.jpg',tag: 'clg4Image',),);
+
+                                },
+                                child: Column(
+                                  children: [
+                                    Hero(
+                                      tag: 'clg4Image', // Unique Hero tag
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(35),
+                                        child: Image.asset(
+                                          'assets/images/clg4.jpg',
+                                          height: 200,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    Text('Canteen',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white),),
+
+                                  ],
+                                ),
+                              ),
+                              SizedBox(width: 15,),
+                              GestureDetector(
+                                onTap: () {
+                                  Get.to(()=>Fullscreen(img: 'assets/images/clg5.jpg',tag: 'clg5Image',),);
+
+                                },
+                                child: Column(
+                                  children: [
+                                    Hero(
+                                      tag: 'clg5Image', // Unique Hero tag
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(35),
+                                        child: Image.asset(
+                                          'assets/images/clg5.jpg',
+                                          height: 200,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    Text('Workshop\'s',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white),),
+
+                                  ],
+                                ),
+                              ),
+
+                              SizedBox(width: 15,),
+                              GestureDetector(
+                                onTap: () {
+                                  Get.to(()=>Fullscreen(img: 'assets/images/clg1.jpg',tag: 'clg1Image',),);
+
+                                },
+                                child: Column(
+                                  children: [
+                                    Hero(
+                                      tag: 'clg1Image', // Unique Hero tag
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(35),
+                                        child: Image.asset(
+                                          'assets/images/clg1.jpg',
+                                          height: 200,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    Text('NCC Block',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white),),
+
+                                  ],
+                                ),
+                              ),
+                              SizedBox(width: 15,),
+                              GestureDetector(
+                                onTap: () {
+                                  Get.to(()=>Fullscreen(img: 'assets/images/clg2.jpg',tag: 'clg2Image',),);
+                                },
+                                child: Column(
+                                  children: [
+                                    Hero(
+                                      tag: 'clg2Image', // Unique Hero tag
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(35),
+                                        child: Image.asset(
+                                          'assets/images/clg2.jpg',
+                                          height: 200,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    Text('Parking',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white),),
+
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -745,7 +858,7 @@ class _MyMainHomeState extends State<MyMainHome> {
 
                             ),
                             child:
-                            Text('©2025 All Rights Reserved by Teamcelestial',style: TextStyle(fontFamily: 'nexalight',fontSize: 13,color: Colors.black),)
+                            Text('©2025 All Rights Reserved by Teamcelestial',style: TextStyle(fontFamily: 'nexalight',fontSize: 13,color: Colors.white),)
                         ),
                       ],
                     ),

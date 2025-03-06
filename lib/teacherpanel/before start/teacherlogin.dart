@@ -3,6 +3,8 @@ import 'package:educationapk/teacherpanel/before%20start/teacherpanel.dart';
 import 'package:educationapk/teacherpanel/bottombar/teacherbottom.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TeacherLogin extends StatefulWidget {
@@ -54,7 +56,7 @@ class _TeacherLoginState extends State<TeacherLogin> {
           prefs.setString("password", teacherpasswordController.text);
           prefs.setBool("rememberMe", true);
         }
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Teacherbar()));
+        Get.offAll(()=>Teacherbar());
       } else {
         showError("Not a Teacher Account!");
       }

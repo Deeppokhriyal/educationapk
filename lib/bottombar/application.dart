@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LeaveApplication extends StatefulWidget {
@@ -10,21 +11,22 @@ class LeaveApplication extends StatefulWidget {
 class _LeaveApplicationState extends State<LeaveApplication> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController _submitByController = TextEditingController();
+  TextEditingController _rollNoController = TextEditingController();
   TextEditingController _leaveDateController = TextEditingController();
   TextEditingController _leaveReasonController = TextEditingController();
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   String? selectedValue;
 
   final List<String> items = [
-    'Information Technology',
-    'Agriculture Engineering',
-    'Chemical Engineering',
-    'Chemical Paint',
-    'Civil',
-    'Computer Science Engineering',
-    'Electronics Engineering',
-    'Mechanical Engineering',
-    'Pharmacy'
+    'IT',
+    'AGRICULTURE',
+    'CHEMICAL',
+    'PAINT',
+    'CIVIL',
+    'CSE',
+    'ELEX',
+    'MECH',
+    'PHARMACY',
   ];
 
   Future<void> _pickDate() async {
@@ -50,14 +52,19 @@ class _LeaveApplicationState extends State<LeaveApplication> {
         return;
       }
 
+      String currentUserId = FirebaseAuth.instance.currentUser?.uid ?? '';
+      String rollNo = _rollNoController.text.trim(); // ✅ Roll Number as Unique ID
+
       try {
-        await _firestore.collection('leave_applications').add({
+        await _firestore.collection('leave_applications').doc(rollNo).set({  // ✅ Document ID = Roll No.
           'branch': selectedValue,
-          'submitBy': _submitByController.text,
+          'submitBy': currentUserId,
+          'submitName': _submitByController.text, // ✅ Save student name
+          'rollno': rollNo, // ✅ Save roll number
           'leaveDate': _leaveDateController.text,
           'leaveReason': _leaveReasonController.text,
           'submittedAt': FieldValue.serverTimestamp(),
-          'status': 'Pending' // Default status
+          'status': 'Pending'
         });
 
         ScaffoldMessenger.of(context).showSnackBar(
@@ -65,6 +72,7 @@ class _LeaveApplicationState extends State<LeaveApplication> {
         );
 
         _submitByController.clear();
+        _rollNoController.clear();
         _leaveDateController.clear();
         _leaveReasonController.clear();
         setState(() {
@@ -150,13 +158,26 @@ class _LeaveApplicationState extends State<LeaveApplication> {
                                 controller: _submitByController,
                                 style: TextStyle(color: Colors.white),
                                 decoration: InputDecoration(
-                                  labelText: 'Submit by',
+                                  labelText: 'Submit Name',
                                   labelStyle: TextStyle(
                                       color: Colors.white,
                                       fontFamily: 'nexalight'),
                                 ),
                                 validator: (value) => value!.isEmpty
-                                    ? 'Enter the Submission to'
+                                    ? 'Enter the Submission Name'
+                                    : null,
+                              ),SizedBox(height: 20),
+                              TextFormField(
+                                controller: _rollNoController,
+                                style: TextStyle(color: Colors.white),
+                                decoration: InputDecoration(
+                                  labelText: 'UBTER Roll No.',
+                                  labelStyle: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: 'nexalight'),
+                                ),
+                                validator: (value) => value!.isEmpty
+                                    ? 'Enter the UBTER Roll No.'
                                     : null,
                               ),
                               SizedBox(height: 20),
@@ -190,7 +211,7 @@ class _LeaveApplicationState extends State<LeaveApplication> {
                                   contentPadding: EdgeInsets.symmetric(
                                       vertical: 60.0, horizontal: 10.0),
                                   hintStyle: TextStyle(
-                                      color: Colors.white54, fontSize: 15),
+                                      color: Colors.white54, fontSize: 15,fontFamily: 'nexalight'),
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(35)),
                                   focusedBorder: OutlineInputBorder(
@@ -225,41 +246,77 @@ class _LeaveApplicationState extends State<LeaveApplication> {
           ),
         ],
       ),
-      floatingActionButton: SlideInDown(
-        duration: Duration(milliseconds: 300),
-        child: FloatingActionButton(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => LeaveStatusPage()));
-          },
-          tooltip: 'History',
-          backgroundColor: Colors.white,
-          child: Icon(Icons.history, color: Colors.purpleAccent, size: 33),
-        ),
-      ),
+    floatingActionButton: SlideInDown(
+    duration: Duration(milliseconds: 300),
+    child: FloatingActionButton(
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(21
+    )),
+    onPressed: () {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => LeaveStatusPage()));
+    },
+    tooltip: 'History',
+    backgroundColor: Colors.white,
+    child: Icon(Icons.history, color: Colors.purpleAccent, size: 33),
+    ),
+    )
     );
   }
 }
 
 class LeaveStatusPage extends StatelessWidget {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
+    String currentUserId = _auth.currentUser?.uid ?? '';
+
     return Scaffold(
-      appBar: AppBar(title: Text('Leave Application Status')),
+      appBar: AppBar(
+        title: Text(
+          'Leave Application Status',
+          style: TextStyle(fontFamily: 'nexaheavy'),
+        ),
+      ),
       body: StreamBuilder(
-        stream: _firestore.collection('leave_applications').snapshots(),
+        stream: _firestore
+            .collection('leave_applications')
+            .where('submitBy', isEqualTo: currentUserId) // ✅ Filtering by user
+            .snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (!snapshot.hasData)
-            return Center(child: CircularProgressIndicator());
+          if (!snapshot.hasData) return Center(child: CircularProgressIndicator());
+
+          if (snapshot.data!.docs.isEmpty) {
+            return Center(
+              child: Text(
+                'No applications found',
+                style: TextStyle(fontFamily: 'nexaheavy', fontSize: 18),
+              ),
+            );
+          }
+
           return ListView(
             children: snapshot.data!.docs.map((doc) {
+              String status = doc['status'];
+              Color statusColor;
+
+              if (status == 'Approved') {
+                statusColor = Colors.green;
+              } else if (status == 'Declined') {
+                statusColor = Colors.red;
+              } else {
+                statusColor = Colors.blue;
+              }
+
               return ListTile(
-                title: Text(doc['submitBy']),
-                subtitle: Text('Status: ${doc['status']}'),
+                title: Text(
+                  'Student: ${doc['submitName']} (Roll No: ${doc['rollno']})', // ✅ Student ka naam aur roll number dikhayein
+                  style: TextStyle(fontFamily: 'nexaheavy', color: Colors.black, fontSize: 18),
+                ),
+                subtitle: Text(
+                  'Status: ${doc['status']}',
+                  style: TextStyle(fontFamily: 'nexalight', color: statusColor, fontSize: 18),
+                ),
               );
             }).toList(),
           );

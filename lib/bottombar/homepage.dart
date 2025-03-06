@@ -7,6 +7,8 @@ import 'package:educationapk/homepagewidgets/collegeinfo.dart';
 import 'package:educationapk/homepagewidgets/devpage.dart';
 import 'package:educationapk/allpages/map.dart';
 import 'package:educationapk/homepagewidgets/eventpage.dart';
+import 'package:educationapk/homepagewidgets/images/fullscreen1.dart';
+import 'package:educationapk/homepagewidgets/teacherdetails.dart';
 import 'package:educationapk/popupmenu/privacypolicies.dart';
 import 'package:educationapk/popupmenu/termscondition.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -371,13 +373,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                           SizedBox(width: 105,),
                                           Container(
                                             child:
-                                            GestureDetector(
-                                              onTap: (){
-                                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Devpage()));
-                                              },
-                                              child:
-                                              Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                            ),
+                                            Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
                                           ),
                                         ],
                                       ),
@@ -411,58 +407,63 @@ class _MyMainHomeState extends State<MyMainHome> {
                                   )
                               ),
                             ),
-                            Container(
+                            GestureDetector(
+                              onTap: (){
+                                Get.to(()=>Teacherdetails());
+                              },
+                              child: Container(
 
-                                padding: EdgeInsets.all(10),
-                                margin: EdgeInsets.all(15),
-                                height: 200,
-                                width: 155,
-                                decoration:
-                                BoxDecoration(
-                                  // color: Color(0xFFFFC107),
-                                  // color: Colors.greenAccent, // Background color
-                                  color: Color(0xFFFFAB91), // Background color
-                                  borderRadius: BorderRadius.circular(25),// Rounded corners
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Color(0xFFFFAB91).withOpacity(0.5), // Shadow Color
-                                      spreadRadius: 3, // Spread (Kitna failaaye)
-                                      blurRadius: 10, // Blur (Kitna soft ho)
-                                      offset: Offset(0, 4), // Shadow ka direction (X, Y)
-                                    ),
-                                  ],
-                                ),
+                                  padding: EdgeInsets.all(10),
+                                  margin: EdgeInsets.all(15),
+                                  height: 200,
+                                  width: 155,
+                                  decoration:
+                                  BoxDecoration(
+                                    // color: Color(0xFFFFC107),
+                                    // color: Colors.greenAccent, // Background color
+                                    color: Color(0xFFFFAB91), // Background color
+                                    borderRadius: BorderRadius.circular(25),// Rounded corners
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Color(0xFFFFAB91).withOpacity(0.5), // Shadow Color
+                                        spreadRadius: 3, // Spread (Kitna failaaye)
+                                        blurRadius: 10, // Blur (Kitna soft ho)
+                                        offset: Offset(0, 4), // Shadow ka direction (X, Y)
+                                      ),
+                                    ],
+                                  ),
 
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Container(
-                                          child:
-                                          Icon(Icons.person_pin_rounded,size: 30,color: Colors.black),
-                                        ),
-                                        SizedBox(width: 70,),
-                                        Container(
-                                          child:
-                                          Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: 8,),
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text('Teachers',style: TextStyle(fontSize: 24,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                        Text('68 Members',style: TextStyle(fontSize: 14,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Container(
+                                            child:
+                                            Icon(Icons.person_pin_rounded,size: 30,color: Colors.black),
+                                          ),
+                                          SizedBox(width: 70,),
+                                          Container(
+                                            child:
+                                            Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(height: 8,),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text('Teachers',style: TextStyle(fontSize: 24,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                          Text('68 Members',style: TextStyle(fontSize: 14,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
 
-                                      ],
-                                    )
-                                  ],
-                                )
+                                        ],
+                                      )
+                                    ],
+                                  )
+                              ),
                             ),
                             Container(
 
@@ -575,10 +576,10 @@ class _MyMainHomeState extends State<MyMainHome> {
                                   children: [
                                     Container(
                                       child:
-                                        Image.asset('assets/images/clgbglogo.png',height: 50,),
+                                        Image.asset('assets/images/clgbglogo.png',height: 65,),
                                       // Icon(Icons.school,size: 45,color: Colors.black),
                                     ),
-                                    SizedBox(width: 12,),
+                                    SizedBox(width: 8,),
                                     Column(mainAxisAlignment: MainAxisAlignment.start,
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
@@ -635,30 +636,195 @@ class _MyMainHomeState extends State<MyMainHome> {
                     Container(
                       padding: EdgeInsets.all(15),
                       child:
-                      Divider(height: 20,color: Colors.black,),
+                      Divider(height: 20,color: Colors.black,)
                     ),
-                    Text('  Gallery',style: TextStyle(fontSize: 29,fontFamily: 'nexaheavy',color: Colors.black54),),
-                    Text('   Govt. Polytechnic Kashipur',style: TextStyle(fontSize: 16,fontFamily: 'nexaheavy',color: Colors.lightBlueAccent),),
+                    Text('  Gallery',style: TextStyle(fontSize: 29,fontFamily: 'nexaheavy',color: Colors.black),),
+                    Text('   Govt. Polytechnic Kashipur',style: TextStyle(fontSize: 16,fontFamily: 'nexaheavy',color: Colors.blue),),
                     SizedBox(height: 10,),
                     SingleChildScrollView(
                       padding: EdgeInsets.all(15),
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
-                          Image.asset('assets/images/man.png',height: 200,),
-                          SizedBox(width: 30,),
-                          Image.asset('assets/images/woman.png',height: 200,),
-                          SizedBox(width: 30,),
-                          Image.asset('assets/images/man.png',height: 200,),
-                          SizedBox(width: 30,),
-                          Image.asset('assets/images/woman.png',height: 200,),
-                          SizedBox(width: 30,),
-                          Image.asset('assets/images/man.png',height: 200,),
-                          SizedBox(width: 30,),
-                          Image.asset('assets/images/woman.png',height: 200,),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(()=>Fullscreen(img: 'assets/images/clg7.jpg',tag: 'clg7Image',),);
+                            },
+                            child: Column(
+                              children: [
+                                Hero(
+                                  tag: 'clg7Image', // Unique Hero tag
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(35),
+                                    child: Image.asset(
+                                      'assets/images/clg7.jpg',
+                                      height: 200,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                Text('Academic Block',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.black),),
+
+
+                              ],
+                            ),
+                          ),
+                          SizedBox(width: 15,),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(()=>Fullscreen(img: 'assets/images/clg6.jpg',tag: 'clg6Image',),);
+
+                            },
+                            child: Column(
+                              children: [
+                                Hero(
+                                  tag: 'clg6Image', // Unique Hero tag
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(35),
+                                    child: Image.asset(
+                                      'assets/images/clg6.jpg',
+                                      height: 200,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                Text('IT Block',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.black),),
+
+                              ],
+                            ),
+                          ),
+                          SizedBox(width: 15,),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(()=>Fullscreen(img: 'assets/images/clg3.jpg',tag: 'clg3Image',),);
+
+                            },
+                            child: Column(
+                              children: [
+                                Hero(
+                                  tag: 'clg3Image', // Unique Hero tag
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(35),
+                                    child: Image.asset(
+                                      'assets/images/clg3.jpg',
+                                      height: 200,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                Text('Digital Library',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.black),),
+
+                              ],
+                            ),
+                          ),
+                          SizedBox(width: 15,),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(()=>Fullscreen(img: 'assets/images/clg4.jpg',tag: 'clg4Image',),);
+
+                            },
+                            child: Column(
+                              children: [
+                                Hero(
+                                  tag: 'clg4Image', // Unique Hero tag
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(35),
+                                    child: Image.asset(
+                                      'assets/images/clg4.jpg',
+                                      height: 200,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                Text('Canteen',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.black),),
+
+                              ],
+                            ),
+                          ),
+                          SizedBox(width: 15,),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(()=>Fullscreen(img: 'assets/images/clg5.jpg',tag: 'clg5Image',),);
+
+                            },
+                            child: Column(
+                              children: [
+                                Hero(
+                                  tag: 'clg5Image', // Unique Hero tag
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(35),
+                                    child: Image.asset(
+                                      'assets/images/clg5.jpg',
+                                      height: 200,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                Text('Workshop\'s',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.black),),
+
+                              ],
+                            ),
+                          ),
+
+                          SizedBox(width: 15,),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(()=>Fullscreen(img: 'assets/images/clg1.jpg',tag: 'clg1Image',),);
+
+                            },
+                            child: Column(
+                              children: [
+                                Hero(
+                                  tag: 'clg1Image', // Unique Hero tag
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(35),
+                                    child: Image.asset(
+                                      'assets/images/clg1.jpg',
+                                      height: 200,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                Text('NCC Block',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.black),),
+
+                              ],
+                            ),
+                          ),
+                          SizedBox(width: 15,),
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(()=>Fullscreen(img: 'assets/images/clg2.jpg',tag: 'clg2Image',),);
+                            },
+                            child: Column(
+                              children: [
+                                Hero(
+                                  tag: 'clg2Image', // Unique Hero tag
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(35),
+                                    child: Image.asset(
+                                      'assets/images/clg2.jpg',
+                                      height: 200,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                Text('Parking',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.black),),
+
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),
+                    Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.horizontal(),
+                          color: Colors.blueAccent,
+
+                        ),
+                        alignment: Alignment.center,
+
+                        child: Text('©2025 All Rights Reserved by Teamcelestial',style: TextStyle(fontFamily: 'nexalight',fontSize: 12,color: Colors.black),))
                   ],
                 ),
               ),

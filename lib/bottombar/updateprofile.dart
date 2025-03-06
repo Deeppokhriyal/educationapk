@@ -17,7 +17,6 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
   final FirebaseStorage storage = FirebaseStorage.instance;
   final TextEditingController nameController = TextEditingController();
   final TextEditingController bioController = TextEditingController();
-  final TextEditingController branchController = TextEditingController();
 
   File? _image;
   String imageUrl = "";
@@ -38,7 +37,6 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
         setState(() {
           nameController.text = userData["name"] ?? "";
           bioController.text = userData["bio"] ?? "";
-          branchController.text = userData["branch"] ?? "";
           imageUrl = userData["profileImage"] ?? "";
         });
       }
@@ -75,7 +73,6 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
         "profileImage": newImageUrl,
         "name": nameController.text,
         "bio": bioController.text,
-        "branch": branchController.text,
       });
 
       setState(() {
@@ -98,6 +95,7 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
           content: Text("Profile update failed! Try again."),
           backgroundColor: Colors.red,
         ),
+
       );
     }
   }
@@ -161,7 +159,6 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                     children: [
                       buildTextField("Enter New Username", nameController),
                       buildTextField("Enter your Bio", bioController),
-                      buildTextField("Enter your Branch", branchController),
                     ],
                   ),
                 ),

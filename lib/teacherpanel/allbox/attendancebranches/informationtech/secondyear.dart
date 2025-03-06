@@ -76,7 +76,7 @@ class _SecondyearState extends State<Secondyear> {
     String today = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
     return Scaffold(
-      backgroundColor: Colors.green[100],
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
         title: Text("Today's Date: $today", style: TextStyle(fontFamily: 'nexaheavy', fontSize: 20)),

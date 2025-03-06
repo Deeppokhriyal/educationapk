@@ -11,7 +11,7 @@ class Privacypolicies extends StatelessWidget {
                   Container(padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage('assets/images/blueback.jpg'), // Path to your background image
+                          image: NetworkImage('https://img.freepik.com/premium-photo/full-frame-shot-blue-wall_1048944-14723266.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
                           fit: BoxFit.cover,
                         ),
                       ),

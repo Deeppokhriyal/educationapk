@@ -33,7 +33,7 @@ class _AgrifirstyearState extends State<Agrifirstyear> {
   // Function to fetch attendance for selected date
   Future<void> fetchAttendanceByDate(String date) async {
     DocumentSnapshot snapshot =
-    await _firestore.collection("attendance1styear").doc(date).get();
+    await _firestore.collection("Agrifirst").doc(date).get();
 
     if (snapshot.exists) {
       List<dynamic> attendanceList = snapshot["attendance"];

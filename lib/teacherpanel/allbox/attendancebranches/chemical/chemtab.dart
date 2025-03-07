@@ -1,6 +1,6 @@
-import 'package:educationapk/teacherpanel/allbox/attendancebranches/informationtech/firstyear.dart';
-import 'package:educationapk/teacherpanel/allbox/attendancebranches/informationtech/secondyear.dart';
-import 'package:educationapk/teacherpanel/allbox/attendancebranches/informationtech/thirdyear.dart';
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/chemical/chemfirst.dart';
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/chemical/chemsecond.dart';
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/chemical/chemthird.dart';
 import 'package:flutter/material.dart';
 
 class Chemtab extends StatelessWidget {
@@ -36,9 +36,9 @@ class Chemtab extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            Firstyear(),
-            Secondyear(),
-            Thirdyear(),
+            Chemfirst(),
+            Chemsecond(),
+            Chemthird(),
           ],
         ),
         floatingActionButton: FloatingActionButton(

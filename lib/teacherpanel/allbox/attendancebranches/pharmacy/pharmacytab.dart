@@ -1,6 +1,6 @@
-import 'package:educationapk/teacherpanel/allbox/attendancebranches/informationtech/firstyear.dart';
-import 'package:educationapk/teacherpanel/allbox/attendancebranches/informationtech/secondyear.dart';
-import 'package:educationapk/teacherpanel/allbox/attendancebranches/informationtech/thirdyear.dart';
+
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/pharmacy/pharmacyfirst.dart';
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/pharmacy/pharmacysecond.dart';
 import 'package:flutter/material.dart';
 
 class Pharmacytab extends StatelessWidget {
@@ -30,15 +30,13 @@ class Pharmacytab extends StatelessWidget {
             tabs: [
               Tab(text: '1st Year'),
               Tab(text: '2nd Year'),
-              Tab(text: '3rd Year'),
             ],
           ),
         ),
         body: TabBarView(
           children: [
-            Firstyear(),
-            Secondyear(),
-            Thirdyear(),
+            Pharmacyfirst(),
+            Pharmacysecond(),
           ],
         ),
         floatingActionButton: FloatingActionButton(

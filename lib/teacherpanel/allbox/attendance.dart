@@ -1,8 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/Computerscience/cstab.dart';
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/agriculture/agritab.dart';
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/chemical/chemtab.dart';
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/civil/civiltab.dart';
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/electronics/elex.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/informationtech/ittab.dart';
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/mechanical/mechtab.dart';
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/paint/painttab.dart';
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/pharmacy/pharmacytab.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class AttendanceScreen extends StatefulWidget {
   @override
@@ -24,6 +32,8 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   Future<void> getUserBranch() async {
     User? user = _auth.currentUser; // 🔥 Firebase se logged-in user ka UID le rahe hain
 
+      String todayDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
+
     if (user != null) {
       DocumentSnapshot userDoc =
       await _firestore.collection("users").doc(user.uid).get();
@@ -44,6 +54,27 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
     } else if (userBranch == "CSE") {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => Cstab()));
+    } else if (userBranch == "MECH") {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => Mechtab()));
+    } else if (userBranch == "CIVIL") {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => Civiltab()));
+    } else if (userBranch == "CHEMICAL") {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => Chemtab()));
+    } else if (userBranch == "PAINT") {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => Painttab()));
+    } else if (userBranch == "AGRI") {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => Agritab()));
+    } else if (userBranch == "PHARMACY") {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => Pharmacytab()));
+    } else if (userBranch == "ELEX") {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => Elextab()));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Branch not assigned!")),
@@ -53,15 +84,28 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
 
   @override
   Widget build(BuildContext context) {
+    String today = DateFormat('yyyy-MM-dd').format(DateTime.now());
+
     return Scaffold(
-      appBar: AppBar(title: Text("Branch Navigation")),
-      body: Center(
-        child: userBranch == null
-            ? CircularProgressIndicator() // 🔄 Jab tak data fetch ho raha hai
-            : ElevatedButton(
-          onPressed: navigateToAttendance,
-          child: Text("Go to $userBranch Attendance"),
-        ),
+      backgroundColor: Colors.white,
+      appBar: AppBar(title: Text("Branch Navigation",style: TextStyle(fontFamily: 'nexaheavy' ),),
+        backgroundColor: Colors.white,
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text("Today's Date: $today", style: TextStyle(fontFamily: 'nexaheavy', fontSize: 20)),
+          SizedBox(height: 30,),
+          Center(
+            child: userBranch == null
+                ? CircularProgressIndicator() // 🔄 Jab tak data fetch ho raha hai
+                : ElevatedButton(
+              onPressed: navigateToAttendance,
+              child: Text("Go to $userBranch Attendance",style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
+            ),
+          ),
+        ],
       ),
     );
   }

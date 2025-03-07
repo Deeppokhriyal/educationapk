@@ -1,9 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/before%20start/login.dart';
 import 'package:educationapk/controllers/signupController.dart';
+import 'package:educationapk/teacherpanel/before%20start/teacherotp.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:get/get.dart';
+import 'dart:math';
 
 class MySignUpPage extends StatefulWidget {
   @override
@@ -25,27 +28,67 @@ class _MySignUpPageState extends State<MySignUpPage> {
     }
 
     try {
-      UserCredential userCredential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-          email: usernameController.text.trim(), // Assuming this is email
-          password: passwordController.text);
+      String email = usernameController.text.trim();
 
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(userCredential.user!.uid)
-          .set({
-        'email': usernameController.text.trim(),
-        'name': nameController.text.trim(),
-        'branch': selectedValue,
-        'role': 'student',
+      // Check if email is valid
+      if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email)) {
+        print("Invalid email format");
+        return;
+      }
+
+      // Generate a random 4-digit OTP
+      String otp = (Random().nextInt(9000) + 1000).toString();
+
+      // Save OTP to Firestore for later verification
+      await FirebaseFirestore.instance.collection('emailOtps').doc(email).set({
+        'otp': otp,
+        'timestamp': FieldValue.serverTimestamp(),
       });
 
-      print("Student Signed Up Successfully");
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyLogin()));
+      // Send email using FlutterEmailSender (or any SMTP package)
+      final emailToSend = Email(
+        body: 'Your OTP is: $otp',
+        subject: 'OTP Verification',
+        recipients: [email],
+        isHTML: false,
+      );
+
+      await FlutterEmailSender.send(emailToSend);
+      print("OTP sent to $email: $otp");
+
+      // Navigate to OTP Verification Page
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => OtpVerificationPage(email: email),
+        ),
+      );
     } catch (e) {
       print("Error: $e");
     }
   }
+
+// Function to save user details to Firestore after OTP verification
+  Future<void> saveUserToFirestore(String email, String name, String branch) async {
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: passwordController.text.trim(),
+      );
+
+      await FirebaseFirestore.instance.collection('users').doc(userCredential.user!.uid).set({
+        'email': email,
+        'name': name,
+        'branch': branch,
+        'role': 'student',
+      });
+
+      print("User saved to Firestore successfully");
+    } catch (e) {
+      print("Failed to save user to Firestore: $e");
+    }
+  }
+
 
 
   String? selectedValue; // Variable to hold the selected branch
@@ -254,16 +297,6 @@ class _MySignUpPageState extends State<MySignUpPage> {
       ),
     );
   }
-
-  // void signup(BuildContext context) async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   await prefs.setString("username", usernameController.text);
-  //   await prefs.setString("number", numberController.text);
-  //   await prefs.setString("password", passwordController.text);
-  //
-  //   // Navigate back to login screen
-  //   Navigator.pop(context);
-  // }
 }
 
 

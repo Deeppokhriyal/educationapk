@@ -98,13 +98,13 @@ class _TeacherLoginState extends State<TeacherLogin> {
 
                   SizedBox(height: 20,),
                   Container(
-                    padding: EdgeInsets.only(right: 30,left: 30),
-                    child: Column( crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Welcome\nDear Teacher\'s', style: TextStyle( color: Colors.black, fontSize: 40, fontFamily: 'sans-serif-thin'),),
-                        Text('Glad to see you.', style: TextStyle( color: Colors.green, fontSize: 40, fontFamily: 'sans-serif-thin'),),
-                      ],
-                    )
+                      padding: EdgeInsets.only(right: 30,left: 30),
+                      child: Column( crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Welcome\nDear Teacher\'s', style: TextStyle( color: Colors.black, fontSize: 40, fontFamily: 'sans-serif-thin'),),
+                          Text('Glad to see you.', style: TextStyle( color: Colors.green, fontSize: 40, fontFamily: 'sans-serif-thin'),),
+                        ],
+                      )
                   ),
                   SizedBox(height: 40,),
                   SingleChildScrollView(
@@ -164,7 +164,7 @@ class _TeacherLoginState extends State<TeacherLogin> {
                           ),
                           isLoading
                               ? CircularProgressIndicator()
-                          :SizedBox(height: 35,),
+                              :SizedBox(height: 35,),
                           SizedBox(
                             height: 50,
                             width: 450,
@@ -203,5 +203,4 @@ class _TeacherLoginState extends State<TeacherLogin> {
 //
 //     }
 //   }
- }
-
+}

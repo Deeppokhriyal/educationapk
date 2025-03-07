@@ -1,11 +1,12 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:educationapk/before%20start/login.dart';
-import 'package:educationapk/bottombar/updateprofile.dart';
+import 'package:educationapk/teacherpanel/bottombar/updateTeacherprofile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+
+import '../../main.dart';
+
 
 class Teacherprofile extends StatefulWidget {
   @override
@@ -15,7 +16,10 @@ class Teacherprofile extends StatefulWidget {
 class _TeacherprofileState extends State<Teacherprofile> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
-  String name = "";
+  String name = "Loading...";
+  String profileImage = "";
+  String qualification = "";
+  String previousrole = "";
 
   @override
   void initState() {
@@ -31,271 +35,235 @@ class _TeacherprofileState extends State<Teacherprofile> {
       if (userData.exists) {
         setState(() {
           name = userData["name"];
-          // email = userData["email"];
-          // phone = userData["phone"];
-          // github = userData["github"];
-          // instagram = userData["instagram"];
-          // location = userData["location"];
-          // profileImage = userData["profileImage"];
+          qualification = userData["qualification"];
+          previousrole = userData["previousrole"];
+          profileImage = userData["profileImage"] ?? "";
         });
       }
     }
   }
 
+  void showEditDialog(String title, String field, String currentValue) {
+    TextEditingController controller =
+    TextEditingController(text: currentValue);
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: Colors.purple[100],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(40), // Border Radius 55
+          ),
+          title: Text("Edit $title",style: TextStyle(fontFamily: 'nexaheavy'),),
+          content: TextField(controller: controller,style: TextStyle(fontFamily: 'nexalight'),),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text("Cancel",style: TextStyle(fontFamily: 'nexalight',fontSize: 16,color: Colors.black),),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                User? user = auth.currentUser;
+                if (user != null) {
+                  await firestore.collection("users").doc(user.uid).update({
+                    field: controller.text,
+                  });
+                  setState(() {
+                    if (field == "qualification") qualification = controller.text;
+                    if (field == "previousrole") previousrole = controller.text;
+                  });
+                }
+                Navigator.pop(context);
+              },
+              child: Text("Save",style: TextStyle(fontFamily: 'nexalight',fontSize: 16,color: Colors.black),),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(children: [
-        Stack(children: [
-          Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(
-                    'https://img.freepik.com/free-vector/pink-neon-synthwave-patterned-social-story-template-vector_53876-176441.jpg'), // Path to your background image
-                fit: BoxFit.cover,
-              ),
-            ),
-            child: Container(
-              padding: EdgeInsets.all(15),
-              child: Column(
-                children: [
-                  Stack(children: [
-                    Container(
-                      padding: EdgeInsets.only(left: 10, top: 25),
-                      child: Row(
-                        children: [
-                          IconButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              icon: Icon(
-                                LineAwesomeIcons.angle_left_solid,
-                                size: 30,
-                                color: Colors.white,
-                              )),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            'Profile',
-                            style: TextStyle(
-                                fontFamily: 'sans-serif-light',
-                                letterSpacing: 0.2,
-                                color: Colors.white),
-                          ),
-                        ],
-                      ),
+      backgroundColor: Colors.black,
+      body: ListView(
+        children: [
+          Stack(
+            alignment: Alignment.center,
+            children: [
+              Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(
+                          'https://img.freepik.com/free-photo/abstract-gradient-neon-lights_23-2149279124.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_authors_boost'), // Path to your background image
+                      // image: NetworkImage('https://img.freepik.com/premium-photo/tiles-art-illustration_732004-8.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'),// Path to your background image
+                      fit: BoxFit.cover,
                     ),
-                    Container(
-                      padding: EdgeInsets.only(left: 140, top: 100),
-                      child: SizedBox(
-                        width: 100,
-                        height: 100,
-                        child: CircleAvatar(
-                          radius: 50,
-                          backgroundImage:
-                          // profileImage.isNotEmpty
-                          //     ? NetworkImage(profileImage)
-                          //     :
-                          AssetImage('assets/images/profile.png')
-                          as ImageProvider,
-                        ),
-                      ),
+                  ),
+                  child: SlideInUp(
+                    duration: Duration(milliseconds: 400),
+                    child: Column(
+                      children: [
+                        Container(
+                            padding: EdgeInsets.all(15),
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 50,
+                                      backgroundImage: profileImage.isNotEmpty
+                                          ? NetworkImage(profileImage)
+                                          : AssetImage(
+                                          'assets/images/profile.png')
+                                      as ImageProvider,
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 10),
+                                Text(name,
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 23,fontFamily: 'nexalight')),
+                                SizedBox(height: 10),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              UpdateTeacherProfilePage()),
+                                    );
+                                  },
+                                  child: Text("Edit Profile",style: TextStyle(fontFamily: 'nexaheavy',fontSize: 16,color: Colors.black),),
+                                ),
+                                Divider(color: Colors.grey, height: 35),
+                                SlideInLeft(
+                                  duration: Duration(milliseconds: 300),
+                                  child: Text(
+                                    'Personal Information',
+                                    style: TextStyle(
+                                        fontFamily: 'nexaheavy',
+                                        color: Colors.white,
+                                        fontSize: 25),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                SlideInRight(
+                                    duration: Duration(milliseconds: 300),
+                                    child: Column(
+                                      children: [
+                                        ProfileMenuWidget(
+                                            title: " Highest Qualification",
+                                            icon: Icons.book_rounded,
+                                            value: qualification,
+                                            onPress: () =>
+                                                showEditDialog("Qualification", "qualification", qualification)),
+                                        ProfileMenuWidget(
+                                            title: "Previous Role",
+                                            icon: Icons.phone,
+                                            value: previousrole,
+                                            onPress: () =>
+                                                showEditDialog("Previous Role", "previousrole", previousrole)),
+                                      ],
+                                    )),
+                                Divider(color: Colors.grey, height: 35),
+                                SlideInLeft(
+                                  duration: Duration(milliseconds: 400),
+                                  child: Text(
+                                    'Utilities',
+                                    style: TextStyle(
+                                        fontFamily: 'nexaheavy',
+                                        color: Colors.white,
+                                        fontSize: 25),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                SlideInRight(
+                                  duration: Duration(milliseconds: 400),
+                                  child: Container(
+                                      padding: EdgeInsets.all(15),
+                                      child: Column(
+                                        children: [
+                                          GestureDetector(
+                                            child: Row(
+                                              children: [
+                                                Icon(LineAwesomeIcons.user_check_solid,color: Colors.pink,size: 27,),
+                                                SizedBox(width: 15,),
+                                                Text('Bug Report',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 17,color: Colors.white),),
+                                              ],
+                                            ),
+                                          ),
+                                          SizedBox(height: 30,),
+                                          GestureDetector(
+                                            child: Row(
+                                              children: [
+                                                Icon(LineAwesomeIcons.info_solid,color: Colors.pink,size: 27,),
+                                                SizedBox(width: 15,),
+                                                Text('Ask Help Desk',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 17,color: Colors.white),),
+                                              ],
+                                            ),
+                                          ),
+                                          SizedBox(height:30,),
+                                          GestureDetector(
+                                              onTap: () {
+                                                logout();
+                                                // Get.offAll(() => MyLogin()); // Navigate to MyLogin() and remove all previous routes
+                                              },
+                                              child: Row(
+                                                children: [
+                                                  Icon(Icons.logout,color: Colors.pink,size: 27,),
+                                                  SizedBox(width: 15,),
+                                                  Text('Logout',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 17,color: Colors.white),),
+                                                ],
+                                              )
+                                          )
+                                        ],
+                                      )
+                                  ),
+                                ),
+                              ],
+                            ))
+                      ],
                     ),
-                    Positioned(
-                      bottom: 0,
-                      right: 150,
-                      child: Container(
-                        width: 25,
-                        height: 25,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(100),
-                          color: Colors.yellow[700],
-                        ),
-                        child: Icon(LineAwesomeIcons.pencil_alt_solid,
-                            size: 18, color: Colors.black),
-                      ),
-                    )
-                  ]),
-                  SizedBox(height: 10),
-                  Text(
-                    name,
-                    style: TextStyle(
-                        fontFamily: 'sans-serif-light',
-                        color: Colors.white,
-                        fontSize: 20),
-                  ),
-                  // SizedBox(height: 10,),
-                  // Text('Information Technology',style: TextStyle(fontFamily: 'sans-serif-thin',color: Colors.white),),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  SizedBox(
-                      width: 200,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => UpdateProfilePage()));
-                        },
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.lightBlueAccent,
-                            side: BorderSide.none,
-                            shape: StadiumBorder()),
-                        child: Text(
-                          "Edit Profile",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontFamily: 'sans-serif-light',
-                              fontSize: 16),
-                        ),
-                      )),
-                  SizedBox(height: 30),
-                  Divider(),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text('Personal Information',style: TextStyle(fontFamily: 'nexaheavy',color: Colors.white,fontSize: 25),),
-                      SizedBox(width: 10,),
-                      Icon(LineAwesomeIcons.pencil_alt_solid,
-                          size: 30, color: Colors.blue),
-
-                    ],
-                  ),
-
-                  ProfileMenuWidget(
-                    title: "Email",
-                    textColor: Colors.white,
-                    icon: Icons.mail,
-                    onPress: () {},
-                  ),
-                  ProfileMenuWidget(
-                    title: "Phone",
-                    textColor: Colors.white,
-                    icon: Icons.phone_android_sharp,
-                    onPress: () {},
-                  ),
-                  ProfileMenuWidget(
-                    title: "Github id",
-                    textColor: Colors.white,
-                    icon: LineAwesomeIcons.github,
-                    onPress: () {},
-                  ),
-                  ProfileMenuWidget(
-                    title: "Instagram id",
-                    textColor: Colors.white,
-                    icon: LineAwesomeIcons.instagram,
-                    onPress: () {},
-                  ),
-                  ProfileMenuWidget(
-                    title: "location",
-                    textColor: Colors.white,
-                    icon: Icons.location_city_outlined,
-                    onPress: () {},
-                  ),
-                  const Divider(
-                    color: Colors.grey,
-                    height: 35,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text('Utilities  -',style: TextStyle(fontFamily: 'nexaheavy',color: Colors.white,fontSize: 25),),
-
-                    ],
-                  ),
-                  SizedBox(height: 15,),
-                  ProfileMenuWidget(
-                    title: "Bug Report",
-                    textColor: Colors.white,
-                    icon: LineAwesomeIcons.user_check_solid,
-                    onPress: () {},
-                  ),
-                  ProfileMenuWidget(
-                    title: "Settings",
-                    textColor: Colors.white,
-                    icon: LineAwesomeIcons.cog_solid,
-                    onPress: () {},
-                  ),
-                  ProfileMenuWidget(
-                    title: "Ask Help Desk",
-                    textColor: Colors.white,
-                    icon: LineAwesomeIcons.info_solid,
-                    onPress: () {},
-                  ),
-                  ProfileMenuWidget(
-                    title: "Logout",
-                    icon: LineAwesomeIcons.sign_out_alt_solid,
-                    textColor: Colors.red,
-                    endIcon: false,
-                    onPress: () {
-                      Get.offAll(() => MyLogin());
-                    },
-                  ),
-                ],
-              ),
-            ),
+                  )),
+            ],
           ),
-        ]),
-      ]),
+        ],
+      ),
     );
   }
 }
 
 class ProfileMenuWidget extends StatelessWidget {
-  const ProfileMenuWidget({
-    super.key,
+  final String title;
+  final String value;
+  final IconData icon;
+  final VoidCallback onPress;
+  final Color? textColor;
+
+  ProfileMenuWidget({
     required this.title,
+    required this.value,
     required this.icon,
     required this.onPress,
-    this.endIcon = true,
-    this.textColor,
-    this.fontFamily = 'sans-serif-light',
+    this.textColor = Colors.white,
   });
-  final String title;
-  final IconData icon;
-  final Callback onPress;
-  final bool endIcon;
-  final Color? textColor;
-  final String fontFamily;
 
   @override
   Widget build(BuildContext context) {
-    var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
-    var iconColor = isDark ? Colors.pink : Colors.lightBlueAccent[100];
-
     return ListTile(
       onTap: onPress,
-      leading: Container(
-        width: 40,
-        height: 40,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(100),
-          color: Colors.blueGrey[50],
-        ),
-        child: Icon(icon, color: iconColor),
-      ),
-      title: Text(
-        title,
-        style: TextStyle(color: Colors.black, fontFamily: 'sans-serif-light')
-            .apply(color: textColor),
-      ),
-      trailing: endIcon
-          ? Container(
-        width: 30,
-        height: 30,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(100),
-          color: Colors.blueGrey[50],
-        ),
-        child: Icon(LineAwesomeIcons.angle_right_solid,
-            size: 18.0, color: Colors.pink),
-      )
-          : null,
+      leading: Icon(icon, color: Colors.pink,size: 27,),
+      title: Text(title,
+          style: TextStyle(color: textColor, fontFamily: 'nexaheavy',fontSize: 17)),
+      subtitle: Text(value, style: TextStyle(color: Colors.grey, fontFamily: 'nexalight',fontSize: 15)),
+      trailing: Icon(Icons.edit, color: Colors.white),
     );
   }
 }

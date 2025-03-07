@@ -146,7 +146,7 @@ class _MyLoginState extends State<MyLogin> {
                                 children: [
                                   GestureDetector(
                                     onTap: (){
-                                      Get.to(OtpVerificationPage());
+                                      // Get.to(OtpVerificationPage());
                                     },
                                       child: Text('Forget Password?',style: TextStyle(color: Colors.black,fontSize: 13,fontFamily: 'nexaheavy'),textAlign: TextAlign.right,)),
                                 ],

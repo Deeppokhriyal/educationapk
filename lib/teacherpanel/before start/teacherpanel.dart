@@ -13,15 +13,18 @@ class Teacherpanel extends StatefulWidget {
 class _TeacherpanelState extends State<Teacherpanel> {
   final SignupController controller = Get.put(tag: 'SignupController', SignupController());
   TextEditingController usernameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   Future<void> signUpTeacher() async {
-    print("DEBUG: Email: '${usernameController.text.trim()}'");
+    print("DEBUG: Name: '${usernameController.text.trim()}'");
+    print("DEBUG: Email: '${emailController.text.trim()}'");
     print("DEBUG: Password: '${passwordController.text.trim()}'");
     print("DEBUG: Selected Branch: '$selectedValue'");
     print("DEBUG: Selected Post: '$selectedPosts'");
 
     if (usernameController.text.isEmpty ||
+    emailController.text.isEmpty ||
         passwordController.text.isEmpty ||
         selectedValue == null ||
         selectedPosts == null) {
@@ -41,32 +44,34 @@ class _TeacherpanelState extends State<Teacherpanel> {
 
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
-        email: usernameController.text.trim(),
+        email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );
 
       String userId = userCredential.user!.uid;
 
       // Save data in "users" collection
+      // await FirebaseFirestore.instance
+      //     .collection('users')
+      //     .doc(userId)
+      //     .set({
+      //   'email': usernameController.text.trim(),
+      //   'branch': selectedValue,
+      //   'post': selectedPosts,
+      //   'role': 'teacher',
+      // });
+
+      // Save data in "teachers" collection
       await FirebaseFirestore.instance
           .collection('users')
           .doc(userId)
           .set({
-        'email': usernameController.text.trim(),
-        'branch': selectedValue,
-        'post': selectedPosts,
-        'role': 'teacher',
-      });
-
-      // Save data in "teachers" collection
-      await FirebaseFirestore.instance
-          .collection('teachers')
-          .doc(userId)
-          .set({
         'teacherId': userId,
-        'email': usernameController.text.trim(),
+        'name' : usernameController.text,
+        'email': emailController.text.trim(),
         'branch': selectedValue,
         'post': selectedPosts,
+        'role' : 'teacher',
         'createdAt': FieldValue.serverTimestamp(),
       });
 
@@ -196,6 +201,22 @@ class _TeacherpanelState extends State<Teacherpanel> {
                   SizedBox(height: 30,),
                   TextField(style: TextStyle( fontFamily: 'nexalight'),
                     controller: usernameController,
+                    cursorColor: Colors.black,
+                    decoration: InputDecoration(
+                      fillColor: Colors.grey[100],
+                      hintText: 'Enter your name',
+                      border: OutlineInputBorder( // Unfocused border color
+                          borderRadius: BorderRadius.circular(35)
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.blue),// Focused border color
+                          borderRadius: BorderRadius.circular(35)
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 30,),
+                  TextField(style: TextStyle( fontFamily: 'nexalight'),
+                    controller: emailController,
                     cursorColor: Colors.black,
                     decoration: InputDecoration(
                       fillColor: Colors.grey[100],

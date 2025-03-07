@@ -51,6 +51,7 @@ dependencies:
   responsive_framework: ^1.5.1
   animate_do:
   firebase_app_check:
+  flutter_email_sender: ^7.0.0
 
 dev_dependencies:
   flutter_lints:

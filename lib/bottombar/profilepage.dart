@@ -1,11 +1,11 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:educationapk/before%20start/login.dart';
 import 'package:educationapk/bottombar/updateprofile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+
+import '../main.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -238,7 +238,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                           SizedBox(height:30,),
                                           GestureDetector(
                                               onTap: () {
-                                                Get.offAll(() => MyLogin()); // Navigate to MyLogin() and remove all previous routes
+                                                logout();
+                                                // Get.offAll(() => MyLogin()); // Navigate to MyLogin() and remove all previous routes
                                               },
                                               child: Row(
                                                 children: [

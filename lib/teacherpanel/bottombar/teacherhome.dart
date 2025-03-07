@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/homepagewidgets/devpage.dart';
 import 'package:educationapk/homepagewidgets/images/fullscreen1.dart';
 import 'package:educationapk/popupmenu/privacypolicies.dart';
@@ -9,6 +10,7 @@ import 'package:educationapk/teacherpanel/allbox/students%20profile.dart';
 import 'package:educationapk/teacherpanel/allbox/studentview.dart';
 import 'package:educationapk/teacherpanel/allbox/syllabus.dart';
 import 'package:educationapk/teacherpanel/allbox/teachers.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,27 +22,73 @@ class TeacherHome extends StatefulWidget {
 }
 
 class _TeacherHomeState extends State<TeacherHome> {
+
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+  String teacherName = "";
+  String teacherProfileImage = "";
+  String teacherPost = "";
+  String teacherBranch = "";
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUserData();
+  }
+
+  void fetchUserData() async {
+    User? user = auth.currentUser;
+    if (user != null) {
+      DocumentSnapshot userData =
+      await firestore.collection("users").doc(user.uid).get();
+      if (userData.exists) {
+        setState(() {
+          teacherName = userData["name"];
+          teacherProfileImage = userData["profileImage"];
+          teacherPost= userData["post"];
+          teacherBranch = userData["branch"];
+        });
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyMainHome(),
+      home: MyMainHome(
+        teacherName: teacherName,
+        teacherProfileImage: teacherProfileImage,
+        teacherPost: teacherPost,
+        teacherBranch: teacherBranch,
+      ),
       debugShowCheckedModeBanner: false,
       title: 'home page',
     );
   }
 }
 class MyMainHome extends StatefulWidget {
-  const MyMainHome({super.key});
+  final String teacherName;
+  final String teacherProfileImage;
+  final String teacherPost;
+  final String teacherBranch;
+
+  const MyMainHome({
+    Key? key,
+    required this.teacherName,
+    required this.teacherProfileImage,
+    required this.teacherPost,
+    required this.teacherBranch,
+  }) : super(key: key);
 
   @override
   State<MyMainHome> createState() => _MyMainHomeState();
 }
 
 class _MyMainHomeState extends State<MyMainHome> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,35 +113,42 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 showDialog(
                                   context: context,
                                   builder: (context) => Dialog(
-                                    backgroundColor: Colors.white,
+                                    backgroundColor: Colors.teal[100],
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(25),
+                                      borderRadius: BorderRadius.circular(50),
                                     ),
                                     child: Padding(
                                       padding: const EdgeInsets.all(15.0),
                                       child: Column(
+
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           CircleAvatar(
                                             backgroundColor: Colors.black12,
                                             radius: 40,
-                                            backgroundImage: AssetImage(
-                                                'assets/images/profile.png'),
+                                            backgroundImage: widget.teacherProfileImage.isNotEmpty
+                                                ? NetworkImage(widget.teacherProfileImage)
+                                                : AssetImage('assets/images/profile.png')
+                                            as ImageProvider,
                                           ),
                                           SizedBox(height: 16),
                                           Text(
-                                            'Shivanshi Mishra',
-                                            style: TextStyle(fontSize: 17, fontFamily:'sans-serif-light'),
+                                            widget.teacherName.isNotEmpty ? widget.teacherName : "name",
+                                            style: TextStyle(fontSize: 17, fontFamily:'nexaheavy'),
                                           ),
                                           SizedBox(height: 6),
                                           Text(
-                                            'Head of Department',
-                                            style: TextStyle(color: Colors.grey,fontFamily: 'sans-serif-thin'),
+                                            widget.teacherPost.isNotEmpty ? widget.teacherPost : "post",
+                                            style: TextStyle(color: Colors.black,fontFamily: 'nexalight'),
+                                          ),SizedBox(height: 6),
+                                          Text(
+                                            widget.teacherBranch.isNotEmpty ? widget.teacherBranch : "branch",
+                                            style: TextStyle(color: Colors.black,fontFamily: 'nexalight'),
                                           ),
                                           SizedBox(height: 6),
                                           Text(
-                                            'Information Technology',
-                                            style: TextStyle(color: Colors.grey,fontFamily: 'sans-serif-thin'),
+                                            'Govt. Polytechnic Kashipur',
+                                            style: TextStyle(color: Colors.black,fontFamily: 'nexaheavy'),
                                           ),
                                           SizedBox(height: 25),
                                           Row(
@@ -119,8 +174,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 child: CircleAvatar(
                                   backgroundColor: Colors.black12,
                                   radius: 20,
-                                  backgroundImage: AssetImage(
-                                      'assets/images/profile.png'),
+                                  backgroundImage: widget.teacherProfileImage.isNotEmpty
+                                      ? NetworkImage(widget.teacherProfileImage)
+                                      : AssetImage('assets/images/profile.png') as ImageProvider,
                                 ),
                               ),
                             ),
@@ -131,7 +187,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                   padding: EdgeInsets.only(top: 50),
                                   child: Text('Namskaram', style: TextStyle(fontSize: 13,fontFamily: 'sans-serif-thin',fontWeight: FontWeight.bold,color: Colors.black),),
                                 ),
-                                Text('Mr. Deepak Pokhriyal', style: TextStyle(fontSize: 15,fontFamily: 'sans-serif-light',color:Colors.black),),
+                                Text(widget.teacherName.isNotEmpty ? widget.teacherName : "Teacher", style: TextStyle(fontSize: 15,fontFamily: 'sans-serif-light',color:Colors.black),),
                               ],
                             ),
                             Container(

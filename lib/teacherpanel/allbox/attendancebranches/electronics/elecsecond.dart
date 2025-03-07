@@ -71,6 +71,7 @@ class _ElecsecondState extends State<Elecsecond> {
         "name": student['name'],
         "status": student['status']
       };
+
     }).toList();
 
     await _firestore.collection("Elecsecond").doc(todayDate).set({

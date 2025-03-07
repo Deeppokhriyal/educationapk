@@ -2,12 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class Electhirdyear extends StatefulWidget {
+class Pharmacyfirstyear extends StatefulWidget {
   @override
-  _ElecthirdyearState createState() => _ElecthirdyearState();
+  _PharmacyfirstyearState createState() => _PharmacyfirstyearState();
 }
 
-class _ElecthirdyearState extends State<Electhirdyear> {
+class _PharmacyfirstyearState extends State<Pharmacyfirstyear> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   String? selectedDate;
   List<Map<String, dynamic>> attendanceRecords = [];
@@ -33,7 +33,7 @@ class _ElecthirdyearState extends State<Electhirdyear> {
   // Function to fetch attendance for selected date
   Future<void> fetchAttendanceByDate(String date) async {
     DocumentSnapshot snapshot =
-    await _firestore.collection("Electhird").doc(date).get();
+    await _firestore.collection("Pharmacyfirst").doc(date).get();
 
     if (snapshot.exists) {
       List<dynamic> attendanceList = snapshot["attendance"];

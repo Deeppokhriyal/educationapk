@@ -3,6 +3,7 @@ import 'package:educationapk/allpages/AttendancePage/cs/attendancecs.dart';
 import 'package:educationapk/allpages/AttendancePage/it/attendancepage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class AttendanceHistory extends StatefulWidget {
   @override
@@ -53,15 +54,24 @@ class _AttendanceHistoryState extends State<AttendanceHistory> {
 
   @override
   Widget build(BuildContext context) {
+    String today = DateFormat('yyyy-MM-dd').format(DateTime.now());
+
     return Scaffold(
       appBar: AppBar(title: Text("Branch Navigation",style: TextStyle(fontFamily: 'nexaheavy'),)),
-      body: Center(
-        child: userBranch == null
-            ? CircularProgressIndicator() // 🔄 Jab tak data fetch ho raha hai
-            : ElevatedButton(
-          onPressed: navigateToAttendance,
-          child: Text("Go to $userBranch Attendance",style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text("Today's Date: $today", style: TextStyle(fontFamily: 'nexaheavy', fontSize: 20)),
+          SizedBox(height: 30,),
+          Center(
+            child: userBranch == null
+                ? CircularProgressIndicator() // 🔄 Jab tak data fetch ho raha hai
+                : ElevatedButton(
+              onPressed: navigateToAttendance,
+              child: Text("Go to $userBranch Attendance",style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
+            ),
+          ),
+        ],
       ),
     );
   }

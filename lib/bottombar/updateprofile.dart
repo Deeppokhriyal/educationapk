@@ -103,16 +103,25 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.deepPurple,
       body: Stack(
         children: [
           Container(
+
             decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(
-                    'https://img.freepik.com/free-vector/dark-blue-blurred-background_1034-589.jpg'),
-                fit: BoxFit.cover,
+              gradient: LinearGradient(
+                colors: [Colors.pink.shade800, Colors.black],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
               ),
             ),
+            // decoration: BoxDecoration(
+            //   image: DecorationImage(
+            //     image: NetworkImage(
+            //         'https://img.freepik.com/free-vector/dark-blue-blurred-background_1034-589.jpg'),
+            //     fit: BoxFit.cover,
+            //   ),
+            // ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [

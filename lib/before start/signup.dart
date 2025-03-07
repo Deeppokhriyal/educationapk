@@ -208,8 +208,7 @@ class _MySignUpPageState extends State<MySignUpPage> {
                           borderRadius: BorderRadius.circular(35)
                       ),
                       focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blue),// Focused border color
-
+                           borderSide: BorderSide(color: Colors.blue),// Focused border color
                          borderRadius: BorderRadius.circular(35)
                       ),
                     ),

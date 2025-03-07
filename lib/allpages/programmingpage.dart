@@ -28,8 +28,9 @@ class _programmingpageState extends State<programmingpage> {
         Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-                image: NetworkImage(
-                    'https://img.freepik.com/free-vector/mobile_677411-3480.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_incoming'), // Path to your background image
+              image: AssetImage('assets/images/backbro.avif'),
+                // image: NetworkImage(
+                //     'https://img.freepik.com/free-vector/mobile_677411-3480.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_incoming'), // Path to your background image
                 fit: BoxFit.cover),
           ),
           child: SingleChildScrollView(

@@ -20,7 +20,8 @@ Widget build(BuildContext context) {
           children:[ Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: NetworkImage('https://img.freepik.com/premium-photo/hd-wallpaper-image_945413-637.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
+                  // image: NetworkImage('https://img.freepik.com/premium-photo/hd-wallpaper-image_945413-637.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
+                  image: AssetImage('assets/images/branch.avif'), // Path to your background image
                   fit: BoxFit.cover
               ),
             ),

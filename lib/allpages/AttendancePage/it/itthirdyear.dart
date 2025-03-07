@@ -57,17 +57,17 @@ class _ItthirdyearState extends State<Itthirdyear> {
       body: Column(
         children: [
           Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: EdgeInsets.only(top: 60.0),
             child: ElevatedButton(
               onPressed: () => _selectDate(context),
               child: Text(selectedDate == null
                   ? "Select Date"
-                  : "Date: $selectedDate"),
+                  : "Date: $selectedDate",style: TextStyle(fontFamily: 'nexalight',fontSize: 23,color: Colors.black),),
             ),
           ),
           Expanded(
             child: attendanceRecords.isEmpty
-                ? Center(child: Text("No records found"))
+                ? Center(child: Text("No records found",style: TextStyle(fontSize: 25,fontFamily: 'nexaheavy'),))
                 : ListView.builder(
               itemCount: attendanceRecords.length,
               itemBuilder: (context, index) {

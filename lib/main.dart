@@ -51,7 +51,6 @@ class SplashScreen extends StatefulWidget {
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
-
 class _SplashScreenState extends State<SplashScreen> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -59,26 +58,17 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    auth.authStateChanges().listen((User? user) {
-      checkLoginStatus();
-    });
+    checkLoginStatus();
   }
 
   void checkLoginStatus() async {
-    bool navigated = false;
-
-    Future.delayed(Duration(seconds: 10), () {
-      if (!navigated && mounted) {
-        Get.off(() => MyLogin());
-      }
-    });
-
     User? user = auth.currentUser;
+
     if (user != null) {
       DocumentSnapshot userData = await firestore.collection("users").doc(user.uid).get();
+
       if (userData.exists) {
         String role = userData['role'];
-        navigated = true;
 
         if (role == "teacher") {
           Get.off(() => Teacherbar());
@@ -87,12 +77,8 @@ class _SplashScreenState extends State<SplashScreen> {
         } else {
           Get.off(() => MyLogin());
         }
-      } else {
-        navigated = true;
-        Get.off(() => MyLogin());
       }
     } else {
-      navigated = true;
       Get.off(() => MyLogin());
     }
   }
@@ -131,10 +117,10 @@ void triggerAlarm() async {
 }
 
 Future<void> scheduleAlarm(DateTime alarmTime) async {
-  print("✅ Alarm scheduled for $alarmTime");
+  print("✅ Alarm scheduled for \$alarmTime");
   await AndroidAlarmManager.oneShotAt(
     alarmTime,
-    0,
+    0, // Unique ID
     triggerAlarm,
     exact: true,
     wakeup: true,
@@ -189,9 +175,4 @@ class _BottombarState extends State<Bottombar> {
       ),
     );
   }
-}
-
-void logout() async {
-  await FirebaseAuth.instance.signOut();
-  Get.offAll(() => MyLogin());
 }

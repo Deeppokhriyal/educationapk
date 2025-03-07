@@ -1,6 +1,6 @@
-import 'package:educationapk/teacherpanel/allbox/attendancebranches/informationtech/firstyear.dart';
-import 'package:educationapk/teacherpanel/allbox/attendancebranches/informationtech/secondyear.dart';
-import 'package:educationapk/teacherpanel/allbox/attendancebranches/informationtech/thirdyear.dart';
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/electronics/elecfirst.dart';
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/electronics/elecsecond.dart';
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/electronics/electhird.dart';
 import 'package:flutter/material.dart';
 
 class Elextab extends StatelessWidget {
@@ -36,9 +36,9 @@ class Elextab extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            Firstyear(),
-            Secondyear(),
-            Thirdyear(),
+            Elecfirst(),
+            Elecsecond(),
+            Electhird(),
           ],
         ),
         floatingActionButton: FloatingActionButton(

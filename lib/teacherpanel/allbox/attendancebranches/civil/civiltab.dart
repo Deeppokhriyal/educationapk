@@ -1,9 +1,11 @@
-import 'package:educationapk/teacherpanel/allbox/attendancebranches/informationtech/firstyear.dart';
-import 'package:educationapk/teacherpanel/allbox/attendancebranches/informationtech/secondyear.dart';
-import 'package:educationapk/teacherpanel/allbox/attendancebranches/informationtech/thirdyear.dart';
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/civil/civilfirst.dart';
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/civil/civilsecond.dart';
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/civil/civilthird.dart';
 import 'package:flutter/material.dart';
 
 class Civiltab extends StatelessWidget {
+  const Civiltab({super.key});
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -36,9 +38,9 @@ class Civiltab extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            Firstyear(),
-            Secondyear(),
-            Thirdyear(),
+            Civilfirst(),
+            Civilsecond(),
+            Civilthird(),
           ],
         ),
         floatingActionButton: FloatingActionButton(

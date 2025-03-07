@@ -1,6 +1,7 @@
-import 'package:educationapk/teacherpanel/allbox/attendancebranches/informationtech/firstyear.dart';
-import 'package:educationapk/teacherpanel/allbox/attendancebranches/informationtech/secondyear.dart';
-import 'package:educationapk/teacherpanel/allbox/attendancebranches/informationtech/thirdyear.dart';
+
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/mechanical/mechfirst.dart';
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/mechanical/mechsecond.dart';
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/mechanical/mechthird.dart';
 import 'package:flutter/material.dart';
 
 class Mechtab extends StatelessWidget {
@@ -36,9 +37,9 @@ class Mechtab extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            Firstyear(),
-            Secondyear(),
-            Thirdyear(),
+            Mechfirst(),
+            Mechsecond(),
+            Mechthird(),
           ],
         ),
         floatingActionButton: FloatingActionButton(

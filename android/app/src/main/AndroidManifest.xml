@@ -63,7 +63,7 @@
 
 
     <application
-        android:label="educationapk"
+        android:label="Polyverse"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
 

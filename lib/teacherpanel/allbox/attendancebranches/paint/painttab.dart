@@ -1,6 +1,7 @@
-import 'package:educationapk/teacherpanel/allbox/attendancebranches/informationtech/firstyear.dart';
-import 'package:educationapk/teacherpanel/allbox/attendancebranches/informationtech/secondyear.dart';
-import 'package:educationapk/teacherpanel/allbox/attendancebranches/informationtech/thirdyear.dart';
+
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/paint/paintfirst.dart';
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/paint/paintsecond.dart';
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/paint/paintthird.dart';
 import 'package:flutter/material.dart';
 
 class Painttab extends StatelessWidget {
@@ -36,9 +37,9 @@ class Painttab extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            Firstyear(),
-            Secondyear(),
-            Thirdyear(),
+            Paintfirst(),
+            Paintsecond(),
+            Paintthird(),
           ],
         ),
         floatingActionButton: FloatingActionButton(

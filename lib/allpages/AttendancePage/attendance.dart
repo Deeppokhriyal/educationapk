@@ -1,90 +1,9 @@
-// import 'package:animate_do/animate_do.dart';
-// import 'package:educationapk/allpages/AttendancePage/it/itfirstyear.dart';
-// import 'package:educationapk/allpages/AttendancePage/it/itsecondyear.dart';
-// import 'package:educationapk/allpages/AttendancePage/it/itthirdyear.dart';
-// import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
-// import 'package:get/get_core/src/get_main.dart';
-//
-// class AttendanceHistory extends StatelessWidget {
-//   const AttendanceHistory({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//
-//       appBar: AppBar(
-//         backgroundColor: Colors.lightBlue,
-//         title: Text('Attendance History',style: TextStyle(fontFamily: 'nexalight',fontSize: 25),),
-//       ),
-//
-//       body:
-//
-//       Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             SlideInRight(
-//               child: SizedBox(
-//                 height: 70,
-//                 width: 200,
-//                 child: ElevatedButton(
-//                   style: ElevatedButton.styleFrom(
-//                     foregroundColor: Colors.black, backgroundColor: Colors.lightBlueAccent, // Set the text color here
-//                   ),  onPressed: () {
-//                   Get.to(Itfirstyear());
-//                   // Get.to(()=>MyHomePage());
-//                 },
-//                   child: Text('I.T 1st Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
-//                 ),
-//               ),
-//             ),
-//             SizedBox(height: 80,),
-//             SlideInLeft(
-//               child: SizedBox(
-//                 height: 70,
-//                 width: 200,
-//                 child: ElevatedButton(
-//                   style: ElevatedButton.styleFrom(
-//                     foregroundColor: Colors.black, backgroundColor: Colors.lightBlueAccent, // Set the text color here
-//                   ),  onPressed: () {
-//                   Get.to(Itsecondyear());
-//                   // Get.to(()=>MyHomePage());
-//                 },
-//                   child: Text('I.T 2nd Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
-//                 ),
-//               ),
-//             ),
-//             SizedBox(height: 80,),
-//             SlideInRight(
-//               child: SizedBox(
-//                 height: 70,
-//                 width: 200,
-//                 child: ElevatedButton(
-//                   style: ElevatedButton.styleFrom(
-//                     foregroundColor: Colors.black, backgroundColor: Colors.lightBlueAccent, // Set the text color here
-//                   ),  onPressed: () {
-//                   Get.to(Itthirdyear());
-//                   // Get.to(()=>MyHomePage());
-//                 },
-//                   child: Text('I.T 3rd Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
-//                 ),
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//
-//     );
-//   }
-// }
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/allpages/AttendancePage/cs/attendancecs.dart';
 import 'package:educationapk/allpages/AttendancePage/it/attendancepage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class AttendanceHistory extends StatefulWidget {
   @override
@@ -135,15 +54,24 @@ class _AttendanceHistoryState extends State<AttendanceHistory> {
 
   @override
   Widget build(BuildContext context) {
+    String today = DateFormat('yyyy-MM-dd').format(DateTime.now());
+
     return Scaffold(
-      appBar: AppBar(title: Text("Branch Navigation")),
-      body: Center(
-        child: userBranch == null
-            ? CircularProgressIndicator() // 🔄 Jab tak data fetch ho raha hai
-            : ElevatedButton(
-          onPressed: navigateToAttendance,
-          child: Text("Go to $userBranch Attendance"),
-        ),
+      appBar: AppBar(title: Text("Branch Navigation",style: TextStyle(fontFamily: 'nexaheavy'),)),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text("Today's Date: $today", style: TextStyle(fontFamily: 'nexaheavy', fontSize: 20)),
+          SizedBox(height: 30,),
+          Center(
+            child: userBranch == null
+                ? CircularProgressIndicator() // 🔄 Jab tak data fetch ho raha hai
+                : ElevatedButton(
+              onPressed: navigateToAttendance,
+              child: Text("Go to $userBranch Attendance",style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
+            ),
+          ),
+        ],
       ),
     );
   }

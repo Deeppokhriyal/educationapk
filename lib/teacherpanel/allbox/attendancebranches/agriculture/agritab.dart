@@ -1,6 +1,6 @@
-import 'package:educationapk/teacherpanel/allbox/attendancebranches/informationtech/firstyear.dart';
-import 'package:educationapk/teacherpanel/allbox/attendancebranches/informationtech/secondyear.dart';
-import 'package:educationapk/teacherpanel/allbox/attendancebranches/informationtech/thirdyear.dart';
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/agriculture/agrifirst.dart';
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/agriculture/agrisecond.dart';
+import 'package:educationapk/teacherpanel/allbox/attendancebranches/agriculture/agrithird.dart';
 import 'package:flutter/material.dart';
 
 class Agritab extends StatelessWidget {
@@ -36,9 +36,10 @@ class Agritab extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            Firstyear(),
-            Secondyear(),
-            Thirdyear(),
+            Agrifirst(),
+            Agrisecond(),
+            Agrithird(),
+
           ],
         ),
         floatingActionButton: FloatingActionButton(

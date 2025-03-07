@@ -23,6 +23,7 @@ class MyMainHome extends StatefulWidget {
   @override
   State<MyMainHome> createState() => _MyMainHomeState();
 
+
 }
 
 class _MyMainHomeState extends State<MyMainHome> {
@@ -71,7 +72,8 @@ class _MyMainHomeState extends State<MyMainHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: ListView(
+      body:
+      ListView(
         children:[ Stack(
             children: [
               Container(
@@ -350,9 +352,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 borderRadius: BorderRadius.circular(25),// Rounded corners
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Color(0xFF00BFA6).withOpacity(0.5), // Shadow Color
-                                    spreadRadius: 3, // Spread (Kitna failaaye)
-                                    blurRadius: 10, // Blur (Kitna soft ho)
+                                    color: Color(0xFF00BFA6), // Shadow Color
+                                    spreadRadius: 1, // Spread (Kitna failaaye)
+                                    blurRadius: 8, // Blur (Kitna soft ho)
                                     offset: Offset(0, 4), // Shadow ka direction (X, Y)
                                   ),
                                 ],
@@ -425,10 +427,10 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     borderRadius: BorderRadius.circular(25),// Rounded corners
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Color(0xFFFFAB91).withOpacity(0.5), // Shadow Color
+                                        color: Color(0xFFFFAB91), // Shadow Color
                                         spreadRadius: 3, // Spread (Kitna failaaye)
                                         blurRadius: 10, // Blur (Kitna soft ho)
-                                        offset: Offset(0, 4), // Shadow ka direction (X, Y)
+                                        offset: Offset(0, 3), // Shadow ka direction (X, Y)
                                       ),
                                     ],
                                   ),
@@ -479,10 +481,10 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 // Rounded corners
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Color(0xFF90CAF9).withOpacity(0.5), // Shadow Color
-                                    spreadRadius: 3, // Spread (Kitna failaaye)
-                                    blurRadius: 10, // Blur (Kitna soft ho)
-                                    offset: Offset(0, 4), // Shadow ka direction (X, Y)
+                                    color: Color(0xFF90CAF9), // Shadow Color
+                                    spreadRadius: 1, // Spread (Kitna failaaye)
+                                    blurRadius: 8, // Blur (Kitna soft ho)
+                                    offset: Offset(0, 3), // Shadow ka direction (X, Y)
                                   ),
                                 ],
                               ),
@@ -556,9 +558,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                             borderRadius: BorderRadius.circular(30),
                             boxShadow: [
                               BoxShadow(
-                                color: Color(0xFFCE93D8).withOpacity(0.5), // Shadow Color
-                                spreadRadius: 3, // Spread (Kitna failaaye)
-                                blurRadius: 10, // Blur (Kitna soft ho)
+                                color: Color(0xFFCE93D8), // Shadow Color
+                                spreadRadius: 1, // Spread (Kitna failaaye)
+                                blurRadius: 8, // Blur (Kitna soft ho)
                                 offset: Offset(0, 4), // Shadow ka direction (X, Y)
                               ),
                             ],// Rounded corners

@@ -16,7 +16,6 @@ class Attendancepharmacy extends StatelessWidget {
         backgroundColor: Colors.lightBlue,
         title: Text('Attendance History',style: TextStyle(fontFamily: 'nexalight',fontSize: 25),),
       ),
-
       body:
 
       Center(

@@ -35,7 +35,7 @@ class Attendancecivil extends StatelessWidget {
                   Get.to(Itfirstyear());
                   // Get.to(()=>MyHomePage());
                 },
-                  child: Text('I.T 1st Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
+                  child: Text('Civil 1st Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
                 ),
               ),
             ),
@@ -51,7 +51,7 @@ class Attendancecivil extends StatelessWidget {
                   Get.to(Itsecondyear());
                   // Get.to(()=>MyHomePage());
                 },
-                  child: Text('I.T 2nd Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
+                  child: Text('Civil 2nd Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
                 ),
               ),
             ),
@@ -67,7 +67,7 @@ class Attendancecivil extends StatelessWidget {
                   Get.to(Itthirdyear());
                   // Get.to(()=>MyHomePage());
                 },
-                  child: Text('I.T 3rd Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
+                  child: Text('Civil 3rd Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
                 ),
               ),
             ),

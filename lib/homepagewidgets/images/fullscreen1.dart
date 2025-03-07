@@ -34,7 +34,7 @@ class Fullscreen extends StatelessWidget {
       body: Center(
         child: Hero(
           tag: tag,
-          child: Image.network(img),
+          child: Image.asset(img),
         ),
       ),
     );

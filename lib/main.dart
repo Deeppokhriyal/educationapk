@@ -8,6 +8,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'dart:async';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -194,4 +195,19 @@ class _BottombarState extends State<Bottombar> {
 void logout() async {
   await FirebaseAuth.instance.signOut();
   Get.offAll(() => MyLogin());
+}
+
+class BeautifulLoader extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Center(
+        child: SpinKitFadingCircle(
+          color: Colors.blue, // Change color as needed
+          size: 80.0,
+        ),
+      ),
+    );
+  }
 }

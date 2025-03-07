@@ -32,7 +32,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
   Future<void> getUserBranch() async {
     User? user = _auth.currentUser; // 🔥 Firebase se logged-in user ka UID le rahe hain
 
-      String todayDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
+      // String todayDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
     if (user != null) {
       DocumentSnapshot userDoc =

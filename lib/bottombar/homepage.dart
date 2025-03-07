@@ -86,56 +86,67 @@ class _MyMainHomeState extends State<MyMainHome> {
                           showDialog(
                             context: context,
                             builder: (context) => Dialog(
-                              backgroundColor: Colors.teal[100],
+
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50),
                               ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(15.0),
-                                child: Column(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
 
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    CircleAvatar(
-                                      backgroundColor: Colors.black12,
-                                      radius: 40,
-                                      backgroundImage: userProfileImage.isNotEmpty
-                                          ? NetworkImage(userProfileImage)
-                                          : AssetImage('assets/images/profile.png')
-                                      as ImageProvider,
-                                    ),
-                                    SizedBox(height: 16),
-                                    Text(
-                                      userName.isNotEmpty ? userName : "name",
-                                      style: TextStyle(fontSize: 17, fontFamily:'nexaheavy'),
-                                    ),
-                                    SizedBox(height: 6),
-                                    Text(
-                                      userBio.isNotEmpty ? userBio : "bio",
-                                      style: TextStyle(color: Colors.black,fontFamily: 'nexalight'),
-                                    ),SizedBox(height: 6),
-                                    Text(
-                                      userBranch.isNotEmpty ? userBranch : "branch",
-                                      style: TextStyle(color: Colors.black,fontFamily: 'nexalight'),
-                                    ),
-                                    SizedBox(height: 6),
-                                    Text(
-                                      'Govt. Polytechnic Kashipur',
-                                      style: TextStyle(color: Colors.black,fontFamily: 'nexaheavy'),
-                                    ),
-                                    SizedBox(height: 25),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                          },
-                                          child: Text('Close',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 14),),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                                  gradient: LinearGradient(
+                                    colors: [Colors.deepPurple.shade200, Colors.lightBlueAccent],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(15.0),
+                                  child: Column(
+
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      CircleAvatar(
+                                        backgroundColor: Colors.black12,
+                                        radius: 40,
+                                        backgroundImage: userProfileImage.isNotEmpty
+                                            ? NetworkImage(userProfileImage)
+                                            : AssetImage('assets/images/profile.png')
+                                        as ImageProvider,
+                                      ),
+                                      SizedBox(height: 16),
+                                      Text(
+                                        userName.isNotEmpty ? userName : "name",
+                                        style: TextStyle(fontSize: 17, fontFamily:'nexaheavy'),
+                                      ),
+                                      SizedBox(height: 6),
+                                      Text(
+                                        userBio.isNotEmpty ? userBio : "bio",
+                                        style: TextStyle(color: Colors.black,fontFamily: 'nexalight'),
+                                      ),SizedBox(height: 6),
+                                      Text(
+                                        userBranch.isNotEmpty ? userBranch : "branch",
+                                        style: TextStyle(color: Colors.black,fontFamily: 'nexalight'),
+                                      ),
+                                      SizedBox(height: 6),
+                                      Text(
+                                        'Govt. Polytechnic Kashipur',
+                                        style: TextStyle(color: Colors.black,fontFamily: 'nexaheavy'),
+                                      ),
+                                      SizedBox(height: 25),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: Text('Close',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 14),),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -280,14 +291,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                                         );
                                       }
                                       if (listName[index] == "Hostels") {
-
-
-
-
-                                       Get.to(()=>MyMap()
+                                        Get.to(()=>MyMap()
                                         );
                                       }
-
 
                                     },
                                     child: Container(

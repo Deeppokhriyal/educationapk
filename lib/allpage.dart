@@ -16,9 +16,10 @@ Widget build(BuildContext context) {
       body: Stack(
           children:[ Container(
             decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: NetworkImage('https://img.freepik.com/premium-photo/abstract-purple-blue-wavy-background_1174990-284497.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
-                  fit: BoxFit.cover
+              gradient: LinearGradient(
+                colors: [Colors.blueGrey, Colors.black87],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
               ),
             ),
             child: SingleChildScrollView(

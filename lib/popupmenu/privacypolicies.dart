@@ -10,9 +10,10 @@ class Privacypolicies extends StatelessWidget {
                 children: [
                   Container(padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: NetworkImage('https://img.freepik.com/premium-photo/full-frame-shot-blue-wall_1048944-14723266.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
-                          fit: BoxFit.cover,
+                        gradient: LinearGradient(
+                          colors: [Colors.black87, Colors.black],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
                         ),
                       ),
                       child: Column(crossAxisAlignment: CrossAxisAlignment.start,

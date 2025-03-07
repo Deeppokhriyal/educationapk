@@ -95,8 +95,9 @@ class _LeaveApplicationState extends State<LeaveApplication> {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: NetworkImage(
-                    'https://img.freepik.com/free-vector/pink-neon-synthwave-patterned-social-story-template-vector_53876-176441.jpg'),
+                image: AssetImage('assets/images/neonbg.avif'),
+                // NetworkImage(
+                //     'https://img.freepik.com/free-vector/pink-neon-synthwave-patterned-social-story-template-vector_53876-176441.jpg'),
                 fit: BoxFit.cover,
               ),
             ),

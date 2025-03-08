@@ -1,4 +1,7 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:educationapk/allpages/AttendancePage/Elec/elecfirstyear.dart';
+import 'package:educationapk/allpages/AttendancePage/Elec/elecsecondyear.dart';
+import 'package:educationapk/allpages/AttendancePage/Elec/electhirdyear.dart';
 import 'package:educationapk/allpages/AttendancePage/it/itfirstyear.dart';
 import 'package:educationapk/allpages/AttendancePage/it/itsecondyear.dart';
 import 'package:educationapk/allpages/AttendancePage/it/itthirdyear.dart';
@@ -32,7 +35,7 @@ class Attendanceelec extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black, backgroundColor: Colors.lightBlueAccent, // Set the text color here
                   ),  onPressed: () {
-                  Get.to(Itfirstyear());
+                  Get.to(Elecfirstyear());
                   // Get.to(()=>MyHomePage());
                 },
                   child: Text('Electronics 1st Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
@@ -48,7 +51,7 @@ class Attendanceelec extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black, backgroundColor: Colors.lightBlueAccent, // Set the text color here
                   ),  onPressed: () {
-                  Get.to(Itsecondyear());
+                  Get.to(Elecsecondyear());
                   // Get.to(()=>MyHomePage());
                 },
                   child: Text('Electronics 2nd Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
@@ -64,7 +67,7 @@ class Attendanceelec extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black, backgroundColor: Colors.lightBlueAccent, // Set the text color here
                   ),  onPressed: () {
-                  Get.to(Itthirdyear());
+                  Get.to(Electhirdyear());
                   // Get.to(()=>MyHomePage());
                 },
                   child: Text('Electronics 3rd Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),

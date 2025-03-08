@@ -2,6 +2,9 @@ import 'package:animate_do/animate_do.dart';
 import 'package:educationapk/allpages/AttendancePage/it/itfirstyear.dart';
 import 'package:educationapk/allpages/AttendancePage/it/itsecondyear.dart';
 import 'package:educationapk/allpages/AttendancePage/it/itthirdyear.dart';
+import 'package:educationapk/allpages/AttendancePage/paint/paintfirstyear.dart';
+import 'package:educationapk/allpages/AttendancePage/paint/paintsecondyear.dart';
+import 'package:educationapk/allpages/AttendancePage/paint/paintthirdyear.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -32,7 +35,7 @@ class Attendancepaint extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black, backgroundColor: Colors.lightBlueAccent, // Set the text color here
                   ),  onPressed: () {
-                  Get.to(Itfirstyear());
+                  Get.to(Paintfirstyear());
                   // Get.to(()=>MyHomePage());
                 },
                   child: Text('Chem. Paint 1st Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
@@ -48,7 +51,7 @@ class Attendancepaint extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black, backgroundColor: Colors.lightBlueAccent, // Set the text color here
                   ),  onPressed: () {
-                  Get.to(Itsecondyear());
+                  Get.to(Paintsecondyear());
                   // Get.to(()=>MyHomePage());
                 },
                   child: Text('Chem. Paint 2nd Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
@@ -64,7 +67,7 @@ class Attendancepaint extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black, backgroundColor: Colors.lightBlueAccent, // Set the text color here
                   ),  onPressed: () {
-                  Get.to(Itthirdyear());
+                  Get.to(Paintthirdyear());
                   // Get.to(()=>MyHomePage());
                 },
                   child: Text('Chem. Paint 3rd Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),

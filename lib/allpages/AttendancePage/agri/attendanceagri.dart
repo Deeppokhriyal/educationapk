@@ -1,4 +1,7 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:educationapk/allpages/AttendancePage/agri/agrifirstyear.dart';
+import 'package:educationapk/allpages/AttendancePage/agri/agrisecondyear.dart';
+import 'package:educationapk/allpages/AttendancePage/agri/agrithirdyear.dart';
 import 'package:educationapk/allpages/AttendancePage/it/itfirstyear.dart';
 import 'package:educationapk/allpages/AttendancePage/it/itsecondyear.dart';
 import 'package:educationapk/allpages/AttendancePage/it/itthirdyear.dart';
@@ -32,7 +35,7 @@ class Attendanceagri extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black, backgroundColor: Colors.lightBlueAccent, // Set the text color here
                   ),  onPressed: () {
-                  Get.to(Itfirstyear());
+                  Get.to(Agrifirstyear());
                   // Get.to(()=>MyHomePage());
                 },
                   child: Text('Agriculture 1st Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
@@ -48,7 +51,7 @@ class Attendanceagri extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black, backgroundColor: Colors.lightBlueAccent, // Set the text color here
                   ),  onPressed: () {
-                  Get.to(Itsecondyear());
+                  Get.to(Agrisecondyear());
                   // Get.to(()=>MyHomePage());
                 },
                   child: Text('Agriculture 2nd Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
@@ -64,7 +67,7 @@ class Attendanceagri extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black, backgroundColor: Colors.lightBlueAccent, // Set the text color here
                   ),  onPressed: () {
-                  Get.to(Itthirdyear());
+                  Get.to(Agrithirdyear());
                   // Get.to(()=>MyHomePage());
                 },
                   child: Text('Agriculture 3rd Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),

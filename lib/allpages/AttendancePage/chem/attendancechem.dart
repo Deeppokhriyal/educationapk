@@ -1,4 +1,7 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:educationapk/allpages/AttendancePage/chem/chemfirstyear.dart';
+import 'package:educationapk/allpages/AttendancePage/chem/chemsecondyear.dart';
+import 'package:educationapk/allpages/AttendancePage/chem/chemthirdyear.dart';
 import 'package:educationapk/allpages/AttendancePage/it/itfirstyear.dart';
 import 'package:educationapk/allpages/AttendancePage/it/itsecondyear.dart';
 import 'package:educationapk/allpages/AttendancePage/it/itthirdyear.dart';
@@ -32,7 +35,7 @@ class Attendancechem extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black, backgroundColor: Colors.lightBlueAccent, // Set the text color here
                   ),  onPressed: () {
-                  Get.to(Itfirstyear());
+                  Get.to(Chemfirstyear());
                   // Get.to(()=>MyHomePage());
                 },
                   child: Text('Chemical 1st Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
@@ -48,7 +51,7 @@ class Attendancechem extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black, backgroundColor: Colors.lightBlueAccent, // Set the text color here
                   ),  onPressed: () {
-                  Get.to(Itsecondyear());
+                  Get.to(Chemsecondyear());
                   // Get.to(()=>MyHomePage());
                 },
                   child: Text('Chemical 2nd Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
@@ -64,7 +67,7 @@ class Attendancechem extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black, backgroundColor: Colors.lightBlueAccent, // Set the text color here
                   ),  onPressed: () {
-                  Get.to(Itthirdyear());
+                  Get.to(Chemthirdyear());
                   // Get.to(()=>MyHomePage());
                 },
                   child: Text('Chemical 3rd Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),

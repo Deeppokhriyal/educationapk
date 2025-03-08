@@ -2,6 +2,9 @@ import 'package:animate_do/animate_do.dart';
 import 'package:educationapk/allpages/AttendancePage/it/itfirstyear.dart';
 import 'package:educationapk/allpages/AttendancePage/it/itsecondyear.dart';
 import 'package:educationapk/allpages/AttendancePage/it/itthirdyear.dart';
+import 'package:educationapk/allpages/AttendancePage/mech/mechfirstyear.dart';
+import 'package:educationapk/allpages/AttendancePage/mech/mechsecondyear.dart';
+import 'package:educationapk/allpages/AttendancePage/mech/mechthirdyear.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -32,7 +35,7 @@ class Attendancemech extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black, backgroundColor: Colors.lightBlueAccent, // Set the text color here
                   ),  onPressed: () {
-                  Get.to(Itfirstyear());
+                  Get.to(Mechfirstyear());
                   // Get.to(()=>MyHomePage());
                 },
                   child: Text('Mechanical 1st Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
@@ -48,7 +51,7 @@ class Attendancemech extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black, backgroundColor: Colors.lightBlueAccent, // Set the text color here
                   ),  onPressed: () {
-                  Get.to(Itsecondyear());
+                  Get.to(Mechsecondyear());
                   // Get.to(()=>MyHomePage());
                 },
                   child: Text('Mechanical 2nd Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
@@ -64,7 +67,7 @@ class Attendancemech extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black, backgroundColor: Colors.lightBlueAccent, // Set the text color here
                   ),  onPressed: () {
-                  Get.to(Itthirdyear());
+                  Get.to(Mechthirdyear());
                   // Get.to(()=>MyHomePage());
                 },
                   child: Text('Mechanical 3rd Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),

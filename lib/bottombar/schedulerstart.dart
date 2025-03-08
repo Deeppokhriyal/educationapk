@@ -16,10 +16,10 @@ class Schedulerstart extends StatelessWidget {
         children: [
           Container(
             decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/alarmstart.avif'), // Path to your background image
-                // image: NetworkImage('https://img.freepik.com/free-vector/white-3d-modern-background-design_53876-87395.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
-                fit: BoxFit.cover,
+              gradient: LinearGradient(
+                colors: [Colors.blue, Colors.white],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
               ),
             ),
             child: Padding(

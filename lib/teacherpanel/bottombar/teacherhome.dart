@@ -94,7 +94,9 @@ class _MyMainHomeState extends State<MyMainHome> {
     return Scaffold(
         backgroundColor: Colors.black,
         body: ListView(
+          padding: EdgeInsets.all(4),
             children:[ Stack(
+              alignment: Alignment.center,
                 children: [
                   Container(
                     decoration: BoxDecoration(
@@ -104,7 +106,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                       ),
                     ),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Row( mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -204,14 +206,14 @@ class _MyMainHomeState extends State<MyMainHome> {
                                         Navigator.push(context, MaterialPageRoute(builder: (context)=>Termscondition()));
                                       },
                                       value: 'Profile',
-                                      child: Text('Terms and \nCondition\'s', style: TextStyle(fontSize: 15,fontFamily: 'sans-serif-thin')),
+                                      child: Text('Terms and \nCondition\'s', style: TextStyle(fontSize: 17,fontFamily: 'sans-serif-light')),
                                     ),
                                     PopupMenuItem<String>(
                                       onTap: (){
                                         Navigator.push(context, MaterialPageRoute(builder: (context)=>Privacypolicies()));
                                       },
                                       value: 'Settings',
-                                      child: Text('Privacy  Policies', style: TextStyle(fontSize: 15,fontFamily: 'sans-serif-thin')),
+                                      child: Text('Privacy  Policies', style: TextStyle(fontSize: 17,fontFamily: 'sans-serif-light')),
                                     ),
                                     PopupMenuItem<String>(
                                       onTap: (){
@@ -219,7 +221,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                         // Navigator.push(context, MaterialPageRoute(builder: (context)=>MyLogin()));
                                       },
                                       value: 'Logout',
-                                      child: Text('Logout', style: TextStyle(fontSize: 15,fontFamily: 'sans-serif-thin')),
+                                      child: Text('Logout', style: TextStyle(fontSize: 17,fontFamily: 'sans-serif-light')),
                                     ),
                                   ];
                                 },
@@ -233,489 +235,487 @@ class _MyMainHomeState extends State<MyMainHome> {
                         ),
                         SizedBox(height: 30,),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Column(
                               children: [
-                                Text("   Let's Explore\n       The Polyverse",style: TextStyle(fontSize: 44,fontFamily:'sans-serif-thin',color: Colors.black),),
+                                Text(" Let's Explore\n      The Polyverse",style: TextStyle(fontSize: 44,fontFamily:'sans-serif-thin',color: Colors.black),),
                               ],
                             ),
                           ],
                         ),
                         SizedBox(height: 7,),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Container(
+                        Column(
+                          children: [
+                            Row(
+                              children: [
+                                Container(
 
-                                    padding: EdgeInsets.all(10),
-                                    margin: EdgeInsets.all(15),
-                                    height: 180,
-                                    width: 175,
-                                    decoration:
-                                    BoxDecoration(
-                                      color: Colors.lightGreen[100], // Background color
-                                      borderRadius: BorderRadius.circular(20),// Rounded corners
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.lightGreenAccent, // Shadow color
-                                          blurRadius: 15, // Shadow blur radius
-                                          offset: Offset(0, 2), // Shadow offset
-                                        ),
-                                      ],
-                                    ),
-
-                                    child:  GestureDetector(
-                                        onTap: (){
-                                          Get.to(()=>Devpage());
-                                        },
-                                        child: Column(
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                                SizedBox(width: 97,),
-                                                GestureDetector(
-                                                  onTap: (){
-                                                    Get.to(()=>Devpage());
-                                                  },
-                                                  child:
-                                                  Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                                ),
-                                              ],
-                                            ),
-                                            SizedBox(height: 10,),
-                                            Row(
-                                              children: [
-                                                Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text('App',style: TextStyle(fontSize: 20,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                                    Text('Designing',style: TextStyle(fontSize: 20,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                            SizedBox(height: 20,),
-                                            Row(
-                                              children: [
-                                                Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                                SizedBox(width: 20,),
-                                                Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                              ],
-                                            )
-                                          ],
-                                        )
-                                    ),
+                                  padding: EdgeInsets.all(10),
+                                  margin: EdgeInsets.all(10),
+                                  height: 165,
+                                  width: MediaQuery.of(context).size.width * 0.43,
+                                  decoration:
+                                  BoxDecoration(
+                                    color: Colors.lightGreen[100], // Background color
+                                    borderRadius: BorderRadius.circular(20),// Rounded corners
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.lightGreenAccent, // Shadow color
+                                        blurRadius: 15, // Shadow blur radius
+                                        offset: Offset(0, 2), // Shadow offset
+                                      ),
+                                    ],
                                   ),
-                                  Container(
 
-                                    padding: EdgeInsets.all(10),
-                                    margin: EdgeInsets.all(15),
-                                    height: 180,
-                                    width: 175,
-                                    decoration:
-                                    BoxDecoration(
-                                      color: Colors.lightGreen[100], // Background color
-                                      borderRadius: BorderRadius.circular(20),// Rounded corners
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.lightGreenAccent, // Shadow color
-                                          blurRadius: 15, // Shadow blur radius
-                                          offset: Offset(0, 2), // Shadow offset
-                                        ),
-                                      ],
-                                    ),
-
-                                    child:  GestureDetector(
-                                        onTap: (){
-                                          Get.to(TeachersPage());
-                                        },
-                                        child: Column(
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                                SizedBox(width: 97,),
+                                  child:  GestureDetector(
+                                      onTap: (){
+                                        Get.to(()=>Devpage());
+                                      },
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
+                                              SizedBox(
+                                                width: MediaQuery.of(context).size.width * 0.21),
+                                              GestureDetector(
+                                                onTap: (){
+                                                  Get.to(()=>Devpage());
+                                                },
+                                                child:
                                                 Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                              ],
-                                            ),
-                                            SizedBox(height: 10,),
-                                            Row(
-                                              children: [
-                                                Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text('Teacher\'s',style: TextStyle(fontSize: 20,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                            SizedBox(height: 20,),
-                                            Row(
-                                              children: [
-                                                Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                                SizedBox(width: 20,),
-                                                Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                              ],
-                                            )
-                                          ],
-                                        )
-                                    ),
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(height: 10,),
+                                          Row(
+                                            children: [
+                                              Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  Text('App',style: TextStyle(fontSize: 20,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                                  Text('Designing',style: TextStyle(fontSize: 20,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(height: 20,),
+                                          Row(
+                                            children: [
+                                              Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+                                              SizedBox(width: 20,),
+                                              Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+                                            ],
+                                          )
+                                        ],
+                                      )
                                   ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Container(
+                                ),
+                                Container(
 
-                                    padding: EdgeInsets.all(10),
-                                    margin: EdgeInsets.all(15),
-                                    height: 180,
-                                    width: 175,
-                                    decoration:
-                                    BoxDecoration(
-                                      color: Colors.lightBlue[100], // Background color
-                                      borderRadius: BorderRadius.circular(20),// Rounded corners
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.lightBlueAccent, // Shadow color
-                                          blurRadius: 15, // Shadow blur radius
-                                          offset: Offset(0, 2), // Shadow offset
-                                        ),
-                                      ],
-                                    ),
-
-                                    child:  GestureDetector(
-                                        onTap: (){
-                                          Get.to(()=>AttendanceScreen());
-                                        },
-                                        child: Column(
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                                SizedBox(width: 97,),
-                                                Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                              ],
-                                            ),
-                                            SizedBox(height: 10,),
-                                            Row(
-                                              children: [
-                                                Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text('Attendance',style: TextStyle(fontSize: 20,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                            SizedBox(height: 20,),
-                                            Row(
-                                              children: [
-                                                Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                                SizedBox(width: 20,),
-                                                Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                              ],
-                                            )
-                                          ],
-                                        )
-                                    ),
+                                  padding: EdgeInsets.all(10),
+                                  margin: EdgeInsets.all(10),
+                                  height: 165,
+                                  width: MediaQuery.of(context).size.width * 0.43,
+                                  decoration:
+                                  BoxDecoration(
+                                    color: Colors.lightGreen[100], // Background color
+                                    borderRadius: BorderRadius.circular(20),// Rounded corners
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.lightGreenAccent, // Shadow color
+                                        blurRadius: 15, // Shadow blur radius
+                                        offset: Offset(0, 2), // Shadow offset
+                                      ),
+                                    ],
                                   ),
-                                  Container(
 
-                                    padding: EdgeInsets.all(10),
-                                    margin: EdgeInsets.all(15),
-                                    height: 180,
-                                    width: 175,
-                                    decoration:
-                                    BoxDecoration(
-                                      color: Colors.lightBlue[100], // Background color
-                                      borderRadius: BorderRadius.circular(20),// Rounded corners
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.lightBlueAccent, // Shadow color
-                                          blurRadius: 15, // Shadow blur radius
-                                          offset: Offset(0, 2), // Shadow offset
-                                        ),
-                                      ],
-                                    ),
-
-                                    child:  GestureDetector(
-                                        onTap: (){
-                                          Get.to(()=>LeaveApplicationsList());
-                                          // Navigator.push(context, MaterialPageRoute(builder: (context)=>LeaveApplicationsList() ));
-                                        },
-                                        child: Column(
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                                SizedBox(width: 97,),
-                                                Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                              ],
-                                            ),
-                                            SizedBox(height: 10,),
-                                            Row(
-                                              children: [
-                                                Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text('Application\'s',style: TextStyle(fontSize: 20,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                            SizedBox(height: 20,),
-                                            Row(
-                                              children: [
-                                                Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                                SizedBox(width: 20,),
-                                                Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                              ],
-                                            )
-                                          ],
-                                        )
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Container(
-
-                                    padding: EdgeInsets.all(10),
-                                    margin: EdgeInsets.all(15),
-                                    height: 180,
-                                    width: 175,
-                                    decoration:
-                                    BoxDecoration(
-                                      color: Colors.pink[100], // Background color
-                                      borderRadius: BorderRadius.circular(20),// Rounded corners
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.pinkAccent, // Shadow color
-                                          blurRadius: 15, // Shadow blur radius
-                                          offset: Offset(0, 2), // Shadow offset
-                                        ),
-                                      ],
-                                    ),
-
-                                    child:  GestureDetector(
-                                        onTap: (){
-                                          Get.to(()=>AssignmentsPage());
-                                        },
-                                        child: Column(
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                                SizedBox(width: 97,),
-                                                Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                              ],
-                                            ),
-                                            SizedBox(height: 10,),
-                                            Row(
-                                              children: [
-                                                Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text('Assignment\'s',style: TextStyle(fontSize: 20,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                            SizedBox(height: 20,),
-                                            Row(
-                                              children: [
-                                                Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                                SizedBox(width: 20,),
-                                                Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                              ],
-                                            )
-                                          ],
-                                        )
-                                    ),
-                                  ),
-                                  Container(
-
-                                    padding: EdgeInsets.all(10),
-                                    margin: EdgeInsets.all(15),
-                                    height: 180,
-                                    width: 175,
-                                    decoration:
-                                    BoxDecoration(
-                                      color: Colors.pink[100], // Background color
-                                      borderRadius: BorderRadius.circular(20),// Rounded corners
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.pinkAccent, // Shadow color
-                                          blurRadius: 15, // Shadow blur radius
-                                          offset: Offset(0, 2), // Shadow offset
-                                        ),
-                                      ],
-                                    ),
-
-                                    child:  GestureDetector(
-                                        onTap: (){
-                                          Get.to(()=>Studentview());
-                                        },
-                                        child: Column(
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                                SizedBox(width: 97,),
-                                                Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                              ],
-                                            ),
-                                            SizedBox(height: 10,),
-                                            Row(
-                                              children: [
-                                                Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text('Log in',style: TextStyle(fontSize: 20,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                                    Text('As a Student',style: TextStyle(fontSize: 20,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                            SizedBox(height: 20,),
-                                            Row(
-                                              children: [
-                                                Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                                SizedBox(width: 20,),
-                                                Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                              ],
-                                            )
-                                          ],
-                                        )
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Container(
-
-                                    padding: EdgeInsets.all(10),
-                                    margin: EdgeInsets.all(15),
-                                    height: 180,
-                                    width: 175,
-                                    decoration:
-                                    BoxDecoration(
-                                      color: Colors.yellowAccent[100], // Background color
-                                      borderRadius: BorderRadius.circular(20),// Rounded corners
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.yellow, // Shadow color
-                                          blurRadius: 15, // Shadow blur radius
-                                          offset: Offset(0, 2), // Shadow offset
-                                        ),
-                                      ],
-                                    ),
-
-                                    child:  Column(
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                            SizedBox(width: 97,),
-                                            GestureDetector(
-                                              onTap: (){
-                                                Get.to(()=>SyllabusPage());
-                                              },
-                                              child:
+                                  child:  GestureDetector(
+                                      onTap: (){
+                                        Get.to(TeachersPage());
+                                      },
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
+                                              SizedBox(width: MediaQuery.of(context).size.width * 0.21),
                                               Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(height: 10,),
-                                        Row(
-                                          children: [
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text('Syllabus',style: TextStyle(fontSize: 20,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(height: 20,),
-                                        Row(
-                                          children: [
-                                            Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                            SizedBox(width: 20,),
-                                            Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                          ],
-                                        )
-                                      ],
-                                    ),
+                                            ],
+                                          ),
+                                          SizedBox(height: 10,),
+                                          Row(
+                                            children: [
+                                              Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  Text('Teacher\'s',style: TextStyle(fontSize: 20,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(height: 20,),
+                                          Row(
+                                            children: [
+                                              Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+                                              SizedBox(width: 20,),
+                                              Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+                                            ],
+                                          )
+                                        ],
+                                      )
                                   ),
-                                  Container(
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Container(
 
-                                    padding: EdgeInsets.all(10),
-                                    margin: EdgeInsets.all(15),
-                                    height: 180,
-                                    width: 175,
-                                    decoration:
-                                    BoxDecoration(
-                                      color: Colors.yellowAccent[100], // Background color
-                                      borderRadius: BorderRadius.circular(20),// Rounded corners
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.yellow, // Shadow color
-                                          blurRadius: 15, // Shadow blur radius
-                                          offset: Offset(0, 2), // Shadow offset
-                                        ),
-                                      ],
-                                    ),
-
-                                    child:  GestureDetector(
-                                        onTap: (){
-                                          Get.to(()=>StudentProfilePage());
-                                        },
-                                        child: Column(
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
-                                                SizedBox(width: 97,),
-                                                Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                              ],
-                                            ),
-                                            SizedBox(height: 10,),
-                                            Row(
-                                              children: [
-                                                Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text('Student',style: TextStyle(fontSize: 20,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                                    Text('Profile\'s',style: TextStyle(fontSize: 20,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                            SizedBox(height: 20,),
-                                            Row(
-                                              children: [
-                                                Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                                SizedBox(width: 20,),
-                                                Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                              ],
-                                            )
-                                          ],
-                                        )
-                                    ),
+                                  padding: EdgeInsets.all(10),
+                                  margin: EdgeInsets.all(10),
+                                  height: 165,
+                                  width: MediaQuery.of(context).size.width * 0.43,
+                                  decoration:
+                                  BoxDecoration(
+                                    color: Colors.lightBlue[100], // Background color
+                                    borderRadius: BorderRadius.circular(20),// Rounded corners
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.lightBlueAccent, // Shadow color
+                                        blurRadius: 15, // Shadow blur radius
+                                        offset: Offset(0, 2), // Shadow offset
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
-                            ],
-                          ),
 
+                                  child:  GestureDetector(
+                                      onTap: (){
+                                        Get.to(()=>AttendanceScreen());
+                                      },
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
+                                              SizedBox(width: MediaQuery.of(context).size.width * 0.21),
+                                              Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
+                                            ],
+                                          ),
+                                          SizedBox(height: 10,),
+                                          Row(
+                                            children: [
+                                              Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  Text('Attendance',style: TextStyle(fontSize: 20,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(height: 20,),
+                                          Row(
+                                            children: [
+                                              Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+                                              SizedBox(width: 20,),
+                                              Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+                                            ],
+                                          )
+                                        ],
+                                      )
+                                  ),
+                                ),
+                                Container(
+
+                                  padding: EdgeInsets.all(10),
+                                  margin: EdgeInsets.all(10),
+                                  height: 165,
+                                  width: MediaQuery.of(context).size.width * 0.43,
+                                  decoration:
+                                  BoxDecoration(
+                                    color: Colors.lightBlue[100], // Background color
+                                    borderRadius: BorderRadius.circular(20),// Rounded corners
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.lightBlueAccent, // Shadow color
+                                        blurRadius: 15, // Shadow blur radius
+                                        offset: Offset(0, 2), // Shadow offset
+                                      ),
+                                    ],
+                                  ),
+
+                                  child:  GestureDetector(
+                                      onTap: (){
+                                        Get.to(()=>LeaveApplicationsList());
+                                        // Navigator.push(context, MaterialPageRoute(builder: (context)=>LeaveApplicationsList() ));
+                                      },
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
+                                              SizedBox(width: MediaQuery.of(context).size.width * 0.21),
+                                              Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
+                                            ],
+                                          ),
+                                          SizedBox(height: 10,),
+                                          Row(
+                                            children: [
+                                              Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  Text('Application\'s',style: TextStyle(fontSize: 20,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(height: 20,),
+                                          Row(
+                                            children: [
+                                              Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+                                              SizedBox(width: 20,),
+                                              Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+                                            ],
+                                          )
+                                        ],
+                                      )
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Container(
+
+                                  padding: EdgeInsets.all(10),
+                                  margin: EdgeInsets.all(10),
+                                  height: 165,
+                                  width: MediaQuery.of(context).size.width * 0.43,
+                                  decoration:
+                                  BoxDecoration(
+                                    color: Colors.pink[100], // Background color
+                                    borderRadius: BorderRadius.circular(20),// Rounded corners
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.pinkAccent, // Shadow color
+                                        blurRadius: 15, // Shadow blur radius
+                                        offset: Offset(0, 2), // Shadow offset
+                                      ),
+                                    ],
+                                  ),
+
+                                  child:  GestureDetector(
+                                      onTap: (){
+                                        Get.to(()=>AssignmentsPage());
+                                      },
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
+                                              SizedBox(width: MediaQuery.of(context).size.width * 0.21),
+                                              Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
+                                            ],
+                                          ),
+                                          SizedBox(height: 10,),
+                                          Row(
+                                            children: [
+                                              Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  Text('Assignment\'s',style: TextStyle(fontSize: 20,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(height: 20,),
+                                          Row(
+                                            children: [
+                                              Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+                                              SizedBox(width: 20,),
+                                              Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+                                            ],
+                                          )
+                                        ],
+                                      )
+                                  ),
+                                ),
+                                Container(
+
+                                  padding: EdgeInsets.all(10),
+                                  margin: EdgeInsets.all(10),
+                                  height: 165,
+                                  width: MediaQuery.of(context).size.width * 0.43,
+                                  decoration:
+                                  BoxDecoration(
+                                    color: Colors.pink[100], // Background color
+                                    borderRadius: BorderRadius.circular(20),// Rounded corners
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.pinkAccent, // Shadow color
+                                        blurRadius: 15, // Shadow blur radius
+                                        offset: Offset(0, 2), // Shadow offset
+                                      ),
+                                    ],
+                                  ),
+
+                                  child:  GestureDetector(
+                                      onTap: (){
+                                        Get.to(()=>Studentview());
+                                      },
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
+                                              SizedBox(width: MediaQuery.of(context).size.width * 0.21),
+                                              Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
+                                            ],
+                                          ),
+                                          SizedBox(height: 10,),
+                                          Row(
+                                            children: [
+                                              Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  Text('Log in',style: TextStyle(fontSize: 20,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                                  Text('As a Student',style: TextStyle(fontSize: 20,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(height: 20,),
+                                          Row(
+                                            children: [
+                                              Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+                                              SizedBox(width: 20,),
+                                              Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+                                            ],
+                                          )
+                                        ],
+                                      )
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Container(
+
+                                  padding: EdgeInsets.all(10),
+                                  margin: EdgeInsets.all(10),
+                                  height: 165,
+                                  width: MediaQuery.of(context).size.width * 0.43,
+                                  decoration:
+                                  BoxDecoration(
+                                    color: Colors.yellowAccent[100], // Background color
+                                    borderRadius: BorderRadius.circular(20),// Rounded corners
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.yellow, // Shadow color
+                                        blurRadius: 15, // Shadow blur radius
+                                        offset: Offset(0, 2), // Shadow offset
+                                      ),
+                                    ],
+                                  ),
+
+                                  child:  Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
+                                          SizedBox(width: MediaQuery.of(context).size.width * 0.21),
+                                          GestureDetector(
+                                            onTap: (){
+                                              Get.to(()=>SyllabusPage());
+                                            },
+                                            child:
+                                            Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(height: 10,),
+                                      Row(
+                                        children: [
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text('Syllabus',style: TextStyle(fontSize: 20,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(height: 20,),
+                                      Row(
+                                        children: [
+                                          Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+                                          SizedBox(width: 20,),
+                                          Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Container(
+
+                                  padding: EdgeInsets.all(10),
+                                  margin: EdgeInsets.all(10),
+                                  height: 165,
+                                  width: MediaQuery.of(context).size.width * 0.43,
+                                  decoration:
+                                  BoxDecoration(
+                                    color: Colors.yellowAccent[100], // Background color
+                                    borderRadius: BorderRadius.circular(20),// Rounded corners
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.yellow, // Shadow color
+                                        blurRadius: 15, // Shadow blur radius
+                                        offset: Offset(0, 2), // Shadow offset
+                                      ),
+                                    ],
+                                  ),
+
+                                  child:  GestureDetector(
+                                      onTap: (){
+                                        Get.to(()=>StudentProfilePage());
+                                      },
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Icon(Icons.timelapse_sharp,size: 30,color: Colors.black),
+                                              SizedBox(width: MediaQuery.of(context).size.width * 0.21),
+                                              Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
+                                            ],
+                                          ),
+                                          SizedBox(height: 10,),
+                                          Row(
+                                            children: [
+                                              Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  Text('Student',style: TextStyle(fontSize: 20,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                                  Text('Profile\'s',style: TextStyle(fontSize: 20,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(height: 20,),
+                                          Row(
+                                            children: [
+                                              Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+                                              SizedBox(width: 20,),
+                                              Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+                                            ],
+                                          )
+                                        ],
+                                      )
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
 
                         //blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container

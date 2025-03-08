@@ -93,14 +93,15 @@ class _LeaveApplicationState extends State<LeaveApplication> {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/neonbg.avif'),
-                // NetworkImage(
-                //     'https://img.freepik.com/free-vector/pink-neon-synthwave-patterned-social-story-template-vector_53876-176441.jpg'),
-                fit: BoxFit.cover,
-              ),
-            ),
+
+            // decoration: BoxDecoration(
+            //   image: DecorationImage(
+            //     image: AssetImage('assets/images/neonbg.avif'),
+            //     // NetworkImage(
+            //     //     'https://img.freepik.com/free-vector/pink-neon-synthwave-patterned-social-story-template-vector_53876-176441.jpg'),
+            //     fit: BoxFit.cover,
+            //   ),
+            // ),
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: SlideInUp(

@@ -131,12 +131,11 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
       body: Stack(
         children: [
           Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/time1.avif'),
-                // image: NetworkImage(
-                //     'https://img.freepik.com/premium-photo/gray-white-simple-background-texture-2_961581-1501.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704'),
-                fit: BoxFit.cover,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.white, Colors.blue],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
               ),
             ),
           ),

@@ -129,9 +129,13 @@ class Teacherdev extends StatelessWidget {
                                 Row(
                                   children: [
                                     Text(' Developer\'s Profile : ', style: TextStyle(fontFamily: 'nexaheavy',fontSize: 18,color: Colors.greenAccent,letterSpacing: 1,wordSpacing: 1),),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width * 0.01,
+                                    ),
                                     GestureDetector(
                                       onTap: _launchURL,
-                                      child: Image.asset('assets/images/tap1.png',height: 50,width: 160,),
+                                      child: Image.asset('assets/images/tap1.png',height: 10,width: 10,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -139,7 +143,7 @@ class Teacherdev extends StatelessWidget {
                                 Container(
                                   alignment: Alignment.center,
                                   child:
-                                  Text('Contributes',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 10,color: Colors.lightBlueAccent),),
+                                  Text('Contributes',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 23,color: Colors.lightBlueAccent),),
                                 ),
                               ],
                             ),

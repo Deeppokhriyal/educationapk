@@ -19,11 +19,12 @@ Widget build(BuildContext context) {
       body: Stack(
           children:[ Container(
             decoration: BoxDecoration(
-              // image: DecorationImage(
-              //     // image: NetworkImage('https://img.freepik.com/premium-photo/hd-wallpaper-image_945413-637.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
-              //     // image: AssetImage('assets/images/branch.avif'), // Path to your background image
-              //     fit: BoxFit.cover
-              // ),
+              gradient: LinearGradient(
+                colors: [Colors.pink.shade200, Colors.pink.shade200,Colors.pink.shade200], // Three colors
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                stops: [0.0, 0.4, 1.0], // Defines the positions of colors
+              ),
             ),
             child: SingleChildScrollView(
               child: Column(

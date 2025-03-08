@@ -133,7 +133,7 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.white, Colors.blue],
+                colors: [Colors.white, Colors.lightBlueAccent],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),

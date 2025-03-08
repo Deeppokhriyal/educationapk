@@ -11,9 +11,10 @@ class Privacypolicies extends StatelessWidget {
                   Container(padding: EdgeInsets.all(15),
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [Colors.black87, Colors.black],
+                          colors: [Colors.black87, Colors.brown.shade400,Colors.black87], // Three colors
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
+                          stops: [0.0, 0.5, 1.0], // Defines the positions of colors
                         ),
                       ),
                       child: Column(crossAxisAlignment: CrossAxisAlignment.start,

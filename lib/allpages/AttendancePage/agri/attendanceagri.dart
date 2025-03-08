@@ -2,9 +2,6 @@ import 'package:animate_do/animate_do.dart';
 import 'package:educationapk/allpages/AttendancePage/agri/agrifirstyear.dart';
 import 'package:educationapk/allpages/AttendancePage/agri/agrisecondyear.dart';
 import 'package:educationapk/allpages/AttendancePage/agri/agrithirdyear.dart';
-import 'package:educationapk/allpages/AttendancePage/it/itfirstyear.dart';
-import 'package:educationapk/allpages/AttendancePage/it/itsecondyear.dart';
-import 'package:educationapk/allpages/AttendancePage/it/itthirdyear.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -22,7 +19,6 @@ class Attendanceagri extends StatelessWidget {
       ),
 
       body:
-
       Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

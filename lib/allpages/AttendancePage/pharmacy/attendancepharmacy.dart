@@ -1,6 +1,4 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:educationapk/allpages/AttendancePage/it/itfirstyear.dart';
-import 'package:educationapk/allpages/AttendancePage/it/itsecondyear.dart';
 import 'package:educationapk/allpages/AttendancePage/pharmacy/pharmacyfirstyear.dart';
 import 'package:educationapk/allpages/AttendancePage/pharmacy/pharmacysecondyear.dart';
 import 'package:flutter/material.dart';

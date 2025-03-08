@@ -40,13 +40,14 @@ class AgSyllabus extends StatelessWidget {
     return Scaffold(
       body:  Stack(
           children:[ Container(
-      decoration: BoxDecoration(
-      image: DecorationImage(
-          image: AssetImage('assets/images/brown.avif'), // Path to your background image
-          // image: NetworkImage('https://img.freepik.com/premium-photo/abstract-brown-background-with-some-smooth-lines-it_943657-3007.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
-        fit: BoxFit.cover
-          ),
-          ),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.black87, Colors.brown.shade500,Colors.black87], // Three colors
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                stops: [0.0, 0.4, 1.0], // Defines the positions of colors
+              ),
+            ),
           child: Column( children: [
       ZoomIn(
         duration: Duration(milliseconds: 1000),

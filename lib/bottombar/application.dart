@@ -94,14 +94,14 @@ class _LeaveApplicationState extends State<LeaveApplication> {
         children: [
           Container(
 
-            // decoration: BoxDecoration(
-            //   image: DecorationImage(
-            //     image: AssetImage('assets/images/neonbg.avif'),
-            //     // NetworkImage(
-            //     //     'https://img.freepik.com/free-vector/pink-neon-synthwave-patterned-social-story-template-vector_53876-176441.jpg'),
-            //     fit: BoxFit.cover,
-            //   ),
-            // ),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.black87, Colors.pinkAccent, Colors.black87], // Three colors
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                stops: [0.0, 0.6, 1.0], // Defines the positions of colors
+              ),
+            ),
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: SlideInUp(

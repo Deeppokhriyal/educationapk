@@ -81,9 +81,10 @@ class _MyMainHomeState extends State<MyMainHome> {
               Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [Colors.pink.shade800, Colors.black],
+                    colors: [Colors.white, Colors.purple.shade100, Colors.white], // Three colors
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
+                    stops: [0.0, 0.4, 1.0], // Defines the positions of colors
                   ),
                 ),
                 child: Column(
@@ -510,7 +511,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                             child:
                                             Icon(Icons.event,size: 30,color: Colors.black),
                                           ),
-                                          SizedBox(width: MediaQuery.of(context).size.width * 0.3,),
+                                          SizedBox(width: MediaQuery.of(context).size.width * 0.25,),
                                           Container(
                                             child:
                                             GestureDetector(

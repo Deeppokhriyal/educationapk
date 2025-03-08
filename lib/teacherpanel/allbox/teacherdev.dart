@@ -128,13 +128,13 @@ class Teacherdev extends StatelessWidget {
                                 Divider(),
                                 Row(
                                   children: [
-                                    Text(' Developer\'s Profile : ', style: TextStyle(fontFamily: 'nexaheavy',fontSize: 18,color: Colors.greenAccent,letterSpacing: 1,wordSpacing: 1),),
+                                    Text(' Developer\'s : ', style: TextStyle(fontFamily: 'nexaheavy',fontSize: 16,color: Colors.greenAccent,letterSpacing: 1,wordSpacing: 1),),
                                     SizedBox(
                                       width: MediaQuery.of(context).size.width * 0.01,
                                     ),
                                     GestureDetector(
                                       onTap: _launchURL,
-                                      child: Image.asset('assets/images/tap1.png',height: 10,width: 10,
+                                      child: Image.asset('assets/images/tap1.png',
                                       ),
                                     ),
                                   ],

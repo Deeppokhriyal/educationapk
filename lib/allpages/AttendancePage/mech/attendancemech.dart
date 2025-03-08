@@ -1,7 +1,4 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:educationapk/allpages/AttendancePage/it/itfirstyear.dart';
-import 'package:educationapk/allpages/AttendancePage/it/itsecondyear.dart';
-import 'package:educationapk/allpages/AttendancePage/it/itthirdyear.dart';
 import 'package:educationapk/allpages/AttendancePage/mech/mechfirstyear.dart';
 import 'package:educationapk/allpages/AttendancePage/mech/mechsecondyear.dart';
 import 'package:educationapk/allpages/AttendancePage/mech/mechthirdyear.dart';

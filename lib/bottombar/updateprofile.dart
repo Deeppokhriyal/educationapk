@@ -107,21 +107,14 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
       body: Stack(
         children: [
           Container(
-
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.pink.shade800, Colors.black],
+                colors: [Colors.pinkAccent, Colors.pink,Colors.black87], // Three colors
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
+                stops: [0.0, 0.4, 1.0], // Defines the positions of colors
               ),
             ),
-            // decoration: BoxDecoration(
-            //   image: DecorationImage(
-            //     image: NetworkImage(
-            //         'https://img.freepik.com/free-vector/dark-blue-blurred-background_1034-589.jpg'),
-            //     fit: BoxFit.cover,
-            //   ),
-            // ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [

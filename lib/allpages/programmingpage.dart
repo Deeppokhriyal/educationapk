@@ -63,8 +63,7 @@ class _programmingpageState extends State<programmingpage> {
                         Row(
                           children: [
                             Image(
-                              image: NetworkImage(
-                                  'https://w7.pngwing.com/pngs/503/848/png-transparent-javascript-computer-icons-software-developer-cascading-style-sheets-javascript-logo-angle-text-rectangle-thumbnail.png'),
+                              image: AssetImage('assets/logos/C logo.png'),
                               height: 46,
                               width: 50,
                             ),
@@ -322,9 +321,9 @@ class _programmingpageState extends State<programmingpage> {
                 height: 10,
               ),
               SlideInRight(
-                duration: Duration(milliseconds: 800),
+                duration: Duration(milliseconds: 600),
                 child: Container(
-                    padding: EdgeInsets.only(top: 5, left: 2),
+                    padding: EdgeInsets.all(10),
                     margin: EdgeInsets.all(17),
                     height: 110,
                     width: 370,
@@ -341,54 +340,51 @@ class _programmingpageState extends State<programmingpage> {
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
-                      // crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image(
-                                image: NetworkImage(
-                                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAXaZgOP8Dt5J05vGncrxXkY6VJKoi1_lsFw&s'),
-                                height: 46,
-                                width: 80,
-                              ),
-                              // SizedBox(width: 1,),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'JS',
-                                    style: TextStyle(
-                                        fontFamily: 'sans-serif-light',
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Text(
-                                    ' Interpreted Programming Language',
-                                    style: TextStyle(
-                                        fontFamily: 'sans-serif-thin',
-                                        fontSize: 13),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                width: 100,
-                              ),
-                              InkWell(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => js_page()),
-                                    );
-                                  },
-                                  child: Icon(Icons.arrow_forward_ios_outlined,
-                                      size: 20, color: Colors.black)),
-                            ],
-                          ),
+                        Row(
+                          children: [
+                            Image(
+                              image: AssetImage('assets/logos/jssbg.png'),
+                              height: 50,
+                              width: 50,
+                            ),
+                            SizedBox(
+                              width: 12,
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'JS',
+                                  style: TextStyle(
+                                      fontFamily: 'sans-serif-light',
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  'Interpreted Programming Language',
+                                  style: TextStyle(
+                                      fontFamily: 'sans-serif-thin',
+                                      fontSize: 13),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              width: 8,
+                            ),
+                            InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => js_page()),
+                                  );
+                                },
+                                child: Icon(Icons.arrow_forward_ios_outlined,
+                                    size: 20, color: Colors.black)),
+                          ],
                         ),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,

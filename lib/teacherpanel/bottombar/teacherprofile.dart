@@ -87,153 +87,151 @@ class _TeacherprofileState extends State<Teacherprofile> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: ListView(
+      body: Stack(
+        alignment: Alignment.center,
         children: [
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage(
-                          'https://img.freepik.com/free-photo/abstract-gradient-neon-lights_23-2149279124.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_authors_boost'), // Path to your background image
-                      // image: NetworkImage('https://img.freepik.com/premium-photo/tiles-art-illustration_732004-8.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'),// Path to your background image
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  child: SlideInUp(
-                    duration: Duration(milliseconds: 400),
-                    child: Column(
-                      children: [
-                        Container(
-                            padding: EdgeInsets.all(15),
-                            child: Column(
+          Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(
+                      'https://img.freepik.com/free-photo/abstract-gradient-neon-lights_23-2149279124.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_authors_boost'), // Path to your background image
+                  // image: NetworkImage('https://img.freepik.com/premium-photo/tiles-art-illustration_732004-8.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'),// Path to your background image
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: SlideInUp(
+                duration: Duration(milliseconds: 400),
+                child: Column(
+                  children: [
+                    Container(
+                        padding: EdgeInsets.all(15),
+                        child: Column(
+                          children: [
+                            SizedBox(height: 30,),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 50,
-                                      backgroundImage: profileImage.isNotEmpty
-                                          ? NetworkImage(profileImage)
-                                          : AssetImage(
-                                          'assets/images/profile.png')
-                                      as ImageProvider,
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 10),
-                                Text(name,
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 23,fontFamily: 'nexalight')),
-                                SizedBox(height: 10),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              UpdateTeacherProfilePage()),
-                                    );
-                                  },
-                                  child: Text("Edit Profile",style: TextStyle(fontFamily: 'nexaheavy',fontSize: 16,color: Colors.black),),
-                                ),
-                                Divider(color: Colors.grey, height: 35),
-                                SlideInLeft(
-                                  duration: Duration(milliseconds: 300),
-                                  child: Text(
-                                    'Personal Information',
-                                    style: TextStyle(
-                                        fontFamily: 'nexaheavy',
-                                        color: Colors.white,
-                                        fontSize: 25),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                SlideInRight(
-                                    duration: Duration(milliseconds: 300),
-                                    child: Column(
-                                      children: [
-                                        ProfileMenuWidget(
-                                            title: " Highest Qualification",
-                                            icon: Icons.book_rounded,
-                                            value: qualification,
-                                            onPress: () =>
-                                                showEditDialog("Qualification", "qualification", qualification)),
-                                        ProfileMenuWidget(
-                                            title: "Previous Role",
-                                            icon: Icons.phone,
-                                            value: previousrole,
-                                            onPress: () =>
-                                                showEditDialog("Previous Role", "previousrole", previousrole)),
-                                      ],
-                                    )),
-                                Divider(color: Colors.grey, height: 35),
-                                SlideInLeft(
-                                  duration: Duration(milliseconds: 400),
-                                  child: Text(
-                                    'Utilities',
-                                    style: TextStyle(
-                                        fontFamily: 'nexaheavy',
-                                        color: Colors.white,
-                                        fontSize: 25),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                SlideInRight(
-                                  duration: Duration(milliseconds: 400),
-                                  child: Container(
-                                      padding: EdgeInsets.all(15),
-                                      child: Column(
-                                        children: [
-                                          GestureDetector(
-                                            child: Row(
-                                              children: [
-                                                Icon(LineAwesomeIcons.user_check_solid,color: Colors.pink,size: 27,),
-                                                SizedBox(width: 15,),
-                                                Text('Bug Report',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 17,color: Colors.white),),
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(height: 30,),
-                                          GestureDetector(
-                                            child: Row(
-                                              children: [
-                                                Icon(LineAwesomeIcons.info_solid,color: Colors.pink,size: 27,),
-                                                SizedBox(width: 15,),
-                                                Text('Ask Help Desk',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 17,color: Colors.white),),
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(height:30,),
-                                          GestureDetector(
-                                              onTap: () {
-                                                logout();
-                                                // Get.offAll(() => MyLogin()); // Navigate to MyLogin() and remove all previous routes
-                                              },
-                                              child: Row(
-                                                children: [
-                                                  Icon(Icons.logout,color: Colors.pink,size: 27,),
-                                                  SizedBox(width: 15,),
-                                                  Text('Logout',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 17,color: Colors.white),),
-                                                ],
-                                              )
-                                          )
-                                        ],
-                                      )
-                                  ),
+                                CircleAvatar(
+
+                                  radius: 50,
+                                  backgroundImage: profileImage.isNotEmpty
+                                      ? NetworkImage(profileImage)
+                                      : AssetImage(
+                                      'assets/images/profile.png')
+                                  as ImageProvider,
                                 ),
                               ],
-                            ))
-                      ],
-                    ),
-                  )),
-            ],
-          ),
+                            ),
+                            SizedBox(height: 10),
+                            Text(name,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 23,fontFamily: 'nexalight')),
+                            SizedBox(height: 10),
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          UpdateTeacherProfilePage()),
+                                );
+                              },
+                              child: Text("Edit Profile",style: TextStyle(fontFamily: 'nexaheavy',fontSize: 16,color: Colors.black),),
+                            ),
+                            Divider(color: Colors.grey, height: 35),
+                            SlideInLeft(
+                              duration: Duration(milliseconds: 300),
+                              child: Text(
+                                'Personal Information',
+                                style: TextStyle(
+                                    fontFamily: 'nexaheavy',
+                                    color: Colors.white,
+                                    fontSize: 25),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            SlideInRight(
+                                duration: Duration(milliseconds: 300),
+                                child: Column(
+                                  children: [
+                                    ProfileMenuWidget(
+                                        title: " Highest Qualification",
+                                        icon: Icons.book_rounded,
+                                        value: qualification,
+                                        onPress: () =>
+                                            showEditDialog("Qualification", "qualification", qualification)),
+                                    ProfileMenuWidget(
+                                        title: "Previous Role",
+                                        icon: Icons.phone,
+                                        value: previousrole,
+                                        onPress: () =>
+                                            showEditDialog("Previous Role", "previousrole", previousrole)),
+                                  ],
+                                )),
+                            Divider(color: Colors.grey, height: 35),
+                            SlideInLeft(
+                              duration: Duration(milliseconds: 400),
+                              child: Text(
+                                'Utilities',
+                                style: TextStyle(
+                                    fontFamily: 'nexaheavy',
+                                    color: Colors.white,
+                                    fontSize: 25),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            SlideInRight(
+                              duration: Duration(milliseconds: 400),
+                              child: Container(
+                                  padding: EdgeInsets.all(15),
+                                  child: Column(
+                                    children: [
+                                      GestureDetector(
+                                        child: Row(
+                                          children: [
+                                            Icon(LineAwesomeIcons.user_check_solid,color: Colors.pink,size: 27,),
+                                            SizedBox(width: 15,),
+                                            Text('Bug Report',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 17,color: Colors.white),),
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(height: 30,),
+                                      GestureDetector(
+                                        child: Row(
+                                          children: [
+                                            Icon(LineAwesomeIcons.info_solid,color: Colors.pink,size: 27,),
+                                            SizedBox(width: 15,),
+                                            Text('Ask Help Desk',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 17,color: Colors.white),),
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(height:30,),
+                                      GestureDetector(
+                                          onTap: () {
+                                            logout();
+                                            // Get.offAll(() => MyLogin()); // Navigate to MyLogin() and remove all previous routes
+                                          },
+                                          child: Row(
+                                            children: [
+                                              Icon(Icons.logout,color: Colors.pink,size: 27,),
+                                              SizedBox(width: 15,),
+                                              Text('Logout',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 17,color: Colors.white),),
+                                            ],
+                                          )
+                                      )
+                                    ],
+                                  )
+                              ),
+                            ),
+                          ],
+                        ))
+                  ],
+                ),
+              )),
         ],
       ),
     );

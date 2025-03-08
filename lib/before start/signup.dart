@@ -1,12 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/before%20start/login.dart';
 import 'package:educationapk/controllers/signupController.dart';
-import 'package:educationapk/teacherpanel/before%20start/teacherotp.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:get/get.dart';
-import 'dart:math';
 
 class MySignUpPage extends StatefulWidget {
   @override
@@ -23,70 +20,62 @@ class _MySignUpPageState extends State<MySignUpPage> {
         usernameController.text.isEmpty ||
         passwordController.text.isEmpty ||
         selectedValue == null) {
-      print("Please fill in all fields");
+      showError("Please fill in all fields");
       return;
     }
 
     try {
       String email = usernameController.text.trim();
+      String password = passwordController.text.trim();
+      String name = nameController.text.trim();
+      String branch = selectedValue!;
 
-      // Check if email is valid
+      // Email format validation
       if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email)) {
-        print("Invalid email format");
+        showError("Invalid email format");
         return;
       }
 
-      // Generate a random 4-digit OTP
-      String otp = (Random().nextInt(9000) + 1000).toString();
+      // 🔄 Create user in Firebase Auth
+      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
 
-      // Save OTP to Firestore for later verification
-      await FirebaseFirestore.instance.collection('emailOtps').doc(email).set({
-        'otp': otp,
-        'timestamp': FieldValue.serverTimestamp(),
+      // 🔄 Send Email Verification
+      await userCredential.user?.sendEmailVerification();
+      print("Verification email sent to $email");
+
+      // 🔄 Save user data in Firestore
+      await FirebaseFirestore.instance.collection('users').doc(userCredential.user!.uid).set({
+        'name': name,
+        'email': email,
+        'branch': branch,
+        'role': 'student',
+        'createdAt': FieldValue.serverTimestamp(),
       });
 
-      // Send email using FlutterEmailSender (or any SMTP package)
-      final emailToSend = Email(
-        body: 'Your OTP is: $otp',
-        subject: 'OTP Verification',
-        recipients: [email],
-        isHTML: false,
-      );
+      showSuccess("Verification email sent! Please check your email.");
 
-      await FlutterEmailSender.send(emailToSend);
-      print("OTP sent to $email: $otp");
-
-      // Navigate to OTP Verification Page
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => OtpVerificationPage(email: email),
-        ),
-      );
+      // 🔄 Redirect to login page after verification link
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyLogin()));
     } catch (e) {
-      print("Error: $e");
+      showError("Error: ${e.toString()}");
     }
   }
 
-// Function to save user details to Firestore after OTP verification
-  Future<void> saveUserToFirestore(String email, String name, String branch) async {
-    try {
-      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: email,
-        password: passwordController.text.trim(),
-      );
+  // 🟢 Success message function
+  void showSuccess(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message, style: TextStyle(color: Colors.white)), backgroundColor: Colors.green),
+    );
+  }
 
-      await FirebaseFirestore.instance.collection('users').doc(userCredential.user!.uid).set({
-        'email': email,
-        'name': name,
-        'branch': branch,
-        'role': 'student',
-      });
-
-      print("User saved to Firestore successfully");
-    } catch (e) {
-      print("Failed to save user to Firestore: $e");
-    }
+  // ❌ Error message function
+  void showError(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message, style: TextStyle(color: Colors.white)), backgroundColor: Colors.red),
+    );
   }
 
 
@@ -130,7 +119,7 @@ class _MySignUpPageState extends State<MySignUpPage> {
             ),
           ),
           Container(
-            padding: EdgeInsets.only(left: 25,top: 50),
+              padding: EdgeInsets.only(left: 25,top: 50),
               child: IconButton(onPressed: (){
                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MyLogin()));
               }, icon: Icon(Icons.arrow_back_ios,size: 30,),)
@@ -208,8 +197,8 @@ class _MySignUpPageState extends State<MySignUpPage> {
                           borderRadius: BorderRadius.circular(35)
                       ),
                       focusedBorder: OutlineInputBorder(
-                           borderSide: BorderSide(color: Colors.blue),// Focused border color
-                         borderRadius: BorderRadius.circular(35)
+                          borderSide: BorderSide(color: Colors.blue),// Focused border color
+                          borderRadius: BorderRadius.circular(35)
                       ),
                     ),
                   ),
@@ -297,6 +286,3 @@ class _MySignUpPageState extends State<MySignUpPage> {
     );
   }
 }
-
-
-

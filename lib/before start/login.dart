@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/before%20start/signup.dart';
-import 'package:educationapk/teacherpanel/before%20start/teacherotp.dart';
 import 'package:educationapk/teacherpanel/before%20start/teacherpanel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -42,6 +41,13 @@ class _MyLoginState extends State<MyLogin> {
         email: usernameController.text.trim(),
         password: passwordController.text.trim(),
       );
+
+      if (!userCredential.user!.emailVerified) {
+        showError("Please verify your email first!");
+        setState(() => isLoading = false);
+        await FirebaseAuth.instance.signOut();  // Logout the user if email not verified
+        return;
+      }
 
       DocumentSnapshot userDoc = await FirebaseFirestore.instance
           .collection('users')

@@ -1,6 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:educationapk/allpages/AttendancePage/Elec/attendanceelec.dart';
+import 'package:educationapk/allpages/AttendancePage/agri/attendanceagri.dart';
+import 'package:educationapk/allpages/AttendancePage/chem/attendancechem.dart';
+import 'package:educationapk/allpages/AttendancePage/civil/attendancecivil.dart';
 import 'package:educationapk/allpages/AttendancePage/cs/attendancecs.dart';
 import 'package:educationapk/allpages/AttendancePage/it/attendancepage.dart';
+import 'package:educationapk/allpages/AttendancePage/mech/attendancemech.dart';
+import 'package:educationapk/allpages/AttendancePage/paint/attendancepaint.dart';
+import 'package:educationapk/allpages/AttendancePage/pharmacy/attendancepharmacy.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -45,6 +52,27 @@ class _AttendanceHistoryState extends State<AttendanceHistory> {
     } else if (userBranch == "CSE") {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => AttendanceCSE()));
+    } else if (userBranch == "AGRICULTURE") {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => Attendanceagri()));
+    } else if (userBranch == "MECH") {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => Attendancemech()));
+    } else if (userBranch == "PAINT") {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => Attendancepaint()));
+    } else if (userBranch == "ELEX") {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => Attendanceelec()));
+    } else if (userBranch == "CHEMICAL") {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => Attendancechem()));
+    } else if (userBranch == "CIVIL") {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => Attendancecivil()));
+    } else if (userBranch == "PHARMACY") {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => Attendancepharmacy()));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Branch not assigned!")),

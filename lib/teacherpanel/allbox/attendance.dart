@@ -66,7 +66,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
     } else if (userBranch == "PAINT") {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => Painttab()));
-    } else if (userBranch == "AGRI") {
+    } else if (userBranch == "AGRICULTURE") {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => Agritab()));
     } else if (userBranch == "PHARMACY") {

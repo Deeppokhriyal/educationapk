@@ -1,4 +1,7 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:educationapk/allpages/AttendancePage/civil/civilfirstyear.dart';
+import 'package:educationapk/allpages/AttendancePage/civil/civilsecondyear.dart';
+import 'package:educationapk/allpages/AttendancePage/civil/civilthirdyear.dart';
 import 'package:educationapk/allpages/AttendancePage/it/itfirstyear.dart';
 import 'package:educationapk/allpages/AttendancePage/it/itsecondyear.dart';
 import 'package:educationapk/allpages/AttendancePage/it/itthirdyear.dart';
@@ -32,7 +35,7 @@ class Attendancecivil extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black, backgroundColor: Colors.lightBlueAccent, // Set the text color here
                   ),  onPressed: () {
-                  Get.to(Itfirstyear());
+                  Get.to(Civilfirstyear());
                   // Get.to(()=>MyHomePage());
                 },
                   child: Text('Civil 1st Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
@@ -48,7 +51,7 @@ class Attendancecivil extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black, backgroundColor: Colors.lightBlueAccent, // Set the text color here
                   ),  onPressed: () {
-                  Get.to(Itsecondyear());
+                  Get.to(Civilsecondyear());
                   // Get.to(()=>MyHomePage());
                 },
                   child: Text('Civil 2nd Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
@@ -64,7 +67,7 @@ class Attendancecivil extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black, backgroundColor: Colors.lightBlueAccent, // Set the text color here
                   ),  onPressed: () {
-                  Get.to(Itthirdyear());
+                  Get.to(Civilthirdyear());
                   // Get.to(()=>MyHomePage());
                 },
                   child: Text('Civil 3rd Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),

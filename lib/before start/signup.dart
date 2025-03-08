@@ -55,7 +55,7 @@ class _MySignUpPageState extends State<MySignUpPage> {
         'createdAt': FieldValue.serverTimestamp(),
       });
 
-      showSuccess("Verification link sent on your email ! Please check your email.");
+      showSuccess("Verification email sent! Please check your email.");
 
       // 🔄 Redirect to login page after verification link
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyLogin()));

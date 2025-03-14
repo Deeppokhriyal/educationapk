@@ -186,7 +186,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                           ],
                         ),
                         Container(
-                          padding: EdgeInsets.only(left: 135,top: 50),
+                          padding: EdgeInsets.only(left: 117,top: 50),
                           child:
                           PopupMenuButton<String>(
                             onSelected: (String value) {

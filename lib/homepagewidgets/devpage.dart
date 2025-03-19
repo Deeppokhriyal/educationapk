@@ -151,10 +151,27 @@ class Devpage extends StatelessWidget {
                                     ],
                                   ),
                                   Divider(),
-                                  Container(
-                                    alignment: Alignment.center,
-                                    child:
-                                    Text('Contributes',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 10,color: Colors.lightBlueAccent),),
+                                  Column(
+                                    children:[
+                                      Text('Contributes', textAlign: TextAlign.center,style: TextStyle(fontFamily: 'nexaheavy',fontSize: 25,color: Colors.lightBlueAccent)
+                                      ),
+                                      SizedBox(height: 15),
+                                      RichText(text:
+                                      TextSpan(
+                                        children:[
+                                          TextSpan(text:
+                                          'This project, Polyverse , has been developed with dedication and teamwork. We acknowledge the contributions of the following individuals: ',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white,letterSpacing: 1,wordSpacing: 1),),
+                                          TextSpan(text:
+                                          '\n\nCore Development Team',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white,letterSpacing: 1,wordSpacing: 1),),
+                                          TextSpan(text: '\n\nDeepak Pokhriyal –',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 18,color: Colors.green.shade400,letterSpacing: 1,wordSpacing: 1),),
+                                          TextSpan(text: 'Lead Developer & UI Designer & Testing&Debugging',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white,letterSpacing: 1,wordSpacing: 1),),
+                                          TextSpan(text: '\nShivanshi Mishra -',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 18,color: Colors.green.shade400,letterSpacing: 1,wordSpacing: 1),),
+                                          TextSpan(text: 'Backend Developer & Database Management',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white,letterSpacing: 1,wordSpacing: 1),),
+                                          TextSpan(text: ' \n\n💡 Developed with passion and innovation! 🚀✨',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white,letterSpacing: 1,wordSpacing: 1),),
+                                      ]
+                                      ),
+                                  ),
+    ]
                                   ),
                                 ],
                               ),

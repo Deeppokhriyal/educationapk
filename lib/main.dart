@@ -75,7 +75,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     User? user = auth.currentUser;
     if (user != null) {
-      DocumentSnapshot userData = await firestore.collection("users").doc(user.uid).get();
+      DocumentSnapshot userData =  await firestore.collection("users").doc(user.uid).get();
       if (userData.exists) {
         String role = userData['role'];
         navigated = true;

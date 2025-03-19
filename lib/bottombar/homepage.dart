@@ -14,7 +14,6 @@ import 'package:educationapk/popupmenu/termscondition.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import '../allpages/Study/branches.dart';
 
 
@@ -501,7 +500,7 @@ class _MyMainHomeState extends State<MyMainHome> {
 
                               child:  GestureDetector(
                                   onTap: (){
-                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Eventpage()));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>EventPage()));
                                   },
                                   child: Column(
                                     children: [
@@ -516,7 +515,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                             child:
                                             GestureDetector(
                                               onTap: (){
-                                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Eventpage()));
+                                                Navigator.push(context, MaterialPageRoute(builder: (context)=>EventPage()));
                                               },
                                               child:
                                               Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),

@@ -4,7 +4,6 @@ import 'package:educationapk/allpages/AttendancePage/agri/agrisecondyear.dart';
 import 'package:educationapk/allpages/AttendancePage/agri/agrithirdyear.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class Attendanceagri extends StatelessWidget {
   const Attendanceagri({super.key});

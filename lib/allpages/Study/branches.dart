@@ -10,7 +10,6 @@ import 'package:educationapk/allpages/Study/electronic_syllabus.dart';
 import 'package:educationapk/allpages/Study/pharmacy_syllabus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 class Branches extends StatelessWidget {
   @override
 Widget build(BuildContext context) {

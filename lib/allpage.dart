@@ -4,7 +4,6 @@ import 'package:educationapk/allpages/map.dart';
 import 'package:educationapk/allpages/programmingpage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 class MainScrollPage extends StatefulWidget {
   @override
   State<MainScrollPage> createState() => _MainScrollPageState();

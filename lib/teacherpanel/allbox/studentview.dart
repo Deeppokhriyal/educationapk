@@ -13,7 +13,6 @@ import 'package:educationapk/popupmenu/privacypolicies.dart';
 import 'package:educationapk/popupmenu/termscondition.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 
 class Studentview extends StatefulWidget {
@@ -385,7 +384,7 @@ class _StudentviewState extends State<Studentview> {
 
                                 child:  GestureDetector(
                                     onTap: (){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Eventpage()));
+                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>EventPage()));
                                     },
                                     child: Column(
                                       children: [
@@ -400,7 +399,7 @@ class _StudentviewState extends State<Studentview> {
                                               child:
                                               GestureDetector(
                                                 onTap: (){
-                                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Eventpage()));
+                                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>EventPage()));
                                                 },
                                                 child:
                                                 Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),

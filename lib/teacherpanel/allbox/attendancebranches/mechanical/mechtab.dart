@@ -1,8 +1,10 @@
 
+import 'package:educationapk/allpages/AttendancePage/mech/attendancemech.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/mechanical/mechfirst.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/mechanical/mechsecond.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/mechanical/mechthird.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Mechtab extends StatelessWidget {
   @override
@@ -44,6 +46,8 @@ class Mechtab extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
+            Get.to(()=>Attendancemech());
+
           },
           child: Icon(
             Icons.edit_calendar,

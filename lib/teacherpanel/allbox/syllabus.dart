@@ -9,7 +9,6 @@ import 'package:educationapk/teacherpanel/allbox/syllabus/electronic_syllabus.da
 import 'package:educationapk/teacherpanel/allbox/syllabus/pharmacy_syllabus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 class SyllabusPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

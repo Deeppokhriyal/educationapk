@@ -1,7 +1,9 @@
+import 'package:educationapk/allpages/AttendancePage/cs/attendancecs.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/Computerscience/csfirst.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/Computerscience/cssecond.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/Computerscience/csthird.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Cstab extends StatelessWidget {
   const Cstab({super.key});
@@ -45,7 +47,7 @@ class Cstab extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            // TODO: Add functionality for calendar button
+            Get.to(()=>AttendanceCSE());
           },
           child: Icon(
             Icons.edit_calendar,

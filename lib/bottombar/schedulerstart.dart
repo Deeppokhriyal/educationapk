@@ -1,7 +1,6 @@
 import 'package:educationapk/bottombar/alarmscheduler.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:animate_do/animate_do.dart'; // Import animation package
 
 class Schedulerstart extends StatelessWidget {

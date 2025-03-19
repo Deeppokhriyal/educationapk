@@ -4,7 +4,6 @@ import 'package:educationapk/allpages/AttendancePage/mech/mechsecondyear.dart';
 import 'package:educationapk/allpages/AttendancePage/mech/mechthirdyear.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class Attendancemech extends StatelessWidget {
   const Attendancemech({super.key});

@@ -1,7 +1,9 @@
+import 'package:educationapk/allpages/AttendancePage/it/attendancepage.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/informationtech/firstyear.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/informationtech/secondyear.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/informationtech/thirdyear.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Ittab extends StatelessWidget {
   @override
@@ -43,7 +45,7 @@ class Ittab extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-
+            Get.to(()=>AttendanceIT());
           },
           child: Icon(
             Icons.edit_calendar,

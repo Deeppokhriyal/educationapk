@@ -4,7 +4,6 @@ import 'package:educationapk/allpages/AttendancePage/civil/civilsecondyear.dart'
 import 'package:educationapk/allpages/AttendancePage/civil/civilthirdyear.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class Attendancecivil extends StatelessWidget {
   const Attendancecivil({super.key});

@@ -1,140 +1,95 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class Eventpage extends StatelessWidget {
-  final Map<String, String> eventDetails = {
-    'name': 'Tech Fest 2025',
-    'date': '25th March 2025',
-    'time': '10:00 AM - 5:00 PM',
-    'venue': 'Main Auditorium, ABC College',
-    'description': 'Join us for the biggest college tech fest with workshops, competitions, and guest lectures.',
-    'image': 'https://example.com/event_banner.png',
-    'registerLink': 'https://example.com/register',
-  };
-
-  final List<String> imageUrls = [
-    'https://example.com/image1.jpg',
-    'https://example.com/image2.jpg',
-    'https://example.com/image3.jpg',
-    'https://example.com/image4.jpg',
-    'https://example.com/image5.jpg',
-    'https://example.com/image6.jpg',
-  ];
+class EventPage extends StatelessWidget {
+  const EventPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.lightBlue[200],
-          title: Text('Event Details',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 25),)
+        title: const Text('Upcoming Events'),
+        backgroundColor: Colors.pinkAccent,
       ),
-      body: SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: StreamBuilder(
+        stream: FirebaseFirestore.instance.collection('events').orderBy('createdAt', descending: true).snapshots(),
+        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+            return const Center(child: Text("No events available"));
+          }
+
+          return ListView.builder(
+            padding: const EdgeInsets.all(10),
+            itemCount: snapshot.data!.docs.length,
+            itemBuilder: (context, index) {
+              var event = snapshot.data!.docs[index];
+              return EventCard(
+                eventName: event['eventName'],
+                startDate: event['startDate'],
+                endDate: event['endDate'],
+                description: event['description'],
+              );
+            },
+          );
+        },
+      ),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.network(eventDetails['image']!, fit: BoxFit.cover, width: double.infinity, height: 200),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(eventDetails['name']!, style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
-                SizedBox(height: 10),
-                Row(
-                  children: [
-                    Icon(Icons.calendar_today, color: Colors.blueAccent),
-                    SizedBox(width: 5),
-                    Text('${eventDetails['date']} | ${eventDetails['time']}'),
-                  ],
-                ),
-                SizedBox(height: 5),
-                Row(
-                  children: [
-                    Icon(Icons.location_on, color: Colors.redAccent),
-                    SizedBox(width: 5),
-                    Text(eventDetails['venue']!),
-                  ],
-                ),
-                SizedBox(height: 15),
-                Text('About Event', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                SizedBox(height: 5),
-                Text(eventDetails['description']!),
-                SizedBox(height: 20),
-                Center(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Open Registration Link
-                    },
-                    style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
-                    child: Text('Register Now', style: TextStyle(color: Colors.white)),
-                  ),
-                ),
-                SizedBox(height: 20),
-                Text('Event Gallery', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                SizedBox(height: 10),
-                GridView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
-                  ),
-                  itemCount: imageUrls.length,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => FullScreenImage(imageUrl: imageUrls[index]),
-                          ),
-                        );
-                      },
-                      child: Hero(
-                        tag: imageUrls[index],
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: Image.network(imageUrls[index], fit: BoxFit.cover),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ],
-            ),
+          ElevatedButton(
+
+            onPressed: (){
+
+            },
+            child: Text("2025 Holiday\'s'",style: TextStyle(fontFamily: 'nexaheavy',fontSize: 19,color: Colors.blue),),
           ),
         ],
       ),
-    ),
     );
   }
 }
 
-class FullScreenImage extends StatelessWidget {
-  final String imageUrl;
-  FullScreenImage({required this.imageUrl});
+class EventCard extends StatelessWidget {
+  final String eventName, startDate, endDate, description;
+
+  const EventCard({
+    Key? key,
+    required this.eventName,
+    required this.startDate,
+    required this.endDate,
+    required this.description,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: GestureDetector(
-        onTap: () => Navigator.pop(context),
-        child: Center(
-          child: Hero(
-            tag: imageUrl,
-            child: Image.network(imageUrl, fit: BoxFit.contain),
-          ),
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      elevation: 5,
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      child: Padding(
+        padding: const EdgeInsets.all(15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              eventName,
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.pinkAccent),
+            ),
+            const SizedBox(height: 5),
+            Text("📅 Start Date: $startDate", style: const TextStyle(fontSize: 16)),
+            Text("📅 End Date: $endDate", style: const TextStyle(fontSize: 16)),
+            const SizedBox(height: 8),
+            Text(
+              description,
+              style: const TextStyle(fontSize: 15, color: Colors.grey),
+            ),
+          ],
         ),
       ),
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: Eventpage(),
-  ));
 }
 

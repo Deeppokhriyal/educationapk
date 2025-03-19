@@ -4,7 +4,6 @@ import 'package:educationapk/allpages/AttendancePage/chem/chemsecondyear.dart';
 import 'package:educationapk/allpages/AttendancePage/chem/chemthirdyear.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class Attendancechem extends StatelessWidget {
   const Attendancechem({super.key});

@@ -3,7 +3,6 @@ import 'package:educationapk/allpages/AttendancePage/pharmacy/pharmacyfirstyear.
 import 'package:educationapk/allpages/AttendancePage/pharmacy/pharmacysecondyear.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class Attendancepharmacy extends StatelessWidget {
   const Attendancepharmacy({super.key});

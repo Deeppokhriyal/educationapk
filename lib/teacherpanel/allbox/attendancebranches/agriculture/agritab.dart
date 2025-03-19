@@ -1,7 +1,9 @@
+import 'package:educationapk/allpages/AttendancePage/agri/attendanceagri.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/agriculture/agrifirst.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/agriculture/agrisecond.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/agriculture/agrithird.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Agritab extends StatelessWidget {
   @override
@@ -44,6 +46,7 @@ class Agritab extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
+            Get.to(()=>Attendanceagri());
           },
           child: Icon(
             Icons.edit_calendar,

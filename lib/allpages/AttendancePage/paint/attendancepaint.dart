@@ -4,7 +4,6 @@ import 'package:educationapk/allpages/AttendancePage/paint/paintsecondyear.dart'
 import 'package:educationapk/allpages/AttendancePage/paint/paintthirdyear.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class Attendancepaint extends StatelessWidget {
   const Attendancepaint({super.key});

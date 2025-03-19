@@ -1,7 +1,9 @@
+import 'package:educationapk/allpages/AttendancePage/chem/attendancechem.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/chemical/chemfirst.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/chemical/chemsecond.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/chemical/chemthird.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Chemtab extends StatelessWidget {
   @override
@@ -43,6 +45,7 @@ class Chemtab extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
+            Get.to(()=>Attendancechem());
           },
           child: Icon(
             Icons.edit_calendar,

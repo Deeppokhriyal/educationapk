@@ -1,7 +1,9 @@
+import 'package:educationapk/allpages/AttendancePage/civil/attendancecivil.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/civil/civilfirst.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/civil/civilsecond.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/civil/civilthird.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Civiltab extends StatelessWidget {
   const Civiltab({super.key});
@@ -45,6 +47,8 @@ class Civiltab extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
+            Get.to(()=>Attendancecivil());
+
           },
           child: Icon(
             Icons.edit_calendar,

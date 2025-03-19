@@ -1,7 +1,9 @@
 
+import 'package:educationapk/allpages/AttendancePage/pharmacy/attendancepharmacy.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/pharmacy/pharmacyfirst.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/pharmacy/pharmacysecond.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Pharmacytab extends StatelessWidget {
   @override
@@ -41,6 +43,8 @@ class Pharmacytab extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
+            Get.to(()=>Attendancepharmacy());
+
           },
           child: Icon(
             Icons.edit_calendar,

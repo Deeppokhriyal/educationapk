@@ -1,7 +1,9 @@
+import 'package:educationapk/allpages/AttendancePage/Elec/attendanceelec.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/electronics/elecfirst.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/electronics/elecsecond.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/electronics/electhird.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Elextab extends StatelessWidget {
   @override
@@ -43,6 +45,8 @@ class Elextab extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
+            Get.to(()=>Attendanceelec());
+
           },
           child: Icon(
             Icons.edit_calendar,

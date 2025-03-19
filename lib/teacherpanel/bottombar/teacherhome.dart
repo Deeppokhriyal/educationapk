@@ -115,14 +115,20 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 showDialog(
                                   context: context,
                                   builder: (context) => Dialog(
-                                    backgroundColor: Colors.teal[100],
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(50),
                                     ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(15.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        gradient: LinearGradient(
+                                          colors: [Colors.orange.shade50, Colors.lightBlueAccent.shade100],
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                        ),
+                                        borderRadius:  BorderRadius.circular(50),
+                                      ),
+                                      padding: const EdgeInsets.all(20.0),
                                       child: Column(
-
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           CircleAvatar(

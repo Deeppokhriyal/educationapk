@@ -1,8 +1,10 @@
 
+import 'package:educationapk/allpages/AttendancePage/paint/attendancepaint.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/paint/paintfirst.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/paint/paintsecond.dart';
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/paint/paintthird.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Painttab extends StatelessWidget {
   @override
@@ -44,6 +46,8 @@ class Painttab extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
+            Get.to(()=>Attendancepaint());
+
           },
           child: Icon(
             Icons.edit_calendar,

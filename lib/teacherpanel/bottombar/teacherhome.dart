@@ -300,14 +300,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                                               ),
                                             ],
                                           ),
-                                          SizedBox(height: 20,),
-                                          Row(
-                                            children: [
-                                              Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                              SizedBox(width: 20,),
-                                              Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                            ],
-                                          )
+                                          SizedBox(height: 5,),
+                                          Text('Developed By 2 Developer\'s in 90 Days',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+
                                         ],
                                       )
                                   ),
@@ -356,14 +351,8 @@ class _MyMainHomeState extends State<MyMainHome> {
                                             ],
                                           ),
                                           SizedBox(height: 20,),
-                                          Row(
-                                            children: [
-                                              Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                              SizedBox(width: 20,),
-                                              Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                            ],
-                                          )
-                                        ],
+                                          Text('All Registered Teacher\'s in this Page',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+                                         ],
                                       )
                                   ),
                                 ),
@@ -415,14 +404,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                                             ],
                                           ),
                                           SizedBox(height: 20,),
-                                          Row(
-                                            children: [
-                                              Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                              SizedBox(width: 20,),
-                                              Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                            ],
-                                          )
-                                        ],
+                                          Text('Mark the Attendance of students',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+
+                                         ],
                                       )
                                   ),
                                 ),
@@ -471,14 +455,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                                             ],
                                           ),
                                           SizedBox(height: 20,),
-                                          Row(
-                                            children: [
-                                              Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                              SizedBox(width: 20,),
-                                              Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                            ],
-                                          )
-                                        ],
+                                          Text('Received the Application of the Students',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+
+                                         ],
                                       )
                                   ),
                                 ),
@@ -530,14 +509,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                                             ],
                                           ),
                                           SizedBox(height: 20,),
-                                          Row(
-                                            children: [
-                                              Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                              SizedBox(width: 20,),
-                                              Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                            ],
-                                          )
-                                        ],
+                                          Text('you can give Assignments via this feature',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+
+                                         ],
                                       )
                                   ),
                                 ),
@@ -565,6 +539,8 @@ class _MyMainHomeState extends State<MyMainHome> {
                                         Get.to(()=>Studentview());
                                       },
                                       child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+
                                         children: [
                                           Row(
                                             children: [
@@ -586,14 +562,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                                             ],
                                           ),
                                           SizedBox(height: 20,),
-                                          Row(
-                                            children: [
-                                              Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                              SizedBox(width: 20,),
-                                              Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                            ],
-                                          )
-                                        ],
+                                          Text('Saw Student feature\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+
+                                         ],
                                       )
                                   ),
                                 ),
@@ -621,6 +592,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                   ),
 
                                   child:  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Row(
                                         children: [
@@ -647,14 +619,8 @@ class _MyMainHomeState extends State<MyMainHome> {
                                         ],
                                       ),
                                       SizedBox(height: 20,),
-                                      Row(
-                                        children: [
-                                          Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                          SizedBox(width: 20,),
-                                          Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                        ],
-                                      )
-                                    ],
+                                      Text('All Syllabus Available',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+                                     ],
                                   ),
                                 ),
                                 Container(
@@ -681,6 +647,8 @@ class _MyMainHomeState extends State<MyMainHome> {
                                         Get.to(()=>StudentProfilePage());
                                       },
                                       child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+
                                         children: [
                                           Row(
                                             children: [
@@ -701,15 +669,10 @@ class _MyMainHomeState extends State<MyMainHome> {
                                               ),
                                             ],
                                           ),
-                                          SizedBox(height: 20,),
-                                          Row(
-                                            children: [
-                                              Text('78 Days',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                              SizedBox(width: 20,),
-                                              Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
-                                            ],
-                                          )
-                                        ],
+                                          SizedBox(height: 5,),
+                                          Text('Only your Branch Registered Student\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 12),),
+
+                                         ],
                                       )
                                   ),
                                 ),

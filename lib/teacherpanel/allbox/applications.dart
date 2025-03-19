@@ -90,7 +90,7 @@ class _LeaveApplicationsListState extends State<LeaveApplicationsList> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(title: Text("Leave Applications"),
-      backgroundColor: Colors.white,),
+        backgroundColor: Colors.white,),
       body: isLoading
           ? Center(child: CircularProgressIndicator())
           : filteredApplications.isEmpty

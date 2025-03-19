@@ -1,4 +1,4 @@
-import 'package:educationapk/bottombar/application.dart';
+import 'package:educationapk/teacherpanel/bottombar/eventupload.dart';
 import 'package:educationapk/teacherpanel/bottombar/teacherhome.dart';
 import 'package:educationapk/teacherpanel/bottombar/teacherprofile.dart';
 import 'package:flutter/cupertino.dart';
@@ -18,7 +18,7 @@ class _TeacherbarState extends State<Teacherbar> {
 
   final List<Widget> _pages = [
     TeacherHome(),
-    LeaveApplication(),
+    Eventupload(),
     Schedulerstart(),
     Teacherprofile(),
   ];
@@ -46,7 +46,7 @@ class _TeacherbarState extends State<Teacherbar> {
           selectedIndex: _selectedIndex,
           tabs: const [
             GButton(icon: Icons.home, iconSize: 25, text: 'Home'),
-            GButton(icon: Icons.bar_chart, iconSize: 25, text: 'Features'),
+            GButton(icon: Icons.event, iconSize: 25, text: 'Events'),
             GButton(icon: Icons.timer, iconSize: 25, text: 'Scheduler'),
             GButton(icon: Icons.person, iconSize: 25, text: 'Profile'),
           ],

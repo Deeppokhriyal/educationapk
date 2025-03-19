@@ -3,12 +3,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class LeaveApplication extends StatefulWidget {
+class Eventupload extends StatefulWidget {
   @override
-  _LeaveApplicationState createState() => _LeaveApplicationState();
+  _EventuploadState createState() => _EventuploadState();
 }
 
-class _LeaveApplicationState extends State<LeaveApplication> {
+class _EventuploadState extends State<Eventupload> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController _submitByController = TextEditingController();
   TextEditingController _rollNoController = TextEditingController();
@@ -16,18 +16,6 @@ class _LeaveApplicationState extends State<LeaveApplication> {
   TextEditingController _leaveReasonController = TextEditingController();
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   String? selectedValue;
-
-  final List<String> items = [
-    'IT',
-    'AGRICULTURE',
-    'CHEMICAL',
-    'PAINT',
-    'CIVIL',
-    'CSE',
-    'ELEX',
-    'MECH',
-    'PHARMACY',
-  ];
 
   Future<void> _pickDate() async {
     DateTime? picked = await showDatePicker(
@@ -56,7 +44,7 @@ class _LeaveApplicationState extends State<LeaveApplication> {
       String rollNo = _rollNoController.text.trim(); // ✅ Roll Number as Unique ID
 
       try {
-        await _firestore.collection('leave_applications').doc(rollNo).set({  // ✅ Document ID = Roll No.
+        await _firestore.collection('upcoming_events').doc(rollNo).set({  // ✅ Document ID = Roll No.
           'branch': selectedValue,
           'submitBy': currentUserId,
           'submitName': _submitByController.text, // ✅ Save student name
@@ -68,7 +56,7 @@ class _LeaveApplicationState extends State<LeaveApplication> {
         });
 
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Leave application submitted successfully!')),
+          SnackBar(content: Text('Leave Event submitted successfully!')),
         );
 
         _submitByController.clear();
@@ -80,7 +68,7 @@ class _LeaveApplicationState extends State<LeaveApplication> {
         });
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error submitting application. Try again!')),
+          SnackBar(content: Text('Error submitting Event. Try again!')),
         );
       }
     }
@@ -115,10 +103,10 @@ class _LeaveApplicationState extends State<LeaveApplication> {
                           },
                           icon: Icon(Icons.arrow_back_ios, color: Colors.white),
                         ),
-                        Text(' Leave Application',
+                        Text(' Upload upcoming Event',
                             style: TextStyle(
                                 fontFamily: 'nexalight',
-                                fontSize: 24,
+                                fontSize: 23,
                                 color: Colors.white)),
                       ]),
                       SizedBox(height: 20),
@@ -128,38 +116,12 @@ class _LeaveApplicationState extends State<LeaveApplication> {
                             key: _formKey,
                             child: Column(
                               children: [
-                                DropdownButtonFormField<String>(
-                                  decoration: InputDecoration(
-                                    labelText: 'Select Your Branch',
-                                    labelStyle: TextStyle(
-                                        color: Colors.white,
-                                        fontFamily: 'nexalight'),
-                                  ),
-                                  style: TextStyle(
-                                      color: Colors.purple,
-                                      fontSize: 20,
-                                      fontFamily: 'nexalight'),
-                                  borderRadius: BorderRadius.circular(40),
-                                  value: selectedValue,
-                                  items: items.map((String item) {
-                                    return DropdownMenuItem<String>(
-                                        value: item, child: Text(item));
-                                  }).toList(),
-                                  onChanged: (String? newValue) {
-                                    setState(() {
-                                      selectedValue = newValue;
-                                    });
-                                  },
-                                  validator: (value) => value == null
-                                      ? 'Please select your branch'
-                                      : null,
-                                ),
                                 SizedBox(height: 20),
                                 TextFormField(
                                   controller: _submitByController,
                                   style: TextStyle(color: Colors.white),
                                   decoration: InputDecoration(
-                                    labelText: 'Submit Name',
+                                    labelText: 'Enter Event Name',
                                     labelStyle: TextStyle(
                                         color: Colors.white,
                                         fontFamily: 'nexalight'),
@@ -168,19 +130,6 @@ class _LeaveApplicationState extends State<LeaveApplication> {
                                       ? 'Enter the Submission Name'
                                       : null,
                                 ),SizedBox(height: 20),
-                                TextFormField(
-                                  controller: _rollNoController,
-                                  style: TextStyle(color: Colors.white),
-                                  decoration: InputDecoration(
-                                    labelText: 'UBTER Roll No.',
-                                    labelStyle: TextStyle(
-                                        color: Colors.white,
-                                        fontFamily: 'nexalight'),
-                                  ),
-                                  validator: (value) => value!.isEmpty
-                                      ? 'Enter the UBTER Roll No.'
-                                      : null,
-                                ),
                                 SizedBox(height: 20),
                                 TextFormField(
                                   controller: _leaveDateController,
@@ -188,7 +137,24 @@ class _LeaveApplicationState extends State<LeaveApplication> {
                                   readOnly: true,
                                   onTap: _pickDate,
                                   decoration: InputDecoration(
-                                    labelText: 'Leave Date',
+                                    labelText: 'Starting Date',
+                                    labelStyle: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: 'nexalight'),
+                                    suffixIcon: Icon(Icons.calendar_today,
+                                        color: Colors.white),
+                                  ),
+                                  validator: (value) => value!.isEmpty
+                                      ? 'Enter a valid leave date'
+                                      : null,
+                                ),SizedBox(height: 20),
+                                TextFormField(
+                                  controller: _leaveDateController,
+                                  style: TextStyle(color: Colors.white),
+                                  readOnly: true,
+                                  onTap: _pickDate,
+                                  decoration: InputDecoration(
+                                    labelText: 'Ending Date',
                                     labelStyle: TextStyle(
                                         color: Colors.white,
                                         fontFamily: 'nexalight'),
@@ -204,7 +170,7 @@ class _LeaveApplicationState extends State<LeaveApplication> {
                                   controller: _leaveReasonController,
                                   style: TextStyle(color: Colors.white),
                                   decoration: InputDecoration(
-                                    labelText: 'Reason',
+                                    labelText: 'Description',
                                     labelStyle: TextStyle(
                                         color: Colors.white,
                                         fontFamily: 'nexalight'),
@@ -228,7 +194,7 @@ class _LeaveApplicationState extends State<LeaveApplication> {
                                 SizedBox(height: 20),
                                 ElevatedButton(
                                   onPressed: submitLeaveApplication,
-                                  child: Text('Submit',
+                                  child: Text('Upload',
                                       style: TextStyle(
                                           fontFamily: 'nexaheavy',
                                           fontSize: 20,
@@ -247,84 +213,6 @@ class _LeaveApplicationState extends State<LeaveApplication> {
             ),
           ],
         ),
-        floatingActionButton: SlideInDown(
-          duration: Duration(milliseconds: 300),
-          child: FloatingActionButton(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(21
-            )),
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => LeaveStatusPage()));
-            },
-            tooltip: 'History',
-            backgroundColor: Colors.white,
-            child: Icon(Icons.history, color: Colors.purpleAccent, size: 33),
-          ),
-        )
-    );
-  }
-}
-
-class LeaveStatusPage extends StatelessWidget {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-
-  @override
-  Widget build(BuildContext context) {
-    String currentUserId = _auth.currentUser?.uid ?? '';
-
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white10,
-        title: Text(
-          'Leave Application Status',
-          style: TextStyle(fontFamily: 'nexaheavy'),
-        ),
-      ),
-      body: StreamBuilder(
-        stream: _firestore
-            .collection('leave_applications')
-            .where('submitBy', isEqualTo: currentUserId) // ✅ Filtering by user
-            .snapshots(),
-        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (!snapshot.hasData) return Center(child: CircularProgressIndicator());
-
-          if (snapshot.data!.docs.isEmpty) {
-            return Center(
-              child: Text(
-                'No applications found',
-                style: TextStyle(fontFamily: 'nexaheavy', fontSize: 18),
-              ),
-            );
-          }
-
-          return ListView(
-            children: snapshot.data!.docs.map((doc) {
-              String status = doc['status'];
-              Color statusColor;
-
-              if (status == 'Approved') {
-                statusColor = Colors.green;
-              } else if (status == 'Declined') {
-                statusColor = Colors.red;
-              } else {
-                statusColor = Colors.blue;
-              }
-
-              return ListTile(
-                title: Text(
-                  'Student: ${doc['submitName']} (Roll No: ${doc['rollno']})', // ✅ Student ka naam aur roll number dikhayein
-                  style: TextStyle(fontFamily: 'nexaheavy', color: Colors.black, fontSize: 18),
-                ),
-                subtitle: Text(
-                  'Status: ${doc['status']}',
-                  style: TextStyle(fontFamily: 'nexalight', color: statusColor, fontSize: 18),
-                ),
-              );
-            }).toList(),
-          );
-        },
-      ),
     );
   }
 }

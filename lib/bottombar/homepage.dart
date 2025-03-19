@@ -438,9 +438,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     boxShadow: [
                                       BoxShadow(
                                         color: Color(0xFFFFAB91), // Shadow Color
-                                        spreadRadius: 3, // Spread (Kitna failaaye)
-                                        blurRadius: 10, // Blur (Kitna soft ho)
-                                        offset: Offset(0, 3), // Shadow ka direction (X, Y)
+                                        spreadRadius: 1, // Spread (Kitna failaaye)
+                                        blurRadius: 8, // Blur (Kitna soft ho)
+                                        offset: Offset(0, 4), // Shadow ka direction (X, Y)
                                       ),
                                     ],
                                   ),
@@ -494,7 +494,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     color: Color(0xFF90CAF9), // Shadow Color
                                     spreadRadius: 1, // Spread (Kitna failaaye)
                                     blurRadius: 8, // Blur (Kitna soft ho)
-                                    offset: Offset(0, 3), // Shadow ka direction (X, Y)
+                                    offset: Offset(0, 4), // Shadow ka direction (X, Y)
                                   ),
                                 ],
                               ),

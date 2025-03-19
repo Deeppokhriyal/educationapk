@@ -143,10 +143,10 @@ class Devpage extends StatelessWidget {
                                   Divider(),
                                   Row(
                                     children: [
-                                      Text(' Developer\'s Profile : ', style: TextStyle(fontFamily: 'nexaheavy',fontSize: 18,color: Colors.greenAccent,letterSpacing: 1,wordSpacing: 1),),
+                                      Text(' Developer\'s Profile : ', style: TextStyle(fontFamily: 'nexaheavy',fontSize: 17,color: Colors.greenAccent,letterSpacing: 1,wordSpacing: 1),),
                                       GestureDetector(
                                         onTap: _launchURL,
-                                        child: Image.asset('assets/images/tap1.png',height: 50,width: 143),
+                                        child: Image.asset('assets/images/tap.png',height: 70,width: 160),
                                       ),
                                     ],
                                   ),

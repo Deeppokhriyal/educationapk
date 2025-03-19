@@ -40,6 +40,7 @@ dependencies:
   firebase_core:
   cloud_firestore:
   intl:
+  firebase_messaging:
   visibility_detector:
   firebase_storage:
   image_picker:

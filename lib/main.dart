@@ -181,8 +181,8 @@ class _BottombarState extends State<Bottombar> {
           selectedIndex: _selectedIndex,
           tabs: const [
             GButton(icon: Icons.home, iconSize: 25, text: 'Home'),
-            GButton(icon: Icons.bar_chart, iconSize: 25, text: 'Features'),
-            GButton(icon: Icons.add_chart, iconSize: 25, text: 'Application'),
+            GButton(icon: Icons.timer, iconSize: 25, text: 'Scheduler'),
+            GButton(icon: Icons.library_books_outlined, iconSize: 25, text: 'Application'),
             GButton(icon: Icons.person, iconSize: 25, text: 'Profile'),
           ],
         ),

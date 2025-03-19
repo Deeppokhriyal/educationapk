@@ -18,7 +18,7 @@ class _ChemfirstState extends State<Chemfirst> {
     {"id": 2, "name": "Ajay Vishwakarma", "status": "Absent"},
     {"id": 3, "name": "Ajit", "status": "Absent"},
     {"id": 4, "name": "Alfaiz Husain", "status": "Absent"},
-    {"id": 5, "name": "Ambar Singh Bhandari", "status": "Absent"},
+    {"id": 5, "name": "Ambar S. Bhandari", "status": "Absent"},
     {"id": 6, "name": "Ananya Dixit", "status": "Absent"},
     {"id": 7, "name": "Aqsa", "status": "Absent"},
     {"id": 8, "name": "Ashish Kumar", "status": "Absent"},

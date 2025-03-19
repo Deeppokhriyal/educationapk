@@ -23,7 +23,7 @@ class _LeaveApplicationsListState extends State<LeaveApplicationsList> {
     try {
       String teacherId = FirebaseAuth.instance.currentUser!.uid;
       DocumentSnapshot teacherDoc =
-      await _firestore.collection('teachers').doc(teacherId).get();
+      await _firestore.collection('users').doc(teacherId).get();
 
       if (teacherDoc.exists && teacherDoc.data() != null) {
         teacherBranch = teacherDoc['branch'];
@@ -66,23 +66,23 @@ class _LeaveApplicationsListState extends State<LeaveApplicationsList> {
   }
 
   Future<void> updateLeaveStatus(String docId, String status) async {
-    await _firestore.collection('leave_applications').doc(docId).update({
-      'status': status,
-    });
+    try {
+      await _firestore.collection('leave_applications').doc(docId).update({
+        'status': status,
+      });
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text("Application marked as $status")),
-    );
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Application marked as $status")),
+      );
 
-    // Update UI after changing status
-    setState(() {
-      filteredApplications = filteredApplications.map((app) {
-        if (app['id'] == docId) {
-          return {...app, 'status': status};
-        }
-        return app;
-      }).toList();
-    });
+      // 🔹 Fetch the latest data from Firestore to ensure UI updates correctly
+      await fetchLeaveApplications();
+    } catch (e) {
+      print("Error updating leave status: $e");
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Failed to update application status")),
+      );
+    }
   }
 
   @override

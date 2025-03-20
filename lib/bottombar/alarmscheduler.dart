@@ -1,5 +1,5 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:educationapk/bottombar/homepage.dart';
+import 'package:educationapk/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
@@ -14,8 +14,7 @@ void triggerAlarm() async {
     'Alarm Notifications',
     importance: Importance.max,
     priority: Priority.high,
-    sound: RawResourceAndroidNotificationSound(
-        'alarm'), // Ensure "alarm.mp3" exists in `res/raw`
+    sound: RawResourceAndroidNotificationSound('alarm'), // Ensure "alarm.mp3" exists in `res/raw` // Ensure "alarm.mp3" exists in `res/raw`
   );
 
   var generalNotificationDetails = NotificationDetails(android: androidDetails);
@@ -153,7 +152,7 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            Get.offAll(() => MyMainHome());
+                            Get.offAll(() => Bottombar());
                           },
                           child: const Icon(Icons.arrow_back, size: 35),
                         ),
@@ -277,11 +276,4 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
         ],
       ),);
   }
-}
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await AndroidAlarmManager
-      .initialize(); // 🔹 Ensure alarm manager is initialized
-  runApp(MaterialApp(home: AlarmScheduler()));
 }

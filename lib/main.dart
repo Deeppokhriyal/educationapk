@@ -11,6 +11,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'dart:async';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'bottombar/application.dart';
 import 'bottombar/profilepage.dart';
 import 'bottombar/schedulerstart.dart';
@@ -18,6 +19,15 @@ import 'controllers/user_controller.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 FlutterLocalNotificationsPlugin();
+
+
+// void main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await AndroidAlarmManager
+//       .initialize(); // 🔹 Ensure alarm manager is initialized
+//   runApp(MaterialApp(home: AlarmScheduler()));
+// }
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -67,7 +77,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void checkLoginStatus() async {
     bool navigated = false;
 
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(Duration(seconds: 5), () {
       if (!navigated && mounted) {
         Get.off(() => MyLogin());
       }
@@ -87,13 +97,7 @@ class _SplashScreenState extends State<SplashScreen> {
         } else {
           Get.off(() => MyLogin());
         }
-      } else {
-        navigated = true;
-        Get.off(() => MyLogin());
       }
-    } else {
-      navigated = true;
-      Get.off(() => MyLogin());
     }
   }
 
@@ -102,7 +106,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: CircularProgressIndicator(),
+        child: Image.asset('assets/images/clgbglogo.png'),
       ),
     );
   }
@@ -202,4 +206,24 @@ class _BottombarState extends State<Bottombar> {
 void logout() async {
   await FirebaseAuth.instance.signOut();
   Get.offAll(() => MyLogin());
+}
+
+void requestPermissions() async {
+  await Permission.notification.request();
+}
+
+void createNotificationChannel() async {
+  const AndroidNotificationChannel channel = AndroidNotificationChannel(
+    'alarm_channel', // Same as in your NotificationDetails
+    'Alarm Notifications',
+    description: 'Channel for alarm notifications',
+    importance: Importance.max,
+    playSound: true,
+    sound: RawResourceAndroidNotificationSound('alarm'), // Ensure this matches
+  );
+
+  await flutterLocalNotificationsPlugin
+      .resolvePlatformSpecificImplementation<
+      AndroidFlutterLocalNotificationsPlugin>()
+      ?.createNotificationChannel(channel);
 }

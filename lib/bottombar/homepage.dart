@@ -68,6 +68,23 @@ class _MyMainHomeState extends State<MyMainHome> {
   }
 
 
+  String? selectedValue; // Variable to hold the selected branch
+
+  // List of items for the dropdown (Branches)
+  final List<String> items = [
+    'IT',
+    'AGRICULTURE',
+    'CHEMICAL',
+    'PAINT',
+    'CIVIL',
+    'CSE',
+    'ELEX',
+    'MECH',
+    'PHARMACY',
+  ];
+
+
+
   @override
   Widget build(BuildContext context) {
     // double screenWidth = MediaQuery.of(context).size.width;
@@ -229,7 +246,8 @@ class _MyMainHomeState extends State<MyMainHome> {
                       duration: Duration(milliseconds: 250),
                       child: Container(
                         margin: EdgeInsets.all(16),
-                        child:TextField(style: TextStyle( fontFamily: 'sans-serif-light',height: 1.2,color: Colors.black),
+                        child:
+                        TextField(style: TextStyle( fontFamily: 'sans-serif-light',height: 1.2,color: Colors.black),
                           cursorColor: Colors.black,
                           decoration: InputDecoration(
                             suffixIcon: Icon(Icons.search,size: 30,color: Colors.black),

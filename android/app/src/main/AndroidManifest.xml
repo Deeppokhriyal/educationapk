@@ -54,6 +54,7 @@
     <!-- Permissions should be declared first -->
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
@@ -108,22 +109,22 @@
             android:exported="false" />
 
 
-<!--        <receiver-->
-<!--            android:name="androidx.legacy.content.WakefulBroadcastReceiver"-->
-<!--            android:exported="false"/>-->
-<!--        <receiver-->
-<!--            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver"-->
-<!--            android:exported="false"/>-->
-<!--        <receiver-->
-<!--            android:name="com.dexterous.flutterlocalnotifications.TimeZoneChangeReceiver"-->
-<!--            android:exported="false">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>-->
-<!--            </intent-filter>-->
-<!--        </receiver>-->
-<!--        <service-->
-<!--            android:name="com.dexterous.flutterlocalnotifications.ForegroundService"-->
-<!--            android:foregroundServiceType="alarm"/>-->
+        <!--        <receiver-->
+        <!--            android:name="androidx.legacy.content.WakefulBroadcastReceiver"-->
+        <!--            android:exported="false"/>-->
+        <!--        <receiver-->
+        <!--            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver"-->
+        <!--            android:exported="false"/>-->
+        <!--        <receiver-->
+        <!--            android:name="com.dexterous.flutterlocalnotifications.TimeZoneChangeReceiver"-->
+        <!--            android:exported="false">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>-->
+        <!--            </intent-filter>-->
+        <!--        </receiver>-->
+        <!--        <service-->
+        <!--            android:name="com.dexterous.flutterlocalnotifications.ForegroundService"-->
+        <!--            android:foregroundServiceType="alarm"/>-->
 
 
 

@@ -67,7 +67,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void checkLoginStatus() async {
     bool navigated = false;
 
-    Future.delayed(Duration(seconds: 10), () {
+    Future.delayed(Duration(seconds: 3), () {
       if (!navigated && mounted) {
         Get.off(() => MyLogin());
       }
@@ -109,7 +109,7 @@ class _SplashScreenState extends State<SplashScreen> {
 }
 
 void triggerAlarm() async {
-  print("\u{1F680} Alarm Triggered!");
+  print("Alarm Triggered!");
 
   var androidDetails = const AndroidNotificationDetails(
     'alarm_channel',

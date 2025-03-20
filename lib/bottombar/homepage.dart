@@ -79,12 +79,12 @@ class _MyMainHomeState extends State<MyMainHome> {
             children: [
               Container(
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [Colors.white, Colors.purple.shade100, Colors.white], // Three colors
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    stops: [0.0, 0.4, 1.0], // Defines the positions of colors
-                  ),
+                  // gradient: LinearGradient(
+                  //   colors: [Colors.lightBlueAccent.shade100, Colors.white], // Three colors
+                  //   begin: Alignment.topCenter,
+                  //   end: Alignment.bottomCenter,
+                  //   stops: [0.0, 1.0], // Defines the positions of colors
+                  // ),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -105,7 +105,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     borderRadius: BorderRadius.circular(50),
 
                                     gradient: LinearGradient(
-                                      colors: [Colors.deepPurple.shade200, Colors.lightBlueAccent],
+                                      colors: [Colors.deepPurple.shade100, Colors.lightBlueAccent.shade100],
                                       begin: Alignment.topCenter,
                                       end: Alignment.bottomCenter,
                                     ),
@@ -362,9 +362,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 boxShadow: [
                                   BoxShadow(
                                     color: Color(0xFF00BFA6), // Shadow Color
-                                    spreadRadius: 1, // Spread (Kitna failaaye)
-                                    blurRadius: 8, // Blur (Kitna soft ho)
-                                    offset: Offset(0, 4), // Shadow ka direction (X, Y)
+                                    spreadRadius: 2, // Spread (Kitna failaaye)
+                                    blurRadius: 6.5, // Blur (Kitna soft ho)
+                                    offset: Offset(0, 5), // Shadow ka direction (X, Y)
                                   ),
                                 ],
                               ),
@@ -437,9 +437,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     boxShadow: [
                                       BoxShadow(
                                         color: Color(0xFFFFAB91), // Shadow Color
-                                        spreadRadius: 1, // Spread (Kitna failaaye)
-                                        blurRadius: 8, // Blur (Kitna soft ho)
-                                        offset: Offset(0, 4), // Shadow ka direction (X, Y)
+                                        spreadRadius: 2, // Spread (Kitna failaaye)
+                                        blurRadius: 6.5, // Blur (Kitna soft ho)
+                                        offset: Offset(0, 5), // Shadow ka direction (X, Y)
                                       ),
                                     ],
                                   ),
@@ -459,9 +459,10 @@ class _MyMainHomeState extends State<MyMainHome> {
                                           ),
                                         ],
                                       ),
-                                      SizedBox(height: 8,),
+                                      SizedBox(height: 20,),
                                       Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.start,
                                         children: [
                                           Text('Teachers',style: TextStyle(fontSize: 24,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
                                           Text('68 Members',style: TextStyle(fontSize: 14,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
@@ -484,16 +485,16 @@ class _MyMainHomeState extends State<MyMainHome> {
                               width: 190,
                               decoration:
                               BoxDecoration(
-                                color: Color(0xFF90CAF9), // Background color
+                                color: Colors.lightBlueAccent.shade400, // Background color
                                 // color: Colors.blueAccent[200], // Background color
                                 borderRadius: BorderRadius.circular(25),
                                 // Rounded corners
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Color(0xFF90CAF9), // Shadow Color
-                                    spreadRadius: 1, // Spread (Kitna failaaye)
-                                    blurRadius: 8, // Blur (Kitna soft ho)
-                                    offset: Offset(0, 4), // Shadow ka direction (X, Y)
+                                    color: Colors.lightBlueAccent.shade400, // Shadow Color
+                                    spreadRadius: 2, // Spread (Kitna failaaye)
+                                    blurRadius: 6.5, // Blur (Kitna soft ho)
+                                    offset: Offset(0, 5), // Shadow ka direction (X, Y)
                                   ),
                                 ],
                               ),
@@ -534,11 +535,12 @@ class _MyMainHomeState extends State<MyMainHome> {
                                           ),
                                         ],
                                       ),
+                                      SizedBox(height: 10,),
                                       Row(
                                         children: [
-                                          Text('Holidays',style: TextStyle(fontFamily: 'sans-serif-thin'),),
+                                          Text('Events info',style: TextStyle(fontFamily: 'sans-serif-thin'),),
                                           SizedBox(width: 23,),
-                                          Text('Calender',style: TextStyle(fontFamily: 'sans-serif-thin'),),
+                                          Text('Holiday\'s',style: TextStyle(fontFamily: 'sans-serif-thin'),),
                                         ],
                                       )
                                     ],
@@ -551,7 +553,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                     ),
 
                     //blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container
-
+                    SizedBox(height: 5,),
                     SlideInUp(
                       duration: Duration(milliseconds: 400),
                       child: Container(
@@ -568,9 +570,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                             boxShadow: [
                               BoxShadow(
                                 color: Color(0xFFCE93D8), // Shadow Color
-                                spreadRadius: 1, // Spread (Kitna failaaye)
-                                blurRadius: 8, // Blur (Kitna soft ho)
-                                offset: Offset(0, 4), // Shadow ka direction (X, Y)
+                                spreadRadius: 2, // Spread (Kitna failaaye)
+                                blurRadius: 6.5, // Blur (Kitna soft ho)
+                                offset: Offset(0, 5), // Shadow ka direction (X, Y)
                               ),
                             ],// Rounded corners
 

@@ -109,7 +109,7 @@ class Holidays extends StatelessWidget {
       body: ListView(
         padding: EdgeInsets.all(15),
         children: [
-          Divider(thickness: 3,),
+          Divider(thickness: 3,color: Colors.black,),
           Text('Gazetted Holidays -',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 25),),
           SizedBox(height: 10,),
           Text('1. 26 January 2025: Republic Day (Rashtriya Din)',style: TextStyle(fontFamily: 'nexalight',fontSize: 18),),

@@ -19,6 +19,7 @@ class Schedulerstart extends StatelessWidget {
                 colors: [Colors.lightBlueAccent, Colors.white],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
+
               ),
             ),
             child: Padding(

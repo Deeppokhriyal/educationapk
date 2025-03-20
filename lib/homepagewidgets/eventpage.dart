@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class EventPage extends StatelessWidget {
   const EventPage({Key? key}) : super(key: key);
@@ -46,7 +45,7 @@ class EventPage extends StatelessWidget {
             onPressed: (){
               Get.to(()=>Holidays());
             },
-            child: Text("2025 Holiday\'s'",style: TextStyle(fontFamily: 'nexaheavy',fontSize: 19,color: Colors.blue),),
+            child: Text("2025 Holiday's",style: TextStyle(fontFamily: 'nexaheavy',fontSize: 19,color: Colors.blue),),
           ),
         ],
       ),

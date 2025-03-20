@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class php_page extends StatelessWidget {
-  const php_page({super.key});
+class Phppage extends StatelessWidget {
+  const Phppage({super.key});
 
   @override
   Widget build(BuildContext context) {

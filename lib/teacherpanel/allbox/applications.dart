@@ -29,10 +29,10 @@ class _LeaveApplicationsListState extends State<LeaveApplicationsList> {
         teacherBranch = teacherDoc['branch'];
         await fetchLeaveApplications(); // Fetch applications after getting branch
       } else {
-        print("No branch found for teacher!");
+        // print("No branch found for teacher!");
       }
     } catch (e) {
-      print("Error fetching teacher branch: $e");
+      // print("Error fetching teacher branch: $e");
     } finally {
       setState(() {
         isLoading = false;
@@ -61,7 +61,7 @@ class _LeaveApplicationsListState extends State<LeaveApplicationsList> {
             .toList();
       });
     } catch (e) {
-      print("Error fetching applications: $e");
+      // print("Error fetching applications: $e");
     }
   }
 
@@ -78,7 +78,7 @@ class _LeaveApplicationsListState extends State<LeaveApplicationsList> {
       // 🔹 Fetch the latest data from Firestore to ensure UI updates correctly
       await fetchLeaveApplications();
     } catch (e) {
-      print("Error updating leave status: $e");
+      // print("Error updating leave status: $e");
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Failed to update application status")),
       );
@@ -188,7 +188,7 @@ class _LeaveApplicationsListState extends State<LeaveApplicationsList> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(
+          SizedBox(
             height: 160,
             child: Image.network(
               'https://img.icons8.com/?size=128&id=48162&format=png',

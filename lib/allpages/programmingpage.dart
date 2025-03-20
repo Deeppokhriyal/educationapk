@@ -12,14 +12,14 @@ import 'package:flutter/material.dart';
 import '../programmingpage/c_page.dart';
 import '../programmingpage/html_page.dart';
 
-class programmingpage extends StatefulWidget {
-  const programmingpage({super.key});
+class Programmingpage extends StatefulWidget {
+  const Programmingpage({super.key});
 
   @override
-  State<programmingpage> createState() => _programmingpageState();
+  State<Programmingpage> createState() => _ProgrammingpageState();
 }
 
-class _programmingpageState extends State<programmingpage> {
+class _ProgrammingpageState extends State<Programmingpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,7 +97,7 @@ class _programmingpageState extends State<programmingpage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => c_page()),
+                                        builder: (context) => Cpage()),
                                   );
                                 },
                                 child: Icon(Icons.arrow_forward_ios_outlined,
@@ -191,7 +191,7 @@ class _programmingpageState extends State<programmingpage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => html_page()),
+                                        builder: (context) => Htmlpage()),
                                   );
                                 },
                                 child: Icon(Icons.arrow_forward_ios_outlined,
@@ -285,7 +285,7 @@ class _programmingpageState extends State<programmingpage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => css_page()),
+                                        builder: (context) => Csspage()),
                                   );
                                 },
                                 child: Icon(Icons.arrow_forward_ios_outlined,
@@ -379,7 +379,7 @@ class _programmingpageState extends State<programmingpage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => js_page()),
+                                        builder: (context) => Jspage()),
                                   );
                                 },
                                 child: Icon(Icons.arrow_forward_ios_outlined,
@@ -473,7 +473,7 @@ class _programmingpageState extends State<programmingpage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => cpage()),
+                                        builder: (context) => CCpage()),
                                   );
                                 },
                                 child: Icon(Icons.arrow_forward_ios_outlined,
@@ -562,7 +562,7 @@ class _programmingpageState extends State<programmingpage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => python_page()),
+                                        builder: (context) => Pythonpage()),
                                   );
                                 },
                                 child: Icon(Icons.arrow_forward_ios_outlined,
@@ -651,7 +651,7 @@ class _programmingpageState extends State<programmingpage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => java_page()),
+                                        builder: (context) => Javapage()),
                                   );
                                 },
                                 child: Icon(Icons.arrow_forward_ios_outlined,
@@ -745,7 +745,7 @@ class _programmingpageState extends State<programmingpage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => php_page()),
+                                        builder: (context) => Phppage()),
                                   );
                                 },
                                 child: Icon(Icons.arrow_forward_ios_outlined,
@@ -837,7 +837,7 @@ class _programmingpageState extends State<programmingpage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => xml_page()),
+                                      builder: (context) => Xmlpage()),
                                 );
                               },
                               child: Icon(Icons.arrow_forward_ios_outlined,

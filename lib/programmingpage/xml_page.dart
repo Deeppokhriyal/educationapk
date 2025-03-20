@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class xml_page extends StatelessWidget {
-  const xml_page({super.key});
+class Xmlpage extends StatelessWidget {
+  const Xmlpage({super.key});
 
   @override
   Widget build(BuildContext context) {

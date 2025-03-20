@@ -62,16 +62,14 @@ class Devpage extends StatelessWidget {
                                   SizedBox(height: 10,),
                                   Divider(),
                                   SizedBox(height: 20,),
-                                  Container(
-                                    child: SlideInUp(
-                                      duration: const Duration(milliseconds: 800),
-                                      child: Row(
-                                        children: [
-                                          Image.asset('assets/images/deeppro.png',height: 70,),
-                                          SizedBox(width: 30,),
-                                          Text('Deepak Pokhriyal',style: TextStyle(fontFamily: 'nexalight',fontSize: 25,color: Colors.lightBlueAccent),),
-                                        ],
-                                      ),
+                                  SlideInUp(
+                                    duration: const Duration(milliseconds: 800),
+                                    child: Row(
+                                      children: [
+                                        Image.asset('assets/images/deeppro.png',height: 70,),
+                                        SizedBox(width: 30,),
+                                        Text('Deepak Pokhriyal',style: TextStyle(fontFamily: 'nexalight',fontSize: 25,color: Colors.lightBlueAccent),),
+                                      ],
                                     ),
                                   ),
                                   SizedBox(height: 15,),
@@ -103,14 +101,12 @@ class Devpage extends StatelessWidget {
                                     ),
                                   ),
                                   SizedBox(height: 30),
-                                  Container(
-                                    child: Row(
-                                      children: [
-                                        Text('Shivanshi Mishra',style: TextStyle(fontFamily: 'nexalight',fontSize: 25,color: Colors.lightBlueAccent),),
-                                        SizedBox(width: 30,),
-                                        Image.asset('assets/images/shivipro-modified.png',height: 70,),
-                                      ],
-                                    ),
+                                  Row(
+                                    children: [
+                                      Text('Shivanshi Mishra',style: TextStyle(fontFamily: 'nexalight',fontSize: 25,color: Colors.lightBlueAccent),),
+                                      SizedBox(width: 30,),
+                                      Image.asset('assets/images/shivipro-modified.png',height: 70,),
+                                    ],
                                   ),
                                   SizedBox(height: 15,),
                                   RichText(text:

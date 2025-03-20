@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/allpage.dart';
 import 'package:educationapk/allpages/AttendancePage/attendance.dart';
 import 'package:educationapk/allpages/programmingpage.dart';
+import 'package:educationapk/bottombar/profilepage.dart';
 import 'package:educationapk/homepagewidgets/collegeinfo.dart';
 import 'package:educationapk/homepagewidgets/devpage.dart';
 import 'package:educationapk/allpages/map.dart';
@@ -190,31 +191,27 @@ class _MyMainHomeState extends State<MyMainHome> {
                           PopupMenuButton<String>(
                             onSelected: (String value) {
                               // Handle menu item selection
-                              print('Selected: $value');
+                              // print('Selected: $value');
                             },
                             itemBuilder: (BuildContext context) {
                               return [
                                 PopupMenuItem<String>(
                                   onTap: (){
-                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Termscondition()));
+                                    Get.to(()=>Termscondition());
                                   },
-                                  value: 'Profile',
-                                  child: Text('Terms and \nCondition\'s', style: TextStyle(fontSize: 15,fontFamily: 'sans-serif-thin')),
+                                  child: Text('Terms and \nCondition\'s', style: TextStyle(fontSize: 16,fontFamily: 'sans-serif-light')),
                                 ),
                                 PopupMenuItem<String>(
                                   onTap: (){
-                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Privacypolicies()));
-                                  },
-                                  value: 'Settings',
-                                  child: Text('Privacy  Policies', style: TextStyle(fontSize: 15,fontFamily: 'sans-serif-thin')),
+                                    Get.to(()=>Privacypolicies());
+                                    },
+                                  child: Text('Privacy  Policies', style: TextStyle(fontSize: 16,fontFamily: 'sans-serif-light')),
                                 ),
                                 PopupMenuItem<String>(
                                   onTap: (){
-
-                                    // Navigator.push(context, MaterialPageRoute(builder: (context)=>MyLogin()));
-                                  },
-                                  value: 'Logout',
-                                  child: Text('Logout', style: TextStyle(fontSize: 15,fontFamily: 'sans-serif-thin')),
+                                    Get.to(()=>AskHelpDesk());
+                                    },
+                                  child: Text('Ask Help Desk', style: TextStyle(fontSize: 16,fontFamily: 'sans-serif-light')),
                                 ),
                               ];
                             },
@@ -294,7 +291,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                           );
                                         }
                                         if (listName[index] == "Programming") {
-                                          Get.to(()=>programmingpage()
+                                          Get.to(()=>Programmingpage()
                                           );
                                         }
                                         if (listName[index] == "Map") {
@@ -377,15 +374,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     children: [
                                       Row(
                                         children: [
-                                          Container(
-                                            child:
-                                            Icon(Icons.timelapse_rounded,size: 30,color: Colors.black),
-                                          ),
+                                          Icon(Icons.timelapse_rounded,size: 30,color: Colors.black),
                                           SizedBox(width: 105,),
-                                          Container(
-                                            child:
-                                            Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                          ),
+                                          Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
                                         ],
                                       ),
                                       SizedBox(height: 10,),
@@ -448,15 +439,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     children: [
                                       Row(
                                         children: [
-                                          Container(
-                                            child:
-                                            Icon(Icons.person_pin_rounded,size: 30,color: Colors.black),
-                                          ),
+                                          Icon(Icons.person_pin_rounded,size: 30,color: Colors.black),
                                           SizedBox(width: 70,),
-                                          Container(
-                                            child:
-                                            Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                          ),
+                                          Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
                                         ],
                                       ),
                                       SizedBox(height: 20,),
@@ -507,20 +492,14 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     children: [
                                       Row(
                                         children: [
-                                          Container(
-                                            child:
-                                            Icon(Icons.event,size: 30,color: Colors.black),
-                                          ),
+                                          Icon(Icons.event,size: 30,color: Colors.black),
                                           SizedBox(width: MediaQuery.of(context).size.width * 0.25,),
-                                          Container(
+                                          GestureDetector(
+                                            onTap: (){
+                                              Navigator.push(context, MaterialPageRoute(builder: (context)=>EventPage()));
+                                            },
                                             child:
-                                            GestureDetector(
-                                              onTap: (){
-                                                Navigator.push(context, MaterialPageRoute(builder: (context)=>EventPage()));
-                                              },
-                                              child:
-                                              Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                            ),
+                                            Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
                                           ),
                                         ],
                                       ),
@@ -587,11 +566,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                               children: [
                                 Row(
                                   children: [
-                                    Container(
-                                      child:
-                                        Image.asset('assets/images/clgbglogo.png',height: 65,),
-                                      // Icon(Icons.school,size: 45,color: Colors.black),
-                                    ),
+                                    Image.asset('assets/images/clgbglogo.png',height: 65,),
                                     SizedBox(width: 8,),
                                     Column(mainAxisAlignment: MainAxisAlignment.start,
                                       crossAxisAlignment: CrossAxisAlignment.start,

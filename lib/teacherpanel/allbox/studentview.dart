@@ -173,7 +173,7 @@ class _StudentviewState extends State<Studentview> {
                                             );
                                           }
                                           if (listName[index] == "Programming") {
-                                            Get.to(()=>programmingpage()
+                                            Get.to(()=>Programmingpage()
                                             );
                                           }
                                           if (listName[index] == "Map") {
@@ -245,7 +245,7 @@ class _StudentviewState extends State<Studentview> {
                                   borderRadius: BorderRadius.circular(25),// Rounded corners
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Color(0xFF00BFA6).withOpacity(0.5), // Shadow Color
+                                      color: Color(0xFF00BFA6), // Shadow Color
                                       spreadRadius: 3, // Spread (Kitna failaaye)
                                       blurRadius: 10, // Blur (Kitna soft ho)
                                       offset: Offset(0, 4), // Shadow ka direction (X, Y)
@@ -261,15 +261,9 @@ class _StudentviewState extends State<Studentview> {
                                       children: [
                                         Row(
                                           children: [
-                                            Container(
-                                              child:
-                                              Icon(Icons.timelapse_rounded,size: 30,color: Colors.black),
-                                            ),
+                                            Icon(Icons.timelapse_rounded,size: 30,color: Colors.black),
                                             SizedBox(width: 105,),
-                                            Container(
-                                              child:
-                                              Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                            ),
+                                            Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
                                           ],
                                         ),
                                         SizedBox(height: 10,),
@@ -320,7 +314,7 @@ class _StudentviewState extends State<Studentview> {
                                       borderRadius: BorderRadius.circular(25),// Rounded corners
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Color(0xFFFFAB91).withOpacity(0.5), // Shadow Color
+                                          color: Color(0xFFFFAB91), // Shadow Color
                                           spreadRadius: 3, // Spread (Kitna failaaye)
                                           blurRadius: 10, // Blur (Kitna soft ho)
                                           offset: Offset(0, 4), // Shadow ka direction (X, Y)
@@ -332,15 +326,9 @@ class _StudentviewState extends State<Studentview> {
                                       children: [
                                         Row(
                                           children: [
-                                            Container(
-                                              child:
-                                              Icon(Icons.person_pin_rounded,size: 30,color: Colors.black),
-                                            ),
+                                            Icon(Icons.person_pin_rounded,size: 30,color: Colors.black),
                                             SizedBox(width: 70,),
-                                            Container(
-                                              child:
-                                              Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                            ),
+                                            Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
                                           ],
                                         ),
                                         SizedBox(height: 8,),
@@ -374,7 +362,7 @@ class _StudentviewState extends State<Studentview> {
                                   // Rounded corners
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Color(0xFF90CAF9).withOpacity(0.5), // Shadow Color
+                                      color: Color(0xFF90CAF9), // Shadow Color
                                       spreadRadius: 3, // Spread (Kitna failaaye)
                                       blurRadius: 10, // Blur (Kitna soft ho)
                                       offset: Offset(0, 4), // Shadow ka direction (X, Y)
@@ -390,20 +378,14 @@ class _StudentviewState extends State<Studentview> {
                                       children: [
                                         Row(
                                           children: [
-                                            Container(
-                                              child:
-                                              Icon(Icons.event,size: 30,color: Colors.black),
-                                            ),
+                                            Icon(Icons.event,size: 30,color: Colors.black),
                                             SizedBox(width: 105,),
-                                            Container(
+                                            GestureDetector(
+                                              onTap: (){
+                                                Navigator.push(context, MaterialPageRoute(builder: (context)=>EventPage()));
+                                              },
                                               child:
-                                              GestureDetector(
-                                                onTap: (){
-                                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>EventPage()));
-                                                },
-                                                child:
-                                                Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                              ),
+                                              Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
                                             ),
                                           ],
                                         ),
@@ -451,7 +433,7 @@ class _StudentviewState extends State<Studentview> {
                               borderRadius: BorderRadius.circular(30),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Color(0xFFCE93D8).withOpacity(0.5), // Shadow Color
+                                  color: Color(0xFFCE93D8), // Shadow Color
                                   spreadRadius: 3, // Spread (Kitna failaaye)
                                   blurRadius: 10, // Blur (Kitna soft ho)
                                   offset: Offset(0, 4), // Shadow ka direction (X, Y)
@@ -469,11 +451,7 @@ class _StudentviewState extends State<Studentview> {
                                 children: [
                                   Row(
                                     children: [
-                                      Container(
-                                        child:
-                                        Image.asset('assets/images/clgbglogo.png',height: 65,),
-                                        // Icon(Icons.school,size: 45,color: Colors.black),
-                                      ),
+                                      Image.asset('assets/images/clgbglogo.png',height: 65,),
                                       SizedBox(width: 8,),
                                       Column(mainAxisAlignment: MainAxisAlignment.start,
                                         crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class python_page extends StatelessWidget {
-  const python_page({super.key});
+class Pythonpage extends StatelessWidget {
+  const Pythonpage({super.key});
 
   @override
   Widget build(BuildContext context) {

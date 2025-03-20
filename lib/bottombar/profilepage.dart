@@ -27,9 +27,9 @@ class _ProfilePageState extends State<ProfilePage> {
   String location = "";
 
   @override
-  void initState() {
-    super.initState();
-    fetchUserData();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    fetchUserData(); // Fetch data whenever dependencies change (i.e., page is navigated to)
   }
 
   Future<void> fetchUserData() async {
@@ -39,16 +39,17 @@ class _ProfilePageState extends State<ProfilePage> {
       if (userData.exists) {
         setState(() {
           name = userData["name"] ?? "";
-          email = userData["email"];
-          phone = userData["phone"];
-          github = userData["github"];
-          instagram = userData["instagram"];
-          location = userData["location"];
+          email = userData["email"] ?? "";
+          phone = userData["phone"] ?? "";
+          github = userData["github"] ?? "";
+          instagram = userData["instagram"] ?? "";
+          location = userData["location"] ?? "";
           profileImage = userData["profileImage"] ?? "";
         });
       }
     }
   }
+
 
   void showEditDialog(String title, String field, String currentValue) {
     TextEditingController controller = TextEditingController(text: currentValue);
@@ -131,18 +132,14 @@ class _ProfilePageState extends State<ProfilePage> {
                             SizedBox(height: 10),
                             Text(name, style: TextStyle(color: Colors.white, fontSize: 23, fontFamily: 'nexalight')),
                             SizedBox(height: 10),
-                            ElevatedButton(
-                              onPressed: () async {
-                                final result = await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => UpdateProfilePage()),
-                                );
-                                if (result == true) {
-                                  fetchUserData(); // Refresh data after returning from UpdateProfilePage
-                                }
-                              },
-                              child: Text("Edit Profile", style: TextStyle(fontFamily: 'nexaheavy', fontSize: 16, color: Colors.black)),
-                            ),
+    ElevatedButton(
+    onPressed: () async {
+    await Get.to(() => UpdateProfilePage());
+    fetchUserData(); // Reload data when returning
+    },
+    child: Text("Edit Profile", style: TextStyle(fontFamily: 'nexaheavy', fontSize: 16, color: Colors.black)),
+    ),
+
                             Divider(color: Colors.grey, height: 35),
                             SlideInLeft(
                               duration: Duration(milliseconds: 300),

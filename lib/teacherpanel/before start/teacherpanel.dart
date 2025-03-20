@@ -17,18 +17,18 @@ class _TeacherpanelState extends State<Teacherpanel> {
   TextEditingController passwordController = TextEditingController();
 
   Future<void> signUpTeacher() async {
-    print("DEBUG: Name: '${usernameController.text.trim()}'");
-    print("DEBUG: Email: '${emailController.text.trim()}'");
-    print("DEBUG: Password: '${passwordController.text.trim()}'");
-    print("DEBUG: Selected Branch: '$selectedValue'");
-    print("DEBUG: Selected Post: '$selectedPosts'");
+    // print("DEBUG: Name: '${usernameController.text.trim()}'");
+    // print("DEBUG: Email: '${emailController.text.trim()}'");
+    // print("DEBUG: Password: '${passwordController.text.trim()}'");
+    // print("DEBUG: Selected Branch: '$selectedValue'");
+    // print("DEBUG: Selected Post: '$selectedPosts'");
 
     if (usernameController.text.isEmpty ||
     emailController.text.isEmpty ||
         passwordController.text.isEmpty ||
         selectedValue == null ||
         selectedPosts == null) {
-      print("DEBUG: One or more fields are empty!");
+      // print("DEBUG: One or more fields are empty!");
       return;
     }
 
@@ -75,7 +75,7 @@ class _TeacherpanelState extends State<Teacherpanel> {
         'createdAt': FieldValue.serverTimestamp(),
       });
 
-      print("DEBUG: Teacher Signed Up Successfully");
+      // print("DEBUG: Teacher Signed Up Successfully");
 
       // Dismiss the loader
       Navigator.pop(context);

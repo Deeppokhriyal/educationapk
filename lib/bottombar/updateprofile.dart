@@ -46,12 +46,12 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
   Future<void> pickImage() async {
     final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
-      print("Image picked: ${pickedFile.path}");
+      // print("Image picked: ${pickedFile.path}");
       setState(() {
         _image = File(pickedFile.path);
       });
     } else {
-      print("No image selected.");
+      // print("No image selected.");
     }
   }
 
@@ -59,7 +59,7 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
     try {
       User? user = FirebaseAuth.instance.currentUser;
       if (user == null) {
-        print("User not logged in.");
+        // print("User not logged in.");
         return;
       }
 
@@ -68,13 +68,13 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
       String newImageUrl = imageUrl;
 
       if (_image != null) {
-        print("Uploading image...");
+        // print("Uploading image...");
         Reference ref = storage.ref().child("profileImages/$uid.jpg");
         UploadTask uploadTask = ref.putFile(_image!);
 
         TaskSnapshot snapshot = await uploadTask;
         newImageUrl = await snapshot.ref.getDownloadURL();
-        print("Image uploaded. URL: $newImageUrl");
+        // print("Image uploaded. URL: $newImageUrl");
       }
 
       await firestore.collection("users").doc(uid).update({
@@ -97,7 +97,7 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
       );
     } catch (e) {
       setState(() => isLoading = false);
-      print("Error Uploading Image: $e");
+      // print("Error Uploading Image: $e");
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text("Profile update failed! Try again."),

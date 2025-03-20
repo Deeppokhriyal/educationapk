@@ -21,15 +21,13 @@ class FullScreenZoomableImage extends StatelessWidget {
         children: [
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            child:  Container(
-              child: InteractiveViewer(
-                panEnabled: true, // Allow panning
-                minScale: 1.0, // Minimum scale
-                maxScale: 4.0, // Maximum scale
-                child: Image.asset(
-                  'assets/images/map.jpg',height: 1400, // Replace with your image path
-                  fit: BoxFit.cover, // Cover the entire screen
-                ),
+            child:  InteractiveViewer(
+              panEnabled: true, // Allow panning
+              minScale: 1.0, // Minimum scale
+              maxScale: 4.0, // Maximum scale
+              child: Image.asset(
+                'assets/images/map.jpg',height: 1400, // Replace with your image path
+                fit: BoxFit.cover, // Cover the entire screen
               ),
             ),
           )

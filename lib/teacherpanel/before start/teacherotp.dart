@@ -64,9 +64,9 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
         'timestamp': FieldValue.serverTimestamp(),
       });
 
-      print("OTP sent to ${widget.email}: $otp");
+      // print("OTP sent to ${widget.email}: $otp");
     } catch (e) {
-      print("Failed to send OTP: $e");
+      // print("Failed to send OTP: $e");
     }
   }
 
@@ -75,7 +75,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
   Future<void> verifyOtp() async {
     String enteredOtp = otpController.text.trim();
     if (enteredOtp.isEmpty || enteredOtp.length != 4) {
-      print("Invalid OTP");
+      // print("Invalid OTP");
       return;
     }
 
@@ -83,7 +83,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
       // Get OTP from Firestore
       DocumentSnapshot snapshot = await FirebaseFirestore.instance.collection('emailOtps').doc(widget.email).get();
       if (snapshot.exists && snapshot['otp'] == enteredOtp) {
-        print("OTP Verified Successfully!");
+        // print("OTP Verified Successfully!");
 
         // ✅ OTP verify hone ke baad LoginPage par le jaaye
         Navigator.pushReplacement(
@@ -92,10 +92,10 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
         );
 
       } else {
-        print("Invalid OTP!");
+        // print("Invalid OTP!");
       }
     } catch (e) {
-      print("Error verifying OTP: $e");
+      // print("Error verifying OTP: $e");
     }
   }
 

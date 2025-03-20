@@ -34,7 +34,7 @@ class _MechfirstyearState extends State<Mechfirstyear> {
   Future<void> fetchAttendanceByDate(String date) async {
     try {
       DocumentSnapshot snapshot = await _firestore.collection("Mechfirst").doc(date).get();
-      print("Document data: ${snapshot.data()}");
+      // print("Document data: ${snapshot.data()}");
 
       if (snapshot.exists) {
         List<dynamic> attendanceList = snapshot["attendance"];
@@ -43,14 +43,14 @@ class _MechfirstyearState extends State<Mechfirstyear> {
           attendanceRecords = attendanceList.cast<Map<String, dynamic>>();
         });
       } else {
-        print("No document found for this date.");
+        // print("No document found for this date.");
         setState(() {
           attendanceRecords = [];
         });
       }
     }
     catch (e) {
-      print("Error fetching data: $e");
+      // print("Error fetching data: $e");
     }
   }
 

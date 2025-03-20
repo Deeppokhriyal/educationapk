@@ -109,7 +109,7 @@ class _SplashScreenState extends State<SplashScreen> {
 }
 
 void triggerAlarm() async {
-  print("Alarm Triggered!");
+  // print("Alarm Triggered!");
 
   var androidDetails = const AndroidNotificationDetails(
     'alarm_channel',
@@ -131,7 +131,7 @@ void triggerAlarm() async {
 }
 
 Future<void> scheduleAlarm(DateTime alarmTime) async {
-  print("✅ Alarm scheduled for $alarmTime");
+  // print("✅ Alarm scheduled for $alarmTime");
   await AndroidAlarmManager.oneShotAt(
     alarmTime,
     0,

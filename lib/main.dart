@@ -140,34 +140,40 @@ Future<void> scheduleAlarm(DateTime alarmTime) async {
     wakeup: true,
   );
 }
-
 class Bottombar extends StatefulWidget {
-  const Bottombar({super.key});
+  final int initialIndex;
+
+  const Bottombar({super.key, this.initialIndex = 0}); // Default index = 0
 
   @override
   State<Bottombar> createState() => _BottombarState();
 }
 
 class _BottombarState extends State<Bottombar> {
-  int _selectedIndex = 0;
+  late int _selectedIndex;
 
-  final List<Widget> _pages = [
-    MyMainHome(),
-    Schedulerstart(),
-    LeaveApplication(),
-    ProfilePage(),
-  ];
+  @override
+  void initState() {
+    super.initState();
+    _selectedIndex = widget.initialIndex;
+  }
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    if (_selectedIndex == index) return; // Prevent unnecessary reloads
+   Get.offAll(()=> Bottombar(initialIndex: index));
   }
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> pages = [
+      MyMainHome(),
+      Schedulerstart(),
+      LeaveApplication(),
+      ProfilePage(),
+    ];
+
     return Scaffold(
-      body: _pages[_selectedIndex],
+      body: pages[_selectedIndex], // Correctly displays the selected page
       bottomNavigationBar: SizedBox(
         height: 70,
         child: GNav(
@@ -177,8 +183,10 @@ class _BottombarState extends State<Bottombar> {
           tabBackgroundColor: Colors.lightBlueAccent[100]!,
           gap: 5,
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-          onTabChange: _onItemTapped,
-          selectedIndex: _selectedIndex,
+          onTabChange: (index) {
+            _onItemTapped(index); // Use the function to handle navigation
+          },
+          selectedIndex: _selectedIndex, // Ensure the correct tab is highlighted
           tabs: const [
             GButton(icon: Icons.home, iconSize: 25, text: 'Home'),
             GButton(icon: Icons.timer, iconSize: 25, text: 'Scheduler'),

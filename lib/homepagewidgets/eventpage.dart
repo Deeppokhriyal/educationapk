@@ -104,13 +104,15 @@ class Holidays extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
           backgroundColor: Colors.white,
-        title: Text('2025 Holiday\'s',style: TextStyle(fontFamily: 'nexaheavy'))
+        title:
+        Text('2025 Holiday\'s',style: TextStyle(fontFamily: 'nexaheavy'))
       ),
       body: ListView(
         padding: EdgeInsets.all(15),
         children: [
           Divider(thickness: 3,color: Colors.black,),
           Text('Gazetted Holidays -',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 25),),
+          Divider(thickness: 3,color: Colors.black,),
           SizedBox(height: 10,),
           Text('1. 26 January 2025: Republic Day (Rashtriya Din)',style: TextStyle(fontFamily: 'nexalight',fontSize: 18),),
           SizedBox(height: 10,),
@@ -144,7 +146,9 @@ class Holidays extends StatelessWidget {
           SizedBox(height: 10,),
           Text('16. 25 December 2025: Christmas Day (National)',style: TextStyle(fontFamily: 'nexalight',fontSize: 18),),
           SizedBox(height: 10,),
+          Divider(thickness: 3,color: Colors.black,),
           Text('Restricted Holidays -',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 25),),
+          Divider(thickness: 3,color: Colors.black,),
           SizedBox(height: 10,),
           Text('1. 1 January 2025: New Year\'s Day',style: TextStyle(fontFamily: 'nexalight',fontSize: 18),),
           SizedBox(height: 10,),

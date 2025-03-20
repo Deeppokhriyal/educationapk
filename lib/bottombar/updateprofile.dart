@@ -46,27 +46,35 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
   Future<void> pickImage() async {
     final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
+      print("Image picked: ${pickedFile.path}");
       setState(() {
         _image = File(pickedFile.path);
       });
+    } else {
+      print("No image selected.");
     }
   }
 
   Future<void> uploadProfileData() async {
     try {
       User? user = FirebaseAuth.instance.currentUser;
-      if (user == null) return;
+      if (user == null) {
+        print("User not logged in.");
+        return;
+      }
 
       setState(() => isLoading = true);
       String uid = user.uid;
       String newImageUrl = imageUrl;
 
       if (_image != null) {
+        print("Uploading image...");
         Reference ref = storage.ref().child("profileImages/$uid.jpg");
         UploadTask uploadTask = ref.putFile(_image!);
 
         TaskSnapshot snapshot = await uploadTask;
         newImageUrl = await snapshot.ref.getDownloadURL();
+        print("Image uploaded. URL: $newImageUrl");
       }
 
       await firestore.collection("users").doc(uid).update({
@@ -95,7 +103,6 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
           content: Text("Profile update failed! Try again."),
           backgroundColor: Colors.red,
         ),
-
       );
     }
   }
@@ -109,10 +116,10 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.pinkAccent, Colors.pink,Colors.black87], // Three colors
+                colors: [Colors.pinkAccent, Colors.pink, Colors.black87],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                stops: [0.0, 0.4, 1.0], // Defines the positions of colors
+                stops: [0.0, 0.4, 1.0],
               ),
             ),
             child: Column(

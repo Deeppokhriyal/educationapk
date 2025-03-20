@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/bottombar/updateprofile.dart';
@@ -9,7 +8,6 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-
 import '../main.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -53,8 +51,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   void showEditDialog(String title, String field, String currentValue) {
-    TextEditingController controller =
-        TextEditingController(text: currentValue);
+    TextEditingController controller = TextEditingController(text: currentValue);
     showDialog(
       context: context,
       builder: (context) {
@@ -63,33 +60,33 @@ class _ProfilePageState extends State<ProfilePage> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(40), // Border Radius 40
           ),
-          title: Text("Edit $title",style: TextStyle(fontFamily: 'nexaheavy'),),
-          content: TextField(controller: controller,style: TextStyle(fontFamily: 'nexalight'),),
+          title: Text("Edit $title", style: TextStyle(fontFamily: 'nexaheavy')),
+          content: TextField(controller: controller, style: TextStyle(fontFamily: 'nexalight')),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: Text("Cancel",style: TextStyle(fontFamily: 'nexalight',fontSize: 16,color: Colors.black),),
+              child: Text("Cancel", style: TextStyle(fontFamily: 'nexalight', fontSize: 16, color: Colors.black)),
             ),
-        ElevatedButton(
-        onPressed: () async {
-        User? user = auth.currentUser;
-        if (user != null) {
-        await firestore.collection("users").doc(user.uid).update({
-        field: controller.text,
-        });
-        setState(() {
-        if (field == "name") name = controller.text; // Ensure name is updated
-        if (field == "email") email = controller.text;
-        if (field == "phone") phone = controller.text;
-        if (field == "github") github = controller.text;
-        if (field == "instagram") instagram = controller.text;
-        if (field == "location") location = controller.text;
-        });
-        }
-        Navigator.pop(context);
-        },
-        child: Text("Save", style: TextStyle(fontFamily: 'nexalight', fontSize: 16, color: Colors.black)),
-        ),
+            ElevatedButton(
+              onPressed: () async {
+                User? user = auth.currentUser;
+                if (user != null) {
+                  await firestore.collection("users").doc(user.uid).update({
+                    field: controller.text,
+                  });
+                  setState(() {
+                    if (field == "name") name = controller.text;
+                    if (field == "email") email = controller.text;
+                    if (field == "phone") phone = controller.text;
+                    if (field == "github") github = controller.text;
+                    if (field == "instagram") instagram = controller.text;
+                    if (field == "location") location = controller.text;
+                  });
+                }
+                Navigator.pop(context);
+              },
+              child: Text("Save", style: TextStyle(fontFamily: 'nexalight', fontSize: 16, color: Colors.black)),
+            ),
           ],
         );
       },
@@ -106,166 +103,151 @@ class _ProfilePageState extends State<ProfilePage> {
             alignment: Alignment.center,
             children: [
               Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/profiledee.avif'),
-                      fit: BoxFit.cover,
-                    ),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/profiledee.avif'),
+                    fit: BoxFit.cover,
                   ),
-                  child: SlideInUp(
-                    duration: Duration(milliseconds: 400),
-                    child: Column(
-                      children: [
-                        Container(
-                            padding: EdgeInsets.all(15),
-                            child: Column(
+                ),
+                child: SlideInUp(
+                  duration: Duration(milliseconds: 400),
+                  child: Column(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(15),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                CircleAvatar(
+                                  radius: 50,
+                                  backgroundImage: profileImage.isNotEmpty
+                                      ? NetworkImage(profileImage)
+                                      : AssetImage('assets/images/profile.png') as ImageProvider,
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 10),
+                            Text(name, style: TextStyle(color: Colors.white, fontSize: 23, fontFamily: 'nexalight')),
+                            SizedBox(height: 10),
+                            ElevatedButton(
+                              onPressed: () async {
+                                final result = await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => UpdateProfilePage()),
+                                );
+                                if (result == true) {
+                                  fetchUserData(); // Refresh data after returning from UpdateProfilePage
+                                }
+                              },
+                              child: Text("Edit Profile", style: TextStyle(fontFamily: 'nexaheavy', fontSize: 16, color: Colors.black)),
+                            ),
+                            Divider(color: Colors.grey, height: 35),
+                            SlideInLeft(
+                              duration: Duration(milliseconds: 300),
+                              child: Text(
+                                'Personal Information',
+                                style: TextStyle(fontFamily: 'nexaheavy', color: Colors.white, fontSize: 25),
+                              ),
+                            ),
+                            SizedBox(width: 10),
+                            SlideInRight(
+                              duration: Duration(milliseconds: 300),
+                              child: Column(
+                                children: [
+                                  ProfileMenuWidget(
+                                      title: "Email",
+                                      icon: Icons.mail,
+                                      value: email,
+                                      onPress: () => showEditDialog("Email", "email", email)),
+                                  ProfileMenuWidget(
+                                      title: "Phone",
+                                      icon: Icons.phone,
+                                      value: phone,
+                                      onPress: () => showEditDialog("Phone", "phone", phone)),
+                                  ProfileMenuWidget(
+                                      title: "GitHub",
+                                      icon: LineAwesomeIcons.github,
+                                      value: github,
+                                      onPress: () => showEditDialog("GitHub", "github", github)),
+                                  ProfileMenuWidget(
+                                      title: "Instagram",
+                                      icon: LineAwesomeIcons.instagram,
+                                      value: instagram,
+                                      onPress: () => showEditDialog("Instagram", "instagram", instagram)),
+                                  ProfileMenuWidget(
+                                      title: "Location",
+                                      icon: Icons.location_city,
+                                      value: location,
+                                      onPress: () => showEditDialog("Location", "location", location)),
+                                ],
+                              ),
+                            ),
+                            Divider(color: Colors.grey, height: 35),
+                            SlideInLeft(
+                              duration: Duration(milliseconds: 400),
+                              child: Text(
+                                'Utilities',
+                                style: TextStyle(fontFamily: 'nexaheavy', color: Colors.white, fontSize: 25),
+                              ),
+                            ),
+                            SizedBox(width: 10),
+                            SlideInRight(
+                              duration: Duration(milliseconds: 400),
+                              child: Container(
+                                padding: EdgeInsets.all(15),
+                                child: Column(
                                   children: [
-                                    CircleAvatar(
-                                      radius: 50,
-                                      backgroundImage: profileImage.isNotEmpty
-                                          ? NetworkImage(profileImage)
-                                          : AssetImage(
-                                                  'assets/images/profile.png')
-                                              as ImageProvider,
+                                    GestureDetector(
+                                      onTap: () {
+                                        Get.to(() => BugReport());
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Icon(LineAwesomeIcons.user_check_solid, color: Colors.pink, size: 27),
+                                          SizedBox(width: 15),
+                                          Text('Bug Report', style: TextStyle(fontFamily: 'nexaheavy', fontSize: 17, color: Colors.white)),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(height: 30),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Get.to(() => AskHelpDesk());
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Icon(LineAwesomeIcons.info_solid, color: Colors.pink, size: 27),
+                                          SizedBox(width: 15),
+                                          Text('Ask Help Desk', style: TextStyle(fontFamily: 'nexaheavy', fontSize: 17, color: Colors.white)),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(height: 30),
+                                    GestureDetector(
+                                      onTap: () {
+                                        logout();
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Icon(Icons.logout, color: Colors.pink, size: 27),
+                                          SizedBox(width: 15),
+                                          Text('Logout', style: TextStyle(fontFamily: 'nexaheavy', fontSize: 17, color: Colors.white)),
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),
-                                SizedBox(height: 10),
-                                Text(name,
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 23,fontFamily: 'nexalight')),
-                                SizedBox(height: 10),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              UpdateProfilePage()),
-                                    );
-                                  },
-                                  child: Text("Edit Profile",style: TextStyle(fontFamily: 'nexaheavy',fontSize: 16,color: Colors.black),),
-                                ),
-                                Divider(color: Colors.grey, height: 35),
-                                SlideInLeft(
-                                  duration: Duration(milliseconds: 300),
-                                  child: Text(
-                                    'Personal Information',
-                                    style: TextStyle(
-                                        fontFamily: 'nexaheavy',
-                                        color: Colors.white,
-                                        fontSize: 25),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                SlideInRight(
-                                    duration: Duration(milliseconds: 300),
-                                    child: Column(
-                                  children: [
-                                    ProfileMenuWidget(
-                                        title: "Email",
-                                        icon: Icons.mail,
-                                        value: email,
-                                        onPress: () =>
-                                            showEditDialog("Email", "email", email)),
-                                    ProfileMenuWidget(
-                                        title: "Phone",
-                                        icon: Icons.phone,
-                                        value: phone,
-                                        onPress: () =>
-                                            showEditDialog("Phone", "phone", phone)),
-                                    ProfileMenuWidget(
-                                        title: "GitHub",
-                                        icon: LineAwesomeIcons.github,
-                                        value: github,
-                                        onPress: () => showEditDialog(
-                                            "GitHub", "github", github)),
-                                    ProfileMenuWidget(
-                                        title: "Instagram",
-                                        icon: LineAwesomeIcons.instagram,
-                                        value: instagram,
-                                        onPress: () => showEditDialog(
-                                            "Instagram", "instagram", instagram)),
-                                    ProfileMenuWidget(
-                                        title: "Location",
-                                        icon: Icons.location_city,
-                                        value: location,
-                                        onPress: () => showEditDialog(
-                                            "Location", "location", location)),
-                                  ],
-                                )),
-                                Divider(color: Colors.grey, height: 35),
-                                SlideInLeft(
-                                  duration: Duration(milliseconds: 400),
-                                  child: Text(
-                                    'Utilities',
-                                    style: TextStyle(
-                                        fontFamily: 'nexaheavy',
-                                        color: Colors.white,
-                                        fontSize: 25),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                SlideInRight(
-                                  duration: Duration(milliseconds: 400),
-                                  child: Container(
-                                      padding: EdgeInsets.all(15),
-                                      child: Column(
-                                        children: [
-                                          GestureDetector(
-                                            onTap: () {
-                                              Get.to(()=>BugReport());
-                                            },
-                                            child: Row(
-                                              children: [
-                                                Icon(LineAwesomeIcons.user_check_solid,color: Colors.pink,size: 27,),
-                                                SizedBox(width: 15,),
-                                                Text('Bug Report',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 17,color: Colors.white),),
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(height: 30,),
-                                          GestureDetector(
-                                            onTap: () {
-                                              Get.to(()=>AskHelpDesk());
-                                            },
-                                            child: Row(
-                                              children: [
-                                                Icon(LineAwesomeIcons.info_solid,color: Colors.pink,size: 27,),
-                                                SizedBox(width: 15,),
-                                                Text('Ask Help Desk',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 17,color: Colors.white),),
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(height:30,),
-                                          GestureDetector(
-                                              onTap: () {
-                                                logout();
-                                              },
-                                              child: Row(
-                                                children: [
-                                                  Icon(Icons.logout,color: Colors.pink,size: 27,),
-                                                  SizedBox(width: 15,),
-                                                  Text('Logout',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 17,color: Colors.white),),
-                                                ],
-                                              )
-                                          )
-                                        ],
-                                      )
-                                  ),
-                                ),
-                              ],
-                            ))
-                      ],
-                    ),
-                  )),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ],
@@ -274,7 +256,9 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 }
 
+
 // ProfileMenuWidget  ProfileMenuWidget  ProfileMenuWidget  ProfileMenuWidget  ProfileMenuWidget  ProfileMenuWidget  ProfileMenuWidget
+
 
 class ProfileMenuWidget extends StatelessWidget {
   final String title;
@@ -295,17 +279,23 @@ class ProfileMenuWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: onPress,
-      leading: Icon(icon, color: Colors.pink,size: 27,),
+      leading: Icon(
+        icon,
+        color: Colors.pink,
+        size: 27,
+      ),
       title: Text(title,
-          style: TextStyle(color: textColor, fontFamily: 'nexaheavy',fontSize: 17)),
-      subtitle: Text(value, style: TextStyle(color: Colors.grey, fontFamily: 'nexalight',fontSize: 15)),
+          style: TextStyle(
+              color: textColor, fontFamily: 'nexaheavy', fontSize: 17)),
+      subtitle: Text(value,
+          style: TextStyle(
+              color: Colors.grey, fontFamily: 'nexalight', fontSize: 15)),
       trailing: Icon(Icons.edit, color: Colors.white),
     );
   }
 }
 
 // BugReport  BugReport  BugReport  BugReport  BugReport  BugReport  BugReport  BugReport   BugReport  BugReport  BugReport
-
 
 class BugReport extends StatefulWidget {
   const BugReport({super.key});
@@ -320,7 +310,8 @@ class _BugReportState extends State<BugReport> {
   File? _image;
 
   Future<void> _pickImage() async {
-    final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       setState(() {
         _image = File(pickedFile.path);
@@ -358,9 +349,9 @@ class _BugReportState extends State<BugReport> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-          backgroundColor: Colors.lightBlueAccent,
-          title: const Text("Report a Bug",style: TextStyle(fontFamily: 'nexaheavy', fontSize: 24))
-      ),
+          backgroundColor: Colors.blue,
+          title: const Text("Report a Bug",
+              style: TextStyle(fontFamily: 'nexaheavy', fontSize: 24))),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -368,30 +359,43 @@ class _BugReportState extends State<BugReport> {
           children: [
             TextField(
               controller: _titleController,
-              decoration: const InputDecoration(labelText: "Bug Title*",labelStyle: TextStyle(fontFamily: 'nexalight',color: Colors.blue, fontSize: 20)),
+              decoration: const InputDecoration(
+                  labelText: "Bug Title*",
+                  labelStyle: TextStyle(
+                      fontFamily: 'nexalight',
+                      color: Colors.blue,
+                      fontSize: 20)),
             ),
             const SizedBox(height: 10),
             TextField(
               controller: _descriptionController,
-              decoration: const InputDecoration(labelText: "Bug Description*",labelStyle: TextStyle(fontFamily: 'nexalight',color: Colors.blue, fontSize: 20)),
+              decoration: const InputDecoration(
+                  labelText: "Bug Description*",
+                  labelStyle: TextStyle(
+                      fontFamily: 'nexalight',
+                      color: Colors.blue,
+                      fontSize: 20)),
               maxLines: 4,
             ),
             const SizedBox(height: 40),
             _image != null
                 ? Image.file(_image!, height: 100)
                 : ElevatedButton(
-                onPressed: _pickImage,
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.all(14),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  backgroundColor: Colors.lightBlueAccent,
-                  foregroundColor: Colors.blue,
-                  elevation: 6,
-                ),
-                child: Text("Attach Screenshot",style: TextStyle(fontFamily: 'nexaheavy',color: Colors.white,fontSize: 17))
-            ),
+                    onPressed: _pickImage,
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.all(14),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      backgroundColor: Colors.blue,
+                      foregroundColor: Colors.white,
+                      elevation: 6,
+                    ),
+                    child: Text("Attach Screenshot",
+                        style: TextStyle(
+                            fontFamily: 'nexaheavy',
+                            color: Colors.white,
+                            fontSize: 17))),
             const Spacer(),
             SizedBox(
               width: double.infinity,
@@ -402,11 +406,15 @@ class _BugReportState extends State<BugReport> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  backgroundColor: Colors.lightBlueAccent,
+                  backgroundColor: Colors.blue,
                   foregroundColor: Colors.white,
                   elevation: 5,
                 ),
-                child: const Text("Submit",style: TextStyle(fontFamily: 'nexaheavy',color: Colors.white,fontSize: 19)),
+                child: const Text("Submit",
+                    style: TextStyle(
+                        fontFamily: 'nexaheavy',
+                        color: Colors.white,
+                        fontSize: 19)),
               ),
             ),
           ],
@@ -416,9 +424,7 @@ class _BugReportState extends State<BugReport> {
   }
 }
 
-
 // AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk
-
 
 class AskHelpDesk extends StatefulWidget {
   const AskHelpDesk({super.key});
@@ -429,6 +435,7 @@ class AskHelpDesk extends StatefulWidget {
 
 class _AskHelpDeskState extends State<AskHelpDesk> {
   final TextEditingController _queryController = TextEditingController();
+  final TextEditingController _replyController = TextEditingController();
 
   Future<void> _submitQuery() async {
     if (_queryController.text.isEmpty) {
@@ -441,38 +448,53 @@ class _AskHelpDeskState extends State<AskHelpDesk> {
     await FirebaseFirestore.instance.collection('help_desk_queries').add({
       'query': _queryController.text,
       'timestamp': FieldValue.serverTimestamp(),
+      'reply': "", // Initially no reply
     });
 
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text("Your query has been submitted!")),
     );
-
     _queryController.clear();
+  }
+
+  Future<void> _submitReply(String docId) async {
+    if (_replyController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Please enter your reply")),
+      );
+      return;
+    }
+
+    await FirebaseFirestore.instance
+        .collection('help_desk_queries')
+        .doc(docId)
+        .update({
+      'reply': _replyController.text,
+    });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Reply submitted!")),
+    );
+    _replyController.clear();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
           "Ask Help Desk",
-          style: TextStyle(fontFamily: 'NexaHeavy', fontSize: 24, color: Colors.white),
+          style: TextStyle(
+              fontFamily: 'NexaHeavy', fontSize: 24, color: Colors.white),
         ),
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.indigo,
         centerTitle: true,
         elevation: 10,
         shadowColor: Colors.black45,
       ),
-      body: Stack(
+      body: Column(
         children: [
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/help_desk_bg.png"),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(
@@ -480,58 +502,104 @@ class _AskHelpDeskState extends State<AskHelpDesk> {
               children: [
                 const Text(
                   "Need Assistance?",
-                  style: TextStyle(fontFamily: 'NexaHeavy', fontSize: 22, color: Colors.black),
+                  style: TextStyle(
+                      fontFamily: 'NexaHeavy',
+                      fontSize: 22,
+                      color: Colors.black),
                 ),
                 const SizedBox(height: 10),
                 const Text(
                   "Describe your issue or question below:",
-                  style: TextStyle(fontFamily: 'NexaLight', fontSize: 16, color: Colors.black),
+                  style: TextStyle(
+                      fontFamily: 'NexaLight',
+                      fontSize: 16,
+                      color: Colors.black),
                 ),
-                const SizedBox(height: 30),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.9),
-                    borderRadius: BorderRadius.circular(15),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 6,
-                        offset: Offset(3, 3),
-                      ),
-                    ],
+                const SizedBox(height: 25),
+                TextField(
+                  controller: _queryController,
+                  decoration: InputDecoration(
+                    hintText: "Type your query here...",
+                    hintStyle: TextStyle(fontFamily: 'nexalight'),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(23)),
                   ),
-                  child: TextField(
-                    controller: _queryController,
-                    decoration: const InputDecoration(
-                      hintText: "Type your query here...",
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.all(18),
-                    ),
-                    maxLines: 4,
-                    style: TextStyle(fontSize: 16, color: Colors.black87),
-                  ),
+                  maxLines: 3,
                 ),
-                const SizedBox(height: 40),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: _submitQuery,
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      backgroundColor: Colors.purple,
-                      foregroundColor: Colors.white,
-                      elevation: 5,
-                    ),
-                    child: const Text(
-                      "Submit Query",
-                      style: TextStyle(fontSize: 18, fontFamily: 'NexaHeavy'),
-                    ),
+                const SizedBox(height: 25),
+                ElevatedButton(
+                  onPressed: _submitQuery,
+                  child: const Text(
+                    "Submit Query",
+                    style: TextStyle(fontFamily: 'nexaheavy', fontSize: 19),
                   ),
                 ),
               ],
+            ),
+          ),
+          const Divider(),
+          const Text(
+            "Previous Queries",
+            style: TextStyle(
+                fontFamily: 'NexaHeavy', fontSize: 18, color: Colors.black),
+          ),
+          Expanded(
+            child: StreamBuilder(
+              stream: FirebaseFirestore.instance
+                  .collection('help_desk_queries')
+                  .snapshots(),
+              builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (!snapshot.hasData)
+                  return const Center(child: CircularProgressIndicator());
+
+                return ListView(
+                  children: snapshot.data!.docs.map((doc) {
+                    return Card(
+                      margin: const EdgeInsets.all(8),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Q: ${doc['query']}",
+                              style: const TextStyle(
+                                  fontFamily: 'NexaHeavy', fontSize: 16),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              "A: ${doc['reply'].isNotEmpty ? doc['reply'] : 'No reply yet'}",
+                              style: const TextStyle(
+                                  fontFamily: 'NexaLight',
+                                  fontSize: 14,
+                                  color: Colors.black54),
+                            ),
+                            if (doc['reply'].isEmpty) ...[
+                              const SizedBox(height: 10),
+                              TextField(
+                                controller: _replyController,
+                                decoration: const InputDecoration(
+                                  hintText: "Type your reply...",
+                                  hintStyle: TextStyle(fontFamily: 'nexalight'),
+                                  border: OutlineInputBorder(),
+                                ),
+                              ),
+                              const SizedBox(height: 5),
+                              ElevatedButton(
+                                onPressed: () => _submitReply(doc.id),
+                                child: const Text(
+                                  "Submit Reply",
+                                  style: TextStyle(fontFamily: 'nexalight'),
+                                ),
+                              ),
+                            ],
+                          ],
+                        ),
+                      ),
+                    );
+                  }).toList(),
+                );
+              },
             ),
           ),
         ],

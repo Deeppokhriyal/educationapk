@@ -263,8 +263,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                     ),
                     SizedBox(height: 15,),
 
+
                     SlideInLeft(
-                      duration: Duration(milliseconds: 250),
+                      duration: Duration(milliseconds: 251),
                       child: Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Column(
@@ -895,7 +896,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                         ),
                         alignment: Alignment.center,
 
-                        child: Text('©2025 All Rights Reserved by Teamcelestial',style: TextStyle(fontFamily: 'nexalight',fontSize: 12,color: Colors.black),))
+                        child: Text('©2025 All Rights Reserved by ',style: TextStyle(fontFamily: 'nexalight',fontSize: 12,color: Colors.black),))
                   ],
                 ),
               ),

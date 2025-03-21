@@ -1,3 +1,5 @@
+import 'dart:isolate';
+
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/before%20start/login.dart';
@@ -27,7 +29,12 @@ FlutterLocalNotificationsPlugin();
 //       .initialize(); // 🔹 Ensure alarm manager is initialized
 //   runApp(MaterialApp(home: AlarmScheduler()));
 // }
-
+@pragma('vm:entry-point')
+ void printHello() {
+final DateTime now = DateTime.now();
+final int isolateId = Isolate.current.hashCode;
+print("[$now] Hello, world! isolate=${isolateId} function='$printHello'");
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,7 +45,9 @@ void main() async {
   const AndroidInitializationSettings('@mipmap/ic_launcher');
   var initializationSettings =
   InitializationSettings(android: androidInitialize);
+  final int helloAlarmID = 0;
   await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+  await AndroidAlarmManager.periodic(const Duration(minutes: 1), helloAlarmID, printHello);
 
   await FirebaseAppCheck.instance.activate(
     androidProvider: AndroidProvider.playIntegrity,

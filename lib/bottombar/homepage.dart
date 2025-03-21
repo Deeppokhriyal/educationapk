@@ -4,7 +4,6 @@ import 'package:educationapk/allpage.dart';
 import 'package:educationapk/allpages/AttendancePage/attendance.dart';
 import 'package:educationapk/allpages/programmingpage.dart';
 import 'package:educationapk/bottombar/profilepage.dart';
-import 'package:educationapk/bottombar/updateprofile.dart';
 import 'package:educationapk/homepagewidgets/collegeinfo.dart';
 import 'package:educationapk/homepagewidgets/devpage.dart';
 import 'package:educationapk/allpages/map.dart';
@@ -29,21 +28,6 @@ class MyMainHome extends StatefulWidget {
 
 class _MyMainHomeState extends State<MyMainHome> {
   List<String> listName=[
-    "All",
-    "Study",
-    "Programming",
-    "Attendance",
-    "Branches",
-    "Map",
-    "Hostel",
-    "Terms and Conditions",
-    "Privacy Policies",
-    "Ask Help Desk ",
-    "Bug Report",
-    "Edit Profile",
-  ];
-
-  List<String> Name=[
     "All",
     "Study",
     "Programming",
@@ -118,16 +102,6 @@ class _MyMainHomeState extends State<MyMainHome> {
       Get.to(() => MyMap());
     } else if (name == "Hostel") {
       Get.to(() => MyMap());
-    } else if (name == "Terms and Conditions") {
-      Get.to(() => Termscondition());
-    }else if (name == "Privacy Policies") {
-      Get.to(() => Privacypolicies());
-    }else if (name == "Ask Help Desk") {
-      Get.to(() => AskHelpDesk());
-    }else if (name == "Bug Report") {
-      Get.to(() => BugReport());
-    }else if (name == "Edit Profile") {
-      Get.to(() => UpdateProfilePage());
     }
   }
 
@@ -380,35 +354,35 @@ class _MyMainHomeState extends State<MyMainHome> {
                               child: ListView.builder(
                                 shrinkWrap: true,
                                 scrollDirection: Axis.horizontal,
-                                itemCount: Name.length,
+                                itemCount: listName.length,
                                 itemBuilder: (_, index) {
                                   return Padding(
                                     padding: EdgeInsets.all(10.0),
                                     child: GestureDetector(
                                       onTap: () {
-                                        if (Name[index] == "All") {
+                                        if (listName[index] == "All") {
                                           Get.to(()=> MainScrollPage()
                                           );
-                                        }if (Name[index] == "Attendance") {
+                                        }if (listName[index] == "Attendance") {
                                           Get.to(()=> AttendanceHistory()
                                           );
-                                        }if (Name[index] == "Branches") {
+                                        }if (listName[index] == "Branches") {
                                           Get.to(()=>MainScrollPage()
                                           );
                                         }
-                                        if (Name[index] == "Study") {
+                                        if (listName[index] == "Study") {
                                           Get.to(()=>Branches()
                                           );
                                         }
-                                        if (Name[index] == "Programming") {
+                                        if (listName[index] == "Programming") {
                                           Get.to(()=>Programmingpage()
                                           );
                                         }
-                                        if (Name[index] == "Map") {
+                                        if (listName[index] == "Map") {
                                           Get.to(()=>MyMap()
                                           );
                                         }
-                                        if (Name[index] == "Hostels") {
+                                        if (listName[index] == "Hostels") {
                                           Get.to(()=>MyMap()
                                           );
                                         }
@@ -433,7 +407,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                         ),
                                         child: Center(
                                           child: Text(
-                                            Name[index],
+                                            listName[index],
                                             style: TextStyle(fontFamily: 'nexalight', fontSize: 15),
                                             textAlign: TextAlign.center, // Center align the text
                                           ),

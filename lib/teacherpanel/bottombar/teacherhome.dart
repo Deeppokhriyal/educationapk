@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/homepagewidgets/devpage.dart';
 import 'package:educationapk/homepagewidgets/images/fullscreen1.dart';
@@ -13,6 +14,7 @@ import 'package:educationapk/teacherpanel/allbox/teachers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class TeacherHome extends StatefulWidget {
   const TeacherHome({super.key});
@@ -27,7 +29,7 @@ class _TeacherHomeState extends State<TeacherHome> {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   String teacherName = "";
-  String teacherProfileImage = "";
+  String profileImage = "";
   String teacherPost = "";
   String teacherBranch = "";
 
@@ -35,6 +37,14 @@ class _TeacherHomeState extends State<TeacherHome> {
   void initState() {
     super.initState();
     fetchUserData();
+    getProfileImage();
+  }
+
+  void getProfileImage() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      profileImage = prefs.getString('profileImage') ?? "";
+    });
   }
 
   void fetchUserData() async {
@@ -45,10 +55,13 @@ class _TeacherHomeState extends State<TeacherHome> {
       if (userData.exists) {
         setState(() {
           teacherName = userData["name"];
-          teacherProfileImage = userData["profileImage"];
+          profileImage = userData["profileImage"];
           teacherPost= userData["post"];
           teacherBranch = userData["branch"];
         });
+
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('profileImage', profileImage);
       }
     }
   }
@@ -59,9 +72,9 @@ class _TeacherHomeState extends State<TeacherHome> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyMainHome(
+      home: TeacherMain(
         teacherName: teacherName,
-        teacherProfileImage: teacherProfileImage,
+        profileImage: profileImage,
         teacherPost: teacherPost,
         teacherBranch: teacherBranch,
       ),
@@ -70,25 +83,25 @@ class _TeacherHomeState extends State<TeacherHome> {
     );
   }
 }
-class MyMainHome extends StatefulWidget {
+class TeacherMain extends StatefulWidget {
   final String teacherName;
-  final String teacherProfileImage;
   final String teacherPost;
   final String teacherBranch;
+   String profileImage;
 
-  const MyMainHome({
+  TeacherMain({
     Key? key,
     required this.teacherName,
-    required this.teacherProfileImage,
     required this.teacherPost,
     required this.teacherBranch,
+    required this.profileImage,
   }) : super(key: key);
 
   @override
-  State<MyMainHome> createState() => _MyMainHomeState();
+  State<TeacherMain> createState() => _TeacherMainState();
 }
 
-class _MyMainHomeState extends State<MyMainHome> {
+class _TeacherMainState extends State<TeacherMain> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -132,13 +145,16 @@ class _MyMainHomeState extends State<MyMainHome> {
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           CircleAvatar(
-                                            backgroundColor: Colors.black12,
-                                            radius: 40,
-                                            backgroundImage: widget.teacherProfileImage.isNotEmpty
-                                                ? NetworkImage(widget.teacherProfileImage)
-                                                : AssetImage('assets/images/profile.png')
-                                            as ImageProvider,
-                                          ),
+                                            radius: 50,
+                                            backgroundColor: Colors.grey[300], // Default background
+                                            backgroundImage: widget.profileImage.isNotEmpty
+                                                ? (widget.profileImage.startsWith("http")
+                                                ? NetworkImage(widget.profileImage) as ImageProvider
+                                                : MemoryImage(base64Decode(widget.profileImage)) as ImageProvider)
+                                                : AssetImage('assets/images/profile.png') as ImageProvider,
+                                            onBackgroundImageError: (_, __) => setState(() => widget.profileImage = ''),
+                                          )
+,
                                           SizedBox(height: 16),
                                           Text(
                                             widget.teacherName.isNotEmpty ? widget.teacherName : "name",
@@ -180,15 +196,18 @@ class _MyMainHomeState extends State<MyMainHome> {
                               child: Container(
                                 padding: EdgeInsets.only(left: 13,top: 50),
                                 child: CircleAvatar(
-                                  backgroundColor: Colors.black12,
-                                  radius: 20,
-                                  backgroundImage: widget.teacherProfileImage.isNotEmpty
-                                      ? NetworkImage(widget.teacherProfileImage)
+                                  radius: 25,
+                                  backgroundColor: Colors.grey[300], // Default background
+                                  backgroundImage: widget.profileImage.isNotEmpty
+                                      ? (widget.profileImage.startsWith("http")
+                                      ? NetworkImage(widget.profileImage) as ImageProvider
+                                      : MemoryImage(base64Decode(widget.profileImage)) as ImageProvider)
                                       : AssetImage('assets/images/profile.png') as ImageProvider,
-                                ),
+                                  onBackgroundImageError: (_, __) => setState(() => widget.profileImage = ''),
+                                )
                               ),
                             ),
-                            SizedBox(width: 23,),
+                            SizedBox(width: 20,),
                             Column(crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/bottombar/profilepage.dart';
@@ -7,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../main.dart';
 
@@ -28,6 +31,26 @@ class _TeacherprofileState extends State<Teacherprofile> {
   void initState() {
     super.initState();
     fetchUserData();
+    getProfileImage();
+  }
+
+  void refreshProfileImage() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      profileImage = prefs.getString('profileImage') ?? "";
+    });
+  }
+
+
+  void getProfileImage() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? storedImage = prefs.getString('profileImage');
+
+    if (storedImage != null && storedImage.isNotEmpty) {
+      setState(() {
+        profileImage = storedImage;
+      });
+    }
   }
 
   void fetchUserData() async {
@@ -40,8 +63,12 @@ class _TeacherprofileState extends State<Teacherprofile> {
           name = userData["name"];
           qualification = userData["qualification"];
           previousrole = userData["previousrole"];
-          profileImage = userData["profileImage"] ?? "";
+          profileImage = userData["profileImage"] ?? ""; // Firestore image
         });
+
+        // Store in SharedPreferences
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('profileImage', profileImage);
       }
     }
   }
@@ -115,14 +142,16 @@ class _TeacherprofileState extends State<Teacherprofile> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 CircleAvatar(
-
                                   radius: 50,
+                                  backgroundColor: Colors.grey[300], // Default background
                                   backgroundImage: profileImage.isNotEmpty
-                                      ? NetworkImage(profileImage)
-                                      : AssetImage(
-                                      'assets/images/profile.png')
-                                  as ImageProvider,
-                                ),
+                                      ? (profileImage.startsWith("http")
+                                      ? NetworkImage(profileImage) as ImageProvider
+                                      : MemoryImage(base64Decode(profileImage)) as ImageProvider)
+                                      : AssetImage('assets/images/profile.png') as ImageProvider,
+                                  onBackgroundImageError: (_, __) => setState(() => profileImage = ''),
+                                )
+
                               ],
                             ),
                             SizedBox(height: 10),

@@ -45,10 +45,16 @@ class _MyMainHomeState extends State<MyMainHome> {
   String userBio = "";
   String userBranch = "";
 
+
+  TextEditingController searchController = TextEditingController();
+  List<String> filteredList = [];
+  bool isSearching = false;
+
   @override
   void initState() {
     super.initState();
     fetchUserData();
+    filteredList = List.from(listName);
   }
 
   void fetchUserData() async {
@@ -67,22 +73,37 @@ class _MyMainHomeState extends State<MyMainHome> {
     }
   }
 
+  void _filterSearch(String query) {
+    setState(() {
+      if (query.isEmpty) {
+        filteredList = List.from(listName);
+        isSearching = false;
+      } else {
+        filteredList = listName
+            .where((name) => name.toLowerCase().contains(query.toLowerCase()))
+            .toList();
+        isSearching = true;
+      }
+    });
+  }
 
-  String? selectedValue; // Variable to hold the selected branch
-
-  // List of items for the dropdown (Branches)
-  final List<String> items = [
-    'IT',
-    'AGRICULTURE',
-    'CHEMICAL',
-    'PAINT',
-    'CIVIL',
-    'CSE',
-    'ELEX',
-    'MECH',
-    'PHARMACY',
-  ];
-
+  void _navigateToPage(String name) {
+    if (name == "All") {
+      Get.to(() => MainScrollPage());
+    } else if (name == "Attendance") {
+      Get.to(() => AttendanceHistory());
+    } else if (name == "Branches") {
+      Get.to(() => MainScrollPage());
+    } else if (name == "Study") {
+      Get.to(() => Branches());
+    } else if (name == "Programming") {
+      Get.to(() => Programmingpage());
+    } else if (name == "Map") {
+      Get.to(() => MyMap());
+    } else if (name == "Hostel") {
+      Get.to(() => MyMap());
+    }
+  }
 
 
   @override
@@ -244,29 +265,73 @@ class _MyMainHomeState extends State<MyMainHome> {
 
                     SlideInLeft(
                       duration: Duration(milliseconds: 250),
-                      child: Container(
-                        margin: EdgeInsets.all(16),
-                        child:
-                        TextField(style: TextStyle( fontFamily: 'sans-serif-light',height: 1.2,color: Colors.black),
+                      child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            children: [
+                        TextField(
+                          controller: searchController,
+                          onChanged: _filterSearch,
+                          style: TextStyle(
+                              fontFamily: 'sans-serif-light',
+                              height: 1.2,
+                              color: Colors.black),
                           cursorColor: Colors.black,
                           decoration: InputDecoration(
-                            suffixIcon: Icon(Icons.search,size: 30,color: Colors.black),
-                            fillColor: Colors.black,
-                            hintText: 'Search',hintStyle: TextStyle(color: Colors.black),
-                            border: OutlineInputBorder( // Unfocused border color
+                            suffixIcon: Icon(Icons.search,
+                                size: 30, color: Colors.black),
+                            hintText: 'Search',
+                            hintStyle: TextStyle(color: Colors.black),
+                            border: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.black),
                               borderRadius: BorderRadius.circular(35),
                             ),
                             focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.blue),// Focused border color
-                                borderRadius: BorderRadius.circular(35)
+                              borderSide: BorderSide(color: Colors.blue),
+                              borderRadius: BorderRadius.circular(35),
                             ),
-
                           ),
-
                         ),
+
+                          // 🔹 Dropdown List for Search Results
+                          if (isSearching)
+                      Container(
+                      height: 200,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black26,
+                            blurRadius: 5,
+                          ),
+                        ],
+                      ),
+                      child: ListView.builder(
+                        itemCount: filteredList.length,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            title: Text(
+                              filteredList[index],
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontFamily: 'nexalight'),
+                            ),
+                            onTap: () {
+                              _navigateToPage(filteredList[index]);
+                              searchController.clear(); // Search reset
+                              setState(() {
+                                isSearching = false;
+                              });
+                            },
+                          );
+                        },
                       ),
                     ),
+                      ]
+                          ),
+                      ),
+                      ),
                     SlideInRight(
                       duration: Duration(milliseconds: 300),
                       child: Row(

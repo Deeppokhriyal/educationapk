@@ -18,16 +18,43 @@ class Teacherdetails extends StatelessWidget {
   ];
 
   final List<Map<String, String>> teachers = [
-    {'name': 'Kr. Anuradha', 'designation': 'Mechanical', 'image': 'assets/librarian.png'},
-    {'name': 'Shri Prashant Kumar', 'designation': 'Mechanical', 'image': 'assets/librarian.png'},
-    {'name': 'Sri A.K.Agarwal', 'designation': 'Mechanical', 'image': 'assets/librarian.png'},
-    {'name': 'Shri Jeetesh Sundriyal', 'designation': 'Mechanical', 'image': 'assets/librarian.png'},
-    {'name': 'Shri O.P.Singh', 'designation': 'Mechanical', 'image': 'assets/librarian.png'},
-    {'name': 'Shri Rajeev Yadav', 'designation': 'Mechanical', 'image': 'assets/librarian.png'},
-    {'name': 'Shri R.S.Yadav', 'designation': 'Mechanical', 'image': 'assets/librarian.png'},
-    {'name': 'Shri Prince Chauhan', 'designation': 'Mechanical', 'image': 'assets/librarian.png'},
-    {'name': 'Shri Kumar Gaurv', 'designation': 'Mechanical', 'image': 'assets/librarian.png'},
-    {'name': 'Km. Aasma', 'designation': 'Mechanical', 'image': 'assets/librarian.png'},
+    {'name': 'Kr. Anuradha', 'designation': 'Agriculture Eng.', 'image': 'assets/librarian.png'},
+    {'name': 'Shri Prashant Kumar', 'designation': 'Chemical Eng.', 'image': 'assets/librarian.png'},
+    {'name': 'Sri A.K.Agarwal', 'designation': 'Chemical Paint Eng.', 'image': 'assets/librarian.png'},
+    {'name': 'Mr. Hari Datt Bhatt', 'designation': 'Civil Eng.', 'image': 'assets/librarian.png'},
+    {'name': 'Mr. Gaurav Upadhyay', 'designation': 'Computer Science and Eng.', 'image': 'assets/librarian.png'},
+    {'name': 'Shri Rajeev Yadav', 'designation': 'Electronics ', 'image': 'assets/librarian.png'},
+    {'name': 'Mr. Jagdish Chandra Pandey', 'designation': 'Information Technology', 'image': 'assets/librarian.png'},
+    {'name': 'Mr. Jeetesh Sundriyal', 'designation': 'Mechanical Eng.', 'image': 'assets/librarian.png'},
+    {'name': 'Mrs. Preeti Arya', 'designation': 'Pharmacy ', 'image': 'assets/librarian.png'},
+  ];
+
+  final List<Map<String, String>> lectuerteachers = [
+    {'name': 'Kr. Anuradha', 'designation': 'Agriculture Eng.', 'image': 'assets/librarian.png'},
+    {'name': 'Shri Prashant Kumar', 'designation': 'Chemical Eng.', 'image': 'assets/librarian.png'},
+    {'name': 'Sri A.K.Agarwal', 'designation': 'Chemical Paint Eng.', 'image': 'assets/librarian.png'},
+    {'name': 'Mr. M.K. Joshi', 'designation': 'Civil Eng.', 'image': 'assets/librarian.png'},
+    {'name': 'Shri O.P.Singh', 'designation': 'Computer Science and Eng.', 'image': 'assets/librarian.png'},
+    {'name': 'Shri Rajeev Yadav', 'designation': 'Electronics ', 'image': 'assets/librarian.png'},
+    {'name': 'Shri R.S.Yadav', 'designation': 'Information Technology', 'image': 'assets/librarian.png'},
+    {'name': 'Shri Prince Chauhan', 'designation': 'Mechanical Eng.', 'image': 'assets/librarian.png'},
+    {'name': 'Shri Kumar Gaurv', 'designation': 'Pharmacy ', 'image': 'assets/librarian.png'},
+  ];
+
+  final List<Map<String, String>> guesteachers = [
+    {'name': 'Kr. Anuradha', 'designation': 'Agriculture Eng.', 'image': 'assets/librarian.png'},
+    {'name': 'Shri Prashant Kumar', 'designation': 'Chemical Eng.', 'image': 'assets/librarian.png'},
+    {'name': 'Sri A.K.Agarwal', 'designation': 'Chemical Paint Eng.', 'image': 'assets/librarian.png'},
+    {'name': 'Mr. Nitin Chandra', 'designation': 'Civil Eng.', 'image': 'assets/librarian.png'},
+    {'name': 'Miss. Himani Rawat', 'designation': 'Civil Eng.', 'image': 'assets/librarian.png'},
+    {'name': 'Shri O.P.Singh', 'designation': 'Computer Science and Eng.', 'image': 'assets/librarian.png'},
+    {'name': 'Shri Rajeev Yadav', 'designation': 'Electronics ', 'image': 'assets/librarian.png'},
+    {'name': 'Shri R.S.Yadav', 'designation': 'Information Technology', 'image': 'assets/librarian.png'},
+    {'name': 'Mr. Gaurav Shriwal', 'designation': 'Mechanical Eng.', 'image': 'assets/librarian.png'},
+    {'name': 'Miss. Shweta Gola', 'designation': 'Mechanical Eng.', 'image': 'assets/librarian.png'},
+    {'name': 'Mr. Arjun Agarwal', 'designation': 'Mechanical Eng.', 'image': 'assets/librarian.png'},
+    {'name': 'Mr. Pankaj Kumar', 'designation': 'Mechanical Eng.', 'image': 'assets/librarian.png'},
+    {'name': 'Shri Kumar Gaurv', 'designation': 'Pharmacy ', 'image': 'assets/librarian.png'},
   ];
 
   @override
@@ -47,7 +74,11 @@ class Teacherdetails extends StatelessWidget {
               Divider(thickness: 2),
               _buildSection('Office Staff', officeStaff),
               Divider(thickness: 2),
-              _buildSection('Teachers', teachers),
+              _buildSection('HOD (Head of Department)', teachers),
+              Divider(thickness: 2),
+              _buildSection('Lecturers', lectuerteachers),
+              Divider(thickness: 2),
+              _buildSection('Guest Teachers', guesteachers),
             ],
           ),
         ),

@@ -371,7 +371,7 @@ class _BugReportState extends State<BugReport> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.lightBlueAccent,
           title: const Text("Report a Bug",
               style: TextStyle(fontFamily: 'nexaheavy', fontSize: 24))),
       body: Padding(
@@ -385,8 +385,9 @@ class _BugReportState extends State<BugReport> {
                   labelText: "Bug Title*",
                   labelStyle: TextStyle(
                       fontFamily: 'nexalight',
-                      color: Colors.blue,
-                      fontSize: 20)),
+                      color: Colors.lightBlueAccent,
+                      fontSize: 20),
+              ),
             ),
             const SizedBox(height: 10),
             TextField(
@@ -395,7 +396,7 @@ class _BugReportState extends State<BugReport> {
                   labelText: "Bug Description*",
                   labelStyle: TextStyle(
                       fontFamily: 'nexalight',
-                      color: Colors.blue,
+                      color: Colors.lightBlueAccent,
                       fontSize: 20)),
               maxLines: 4,
             ),
@@ -409,7 +410,7 @@ class _BugReportState extends State<BugReport> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
-                      backgroundColor: Colors.blue,
+                      backgroundColor: Colors.lightBlueAccent,
                       foregroundColor: Colors.white,
                       elevation: 6,
                     ),
@@ -428,7 +429,7 @@ class _BugReportState extends State<BugReport> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Colors.lightBlueAccent,
                   foregroundColor: Colors.white,
                   elevation: 5,
                 ),
@@ -560,11 +561,13 @@ class _AskHelpDeskState extends State<AskHelpDesk> {
             ),
           ),
           const Divider(),
+          SizedBox(height: 5,),
           const Text(
-            "Previous Queries",
+            "All Previous Queries",
             style: TextStyle(
-                fontFamily: 'NexaHeavy', fontSize: 18, color: Colors.black),
+                fontFamily: 'NexaHeavy', fontSize: 20, color: Colors.black),
           ),
+          SizedBox(height: 8,),
           Expanded(
             child: StreamBuilder(
               stream: FirebaseFirestore.instance

@@ -1,8 +1,11 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:educationapk/bottombar/profilepage.dart';
 import 'package:educationapk/teacherpanel/bottombar/updateTeacherprofile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import '../../main.dart';
@@ -191,6 +194,9 @@ class _TeacherprofileState extends State<Teacherprofile> {
                                   child: Column(
                                     children: [
                                       GestureDetector(
+                                        onTap: () {
+                                          Get.to(()=>BugReport());
+                                        },
                                         child: Row(
                                           children: [
                                             Icon(LineAwesomeIcons.user_check_solid,color: Colors.pink,size: 27,),
@@ -201,6 +207,9 @@ class _TeacherprofileState extends State<Teacherprofile> {
                                       ),
                                       SizedBox(height: 30,),
                                       GestureDetector(
+                                        onTap: () {
+                                          Get.to(()=>AskHelpDesk());
+                                        },
                                         child: Row(
                                           children: [
                                             Icon(LineAwesomeIcons.info_solid,color: Colors.pink,size: 27,),
@@ -213,7 +222,6 @@ class _TeacherprofileState extends State<Teacherprofile> {
                                       GestureDetector(
                                           onTap: () {
                                             logout();
-                                            // Get.offAll(() => MyLogin()); // Navigate to MyLogin() and remove all previous routes
                                           },
                                           child: Row(
                                             children: [

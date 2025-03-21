@@ -922,7 +922,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                           ),
                           alignment: Alignment.center,
 
-                          child: Text('©2025 All Rights Reserved by ',style: TextStyle(fontFamily: 'nexalight',fontSize: 12,color: Colors.black),))
+                          child: Text('©2025 All Rights Reserved by Teamcelestial',style: TextStyle(fontFamily: 'nexalight',fontSize: 12,color: Colors.black),))
                     ],
                   ),
                 ),

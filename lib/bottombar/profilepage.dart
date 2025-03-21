@@ -18,6 +18,8 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+  bool _isLoading = true;
   String name = "";
   String profileImage = "";
   String email = "";
@@ -33,10 +35,21 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Future<void> fetchUserData() async {
-    User? user = auth.currentUser;
-    if (user != null) {
-      DocumentSnapshot userData = await firestore.collection("users").doc(user.uid).get();
+    setState(() => _isLoading = true);
+    try {
+      User? user = auth.currentUser;
+      if (user == null) {
+        print("User not logged in");
+        return;
+      }
+      print("Fetching data for User ID: ${user.uid}");
+
+      DocumentSnapshot userData =
+      await firestore.collection("users").doc(user.uid).get();
+
       if (userData.exists) {
+        print("User Data: ${userData.data()}");
+
         setState(() {
           name = userData["name"] ?? "";
           email = userData["email"] ?? "";
@@ -45,10 +58,18 @@ class _ProfilePageState extends State<ProfilePage> {
           instagram = userData["instagram"] ?? "";
           location = userData["location"] ?? "";
           profileImage = userData["profileImage"] ?? "";
+          _isLoading = false; // Data load hone ke baad loader band karo
         });
+      } else {
+        print("Document does not exist");
+        setState(() => _isLoading = false);
       }
+    } catch (e) {
+      print("Error while fetching user data: $e");
+      setState(() => _isLoading = false);
     }
   }
+
 
 
   void showEditDialog(String title, String field, String currentValue) {
@@ -98,7 +119,11 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: ListView(
+      body:  _isLoading
+          ? Center(child: CircularProgressIndicator())
+          // : userData == null
+          // ? Center(child: Text("User not found!"))
+      :ListView(
         children: [
           Stack(
             alignment: Alignment.center,

@@ -80,7 +80,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(Duration(milliseconds :  1500), () {
       setState(() {
         _showLoader = true; // Show loader after 3 seconds
       });
@@ -119,7 +119,7 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: Colors.white,
       body: Center(
         child: _showLoader
-            ? SpinKitFoldingCube(
+            ? SpinKitWaveSpinner(
           color: Colors.blue, // Customize color
           size: 50.0, // Customize size
         )

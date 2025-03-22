@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -8,6 +9,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../main.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -21,7 +23,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   bool _isLoading = true;
   String name = "";
-  String profileImage = "";
+  String StudentProfile = "";
   String email = "";
   String phone = "";
   String github = "";
@@ -32,6 +34,18 @@ class _ProfilePageState extends State<ProfilePage> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     fetchUserData(); // Fetch data whenever dependencies change (i.e., page is navigated to)
+    getStudentProfile();
+  }
+
+  void getStudentProfile() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? storedImage = prefs.getString('StudentProfile');
+
+    if (storedImage != null && storedImage.isNotEmpty) {
+      setState(() {
+        StudentProfile = storedImage;
+      });
+    }
   }
 
   Future<void> fetchUserData() async {
@@ -57,9 +71,13 @@ class _ProfilePageState extends State<ProfilePage> {
           github = userData["github"] ?? "";
           instagram = userData["instagram"] ?? "";
           location = userData["location"] ?? "";
-          profileImage = userData["profileImage"] ?? "";
+          StudentProfile = userData["StudentProfile"] ?? "";
           _isLoading = false; // Data load hone ke baad loader band karo
         });
+
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('StudentProfile', StudentProfile);
+
       } else {
         print("Document does not exist");
         setState(() => _isLoading = false);
@@ -129,11 +147,12 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: _isLoading
-          ? Center(child: SpinKitCubeGrid(
-        color: Colors.purple, // Customize color
-        size: 50.0, // Adjust size
-      ),
-      )
+          ? Center(
+              child: SpinKitCubeGrid(
+                color: Colors.purple, // Customize color
+                size: 50.0, // Adjust size
+              ),
+            )
           // : userData == null
           // ? Center(child: Text("User not found!"))
           : ListView(
@@ -163,18 +182,29 @@ class _ProfilePageState extends State<ProfilePage> {
                           children: [
                             Container(
                               padding: EdgeInsets.all(15),
-                              child: Column(
+                              child:
+                              Column(
                                 children: [
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       CircleAvatar(
                                         radius: 50,
-                                        backgroundImage: profileImage.isNotEmpty
-                                            ? NetworkImage(profileImage)
+                                        backgroundColor: Colors
+                                            .grey[300], // Default background
+                                        backgroundImage: StudentProfile
+                                                .isNotEmpty
+                                            ? (StudentProfile.startsWith("http")
+                                                ? NetworkImage(StudentProfile)
+                                                    as ImageProvider
+                                                : MemoryImage(base64Decode(
+                                                        StudentProfile))
+                                                    as ImageProvider)
                                             : AssetImage(
                                                     'assets/images/profile.png')
                                                 as ImageProvider,
+                                        onBackgroundImageError: (_, __) =>
+                                            setState(() => StudentProfile = ''),
                                       ),
                                     ],
                                   ),

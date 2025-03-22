@@ -3,6 +3,7 @@ import 'package:educationapk/before%20start/signup.dart';
 import 'package:educationapk/teacherpanel/before%20start/teacherpanel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:educationapk/before%20start/startingpage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -168,7 +169,10 @@ class _MyLoginState extends State<MyLogin> {
                                 ],
                               ),
                               isLoading
-                                  ? CircularProgressIndicator()
+                                  ? SpinKitWave(
+                                color: Colors.blue,  // Change color as needed
+                                size: 30.0,          // Adjust size
+                              )
                               :SizedBox(height: 15,),
                               SizedBox(
                                 height: 50,
@@ -176,7 +180,11 @@ class _MyLoginState extends State<MyLogin> {
                                 child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                     foregroundColor: Colors.black, backgroundColor: Colors.black, // Set the text color here
-                                  ),  onPressed: () => loginStudent(context),
+                                  ),
+                                  // onPressed: (){
+                                  //   Get.to(()=>MyHomePage());
+                                  // },
+                                  onPressed: () => loginStudent(context),
                                   child: Text('Login',style: TextStyle(color: Colors.white, fontSize: 16,fontFamily: 'sans-serif-light'),),
                                 ),
                               ),

@@ -79,7 +79,7 @@ class _EventUploadState extends State<EventUpload> {
           Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.black, Colors.pinkAccent],
+                colors: [Colors.blueGrey, Colors.orangeAccent],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
@@ -115,6 +115,7 @@ class _EventUploadState extends State<EventUpload> {
                           child: Column(
                             children: [
                               buildTextField(
+
                                 controller: _eventNameController,
                                 label: 'Enter Event Name',
                                 validator: (value) => value!.isEmpty ? 'Enter the event name' : null,

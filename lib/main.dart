@@ -10,6 +10,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'dart:async';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -74,30 +75,28 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  bool _showLoader = false; // To control loader visibility
 
   @override
   void initState() {
     super.initState();
-    auth.authStateChanges().listen((User? user) {
+    Future.delayed(Duration(seconds: 3), () {
+      setState(() {
+        _showLoader = true; // Show loader after 3 seconds
+      });
       checkLoginStatus();
     });
   }
 
   void checkLoginStatus() async {
-    bool navigated = false;
-
-    Future.delayed(Duration(seconds: 5), () {
-      if (!navigated && mounted) {
-        Get.off(() => MyLogin());
-      }
-    });
-
     User? user = auth.currentUser;
+
     if (user != null) {
-      DocumentSnapshot userData =  await firestore.collection("users").doc(user.uid).get();
+      DocumentSnapshot userData =
+      await firestore.collection("users").doc(user.uid).get();
+
       if (userData.exists) {
         String role = userData['role'];
-        navigated = true;
 
         if (role == "teacher") {
           Get.off(() => Teacherbar());
@@ -106,7 +105,11 @@ class _SplashScreenState extends State<SplashScreen> {
         } else {
           Get.off(() => MyLogin());
         }
+      } else {
+        Get.off(() => MyLogin());
       }
+    } else {
+      Get.off(() => MyLogin());
     }
   }
 
@@ -115,7 +118,12 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Image.asset('assets/images/clgbglogo.png'),
+        child: _showLoader
+            ? SpinKitFoldingCube(
+          color: Colors.blue, // Customize color
+          size: 50.0, // Customize size
+        )
+            : Image.asset('assets/images/clgbglogo.png'), // Show logo first
       ),
     );
   }

@@ -96,9 +96,9 @@ class _LeaveApplicationState extends State<LeaveApplication> {
 
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Colors.black, Colors.pinkAccent], // Three colors
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
+                  colors: [Colors.black87, Colors.pinkAccent], // Three colors
+                  begin: Alignment.topRight,
+                  end: Alignment.centerLeft,
                 ),
               ),
               child: Padding(

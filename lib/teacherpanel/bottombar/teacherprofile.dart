@@ -122,12 +122,10 @@ class _TeacherprofileState extends State<Teacherprofile> {
         children: [
           Container(
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(
-                      'https://img.freepik.com/free-photo/abstract-gradient-neon-lights_23-2149279124.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_authors_boost'), // Path to your background image
-                  // image: NetworkImage('https://img.freepik.com/premium-photo/tiles-art-illustration_732004-8.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'),// Path to your background image
-                  fit: BoxFit.cover,
-                ),
+                gradient: LinearGradient(
+                  colors: [Colors.lightBlueAccent ,  Colors.white,],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,)
               ),
               child: SlideInUp(
                 duration: Duration(milliseconds: 400),
@@ -157,7 +155,7 @@ class _TeacherprofileState extends State<Teacherprofile> {
                             SizedBox(height: 10),
                             Text(name,
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 23,fontFamily: 'nexalight')),
+                                    color: Colors.black, fontSize: 23,fontFamily: 'nexalight')),
                             SizedBox(height: 10),
                             ElevatedButton(
                               onPressed: () {
@@ -177,7 +175,7 @@ class _TeacherprofileState extends State<Teacherprofile> {
                                 'Personal Information',
                                 style: TextStyle(
                                     fontFamily: 'nexaheavy',
-                                    color: Colors.white,
+                                    color: Colors.black,
                                     fontSize: 25),
                               ),
                             ),
@@ -209,7 +207,7 @@ class _TeacherprofileState extends State<Teacherprofile> {
                                 'Utilities',
                                 style: TextStyle(
                                     fontFamily: 'nexaheavy',
-                                    color: Colors.white,
+                                    color: Colors.black,
                                     fontSize: 25),
                               ),
                             ),
@@ -228,9 +226,9 @@ class _TeacherprofileState extends State<Teacherprofile> {
                                         },
                                         child: Row(
                                           children: [
-                                            Icon(LineAwesomeIcons.user_check_solid,color: Colors.pink,size: 27,),
+                                            Icon(LineAwesomeIcons.user_check_solid,color: Colors.blue,size: 27,),
                                             SizedBox(width: 15,),
-                                            Text('Bug Report',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 17,color: Colors.white),),
+                                            Text('Bug Report',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 17,color: Colors.black),),
                                           ],
                                         ),
                                       ),
@@ -241,9 +239,9 @@ class _TeacherprofileState extends State<Teacherprofile> {
                                         },
                                         child: Row(
                                           children: [
-                                            Icon(LineAwesomeIcons.info_solid,color: Colors.pink,size: 27,),
+                                            Icon(LineAwesomeIcons.info_solid,color: Colors.blue,size: 27,),
                                             SizedBox(width: 15,),
-                                            Text('Ask Help Desk',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 17,color: Colors.white),),
+                                            Text('Ask Help Desk',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 17,color: Colors.black),),
                                           ],
                                         ),
                                       ),
@@ -254,9 +252,9 @@ class _TeacherprofileState extends State<Teacherprofile> {
                                           },
                                           child: Row(
                                             children: [
-                                              Icon(Icons.logout,color: Colors.pink,size: 27,),
+                                              Icon(Icons.logout,color: Colors.blue,size: 27,),
                                               SizedBox(width: 15,),
-                                              Text('Logout',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 17,color: Colors.white),),
+                                              Text('Logout',style: TextStyle(fontFamily: 'nexaheavy',fontSize: 17,color: Colors.black),),
                                             ],
                                           )
                                       )
@@ -287,18 +285,18 @@ class ProfileMenuWidget extends StatelessWidget {
     required this.value,
     required this.icon,
     required this.onPress,
-    this.textColor = Colors.white,
+    this.textColor = Colors.black,
   });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       onTap: onPress,
-      leading: Icon(icon, color: Colors.pink,size: 27,),
+      leading: Icon(icon, color: Colors.blue,size: 27,),
       title: Text(title,
           style: TextStyle(color: textColor, fontFamily: 'nexaheavy',fontSize: 17)),
       subtitle: Text(value, style: TextStyle(color: Colors.grey, fontFamily: 'nexalight',fontSize: 15)),
-      trailing: Icon(Icons.edit, color: Colors.white),
+      trailing: Icon(Icons.edit, color: Colors.black),
     );
   }
 }

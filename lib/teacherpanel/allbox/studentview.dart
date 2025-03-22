@@ -7,7 +7,6 @@ import 'package:educationapk/homepagewidgets/collegeinfo.dart';
 import 'package:educationapk/homepagewidgets/devpage.dart';
 import 'package:educationapk/allpages/map.dart';
 import 'package:educationapk/homepagewidgets/eventpage.dart';
-import 'package:educationapk/homepagewidgets/images/fullscreen1.dart';
 import 'package:educationapk/homepagewidgets/teacherdetails.dart';
 import 'package:educationapk/popupmenu/privacypolicies.dart';
 import 'package:educationapk/popupmenu/termscondition.dart';
@@ -519,172 +518,177 @@ class _StudentviewState extends State<Studentview> {
                         scrollDirection: Axis.horizontal,
                         child: Row(
                           children: [
-                            GestureDetector(
-                              onTap: () {
-                                Get.to(()=>Fullscreen(img: 'assets/images/clg7.jpg',tag: 'clg7Image',),);
-                              },
-                              child: Column(
-                                children: [
-                                  Hero(
-                                    tag: 'clg7Image', // Unique Hero tag
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(35),
-                                      child: Image.asset(
-                                        'assets/images/clg7.jpg',
-                                        height: 200,
-                                        fit: BoxFit.cover,
-                                      ),
+                            Column(
+                              children: [
+                                Hero(
+                                  tag: 'clg7Image', // Unique Hero tag
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(25),
+                                    child: Image.asset(
+                                      'assets/images/clg7.jpg',
+                                      height: 200,
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
-                                  Text('Academic Block',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white),),
-
-
-                                ],
-                              ),
+                                ),
+                                Text(
+                                  'Academic Block',
+                                  style: TextStyle(
+                                      fontFamily: 'nexalight',
+                                      fontSize: 18,
+                                      color: Colors.black),
+                                ),
+                              ],
                             ),
-                            SizedBox(width: 15,),
-                            GestureDetector(
-                              onTap: () {
-                                Get.to(()=>Fullscreen(img: 'assets/images/clg6.jpg',tag: 'clg6Image',),);
-
-                              },
-                              child: Column(
-                                children: [
-                                  Hero(
-                                    tag: 'clg6Image', // Unique Hero tag
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(35),
-                                      child: Image.asset(
-                                        'assets/images/clg6.jpg',
-                                        height: 200,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  Text('IT Block',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white),),
-
-                                ],
-                              ),
+                            SizedBox(
+                              width: 15,
                             ),
-                            SizedBox(width: 15,),
-                            GestureDetector(
-                              onTap: () {
-                                Get.to(()=>Fullscreen(img: 'assets/images/clg3.jpg',tag: 'clg3Image',),);
-
-                              },
-                              child: Column(
-                                children: [
-                                  Hero(
-                                    tag: 'clg3Image', // Unique Hero tag
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(35),
-                                      child: Image.asset(
-                                        'assets/images/clg3.jpg',
-                                        height: 200,
-                                        fit: BoxFit.cover,
-                                      ),
+                            Column(
+                              children: [
+                                Hero(
+                                  tag: 'clg6Image', // Unique Hero tag
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(25),
+                                    child: Image.asset(
+                                      'assets/images/clg6.jpg',
+                                      height: 200,
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
-                                  Text('Digital Library',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white),),
-
-                                ],
-                              ),
+                                ),
+                                Text(
+                                  'IT Block',
+                                  style: TextStyle(
+                                      fontFamily: 'nexalight',
+                                      fontSize: 18,
+                                      color: Colors.black),
+                                ),
+                              ],
                             ),
-                            SizedBox(width: 15,),
-                            GestureDetector(
-                              onTap: () {
-                                Get.to(()=>Fullscreen(img: 'assets/images/clg4.jpg',tag: 'clg4Image',),);
-
-                              },
-                              child: Column(
-                                children: [
-                                  Hero(
-                                    tag: 'clg4Image', // Unique Hero tag
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(35),
-                                      child: Image.asset(
-                                        'assets/images/clg4.jpg',
-                                        height: 200,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  Text('Canteen',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white),),
-
-                                ],
-                              ),
+                            SizedBox(
+                              width: 15,
                             ),
-                            SizedBox(width: 15,),
-                            GestureDetector(
-                              onTap: () {
-                                Get.to(()=>Fullscreen(img: 'assets/images/clg5.jpg',tag: 'clg5Image',),);
-
-                              },
-                              child: Column(
-                                children: [
-                                  Hero(
-                                    tag: 'clg5Image', // Unique Hero tag
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(35),
-                                      child: Image.asset(
-                                        'assets/images/clg5.jpg',
-                                        height: 200,
-                                        fit: BoxFit.cover,
-                                      ),
+                            Column(
+                              children: [
+                                Hero(
+                                  tag: 'clg3Image', // Unique Hero tag
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(25),
+                                    child: Image.asset(
+                                      'assets/images/clg3.jpg',
+                                      height: 200,
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
-                                  Text('Workshop\'s',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white),),
-
-                                ],
-                              ),
+                                ),
+                                Text(
+                                  'Digital Library',
+                                  style: TextStyle(
+                                      fontFamily: 'nexalight',
+                                      fontSize: 18,
+                                      color: Colors.black),
+                                ),
+                              ],
                             ),
-
-                            SizedBox(width: 15,),
-                            GestureDetector(
-                              onTap: () {
-                                Get.to(()=>Fullscreen(img: 'assets/images/clg1.jpg',tag: 'clg1Image',),);
-
-                              },
-                              child: Column(
-                                children: [
-                                  Hero(
-                                    tag: 'clg1Image', // Unique Hero tag
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(35),
-                                      child: Image.asset(
-                                        'assets/images/clg1.jpg',
-                                        height: 200,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  Text('NCC Block',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white),),
-
-                                ],
-                              ),
+                            SizedBox(
+                              width: 15,
                             ),
-                            SizedBox(width: 15,),
-                            GestureDetector(
-                              onTap: () {
-                                Get.to(()=>Fullscreen(img: 'assets/images/clg2.jpg',tag: 'clg2Image',),);
-                              },
-                              child: Column(
-                                children: [
-                                  Hero(
-                                    tag: 'clg2Image', // Unique Hero tag
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(35),
-                                      child: Image.asset(
-                                        'assets/images/clg2.jpg',
-                                        height: 200,
-                                        fit: BoxFit.cover,
-                                      ),
+                            Column(
+                              children: [
+                                Hero(
+                                  tag: 'clg4Image', // Unique Hero tag
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(25),
+                                    child: Image.asset(
+                                      'assets/images/clg4.jpg',
+                                      height: 200,
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
-                                  Text('Parking',style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white),),
-
-                                ],
-                              ),
+                                ),
+                                Text(
+                                  'Canteen',
+                                  style: TextStyle(
+                                      fontFamily: 'nexalight',
+                                      fontSize: 18,
+                                      color: Colors.black),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Column(
+                              children: [
+                                Hero(
+                                  tag: 'clg5Image', // Unique Hero tag
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(25),
+                                    child: Image.asset(
+                                      'assets/images/clg5.jpg',
+                                      height: 200,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  'Workshop\'s',
+                                  style: TextStyle(
+                                      fontFamily: 'nexalight',
+                                      fontSize: 18,
+                                      color: Colors.black),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Column(
+                              children: [
+                                Hero(
+                                  tag: 'clg1Image', // Unique Hero tag
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(25),
+                                    child: Image.asset(
+                                      'assets/images/clg1.jpg',
+                                      height: 200,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  'NCC Block',
+                                  style: TextStyle(
+                                      fontFamily: 'nexalight',
+                                      fontSize: 18,
+                                      color: Colors.black),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Column(
+                              children: [
+                                Hero(
+                                  tag: 'clg2Image', // Unique Hero tag
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(25),
+                                    child: Image.asset(
+                                      'assets/images/clg2.jpg',
+                                      height: 200,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  'Parking',
+                                  style: TextStyle(
+                                      fontFamily: 'nexalight',
+                                      fontSize: 18,
+                                      color: Colors.black),
+                                ),
+                              ],
                             ),
                           ],
                         ),

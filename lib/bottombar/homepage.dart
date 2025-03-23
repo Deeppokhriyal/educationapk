@@ -193,18 +193,10 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 Column(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    // _isLoading
-                                    //     ? Center(
-                                    //   child: SpinKitRipple(
-                                    //     color: Colors.purple, // Customize color
-                                    //     size: 50.0, // Adjust size
-                                    //   ),
-                                    // )
-                                    //     :
                                     CircleAvatar(
                                       radius: 50,
-                                      backgroundColor: Colors
-                                          .grey[300], // Default background
+                                      backgroundColor: Colors.transparent, // Remove backgroundAsdx color
+
                                       backgroundImage: StudentProfile.isNotEmpty
                                           ? (StudentProfile.startsWith("http")
                                               ? NetworkImage(StudentProfile)
@@ -278,8 +270,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                         child:
                         CircleAvatar(
                           radius: 25,
-                          backgroundColor: Colors
-                              .grey[300], // Default background
+                          backgroundColor: Colors.transparent, // Remove background color
                           backgroundImage: StudentProfile.isNotEmpty
                               ? (StudentProfile.startsWith("http")
                               ? NetworkImage(StudentProfile)

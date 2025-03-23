@@ -190,22 +190,30 @@ class _ProfilePageState extends State<ProfilePage> {
                                     children: [
                                       CircleAvatar(
                                         radius: 50,
-                                        backgroundColor: Colors
-                                            .grey[300], // Default background
-                                        backgroundImage: StudentProfile
-                                                .isNotEmpty
-                                            ? (StudentProfile.startsWith("http")
-                                                ? NetworkImage(StudentProfile)
-                                                    as ImageProvider
-                                                : MemoryImage(base64Decode(
-                                                        StudentProfile))
-                                                    as ImageProvider)
-                                            : AssetImage(
-                                                    'assets/images/profile.png')
-                                                as ImageProvider,
-                                        onBackgroundImageError: (_, __) =>
-                                            setState(() => StudentProfile = ''),
+                                        backgroundColor: Colors.transparent, // Remove background color
+                                        child: StudentProfile.isEmpty
+                                            ? SpinKitRipple(color: Colors.black, size: 50.0) // Ripple Loader
+                                            : ClipOval(
+                                          child: StudentProfile.startsWith("http")
+                                              ? Image.network(
+                                            StudentProfile,
+                                            fit: BoxFit.cover,
+                                            width: 100,
+                                            height: 100,
+                                            loadingBuilder: (context, child, loadingProgress) {
+                                              if (loadingProgress == null) return child;
+                                              return SpinKitRipple(color: Colors.purple, size: 50.0);
+                                            },
+                                          )
+                                              : Image.memory(
+                                            base64Decode(StudentProfile),
+                                            fit: BoxFit.cover,
+                                            width: 100,
+                                            height: 100,
+                                          ),
+                                        ),
                                       ),
+
                                     ],
                                   ),
                                   SizedBox(height: 10),
@@ -414,6 +422,7 @@ class ProfileMenuWidget extends StatelessWidget {
 
 // BugReport  BugReport  BugReport  BugReport  BugReport  BugReport  BugReport  BugReport   BugReport  BugReport  BugReport
 
+
 class BugReport extends StatefulWidget {
   const BugReport({super.key});
 
@@ -428,7 +437,7 @@ class _BugReportState extends State<BugReport> {
 
   Future<void> _pickImage() async {
     final pickedFile =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
+    await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       setState(() {
         _image = File(pickedFile.path);
@@ -466,84 +475,88 @@ class _BugReportState extends State<BugReport> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-          backgroundColor: Colors.lightBlueAccent,
+          backgroundColor: Colors.indigo,
           title: const Text("Report a Bug",
               style: TextStyle(fontFamily: 'nexaheavy', fontSize: 24))),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextField(
-              controller: _titleController,
-              decoration: const InputDecoration(
-                labelText: "Bug Title*",
-                labelStyle: TextStyle(
-                    fontFamily: 'nexalight',
-                    color: Colors.lightBlueAccent,
-                    fontSize: 20),
-              ),
-            ),
-            const SizedBox(height: 10),
-            TextField(
-              controller: _descriptionController,
-              decoration: const InputDecoration(
-                  labelText: "Bug Description*",
+      body: SlideInUp(
+        duration: Duration(milliseconds: 600),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextField(
+                controller: _titleController,
+                decoration: const InputDecoration(
+                  labelText: "Bug Title*",
                   labelStyle: TextStyle(
                       fontFamily: 'nexalight',
-                      color: Colors.lightBlueAccent,
-                      fontSize: 20)),
-              maxLines: 4,
-            ),
-            const SizedBox(height: 40),
-            _image != null
-                ? Image.file(_image!, height: 100)
-                : ElevatedButton(
-                    onPressed: _pickImage,
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.all(14),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      backgroundColor: Colors.lightBlueAccent,
-                      foregroundColor: Colors.white,
-                      elevation: 6,
-                    ),
-                    child: Text("Attach Screenshot",
-                        style: TextStyle(
-                            fontFamily: 'nexaheavy',
-                            color: Colors.white,
-                            fontSize: 17))),
-            const Spacer(),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: _submitReport,
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  backgroundColor: Colors.lightBlueAccent,
-                  foregroundColor: Colors.white,
-                  elevation: 5,
+                      color: Colors.indigo,
+                      fontSize: 20),
                 ),
-                child: const Text("Submit",
-                    style: TextStyle(
-                        fontFamily: 'nexaheavy',
-                        color: Colors.white,
-                        fontSize: 19)),
               ),
-            ),
-          ],
+              const SizedBox(height: 10),
+              TextField(
+                controller: _descriptionController,
+                decoration: const InputDecoration(
+                    labelText: "Bug Description*",
+                    labelStyle: TextStyle(
+                        fontFamily: 'nexalight',
+                        color: Colors.indigo,
+                        fontSize: 20)),
+                maxLines: 4,
+              ),
+              const SizedBox(height: 40),
+              _image != null
+                  ? Image.file(_image!, height: 100)
+                  : ElevatedButton(
+                  onPressed: _pickImage,
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.all(14),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    backgroundColor: Colors.indigo,
+                    foregroundColor: Colors.white,
+                    elevation: 6,
+                  ),
+                  child: Text("Attach Screenshot",
+                      style: TextStyle(
+                          fontFamily: 'nexaheavy',
+                          color: Colors.white,
+                          fontSize: 17))),
+              const Spacer(),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: _submitReport,
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    backgroundColor: Colors.indigo,
+                    foregroundColor: Colors.white,
+                    elevation: 5,
+                  ),
+                  child: const Text("Submit",
+                      style: TextStyle(
+                          fontFamily: 'nexaheavy',
+                          color: Colors.white,
+                          fontSize: 19)),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 }
 
-// AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk
 
+// // AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk
+//
 class AskHelpDesk extends StatefulWidget {
   const AskHelpDesk({super.key});
 

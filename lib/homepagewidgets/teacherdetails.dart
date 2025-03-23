@@ -2,43 +2,43 @@ import 'package:flutter/material.dart';
 
 class Teacherdetails extends StatelessWidget {
   final List<Map<String, String>> staffMembers = [
-    {'name': 'Mr. B.P.Singh', 'designation': 'Principal', 'image': 'assets/principal.png'},
+    {'name': 'Mr. B.P.Singh', 'designation': 'Principal', 'image': 'assets/images/man.png'},
   ];
 
   final List<Map<String, String>> officeStaff = [
-    {'name': 'Mr. Kailash Singh', 'designation': 'Office staff', 'image': 'assets/hod_cs.png'},
-    {'name': 'Mr. Shiv Kumar', 'designation': 'Office staff', 'image': 'assets/hod_mech.png'},
-    {'name': 'Mr. Gokul Sunal', 'designation': 'Office staff', 'image': 'assets/professor.png'},
-    {'name': 'Mr. M.S.Manral', 'designation': 'Office staff', 'image': 'assets/librarian.png'},
-    {'name': 'Mr. Surendra Ram', 'designation': 'Office staff', 'image': 'assets/librarian.png'},
-    {'name': 'Mr. Hemu Upadhyay', 'designation': 'Office staff', 'image': 'assets/librarian.png'},
-    {'name': 'Mrs. Prema Devi', 'designation': 'Office staff', 'image': 'assets/librarian.png'},
-    {'name': 'Mr. Bhagawat Dayal', 'designation': 'Office staff', 'image': 'assets/librarian.png'},
-    {'name': 'Mr. Rameshwar Singh', 'designation': 'Office staff', 'image': 'assets/librarian.png'},
+    {'name': 'Mr. Kailash Singh', 'designation': 'Office staff', 'image': 'assets/images/man.png'},
+    {'name': 'Mr. Shiv Kumar', 'designation': 'Office staff', 'image': 'assets/images/man.png'},
+    {'name': 'Mr. Gokul Sunal', 'designation': 'Office staff', 'image': 'assets/images/man.png'},
+    {'name': 'Mr. M.S.Manral', 'designation': 'Office staff', 'image': 'assets/images/man.png'},
+    {'name': 'Mr. Surendra Ram', 'designation': 'Office staff', 'image': 'assets/images/man.png'},
+    {'name': 'Mr. Hemu Upadhyay', 'designation': 'Office staff', 'image': 'assets/images/man.png'},
+    {'name': 'Mrs. Prema Devi', 'designation': 'Office staff', 'image': 'assets/images/woman.png'},
+    {'name': 'Mr. Bhagawat Dayal', 'designation': 'Office staff', 'image': 'assets/images/man.png'},
+    {'name': 'Mr. Rameshwar Singh', 'designation': 'Office staff', 'image': 'assets/images/man.png'},
   ];
 
   final List<Map<String, String>> teachers = [
-    {'name': 'Kr. Anuradha', 'designation': 'Agriculture Eng.', 'image': 'assets/librarian.png'},
-    {'name': 'Shri Prashant Kumar', 'designation': 'Chemical Eng.', 'image': 'assets/librarian.png'},
-    {'name': 'Sri A.K.Agarwal', 'designation': 'Chemical Paint Eng.', 'image': 'assets/librarian.png'},
-    {'name': 'Mr. Hari Datt Bhatt', 'designation': 'Civil Eng.', 'image': 'assets/librarian.png'},
-    {'name': 'Mr. Gaurav Upadhyay', 'designation': 'Computer Science and Eng.', 'image': 'assets/librarian.png'},
-    {'name': 'Shri Rajeev Yadav', 'designation': 'Electronics ', 'image': 'assets/librarian.png'},
-    {'name': 'Mr. Jagdish Chandra Pandey', 'designation': 'Information Technology', 'image': 'assets/librarian.png'},
-    {'name': 'Mr. Jeetesh Sundriyal', 'designation': 'Mechanical Eng.', 'image': 'assets/librarian.png'},
-    {'name': 'Mrs. Preeti Arya', 'designation': 'Pharmacy ', 'image': 'assets/librarian.png'},
+    {'name': 'Miss. Anuradha', 'designation': 'Agriculture Eng.', 'image': 'assets/images/woman.png'},
+    {'name': 'Shri Prashant Kumar', 'designation': 'Chemical Eng.', 'image': 'assets/images/man.png'},
+    {'name': 'Sri A.K.Agarwal', 'designation': 'Chemical Paint Eng.', 'image': 'assets/images/man.png'},
+    {'name': 'Mr. Hari Datt Bhatt', 'designation': 'Civil Eng.', 'image': 'assets/images/man.png'},
+    {'name': 'Mr. Gaurav Upadhyay', 'designation': 'Computer Science and Eng.', 'image': 'assets/images/man.png'},
+    {'name': 'Shri Rajeev Yadav', 'designation': 'Electronics ', 'image': 'assets/images/man.png'},
+    {'name': 'Mr. Jagdish Chandra Pandey', 'designation': 'Information Technology', 'image': 'assets/images/man.png'},
+    {'name': 'Mr. Jeetesh Sundriyal', 'designation': 'Mechanical Eng.', 'image': 'assets/images/man.png'},
+    {'name': 'Mrs. Preeti Arya', 'designation': 'Pharmacy ', 'image': 'assets/images/woman.png'},
   ];
 
   final List<Map<String, String>> lectuerteachers = [
-    {'name': 'Kr. Anuradha', 'designation': 'Agriculture Eng.', 'image': 'assets/librarian.png'},
-    {'name': 'Shri Prashant Kumar', 'designation': 'Chemical Eng.', 'image': 'assets/librarian.png'},
-    {'name': 'Sri A.K.Agarwal', 'designation': 'Chemical Paint Eng.', 'image': 'assets/librarian.png'},
-    {'name': 'Mr. M.K. Joshi', 'designation': 'Civil Eng.', 'image': 'assets/librarian.png'},
-    {'name': 'Shri O.P.Singh', 'designation': 'Computer Science and Eng.', 'image': 'assets/librarian.png'},
-    {'name': 'Shri Rajeev Yadav', 'designation': 'Electronics ', 'image': 'assets/librarian.png'},
-    {'name': 'Shri R.S.Yadav', 'designation': 'Information Technology', 'image': 'assets/librarian.png'},
-    {'name': 'Shri Prince Chauhan', 'designation': 'Mechanical Eng.', 'image': 'assets/librarian.png'},
-    {'name': 'Shri Kumar Gaurv', 'designation': 'Pharmacy ', 'image': 'assets/librarian.png'},
+    {'name': 'Kr. Anuradha', 'designation': 'Agriculture Eng.', 'image': 'assets/images/man.png'},
+    {'name': 'Shri Prashant Kumar', 'designation': 'Chemical Eng.', 'image': 'assets/images/man.png'},
+    {'name': 'Sri A.K.Agarwal', 'designation': 'Chemical Paint Eng.', 'image': 'assets/images/man.png'},
+    {'name': 'Mr. M.K. Joshi', 'designation': 'Civil Eng.', 'image': 'assets/images/woman.png'},
+    {'name': 'Shri O.P.Singh', 'designation': 'Computer Science and Eng.', 'image': 'assets/images/woman.png'},
+    {'name': 'Shri Rajeev Yadav', 'designation': 'Electronics ', 'image': 'assets/images/man.png'},
+    {'name': 'Shri R.S.Yadav', 'designation': 'Information Technology', 'image': 'assets/images/woman.png'},
+    {'name': 'Shri Prince Chauhan', 'designation': 'Mechanical Eng.', 'image': 'assets/images/man.png'},
+    {'name': 'Shri Kumar Gaurv', 'designation': 'Pharmacy ', 'image': 'assets/images/woman.png'},
   ];
 
   final List<Map<String, String>> guesteachers = [

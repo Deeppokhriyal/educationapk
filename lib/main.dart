@@ -1,6 +1,7 @@
 import 'dart:isolate';
 
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
+import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/before%20start/login.dart';
 import 'package:educationapk/bottombar/homepage.dart';
@@ -80,7 +81,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(milliseconds :  2000), () {
+    Future.delayed(Duration(milliseconds :  4000), () {
       setState(() {
         _showLoader = true; // Show loader after 3 seconds
       });
@@ -123,7 +124,9 @@ class _SplashScreenState extends State<SplashScreen> {
           color: Colors.blue, // Customize color
           size: 70.0, // Customize size
         )
-            : Image.asset('assets/images/clgbglogo.png'), // Show logo first
+            : ZoomIn(
+            duration: Duration(milliseconds: 2200),
+            child: Image.asset('assets/images/clgbglogo.png')), // Show logo first
       ),
     );
   }

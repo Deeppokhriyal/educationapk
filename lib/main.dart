@@ -247,3 +247,25 @@ void createNotificationChannel() async {
       AndroidFlutterLocalNotificationsPlugin>()
       ?.createNotificationChannel(channel);
 }
+
+
+
+void showAwesomeSnackBar(BuildContext context, String message, bool isSuccess) {
+  Get.snackbar(
+    isSuccess ? "Success" : "Error",
+    message,
+    snackPosition: SnackPosition.BOTTOM,
+    backgroundColor: Colors.black26,
+    colorText: Colors.white,
+    borderRadius: 20,
+    margin: EdgeInsets.all(8),
+    padding: EdgeInsets.all(8),
+    icon: Icon(
+      isSuccess ? Icons.check_circle : Icons.error,
+      color: isSuccess ? Colors.greenAccent : Colors.redAccent,
+    ),
+    duration: Duration(milliseconds: 2500),
+    isDismissible: true,
+    forwardAnimationCurve: Curves.easeOutBack,
+  );
+}

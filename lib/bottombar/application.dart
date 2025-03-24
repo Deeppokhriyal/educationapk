@@ -1,7 +1,11 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:educationapk/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+
+import '../main.dart';
 
 class LeaveApplication extends StatefulWidget {
   @override
@@ -10,6 +14,8 @@ class LeaveApplication extends StatefulWidget {
 
 class _LeaveApplicationState extends State<LeaveApplication> {
   final _formKey = GlobalKey<FormState>();
+  bool isUpdating = false;
+
   TextEditingController _submitByController = TextEditingController();
   TextEditingController _rollNoController = TextEditingController();
   TextEditingController _leaveDateController = TextEditingController();
@@ -52,24 +58,26 @@ class _LeaveApplicationState extends State<LeaveApplication> {
         return;
       }
 
+      setState(() {
+        isUpdating = true; // ✅ Show loading animation before starting // ✅ Show loading animation before starting // ✅ Show loading animation before starting
+      });
+
       String currentUserId = FirebaseAuth.instance.currentUser?.uid ?? '';
-      String rollNo = _rollNoController.text.trim(); // ✅ Roll Number as Unique ID
+      String rollNo = _rollNoController.text.trim();
 
       try {
-        await _firestore.collection('leave_applications').doc(rollNo).set({  // ✅ Document ID = Roll No.
+        await _firestore.collection('leave_applications').doc(rollNo).set({
           'branch': selectedValue,
           'submitBy': currentUserId,
-          'submitName': _submitByController.text, // ✅ Save student name
-          'rollno': rollNo, // ✅ Save roll number
+          'submitName': _submitByController.text,
+          'rollno': rollNo,
           'leaveDate': _leaveDateController.text,
           'leaveReason': _leaveReasonController.text,
           'submittedAt': FieldValue.serverTimestamp(),
           'status': 'Pending'
         });
 
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Leave application submitted successfully!')),
-        );
+            showAwesomeSnackBar(context, "Leave application submitted successfully!", true);
 
         _submitByController.clear();
         _rollNoController.clear();
@@ -82,6 +90,10 @@ class _LeaveApplicationState extends State<LeaveApplication> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Error submitting application. Try again!')),
         );
+      } finally {
+        setState(() {
+          isUpdating = false; // ✅ Hide loading animation after completion
+        });
       }
     }
   }
@@ -226,7 +238,12 @@ class _LeaveApplicationState extends State<LeaveApplication> {
                                       : null,
                                 ),
                                 SizedBox(height: 20),
-                                ElevatedButton(
+                                isUpdating
+                                    ? SpinKitThreeBounce(
+                                  color: Colors.white, // Adjust color
+                                  size: 35.0,          // Adjust size
+                                )
+                                    :                                ElevatedButton(
                                   onPressed: submitLeaveApplication,
                                   child: Text('Submit',
                                       style: TextStyle(

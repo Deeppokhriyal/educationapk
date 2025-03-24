@@ -77,7 +77,6 @@ class _ProfilePageState extends State<ProfilePage> {
 
         SharedPreferences prefs = await SharedPreferences.getInstance();
         await prefs.setString('StudentProfile', StudentProfile);
-
       } else {
         print("Document does not exist");
         setState(() => _isLoading = false);
@@ -182,38 +181,32 @@ class _ProfilePageState extends State<ProfilePage> {
                           children: [
                             Container(
                               padding: EdgeInsets.all(15),
-                              child:
-                              Column(
+                              child: Column(
                                 children: [
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       CircleAvatar(
                                         radius: 50,
-                                        backgroundColor: Colors.transparent, // Remove background color
+                                        backgroundColor: Colors
+                                            .transparent, // Transparent rahega
                                         child: StudentProfile.isEmpty
-                                            ? SpinKitRipple(color: Colors.black, size: 50.0) // Ripple Loader
+                                            ? Container() // Agar profile empty hai toh kuch mat dikhao
                                             : ClipOval(
-                                          child: StudentProfile.startsWith("http")
-                                              ? Image.network(
-                                            StudentProfile,
-                                            fit: BoxFit.cover,
-                                            width: 100,
-                                            height: 100,
-                                            loadingBuilder: (context, child, loadingProgress) {
-                                              if (loadingProgress == null) return child;
-                                              return SpinKitRipple(color: Colors.purple, size: 50.0);
-                                            },
-                                          )
-                                              : Image.memory(
-                                            base64Decode(StudentProfile),
-                                            fit: BoxFit.cover,
-                                            width: 100,
-                                            height: 100,
-                                          ),
-                                        ),
+                                                child: _isLoading
+                                                    ? SpinKitHourGlass(
+                                                        color: Colors.black,
+                                                        size: 50.0,
+                                                      )
+                                                    : Image.memory(
+                                                        base64Decode(
+                                                            StudentProfile),
+                                                        fit: BoxFit.cover,
+                                                        width: 100,
+                                                        height: 100,
+                                                      ),
+                                              ),
                                       ),
-
                                     ],
                                   ),
                                   SizedBox(height: 10),
@@ -422,7 +415,6 @@ class ProfileMenuWidget extends StatelessWidget {
 
 // BugReport  BugReport  BugReport  BugReport  BugReport  BugReport  BugReport  BugReport   BugReport  BugReport  BugReport
 
-
 class BugReport extends StatefulWidget {
   const BugReport({super.key});
 
@@ -437,7 +429,7 @@ class _BugReportState extends State<BugReport> {
 
   Future<void> _pickImage() async {
     final pickedFile =
-    await ImagePicker().pickImage(source: ImageSource.gallery);
+        await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       setState(() {
         _image = File(pickedFile.path);
@@ -510,21 +502,21 @@ class _BugReportState extends State<BugReport> {
               _image != null
                   ? Image.file(_image!, height: 100)
                   : ElevatedButton(
-                  onPressed: _pickImage,
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.all(14),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    backgroundColor: Colors.indigo,
-                    foregroundColor: Colors.white,
-                    elevation: 6,
-                  ),
-                  child: Text("Attach Screenshot",
-                      style: TextStyle(
-                          fontFamily: 'nexaheavy',
-                          color: Colors.white,
-                          fontSize: 17))),
+                      onPressed: _pickImage,
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.all(14),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        backgroundColor: Colors.indigo,
+                        foregroundColor: Colors.white,
+                        elevation: 6,
+                      ),
+                      child: Text("Attach Screenshot",
+                          style: TextStyle(
+                              fontFamily: 'nexaheavy',
+                              color: Colors.white,
+                              fontSize: 17))),
               const Spacer(),
               SizedBox(
                 width: double.infinity,
@@ -553,7 +545,6 @@ class _BugReportState extends State<BugReport> {
     );
   }
 }
-
 
 // // AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk
 //

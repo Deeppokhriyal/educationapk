@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_pdfview/flutter_pdfview.dart';
 
 class MyMap extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,21 +15,20 @@ class FullScreenZoomableImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child:  InteractiveViewer(
-              panEnabled: true, // Allow panning
-              minScale: 1.0, // Minimum scale
-              maxScale: 4.0, // Maximum scale
-              child: Image.asset(
-                'assets/images/map.jpg',height: 1400, // Replace with your image path
-                fit: BoxFit.cover, // Cover the entire screen
-              ),
-            ),
-          )
-        ]
+      backgroundColor: Colors.black,
+      body: InteractiveViewer(
+        panEnabled: true, // Allow panning
+        boundaryMargin: EdgeInsets.all(double.infinity), // Allow infinite panning
+        minScale: 1.0, // Minimum zoom level
+        maxScale: 20.0, // Maximum zoom level
+        child: Center(
+          child: Image.asset(
+            'assets/images/map.png', // Replace with your image path
+            width: MediaQuery.of(context).size.width, // Full width
+            height: MediaQuery.of(context).size.height, // Full height
+            fit: BoxFit.contain, // Ensure full-screen coverage
+          ),
+        ),
       ),
     );
   }

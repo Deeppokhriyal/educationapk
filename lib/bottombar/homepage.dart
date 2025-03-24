@@ -986,15 +986,12 @@ class _MyMainHomeState extends State<MyMainHome> {
                     children: [
                       Column(
                         children: [
-                          Hero(
-                            tag: 'clg7Image', // Unique Hero tag
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(25),
-                              child: Image.asset(
-                                'assets/images/clg7.jpg',
-                                height: 200,
-                                fit: BoxFit.cover,
-                              ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(25),
+                            child: Image.asset(
+                              'assets/images/clg7.jpg',
+                              height: 200,
+                              fit: BoxFit.cover,
                             ),
                           ),
                           Text(
@@ -1011,15 +1008,12 @@ class _MyMainHomeState extends State<MyMainHome> {
                       ),
                       Column(
                         children: [
-                          Hero(
-                            tag: 'clg6Image', // Unique Hero tag
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(25),
-                              child: Image.asset(
-                                'assets/images/clg6.jpg',
-                                height: 200,
-                                fit: BoxFit.cover,
-                              ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(25),
+                            child: Image.asset(
+                              'assets/images/clg6.jpg',
+                              height: 200,
+                              fit: BoxFit.cover,
                             ),
                           ),
                           Text(
@@ -1036,15 +1030,12 @@ class _MyMainHomeState extends State<MyMainHome> {
                       ),
                       Column(
                         children: [
-                          Hero(
-                            tag: 'clg3Image', // Unique Hero tag
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(25),
-                              child: Image.asset(
-                                'assets/images/clg3.jpg',
-                                height: 200,
-                                fit: BoxFit.cover,
-                              ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(25),
+                            child: Image.asset(
+                              'assets/images/clg3.jpg',
+                              height: 200,
+                              fit: BoxFit.cover,
                             ),
                           ),
                           Text(
@@ -1061,15 +1052,12 @@ class _MyMainHomeState extends State<MyMainHome> {
                       ),
                       Column(
                         children: [
-                          Hero(
-                            tag: 'clg4Image', // Unique Hero tag
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(25),
-                              child: Image.asset(
-                                'assets/images/clg4.jpg',
-                                height: 200,
-                                fit: BoxFit.cover,
-                              ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(25),
+                            child: Image.asset(
+                              'assets/images/clg4.jpg',
+                              height: 200,
+                              fit: BoxFit.cover,
                             ),
                           ),
                           Text(
@@ -1086,15 +1074,12 @@ class _MyMainHomeState extends State<MyMainHome> {
                       ),
                       Column(
                         children: [
-                          Hero(
-                            tag: 'clg5Image', // Unique Hero tag
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(25),
-                              child: Image.asset(
-                                'assets/images/clg5.jpg',
-                                height: 200,
-                                fit: BoxFit.cover,
-                              ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(25),
+                            child: Image.asset(
+                              'assets/images/clg5.jpg',
+                              height: 200,
+                              fit: BoxFit.cover,
                             ),
                           ),
                           Text(
@@ -1111,15 +1096,12 @@ class _MyMainHomeState extends State<MyMainHome> {
                       ),
                       Column(
                         children: [
-                          Hero(
-                            tag: 'clg1Image', // Unique Hero tag
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(25),
-                              child: Image.asset(
-                                'assets/images/clg1.jpg',
-                                height: 200,
-                                fit: BoxFit.cover,
-                              ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(25),
+                            child: Image.asset(
+                              'assets/images/clg1.jpg',
+                              height: 200,
+                              fit: BoxFit.cover,
                             ),
                           ),
                           Text(
@@ -1136,15 +1118,12 @@ class _MyMainHomeState extends State<MyMainHome> {
                       ),
                       Column(
                         children: [
-                          Hero(
-                            tag: 'clg2Image', // Unique Hero tag
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(25),
-                              child: Image.asset(
-                                'assets/images/clg2.jpg',
-                                height: 200,
-                                fit: BoxFit.cover,
-                              ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(25),
+                            child: Image.asset(
+                              'assets/images/clg2.jpg',
+                              height: 200,
+                              fit: BoxFit.cover,
                             ),
                           ),
                           Text(

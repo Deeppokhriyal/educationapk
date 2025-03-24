@@ -8,6 +8,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../main.dart';
+
 class UpdateProfilePage extends StatefulWidget {
   @override
   _UpdateProfilePageState createState() => _UpdateProfilePageState();
@@ -23,6 +25,7 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
   File? _image;
   String imageBase64 = "";
   bool isUpdating = false;
+  bool isImageLoading = true;
 
   @override
   void initState() {
@@ -45,16 +48,22 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
           bioController.text = userData["bio"] ?? "";
           imageBase64 = storedImage ?? "";
           _isLoading = false;
+          isImageLoading = false;
         });
       }
     } catch (e) {
-      setState(() => _isLoading = false);
+      setState(() {
+        _isLoading = false;
+        isImageLoading = false;
+      });
       print("Error loading user data: $e");
     }
   }
 
   Future<void> pickImage() async {
-    final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+    setState(() => isImageLoading = true);
+    final pickedFile =
+    await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       File imageFile = File(pickedFile.path);
       List<int> imageBytes = await imageFile.readAsBytes();
@@ -66,11 +75,14 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
       setState(() {
         _image = imageFile;
         imageBase64 = base64Image;
+        isImageLoading = false;
       });
+    } else {
+      setState(() => isImageLoading = false);
     }
   }
 
-  Future<void> uploadProfileData() async {
+  Future<void> uploadProfileData(BuildContext context) async {
     try {
       User? user = auth.currentUser;
       if (user == null) return;
@@ -84,20 +96,10 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
 
       setState(() => isUpdating = false);
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text("Profile updated successfully!"),
-          backgroundColor: Colors.green,
-        ),
-      );
+      showAwesomeSnackBar(context, "Profile updated successfully!", true);
     } catch (e) {
       setState(() => isUpdating = false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text("Profile update failed! Try again."),
-          backgroundColor: Colors.red,
-        ),
-      );
+      showAwesomeSnackBar(context, "Profile update failed! Try again.", false);
       print("Profile update error: $e");
     }
   }
@@ -133,15 +135,32 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                     children: [
                       CircleAvatar(
                         radius: 45,
-                        backgroundImage: _image != null
-                            ? FileImage(_image!)
+                        backgroundColor: Colors.transparent,
+                        child: isImageLoading
+                            ? SpinKitRipple(
+                          color: Colors.purple,
+                          size: 50.0,
+                        )
+                            : (_image != null && _image!.path.isNotEmpty
+                            ? ClipOval(
+                          child: Image.file(
+                            _image!,
+                            width: 90,
+                            height: 90,
+                            fit: BoxFit.cover,
+                          ),
+                        )
                             : (imageBase64.isNotEmpty
-                            ? MemoryImage(base64Decode(imageBase64))
-                            : AssetImage("assets/default_avatar.png"))
-                        as ImageProvider,
-                        child: _image == null && imageBase64.isEmpty
-                            ? Icon(Icons.person, size: 50, color: Colors.black)
-                            : null,
+                            ? ClipOval(
+                          child: Image.memory(
+                            base64Decode(imageBase64),
+                            width: 90,
+                            height: 90,
+                            fit: BoxFit.cover,
+                          ),
+                        )
+                            : const Icon(Icons.person,
+                            size: 50, color: Colors.black))),
                       ),
                       Positioned(
                         bottom: 0,
@@ -156,7 +175,7 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                               color: Colors.yellow[700],
                               border: Border.all(color: Colors.white, width: 2),
                             ),
-                            child: Icon(LineAwesomeIcons.pencil_alt_solid,
+                            child: const Icon(LineAwesomeIcons.pencil_alt_solid,
                                 size: 18, color: Colors.white),
                           ),
                         ),
@@ -178,20 +197,21 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                 SizedBox(height: 60),
                 isUpdating
                     ? SpinKitHourGlass(
-                  color: Colors.white, // Adjust color
-                  size: 50.0,          // Adjust size
+                  color: Colors.white,
+                  size: 50.0,
                 )
                     : ElevatedButton(
-                  onPressed: uploadProfileData,
+                  onPressed: () => uploadProfileData(context),
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 30, vertical: 12),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(45)),
                   ),
                   child: Text("Update",
-                      style: TextStyle(fontSize: 20, color: Colors.black)),
+                      style: TextStyle(
+                          fontSize: 20, color: Colors.black)),
                 ),
-
               ],
             ),
           ),
@@ -217,3 +237,23 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
     );
   }
 }
+
+
+
+
+// void showAwesomeSnackBar(BuildContext context, String message, bool isSuccess) {
+//   final snackBar = SnackBar(
+//     elevation: 0,
+//     behavior: SnackBarBehavior.floating,
+//     backgroundColor: Colors.transparent,
+//     content: AwesomeSnackbarContent(
+//       title: isSuccess ? 'Success' : 'Error',
+//       message: message,
+//       contentType: isSuccess ? ContentType.success : ContentType.failure,
+//     ),
+//   );
+//
+//   ScaffoldMessenger.of(context).showSnackBar(snackBar);
+// }
+
+

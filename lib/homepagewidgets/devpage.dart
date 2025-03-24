@@ -25,7 +25,7 @@ class Devpage extends StatelessWidget {
                     Container(
                       decoration: BoxDecoration(
                           gradient: LinearGradient(
-                            colors: [Colors.deepPurple , Colors.purple, Colors.pinkAccent, Colors.pink],
+                            colors: [Colors.deepPurple.shade700 , Colors.purple.shade700, Colors.pinkAccent.shade700, Colors.pink.shade700],
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,)
                       ),
@@ -91,7 +91,7 @@ class Devpage extends StatelessWidget {
                                           TextSpan(
                                             text: "development. "
                                                 "My programming skills encompass HTML, Dart, CSS, JavaScript, Kotlin, and Java. Furthermore,"
-                                                " I have hands-on experience with Flutter for frontend development and Firebase and MySQL for backend development.",
+                                                " I have hands-on experience with Flutter for frontend development and Firebase and Laravel for backend development.",
                                             style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white,letterSpacing: 1,wordSpacing: 1),
                                           ),
                                         ]
@@ -126,7 +126,7 @@ class Devpage extends StatelessWidget {
                                         TextSpan(
                                           text: "development. "
                                               "My programming skills encompass HTML, Dart, CSS, JavaScript, Kotlin, and Java. Furthermore,"
-                                              " I have hands-on experience with Flutter for frontend development and Firebase and MySQL for backend development.",
+                                              " I have hands-on experience with Flutter for frontend development and Firebase and Laravel for backend development.",
                                           style: TextStyle(fontFamily: 'nexalight',fontSize: 18,color: Colors.white,letterSpacing: 1,wordSpacing: 1),
                                         ),
                                       ]

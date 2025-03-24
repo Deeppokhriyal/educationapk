@@ -59,7 +59,7 @@ class _ProfilePageState extends State<ProfilePage> {
       print("Fetching data for User ID: ${user.uid}");
 
       DocumentSnapshot userData =
-      await firestore.collection("users").doc(user.uid).get();
+          await firestore.collection("users").doc(user.uid).get();
 
       if (userData.exists) {
         print("User Data: ${userData.data()}");
@@ -77,6 +77,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
         SharedPreferences prefs = await SharedPreferences.getInstance();
         await prefs.setString('StudentProfile', StudentProfile);
+
       } else {
         print("Document does not exist");
         setState(() => _isLoading = false);
@@ -89,7 +90,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   void showEditDialog(String title, String field, String currentValue) {
     TextEditingController controller =
-    TextEditingController(text: currentValue);
+        TextEditingController(text: currentValue);
     showDialog(
       context: context,
       builder: (context) {
@@ -147,231 +148,237 @@ class _ProfilePageState extends State<ProfilePage> {
       backgroundColor: Colors.black,
       body: _isLoading
           ? Center(
-        child: SpinKitCubeGrid(
-          color: Colors.purple, // Customize color
-          size: 50.0, // Adjust size
-        ),
-      )
-      // : userData == null
-      // ? Center(child: Text("User not found!"))
+              child: SpinKitCubeGrid(
+                color: Colors.purple, // Customize color
+                size: 50.0, // Adjust size
+              ),
+            )
+          // : userData == null
+          // ? Center(child: Text("User not found!"))
           : ListView(
-        children: [
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  // image: DecorationImage(
-                  //   image: AssetImage('assets/images/profiledee.avif'),
-                  //   fit: BoxFit.cover,
-                  // ),
-                    gradient: LinearGradient(
-                      colors: [
-                        Colors.deepPurple,
-                        Colors.purple,
-                        Colors.pinkAccent,
-                        Colors.pink
-                      ],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    )),
-                child: SlideInUp(
-                  duration: Duration(milliseconds: 400),
-                  child: Column(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(15),
+              children: [
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          // image: DecorationImage(
+                          //   image: AssetImage('assets/images/profiledee.avif'),
+                          //   fit: BoxFit.cover,
+                          // ),
+                          gradient: LinearGradient(
+                        colors: [
+                          Colors.deepPurple,
+                          Colors.purple,
+                          Colors.pinkAccent,
+                          Colors.pink
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      )),
+                      child: SlideInUp(
+                        duration: Duration(milliseconds: 400),
                         child: Column(
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                CircleAvatar(
-                                  radius: 50,
-                                  backgroundColor: Colors
-                                      .transparent, // Transparent rahega
-                                  child: StudentProfile.isEmpty
-                                      ? Container() // Agar profile empty hai toh kuch mat dikhao
-                                      : ClipOval(
-                                    child: _isLoading
-                                        ? SpinKitHourGlass(
-                                      color: Colors.black,
-                                      size: 50.0,
-                                    )
-                                        : Image.memory(
-                                      base64Decode(
-                                          StudentProfile),
-                                      fit: BoxFit.cover,
-                                      width: 100,
-                                      height: 100,
+                            Container(
+                              padding: EdgeInsets.all(15),
+                              child:
+                              Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      CircleAvatar(
+                                        radius: 50,
+                                        backgroundColor: Colors.transparent, // Remove background color
+                                        child: StudentProfile.isEmpty
+                                            ? SpinKitRipple(color: Colors.black, size: 50.0) // Ripple Loader
+                                            : ClipOval(
+                                          child: StudentProfile.startsWith("http")
+                                              ? Image.network(
+                                            StudentProfile,
+                                            fit: BoxFit.cover,
+                                            width: 100,
+                                            height: 100,
+                                            loadingBuilder: (context, child, loadingProgress) {
+                                              if (loadingProgress == null) return child;
+                                              return SpinKitRipple(color: Colors.purple, size: 50.0);
+                                            },
+                                          )
+                                              : Image.memory(
+                                            base64Decode(StudentProfile),
+                                            fit: BoxFit.cover,
+                                            width: 100,
+                                            height: 100,
+                                          ),
+                                        ),
+                                      ),
+
+                                    ],
+                                  ),
+                                  SizedBox(height: 10),
+                                  Text(name,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 23,
+                                          fontFamily: 'nexalight')),
+                                  SizedBox(height: 10),
+                                  ElevatedButton(
+                                    onPressed: () async {
+                                      await Get.to(() => UpdateProfilePage());
+                                      fetchUserData(); // Reload data when returning
+                                    },
+                                    child: Text("Edit Profile",
+                                        style: TextStyle(
+                                            fontFamily: 'nexaheavy',
+                                            fontSize: 16,
+                                            color: Colors.black)),
+                                  ),
+                                  Divider(color: Colors.grey, height: 35),
+                                  SlideInLeft(
+                                    duration: Duration(milliseconds: 300),
+                                    child: Text(
+                                      'Personal Information',
+                                      style: TextStyle(
+                                          fontFamily: 'nexaheavy',
+                                          color: Colors.white,
+                                          fontSize: 25),
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 10),
-                            Text(name,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 23,
-                                    fontFamily: 'nexalight')),
-                            SizedBox(height: 10),
-                            ElevatedButton(
-                              onPressed: () async {
-                                await Get.to(() => UpdateProfilePage());
-                                fetchUserData(); // Reload data when returning
-                              },
-                              child: Text("Edit Profile",
-                                  style: TextStyle(
-                                      fontFamily: 'nexaheavy',
-                                      fontSize: 16,
-                                      color: Colors.black)),
-                            ),
-                            Divider(color: Colors.grey, height: 35),
-                            SlideInLeft(
-                              duration: Duration(milliseconds: 300),
-                              child: Text(
-                                'Personal Information',
-                                style: TextStyle(
-                                    fontFamily: 'nexaheavy',
-                                    color: Colors.white,
-                                    fontSize: 25),
-                              ),
-                            ),
-                            SizedBox(width: 10),
-                            SlideInRight(
-                              duration: Duration(milliseconds: 300),
-                              child: Column(
-                                children: [
-                                  ProfileMenuWidget(
-                                      title: "Email",
-                                      icon: Icons.mail,
-                                      value: email,
-                                      onPress: () => showEditDialog(
-                                          "Email", "email", email)),
-                                  ProfileMenuWidget(
-                                      title: "Phone",
-                                      icon: Icons.phone,
-                                      value: phone,
-                                      onPress: () => showEditDialog(
-                                          "Phone", "phone", phone)),
-                                  ProfileMenuWidget(
-                                      title: "GitHub",
-                                      icon: LineAwesomeIcons.github,
-                                      value: github,
-                                      onPress: () => showEditDialog(
-                                          "GitHub", "github", github)),
-                                  ProfileMenuWidget(
-                                      title: "Instagram",
-                                      icon: LineAwesomeIcons.instagram,
-                                      value: instagram,
-                                      onPress: () => showEditDialog(
-                                          "Instagram",
-                                          "instagram",
-                                          instagram)),
-                                  ProfileMenuWidget(
-                                      title: "Location",
-                                      icon: Icons.location_city,
-                                      value: location,
-                                      onPress: () => showEditDialog(
-                                          "Location",
-                                          "location",
-                                          location)),
+                                  SizedBox(width: 10),
+                                  SlideInRight(
+                                    duration: Duration(milliseconds: 300),
+                                    child: Column(
+                                      children: [
+                                        ProfileMenuWidget(
+                                            title: "Email",
+                                            icon: Icons.mail,
+                                            value: email,
+                                            onPress: () => showEditDialog(
+                                                "Email", "email", email)),
+                                        ProfileMenuWidget(
+                                            title: "Phone",
+                                            icon: Icons.phone,
+                                            value: phone,
+                                            onPress: () => showEditDialog(
+                                                "Phone", "phone", phone)),
+                                        ProfileMenuWidget(
+                                            title: "GitHub",
+                                            icon: LineAwesomeIcons.github,
+                                            value: github,
+                                            onPress: () => showEditDialog(
+                                                "GitHub", "github", github)),
+                                        ProfileMenuWidget(
+                                            title: "Instagram",
+                                            icon: LineAwesomeIcons.instagram,
+                                            value: instagram,
+                                            onPress: () => showEditDialog(
+                                                "Instagram",
+                                                "instagram",
+                                                instagram)),
+                                        ProfileMenuWidget(
+                                            title: "Location",
+                                            icon: Icons.location_city,
+                                            value: location,
+                                            onPress: () => showEditDialog(
+                                                "Location",
+                                                "location",
+                                                location)),
+                                      ],
+                                    ),
+                                  ),
+                                  Divider(color: Colors.grey, height: 35),
+                                  SlideInLeft(
+                                    duration: Duration(milliseconds: 400),
+                                    child: Text(
+                                      'Utilities',
+                                      style: TextStyle(
+                                          fontFamily: 'nexaheavy',
+                                          color: Colors.white,
+                                          fontSize: 25),
+                                    ),
+                                  ),
+                                  SizedBox(width: 10),
+                                  SlideInRight(
+                                    duration: Duration(milliseconds: 400),
+                                    child: Container(
+                                      padding: EdgeInsets.all(15),
+                                      child: Column(
+                                        children: [
+                                          GestureDetector(
+                                            onTap: () {
+                                              Get.to(() => BugReport());
+                                            },
+                                            child: Row(
+                                              children: [
+                                                Icon(
+                                                    LineAwesomeIcons
+                                                        .user_check_solid,
+                                                    color: Colors.black,
+                                                    size: 30),
+                                                SizedBox(width: 15),
+                                                Text('Bug Report',
+                                                    style: TextStyle(
+                                                        fontFamily: 'nexaheavy',
+                                                        fontSize: 17,
+                                                        color: Colors.white)),
+                                              ],
+                                            ),
+                                          ),
+                                          SizedBox(height: 30),
+                                          GestureDetector(
+                                            onTap: () {
+                                              Get.to(() => AskHelpDesk());
+                                            },
+                                            child: Row(
+                                              children: [
+                                                Icon(
+                                                    LineAwesomeIcons.info_solid,
+                                                    color: Colors.black,
+                                                    size: 30),
+                                                SizedBox(width: 15),
+                                                Text('Ask Help Desk',
+                                                    style: TextStyle(
+                                                        fontFamily: 'nexaheavy',
+                                                        fontSize: 17,
+                                                        color: Colors.white)),
+                                              ],
+                                            ),
+                                          ),
+                                          SizedBox(height: 30),
+                                          GestureDetector(
+                                            onTap: () {
+                                              logout();
+                                            },
+                                            child: Row(
+                                              children: [
+                                                Icon(Icons.logout,
+                                                    color: Colors.black,
+                                                    size: 30),
+                                                SizedBox(width: 15),
+                                                Text('Logout',
+                                                    style: TextStyle(
+                                                        fontFamily: 'nexaheavy',
+                                                        fontSize: 17,
+                                                        color: Colors.white)),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
                                 ],
-                              ),
-                            ),
-                            Divider(color: Colors.grey, height: 35),
-                            SlideInLeft(
-                              duration: Duration(milliseconds: 400),
-                              child: Text(
-                                'Utilities',
-                                style: TextStyle(
-                                    fontFamily: 'nexaheavy',
-                                    color: Colors.white,
-                                    fontSize: 25),
-                              ),
-                            ),
-                            SizedBox(width: 10),
-                            SlideInRight(
-                              duration: Duration(milliseconds: 400),
-                              child: Container(
-                                padding: EdgeInsets.all(15),
-                                child: Column(
-                                  children: [
-                                    GestureDetector(
-                                      onTap: () {
-                                        Get.to(() => BugReport());
-                                      },
-                                      child: Row(
-                                        children: [
-                                          Icon(
-                                              LineAwesomeIcons
-                                                  .user_check_solid,
-                                              color: Colors.black,
-                                              size: 30),
-                                          SizedBox(width: 15),
-                                          Text('Bug Report',
-                                              style: TextStyle(
-                                                  fontFamily: 'nexaheavy',
-                                                  fontSize: 17,
-                                                  color: Colors.white)),
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(height: 30),
-                                    GestureDetector(
-                                      onTap: () {
-                                        Get.to(() => AskHelpDesk());
-                                      },
-                                      child: Row(
-                                        children: [
-                                          Icon(
-                                              LineAwesomeIcons.info_solid,
-                                              color: Colors.black,
-                                              size: 30),
-                                          SizedBox(width: 15),
-                                          Text('Ask Help Desk',
-                                              style: TextStyle(
-                                                  fontFamily: 'nexaheavy',
-                                                  fontSize: 17,
-                                                  color: Colors.white)),
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(height: 30),
-                                    GestureDetector(
-                                      onTap: () {
-                                        logout();
-                                      },
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.logout,
-                                              color: Colors.black,
-                                              size: 30),
-                                          SizedBox(width: 15),
-                                          Text('Logout',
-                                              style: TextStyle(
-                                                  fontFamily: 'nexaheavy',
-                                                  fontSize: 17,
-                                                  color: Colors.white)),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
                               ),
                             ),
                           ],
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
-          ),
-        ],
-      ),
+              ],
+            ),
     );
   }
 }
@@ -414,6 +421,7 @@ class ProfileMenuWidget extends StatelessWidget {
 }
 
 // BugReport  BugReport  BugReport  BugReport  BugReport  BugReport  BugReport  BugReport   BugReport  BugReport  BugReport
+
 
 class BugReport extends StatefulWidget {
   const BugReport({super.key});
@@ -545,6 +553,7 @@ class _BugReportState extends State<BugReport> {
     );
   }
 }
+
 
 // // AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk
 //

@@ -4,56 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:android_intent_plus/android_intent.dart';
-import 'package:android_intent_plus/flag.dart';
-
-Future<void> requestPermissions() async {
-  if (await Permission.notification.isDenied) {
-    await Permission.notification.request();
-  }
-
-  // Request SET_ALARM permission (for specific Android versions)
-  if (await Permission.scheduleExactAlarm.isDenied) {
-    await Permission.scheduleExactAlarm.request();
-  }
-}
-
-
-Future<void> setDeviceAlarm(String message, int hour, int minute) async {
-  print("Attempting to set device alarm: $message at $hour:$minute");
-
-  try {
-    final intent = AndroidIntent(
-      action: 'android.intent.action.SET_ALARM',
-      arguments: {
-        'android.intent.extra.alarm.MESSAGE': message,
-        'android.intent.extra.alarm.HOUR': hour,
-        'android.intent.extra.alarm.MINUTES': minute,
-        'android.intent.extra.alarm.SKIP_UI': false,
-      },
-      flags: <int>[Flag.FLAG_ACTIVITY_NEW_TASK],
-    );
-    await intent.launch();
-
-    print("Alarm intent launched successfully");
-  } catch (e) {
-    print("Error launching alarm intent: $e");
-  }
-}
-
-Future<void> cancelDeviceAlarm(String message) async {
-  try {
-    final intent = AndroidIntent(
-      action: 'android.intent.action.CANCEL_ALARM',
-      arguments: {
-        'android.intent.extra.alarm.MESSAGE': message,
-      },
-      flags: <int>[Flag.FLAG_ACTIVITY_NEW_TASK],
-    );
-    await intent.launch();
-  } catch (e) {
-    print("Error cancelling alarm: $e");
-  }
-}
 
 class AlarmScheduler extends StatefulWidget {
   @override
@@ -64,7 +14,6 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
   List<Map<String, dynamic>> tasks = [];
   TimeOfDay? selectedTime;
   TextEditingController descriptionController = TextEditingController();
-  int taskCounter = 1;
 
   @override
   void initState() {
@@ -72,47 +21,67 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
     requestPermissions();
   }
 
-  Future<void> _scheduleAlarm(String description, TimeOfDay time) async {
-    await setDeviceAlarm(description, time.hour, time.minute);
-
-    setState(() {
-      tasks.add({
-        "taskNumber": taskCounter++,
-        "description": description,
-        "time": time,
-      });
-    });
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text("Alarm set for ${time.format(context)}: $description")),
-    );
-  }
-
-  Future<void> _pickTime(BuildContext context) async {
-    TimeOfDay? picked = await showTimePicker(
-      context: context,
-      initialTime: TimeOfDay.now(),
-    );
-    if (picked != null) {
-      setState(() {
-        selectedTime = picked;
-      });
+  Future<void> requestPermissions() async {
+    if (await Permission.scheduleExactAlarm.isDenied) {
+      await Permission.scheduleExactAlarm.request();
     }
   }
 
-  void _deleteTask(int index) async {
-    String description = tasks[index]["description"];
+  Future<void> _setAlarm(String description, TimeOfDay time) async {
+    final androidIntent = AndroidIntent(
+      action: 'android.intent.action.SET_ALARM',
+      arguments: {
+        'android.intent.extra.alarm.HOUR': time.hour,
+        'android.intent.extra.alarm.MINUTES': time.minute,
+        'android.intent.extra.alarm.MESSAGE': description,
+      },
+    );
 
-    // Cancel the corresponding alarm on the device
-    await cancelDeviceAlarm(description);
+    try {
+      await androidIntent.launch();
+      setState(() {
+        tasks.add({'description': description, 'time': time});
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Alarm set for ${time.format(context)}')),
+      );
+    } catch (e) {
+      print('Error launching alarm intent: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to set alarm. Please try manually.')),
+      );
+    }
+  }
 
+  Future<void> _openAlarmApp() async {
+    final androidIntent = AndroidIntent(
+      action: 'android.intent.action.SHOW_ALARMS',
+    );
+
+    try {
+      await androidIntent.launch();
+    } catch (e) {
+      print('Error opening alarm app: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to open alarm app.')),
+      );
+    }
+  }
+
+  void _deleteTask(int index) {
     setState(() {
       tasks.removeAt(index);
     });
+  }
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Task removed successfully")),
-    );
+  Future<void> _pickTime(BuildContext context) async {
+    TimeOfDay? pickedTime =
+    await showTimePicker(context: context, initialTime: TimeOfDay.now());
+    if (pickedTime != null) {
+      setState(() {
+        selectedTime = pickedTime;
+      });
+    }
   }
 
   @override
@@ -207,14 +176,11 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
     duration: const Duration(milliseconds: 700),
     child:ElevatedButton(
                     onPressed: () {
-                      if (selectedTime != null && descriptionController.text.isNotEmpty) {
-                        _scheduleAlarm(descriptionController.text, selectedTime!);
+                      if (selectedTime != null &&
+                          descriptionController.text.isNotEmpty) {
+                        _setAlarm(descriptionController.text, selectedTime!);
                         descriptionController.clear();
                         selectedTime = null;
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text("Please enter description and select time")),
-                        );
                       }
                     },
                     child: const Text(
@@ -242,7 +208,8 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
                         subtitle: Text(tasks[index]["time"].format(context)),
                         trailing: IconButton(
                           icon: const Icon(Icons.delete, color: Colors.red),
-                          onPressed: () => _deleteTask(index),
+                          onPressed: () { _deleteTask(index);
+    _openAlarmApp();},
                         ),
                       );
                     },

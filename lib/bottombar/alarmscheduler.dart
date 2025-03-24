@@ -1,30 +1,58 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:educationapk/main.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:get/get.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:android_intent_plus/android_intent.dart';
+import 'package:android_intent_plus/flag.dart';
 
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-    FlutterLocalNotificationsPlugin();
+Future<void> requestPermissions() async {
+  if (await Permission.notification.isDenied) {
+    await Permission.notification.request();
+  }
 
-void triggerAlarm() async {
-  var androidDetails = const AndroidNotificationDetails(
-    'alarm_channel',
-    'Alarm Notifications',
-    importance: Importance.max,
-    priority: Priority.high,
-    sound: RawResourceAndroidNotificationSound('alarm'), // Ensure "alarm.mp3" exists in `res/raw` // Ensure "alarm.mp3" exists in `res/raw`
-  );
+  // Request SET_ALARM permission (for specific Android versions)
+  if (await Permission.scheduleExactAlarm.isDenied) {
+    await Permission.scheduleExactAlarm.request();
+  }
+}
 
-  var generalNotificationDetails = NotificationDetails(android: androidDetails);
 
-  await flutterLocalNotificationsPlugin.show(
-    0,
-    'Alarm Triggered',
-    "It's time for your task!",
-    generalNotificationDetails,
-  );
+Future<void> setDeviceAlarm(String message, int hour, int minute) async {
+  print("Attempting to set device alarm: $message at $hour:$minute");
+
+  try {
+    final intent = AndroidIntent(
+      action: 'android.intent.action.SET_ALARM',
+      arguments: {
+        'android.intent.extra.alarm.MESSAGE': message,
+        'android.intent.extra.alarm.HOUR': hour,
+        'android.intent.extra.alarm.MINUTES': minute,
+        'android.intent.extra.alarm.SKIP_UI': false,
+      },
+      flags: <int>[Flag.FLAG_ACTIVITY_NEW_TASK],
+    );
+    await intent.launch();
+
+    print("Alarm intent launched successfully");
+  } catch (e) {
+    print("Error launching alarm intent: $e");
+  }
+}
+
+Future<void> cancelDeviceAlarm(String message) async {
+  try {
+    final intent = AndroidIntent(
+      action: 'android.intent.action.CANCEL_ALARM',
+      arguments: {
+        'android.intent.extra.alarm.MESSAGE': message,
+      },
+      flags: <int>[Flag.FLAG_ACTIVITY_NEW_TASK],
+    );
+    await intent.launch();
+  } catch (e) {
+    print("Error cancelling alarm: $e");
+  }
 }
 
 class AlarmScheduler extends StatefulWidget {
@@ -36,59 +64,35 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
   List<Map<String, dynamic>> tasks = [];
   TimeOfDay? selectedTime;
   TextEditingController descriptionController = TextEditingController();
-  int taskCounter = 1; // Start task numbering from 1
+  int taskCounter = 1;
 
   @override
   void initState() {
     super.initState();
-    var initializationSettingsAndroid =
-        const AndroidInitializationSettings('@mipmap/ic_launcher');
-    var initializationSettings =
-        InitializationSettings(android: initializationSettingsAndroid);
-    flutterLocalNotificationsPlugin.initialize(initializationSettings);
+    requestPermissions();
   }
 
   Future<void> _scheduleAlarm(String description, TimeOfDay time) async {
-    DateTime now = DateTime.now();
-    DateTime scheduledTime = DateTime(
-      now.year,
-      now.month,
-      now.day,
-      time.hour,
-      time.minute,
+    await setDeviceAlarm(description, time.hour, time.minute);
+
+    setState(() {
+      tasks.add({
+        "taskNumber": taskCounter++,
+        "description": description,
+        "time": time,
+      });
+    });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text("Alarm set for ${time.format(context)}: $description")),
     );
-
-    if (scheduledTime.isBefore(now)) {
-      scheduledTime = scheduledTime.add(const Duration(days: 1));
-    }
-
-    int alarmId = scheduledTime.millisecondsSinceEpoch % 100000;
-    bool isSet = await AndroidAlarmManager.oneShotAt(
-      scheduledTime,
-      alarmId,
-      triggerAlarm, // 🔹 Now using the global function
-      exact: true,
-      wakeup: true,
-    );
-
-    if (isSet) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-            content:
-                Text("Alarm set for ${time.format(context)}: $description")),
-      );
-      print("✅ Alarm scheduled for ${scheduledTime.toLocal()} - $description");
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Failed to set alarm")),
-      );
-      print("❌ Failed to schedule alarm");
-    }
   }
 
   Future<void> _pickTime(BuildContext context) async {
-    TimeOfDay? picked =
-        await showTimePicker(context: context, initialTime: TimeOfDay.now());
+    TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    );
     if (picked != null) {
       setState(() {
         selectedTime = picked;
@@ -96,31 +100,19 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
     }
   }
 
-  void _addTask() {
-    if (selectedTime != null && descriptionController.text.isNotEmpty) {
-      setState(() {
-        tasks.add({
-          "taskNumber": taskCounter, // Assign task number
-          "description": descriptionController.text,
-          "time": selectedTime!,
-        });
-        _scheduleAlarm(descriptionController.text, selectedTime!);
-        taskCounter++; // Increment task number
-      });
-      descriptionController.clear();
-      selectedTime = null;
-    }
-  }
+  void _deleteTask(int index) async {
+    String description = tasks[index]["description"];
 
-  void _deleteTask(int index) {
+    // Cancel the corresponding alarm on the device
+    await cancelDeviceAlarm(description);
+
     setState(() {
       tasks.removeAt(index);
-      // Reassign task numbers after deletion
-      for (int i = 0; i < tasks.length; i++) {
-        tasks[i]["taskNumber"] = i + 1;
-      }
-      taskCounter = tasks.length + 1; // Update taskCounter
     });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Task removed successfully")),
+    );
   }
 
   @override
@@ -137,15 +129,12 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
               ),
             ),
           ),
-
-          // Scrollable Content to Prevent Overflow
           SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 50),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start, // Align left properly
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Header Row (Back Button + Title)
                   SlideInRight(
                     duration: const Duration(milliseconds: 500),
                     child: Row(
@@ -165,8 +154,6 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
                     ),
                   ),
                   const SizedBox(height: 30),
-
-                  // TextField
                   SlideInUp(
                     duration: const Duration(milliseconds: 700),
                     child: TextField(
@@ -189,8 +176,6 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
                     ),
                   ),
                   const SizedBox(height: 40),
-
-                  // Select Time Button
                   SlideInUp(
                     duration: const Duration(milliseconds: 700),
                     child: ElevatedButton(
@@ -218,62 +203,57 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
                     ),
                   ),
                   const SizedBox(height: 45),
-
-                  // Add Task Button
-                  SlideInUp(
-                    duration: const Duration(milliseconds: 700),
-                    child: ElevatedButton(
-                      onPressed: _addTask,
-                      child: const Text(
-                        "Add Task",
-                        style: TextStyle(
-                          fontFamily: 'nexaheavy',
-                          fontSize: 20,
-                          color: Colors.blue,
-                        ),
+    SlideInUp(
+    duration: const Duration(milliseconds: 700),
+    child:ElevatedButton(
+                    onPressed: () {
+                      if (selectedTime != null && descriptionController.text.isNotEmpty) {
+                        _scheduleAlarm(descriptionController.text, selectedTime!);
+                        descriptionController.clear();
+                        selectedTime = null;
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text("Please enter description and select time")),
+                        );
+                      }
+                    },
+                    child: const Text(
+                      "Add Task",
+                      style: TextStyle(
+                        fontFamily: 'nexaheavy',
+                        fontSize: 20,
+                        color: Colors.blue,
                       ),
                     ),
                   ),
-                  const SizedBox(height: 40),
+    ),
+                      const SizedBox(height: 40),
 
-                  // Task List (Fixed Layout Issues)
-                  SizedBox(
-                    height: 300, // Set height to prevent overflow
-                    child: ListView.builder(
-                      itemCount: tasks.length,
-                      shrinkWrap: true, // Important to fit inside Column
-                      physics: const NeverScrollableScrollPhysics(), // Prevent double scrolling
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          title: Text(
-                            "${tasks[index]["taskNumber"]}. ${tasks[index]["description"]}",
-                            style: const TextStyle(
-                              fontFamily: 'nexalight',
-                              color: Colors.black,
-                              fontSize: 18,
-                            ),
-                          ),
-                          subtitle: Text(
-                            tasks[index]["time"].format(context),
-                            style: const TextStyle(
-                              fontFamily: 'nexaheavy',
-                              color: Colors.blue,
-                              fontSize: 18,
-                            ),
-                          ),
-                          trailing: IconButton(
-                            icon: const Icon(Icons.delete, color: Colors.red),
-                            onPressed: () => _deleteTask(index),
-                          ),
-                        );
-                      },
-                    ),
+    // Task List (Fixed Layout Issues)
+    SizedBox(
+    height: 300, // Set height to prevent overflow
+    child:ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: tasks.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(
+                            "${tasks[index]["taskNumber"]}. ${tasks[index]["description"]}"),
+                        subtitle: Text(tasks[index]["time"].format(context)),
+                        trailing: IconButton(
+                          icon: const Icon(Icons.delete, color: Colors.red),
+                          onPressed: () => _deleteTask(index),
+                        ),
+                      );
+                    },
                   ),
+    ),
                 ],
               ),
             ),
           ),
         ],
-      ),);
+      ),
+    );
   }
 }

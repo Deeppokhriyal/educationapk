@@ -53,7 +53,9 @@
 
     <!-- Permissions should be declared first -->
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
@@ -94,13 +96,22 @@
             android:value="2" />
 
         <!-- Alarm Manager Receiver -->
+<!--        <receiver-->
+<!--            android:name="dev.fluttercommunity.plus.androidalarmmanager.AlarmBroadcastReceiver"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.BOOT_COMPLETED"/>-->
+<!--            </intent-filter>-->
+<!--        </receiver>-->
         <receiver
-            android:name="dev.fluttercommunity.plus.androidalarmmanager.AlarmBroadcastReceiver"
-            android:exported="true">
+            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
+            android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
         </receiver>
+
 
 
         <service

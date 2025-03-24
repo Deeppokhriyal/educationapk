@@ -86,7 +86,7 @@ class _MyMainHomeState extends State<MyMainHome> {
     User? user = auth.currentUser;
     if (user != null) {
       DocumentSnapshot userData =
-          await firestore.collection("users").doc(user.uid).get();
+      await firestore.collection("users").doc(user.uid).get();
       if (userData.exists) {
         setState(() {
           userName = userData["name"];
@@ -199,14 +199,14 @@ class _MyMainHomeState extends State<MyMainHome> {
 
                                       backgroundImage: StudentProfile.isNotEmpty
                                           ? (StudentProfile.startsWith("http")
-                                              ? NetworkImage(StudentProfile)
-                                                  as ImageProvider
-                                              : MemoryImage(base64Decode(
-                                                      StudentProfile))
-                                                  as ImageProvider)
+                                          ? NetworkImage(StudentProfile)
+                                      as ImageProvider
+                                          : MemoryImage(base64Decode(
+                                          StudentProfile))
+                                      as ImageProvider)
                                           : AssetImage(
-                                                  'assets/images/profile.png')
-                                              as ImageProvider,
+                                          'assets/images/profile.png')
+                                      as ImageProvider,
                                       onBackgroundImageError: (_, __) =>
                                           setState(() => StudentProfile = ''),
                                     ),
@@ -243,7 +243,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     SizedBox(height: 25),
                                     Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
+                                      MainAxisAlignment.spaceEvenly,
                                       children: [
                                         TextButton(
                                           onPressed: () {
@@ -378,7 +378,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                         cursorColor: Colors.black,
                         decoration: InputDecoration(
                           suffixIcon:
-                              Icon(Icons.search, size: 30, color: Colors.black),
+                          Icon(Icons.search, size: 30, color: Colors.black),
                           hintText: 'Search',
                           hintStyle: TextStyle(color: Colors.black),
                           border: OutlineInputBorder(
@@ -540,14 +540,14 @@ class _MyMainHomeState extends State<MyMainHome> {
                             // color: Colors.purple[200], // Background color
                             // color: Color(0xCCCCCCFF), // Background color
                             borderRadius:
-                                BorderRadius.circular(25), // Rounded corners
+                            BorderRadius.circular(25), // Rounded corners
                             boxShadow: [
                               BoxShadow(
                                 color: Color(0xFF00BFA6), // Shadow Color
                                 spreadRadius: 2, // Spread (Kitna failaaye)
                                 blurRadius: 6.5, // Blur (Kitna soft ho)
                                 offset:
-                                    Offset(0, 5), // Shadow ka direction (X, Y)
+                                Offset(0, 5), // Shadow ka direction (X, Y)
                               ),
                             ],
                           ),
@@ -578,7 +578,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     children: [
                                       Column(
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             'App',
@@ -672,7 +672,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                   ),
                                   Column(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Text(
@@ -715,7 +715,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 spreadRadius: 2, // Spread (Kitna failaaye)
                                 blurRadius: 6.5, // Blur (Kitna soft ho)
                                 offset:
-                                    Offset(0, 5), // Shadow ka direction (X, Y)
+                                Offset(0, 5), // Shadow ka direction (X, Y)
                               ),
                             ],
                           ),
@@ -734,8 +734,8 @@ class _MyMainHomeState extends State<MyMainHome> {
                                           size: 30, color: Colors.black),
                                       SizedBox(
                                         width:
-                                            MediaQuery.of(context).size.width *
-                                                0.25,
+                                        MediaQuery.of(context).size.width *
+                                            0.25,
                                       ),
                                       GestureDetector(
                                         onTap: () {
@@ -756,7 +756,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     children: [
                                       Column(
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             'Events',
@@ -868,7 +868,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 ),
                                 SizedBox(
                                   width:
-                                      MediaQuery.of(context).size.width * 0.016,
+                                  MediaQuery.of(context).size.width * 0.016,
                                 ),
                                 GestureDetector(
                                     onTap: () {
@@ -919,10 +919,10 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 ),
                                 SizedBox(
                                     child: Container(
-                                  height: 70,
-                                  width: 2,
-                                  color: Colors.black,
-                                )),
+                                      height: 70,
+                                      width: 2,
+                                      color: Colors.black,
+                                    )),
                                 SizedBox(
                                   width: 10,
                                 ),

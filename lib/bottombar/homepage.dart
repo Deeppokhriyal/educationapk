@@ -304,7 +304,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                           ),
                         ),
                         Text(
-                          userName.isNotEmpty ? userName : "User",
+                          userName.isNotEmpty ? userName : "user",
                           style: TextStyle(
                               fontSize: 15,
                               fontFamily: 'nexalight',

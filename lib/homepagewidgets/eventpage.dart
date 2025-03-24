@@ -8,6 +8,7 @@ class EventPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Upcoming Events'),
         backgroundColor: Colors.pinkAccent,
@@ -67,8 +68,9 @@ class EventCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      elevation: 5,
+      color: Colors.grey.shade300,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      elevation: 7,
       margin: const EdgeInsets.symmetric(vertical: 10),
       child: Padding(
         padding: const EdgeInsets.all(15),
@@ -77,22 +79,24 @@ class EventCard extends StatelessWidget {
           children: [
             Text(
               eventName,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.pinkAccent),
+              style: const TextStyle(fontSize: 22, fontFamily: 'nexaheavy', color: Colors.pinkAccent),
             ),
             const SizedBox(height: 5),
-            Text("📅 Start Date: $startDate", style: const TextStyle(fontSize: 16)),
-            Text("📅 End Date: $endDate", style: const TextStyle(fontSize: 16)),
+            Text("📅 Start Date: $startDate", style: const TextStyle(fontSize: 16, fontFamily: 'nexalight')),
+            Text("📅 End Date: $endDate", style: const TextStyle(fontSize: 16, fontFamily: 'nexalight')),
             const SizedBox(height: 8),
             Text(
               description,
-              style: const TextStyle(fontSize: 15, color: Colors.grey),
+              style: const TextStyle(fontSize: 20, color: Colors.indigo, fontFamily: 'nexaheavy'),
             ),
           ],
         ),
       ),
     );
   }
-}
+}    
+
+// class Holidays  class Holidays  class Holidays  class Holidays  class Holidays  class Holidays  class Holidays  class Holidays
 
 class Holidays extends StatelessWidget {
   const Holidays({super.key});

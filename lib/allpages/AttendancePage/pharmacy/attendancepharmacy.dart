@@ -18,11 +18,12 @@ class Attendancepharmacy extends StatelessWidget {
       body:
 
       Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SlideInRight(
-              child: SizedBox(
+        child: FadeInDownBig(
+          duration: Duration(milliseconds: 500),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
                 height: 70,
                 width: 200,
                 child: ElevatedButton(
@@ -35,10 +36,8 @@ class Attendancepharmacy extends StatelessWidget {
                   child: Text('Pharmacy 1st Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
                 ),
               ),
-            ),
-            SizedBox(height: 80,),
-            SlideInLeft(
-              child: SizedBox(
+              SizedBox(height: 80,),
+              SizedBox(
                 height: 70,
                 width: 200,
                 child: ElevatedButton(
@@ -51,8 +50,8 @@ class Attendancepharmacy extends StatelessWidget {
                   child: Text('Pharmacy 2nd Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
 

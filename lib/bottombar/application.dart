@@ -238,9 +238,9 @@ class _LeaveApplicationState extends State<LeaveApplication> {
                                 ),
                                 SizedBox(height: 20),
                                 isUpdating
-                                    ? SpinKitThreeBounce(
+                                    ? SpinKitThreeInOut(
                                   color: Colors.white, // Adjust color
-                                  size: 35.0,          // Adjust size
+                                  size: 30.0,          // Adjust size
                                 )
                                     :                                ElevatedButton(
                                   onPressed: submitLeaveApplication,

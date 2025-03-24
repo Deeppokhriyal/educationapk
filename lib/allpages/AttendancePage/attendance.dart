@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/allpages/AttendancePage/Elec/attendanceelec.dart';
 import 'package:educationapk/allpages/AttendancePage/agri/attendanceagri.dart';
@@ -10,6 +11,7 @@ import 'package:educationapk/allpages/AttendancePage/paint/attendancepaint.dart'
 import 'package:educationapk/allpages/AttendancePage/pharmacy/attendancepharmacy.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:intl/intl.dart';
 
 class AttendanceHistory extends StatefulWidget {
@@ -93,10 +95,15 @@ class _AttendanceHistoryState extends State<AttendanceHistory> {
           SizedBox(height: 30,),
           Center(
             child: userBranch == null
-                ? CircularProgressIndicator() // 🔄 Jab tak data fetch ho raha hai
+                ? SpinKitWave(
+              color: Colors.lightBlue,
+              size: 35,
+            ) // 🔄 Jab tak data fetch ho raha hai
                 : ElevatedButton(
               onPressed: navigateToAttendance,
-              child: Text("Go to $userBranch Attendance",style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
+              child: BounceIn(
+                  duration: Duration(milliseconds: 800),
+                  child: Text("Go to $userBranch Attendance",style: TextStyle(fontFamily: 'nexalight',fontSize: 22,color: Colors.lightBlue),)),
             ),
           ),
         ],

@@ -1,5 +1,7 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
 class EventPage extends StatelessWidget {
@@ -14,27 +16,38 @@ class EventPage extends StatelessWidget {
         backgroundColor: Colors.blueAccent,
       ),
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('events').orderBy('createdAt', descending: true).snapshots(),
+        stream: FirebaseFirestore.instance
+            .collection('events')
+            .orderBy('createdAt', descending: true)
+            .snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+              child: SpinKitPulse(
+                color: Colors.blueAccent, // Change color as needed
+                size: 50.0,
+              ),
+            );
           }
           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
             return const Center(child: Text("No events available"));
           }
 
-          return ListView.builder(
-            padding: const EdgeInsets.all(10),
-            itemCount: snapshot.data!.docs.length,
-            itemBuilder: (context, index) {
-              var event = snapshot.data!.docs[index];
-              return EventCard(
-                eventName: event['eventName'],
-                startDate: event['startDate'],
-                endDate: event['endDate'],
-                description: event['description'],
-              );
-            },
+          return BounceIn(
+            duration: Duration(milliseconds: 1000),
+            child: ListView.builder(
+              padding: const EdgeInsets.all(10),
+              itemCount: snapshot.data!.docs.length,
+              itemBuilder: (context, index) {
+                var event = snapshot.data!.docs[index];
+                return EventCard(
+                  eventName: event['eventName'],
+                  startDate: event['startDate'],
+                  endDate: event['endDate'],
+                  description: event['description'],
+                );
+              },
+            ),
           );
         },
       ),
@@ -42,11 +55,13 @@ class EventPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ElevatedButton(
-
-            onPressed: (){
-              Get.to(()=>Holidays());
+            onPressed: () {
+              Get.to(() => Holidays());
             },
-            child: Text("2025 Holiday's",style: TextStyle(fontFamily: 'nexaheavy',fontSize: 19,color: Colors.blue),),
+            child: const Text(
+              "2025 Holiday's",
+              style: TextStyle(fontFamily: 'nexaheavy', fontSize: 19, color: Colors.blue),
+            ),
           ),
         ],
       ),

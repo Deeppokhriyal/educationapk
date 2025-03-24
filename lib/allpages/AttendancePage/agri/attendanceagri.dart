@@ -19,11 +19,12 @@ class Attendanceagri extends StatelessWidget {
 
       body:
       Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SlideInRight(
-              child: SizedBox(
+        child: FadeIn(
+          duration: Duration(milliseconds: 600),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
                 height: 70,
                 width: 200,
                 child: ElevatedButton(
@@ -36,10 +37,8 @@ class Attendanceagri extends StatelessWidget {
                   child: Text('Agriculture 1st Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
                 ),
               ),
-            ),
-            SizedBox(height: 80,),
-            SlideInLeft(
-              child: SizedBox(
+              SizedBox(height: 80,),
+              SizedBox(
                 height: 70,
                 width: 200,
                 child: ElevatedButton(
@@ -52,10 +51,8 @@ class Attendanceagri extends StatelessWidget {
                   child: Text('Agriculture 2nd Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
                 ),
               ),
-            ),
-            SizedBox(height: 80,),
-            SlideInRight(
-              child: SizedBox(
+              SizedBox(height: 80,),
+              SizedBox(
                 height: 70,
                 width: 200,
                 child: ElevatedButton(
@@ -68,8 +65,8 @@ class Attendanceagri extends StatelessWidget {
                   child: Text('Agriculture 3rd Year',style: TextStyle(color: Colors.white, fontSize: 23,fontFamily: 'nexaheavy'),),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
 

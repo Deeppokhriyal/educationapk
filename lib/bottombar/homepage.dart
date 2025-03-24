@@ -90,7 +90,6 @@ class _MyMainHomeState extends State<MyMainHome> {
       if (userData.exists) {
         setState(() {
           userName = userData["name"];
-          StudentProfile = userData["StudentProfile"];
           userBio = userData["bio"];
           userBranch = userData["branch"];
         });

@@ -14,6 +14,10 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
   List<Map<String, dynamic>> tasks = [];
   TimeOfDay? selectedTime;
   TextEditingController descriptionController = TextEditingController();
+  int taskCounter = 1;
+
+  @override
+  bool get wantKeepAlive => true; // Keeps widget alive
 
   @override
   void initState() {
@@ -40,7 +44,11 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
     try {
       await androidIntent.launch();
       setState(() {
-        tasks.add({'description': description, 'time': time});
+        tasks.add({
+          'taskNumber': taskCounter++, // Assign and increment task number
+          'description': description,
+          'time': time
+        });
       });
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Alarm set for ${time.format(context)}')),
@@ -71,6 +79,12 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
   void _deleteTask(int index) {
     setState(() {
       tasks.removeAt(index);
+
+      // Reassign task numbers after deletion
+      for (int i = 0; i < tasks.length; i++) {
+        tasks[i]['taskNumber'] = i + 1;
+      }
+      taskCounter = tasks.length + 1;
     });
   }
 

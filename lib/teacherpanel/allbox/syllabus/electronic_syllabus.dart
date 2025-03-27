@@ -29,10 +29,9 @@ class ElectronicSyllabus1 extends StatelessWidget {
         body:  Stack(
             children:[ Container(
               decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: NetworkImage('https://img.freepik.com/free-vector/emerald-green-curve-frame-template-vector_53876-162345.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
-                    fit: BoxFit.cover
-                ),
+                  gradient: LinearGradient(colors: [Colors.green,Colors.white],
+                      begin: Alignment.bottomRight,
+                      end: Alignment.topLeft)
               ),
               child: Column( children: [
                 Container(
@@ -45,7 +44,7 @@ class ElectronicSyllabus1 extends StatelessWidget {
                     style: TextStyle(
                         fontFamily: 'nexaheavy',
                         fontSize: 35,
-                        color: Colors.white),
+                        color: Colors.black),
                   ),
                 ),
                 Expanded(

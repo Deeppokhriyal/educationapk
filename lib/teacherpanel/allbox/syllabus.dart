@@ -17,10 +17,9 @@ class SyllabusPage extends StatelessWidget {
         body: Stack(
             children:[ Container(
               decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: NetworkImage('https://img.freepik.com/free-vector/background-colorful-modern-design_677411-3926.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
-                    fit: BoxFit.cover
-                ),
+                gradient: LinearGradient(colors: [Colors.green,Colors.white],
+                begin: Alignment.topRight,
+                end: Alignment.centerLeft)
               ),
               child: SingleChildScrollView(
                 child: Column(

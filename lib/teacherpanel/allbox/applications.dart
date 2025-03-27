@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class LeaveApplicationsList extends StatefulWidget {
   @override
@@ -91,18 +92,23 @@ class _LeaveApplicationsListState extends State<LeaveApplicationsList> {
       backgroundColor: Colors.white,
       appBar: AppBar(title: Text("Leave Applications"),
         backgroundColor: Colors.white,),
-      body: isLoading
-          ? Center(child: CircularProgressIndicator())
-          : filteredApplications.isEmpty
-          ? _buildNoApplicationsUI()
-          : ListView.builder(
-        itemCount: filteredApplications.length,
-        itemBuilder: (context, index) {
-          var data = filteredApplications[index];
-          String docId = data['id'];
-          String currentStatus = data['status'] ?? 'Pending';
+        body: isLoading
+            ? Center(
+          child: SpinKitPulse	(
+            color: Colors.lightBlue, // Change color as needed
+            size: 50.0, // Adjust size if required
+          ),
+        )
+            : filteredApplications.isEmpty
+            ? _buildNoApplicationsUI()
+            : ListView.builder(
+          itemCount: filteredApplications.length,
+          itemBuilder: (context, index) {
+            var data = filteredApplications[index];
+            String docId = data['id'];
+            String currentStatus = data['status'] ?? 'Pending';
 
-          return Card(
+        return Card(
             color: Colors.white70,
             margin:
             EdgeInsets.symmetric(vertical: 10, horizontal: 15),

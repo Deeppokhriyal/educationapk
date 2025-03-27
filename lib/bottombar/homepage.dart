@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/allpage.dart';
 import 'package:educationapk/allpages/AttendancePage/attendance.dart';
 import 'package:educationapk/allpages/programmingpage.dart';
+import 'package:educationapk/allpages/studentAssignment.dart';
 import 'package:educationapk/bottombar/profilepage.dart';
 import 'package:educationapk/bottombar/updateprofile.dart';
 import 'package:educationapk/homepagewidgets/collegeinfo.dart';
@@ -45,7 +46,7 @@ class _MyMainHomeState extends State<MyMainHome> {
     "Study",
     "Programming",
     "Attendance",
-    "Branches",
+    "Assignments",
     "Map",
     "Hostel",
   ];
@@ -469,8 +470,8 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     if (Name[index] == "Attendance") {
                                       Get.to(() => AttendanceHistory());
                                     }
-                                    if (Name[index] == "Branches") {
-                                      Get.to(() => MainScrollPage());
+                                    if (Name[index] == "Assignments") {
+                                      Get.to(() => StudentAssignment());
                                     }
                                     if (Name[index] == "Study") {
                                       Get.to(() => Branches());

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:educationapk/bottombar/profilepage.dart';
 import 'package:educationapk/homepagewidgets/devpage.dart';
 import 'package:educationapk/popupmenu/privacypolicies.dart';
 import 'package:educationapk/popupmenu/termscondition.dart';
@@ -283,11 +284,8 @@ class _TeacherMainState extends State<TeacherMain> {
                           return [
                             PopupMenuItem<String>(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            Termscondition()));
+                                Get.to(()=>Termscondition());
+
                               },
                               value: 'Profile',
                               child: Text('Terms and \nCondition\'s',
@@ -297,11 +295,8 @@ class _TeacherMainState extends State<TeacherMain> {
                             ),
                             PopupMenuItem<String>(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            Privacypolicies()));
+                                Get.to(()=>Privacypolicies());
+
                               },
                               value: 'Settings',
                               child: Text('Privacy  Policies',
@@ -311,10 +306,10 @@ class _TeacherMainState extends State<TeacherMain> {
                             ),
                             PopupMenuItem<String>(
                               onTap: () {
-                                // Navigator.push(context, MaterialPageRoute(builder: (context)=>MyLogin()));
+                               Get.to(()=>AskHelpDesk());
                               },
-                              value: 'Logout',
-                              child: Text('Logout',
+                              value: 'Ask Help Desk',
+                              child: Text('Ask Help Desk',
                                   style: TextStyle(
                                       fontSize: 17,
                                       fontFamily: 'sans-serif-light')),
@@ -670,7 +665,7 @@ class _TeacherMainState extends State<TeacherMain> {
                           ),
                           child: GestureDetector(
                               onTap: () {
-                                Get.to(() => AssignmentsPage());
+                                Get.to(() => TeacherAssignmentScreen());
                               },
                               child: Column(
                                 children: [

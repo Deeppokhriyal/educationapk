@@ -31,7 +31,7 @@ class _MyMainHomeState extends State<MyMainHome> {
     "Study",
     "Programming",
     "Attendance",
-    "Branches",
+    "Assignments",
     "Map",
     "Hostel",
     "Terms and Conditions",

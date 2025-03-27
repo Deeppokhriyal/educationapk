@@ -5,7 +5,16 @@ class StudentAssignment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Assignments")),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text(
+          "Assignments",
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, fontFamily: 'nexaheavy'),
+        ),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        iconTheme: IconThemeData(color: Colors.black),
+      ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection('assignments').orderBy('timestamp', descending: true).snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -13,7 +22,7 @@ class StudentAssignment extends StatelessWidget {
             return Center(child: CircularProgressIndicator());
           }
           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-            return Center(child: Text("No assignments available"));
+            return _buildNoAssignmentUI(); // Fixed function call
           }
 
           return ListView.builder(
@@ -23,20 +32,42 @@ class StudentAssignment extends StatelessWidget {
               List<dynamic> questions = assignment['questions'] ?? [];
 
               return Card(
+                color: Colors.grey.shade100,
                 margin: EdgeInsets.all(10),
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(assignment['title'], style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                      Text(
+                        assignment['subject'],
+                        style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, fontFamily: 'nexaheavy'),
+                      ),
                       SizedBox(height: 5),
-                      Text(assignment['description'], style: TextStyle(fontSize: 16)),
+                      Text(
+                        assignment['description'],
+                        style: TextStyle(fontSize: 17, fontFamily: 'nexalight'),
+                      ),
                       SizedBox(height: 5),
-                      Text("Deadline: ${assignment['deadline']}", style: TextStyle(color: Colors.red)),
+                      Text(
+                        "Deadline: ${assignment['deadline']}",
+                        style: TextStyle(color: Colors.red, fontSize: 16, fontFamily: 'nexaheavy'),
+                      ),
                       SizedBox(height: 10),
-                      Text("Questions:", style: TextStyle(fontWeight: FontWeight.bold)),
-                      ...questions.map((q) => Text("• $q")).toList(),
+                      Text(
+                        "Questions:",
+                        style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'nexalight', fontSize: 16),
+                      ),
+                      SizedBox(height: 5),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: questions
+                            .map((q) => Padding(
+                          padding: const EdgeInsets.only(bottom: 4.0),
+                          child: Text("• $q", style: TextStyle(fontFamily: 'nexaheavy', fontSize: 16)),
+                        ))
+                            .toList(),
+                      ),
                     ],
                   ),
                 ),
@@ -44,6 +75,43 @@ class StudentAssignment extends StatelessWidget {
             },
           );
         },
+      ),
+    );
+  }
+
+  // Fixed function placement
+  Widget _buildNoAssignmentUI() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: 160,
+            child: Image.network(
+              'https://img.icons8.com/?size=128&id=48162&format=png',
+              fit: BoxFit.cover,
+            ),
+          ),
+          Text(
+            "No Assignments Available",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 25,
+              fontFamily: 'nexaheavy',
+            ),
+          ),
+          SizedBox(height: 10),
+          Text(
+            "Currently, there are no assignments assigned.",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.purpleAccent,
+              fontSize: 20,
+              fontFamily: 'nexalight',
+            ),
+          ),
+          SizedBox(height: 50),
+        ],
       ),
     );
   }

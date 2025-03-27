@@ -78,64 +78,106 @@ class _TeacherAssignmentScreenState extends State<TeacherAssignmentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Add Assignment")),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(controller: titleController, decoration: InputDecoration(labelText: "Subject")),
-            TextField(controller: descriptionController, decoration: InputDecoration(labelText: "Description")),
-            SizedBox(height: 10),
-
-            // Deadline Date Picker
-            GestureDetector(
-              onTap: () => selectDeadline(context),
-              child: AbsorbPointer(
-                child: TextField(
+      appBar: AppBar(
+        title: Text(
+          "Add Assignment",
+          style: TextStyle(fontFamily: 'nexaheavy', fontSize: 24, color: Colors.lightBlue),
+        ),
+      ),
+      body: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 80), // Adjust to prevent overlap with button
+            child: ListView(
+              padding: const EdgeInsets.all(16.0),
+              children: [
+                Divider(color: Colors.lightBlue, thickness: 3),
+                TextField(
+                  controller: titleController,
                   decoration: InputDecoration(
-                    labelText: "Deadline",
-                    suffixIcon: Icon(Icons.calendar_today),
-                  ),
-                  controller: TextEditingController(
-                    text: selectedDeadline != null
-                        ? DateFormat('yyyy-MM-dd').format(selectedDeadline!)
-                        : "",
+                    labelText: "Subject",
+                    labelStyle: TextStyle(fontFamily: 'nexalight', fontSize: 18),
                   ),
                 ),
-              ),
-            ),
-            SizedBox(height: 10),
+                SizedBox(height: 10),
 
-            // Dynamic Question Fields
-            Column(
-              children: [
-                for (int i = 0; i < questionControllers.length; i++)
-                  Row(
-                    children: [
-                      Expanded(
-                        child: TextField(
-                          controller: questionControllers[i],
-                          decoration: InputDecoration(labelText: "Question ${i + 1}"),
-                        ),
-                      ),
-                      IconButton(
-                        icon: Icon(Icons.remove_circle, color: Colors.red),
-                        onPressed: () => removeQuestionField(i),
-                      ),
-                    ],
+                TextField(
+                  controller: descriptionController,
+                  decoration: InputDecoration(
+                    labelText: "Description",
+                    labelStyle: TextStyle(fontFamily: 'nexalight', fontSize: 18),
                   ),
+                ),
+                SizedBox(height: 10),
+
+                // Deadline Date Picker
+                GestureDetector(
+                  onTap: () => selectDeadline(context),
+                  child: AbsorbPointer(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        labelText: "Deadline",
+                        labelStyle: TextStyle(fontFamily: 'nexalight', fontSize: 18),
+                        suffixIcon: Icon(Icons.calendar_today),
+                      ),
+                      controller: TextEditingController(
+                        text: selectedDeadline != null
+                            ? DateFormat('yyyy-MM-dd').format(selectedDeadline!)
+                            : "",
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 25),
+
+                // Dynamic Question Fields
+                Column(
+                  children: [
+                    for (int i = 0; i < questionControllers.length; i++)
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextField(
+                              controller: questionControllers[i],
+                              decoration: InputDecoration(labelText: "Question ${i + 1}"),
+                            ),
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.remove_circle, color: Colors.red),
+                            onPressed: () => removeQuestionField(i),
+                          ),
+                        ],
+                      ),
+                  ],
+                ),
+                SizedBox(height: 25),
+
+                ElevatedButton(
+                  onPressed: addQuestionField,
+                  child: Text("Add Question", style: TextStyle(fontFamily: 'nexaheavy', fontSize: 20, color: Colors.lightBlue)),
+                ),
               ],
             ),
-            SizedBox(height: 10),
+          ),
 
-            ElevatedButton(onPressed: addQuestionField, child: Text("Add Question")),
-            SizedBox(height: 20),
-
-            isLoading
-                ? CircularProgressIndicator()
-                : ElevatedButton(onPressed: addAssignment, child: Text("Add Assignment")),
-          ],
-        ),
+          // Fixed Upload Button at the Bottom
+          Positioned(
+            bottom: 20,
+            left: 20,
+            right: 20,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(vertical: 15),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                backgroundColor: Colors.lightBlue,
+              ),
+              onPressed: isLoading ? null : addAssignment,
+              child: isLoading
+                  ? CircularProgressIndicator(color: Colors.white)
+                  : Text("Upload Assignment", style: TextStyle(fontFamily: 'nexaheavy', fontSize: 20, color: Colors.white)),
+            ),
+          ),
+        ],
       ),
     );
   }

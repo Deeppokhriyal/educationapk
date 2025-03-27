@@ -120,7 +120,7 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: Colors.white,
       body: Center(
         child: _showLoader
-            ? SpinKitWaveSpinner(
+            ? SpinKitPulse(
           color: Colors.blue, // Customize color
           size: 70.0, // Customize size
         )

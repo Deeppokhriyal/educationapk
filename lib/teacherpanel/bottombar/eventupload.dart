@@ -79,9 +79,9 @@ class _EventUploadState extends State<EventUpload> {
           Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.blueGrey, Colors.orangeAccent],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
+                colors: [Colors.black, Colors.lightBlue],
+                begin: Alignment.centerRight,
+                end: Alignment.bottomLeft,
               ),
             ),
             child: Padding(

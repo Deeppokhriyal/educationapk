@@ -10,6 +10,7 @@ import 'package:educationapk/teacherpanel/allbox/attendance.dart';
 import 'package:educationapk/teacherpanel/allbox/students%20profile.dart';
 import 'package:educationapk/teacherpanel/allbox/studentview.dart';
 import 'package:educationapk/teacherpanel/allbox/syllabus.dart';
+import 'package:educationapk/teacherpanel/allbox/teacherdev.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -385,7 +386,7 @@ class _TeacherMainState extends State<TeacherMain> {
                                               0.21),
                                       GestureDetector(
                                         onTap: () {
-                                          Get.to(() => Devpage());
+                                          Get.to(() => Teacherdev());
                                         },
                                         child: Icon(
                                             Icons.arrow_forward_ios_outlined,
@@ -1157,7 +1158,7 @@ class _TeacherMainState extends State<TeacherMain> {
                     alignment: Alignment.center,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      color: Colors.grey,
+                      color: Colors.grey[300],
                       border: Border.all(),
                     ),
                     child: Text(
@@ -1165,7 +1166,7 @@ class _TeacherMainState extends State<TeacherMain> {
                       style: TextStyle(
                           fontFamily: 'nexalight',
                           fontSize: 13,
-                          color: Colors.white),
+                          color: Colors.black),
                     )),
               ],
             ),

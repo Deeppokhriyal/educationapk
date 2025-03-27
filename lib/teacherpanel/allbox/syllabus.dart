@@ -202,7 +202,7 @@ class SyllabusPage extends StatelessWidget {
                                         Text('Civil \nEngineering',style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
                                       ],
                                     ),
-                                    SizedBox(width: 110,),
+                                    SizedBox(width: 108,),
                                     Icon(Icons.arrow_forward_ios_outlined,size: 25,color: Colors.black),
                                   ],
                                 ),

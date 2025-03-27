@@ -1194,46 +1194,42 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Global Chat",style: TextStyle(fontFamily: 'nexaheavy',fontSize: 25),)),
-      body: Padding(
-        padding: const EdgeInsets.all(13),
-        child: Column(
-          children: [
-            Divider(thickness: 3,color: Colors.lightBlueAccent,),
-            Expanded(
-              child: StreamBuilder(
-                stream: _firestore.collection('messages').orderBy('timestamp', descending: true).snapshots(),
-                builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                  if (!snapshot.hasData) return Center(child: CircularProgressIndicator());
+      appBar: AppBar(title: Text("Global Chat")),
+      body: Column(
+        children: [
+          Expanded(
+            child: StreamBuilder(
+              stream: _firestore.collection('messages').orderBy('timestamp', descending: true).snapshots(),
+              builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (!snapshot.hasData) return Center(child: CircularProgressIndicator());
 
-                  return ListView(
-                    reverse: true,
-                    children: snapshot.data!.docs.map((message) {
-                      return ListTile(
-                        title: Text(message['text']),
-                        subtitle: Text("Sent by: ${message['sender']}"),
-                      );
-                    }).toList(),
-                  );
-                },
-              ),
+                return ListView(
+                  reverse: true,
+                  children: snapshot.data!.docs.map((message) {
+                    return ListTile(
+                      title: Text(message['text']),
+                      subtitle: Text("Sent by: ${message['sender']}"),
+                    );
+                  }).toList(),
+                );
+              },
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(5, 0, 0, 5),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      controller: messageController,
-                      decoration: InputDecoration(hintText: "Type a message...",hintStyle: TextStyle(fontFamily: 'nexalight',color: Colors.black,fontSize: 17)),
-                    ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: messageController,
+                    decoration: InputDecoration(hintText: "Type a message..."),
                   ),
-                  IconButton(icon: Icon(Icons.send,color: Colors.black,), onPressed: sendMessage),
-                ],
-              ),
+                ),
+                IconButton(icon: Icon(Icons.send), onPressed: sendMessage),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -44,7 +44,7 @@ class ElectronicSyllabus1 extends StatelessWidget {
                     style: TextStyle(
                         fontFamily: 'nexaheavy',
                         fontSize: 35,
-                        color: Colors.white),
+                        color: Colors.black),
                   ),
                 ),
                 Expanded(

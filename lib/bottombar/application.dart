@@ -107,7 +107,7 @@ class _LeaveApplicationState extends State<LeaveApplication> {
 
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Colors.black87, Colors.pinkAccent], // Three colors
+                  colors: [Colors.black87, Colors.deepPurpleAccent], // Three colors
                   begin: Alignment.topRight,
                   end: Alignment.centerLeft,
                 ),
@@ -140,14 +140,17 @@ class _LeaveApplicationState extends State<LeaveApplication> {
                             child: Column(
                               children: [
                                 DropdownButtonFormField<String>(
+                                  dropdownColor: Colors.deepPurpleAccent,
                                   decoration: InputDecoration(
+
                                     labelText: 'Select Your Branch',
                                     labelStyle: TextStyle(
                                         color: Colors.white,
                                         fontFamily: 'nexalight'),
+                                    fillColor: Colors.purple
                                   ),
                                   style: TextStyle(
-                                      color: Colors.purple,
+                                      color: Colors.white,
                                       fontSize: 20,
                                       fontFamily: 'nexalight'),
                                   borderRadius: BorderRadius.circular(40),

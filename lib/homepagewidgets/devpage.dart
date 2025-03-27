@@ -139,7 +139,7 @@ class Devpage extends StatelessWidget {
                                       Text(' Developer\'s Profile : ', style: TextStyle(fontFamily: 'nexaheavy',fontSize: 17,color: Colors.greenAccent,letterSpacing: 1,wordSpacing: 1),),
                                       GestureDetector(
                                         onTap: _launchURL,
-                                        child: Image.asset('assets/images/tap.png',height: 70,width: 160),
+                                        child: Image.asset('assets/images/tap.png',height: 70,width: 149),
                                       ),
                                     ],
                                   ),

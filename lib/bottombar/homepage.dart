@@ -1149,7 +1149,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                       style: TextStyle(
                           fontFamily: 'nexalight',
                           fontSize: 12,
-                          color: Colors.black),
+                          color: Colors.white),
                     ))
               ],
             ),

@@ -10,6 +10,7 @@ import 'package:educationapk/teacherpanel/allbox/attendancebranches/paint/paintt
 import 'package:educationapk/teacherpanel/allbox/attendancebranches/pharmacy/pharmacytab.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:intl/intl.dart';
 
 class AttendanceScreen extends StatefulWidget {
@@ -99,10 +100,13 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
           SizedBox(height: 30,),
           Center(
             child: userBranch == null
-                ? CircularProgressIndicator() // 🔄 Jab tak data fetch ho raha hai
-                : ElevatedButton(
+                ? SpinKitWave(
+              color: Colors.lightBlue,
+              size: 35,
+            ) // 🔄 Jab tak data fetch ho raha hai
+                :ElevatedButton(
               onPressed: navigateToAttendance,
-              child: Text("Go to $userBranch Attendance",style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
+              child: Text("Go to $userBranch Attendance",style: TextStyle(fontFamily: 'nexalight',fontSize: 22,color: Colors.lightBlue  ),),
             ),
           ),
         ],

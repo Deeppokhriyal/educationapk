@@ -1,9 +1,9 @@
 import 'package:educationapk/teacherpanel/bottombar/eventupload.dart';
 import 'package:educationapk/teacherpanel/bottombar/teacherhome.dart';
 import 'package:educationapk/teacherpanel/bottombar/teacherprofile.dart';
+import 'package:educationapk/teacherpanel/bottombar/teacherschedulerstart.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import '../../bottombar/schedulerstart.dart';
 
 class Teacherbar extends StatefulWidget {
   const Teacherbar({super.key});
@@ -18,7 +18,7 @@ class _TeacherbarState extends State<Teacherbar> {
   final List<Widget> _pages = [
     TeacherHome(),
     EventUpload(),
-    Schedulerstart(),
+    TeacherSchedulerstart(),
     Teacherprofile(),
   ];
 

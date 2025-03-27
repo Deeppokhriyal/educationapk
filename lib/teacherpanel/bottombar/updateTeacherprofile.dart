@@ -3,9 +3,12 @@ import 'dart:convert'; // For Base64 encoding/decoding
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart'; // For SharedPreferences
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../main.dart'; // For SharedPreferences
 
 class UpdateTeacherProfilePage extends StatefulWidget {
   @override
@@ -104,16 +107,17 @@ class _UpdateTeacherProfilePageState extends State<UpdateTeacherProfilePage> {
 
       setState(() => isLoading = false);
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Profile updated successfully!"), backgroundColor: Colors.green),
-      );
+
+
+      showAwesomeSnackBar(context, "Profile updated successfully!", true);
+
     } catch (e) {
       setState(() => isLoading = false);
       print("🔥 Firestore Update Error: $e");
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Profile update failed! Try again."), backgroundColor: Colors.red),
-      );
+
+      showAwesomeSnackBar(context, "Profile update failed! Try again.", false);
+
     }
   }
 
@@ -124,10 +128,10 @@ class _UpdateTeacherProfilePageState extends State<UpdateTeacherProfilePage> {
         children: [
           Container(
             decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage('https://img.freepik.com/free-vector/dark-blue-blurred-background_1034-589.jpg'),
-                fit: BoxFit.cover,
-              ),
+              gradient: LinearGradient(colors: [Colors.white,Colors.lightBlue],
+                begin: Alignment.topRight,
+                end: Alignment.centerLeft,
+              )
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -191,15 +195,15 @@ class _UpdateTeacherProfilePageState extends State<UpdateTeacherProfilePage> {
 
                 // Update Button
                 isLoading
-                    ? CircularProgressIndicator()
+                    ? SpinKitHourGlass(color: Colors.white,)
                     : ElevatedButton(
                   onPressed: uploadProfileData,
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 14),
+                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(45)),
-                    backgroundColor: Colors.amber[700],
+                    backgroundColor: Colors.white,
                   ),
-                  child: Text("Update", style: TextStyle(fontSize: 20, color: Colors.black)),
+                  child: Text("Update", style: TextStyle(fontSize: 20, color: Colors.lightBlue)),
                 ),
                ],
             ),

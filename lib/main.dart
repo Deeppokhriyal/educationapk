@@ -269,3 +269,24 @@ void showAwesomeSnackBar(BuildContext context, String message, bool isSuccess) {
     forwardAnimationCurve: Curves.easeOutBack,
   );
 }
+
+void showAwesomeSnackBarUp(BuildContext context, String message, bool isSuccess) {
+  Get.snackbar(
+    isSuccess ? "Success" : "Error",
+    message,
+    snackPosition: SnackPosition.TOP,
+    backgroundColor: Colors.black38,
+    colorText: Colors.white,
+    borderRadius: 20,
+
+    margin: EdgeInsets.all(8),
+    padding: EdgeInsets.all(8),
+    icon: Icon(
+      isSuccess ? Icons.check_circle : Icons.error,
+      color: isSuccess ? Colors.greenAccent : Colors.redAccent,
+    ),
+    duration: Duration(milliseconds: 2500),
+    isDismissible: true,
+    forwardAnimationCurve: Curves.easeOutBack,
+  );
+}

@@ -141,7 +141,7 @@ class _TeacherprofileState extends State<Teacherprofile> {
                               children: [
                                 CircleAvatar(
                                   radius: 50,
-                                  backgroundColor: Colors.grey[300], // Default background
+                                  backgroundColor: Colors.transparent, // Default background
                                   backgroundImage: profileImage.isNotEmpty
                                       ? (profileImage.startsWith("http")
                                       ? NetworkImage(profileImage) as ImageProvider

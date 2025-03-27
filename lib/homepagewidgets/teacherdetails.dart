@@ -22,9 +22,9 @@ class Teacherdetails extends StatelessWidget {
     {'name': 'Shri Prashant Kumar', 'designation': 'Chemical Eng.', 'image': 'assets/images/man.png'},
     {'name': 'Sri A.K.Agarwal', 'designation': 'Chemical Paint Eng.', 'image': 'assets/images/man.png'},
     {'name': 'Mr. Hari Datt Bhatt', 'designation': 'Civil Eng.', 'image': 'assets/images/man.png'},
-    {'name': 'Mr. Gaurav Upadhyay', 'designation': 'Computer Science and Eng.', 'image': 'assets/images/man.png'},
+    {'name': 'Mr. Gaurav K. Upadhyay', 'designation': 'CS', 'image': 'assets/images/man.png'},
     {'name': 'Shri Rajeev Yadav', 'designation': 'Electronics ', 'image': 'assets/images/man.png'},
-    {'name': 'Mr. Jagdish Chandra Pandey', 'designation': 'Information Technology', 'image': 'assets/images/man.png'},
+    {'name': 'Mr. Jagdish C. Pandey', 'designation': 'IT', 'image': 'assets/images/man.png'},
     {'name': 'Mr. Jeetesh Sundriyal', 'designation': 'Mechanical Eng.', 'image': 'assets/images/man.png'},
     {'name': 'Mrs. Preeti Arya', 'designation': 'Pharmacy ', 'image': 'assets/images/woman.png'},
   ];

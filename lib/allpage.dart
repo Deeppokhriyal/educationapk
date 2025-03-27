@@ -16,7 +16,7 @@ Widget build(BuildContext context) {
           children:[ Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.blueGrey, Colors.black87],
+                colors: [Colors.blueGrey, Colors.blueGrey],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),

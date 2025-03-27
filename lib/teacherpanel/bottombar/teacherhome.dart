@@ -9,11 +9,12 @@ import 'package:educationapk/teacherpanel/allbox/attendance.dart';
 import 'package:educationapk/teacherpanel/allbox/students%20profile.dart';
 import 'package:educationapk/teacherpanel/allbox/studentview.dart';
 import 'package:educationapk/teacherpanel/allbox/syllabus.dart';
-import 'package:educationapk/teacherpanel/allbox/teachers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../homepagewidgets/teacherdetails.dart';
 
 class TeacherHome extends StatefulWidget {
   const TeacherHome({super.key});
@@ -152,7 +153,7 @@ class _TeacherMainState extends State<TeacherMain> {
                                   CircleAvatar(
                                     radius: 50,
                                     backgroundColor:
-                                        Colors.grey[300], // Default background
+                                        Colors.transparent,  // Default background
                                     backgroundImage: widget
                                             .profileImage.isNotEmpty
                                         ? (widget.profileImage
@@ -230,7 +231,7 @@ class _TeacherMainState extends State<TeacherMain> {
                           child: CircleAvatar(
                             radius: 25,
                             backgroundColor:
-                                Colors.grey[300], // Default background
+                                Colors.transparent,  // Default background
                             backgroundImage: widget.profileImage.isNotEmpty
                                 ? (widget.profileImage.startsWith("http")
                                     ? NetworkImage(widget.profileImage)
@@ -456,7 +457,7 @@ class _TeacherMainState extends State<TeacherMain> {
                           ),
                           child: GestureDetector(
                               onTap: () {
-                                Get.to(TeachersPage());
+                                Get.to(Teacherdetails());
                               },
                               child: Column(
                                 children: [

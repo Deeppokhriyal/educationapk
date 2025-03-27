@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:intl/intl.dart';
+
+import '../../../../main.dart';
 
 class Firstyear extends StatefulWidget {
   @override
@@ -9,6 +12,8 @@ class Firstyear extends StatefulWidget {
 
 class _FirstyearState extends State<Firstyear> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  bool isLoading = false; // ✅ Loading flag added
+
 
   // ✅ Ensured "id" values are correctly formatted and displayed
   List<Map<String, dynamic>> students = [
@@ -47,6 +52,10 @@ class _FirstyearState extends State<Firstyear> {
 
   // Function to update attendance in Firestore
   Future<void> markAttendance() async {
+    setState(() {
+      isLoading = true; // ✅ Show loader
+    });
+
     String todayDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
     List<Map<String, dynamic>> attendanceList = students.map((student) {
@@ -57,14 +66,27 @@ class _FirstyearState extends State<Firstyear> {
       };
     }).toList();
 
-    await _firestore.collection("attendance1styear").doc(todayDate).set({
-      "attendance": attendanceList,
-    });
+    try {
+      await _firestore.collection("attendance1styear").doc(todayDate).set({
+        "attendance": attendanceList,
+      });
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text("Attendance saved successfully!")),
-    );
+      // ✅ Beautiful Green SnackBar for Success
+
+      showAwesomeSnackBarUp(context, "Attendance submitted successfully!", true);
+
+    } catch (e) {
+      // ❌ Red SnackBar for Errors
+      showAwesomeSnackBarUp(context, "Error Saving Attendance", false);
+
+
+    } finally {
+      setState(() {
+        isLoading = false; // ✅ Hide loader after submission
+      });
+    }
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -150,6 +172,14 @@ class _FirstyearState extends State<Firstyear> {
             ),
           ),
           SizedBox(height: 10),
+
+          isLoading
+              ? SpinKitWave(
+            color: Colors.lightBlue,
+            size: 50.0,
+          )
+              :
+
           ElevatedButton(
             onPressed: markAttendance,
             child: Text("Submit Attendance",style: TextStyle(fontFamily: 'nexaheavy',fontSize: 19,color: Colors.blue),),

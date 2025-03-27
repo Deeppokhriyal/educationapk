@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:intl/intl.dart';
+
+import '../../../../main.dart';
 
 class Thirdyear extends StatefulWidget {
   @override
@@ -70,38 +73,14 @@ class _ThirdyearState extends State<Thirdyear> {
       });
 
       // ✅ Beautiful Green SnackBar for Success
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Row(
-            children: [
-              Icon(Icons.check_circle, color: Colors.white), // ✅ Success Icon
-              SizedBox(width: 10),
-              Text("Attendance submitted successfully!", style: TextStyle(fontSize: 18)),
-            ],
-          ),
-          backgroundColor: Colors.green, // ✅ Green color
-          behavior: SnackBarBehavior.floating,
-          margin: EdgeInsets.all(16),
-          duration: Duration(seconds: 2),
-        ),
-      );
+
+          showAwesomeSnackBarUp(context, "Attendance submitted successfully!", true);
+
     } catch (e) {
       // ❌ Red SnackBar for Errors
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Row(
-            children: [
-              Icon(Icons.error, color: Colors.white), // ❌ Error Icon
-              SizedBox(width: 10),
-              Text("Error saving attendance!", style: TextStyle(fontSize: 18)),
-            ],
-          ),
-          backgroundColor: Colors.red, // ❌ Red color
-          behavior: SnackBarBehavior.floating,
-          margin: EdgeInsets.all(16),
-          duration: Duration(seconds: 2),
-        ),
-      );
+      showAwesomeSnackBarUp(context, "Error Saving Attendance", false);
+
+
     } finally {
       setState(() {
         isLoading = false; // ✅ Hide loader after submission
@@ -185,7 +164,10 @@ class _ThirdyearState extends State<Thirdyear> {
 
           // ✅ Show loading indicator when submitting
           isLoading
-              ? CircularProgressIndicator() // Loader
+              ? SpinKitWave(
+            color: Colors.lightBlue,
+            size: 50.0,
+          )
               : ElevatedButton(
             onPressed: isLoading ? null : markAttendance, // Disable button if loading
             child: Text(

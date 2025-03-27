@@ -1156,6 +1156,85 @@ class _MyMainHomeState extends State<MyMainHome> {
           ),
         ]),
       ]),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ChatScreen()));
+        },
+        child: Icon(Icons.chat),
+        backgroundColor: Colors.blue,
+      ),
+
+    );
+  }
+}
+
+// ChatScreen  ChatScreen  ChatScreen  ChatScreen  ChatScreen  ChatScreen  ChatScreen  ChatScreen  ChatScreen
+
+class ChatScreen extends StatefulWidget {
+  @override
+  _ChatScreenState createState() => _ChatScreenState();
+}
+
+class _ChatScreenState extends State<ChatScreen> {
+  TextEditingController messageController = TextEditingController();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  void sendMessage() {
+    if (messageController.text.isNotEmpty) {
+      _firestore.collection('messages').add({
+        'text': messageController.text,
+        'sender': _auth.currentUser?.email ?? "Unknown",
+        'timestamp': FieldValue.serverTimestamp(),
+      });
+      messageController.clear();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Global Chat",style: TextStyle(fontFamily: 'nexaheavy',fontSize: 25),)),
+      body: Padding(
+        padding: const EdgeInsets.all(13),
+        child: Column(
+          children: [
+            Divider(thickness: 3,color: Colors.lightBlueAccent,),
+            Expanded(
+              child: StreamBuilder(
+                stream: _firestore.collection('messages').orderBy('timestamp', descending: true).snapshots(),
+                builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                  if (!snapshot.hasData) return Center(child: CircularProgressIndicator());
+
+                  return ListView(
+                    reverse: true,
+                    children: snapshot.data!.docs.map((message) {
+                      return ListTile(
+                        title: Text(message['text']),
+                        subtitle: Text("Sent by: ${message['sender']}"),
+                      );
+                    }).toList(),
+                  );
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(5, 0, 0, 5),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller: messageController,
+                      decoration: InputDecoration(hintText: "Type a message...",hintStyle: TextStyle(fontFamily: 'nexalight',color: Colors.black,fontSize: 17)),
+                    ),
+                  ),
+                  IconButton(icon: Icon(Icons.send,color: Colors.black,), onPressed: sendMessage),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

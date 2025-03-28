@@ -97,12 +97,6 @@ class _MyLoginState extends State<MyLogin> {
                   ListView( shrinkWrap: true,
                     children: [
                       Container(
-                          margin: EdgeInsets.fromLTRB(5, 30, 310, 0),
-                          child: Icon(Icons.arrow_back_ios,size: 30,)
-                      ),
-
-                      SizedBox(height: 20,),
-                      Container(
                         padding: EdgeInsets.only(right: 30,left: 30),
                         child: Text('Welcome\nGlad to see you.', style: TextStyle( color: Colors.black, fontSize: 40, fontFamily: 'sans-serif-thin'),),
                       ),

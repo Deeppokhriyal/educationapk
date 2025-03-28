@@ -151,222 +151,222 @@ class _MyMainHomeState extends State<MyMainHome> {
     // double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.white,
-      body: ListView(children: [
-        Stack(children: [
-          Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [Colors.white, Colors.grey.shade100], // Three colors
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomLeft,
-                  stops: [0.4, 1.0]),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (context) => Dialog(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            child: Container(
-                              decoration: BoxDecoration(
+      body: FadeIn(
+        duration: Duration(milliseconds: 400),
+        child: ListView(children: [
+          Stack(children: [
+            Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    colors: [Colors.white, Colors.grey.shade100], // Three colors
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomLeft,
+                    stops: [0.4, 1.0]),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) => Dialog(
+                              shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50),
-                                gradient: LinearGradient(
-                                  colors: [
-                                    Colors.deepPurple.shade100,
-                                    Colors.lightBlueAccent.shade100
-                                  ],
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                ),
                               ),
-                              child:
-                              Padding(
-                                padding: const EdgeInsets.all(15.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Colors.deepPurple.shade100,
+                                      Colors.lightBlueAccent.shade100
+                                    ],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                  ),
+                                ),
                                 child:
-                                Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 50,
-                                      backgroundColor: Colors.transparent, // Remove backgroundAsdx color
+                                Padding(
+                                  padding: const EdgeInsets.all(15.0),
+                                  child:
+                                  Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      CircleAvatar(
+                                        radius: 50,
+                                        backgroundColor: Colors.transparent, // Remove backgroundAsdx color
 
-                                      backgroundImage: StudentProfile.isNotEmpty
-                                          ? (StudentProfile.startsWith("http")
-                                          ? NetworkImage(StudentProfile)
-                                      as ImageProvider
-                                          : MemoryImage(base64Decode(
-                                          StudentProfile))
-                                      as ImageProvider)
-                                          : AssetImage(
-                                          'assets/images/profile.png')
-                                      as ImageProvider,
-                                      onBackgroundImageError: (_, __) =>
-                                          setState(() => StudentProfile = ''),
-                                    ),
-                                    SizedBox(height: 16),
-                                    Text(
-                                      userName.isNotEmpty ? userName : "name",
-                                      style: TextStyle(
-                                          fontSize: 17,
-                                          fontFamily: 'nexaheavy'),
-                                    ),
-                                    SizedBox(height: 6),
-                                    Text(
-                                      userBio.isNotEmpty ? userBio : "bio",
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'nexalight'),
-                                    ),
-                                    SizedBox(height: 6),
-                                    Text(
-                                      userBranch.isNotEmpty
-                                          ? userBranch
-                                          : "branch",
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'nexalight'),
-                                    ),
-                                    SizedBox(height: 6),
-                                    Text(
-                                      'Govt. Polytechnic Kashipur',
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: 'nexaheavy'),
-                                    ),
-                                    SizedBox(height: 25),
-                                    Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                          },
-                                          child: Text(
-                                            'Close',
-                                            style: TextStyle(
-                                                fontFamily: 'sans-serif-light',
-                                                fontSize: 14),
+                                        backgroundImage: StudentProfile.isNotEmpty
+                                            ? (StudentProfile.startsWith("http")
+                                            ? NetworkImage(StudentProfile)
+                                        as ImageProvider
+                                            : MemoryImage(base64Decode(
+                                            StudentProfile))
+                                        as ImageProvider)
+                                            : AssetImage(
+                                            'assets/images/profile.png')
+                                        as ImageProvider,
+                                        onBackgroundImageError: (_, __) =>
+                                            setState(() => StudentProfile = ''),
+                                      ),
+                                      SizedBox(height: 16),
+                                      Text(
+                                        userName.isNotEmpty ? userName : "name",
+                                        style: TextStyle(
+                                            fontSize: 17,
+                                            fontFamily: 'nexaheavy'),
+                                      ),
+                                      SizedBox(height: 6),
+                                      Text(
+                                        userBio.isNotEmpty ? userBio : "bio",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontFamily: 'nexalight'),
+                                      ),
+                                      SizedBox(height: 6),
+                                      Text(
+                                        userBranch.isNotEmpty
+                                            ? userBranch
+                                            : "branch",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontFamily: 'nexalight'),
+                                      ),
+                                      SizedBox(height: 6),
+                                      Text(
+                                        'Govt. Polytechnic Kashipur',
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontFamily: 'nexaheavy'),
+                                      ),
+                                      SizedBox(height: 25),
+                                      Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: Text(
+                                              'Close',
+                                              style: TextStyle(
+                                                  fontFamily: 'sans-serif-light',
+                                                  fontSize: 14),
+                                            ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
+                          );
+                        },
+                        child: Container(
+                          padding: EdgeInsets.only(left: 13, top: 50),
+                          child:
+                          CircleAvatar(
+                            radius: 25,
+                            backgroundColor: Colors.transparent, // Remove background color
+                            backgroundImage: StudentProfile.isNotEmpty
+                                ? (StudentProfile.startsWith("http")
+                                ? NetworkImage(StudentProfile)
+                            as ImageProvider
+                                : MemoryImage(base64Decode(
+                                StudentProfile))
+                            as ImageProvider)
+                                : AssetImage(
+                                'assets/images/profile.png')
+                            as ImageProvider,
+                            onBackgroundImageError: (_, __) =>
+                                setState(() => StudentProfile = ''),
                           ),
-                        );
-                      },
-                      child: Container(
-                        padding: EdgeInsets.only(left: 13, top: 50),
-                        child:
-                        CircleAvatar(
-                          radius: 25,
-                          backgroundColor: Colors.transparent, // Remove background color
-                          backgroundImage: StudentProfile.isNotEmpty
-                              ? (StudentProfile.startsWith("http")
-                              ? NetworkImage(StudentProfile)
-                          as ImageProvider
-                              : MemoryImage(base64Decode(
-                              StudentProfile))
-                          as ImageProvider)
-                              : AssetImage(
-                              'assets/images/profile.png')
-                          as ImageProvider,
-                          onBackgroundImageError: (_, __) =>
-                              setState(() => StudentProfile = ''),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      width: 23,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.only(top: 50),
-                          child: Text(
-                            'Hii Dear,',
+                      SizedBox(
+                        width: 23,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.only(top: 50),
+                            child: Text(
+                              'Hii Dear,',
+                              style: TextStyle(
+                                  fontSize: 13,
+                                  fontFamily: 'nexaheavy',
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                            ),
+                          ),
+                          Text(
+                            userName.isNotEmpty ? userName : "user",
                             style: TextStyle(
-                                fontSize: 13,
-                                fontFamily: 'nexaheavy',
-                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                                fontFamily: 'nexalight',
                                 color: Colors.black),
                           ),
-                        ),
-                        Text(
-                          userName.isNotEmpty ? userName : "user",
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontFamily: 'nexalight',
-                              color: Colors.black),
-                        ),
-                      ],
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(left: 117, top: 50),
-                      child: PopupMenuButton<String>(
-                        onSelected: (String value) {
-                          // Handle menu item selection
-                          // print('Selected: $value');
-                        },
-                        itemBuilder: (BuildContext context) {
-                          return [
-                            PopupMenuItem<String>(
-                              onTap: () {
-                                Get.to(() => Termscondition());
-                              },
-                              child: Text('Terms and \nCondition\'s',
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      fontFamily: 'sans-serif-light')),
-                            ),
-                            PopupMenuItem<String>(
-                              onTap: () {
-                                Get.to(() => Privacypolicies());
-                              },
-                              child: Text('Privacy  Policies',
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      fontFamily: 'sans-serif-light')),
-                            ),
-                            PopupMenuItem<String>(
-                              onTap: () {
-                                Get.to(() => AskHelpDesk());
-                              },
-                              child: Text('Ask Help Desk',
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      fontFamily: 'sans-serif-light')),
-                            ),
-                          ];
-                        },
-                        icon: Icon(Icons.menu,
-                            size: 30, color: Colors.black), // Icon to display
-                        elevation: 5, // Shadow elevation
-                        color: Colors.white, // Background color
-                        offset: Offset(0, 45), // Positioning of the menu
+                        ],
                       ),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: 15,
-                ),
+                      Container(
+                        padding: EdgeInsets.only(left: 117, top: 50),
+                        child: PopupMenuButton<String>(
+                          onSelected: (String value) {
+                            // Handle menu item selection
+                            // print('Selected: $value');
+                          },
+                          itemBuilder: (BuildContext context) {
+                            return [
+                              PopupMenuItem<String>(
+                                onTap: () {
+                                  Get.to(() => Termscondition());
+                                },
+                                child: Text('Terms and \nCondition\'s',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontFamily: 'sans-serif-light')),
+                              ),
+                              PopupMenuItem<String>(
+                                onTap: () {
+                                  Get.to(() => Privacypolicies());
+                                },
+                                child: Text('Privacy  Policies',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontFamily: 'sans-serif-light')),
+                              ),
+                              PopupMenuItem<String>(
+                                onTap: () {
+                                  Get.to(() => AskHelpDesk());
+                                },
+                                child: Text('Ask Help Desk',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontFamily: 'sans-serif-light')),
+                              ),
+                            ];
+                          },
+                          icon: Icon(Icons.menu,
+                              size: 30, color: Colors.black), // Icon to display
+                          elevation: 5, // Shadow elevation
+                          color: Colors.white, // Background color
+                          offset: Offset(0, 45), // Positioning of the menu
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
 
-                SlideInLeft(
-                  duration: Duration(milliseconds: 251),
-                  child: Padding(
+                  Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Column(children: [
                       TextField(
@@ -429,10 +429,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                         ),
                     ]),
                   ),
-                ),
-                SlideInRight(
-                  duration: Duration(milliseconds: 300),
-                  child: Row(
+                  Row(
                     children: [
                       Text(
                         "    Let's Explore\n        The Polyverse",
@@ -443,14 +440,11 @@ class _MyMainHomeState extends State<MyMainHome> {
                       ),
                     ],
                   ),
-                ),
-                SizedBox(
-                  height: 7,
-                ),
+                  SizedBox(
+                    height: 7,
+                  ),
 
-                SlideInLeft(
-                  duration: Duration(milliseconds: 350),
-                  child: SizedBox(
+                  SizedBox(
                     height: 83,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -524,10 +518,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                       ],
                     ),
                   ),
-                ),
-                SlideInRight(
-                  duration: Duration(milliseconds: 400),
-                  child: SingleChildScrollView(
+                  SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
@@ -803,15 +794,12 @@ class _MyMainHomeState extends State<MyMainHome> {
                       ],
                     ),
                   ),
-                ),
 
-                //blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container
-                SizedBox(
-                  height: 5,
-                ),
-                SlideInUp(
-                  duration: Duration(milliseconds: 400),
-                  child: Container(
+                  //blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Container(
                       padding: EdgeInsets.all(15),
                       margin: EdgeInsets.all(15),
                       height: 190,
@@ -956,207 +944,207 @@ class _MyMainHomeState extends State<MyMainHome> {
                           ],
                         ),
                       )),
-                ),
-                Container(
-                    padding: EdgeInsets.all(15),
-                    child: Divider(
-                      height: 20,
-                      color: Colors.black,
-                    )),
-                Text(
-                  '  Gallery',
-                  style: TextStyle(
-                      fontSize: 29,
-                      fontFamily: 'nexaheavy',
-                      color: Colors.black),
-                ),
-                Text(
-                  '   Govt. Polytechnic Kashipur',
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontFamily: 'nexaheavy',
-                      color: Colors.blue),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                SingleChildScrollView(
-                  padding: EdgeInsets.all(15),
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(25),
-                            child: Image.asset(
-                              'assets/images/clg7.jpg',
-                              height: 200,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Text(
-                            'Academic Block',
-                            style: TextStyle(
-                                fontFamily: 'nexalight',
-                                fontSize: 18,
-                                color: Colors.black),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(25),
-                            child: Image.asset(
-                              'assets/images/clg6.jpg',
-                              height: 200,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Text(
-                            'IT Block',
-                            style: TextStyle(
-                                fontFamily: 'nexalight',
-                                fontSize: 18,
-                                color: Colors.black),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(25),
-                            child: Image.asset(
-                              'assets/images/clg3.jpg',
-                              height: 200,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Text(
-                            'Digital Library',
-                            style: TextStyle(
-                                fontFamily: 'nexalight',
-                                fontSize: 18,
-                                color: Colors.black),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(25),
-                            child: Image.asset(
-                              'assets/images/clg4.jpg',
-                              height: 200,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Text(
-                            'Canteen',
-                            style: TextStyle(
-                                fontFamily: 'nexalight',
-                                fontSize: 18,
-                                color: Colors.black),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(25),
-                            child: Image.asset(
-                              'assets/images/clg5.jpg',
-                              height: 200,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Text(
-                            'Workshop\'s',
-                            style: TextStyle(
-                                fontFamily: 'nexalight',
-                                fontSize: 18,
-                                color: Colors.black),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(25),
-                            child: Image.asset(
-                              'assets/images/clg1.jpg',
-                              height: 200,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Text(
-                            'NCC Block',
-                            style: TextStyle(
-                                fontFamily: 'nexalight',
-                                fontSize: 18,
-                                color: Colors.black),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(25),
-                            child: Image.asset(
-                              'assets/images/clg2.jpg',
-                              height: 200,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Text(
-                            'Parking',
-                            style: TextStyle(
-                                fontFamily: 'nexalight',
-                                fontSize: 18,
-                                color: Colors.black),
-                          ),
-                        ],
-                      ),
-                    ],
+                  Container(
+                      padding: EdgeInsets.all(15),
+                      child: Divider(
+                        height: 20,
+                        color: Colors.black,
+                      )),
+                  Text(
+                    '  Gallery',
+                    style: TextStyle(
+                        fontSize: 29,
+                        fontFamily: 'nexaheavy',
+                        color: Colors.black),
                   ),
-                ),
-                Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.horizontal(),
-                      color: Colors.blueAccent,
+                  Text(
+                    '   Govt. Polytechnic Kashipur',
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'nexaheavy',
+                        color: Colors.blue),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  SingleChildScrollView(
+                    padding: EdgeInsets.all(15),
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(25),
+                              child: Image.asset(
+                                'assets/images/clg7.jpg',
+                                height: 200,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Text(
+                              'Academic Block',
+                              style: TextStyle(
+                                  fontFamily: 'nexalight',
+                                  fontSize: 18,
+                                  color: Colors.black),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(25),
+                              child: Image.asset(
+                                'assets/images/clg6.jpg',
+                                height: 200,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Text(
+                              'IT Block',
+                              style: TextStyle(
+                                  fontFamily: 'nexalight',
+                                  fontSize: 18,
+                                  color: Colors.black),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(25),
+                              child: Image.asset(
+                                'assets/images/clg3.jpg',
+                                height: 200,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Text(
+                              'Digital Library',
+                              style: TextStyle(
+                                  fontFamily: 'nexalight',
+                                  fontSize: 18,
+                                  color: Colors.black),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(25),
+                              child: Image.asset(
+                                'assets/images/clg4.jpg',
+                                height: 200,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Text(
+                              'Canteen',
+                              style: TextStyle(
+                                  fontFamily: 'nexalight',
+                                  fontSize: 18,
+                                  color: Colors.black),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(25),
+                              child: Image.asset(
+                                'assets/images/clg5.jpg',
+                                height: 200,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Text(
+                              'Workshop\'s',
+                              style: TextStyle(
+                                  fontFamily: 'nexalight',
+                                  fontSize: 18,
+                                  color: Colors.black),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(25),
+                              child: Image.asset(
+                                'assets/images/clg1.jpg',
+                                height: 200,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Text(
+                              'NCC Block',
+                              style: TextStyle(
+                                  fontFamily: 'nexalight',
+                                  fontSize: 18,
+                                  color: Colors.black),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(25),
+                              child: Image.asset(
+                                'assets/images/clg2.jpg',
+                                height: 200,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Text(
+                              'Parking',
+                              style: TextStyle(
+                                  fontFamily: 'nexalight',
+                                  fontSize: 18,
+                                  color: Colors.black),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      '©2025 All Rights Reserved by Teamcelestial',
-                      style: TextStyle(
-                          fontFamily: 'nexalight',
-                          fontSize: 12,
-                          color: Colors.white),
-                    ))
-              ],
+                  ),
+                  Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.horizontal(),
+                        color: Colors.blueAccent,
+                      ),
+                      alignment: Alignment.center,
+                      child: Text(
+                        '©2025 All Rights Reserved by Teamcelestial',
+                        style: TextStyle(
+                            fontFamily: 'nexalight',
+                            fontSize: 12,
+                            color: Colors.white),
+                      ))
+                ],
+              ),
             ),
-          ),
+          ]),
         ]),
-      ]),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) => ChatScreen()));

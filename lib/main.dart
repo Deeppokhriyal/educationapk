@@ -32,10 +32,10 @@ FlutterLocalNotificationsPlugin();
 //   runApp(MaterialApp(home: AlarmScheduler()));
 // }
 @pragma('vm:entry-point')
- void printHello() {
-final DateTime now = DateTime.now();
-final int isolateId = Isolate.current.hashCode;
-print("[$now] Hello, world! isolate=${isolateId} function='$printHello'");
+void printHello() {
+  final DateTime now = DateTime.now();
+  final int isolateId = Isolate.current.hashCode;
+  print("[$now] Hello, world! isolate=${isolateId} function='$printHello'");
 }
 
 void main() async {
@@ -184,7 +184,7 @@ class _BottombarState extends State<Bottombar> {
 
   void _onItemTapped(int index) {
     if (_selectedIndex == index) return; // Prevent unnecessary reloads
-   Get.offAll(()=> Bottombar(initialIndex: index));
+    Get.offAll(()=> Bottombar(initialIndex: index));
   }
 
   @override

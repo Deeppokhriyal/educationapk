@@ -5,6 +5,7 @@ import 'package:educationapk/allpage.dart';
 import 'package:educationapk/allpages/AttendancePage/attendance.dart';
 import 'package:educationapk/allpages/programmingpage.dart';
 import 'package:educationapk/allpages/studentAssignment.dart';
+import 'package:educationapk/bottombar/globalchat.dart';
 import 'package:educationapk/bottombar/profilepage.dart';
 import 'package:educationapk/bottombar/updateprofile.dart';
 import 'package:educationapk/homepagewidgets/collegeinfo.dart';
@@ -1160,77 +1161,12 @@ class _MyMainHomeState extends State<MyMainHome> {
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) => ChatScreen()));
         },
-        child: Icon(Icons.chat),
-        backgroundColor: Colors.blue,
+        child: Icon(Icons.mark_unread_chat_alt_outlined,color: Colors.deepPurpleAccent,size: 35,),
+        backgroundColor: Colors.white,
+        shape: OvalBorder(),
+
       ),
 
-    );
-  }
-}
-
-// ChatScreen  ChatScreen  ChatScreen  ChatScreen  ChatScreen  ChatScreen  ChatScreen  ChatScreen  ChatScreen
-
-class ChatScreen extends StatefulWidget {
-  @override
-  _ChatScreenState createState() => _ChatScreenState();
-}
-
-class _ChatScreenState extends State<ChatScreen> {
-  TextEditingController messageController = TextEditingController();
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-
-  void sendMessage() {
-    if (messageController.text.isNotEmpty) {
-      _firestore.collection('messages').add({
-        'text': messageController.text,
-        'sender': _auth.currentUser?.email ?? "Unknown",
-        'timestamp': FieldValue.serverTimestamp(),
-      });
-      messageController.clear();
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Global Chat")),
-      body: Column(
-        children: [
-          Expanded(
-            child: StreamBuilder(
-              stream: _firestore.collection('messages').orderBy('timestamp', descending: true).snapshots(),
-              builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                if (!snapshot.hasData) return Center(child: CircularProgressIndicator());
-
-                return ListView(
-                  reverse: true,
-                  children: snapshot.data!.docs.map((message) {
-                    return ListTile(
-                      title: Text(message['text']),
-                      subtitle: Text("Sent by: ${message['sender']}"),
-                    );
-                  }).toList(),
-                );
-              },
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: messageController,
-                    decoration: InputDecoration(hintText: "Type a message..."),
-                  ),
-                ),
-                IconButton(icon: Icon(Icons.send), onPressed: sendMessage),
-              ],
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

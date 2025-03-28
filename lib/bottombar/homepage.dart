@@ -150,7 +150,7 @@ class _MyMainHomeState extends State<MyMainHome> {
     // double screenWidth = MediaQuery.of(context).size.width;
     // double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.deepPurple.shade50,
       body: FadeIn(
         duration: Duration(milliseconds: 400),
         child: ListView(children: [
@@ -158,10 +158,9 @@ class _MyMainHomeState extends State<MyMainHome> {
             Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                    colors: [Colors.white, Colors.grey.shade100], // Three colors
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomLeft,
-                    stops: [0.4, 1.0]),
+                    colors: [Colors.deepPurple.shade50, Colors.deepPurple.shade50], // Three colors
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -311,6 +310,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                             style: TextStyle(
                                 fontSize: 15,
                                 fontFamily: 'nexalight',
+                                fontWeight: FontWeight.bold,
                                 color: Colors.black),
                           ),
                         ],
@@ -432,10 +432,11 @@ class _MyMainHomeState extends State<MyMainHome> {
                   Row(
                     children: [
                       Text(
-                        "Let's Explore\n        The Polyverse",
+                        "Let's Explore\n              The Polyverse",
                         style: TextStyle(
                             fontSize: 42,
                             fontFamily: 'sans-serif-thin',
+                            fontWeight: FontWeight.bold,
                             color: Colors.black),textAlign: TextAlign.center,
                       ),
                     ],
@@ -528,18 +529,20 @@ class _MyMainHomeState extends State<MyMainHome> {
                           height: 200,
                           width: 190,
                           decoration: BoxDecoration(
-                            color: Color(0xFF00BFA6),
-                            // color: Colors.purple[200], // Background color
-                            // color: Color(0xCCCCCCFF), // Background color
+                            gradient: LinearGradient(
+                              colors: [Colors.green.shade50, Colors.green.shade400],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
                             borderRadius:
                             BorderRadius.circular(25), // Rounded corners
                             boxShadow: [
                               BoxShadow(
-                                color: Color(0xFF00BFA6), // Shadow Color
-                                spreadRadius: 2, // Spread (Kitna failaaye)
-                                blurRadius: 6.5, // Blur (Kitna soft ho)
+                                color:Colors.green.shade300, // Shadow Color
+                                // spreadRadius: 2, // Spread (Kitna failaaye)
+                                blurRadius: 5, // Blur (Kitna soft ho)
                                 offset:
-                                Offset(0, 5), // Shadow ka direction (X, Y)
+                                Offset(0, 4), // Shadow ka direction (X, Y)
                               ),
                             ],
                           ),
@@ -598,7 +601,8 @@ class _MyMainHomeState extends State<MyMainHome> {
                                       Text(
                                         '106 Days',
                                         style: TextStyle(
-                                            fontFamily: 'sans-serif-thin'),
+                                            fontFamily: 'sans-serif-thin',
+                                            fontWeight: FontWeight.bold),
                                       ),
                                       SizedBox(
                                         width: 7,
@@ -614,7 +618,8 @@ class _MyMainHomeState extends State<MyMainHome> {
                                       Text(
                                         '2 Developer\'s',
                                         style: TextStyle(
-                                            fontFamily: 'sans-serif-thin'),
+                                            fontFamily: 'sans-serif-thin',
+                                            fontWeight: FontWeight.bold),
                                       ),
                                     ],
                                   )
@@ -631,18 +636,19 @@ class _MyMainHomeState extends State<MyMainHome> {
                               height: 200,
                               width: 155,
                               decoration: BoxDecoration(
-                                // color: Color(0xFFFFC107),
-                                // color: Colors.greenAccent, // Background color
-                                color: Color(0xFFFFAB91), // Background color
+                                gradient: LinearGradient(
+                                  colors: [Colors.amber.shade50, Colors.amber.shade400],
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                ),
                                 borderRadius: BorderRadius.circular(
                                     25), // Rounded corners
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Color(0xFFFFAB91), // Shadow Color
-                                    spreadRadius: 2, // Spread (Kitna failaaye)
-                                    blurRadius: 6.5, // Blur (Kitna soft ho)
+                                    color: Colors.amber.shade300, // Shadow Color
+                                    blurRadius: 5, // Blur (Kitna soft ho)
                                     offset: Offset(
-                                        0, 5), // Shadow ka direction (X, Y)
+                                        0, 4), // Shadow ka direction (X, Y)
                                   ),
                                 ],
                               ),
@@ -695,19 +701,20 @@ class _MyMainHomeState extends State<MyMainHome> {
                           height: 200,
                           width: 190,
                           decoration: BoxDecoration(
-                            color: Colors
-                                .lightBlueAccent.shade400, // Background color
-                            // color: Colors.blueAccent[200], // Background color
+                            gradient: LinearGradient(
+                              colors: [Colors.pink.shade50, Colors.pink.shade300],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
                             borderRadius: BorderRadius.circular(25),
                             // Rounded corners
                             boxShadow: [
                               BoxShadow(
                                 color: Colors
-                                    .lightBlueAccent.shade400, // Shadow Color
-                                spreadRadius: 2, // Spread (Kitna failaaye)
-                                blurRadius: 6.5, // Blur (Kitna soft ho)
+                                    .pink.shade300, // Shadow Color
+                                blurRadius: 5, // Blur (Kitna soft ho)
                                 offset:
-                                Offset(0, 5), // Shadow ka direction (X, Y)
+                                Offset(0, 4), // Shadow ka direction (X, Y)
                               ),
                             ],
                           ),
@@ -727,7 +734,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                       SizedBox(
                                         width:
                                         MediaQuery.of(context).size.width *
-                                            0.25,
+                                            0.30,
                                       ),
                                       GestureDetector(
                                         onTap: () {
@@ -776,7 +783,8 @@ class _MyMainHomeState extends State<MyMainHome> {
                                       Text(
                                         'Events info',
                                         style: TextStyle(
-                                            fontFamily: 'sans-serif-thin'),
+                                            fontFamily: 'sans-serif-thin',
+                                            fontWeight: FontWeight.bold),
                                       ),
                                       SizedBox(
                                         width: 23,
@@ -784,7 +792,8 @@ class _MyMainHomeState extends State<MyMainHome> {
                                       Text(
                                         'Holiday\'s',
                                         style: TextStyle(
-                                            fontFamily: 'sans-serif-thin'),
+                                            fontFamily: 'sans-serif-thin',
+                                            fontWeight: FontWeight.bold),
                                       ),
                                     ],
                                   )
@@ -805,15 +814,17 @@ class _MyMainHomeState extends State<MyMainHome> {
                       height: 190,
                       width: 385,
                       decoration: BoxDecoration(
-                        color: Color(0xFFCE93D8), // Background color
-                        // color: Color(0xfffebee3), // Background color
+                        gradient: LinearGradient(
+                          colors: [Colors.deepPurple.shade300,Colors.deepPurple.shade50],
+                          begin: Alignment.topRight,
+                          end: Alignment.bottomLeft,
+                        ),
                         borderRadius: BorderRadius.circular(30),
                         boxShadow: [
                           BoxShadow(
-                            color: Color(0xFFCE93D8), // Shadow Color
-                            spreadRadius: 2, // Spread (Kitna failaaye)
-                            blurRadius: 6.5, // Blur (Kitna soft ho)
-                            offset: Offset(0, 5), // Shadow ka direction (X, Y)
+                            color: Colors.deepPurple.shade300, // Shadow Color
+                            blurRadius: 5, // Blur (Kitna soft ho)
+                            offset: Offset(0, 4), // Shadow ka direction (X, Y)
                           ),
                         ], // Rounded corners
                       ),

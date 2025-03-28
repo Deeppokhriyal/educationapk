@@ -306,7 +306,7 @@ class LeaveStatusPage extends StatelessWidget {
             .where('submitBy', isEqualTo: currentUserId) // ✅ Filtering by user
             .snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (!snapshot.hasData) return Center(child: SpinKitWaveSpinner(color: Colors.deepPurpleAccent,size: 50.0,));
+          if (!snapshot.hasData) return Center(child: SpinKitPulse(color: Colors.deepPurpleAccent,size: 50.0,));
 
           if (snapshot.data!.docs.isEmpty) {
             return Center(

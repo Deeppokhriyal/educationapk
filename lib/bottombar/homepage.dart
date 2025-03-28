@@ -432,7 +432,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                   Row(
                     children: [
                       Text(
-                        "    Let's Explore\n        The Polyverse",
+                        "Let's Explore\n            The Polyverse",
                         style: TextStyle(
                             fontSize: 42,
                             fontFamily: 'sans-serif-thin',

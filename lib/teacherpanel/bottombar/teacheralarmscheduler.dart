@@ -1,5 +1,4 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:educationapk/main.dart';
 import 'package:educationapk/teacherpanel/bottombar/teacherbottom.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,7 +16,6 @@ class _TeacheralarmschedulerState extends State<Teacheralarmscheduler> {
   TextEditingController descriptionController = TextEditingController();
   int taskCounter = 1;
 
-  @override
   bool get wantKeepAlive => true; // Keeps widget alive
 
   @override
@@ -127,7 +125,7 @@ class _TeacheralarmschedulerState extends State<Teacheralarmscheduler> {
                           onTap: () {
                             Get.offAll(() => Teacherbar());
                           },
-                          child: const Icon(Icons.arrow_back, size: 35),
+                          child: const Icon(Icons.arrow_back_ios, size: 30),
                         ),
                         const SizedBox(width: 20),
                         const Text(

@@ -1,8 +1,11 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/main.dart';
+import 'package:educationapk/teacherpanel/bottombar/teacherbottom.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class EventUpload extends StatefulWidget {
   const EventUpload({Key? key}) : super(key: key);
@@ -90,13 +93,15 @@ class _EventUploadState extends State<EventUpload> {
                     Row(
                       children: [
                         IconButton(
-                          onPressed: () => Navigator.pop(context),
+                          onPressed: (){
+                            Get.offAll(() => Teacherbar());
+                          },
                           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
                         ),
                         const Text(
                           'Upload Upcoming Event',
                           style: TextStyle(
-                            fontFamily: 'nexalight.heavy',
+                            fontFamily: 'nexaheavy',
                             fontSize: 23,
                             color: Colors.white,
                           ),
@@ -116,23 +121,26 @@ class _EventUploadState extends State<EventUpload> {
                                 label: 'Enter Event Name',
                                 validator: (value) => value!.isEmpty ? 'Enter the event name' : null,
                               ),
+                              SizedBox(height: 5,),
                               buildDatePickerField(
                                 controller: _startDateController,
                                 label: 'Starting Date',
                                 onTap: () => _pickDate(_startDateController),
                               ),
+                              SizedBox(height: 5,),
                               buildDatePickerField(
                                 controller: _endDateController,
                                 label: 'Ending Date',
                                 onTap: () => _pickDate(_endDateController),
                               ),
+                              SizedBox(height: 5,),
                               buildTextField(
                                 controller: _descriptionController,
                                 label: 'Description',
-                                maxLines: 3,
+                                maxLines: 5,
                                 validator: (value) => value!.isEmpty ? 'Enter event description' : null,
                               ),
-                              const SizedBox(height: 20),
+                              const SizedBox(height: 25),
                               ElevatedButton(
                                 onPressed: uploadEvent,
                                 style: ElevatedButton.styleFrom(

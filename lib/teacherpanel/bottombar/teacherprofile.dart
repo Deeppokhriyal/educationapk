@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/bottombar/profilepage.dart';
@@ -10,9 +9,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../main.dart';
-
 
 class Teacherprofile extends StatefulWidget {
   @override
@@ -22,7 +19,7 @@ class Teacherprofile extends StatefulWidget {
 class _TeacherprofileState extends State<Teacherprofile> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
-  String name = "Loading...";
+  String name = "";
   String profileImage = "";
   String qualification = "";
   String previousrole = "";
@@ -41,7 +38,6 @@ class _TeacherprofileState extends State<Teacherprofile> {
     });
   }
 
-
   void getProfileImage() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? storedImage = prefs.getString('profileImage');
@@ -58,18 +54,24 @@ class _TeacherprofileState extends State<Teacherprofile> {
     if (user != null) {
       DocumentSnapshot userData =
       await firestore.collection("users").doc(user.uid).get();
+      print("Firestore Data: ${userData.data()}"); // Debugging ke liye
+
       if (userData.exists) {
         setState(() {
-          name = userData["name"];
-          qualification = userData["qualification"];
-          previousrole = userData["previousrole"];
-          profileImage = userData["profileImage"] ?? ""; // Firestore image
+          name = userData["name"] ?? ""; // Agar name missing hai to "No Name" show ho
+          qualification = userData["qualification"] ?? "N/A";
+          previousrole = userData["previousrole"] ?? "N/A";
+          profileImage = userData["profileImage"] ?? "";
         });
 
-        // Store in SharedPreferences
+        // SharedPreferences me save karna
         SharedPreferences prefs = await SharedPreferences.getInstance();
         await prefs.setString('profileImage', profileImage);
+      } else {
+        print("Document does not exist!");
       }
+    } else {
+      print("User not found!");
     }
   }
 
@@ -99,6 +101,7 @@ class _TeacherprofileState extends State<Teacherprofile> {
                     field: controller.text,
                   });
                   setState(() {
+                    if (field == "name") name = controller.text;
                     if (field == "qualification") qualification = controller.text;
                     if (field == "previousrole") previousrole = controller.text;
                   });
@@ -153,9 +156,17 @@ class _TeacherprofileState extends State<Teacherprofile> {
                               ],
                             ),
                             SizedBox(height: 10),
-                            Text(name,
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 23,fontFamily: 'nexalight')),
+                            // name.isEmpty
+                            //     ? CircularProgressIndicator(color: Colors.blue)
+                            //     :
+                            Text(
+                              name,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 23,
+                                fontFamily: 'nexalight',
+                              ),
+                            ),
                             SizedBox(height: 10),
                             ElevatedButton(
                               onPressed: () {

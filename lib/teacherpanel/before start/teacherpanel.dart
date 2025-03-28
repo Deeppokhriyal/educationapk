@@ -17,12 +17,6 @@ class _TeacherpanelState extends State<Teacherpanel> {
   TextEditingController passwordController = TextEditingController();
 
   Future<void> signUpTeacher() async {
-    // print("DEBUG: Name: '${usernameController.text.trim()}'");
-    // print("DEBUG: Email: '${emailController.text.trim()}'");
-    // print("DEBUG: Password: '${passwordController.text.trim()}'");
-    // print("DEBUG: Selected Branch: '$selectedValue'");
-    // print("DEBUG: Selected Post: '$selectedPosts'");
-
     if (usernameController.text.isEmpty ||
     emailController.text.isEmpty ||
         passwordController.text.isEmpty ||
@@ -49,17 +43,6 @@ class _TeacherpanelState extends State<Teacherpanel> {
       );
 
       String userId = userCredential.user!.uid;
-
-      // Save data in "users" collection
-      // await FirebaseFirestore.instance
-      //     .collection('users')
-      //     .doc(userId)
-      //     .set({
-      //   'email': usernameController.text.trim(),
-      //   'branch': selectedValue,
-      //   'post': selectedPosts,
-      //   'role': 'teacher',
-      // });
 
       // Save data in "teachers" collection
       await FirebaseFirestore.instance
@@ -124,6 +107,7 @@ class _TeacherpanelState extends State<Teacherpanel> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+
       body: Stack(
         children: [
           Container(
@@ -132,15 +116,6 @@ class _TeacherpanelState extends State<Teacherpanel> {
                 image: NetworkImage('https://img.freepik.com/free-vector/blue-curve-frame-template-vector_53876-168163.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'),
                 fit: BoxFit.cover,
               ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.fromLTRB(35, 50, 260, 0),
-            child: IconButton(
-              onPressed: () {
-                Get.back();
-              },
-              icon: Icon(Icons.arrow_back_ios, size: 30, color: Colors.black),
             ),
           ),
           Container(
@@ -162,22 +137,26 @@ class _TeacherpanelState extends State<Teacherpanel> {
               child: Column(
                 children: [
                   // Dropdown for Branches
-                  DropdownButton<String>(
-                    style: TextStyle(color: Colors.blueAccent, fontSize: 20, fontFamily: 'nexalight'),
-                    borderRadius: BorderRadius.circular(35),
-                    value: selectedValue, // Current selected value
-                    hint: Text('Select Your Branch'), // Hint text
-                    items: items.map((String item) {
-                      return DropdownMenuItem<String>(
-                        value: item,
-                        child: Text(item),
-                      );
-                    }).toList(),
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        selectedValue = newValue; // Update the selected value
-                      });
-                    },
+                  SizedBox(
+                    width: double.infinity,
+                    child: DropdownButton<String>(
+                      isExpanded: true,
+                      style: TextStyle(color: Colors.blueAccent, fontSize: 20, fontFamily: 'nexalight'),
+                      borderRadius: BorderRadius.circular(35),
+                      value: selectedValue, // Current selected value
+                      hint: Text('Select Your Branch'), // Hint text
+                      items: items.map((String item) {
+                        return DropdownMenuItem<String>(
+                          value: item,
+                          child: Text(item),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedValue = newValue; // Update the selected value
+                        });
+                      },
+                    ),
                   ),
                   SizedBox(height: 30),
                   // Dropdown for Posts

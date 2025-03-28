@@ -2,6 +2,7 @@ import 'package:educationapk/allpages/Study/branches.dart';
 import 'package:educationapk/allpages/AttendancePage/attendance.dart';
 import 'package:educationapk/allpages/map.dart';
 import 'package:educationapk/allpages/programmingpage.dart';
+import 'package:educationapk/allpages/studentAssignment.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 class MainScrollPage extends StatefulWidget {
@@ -16,7 +17,7 @@ Widget build(BuildContext context) {
           children:[ Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.blueGrey, Colors.blueGrey],
+                colors: [Colors.black, Colors.lightGreen, Colors.black],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
@@ -28,17 +29,17 @@ Widget build(BuildContext context) {
                     Container(
                         padding: EdgeInsets.all(10),
                         margin: EdgeInsets.all(17),
-                        height: 130,
+                        height: 100,
                         width: 370,
                         decoration:
                         BoxDecoration(
-                          color: Colors.lightBlueAccent, // Background color
+                          color: Colors.amber, // Background color
                           borderRadius: BorderRadius.circular(20),// Rounded corners
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.lightBlueAccent, // Shadow color
-                              blurRadius: 8, // Shadow blur radius
-                              offset: Offset(0, 7), // Shadow offset
+                              color: Colors.amberAccent, // Shadow color
+                              blurRadius: 5, // Shadow blur radius
+                              offset: Offset(0, 4), // Shadow offset
                             ),
                           ],
                         ),
@@ -57,11 +58,11 @@ Widget build(BuildContext context) {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text('Study',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
-                                      Text(' Material',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
+                                      Text(' Material',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
                                     ],
                                   ),
                                   SizedBox(width: 162,),
-                                  Icon(Icons.arrow_forward_ios_outlined,size: 35,color: Colors.black),
+                                  Icon(Icons.arrow_forward_ios_outlined,size: 25,color: Colors.black),
                                 ],
                               ),
                             ],
@@ -72,17 +73,17 @@ Widget build(BuildContext context) {
                     Container(
                         padding: EdgeInsets.all(10),
                         margin: EdgeInsets.all(17),
-                        height: 130,
+                        height: 100,
                         width: 370,
                         decoration:
                         BoxDecoration(
-                          color: Colors.lightBlueAccent,  // Background color
+                          color: Colors.amber,  // Background color
                           borderRadius: BorderRadius.circular(20),// Rounded corners
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.lightBlueAccent, // Shadow color
-                              blurRadius: 8, // Shadow blur radius
-                              offset: Offset(0, 6),// Shadow offset
+                              color: Colors.amberAccent, // Shadow color
+                              blurRadius: 5, // Shadow blur radius
+                              offset: Offset(0, 4),// Shadow offset
                             ),
                           ],
                         ),
@@ -101,11 +102,11 @@ Widget build(BuildContext context) {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text('Programming',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
-                                      Text(' Languages',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
+                                      Text(' Languages',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
                                     ],
                                   ),
-                                  SizedBox(width: 89,),
-                                  Icon(Icons.arrow_forward_ios_outlined,size: 35,color: Colors.black),
+                                  SizedBox(width: 114,),
+                                  Icon(Icons.arrow_forward_ios_outlined,size: 25,color: Colors.black),
                                 ],
                               ),
                             ],
@@ -116,17 +117,17 @@ Widget build(BuildContext context) {
                     Container(
                         padding: EdgeInsets.all(10),
                         margin: EdgeInsets.all(17),
-                        height: 130,
+                        height: 100,
                         width: 370,
                         decoration:
                         BoxDecoration(
-                          color: Colors.lightBlueAccent,  // Background color
+                          color: Colors.amber,  // Background color
                           borderRadius: BorderRadius.circular(20),// Rounded corners
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.lightBlueAccent, // Shadow color
-                              blurRadius: 8, // Shadow blur radius
-                              offset: Offset(0, 6), // Shadow offset
+                              color: Colors.amberAccent, // Shadow color
+                              blurRadius: 5, // Shadow blur radius
+                              offset: Offset(0, 4), // Shadow offset
                             ),
                           ],
                         ),
@@ -145,11 +146,11 @@ Widget build(BuildContext context) {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text('Attendance',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
-                                      Text(' Tracking',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
+                                      Text(' Tracking',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
                                     ],
                                   ),
-                                  SizedBox(width: 110,),
-                                  Icon(Icons.arrow_forward_ios_outlined,size: 35,color: Colors.black),
+                                  SizedBox(width: 130,),
+                                  Icon(Icons.arrow_forward_ios_outlined,size: 25,color: Colors.black),
                                 ],
                               ),
                             ],
@@ -160,56 +161,61 @@ Widget build(BuildContext context) {
                     Container(
                         padding: EdgeInsets.all(10),
                         margin: EdgeInsets.all(17),
-                        height: 130,
+                        height: 100,
                         width: 370,
                         decoration:
                         BoxDecoration(
-                          color: Colors.lightBlueAccent,  // Background color
+                          color: Colors.amber,  // Background color
                           borderRadius: BorderRadius.circular(20),// Rounded corners
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.lightBlueAccent, // Shadow color
-                              blurRadius: 8, // Shadow blur radius
-                              offset: Offset(0, 6), // Shadow offset
+                              color: Colors.amberAccent, // Shadow color
+                              blurRadius: 5, // Shadow blur radius
+                              offset: Offset(0, 4), // Shadow offset
                             ),
                           ],
                         ),
-                        child: Column(mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Icon(Icons.account_tree_outlined,size: 45,color: Colors.black),
-                                SizedBox(width: 12,),
-                                Column(mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Branches',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
-                                    Text(' Detail\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
-                                  ],
-                                ),
-                                SizedBox(width: 128,),
-                                Icon(Icons.arrow_forward_ios_outlined,size: 35,color: Colors.black),
-                              ],
-                            ),
-                          ],
+                        child: GestureDetector(
+                          onTap: (){
+                            Get.to((StudentAssignment()));
+                          },
+                          child: Column(mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.my_library_books,size: 45,color: Colors.black),
+                                  SizedBox(width: 12,),
+                                  Column(mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Assignments',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
+                                      Text(' Detail\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
+                                    ],
+                                  ),
+                                  SizedBox(width: 118,),
+                                  Icon(Icons.arrow_forward_ios_outlined,size: 25,color: Colors.black),
+                                ],
+                              ),
+                            ],
+                          ),
                         )
                     ),
                     SizedBox(height: 15,),
                     Container(
                         padding: EdgeInsets.all(10),
                         margin: EdgeInsets.all(17),
-                        height: 130,
+                        height: 100,
                         width: 370,
                         decoration:
                         BoxDecoration(
-                          color: Colors.lightBlueAccent,  // Background color
+                          color: Colors.amber,  // Background color
                           borderRadius: BorderRadius.circular(20),// Rounded corners
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.lightBlueAccent, // Shadow color
-                              blurRadius: 8, // Shadow blur radius
-                              offset: Offset(0, 6), // Shadow offset
+                              color: Colors.amberAccent, // Shadow color
+                              blurRadius: 5, // Shadow blur radius
+                              offset: Offset(0, 4), // Shadow offset
                             ),
                           ],
                         ),
@@ -229,11 +235,11 @@ Widget build(BuildContext context) {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text('Map',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
-                                      Text(' Govt. Poly Kashipur',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
+                                      Text(' Govt. Poly Kashipur',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
                                     ],
                                   ),
-                                  SizedBox(width: 105,),
-                                  Icon(Icons.arrow_forward_ios_outlined,size: 35,color: Colors.black),
+                                  SizedBox(width: 84,),
+                                  Icon(Icons.arrow_forward_ios_outlined,size: 25,color: Colors.black),
                                 ],
                               ),
                             ],
@@ -244,17 +250,17 @@ Widget build(BuildContext context) {
                     Container(
                         padding: EdgeInsets.all(10),
                         margin: EdgeInsets.all(17),
-                        height: 130,
+                        height: 100,
                         width: 370,
                         decoration:
                         BoxDecoration(
-                          color: Colors.lightBlueAccent, // Background color
+                          color: Colors.amber, // Background color
                           borderRadius: BorderRadius.circular(20),// Rounded corners
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.lightBlueAccent, // Shadow color
-                              blurRadius: 8, // Shadow blur radius
-                              offset: Offset(0, 6), // Shadow offset
+                              color: Colors.amberAccent, // Shadow color
+                              blurRadius: 5, // Shadow blur radius
+                              offset: Offset(0, 4), // Shadow offset
                             ),
                           ],
                         ),
@@ -269,11 +275,11 @@ Widget build(BuildContext context) {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text('Hostels',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
-                                    Text('Information',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
+                                    Text('Information',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
                                   ],
                                 ),
                                 SizedBox(width: 144,),
-                                Icon(Icons.arrow_forward_ios_outlined,size: 35,color: Colors.black),
+                                Icon(Icons.arrow_forward_ios_outlined,size: 25,color: Colors.black),
                               ],
                             ),
                           ],

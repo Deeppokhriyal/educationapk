@@ -40,6 +40,747 @@ class _ProgrammingpageState extends State<Programmingpage> {
               ),
               SlideInRight(
                 duration: Duration(milliseconds: 500),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Cpage()),
+                    );
+                  },
+                  child: Container(
+                      padding: EdgeInsets.all(10),
+                      margin: EdgeInsets.all(17),
+                      height: 110,
+                      width: 370,
+                      decoration: BoxDecoration(
+                        color: Colors.white, // Background color
+                        borderRadius: BorderRadius.circular(20), // Rounded corners
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey, // Shadow color
+                            blurRadius: 5, // Shadow blur radius
+                            offset: Offset(0, 3), // Shadow offset
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Image(
+                                image: AssetImage('assets/logos/C logo.png'),
+                                height: 46,
+                                width: 50,
+                              ),
+                              SizedBox(
+                                width: 12,
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'C',
+                                    style: TextStyle(
+                                        fontFamily: 'sans-serif-light',
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    ' Programming Language',
+                                    style: TextStyle(
+                                        fontFamily: 'sans-serif-thin',
+                                        fontSize: 13),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                width: 89,
+                              ),
+                            ],
+                          ),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: 34,
+                                ),
+                                Text(
+                                  'Dennis Ritchie',
+                                  style: TextStyle(
+                                      fontFamily: 'sans-serif-light',
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.normal),
+                                ),
+                                SizedBox(
+                                  width: 130,
+                                ),
+                                Text(
+                                  ' 1970',
+                                  style: TextStyle(
+                                      fontFamily: 'sans-serif-light', fontSize: 13),
+                                ),
+                              ]),
+                        ],
+                      )
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              SlideInRight(
+                duration: Duration(milliseconds: 600),
+                child: GestureDetector(
+                  onTap:  () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Htmlpage()),
+                    );
+                  },
+                  child: Container(
+                      padding: EdgeInsets.all(10),
+                      margin: EdgeInsets.all(17),
+                      height: 110,
+                      width: 370,
+                      decoration: BoxDecoration(
+                        color: Colors.white, // Background color
+                        borderRadius: BorderRadius.circular(20), // Rounded corners
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey, // Shadow color
+                            blurRadius: 5, // Shadow blur radius
+                            offset: Offset(0, 3), // Shadow offset
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Image(
+                                image: AssetImage('assets/logos/html logo.png'),
+                                height: 46,
+                                width: 50,
+                              ),
+                              SizedBox(
+                                width: 12,
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'HTML',
+                                    style: TextStyle(
+                                        fontFamily: 'sans-serif-light',
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    ' Hypertext Markup Language',
+                                    style: TextStyle(
+                                        fontFamily: 'sans-serif-thin',
+                                        fontSize: 13),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                width: 68,
+                              ),
+                            ],
+                          ),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: 34,
+                                ),
+                                Text(
+                                  'Tim Berners-Lee',
+                                  style: TextStyle(
+                                      fontFamily: 'sans-serif-light',
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.normal),
+                                ),
+                                SizedBox(
+                                  width: 130,
+                                ),
+                                Text(
+                                  ' 1990',
+                                  style: TextStyle(
+                                      fontFamily: 'sans-serif-light', fontSize: 13),
+                                ),
+                              ]),
+                        ],
+                      )),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              SlideInRight(
+                duration: Duration(milliseconds: 700),
+                child: GestureDetector(
+                  onTap:() {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Csspage()),
+                    );
+                  },
+                  child: Container(
+                      padding: EdgeInsets.all(10),
+                      margin: EdgeInsets.all(17),
+                      height: 110,
+                      width: 370,
+                      decoration: BoxDecoration(
+                        color: Colors.white, // Background color
+                        borderRadius: BorderRadius.circular(20), // Rounded corners
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey, // Shadow color
+                            blurRadius: 5, // Shadow blur radius
+                            offset: Offset(0, 3), // Shadow offset
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Image(
+                                image: AssetImage('assets/logos/css logo.png'),
+                                height: 46,
+                                width: 50,
+                              ),
+                              SizedBox(
+                                width: 12,
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'CSS',
+                                    style: TextStyle(
+                                        fontFamily: 'sans-serif-light',
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    ' Stylesheet Language',
+                                    style: TextStyle(
+                                        fontFamily: 'sans-serif-thin',
+                                        fontSize: 13),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                width: 89,
+                              ),
+                            ],
+                          ),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: 34,
+                                ),
+                                Text(
+                                  'Hakon Wium Lie',
+                                  style: TextStyle(
+                                      fontFamily: 'sans-serif-light',
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.normal),
+                                ),
+                                SizedBox(
+                                  width: 130,
+                                ),
+                                Text(
+                                  ' 1994',
+                                  style: TextStyle(
+                                      fontFamily: 'sans-serif-light', fontSize: 13),
+                                ),
+                              ]),
+                        ],
+                      )),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              SlideInRight(
+                duration: Duration(milliseconds: 600),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Jspage()),
+                    );
+                  },
+                  child: Container(
+                      padding: EdgeInsets.all(10),
+                      margin: EdgeInsets.all(17),
+                      height: 110,
+                      width: 370,
+                      decoration: BoxDecoration(
+                        color: Colors.white, // Background color
+                        borderRadius: BorderRadius.circular(20), // Rounded corners
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey, // Shadow color
+                            blurRadius: 5, // Shadow blur radius
+                            offset: Offset(0, 3), // Shadow offset
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Image(
+                                image: AssetImage('assets/logos/jssbg.png'),
+                                height: 50,
+                                width: 50,
+                              ),
+                              SizedBox(
+                                width: 12,
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'JS',
+                                    style: TextStyle(
+                                        fontFamily: 'sans-serif-light',
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    'Interpreted Programming Language',
+                                    style: TextStyle(
+                                        fontFamily: 'sans-serif-thin',
+                                        fontSize: 13),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                width: 8,
+                              ),
+                            ],
+                          ),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: 34,
+                                ),
+                                Text(
+                                  'Brendan Eichin',
+                                  style: TextStyle(
+                                      fontFamily: 'sans-serif-light',
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.normal),
+                                ),
+                                SizedBox(
+                                  width: 130,
+                                ),
+                                Text(
+                                  ' 1995',
+                                  style: TextStyle(
+                                      fontFamily: 'sans-serif-light', fontSize: 13),
+                                ),
+                              ]),
+                        ],
+                      )),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              SlideInRight(
+                duration: Duration(milliseconds: 900),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CCpage()),
+                    );
+                  },
+                  child: Container(
+                      padding: EdgeInsets.all(10),
+                      margin: EdgeInsets.all(17),
+                      height: 110,
+                      width: 370,
+                      decoration: BoxDecoration(
+                        color: Colors.white, // Background color
+                        borderRadius: BorderRadius.circular(20), // Rounded corners
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey, // Shadow color
+                            blurRadius: 5, // Shadow blur radius
+                            offset: Offset(0, 3), // Shadow offset
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Image(
+                                image: AssetImage('assets/logos/C++ logo.png'),
+                                height: 46,
+                                width: 50,
+                              ),
+                              SizedBox(
+                                width: 12,
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'C++',
+                                    style: TextStyle(
+                                        fontFamily: 'sans-serif-light',
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    ' Programming language',
+                                    style: TextStyle(
+                                        fontFamily: 'sans-serif-thin',
+                                        fontSize: 13),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                width: 89,
+                              ),
+                            ],
+                          ),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: 34,
+                                ),
+                                Text(
+                                  'Bajarne Stroustrup',
+                                  style: TextStyle(
+                                      fontFamily: 'sans-serif-light',
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.normal),
+                                ),
+                                SizedBox(
+                                  width: 100,
+                                ),
+                                Text(
+                                  ' 1985',
+                                  style: TextStyle(
+                                      fontFamily: 'sans-serif-light', fontSize: 13),
+                                ),
+                              ]),
+                        ],
+                      )),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              SlideInRight(
+                duration: Duration(milliseconds: 1000),
+                child: GestureDetector(
+                  onTap:  () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Pythonpage()),
+                    );
+                  },
+                  child: Container(
+                      padding: EdgeInsets.all(10),
+                      margin: EdgeInsets.all(17),
+                      height: 110,
+                      width: 370,
+                      decoration: BoxDecoration(
+                        color: Colors.white, // Background color
+                        borderRadius: BorderRadius.circular(20), // Rounded corners
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey, // Shadow color
+                            blurRadius: 5, // Shadow blur radius
+                            offset: Offset(0, 3), // Shadow offset
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Image(
+                                image: AssetImage('assets/logos/python logo.png'),
+                                height: 46,
+                                width: 50,
+                              ),
+                              SizedBox(
+                                width: 12,
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Python',
+                                    style: TextStyle(
+                                        fontFamily: 'sans-serif-light',
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  // Text(' Programming language',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
+                                ],
+                              ),
+                              SizedBox(
+                                width: 155,
+                              ),
+                            ],
+                          ),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: 34,
+                                ),
+                                Text(
+                                  'Guido Van Rossum',
+                                  style: TextStyle(
+                                      fontFamily: 'sans-serif-light',
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.normal),
+                                ),
+                                SizedBox(
+                                  width: 110,
+                                ),
+                                Text(
+                                  ' 1989',
+                                  style: TextStyle(
+                                      fontFamily: 'sans-serif-light', fontSize: 13),
+                                ),
+                              ]),
+                        ],
+                      )),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              SlideInRight(
+                duration: Duration(milliseconds: 1100),
+                child: GestureDetector(
+                  onTap:() {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Javapage()),
+                    );
+                  } ,
+                  child: Container(
+                      padding: EdgeInsets.all(10),
+                      margin: EdgeInsets.all(17),
+                      height: 110,
+                      width: 370,
+                      decoration: BoxDecoration(
+                        color: Colors.white, // Background color
+                        borderRadius: BorderRadius.circular(20), // Rounded corners
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey, // Shadow color
+                            blurRadius: 5, // Shadow blur radius
+                            offset: Offset(0, 3), // Shadow offset
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Image(
+                                image: AssetImage('assets/logos/java logo.png'),
+                                height: 46,
+                                width: 50,
+                              ),
+                              SizedBox(
+                                width: 12,
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Java',
+                                    style: TextStyle(
+                                        fontFamily: 'sans-serif-light',
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  // Text(' Programming language',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
+                                ],
+                              ),
+                              SizedBox(
+                                width: 168,
+                              ),
+                            ],
+                          ),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: 34,
+                                ),
+                                Text(
+                                  'James Gosling',
+                                  style: TextStyle(
+                                      fontFamily: 'sans-serif-light',
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.normal),
+                                ),
+                                SizedBox(
+                                  width: 130,
+                                ),
+                                Text(
+                                  ' 1995',
+                                  style: TextStyle(
+                                      fontFamily: 'sans-serif-light', fontSize: 13),
+                                ),
+                              ]),
+                        ],
+                      )),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              SlideInRight(
+                duration: Duration(milliseconds: 1200),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Phppage()),
+                    );
+                  },
+                  child: Container(
+                      padding: EdgeInsets.all(10),
+                      margin: EdgeInsets.all(17),
+                      height: 110,
+                      width: 370,
+                      decoration: BoxDecoration(
+                        color: Colors.white, // Background color
+                        borderRadius: BorderRadius.circular(20), // Rounded corners
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey, // Shadow color
+                            blurRadius: 5, // Shadow blur radius
+                            offset: Offset(0, 3), // Shadow offset
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Image(
+                                image: AssetImage('assets/logos/php logo.png'),
+                                height: 46,
+                                width: 50,
+                              ),
+                              SizedBox(
+                                width: 12,
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'PHP',
+                                    style: TextStyle(
+                                        fontFamily: 'sans-serif-light',
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    ' Hypertext Preprocessor',
+                                    style: TextStyle(
+                                        fontFamily: 'sans-serif-thin',
+                                        fontSize: 13),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                width: 89,
+                              ),
+                            ],
+                          ),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: 34,
+                                ),
+                                Text(
+                                  'Rasmus Lerdorf',
+                                  style: TextStyle(
+                                      fontFamily: 'sans-serif-light',
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.normal),
+                                ),
+                                SizedBox(
+                                  width: 130,
+                                ),
+                                Text(
+                                  ' 1994',
+                                  style: TextStyle(
+                                      fontFamily: 'sans-serif-light', fontSize: 13),
+                                ),
+                              ]),
+                        ],
+                      )),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Xmlpage()),
+                  );
+                },
                 child: Container(
                     padding: EdgeInsets.all(10),
                     margin: EdgeInsets.all(17),
@@ -63,7 +804,7 @@ class _ProgrammingpageState extends State<Programmingpage> {
                         Row(
                           children: [
                             Image(
-                              image: AssetImage('assets/logos/C logo.png'),
+                              image: AssetImage('assets/logos/xml logo.png'),
                               height: 46,
                               width: 50,
                             ),
@@ -75,14 +816,14 @@ class _ProgrammingpageState extends State<Programmingpage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'C',
+                                  'XML',
                                   style: TextStyle(
                                       fontFamily: 'sans-serif-light',
                                       fontSize: 22,
                                       fontWeight: FontWeight.bold),
                                 ),
                                 Text(
-                                  ' Programming Language',
+                                  ' Extensible Markup Language',
                                   style: TextStyle(
                                       fontFamily: 'sans-serif-thin',
                                       fontSize: 13),
@@ -90,18 +831,8 @@ class _ProgrammingpageState extends State<Programmingpage> {
                               ],
                             ),
                             SizedBox(
-                              width: 89,
+                              width: 66,
                             ),
-                            InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Cpage()),
-                                  );
-                                },
-                                child: Icon(Icons.arrow_forward_ios_outlined,
-                                    size: 20, color: Colors.black)),
                           ],
                         ),
                         Row(
@@ -111,7 +842,7 @@ class _ProgrammingpageState extends State<Programmingpage> {
                                 height: 34,
                               ),
                               Text(
-                                'Dennis Ritchie',
+                                'Charles Goldfarb',
                                 style: TextStyle(
                                     fontFamily: 'sans-serif-light',
                                     fontSize: 20,
@@ -132,8 +863,14 @@ class _ProgrammingpageState extends State<Programmingpage> {
               SizedBox(
                 height: 10,
               ),
-              SlideInRight(
-                duration: Duration(milliseconds: 600),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => net_page()),
+                  );
+                },
                 child: Container(
                     padding: EdgeInsets.all(10),
                     margin: EdgeInsets.all(17),
@@ -157,7 +894,7 @@ class _ProgrammingpageState extends State<Programmingpage> {
                         Row(
                           children: [
                             Image(
-                              image: AssetImage('assets/logos/html logo.png'),
+                              image: AssetImage('assets/logos/.net logo.png'),
                               height: 46,
                               width: 50,
                             ),
@@ -169,14 +906,14 @@ class _ProgrammingpageState extends State<Programmingpage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'HTML',
+                                  '. Net',
                                   style: TextStyle(
                                       fontFamily: 'sans-serif-light',
                                       fontSize: 22,
                                       fontWeight: FontWeight.bold),
                                 ),
                                 Text(
-                                  ' Hypertext Markup Language',
+                                  ' Dot Net',
                                   style: TextStyle(
                                       fontFamily: 'sans-serif-thin',
                                       fontSize: 13),
@@ -184,18 +921,8 @@ class _ProgrammingpageState extends State<Programmingpage> {
                               ],
                             ),
                             SizedBox(
-                              width: 68,
+                              width: 179,
                             ),
-                            InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Htmlpage()),
-                                  );
-                                },
-                                child: Icon(Icons.arrow_forward_ios_outlined,
-                                    size: 20, color: Colors.black)),
                           ],
                         ),
                         Row(
@@ -205,17 +932,17 @@ class _ProgrammingpageState extends State<Programmingpage> {
                                 height: 34,
                               ),
                               Text(
-                                'Tim Berners-Lee',
+                                'Microsoft',
                                 style: TextStyle(
                                     fontFamily: 'sans-serif-light',
                                     fontSize: 20,
                                     fontWeight: FontWeight.normal),
                               ),
                               SizedBox(
-                                width: 130,
+                                width: 180,
                               ),
                               Text(
-                                ' 1990',
+                                ' 2002',
                                 style: TextStyle(
                                     fontFamily: 'sans-serif-light', fontSize: 13),
                               ),
@@ -223,742 +950,6 @@ class _ProgrammingpageState extends State<Programmingpage> {
                       ],
                     )),
               ),
-              SizedBox(
-                height: 10,
-              ),
-              SlideInRight(
-                duration: Duration(milliseconds: 700),
-                child: Container(
-                    padding: EdgeInsets.all(10),
-                    margin: EdgeInsets.all(17),
-                    height: 110,
-                    width: 370,
-                    decoration: BoxDecoration(
-                      color: Colors.white, // Background color
-                      borderRadius: BorderRadius.circular(20), // Rounded corners
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey, // Shadow color
-                          blurRadius: 5, // Shadow blur radius
-                          offset: Offset(0, 3), // Shadow offset
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Image(
-                              image: AssetImage('assets/logos/css logo.png'),
-                              height: 46,
-                              width: 50,
-                            ),
-                            SizedBox(
-                              width: 12,
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'CSS',
-                                  style: TextStyle(
-                                      fontFamily: 'sans-serif-light',
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Text(
-                                  ' Stylesheet Language',
-                                  style: TextStyle(
-                                      fontFamily: 'sans-serif-thin',
-                                      fontSize: 13),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 89,
-                            ),
-                            InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Csspage()),
-                                  );
-                                },
-                                child: Icon(Icons.arrow_forward_ios_outlined,
-                                    size: 20, color: Colors.black)),
-                          ],
-                        ),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: 34,
-                              ),
-                              Text(
-                                'Hakon Wium Lie',
-                                style: TextStyle(
-                                    fontFamily: 'sans-serif-light',
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.normal),
-                              ),
-                              SizedBox(
-                                width: 130,
-                              ),
-                              Text(
-                                ' 1994',
-                                style: TextStyle(
-                                    fontFamily: 'sans-serif-light', fontSize: 13),
-                              ),
-                            ]),
-                      ],
-                    )),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              SlideInRight(
-                duration: Duration(milliseconds: 600),
-                child: Container(
-                    padding: EdgeInsets.all(10),
-                    margin: EdgeInsets.all(17),
-                    height: 110,
-                    width: 370,
-                    decoration: BoxDecoration(
-                      color: Colors.white, // Background color
-                      borderRadius: BorderRadius.circular(20), // Rounded corners
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey, // Shadow color
-                          blurRadius: 5, // Shadow blur radius
-                          offset: Offset(0, 3), // Shadow offset
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Image(
-                              image: AssetImage('assets/logos/jssbg.png'),
-                              height: 50,
-                              width: 50,
-                            ),
-                            SizedBox(
-                              width: 12,
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'JS',
-                                  style: TextStyle(
-                                      fontFamily: 'sans-serif-light',
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Text(
-                                  'Interpreted Programming Language',
-                                  style: TextStyle(
-                                      fontFamily: 'sans-serif-thin',
-                                      fontSize: 13),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 8,
-                            ),
-                            InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Jspage()),
-                                  );
-                                },
-                                child: Icon(Icons.arrow_forward_ios_outlined,
-                                    size: 20, color: Colors.black)),
-                          ],
-                        ),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: 34,
-                              ),
-                              Text(
-                                'Brendan Eichin',
-                                style: TextStyle(
-                                    fontFamily: 'sans-serif-light',
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.normal),
-                              ),
-                              SizedBox(
-                                width: 130,
-                              ),
-                              Text(
-                                ' 1995',
-                                style: TextStyle(
-                                    fontFamily: 'sans-serif-light', fontSize: 13),
-                              ),
-                            ]),
-                      ],
-                    )),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              SlideInRight(
-                duration: Duration(milliseconds: 900),
-                child: Container(
-                    padding: EdgeInsets.all(10),
-                    margin: EdgeInsets.all(17),
-                    height: 110,
-                    width: 370,
-                    decoration: BoxDecoration(
-                      color: Colors.white, // Background color
-                      borderRadius: BorderRadius.circular(20), // Rounded corners
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey, // Shadow color
-                          blurRadius: 5, // Shadow blur radius
-                          offset: Offset(0, 3), // Shadow offset
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Image(
-                              image: AssetImage('assets/logos/C++ logo.png'),
-                              height: 46,
-                              width: 50,
-                            ),
-                            SizedBox(
-                              width: 12,
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'C++',
-                                  style: TextStyle(
-                                      fontFamily: 'sans-serif-light',
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Text(
-                                  ' Programming language',
-                                  style: TextStyle(
-                                      fontFamily: 'sans-serif-thin',
-                                      fontSize: 13),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 89,
-                            ),
-                            InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => CCpage()),
-                                  );
-                                },
-                                child: Icon(Icons.arrow_forward_ios_outlined,
-                                    size: 20, color: Colors.black)),
-                          ],
-                        ),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: 34,
-                              ),
-                              Text(
-                                'Bajarne Stroustrup',
-                                style: TextStyle(
-                                    fontFamily: 'sans-serif-light',
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.normal),
-                              ),
-                              SizedBox(
-                                width: 100,
-                              ),
-                              Text(
-                                ' 1985',
-                                style: TextStyle(
-                                    fontFamily: 'sans-serif-light', fontSize: 13),
-                              ),
-                            ]),
-                      ],
-                    )),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              SlideInRight(
-                duration: Duration(milliseconds: 1000),
-                child: Container(
-                    padding: EdgeInsets.all(10),
-                    margin: EdgeInsets.all(17),
-                    height: 110,
-                    width: 370,
-                    decoration: BoxDecoration(
-                      color: Colors.white, // Background color
-                      borderRadius: BorderRadius.circular(20), // Rounded corners
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey, // Shadow color
-                          blurRadius: 5, // Shadow blur radius
-                          offset: Offset(0, 3), // Shadow offset
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Image(
-                              image: AssetImage('assets/logos/python logo.png'),
-                              height: 46,
-                              width: 50,
-                            ),
-                            SizedBox(
-                              width: 12,
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Python',
-                                  style: TextStyle(
-                                      fontFamily: 'sans-serif-light',
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                // Text(' Programming language',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 155,
-                            ),
-                            InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Pythonpage()),
-                                  );
-                                },
-                                child: Icon(Icons.arrow_forward_ios_outlined,
-                                    size: 20, color: Colors.black)),
-                          ],
-                        ),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: 34,
-                              ),
-                              Text(
-                                'Guido Van Rossum',
-                                style: TextStyle(
-                                    fontFamily: 'sans-serif-light',
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.normal),
-                              ),
-                              SizedBox(
-                                width: 110,
-                              ),
-                              Text(
-                                ' 1989',
-                                style: TextStyle(
-                                    fontFamily: 'sans-serif-light', fontSize: 13),
-                              ),
-                            ]),
-                      ],
-                    )),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              SlideInRight(
-                duration: Duration(milliseconds: 1100),
-                child: Container(
-                    padding: EdgeInsets.all(10),
-                    margin: EdgeInsets.all(17),
-                    height: 110,
-                    width: 370,
-                    decoration: BoxDecoration(
-                      color: Colors.white, // Background color
-                      borderRadius: BorderRadius.circular(20), // Rounded corners
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey, // Shadow color
-                          blurRadius: 5, // Shadow blur radius
-                          offset: Offset(0, 3), // Shadow offset
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Image(
-                              image: AssetImage('assets/logos/java logo.png'),
-                              height: 46,
-                              width: 50,
-                            ),
-                            SizedBox(
-                              width: 12,
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Java',
-                                  style: TextStyle(
-                                      fontFamily: 'sans-serif-light',
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                // Text(' Programming language',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 168,
-                            ),
-                            InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Javapage()),
-                                  );
-                                },
-                                child: Icon(Icons.arrow_forward_ios_outlined,
-                                    size: 20, color: Colors.black)),
-                          ],
-                        ),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: 34,
-                              ),
-                              Text(
-                                'James Gosling',
-                                style: TextStyle(
-                                    fontFamily: 'sans-serif-light',
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.normal),
-                              ),
-                              SizedBox(
-                                width: 130,
-                              ),
-                              Text(
-                                ' 1995',
-                                style: TextStyle(
-                                    fontFamily: 'sans-serif-light', fontSize: 13),
-                              ),
-                            ]),
-                      ],
-                    )),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              SlideInRight(
-                duration: Duration(milliseconds: 1200),
-                child: Container(
-                    padding: EdgeInsets.all(10),
-                    margin: EdgeInsets.all(17),
-                    height: 110,
-                    width: 370,
-                    decoration: BoxDecoration(
-                      color: Colors.white, // Background color
-                      borderRadius: BorderRadius.circular(20), // Rounded corners
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey, // Shadow color
-                          blurRadius: 5, // Shadow blur radius
-                          offset: Offset(0, 3), // Shadow offset
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Image(
-                              image: AssetImage('assets/logos/php logo.png'),
-                              height: 46,
-                              width: 50,
-                            ),
-                            SizedBox(
-                              width: 12,
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'PHP',
-                                  style: TextStyle(
-                                      fontFamily: 'sans-serif-light',
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Text(
-                                  ' Hypertext Preprocessor',
-                                  style: TextStyle(
-                                      fontFamily: 'sans-serif-thin',
-                                      fontSize: 13),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 89,
-                            ),
-                            InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Phppage()),
-                                  );
-                                },
-                                child: Icon(Icons.arrow_forward_ios_outlined,
-                                    size: 20, color: Colors.black)),
-                          ],
-                        ),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: 34,
-                              ),
-                              Text(
-                                'Rasmus Lerdorf',
-                                style: TextStyle(
-                                    fontFamily: 'sans-serif-light',
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.normal),
-                              ),
-                              SizedBox(
-                                width: 130,
-                              ),
-                              Text(
-                                ' 1994',
-                                style: TextStyle(
-                                    fontFamily: 'sans-serif-light', fontSize: 13),
-                              ),
-                            ]),
-                      ],
-                    )),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                  padding: EdgeInsets.all(10),
-                  margin: EdgeInsets.all(17),
-                  height: 110,
-                  width: 370,
-                  decoration: BoxDecoration(
-                    color: Colors.white, // Background color
-                    borderRadius: BorderRadius.circular(20), // Rounded corners
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey, // Shadow color
-                        blurRadius: 5, // Shadow blur radius
-                        offset: Offset(0, 3), // Shadow offset
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Image(
-                            image: AssetImage('assets/logos/xml logo.png'),
-                            height: 46,
-                            width: 50,
-                          ),
-                          SizedBox(
-                            width: 12,
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'XML',
-                                style: TextStyle(
-                                    fontFamily: 'sans-serif-light',
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                ' Extensible Markup Language',
-                                style: TextStyle(
-                                    fontFamily: 'sans-serif-thin',
-                                    fontSize: 13),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            width: 66,
-                          ),
-                          InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Xmlpage()),
-                                );
-                              },
-                              child: Icon(Icons.arrow_forward_ios_outlined,
-                                  size: 20, color: Colors.black)),
-                        ],
-                      ),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              height: 34,
-                            ),
-                            Text(
-                              'Charles Goldfarb',
-                              style: TextStyle(
-                                  fontFamily: 'sans-serif-light',
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.normal),
-                            ),
-                            SizedBox(
-                              width: 130,
-                            ),
-                            Text(
-                              ' 1970',
-                              style: TextStyle(
-                                  fontFamily: 'sans-serif-light', fontSize: 13),
-                            ),
-                          ]),
-                    ],
-                  )),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                  padding: EdgeInsets.all(10),
-                  margin: EdgeInsets.all(17),
-                  height: 110,
-                  width: 370,
-                  decoration: BoxDecoration(
-                    color: Colors.white, // Background color
-                    borderRadius: BorderRadius.circular(20), // Rounded corners
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey, // Shadow color
-                        blurRadius: 5, // Shadow blur radius
-                        offset: Offset(0, 3), // Shadow offset
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Image(
-                            image: AssetImage('assets/logos/.net logo.png'),
-                            height: 46,
-                            width: 50,
-                          ),
-                          SizedBox(
-                            width: 12,
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '. Net',
-                                style: TextStyle(
-                                    fontFamily: 'sans-serif-light',
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                ' Dot Net',
-                                style: TextStyle(
-                                    fontFamily: 'sans-serif-thin',
-                                    fontSize: 13),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            width: 179,
-                          ),
-                          InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => net_page()),
-                                );
-                              },
-                              child: Icon(Icons.arrow_forward_ios_outlined,
-                                  size: 20, color: Colors.black)),
-                        ],
-                      ),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              height: 34,
-                            ),
-                            Text(
-                              'Microsoft',
-                              style: TextStyle(
-                                  fontFamily: 'sans-serif-light',
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.normal),
-                            ),
-                            SizedBox(
-                              width: 180,
-                            ),
-                            Text(
-                              ' 2002',
-                              style: TextStyle(
-                                  fontFamily: 'sans-serif-light', fontSize: 13),
-                            ),
-                          ]),
-                    ],
-                  )),
             ]),
           ),
         ),

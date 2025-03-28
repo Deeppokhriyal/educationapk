@@ -85,13 +85,7 @@ class StudentAssignment extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(
-            height: 160,
-            child: Image.network(
-              'https://img.icons8.com/?size=128&id=48162&format=png',
-              fit: BoxFit.cover,
-            ),
-          ),
+          Icon(Icons.my_library_books,size: 190,color: Colors.purpleAccent[100]),
           Text(
             "No Assignments Available",
             style: TextStyle(
@@ -106,7 +100,7 @@ class StudentAssignment extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.purpleAccent,
-              fontSize: 20,
+              fontSize: 25,
               fontFamily: 'nexalight',
             ),
           ),

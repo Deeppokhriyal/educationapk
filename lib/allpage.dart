@@ -193,7 +193,7 @@ Widget build(BuildContext context) {
                                       Text(' Detail\'s',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
                                     ],
                                   ),
-                                  SizedBox(width: 119,),
+                                  SizedBox(width: 118,),
                                   Icon(Icons.arrow_forward_ios_outlined,size: 25,color: Colors.black),
                                 ],
                               ),

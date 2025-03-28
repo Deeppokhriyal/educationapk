@@ -436,7 +436,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                         style: TextStyle(
                             fontSize: 42,
                             fontFamily: 'sans-serif-thin',
-                            color: Colors.black),
+                            color: Colors.black),textAlign: TextAlign.center,
                       ),
                     ],
                   ),
@@ -1149,7 +1149,7 @@ class _MyMainHomeState extends State<MyMainHome> {
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) => ChatScreen()));
         },
-        child: Icon(Icons.mark_unread_chat_alt_outlined,color: Colors.deepPurpleAccent,size: 35,),
+        child: Icon(Icons.mark_unread_chat_alt_outlined,color: Colors.lightBlueAccent,size: 35,),
         backgroundColor: Colors.white,
         shape: OvalBorder(),
 

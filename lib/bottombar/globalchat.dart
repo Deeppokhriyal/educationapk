@@ -14,6 +14,7 @@ class _ChatScreenState extends State<ChatScreen> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   void sendMessage() {
+    
     if (messageController.text.isNotEmpty) {
       _firestore.collection('messages').add({
         'text': messageController.text.trim(),
@@ -28,9 +29,15 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Global Chat",
-          style: TextStyle(fontFamily: 'nexaheavy', fontSize: 24),
+        title: Row(
+          children: [
+            Text(
+              "Poly Chat",
+              style: TextStyle(fontFamily: 'nexaheavy', fontSize: 24),
+            ),
+            SizedBox(width: 5,),
+            Icon(Icons.language_outlined,size: 35,)
+          ],
         ),
         backgroundColor: Colors.lightBlueAccent,
       ),

@@ -269,7 +269,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                           );
                         },
                         child: Container(
-                          padding: EdgeInsets.only(left: 13, top: 50),
+                          padding: EdgeInsets.only(left: 13, top: 20),
                           child:
                           CircleAvatar(
                             radius: 25,
@@ -296,7 +296,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            padding: EdgeInsets.only(top: 50),
+                            padding: EdgeInsets.only(top:20),
                             child: Text(
                               'Hii Dear,',
                               style: TextStyle(
@@ -316,7 +316,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                         ],
                       ),
                       Container(
-                        padding: EdgeInsets.only(left: 117, top: 50),
+                        padding: EdgeInsets.only(left: 117, top: 20),
                         child: PopupMenuButton<String>(
                           onSelected: (String value) {
                             // Handle menu item selection
@@ -432,7 +432,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                   Row(
                     children: [
                       Text(
-                        "Let's Explore\n            The Polyverse",
+                        "Let's Explore\n        The Polyverse",
                         style: TextStyle(
                             fontSize: 42,
                             fontFamily: 'sans-serif-thin',

@@ -72,7 +72,7 @@ class TeacherSchedulerstart extends StatelessWidget {
                           child: Container( decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(35),),
                             child: TextButton(
                               onPressed: () {
-                                Get.to(()=>TeacherAlarmScheduler());
+                                Get.to(()=>Teacheralarmscheduler());
                               },
                               child: Row( mainAxisAlignment: MainAxisAlignment.center,
                                 children: [

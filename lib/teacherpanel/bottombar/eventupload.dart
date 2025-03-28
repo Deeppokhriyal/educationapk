@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:educationapk/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -54,19 +55,14 @@ class _EventUploadState extends State<EventUpload> {
         'createdAt': FieldValue.serverTimestamp(),
       });
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Event uploaded successfully!")),
-      );
-
+      showAwesomeSnackBar(context,"Event uploaded successfully!",true);
       // Clear fields after submission
       _eventNameController.clear();
       _startDateController.clear();
       _endDateController.clear();
       _descriptionController.clear();
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Failed to upload event")),
-      );
+      showAwesomeSnackBar(context,"Failed to upload event",false);
     }
   }
 
@@ -100,7 +96,7 @@ class _EventUploadState extends State<EventUpload> {
                         const Text(
                           'Upload Upcoming Event',
                           style: TextStyle(
-                            fontFamily: 'nexalight',
+                            fontFamily: 'nexalight.heavy',
                             fontSize: 23,
                             color: Colors.white,
                           ),

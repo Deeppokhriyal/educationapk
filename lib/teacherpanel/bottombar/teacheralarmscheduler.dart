@@ -1,19 +1,24 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:educationapk/main.dart';
 import 'package:educationapk/teacherpanel/bottombar/teacherbottom.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:android_intent_plus/android_intent.dart';
 
-class TeacherAlarmScheduler extends StatefulWidget {
+class Teacheralarmscheduler extends StatefulWidget {
   @override
-  _TeacherAlarmSchedulerState createState() => _TeacherAlarmSchedulerState();
+  _TeacheralarmschedulerState createState() => _TeacheralarmschedulerState();
 }
 
-class _TeacherAlarmSchedulerState extends State<TeacherAlarmScheduler> {
+class _TeacheralarmschedulerState extends State<Teacheralarmscheduler> {
   List<Map<String, dynamic>> tasks = [];
   TimeOfDay? selectedTime;
   TextEditingController descriptionController = TextEditingController();
+  int taskCounter = 1;
+
+  @override
+  bool get wantKeepAlive => true; // Keeps widget alive
 
   @override
   void initState() {
@@ -40,7 +45,11 @@ class _TeacherAlarmSchedulerState extends State<TeacherAlarmScheduler> {
     try {
       await androidIntent.launch();
       setState(() {
-        tasks.add({'description': description, 'time': time});
+        tasks.add({
+          'taskNumber': taskCounter++, // Assign and increment task number
+          'description': description,
+          'time': time
+        });
       });
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Alarm set for ${time.format(context)}')),
@@ -71,6 +80,12 @@ class _TeacherAlarmSchedulerState extends State<TeacherAlarmScheduler> {
   void _deleteTask(int index) {
     setState(() {
       tasks.removeAt(index);
+
+      // Reassign task numbers after deletion
+      for (int i = 0; i < tasks.length; i++) {
+        tasks[i]['taskNumber'] = i + 1;
+      }
+      taskCounter = tasks.length + 1;
     });
   }
 
@@ -172,49 +187,49 @@ class _TeacherAlarmSchedulerState extends State<TeacherAlarmScheduler> {
                     ),
                   ),
                   const SizedBox(height: 45),
-    SlideInUp(
-    duration: const Duration(milliseconds: 700),
-    child:ElevatedButton(
-                    onPressed: () {
-                      if (selectedTime != null &&
-                          descriptionController.text.isNotEmpty) {
-                        _setAlarm(descriptionController.text, selectedTime!);
-                        descriptionController.clear();
-                        selectedTime = null;
-                      }
-                    },
-                    child: const Text(
-                      "Add Task",
-                      style: TextStyle(
-                        fontFamily: 'nexaheavy',
-                        fontSize: 20,
-                        color: Colors.blue,
+                  SlideInUp(
+                    duration: const Duration(milliseconds: 700),
+                    child:ElevatedButton(
+                      onPressed: () {
+                        if (selectedTime != null &&
+                            descriptionController.text.isNotEmpty) {
+                          _setAlarm(descriptionController.text, selectedTime!);
+                          descriptionController.clear();
+                          selectedTime = null;
+                        }
+                      },
+                      child: const Text(
+                        "Add Task",
+                        style: TextStyle(
+                          fontFamily: 'nexaheavy',
+                          fontSize: 20,
+                          color: Colors.blue,
+                        ),
                       ),
                     ),
                   ),
-    ),
-                      const SizedBox(height: 40),
+                  const SizedBox(height: 40),
 
-    // Task List (Fixed Layout Issues)
-    SizedBox(
-    height: 300, // Set height to prevent overflow
-    child:ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: tasks.length,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        title: Text(
-                            "${tasks[index]["taskNumber"]}. ${tasks[index]["description"]}"),
-                        subtitle: Text(tasks[index]["time"].format(context)),
-                        trailing: IconButton(
-                          icon: const Icon(Icons.delete, color: Colors.red),
-                          onPressed: () { _deleteTask(index);
-    _openAlarmApp();},
-                        ),
-                      );
-                    },
+                  // Task List (Fixed Layout Issues)
+                  SizedBox(
+                    height: 300, // Set height to prevent overflow
+                    child:ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: tasks.length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          title: Text(
+                              "${tasks[index]["taskNumber"]}. ${tasks[index]["description"]}"),
+                          subtitle: Text(tasks[index]["time"].format(context)),
+                          trailing: IconButton(
+                            icon: const Icon(Icons.delete, color: Colors.red),
+                            onPressed: () { _deleteTask(index);
+                            _openAlarmApp();},
+                          ),
+                        );
+                      },
+                    ),
                   ),
-    ),
                 ],
               ),
             ),

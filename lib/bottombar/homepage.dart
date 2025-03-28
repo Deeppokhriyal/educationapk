@@ -734,7 +734,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                       SizedBox(
                                         width:
                                         MediaQuery.of(context).size.width *
-                                            0.29,
+                                            0.23,
                                       ),
                                       GestureDetector(
                                         onTap: () {

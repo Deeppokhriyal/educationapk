@@ -19,6 +19,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../allpages/E_library.dart';
 import '../allpages/Study/branches.dart';
 
 class MyMainHome extends StatefulWidget {
@@ -34,7 +35,7 @@ class _MyMainHomeState extends State<MyMainHome> {
     "Attendance",
     "Assignments",
     "Map",
-    "Hostel",
+    "E-Library",
     "Terms and Conditions",
     "Privacy Policies",
     "Ask Help Desk ",
@@ -49,7 +50,7 @@ class _MyMainHomeState extends State<MyMainHome> {
     "Attendance",
     "Assignments",
     "Map",
-    "Hostel",
+    "E-Library",
   ];
 
   final FirebaseAuth auth = FirebaseAuth.instance;
@@ -130,8 +131,8 @@ class _MyMainHomeState extends State<MyMainHome> {
       Get.to(() => Programmingpage());
     } else if (name == "Map") {
       Get.to(() => MyMap());
-    } else if (name == "Hostel") {
-      Get.to(() => MyMap());
+    } else if (name == "E-Library") {
+      Get.to(() => ELibrary());
     } else if (name == "Terms and Conditions") {
       Get.to(() => Termscondition());
     } else if (name == "Privacy Policies") {
@@ -477,8 +478,8 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     if (Name[index] == "Map") {
                                       Get.to(() => MyMap());
                                     }
-                                    if (Name[index] == "Hostels") {
-                                      Get.to(() => MyMap());
+                                    if (Name[index] == "E-Library") {
+                                      Get.to(() => ELibrary());
                                     }
                                   },
                                   child: Container(
@@ -633,7 +634,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                               padding: EdgeInsets.all(10),
                               margin: EdgeInsets.all(15),
                               height: 200,
-                              width: 155,
+                              width: 190,
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: [Colors.amber.shade50, Colors.amber.shade400],
@@ -658,14 +659,14 @@ class _MyMainHomeState extends State<MyMainHome> {
                                       Icon(Icons.person_pin_rounded,
                                           size: 30, color: Colors.black),
                                       SizedBox(
-                                        width: 70,
+                                        width: 105,
                                       ),
                                       Icon(Icons.arrow_forward_ios_outlined,
                                           size: 28, color: Colors.black),
                                     ],
                                   ),
                                   SizedBox(
-                                    height: 20,
+                                    height: 10,
                                   ),
                                   Column(
                                     crossAxisAlignment:
@@ -675,22 +676,19 @@ class _MyMainHomeState extends State<MyMainHome> {
                                       Text(
                                         'Teachers',
                                         style: TextStyle(
-                                            fontSize: 24,
+                                            fontSize: 30,
                                             fontFamily: 'sans-serif-light',
                                             fontWeight: FontWeight.bold),
                                       ),
                                       Text(
                                         '68 Members',
                                         style: TextStyle(
-                                            fontSize: 14,
-                                            fontFamily: 'sans-serif-light',
+
+                                            fontFamily: 'sans-serif-thin',
                                             fontWeight: FontWeight.bold),
                                       ),
                                     ],
                                   ),
-                                  Row(
-                                    children: [],
-                                  )
                                 ],
                               )),
                         ),
@@ -731,25 +729,15 @@ class _MyMainHomeState extends State<MyMainHome> {
                                       Icon(Icons.event,
                                           size: 30, color: Colors.black),
                                       SizedBox(
-                                        width:
-                                        MediaQuery.of(context).size.width *
-                                            0.23,
+                                        width: 105,
                                       ),
-                                      GestureDetector(
-                                        onTap: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      EventPage()));
-                                        },
-                                        child: Icon(
+                                      Icon(
                                             Icons.arrow_forward_ios_outlined,
                                             size: 28,
                                             color: Colors.black),
-                                      ),
                                     ],
                                   ),
+                                  SizedBox(height: 10),
                                   Row(
                                     children: [
                                       Column(
@@ -766,7 +754,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                           Text(
                                             'Information',
                                             style: TextStyle(
-                                                fontSize: 28,
+                                                fontSize: 30,
                                                 fontFamily: 'sans-serif-light',
                                                 fontWeight: FontWeight.bold),
                                           ),
@@ -775,7 +763,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     ],
                                   ),
                                   SizedBox(
-                                    height: 10,
+                                    height: 7,
                                   ),
                                   Row(
                                     children: [
@@ -786,7 +774,15 @@ class _MyMainHomeState extends State<MyMainHome> {
                                             fontWeight: FontWeight.bold),
                                       ),
                                       SizedBox(
-                                        width: 23,
+                                        width: 7,
+                                      ),
+                                      Container(
+                                        height: 18,
+                                        width: 1,
+                                        color: Colors.black,
+                                      ),
+                                      SizedBox(
+                                        width: 7,
                                       ),
                                       Text(
                                         'Holiday\'s',

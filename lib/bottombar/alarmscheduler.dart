@@ -16,7 +16,6 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
   TextEditingController descriptionController = TextEditingController();
   int taskCounter = 1;
 
-  @override
   bool get wantKeepAlive => true; // Keeps widget alive
 
   @override

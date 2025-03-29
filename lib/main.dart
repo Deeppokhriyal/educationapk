@@ -9,7 +9,6 @@ import 'package:educationapk/teacherpanel/bottombar/teacherbottom.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -21,7 +20,6 @@ import 'bottombar/application.dart';
 import 'bottombar/profilepage.dart';
 import 'bottombar/schedulerstart.dart';
 import 'controllers/user_controller.dart';
-import 'dart:io' show Platform;
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 FlutterLocalNotificationsPlugin();

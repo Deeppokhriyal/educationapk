@@ -447,27 +447,26 @@ class _BugReportState extends State<BugReport> {
 
   Future<void> _submitReport() async {
     if (_titleController.text.isEmpty || _descriptionController.text.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Please fill in all fields")),
-      );
+      showAwesomeSnackBarUp(context, "Please fill in all fields",false);
       return;
     }
+    try {
+      await FirebaseFirestore.instance.collection('bug_reports').add({
+        'title': _titleController.text,
+        'description': _descriptionController.text,
+        'timestamp': FieldValue.serverTimestamp(),
+      });
 
-    await FirebaseFirestore.instance.collection('bug_reports').add({
-      'title': _titleController.text,
-      'description': _descriptionController.text,
-      'timestamp': FieldValue.serverTimestamp(),
-    });
+      showAwesomeSnackBarUp(context, "Bug report submitted successfully!", true);
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Bug report submitted successfully!")),
-    );
-
-    _titleController.clear();
-    _descriptionController.clear();
-    setState(() {
-      _image = null;
-    });
+      _titleController.clear();
+      _descriptionController.clear();
+      setState(() {
+        _image = null;
+      });
+    }catch (e) {
+      showAwesomeSnackBarUp(context,"Failed to submit bug report",false);
+    }
   }
 
   @override
@@ -570,43 +569,40 @@ class _AskHelpDeskState extends State<AskHelpDesk> {
 
   Future<void> _submitQuery() async {
     if (_queryController.text.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Please enter your query")),
-      );
+      showAwesomeSnackBar(context,"Please enter your query",false);
       return;
     }
+    try {
+      await FirebaseFirestore.instance.collection('help_desk_queries').add({
+        'query': _queryController.text,
+        'timestamp': FieldValue.serverTimestamp(),
+        'reply': "", // Initially no reply
+      });
 
-    await FirebaseFirestore.instance.collection('help_desk_queries').add({
-      'query': _queryController.text,
-      'timestamp': FieldValue.serverTimestamp(),
-      'reply': "", // Initially no reply
-    });
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Your query has been submitted!")),
-    );
-    _queryController.clear();
+      showAwesomeSnackBar(context, "Your query has been submitted!", true);
+      _queryController.clear();
+    }catch(e){
+      showAwesomeSnackBar(context, "Query not submitted", false);
+    }
   }
 
   Future<void> _submitReply(String docId) async {
     if (_replyController.text.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Please enter your reply")),
-      );
+      showAwesomeSnackBar(context,"Please enter your reply",false);
       return;
     }
-
-    await FirebaseFirestore.instance
-        .collection('help_desk_queries')
-        .doc(docId)
-        .update({
-      'reply': _replyController.text,
-    });
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Reply submitted!")),
-    );
-    _replyController.clear();
+    try {
+      await FirebaseFirestore.instance
+          .collection('help_desk_queries')
+          .doc(docId)
+          .update({
+        'reply': _replyController.text,
+      });
+      showAwesomeSnackBar(context,"Reply submitted!",true);
+      _replyController.clear();
+    }catch(e){
+      showAwesomeSnackBar(context, "Reply not submitted", false);
+    }
   }
 
   @override

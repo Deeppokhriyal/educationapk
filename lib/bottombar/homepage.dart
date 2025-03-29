@@ -18,7 +18,9 @@ import 'package:educationapk/popupmenu/termscondition.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marquee/marquee.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../allpages/E_library.dart';
 import '../allpages/Study/branches.dart';
 
@@ -146,12 +148,20 @@ class _MyMainHomeState extends State<MyMainHome> {
     }
   }
 
+  void _launchURL() async {
+    final Uri uri = Uri.parse("https://celestial-deepak.vercel.app/");
+
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      throw 'Could not launch $uri';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     // double screenWidth = MediaQuery.of(context).size.width;
     // double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.deepPurple.shade50,
+      backgroundColor: Colors.blue.shade50,
       body: FadeIn(
         duration: Duration(milliseconds: 400),
         child: ListView(children: [
@@ -159,9 +169,12 @@ class _MyMainHomeState extends State<MyMainHome> {
             Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                    colors: [Colors.deepPurple.shade50, Colors.deepPurple.shade50], // Three colors
+                    colors: [Colors.white, Colors.lightBlue.shade100,  Colors.white], // Three colors
                     begin: Alignment.topRight,
-                    end: Alignment.bottomLeft),
+                    end: Alignment.bottomLeft,
+                    stops: [0.2,0.6,0.8]
+                ),
+
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -494,7 +507,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                           color: Colors.black26, width: 1),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.deepPurple.shade800,
+                                          color: Colors.lightBlue.shade800,
                                           blurRadius: 7,
                                           offset: Offset(0, 4),
                                         ),
@@ -637,7 +650,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                               width: 190,
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
-                                  colors: [Colors.amber.shade50, Colors.amber.shade400],
+                                  colors: [Colors.amber.shade50, Colors.yellow.shade400],
                                   begin: Alignment.topLeft,
                                   end: Alignment.bottomRight,
                                 ),
@@ -645,7 +658,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     25), // Rounded corners
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.amber.shade300, // Shadow Color
+                                    color: Colors.yellow.shade300, // Shadow Color
                                     blurRadius: 5, // Blur (Kitna soft ho)
                                     offset: Offset(
                                         0, 4), // Shadow ka direction (X, Y)
@@ -669,9 +682,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     height: 10,
                                   ),
                                   Column(
-                                    crossAxisAlignment:
-                                    CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         'Teachers',
@@ -754,7 +765,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                           Text(
                                             'Information',
                                             style: TextStyle(
-                                                fontSize: 30,
+                                                fontSize: MediaQuery.of(context).size.width * 0.07,
                                                 fontFamily: 'sans-serif-light',
                                                 fontWeight: FontWeight.bold),
                                           ),
@@ -810,14 +821,14 @@ class _MyMainHomeState extends State<MyMainHome> {
                       width: 385,
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [Colors.deepPurple.shade300,Colors.deepPurple.shade50],
+                          colors: [Colors.lightBlue.shade300,Colors.lightBlue.shade50],
                           begin: Alignment.topRight,
                           end: Alignment.bottomLeft,
                         ),
                         borderRadius: BorderRadius.circular(30),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.deepPurple.shade300, // Shadow Color
+                            color: Colors.lightBlue.shade300, // Shadow Color
                             blurRadius: 5, // Blur (Kitna soft ho)
                             offset: Offset(0, 4), // Shadow ka direction (X, Y)
                           ),
@@ -1132,19 +1143,36 @@ class _MyMainHomeState extends State<MyMainHome> {
                       ],
                     ),
                   ),
-                  Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.horizontal(),
-                        color: Colors.blueAccent,
-                      ),
+                  GestureDetector(
+                    onTap: _launchURL,
+
+                    child: Container(
+                      width: double.infinity,
+                      height: 30,
+                      color: Colors.blue[300],
                       alignment: Alignment.center,
-                      child: Text(
-                        '©2025 All Rights Reserved by Teamcelestial',
+                      child: Marquee(
+                        text:
+                        "©2025 All Rights Reserved by TeamCelestial    ", // Text scroll hoga
                         style: TextStyle(
                             fontFamily: 'nexalight',
-                            fontSize: 12,
+                            fontSize: 13,
                             color: Colors.white),
-                      ))
+                        scrollAxis: Axis.horizontal,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        blankSpace: 50.0, // Space between loops
+                        velocity: 50.0, // Speed of scrolling
+                        pauseAfterRound: Duration(
+                            seconds:
+                            1), // Ek baar complete hone ke baad pause
+                        startPadding: 10.0,
+                        accelerationDuration: Duration(seconds: 1),
+                        accelerationCurve: Curves.linear,
+                        decelerationDuration: Duration(seconds: 1),
+                        decelerationCurve: Curves.easeOut,
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),

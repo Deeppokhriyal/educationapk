@@ -82,51 +82,54 @@ class _TeacherprofileState extends State<Teacherprofile> {
     showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog(
-          backgroundColor: Colors.purple[100],
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(40), // Border Radius 55
-          ),
-          title: Text(
-            "Edit $title",
-            style: TextStyle(fontFamily: 'nexaheavy'),
-          ),
-          content: TextField(
-            controller: controller,
-            style: TextStyle(fontFamily: 'nexalight'),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text(
-                "Cancel",
-                style: TextStyle(
-                    fontFamily: 'nexalight', fontSize: 16, color: Colors.black),
-              ),
+        return ListView(
+          children:[ AlertDialog(
+            backgroundColor: Colors.purple[100],
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(40), // Border Radius 55
             ),
-            ElevatedButton(
-              onPressed: () async {
-                User? user = auth.currentUser;
-                if (user != null) {
-                  await firestore.collection("users").doc(user.uid).update({
-                    field: controller.text,
-                  });
-                  setState(() {
-                    if (field == "name") name = controller.text;
-                    if (field == "qualification")
-                      qualification = controller.text;
-                    if (field == "previousrole") previousrole = controller.text;
-                  });
-                }
-                Navigator.pop(context);
-              },
-              child: Text(
-                "Save",
-                style: TextStyle(
-                    fontFamily: 'nexalight', fontSize: 16, color: Colors.black),
-              ),
+            title: Text(
+              "Edit $title",
+              style: TextStyle(fontFamily: 'nexaheavy'),
             ),
-          ],
+            content: TextField(
+              controller: controller,
+              style: TextStyle(fontFamily: 'nexalight'),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text(
+                  "Cancel",
+                  style: TextStyle(
+                      fontFamily: 'nexalight', fontSize: 16, color: Colors.black),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  User? user = auth.currentUser;
+                  if (user != null) {
+                    await firestore.collection("users").doc(user.uid).update({
+                      field: controller.text,
+                    });
+                    setState(() {
+                      if (field == "name") name = controller.text;
+                      if (field == "qualification")
+                        qualification = controller.text;
+                      if (field == "previousrole") previousrole = controller.text;
+                    });
+                  }
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  "Save",
+                  style: TextStyle(
+                      fontFamily: 'nexalight', fontSize: 16, color: Colors.black),
+                ),
+              ),
+            ],
+          ),
+        ]
         );
       },
     );
@@ -135,200 +138,147 @@ class _TeacherprofileState extends State<Teacherprofile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      body: Stack(
-        alignment: Alignment.center,
-        children: [
-          Container(
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                colors: [
-                  Colors.lightBlueAccent,
-                  Colors.white,
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              )),
-              child: SlideInUp(
-                duration: Duration(milliseconds: 400),
-                child: Column(
-                  children: [
-                    Container(
-                        padding: EdgeInsets.all(15),
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: 30,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                CircleAvatar(
-                                  radius: 50,
-                                  backgroundColor:
-                                      Colors.transparent, // Default background
-                                  backgroundImage: profileImage.isNotEmpty
-                                      ? (profileImage.startsWith("http")
-                                          ? NetworkImage(profileImage)
-                                              as ImageProvider
-                                          : MemoryImage(
-                                                  base64Decode(profileImage))
-                                              as ImageProvider)
-                                      : AssetImage('assets/images/profile.png')
-                                          as ImageProvider,
-                                  onBackgroundImageError: (_, __) =>
-                                      setState(() => profileImage = ''),
-                                )
-                              ],
-                            ),
-                            SizedBox(height: 10),
-                            // name.isEmpty
-                            //     ? CircularProgressIndicator(color: Colors.blue)
-                            //     :
-                            Text(
-                              name,
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 23,
-                                fontFamily: 'nexalight',
+      backgroundColor: Colors.white,
+      body: ListView(
+        children:[ Stack(
+          alignment: Alignment.center,
+          children: [
+            Container(
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                  colors: [
+                    Colors.lightBlueAccent,
+                    Colors.white,
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                )),
+                child: SlideInUp(
+                  duration: Duration(milliseconds: 400),
+                  child: Column(
+                    children: [
+                      Container(
+                          padding: EdgeInsets.all(15),
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 30,
                               ),
-                            ),
-                            SizedBox(height: 10),
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          UpdateTeacherProfilePage()),
-                                );
-                              },
-                              child: Text(
-                                "Edit Profile",
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  CircleAvatar(
+                                    radius: 50,
+                                    backgroundColor:
+                                        Colors.transparent, // Default background
+                                    backgroundImage: profileImage.isNotEmpty
+                                        ? (profileImage.startsWith("http")
+                                            ? NetworkImage(profileImage)
+                                                as ImageProvider
+                                            : MemoryImage(
+                                                    base64Decode(profileImage))
+                                                as ImageProvider)
+                                        : AssetImage('assets/images/profile.png')
+                                            as ImageProvider,
+                                    onBackgroundImageError: (_, __) =>
+                                        setState(() => profileImage = ''),
+                                  )
+                                ],
+                              ),
+                              SizedBox(height: 10),
+                              // name.isEmpty
+                              //     ? CircularProgressIndicator(color: Colors.blue)
+                              //     :
+                              Text(
+                                name,
                                 style: TextStyle(
-                                    fontFamily: 'nexaheavy',
-                                    fontSize: 16,
-                                    color: Colors.black),
+                                  color: Colors.black,
+                                  fontSize: 23,
+                                  fontFamily: 'nexalight',
+                                ),
                               ),
-                            ),
-                            Divider(color: Colors.grey, height: 35),
-                            SlideInLeft(
-                              duration: Duration(milliseconds: 300),
-                              child: Text(
-                                'Personal Information',
-                                style: TextStyle(
-                                    fontFamily: 'nexaheavy',
-                                    color: Colors.black,
-                                    fontSize: 25),
+                              SizedBox(height: 10),
+                              ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            UpdateTeacherProfilePage()),
+                                  );
+                                },
+                                child: Text(
+                                  "Edit Profile",
+                                  style: TextStyle(
+                                      fontFamily: 'nexaheavy',
+                                      fontSize: 16,
+                                      color: Colors.black),
+                                ),
                               ),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            SlideInRight(
+                              Divider(color: Colors.grey, height: 35),
+                              SlideInLeft(
                                 duration: Duration(milliseconds: 300),
-                                child: Column(
-                                  children: [
-                                    ProfileMenuWidget(
-                                        title: " Highest Qualification",
-                                        icon: Icons.book_rounded,
-                                        value: qualification,
-                                        onPress: () => showEditDialog(
-                                            "Qualification",
-                                            "qualification",
-                                            qualification)),
-                                    ProfileMenuWidget(
-                                        title: "Previous Role",
-                                        icon: Icons.phone,
-                                        value: previousrole,
-                                        onPress: () => showEditDialog(
-                                            "Previous Role",
-                                            "previousrole",
-                                            previousrole)),
-                                  ],
-                                )),
-                            Divider(color: Colors.grey, height: 35),
-                            SlideInLeft(
-                              duration: Duration(milliseconds: 400),
-                              child: Text(
-                                'Utilities',
-                                style: TextStyle(
-                                    fontFamily: 'nexaheavy',
-                                    color: Colors.black,
-                                    fontSize: 25),
+                                child: Text(
+                                  'Personal Information',
+                                  style: TextStyle(
+                                      fontFamily: 'nexaheavy',
+                                      color: Colors.black,
+                                      fontSize: 25),
+                                ),
                               ),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            SlideInRight(
-                              duration: Duration(milliseconds: 400),
-                              child: Container(
-                                  padding: EdgeInsets.all(15),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              SlideInRight(
+                                  duration: Duration(milliseconds: 300),
                                   child: Column(
                                     children: [
-                                      GestureDetector(
-                                        onTap: () {
-                                          Get.to(() => BugReport());
-                                        },
-                                        child: Row(
-                                          children: [
-                                            Icon(
-                                              LineAwesomeIcons.user_check_solid,
-                                              color: Colors.blue,
-                                              size: 27,
-                                            ),
-                                            SizedBox(
-                                              width: 15,
-                                            ),
-                                            Text(
-                                              'Bug Report',
-                                              style: TextStyle(
-                                                  fontFamily: 'nexaheavy',
-                                                  fontSize: 17,
-                                                  color: Colors.black),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 30,
-                                      ),
-                                      GestureDetector(
-                                        onTap: () {
-                                          Get.to(() => AskHelpDesk());
-                                        },
-                                        child: Row(
-                                          children: [
-                                            Icon(
-                                              LineAwesomeIcons.info_solid,
-                                              color: Colors.blue,
-                                              size: 27,
-                                            ),
-                                            SizedBox(
-                                              width: 15,
-                                            ),
-                                            Text(
-                                              'Ask Help Desk',
-                                              style: TextStyle(
-                                                  fontFamily: 'nexaheavy',
-                                                  fontSize: 17,
-                                                  color: Colors.black),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 30,
-                                      ),
-                                      GestureDetector(
+                                      ProfileMenuWidget(
+                                          title: " Highest Qualification",
+                                          icon: Icons.book_rounded,
+                                          value: qualification,
+                                          onPress: () => showEditDialog(
+                                              "Qualification",
+                                              "qualification",
+                                              qualification)),
+                                      ProfileMenuWidget(
+                                          title: "Previous Role",
+                                          icon: Icons.phone,
+                                          value: previousrole,
+                                          onPress: () => showEditDialog(
+                                              "Previous Role",
+                                              "previousrole",
+                                              previousrole)),
+                                    ],
+                                  )),
+                              Divider(color: Colors.grey, height: 35),
+                              SlideInLeft(
+                                duration: Duration(milliseconds: 400),
+                                child: Text(
+                                  'Utilities',
+                                  style: TextStyle(
+                                      fontFamily: 'nexaheavy',
+                                      color: Colors.black,
+                                      fontSize: 25),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              SlideInRight(
+                                duration: Duration(milliseconds: 400),
+                                child: Container(
+                                    padding: EdgeInsets.all(15),
+                                    child: Column(
+                                      children: [
+                                        GestureDetector(
                                           onTap: () {
-                                            logout();
+                                            Get.to(() => BugReport());
                                           },
                                           child: Row(
                                             children: [
                                               Icon(
-                                                Icons.logout,
+                                                LineAwesomeIcons.user_check_solid,
                                                 color: Colors.blue,
                                                 size: 27,
                                               ),
@@ -336,23 +286,79 @@ class _TeacherprofileState extends State<Teacherprofile> {
                                                 width: 15,
                                               ),
                                               Text(
-                                                'Logout',
+                                                'Bug Report',
                                                 style: TextStyle(
                                                     fontFamily: 'nexaheavy',
                                                     fontSize: 17,
                                                     color: Colors.black),
                                               ),
                                             ],
-                                          ))
-                                    ],
-                                  )),
-                            ),
-                          ],
-                        )),
-                  ],
-                ),
-              )),
-        ],
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 30,
+                                        ),
+                                        GestureDetector(
+                                          onTap: () {
+                                            Get.to(() => AskHelpDesk());
+                                          },
+                                          child: Row(
+                                            children: [
+                                              Icon(
+                                                LineAwesomeIcons.info_solid,
+                                                color: Colors.blue,
+                                                size: 27,
+                                              ),
+                                              SizedBox(
+                                                width: 15,
+                                              ),
+                                              Text(
+                                                'Ask Help Desk',
+                                                style: TextStyle(
+                                                    fontFamily: 'nexaheavy',
+                                                    fontSize: 17,
+                                                    color: Colors.black),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 30,
+                                        ),
+                                        GestureDetector(
+                                            onTap: () {
+                                              logout();
+                                            },
+                                            child: Row(
+                                              children: [
+                                                Icon(
+                                                  Icons.logout,
+                                                  color: Colors.blue,
+                                                  size: 27,
+                                                ),
+                                                SizedBox(
+                                                  width: 15,
+                                                ),
+                                                Text(
+                                                  'Logout',
+                                                  style: TextStyle(
+                                                      fontFamily: 'nexaheavy',
+                                                      fontSize: 17,
+                                                      color: Colors.black),
+                                                ),
+                                              ],
+                                            ))
+                                      ],
+                                    )),
+                              ),
+                            ],
+                          )),
+                    ],
+                  ),
+                )),
+          ],
+        ),
+      ]
       ),
     );
   }

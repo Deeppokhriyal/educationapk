@@ -1,5 +1,7 @@
+import 'package:educationapk/main.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:intl/intl.dart'; // For date formatting
 
 class TeacherAssignmentScreen extends StatefulWidget {
@@ -46,7 +48,7 @@ class _TeacherAssignmentScreenState extends State<TeacherAssignmentScreen> {
         descriptionController.text.isEmpty ||
         selectedDeadline == null ||
         questionControllers.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Please fill all fields")));
+      showAwesomeSnackBar(context,"Please fill all fields",false);
       return;
     }
 
@@ -72,7 +74,7 @@ class _TeacherAssignmentScreenState extends State<TeacherAssignmentScreen> {
       questionControllers.clear();
     });
 
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Assignment Added!")));
+    showAwesomeSnackBar(context,"Assignment Added!",true);
   }
 
   @override
@@ -173,7 +175,7 @@ class _TeacherAssignmentScreenState extends State<TeacherAssignmentScreen> {
               ),
               onPressed: isLoading ? null : addAssignment,
               child: isLoading
-                  ? CircularProgressIndicator(color: Colors.white)
+                  ? SpinKitCircle(color: Colors.white)
                   : Text("Upload Assignment", style: TextStyle(fontFamily: 'nexaheavy', fontSize: 20, color: Colors.white)),
             ),
           ),

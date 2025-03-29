@@ -135,8 +135,8 @@ class _TeacherMainState extends State<TeacherMain> {
                     Colors.blueGrey,
                     Colors.lightBlueAccent.shade100
                   ],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
                 ),
               ),
               child: Column(
@@ -375,14 +375,17 @@ class _TeacherMainState extends State<TeacherMain> {
                             height: 165,
                             width: MediaQuery.of(context).size.width * 0.43,
                             decoration: BoxDecoration(
-                              color: Colors.lightGreen[100], // Background color
+                              gradient: LinearGradient(
+                                  colors: [Colors.lightGreen.shade50, Colors.lightGreen.shade400], // Three colors
+                                  begin: Alignment.topRight,
+                                  end: Alignment.bottomLeft), // Background color
                               borderRadius:
                                   BorderRadius.circular(20), // Rounded corners
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.lightGreenAccent, // Shadow color
-                                  blurRadius: 15, // Shadow blur radius
-                                  offset: Offset(0, 2), // Shadow offset
+                                  color: Colors.lightGreen.shade300, // Shadow color
+                                  blurRadius: 5, // Shadow blur radius
+                                  offset: Offset(0, 4), // Shadow offset
                                 ),
                               ],
                             ),
@@ -457,14 +460,17 @@ class _TeacherMainState extends State<TeacherMain> {
                             height: 165,
                             width: MediaQuery.of(context).size.width * 0.43,
                             decoration: BoxDecoration(
-                              color: Colors.lightGreen[100], // Background color
+                              gradient: LinearGradient(
+                                  colors: [Colors.lightGreen.shade400, Colors.lightGreen.shade50], // Three colors
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight),  // Background color
                               borderRadius:
                                   BorderRadius.circular(20), // Rounded corners
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.lightGreenAccent, // Shadow color
-                                  blurRadius: 15, // Shadow blur radius
-                                  offset: Offset(0, 2), // Shadow offset
+                                  color: Colors.lightGreen.shade300, // Shadow color
+                                  blurRadius: 5, // Shadow blur radius
+                                  offset: Offset(0, 4), // Shadow offset
                                 ),
                               ],
                             ),
@@ -529,14 +535,17 @@ class _TeacherMainState extends State<TeacherMain> {
                             height: 165,
                             width: MediaQuery.of(context).size.width * 0.43,
                             decoration: BoxDecoration(
-                              color: Colors.lightBlue[100], // Background color
+                                gradient: LinearGradient(
+                                    colors: [Colors.lightBlue.shade50, Colors.lightBlue.shade400], // Three colors
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight),
                               borderRadius:
                                   BorderRadius.circular(20), // Rounded corners
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.lightBlueAccent, // Shadow color
-                                  blurRadius: 15, // Shadow blur radius
-                                  offset: Offset(0, 2), // Shadow offset
+                                  color: Colors.lightBlue.shade300, // Shadow color
+                                  blurRadius: 5, // Shadow blur radius
+                                  offset: Offset(0, 4), // Shadow offset
                                 ),
                               ],
                             ),
@@ -597,14 +606,17 @@ class _TeacherMainState extends State<TeacherMain> {
                             height: 165,
                             width: MediaQuery.of(context).size.width * 0.43,
                             decoration: BoxDecoration(
-                              color: Colors.lightBlue[100], // Background color
+                              gradient: LinearGradient(
+                                  colors: [Colors.lightBlue.shade400, Colors.lightBlue.shade50], // Three colors
+                                  begin: Alignment.topRight,
+                                  end: Alignment.bottomLeft),
                               borderRadius:
                                   BorderRadius.circular(20), // Rounded corners
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.lightBlueAccent, // Shadow color
-                                  blurRadius: 15, // Shadow blur radius
-                                  offset: Offset(0, 2), // Shadow offset
+                                  color: Colors.lightBlue.shade300, // Shadow color
+                                  blurRadius: 5, // Shadow blur radius
+                                  offset: Offset(0, 4), // Shadow offset
                                 ),
                               ],
                             ),
@@ -670,14 +682,17 @@ class _TeacherMainState extends State<TeacherMain> {
                             height: 165,
                             width: MediaQuery.of(context).size.width * 0.43,
                             decoration: BoxDecoration(
-                              color: Colors.pink[100], // Background color
+                              gradient: LinearGradient(
+                                  colors: [Colors.pink.shade50, Colors.pink.shade400], // Three colors
+                                  begin: Alignment.topRight,
+                                  end: Alignment.bottomLeft),
                               borderRadius:
                                   BorderRadius.circular(20), // Rounded corners
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.pinkAccent, // Shadow color
-                                  blurRadius: 15, // Shadow blur radius
-                                  offset: Offset(0, 2), // Shadow offset
+                                  color: Colors.pink.shade300, // Shadow color
+                                  blurRadius: 5, // Shadow blur radius
+                                  offset: Offset(0, 4), // Shadow offset
                                 ),
                               ],
                             ),
@@ -738,14 +753,17 @@ class _TeacherMainState extends State<TeacherMain> {
                             height: 165,
                             width: MediaQuery.of(context).size.width * 0.43,
                             decoration: BoxDecoration(
-                              color: Colors.pink[100], // Background color
+                              gradient: LinearGradient(
+                                  colors: [Colors.pink.shade400, Colors.pink.shade50], // Three colors
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight),
                               borderRadius:
                                   BorderRadius.circular(20), // Rounded corners
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.pinkAccent, // Shadow color
-                                  blurRadius: 15, // Shadow blur radius
-                                  offset: Offset(0, 2), // Shadow offset
+                                  color: Colors.pink.shade300, // Shadow color
+                                  blurRadius: 5, // Shadow blur radius
+                                  offset: Offset(0, 4), // Shadow offset
                                 ),
                               ],
                             ),
@@ -818,14 +836,17 @@ class _TeacherMainState extends State<TeacherMain> {
                             height: 165,
                             width: MediaQuery.of(context).size.width * 0.43,
                             decoration: BoxDecoration(
-                              color: Colors.yellowAccent[100], // Background color
+                              gradient: LinearGradient(
+                                  colors: [Colors.yellow.shade50, Colors.yellow.shade400], // Three colors
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight),
                               borderRadius:
                                   BorderRadius.circular(20), // Rounded corners
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.yellow, // Shadow color
-                                  blurRadius: 15, // Shadow blur radius
-                                  offset: Offset(0, 2), // Shadow offset
+                                  color: Colors.yellow.shade300, // Shadow color
+                                  blurRadius: 5, // Shadow blur radius
+                                  offset: Offset(0, 4), // Shadow offset
                                 ),
                               ],
                             ),
@@ -888,14 +909,17 @@ class _TeacherMainState extends State<TeacherMain> {
                             height: 165,
                             width: MediaQuery.of(context).size.width * 0.43,
                             decoration: BoxDecoration(
-                              color: Colors.yellowAccent[100], // Background color
+                              gradient: LinearGradient(
+                                  colors: [Colors.yellow.shade400, Colors.yellow.shade50], // Three colors
+                                  begin: Alignment.topRight,
+                                  end: Alignment.bottomLeft),
                               borderRadius:
                                   BorderRadius.circular(20), // Rounded corners
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.yellow, // Shadow color
-                                  blurRadius: 15, // Shadow blur radius
-                                  offset: Offset(0, 2), // Shadow offset
+                                  color: Colors.yellow.shade300, // Shadow color
+                                  blurRadius: 5, // Shadow blur radius
+                                  offset: Offset(0, 4), // Shadow offset
                                 ),
                               ],
                             ),

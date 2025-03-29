@@ -10,7 +10,7 @@ class _ELibraryState extends State<ELibrary> {
   final List<Map<String, String>> libraryData = [
     {
       "SN": "1",
-      "Branch": "ELEX,CIVIL,CSE,MECH,IT",
+      "Branch": "ELEX, CIVIL, CSE, MECH, IT",
       "Username": "ukpolycoll@wtbooks.org",
       "Password": "Wtuk@1poly",
       "Books": "1361",
@@ -18,7 +18,7 @@ class _ELibraryState extends State<ELibrary> {
     },
     {
       "SN": "2",
-      "Branch": "PHARMACY,ELEX,CSE,IT,MECH,CIVIL",
+      "Branch": "PHARMACY, ELEX, CSE, IT, MECH, CIVIL",
       "Username": "polytechnicuttarakhand@theinfolibrary.com",
       "Password": "Polyuk@1Info",
       "Books": "624",
@@ -26,7 +26,7 @@ class _ELibraryState extends State<ELibrary> {
     },
     {
       "SN": "3",
-      "Branch": "CSE,IT,ELEX",
+      "Branch": "CSE, IT, ELEX",
       "Username": "pnupolcollege@bhashaprakashan.com",
       "Password": "1Bb@pnupc",
       "Books": "75",
@@ -34,7 +34,7 @@ class _ELibraryState extends State<ELibrary> {
     },
     {
       "SN": "4",
-      "Branch": "CHEM,ELEX,CSE,IT,PHARMACY,CIVIL,MECH",
+      "Branch": "CHEM, ELEX, CSE, IT, PHARMACY, CIVIL, MECH",
       "Username": "upndl",
       "Password": "Bibliotex@2406",
       "Books": "713",
@@ -42,7 +42,7 @@ class _ELibraryState extends State<ELibrary> {
     },
     {
       "SN": "5",
-      "Branch": "MATHS,CHEMISTRY,CIVIL,ENGLISH,PHARMACY,PHYSICS",
+      "Branch": "MATHS, CHEMISTRY, CIVIL, ENGLISH, PHARMACY, PHYSICS",
       "Username": "Polykashipur",
       "Password": "Kashipur@321",
       "Books": "20",

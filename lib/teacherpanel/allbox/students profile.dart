@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class StudentProfilePage extends StatefulWidget {
   @override
@@ -8,15 +9,14 @@ class StudentProfilePage extends StatefulWidget {
 }
 
 class _StudentProfilePageState extends State<StudentProfilePage> {
-  String teacherBranch = ""; // Teacher ki branch store karne ke liye
+  String? teacherBranch;
 
   @override
   void initState() {
     super.initState();
-    fetchTeacherBranch(); // Teacher ki branch fetch karna
+    fetchTeacherBranch();
   }
 
-  // ✅ Teacher ki Branch Firebase se Fetch karna
   Future<void> fetchTeacherBranch() async {
     User? user = FirebaseAuth.instance.currentUser;
     if (user != null) {
@@ -25,18 +25,20 @@ class _StudentProfilePageState extends State<StudentProfilePage> {
 
       if (userData.exists) {
         setState(() {
-          teacherBranch = userData["branch"] ?? "";
+          teacherBranch = userData["branch"];
         });
       }
     }
   }
 
-  // ✅ Usi Branch Ke Students Fetch Karna
   Stream<QuerySnapshot> fetchStudents() {
+    if (teacherBranch == null) {
+      return const Stream.empty();
+    }
     return FirebaseFirestore.instance
         .collection("users")
-        .where("role", isEqualTo: "student") // Sirf students ko fetch karega
-        .where("branch", isEqualTo: teacherBranch) // Teacher ki branch wale students
+        .where("role", isEqualTo: "student")
+        .where("branch", isEqualTo: teacherBranch)
         .snapshots();
   }
 
@@ -44,40 +46,40 @@ class _StudentProfilePageState extends State<StudentProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Student Profiles", style: TextStyle(fontFamily: 'nexaheavy')),
-        backgroundColor: Colors.blueAccent,
+        title: Text("Student Profiles", style: TextStyle(fontFamily: 'nexaheavy', color: Colors.white)),
+        backgroundColor: Colors.indigo,
       ),
-      body: teacherBranch.isEmpty
-          ? Center(child: CircularProgressIndicator()) // Jab tak branch load na ho tab tak loader dikhaye
-          : StreamBuilder(
+      body: teacherBranch == null
+          ? Center(
+        child: SpinKitWave(color: Colors.indigo), // ✅ Only One Loader
+      )
+          : StreamBuilder<QuerySnapshot>(
         stream: fetchStudents(),
-        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator()); // Data Load ho raha hai
+            return Center(
+              child: SpinKitWave(color: Colors.indigo), // ✅ Only One Loader
+            );
           }
           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
             return Center(
-                child: Text(
-                  "No students found in this branch",
-                  style: TextStyle(fontSize: 18, fontFamily: 'nexalight'),
-                ));
+              child: Text(
+                "No students found in this branch",
+                style: TextStyle(fontSize: 18, fontFamily: 'nexalight'),
+              ),
+            );
           }
           return ListView(
             children: snapshot.data!.docs.map((doc) {
               return Card(
                 elevation: 3,
                 margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15)),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
                 child: ListTile(
                   leading: CircleAvatar(
                     radius: 25,
                     backgroundColor: Colors.grey[300],
-                    backgroundImage: doc["profileImage"] != null &&
-                        doc["profileImage"].toString().isNotEmpty
-                        ? NetworkImage(doc["profileImage"])
-                        : AssetImage('assets/images/profile.png')
-                    as ImageProvider,
+                    backgroundImage: AssetImage('assets/images/profile.png'), // ✅ Default Profile Image
                   ),
                   title: Text(
                     doc["name"],

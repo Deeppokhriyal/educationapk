@@ -65,7 +65,7 @@ class _ELibraryState extends State<ELibrary> {
     return Scaffold(
       appBar: AppBar(
         title: Text("E-Library", style: TextStyle(fontFamily: 'NexaHeavy',fontSize: 25)),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.blue,
       ),
       body: ListView.builder(
         itemCount: libraryData.length,

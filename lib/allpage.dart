@@ -9,7 +9,8 @@ class MainScrollPage extends StatefulWidget {
   @override
   State<MainScrollPage> createState() => _MainScrollPageState();
 }
-class _MainScrollPageState extends State<MainScrollPage> {  @override
+class _MainScrollPageState extends State<MainScrollPage> {
+  @override
 Widget build(BuildContext context) {
   return Scaffold(
     backgroundColor: Colors.transparent,

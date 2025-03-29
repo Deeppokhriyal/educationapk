@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class StudentAssignment extends StatelessWidget {
   @override
@@ -19,7 +20,7 @@ class StudentAssignment extends StatelessWidget {
         stream: FirebaseFirestore.instance.collection('assignments').orderBy('timestamp', descending: true).snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return Center(child: SpinKitSquareCircle(color: Colors.purpleAccent[100],));
           }
           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
             return _buildNoAssignmentUI(); // Fixed function call

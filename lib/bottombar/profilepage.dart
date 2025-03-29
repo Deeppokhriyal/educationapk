@@ -71,7 +71,6 @@ class _ProfilePageState extends State<ProfilePage> {
           github = userData["github"] ?? "";
           instagram = userData["instagram"] ?? "";
           location = userData["location"] ?? "";
-          StudentProfile = userData["StudentProfile"] ?? "";
           _isLoading = false; // Data load hone ke baad loader band karo
         });
 

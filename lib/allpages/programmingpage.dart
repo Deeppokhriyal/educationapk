@@ -27,11 +27,15 @@ class _ProgrammingpageState extends State<Programmingpage> {
       body: Stack(children: [
         Container(
           decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/backbro.avif'),
-                // image: NetworkImage(
-                //     'https://img.freepik.com/free-vector/mobile_677411-3480.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_incoming'), // Path to your background image
-                fit: BoxFit.cover),
+              gradient: LinearGradient(
+                colors: [
+                  Colors.black,
+                  Colors.grey
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                stops: [0.6,0.9]
+              )
           ),
           child: SingleChildScrollView(
             child: Column(children: [

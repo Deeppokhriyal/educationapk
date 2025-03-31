@@ -683,14 +683,14 @@ class _TeacherMainState extends State<TeacherMain> {
                             width: MediaQuery.of(context).size.width * 0.43,
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
-                                  colors: [Colors.pink.shade50, Colors.pink.shade400], // Three colors
+                                  colors: [Colors.red.shade50, Colors.red.shade400], // Three colors
                                   begin: Alignment.topRight,
                                   end: Alignment.bottomLeft),
                               borderRadius:
                                   BorderRadius.circular(20), // Rounded corners
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.pink.shade300, // Shadow color
+                                  color: Colors.red.shade300, // Shadow color
                                   blurRadius: 5, // Shadow blur radius
                                   offset: Offset(0, 4), // Shadow offset
                                 ),
@@ -754,14 +754,14 @@ class _TeacherMainState extends State<TeacherMain> {
                             width: MediaQuery.of(context).size.width * 0.43,
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
-                                  colors: [Colors.pink.shade400, Colors.pink.shade50], // Three colors
+                                  colors: [Colors.red.shade400, Colors.red.shade50], // Three colors
                                   begin: Alignment.topLeft,
                                   end: Alignment.bottomRight),
                               borderRadius:
                                   BorderRadius.circular(20), // Rounded corners
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.pink.shade300, // Shadow color
+                                  color: Colors.red.shade300, // Shadow color
                                   blurRadius: 5, // Shadow blur radius
                                   offset: Offset(0, 4), // Shadow offset
                                 ),

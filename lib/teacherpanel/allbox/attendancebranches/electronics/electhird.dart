@@ -82,7 +82,7 @@ class _ElecthirdState extends State<Electhird> {
     }).toList();
 
     try {
-      await _firestore.collection("attendance3rdyear").doc(todayDate).set({
+      await _firestore.collection("Electhird").doc(todayDate).set({
         "attendance": attendanceList,
       });
 

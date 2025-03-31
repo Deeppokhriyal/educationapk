@@ -79,11 +79,11 @@ class _MechfirstState extends State<Mechfirst> {
     }).toList();
 
     try {
-      await _firestore.collection("attendance3rdyear").doc(todayDate).set({
+      await _firestore.collection("Mechfirst").doc(todayDate).set({
         "attendance": attendanceList,
       });
 
-      // ✅ Beautiful Green SnackBar for Success
+      // Beautiful Green SnackBar for Success
 
       showAwesomeSnackBarUp(context, "Attendance submitted successfully!", true);
 
@@ -94,7 +94,7 @@ class _MechfirstState extends State<Mechfirst> {
 
     } finally {
       setState(() {
-        isLoading = false; // ✅ Hide loader after submission
+        isLoading = false; // Hide loader after submission
       });
     }
   }

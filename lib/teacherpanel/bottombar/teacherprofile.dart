@@ -94,7 +94,7 @@ class _TeacherprofileState extends State<Teacherprofile> {
             ),
             content: TextField(
               controller: controller,
-              style: TextStyle(fontFamily: 'nexalight'),
+              style: TextStyle(fontFamily: 'nexalight',color: Colors.black),
             ),
             actions: [
               TextButton(
@@ -243,7 +243,7 @@ class _TeacherprofileState extends State<Teacherprofile> {
                                               qualification)),
                                       ProfileMenuWidget(
                                           title: "Previous Role",
-                                          icon: Icons.phone,
+                                          icon: Icons.person_pin,
                                           value: previousrole,
                                           onPress: () => showEditDialog(
                                               "Previous Role",

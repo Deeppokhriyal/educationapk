@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:educationapk/main.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -72,17 +73,13 @@ class _LeaveApplicationsListState extends State<LeaveApplicationsList> {
         'status': status,
       });
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Application marked as $status")),
-      );
+      showAwesomeSnackBar(context,"Application marked as $status",true);
 
       // 🔹 Fetch the latest data from Firestore to ensure UI updates correctly
       await fetchLeaveApplications();
     } catch (e) {
       // print("Error updating leave status: $e");
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Failed to update application status")),
-      );
+      showAwesomeSnackBar(context,"Failed to update application status",false);
     }
   }
 
@@ -135,6 +132,14 @@ class _LeaveApplicationsListState extends State<LeaveApplicationsList> {
 
                   Text(
                     "Leave Date : ${data['leaveDate']}",
+                    style: TextStyle(
+                      fontFamily: 'nexalight',
+                      color: Colors.blue,
+                      fontSize: 18,
+                    ),
+                  ),
+                  Text(
+                    "Till Leave Date : ${data['tillleaveDate']}",
                     style: TextStyle(
                       fontFamily: 'nexalight',
                       color: Colors.blue,

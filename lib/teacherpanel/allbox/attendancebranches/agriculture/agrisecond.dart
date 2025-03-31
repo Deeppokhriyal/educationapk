@@ -69,7 +69,7 @@ class _AgrisecondState extends State<Agrisecond> {
     }).toList();
 
     try {
-      await _firestore.collection("attendance3rdyear").doc(todayDate).set({
+      await _firestore.collection("Agrisecond").doc(todayDate).set({
         "attendance": attendanceList,
       });
 

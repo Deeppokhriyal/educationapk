@@ -18,6 +18,7 @@ class _LeaveApplicationState extends State<LeaveApplication> {
   TextEditingController _submitByController = TextEditingController();
   TextEditingController _rollNoController = TextEditingController();
   TextEditingController _leaveDateController = TextEditingController();
+  TextEditingController _tillleaveDateController = TextEditingController();
   TextEditingController _leaveReasonController = TextEditingController();
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   String? selectedValue;
@@ -34,7 +35,7 @@ class _LeaveApplicationState extends State<LeaveApplication> {
     'PHARMACY',
   ];
 
-  Future<void> _pickDate() async {
+  Future<void> _pickDate(TextEditingController controller) async {
     DateTime? picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
@@ -43,7 +44,7 @@ class _LeaveApplicationState extends State<LeaveApplication> {
     );
     if (picked != null) {
       setState(() {
-        _leaveDateController.text = "${picked.toLocal()}".split(' ')[0];
+        controller.text = "${picked.toLocal()}".split(' ')[0];
       });
     }
   }
@@ -51,14 +52,12 @@ class _LeaveApplicationState extends State<LeaveApplication> {
   Future<void> submitLeaveApplication() async {
     if (_formKey.currentState!.validate()) {
       if (selectedValue == null) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Please select your branch!')),
-        );
+        showAwesomeSnackBar(context,'Please select your branch!',false);
         return;
       }
 
       setState(() {
-        isUpdating = true; // ✅ Show loading animation before starting // ✅ Show loading animation before starting // ✅ Show loading animation before starting
+        isUpdating = true; // Show loading animation before starting
       });
 
       String currentUserId = FirebaseAuth.instance.currentUser?.uid ?? '';
@@ -71,6 +70,7 @@ class _LeaveApplicationState extends State<LeaveApplication> {
           'submitName': _submitByController.text,
           'rollno': rollNo,
           'leaveDate': _leaveDateController.text,
+          'tillleaveDate': _tillleaveDateController.text,
           'leaveReason': _leaveReasonController.text,
           'submittedAt': FieldValue.serverTimestamp(),
           'status': 'Pending'
@@ -81,17 +81,16 @@ class _LeaveApplicationState extends State<LeaveApplication> {
         _submitByController.clear();
         _rollNoController.clear();
         _leaveDateController.clear();
+        _tillleaveDateController.clear();
         _leaveReasonController.clear();
         setState(() {
           selectedValue = null;
         });
       } catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error submitting application. Try again!')),
-        );
+        showAwesomeSnackBar(context,'Error submitting application. Try again!',false);
       } finally {
         setState(() {
-          isUpdating = false; // ✅ Hide loading animation after completion
+          isUpdating = false; //Hide loading animation after completion
         });
       }
     }
@@ -200,7 +199,7 @@ class _LeaveApplicationState extends State<LeaveApplication> {
                                   controller: _leaveDateController,
                                   style: TextStyle(color: Colors.white),
                                   readOnly: true,
-                                  onTap: _pickDate,
+                                  onTap: () => _pickDate(_leaveDateController),
                                   decoration: InputDecoration(
                                     labelText: 'Leave Date',
                                     labelStyle: TextStyle(
@@ -211,6 +210,24 @@ class _LeaveApplicationState extends State<LeaveApplication> {
                                   ),
                                   validator: (value) => value!.isEmpty
                                       ? 'Enter a valid leave date'
+                                      : null,
+                                ),
+                                SizedBox(height: 20),
+                                TextFormField(
+                                  controller: _tillleaveDateController,
+                                  style: TextStyle(color: Colors.white),
+                                  readOnly: true,
+                                  onTap: () => _pickDate(_tillleaveDateController),
+                                  decoration: InputDecoration(
+                                    labelText: 'Till Leave Date',
+                                    labelStyle: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: 'nexalight'),
+                                    suffixIcon: Icon(Icons.calendar_today,
+                                        color: Colors.white),
+                                  ),
+                                  validator: (value) => value!.isEmpty
+                                      ? 'Enter a valid Till leave date'
                                       : null,
                                 ),
                                 SizedBox(height: 30),

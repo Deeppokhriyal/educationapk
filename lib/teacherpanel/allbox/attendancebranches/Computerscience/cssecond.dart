@@ -82,7 +82,7 @@ class _CssecondState extends State<Cssecond> {
     }).toList();
 
     try {
-      await _firestore.collection("attendance3rdyear").doc(todayDate).set({
+      await _firestore.collection("CS2ndyear").doc(todayDate).set({
         "attendance": attendanceList,
       });
 

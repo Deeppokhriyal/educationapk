@@ -74,7 +74,7 @@ class _PharmacysecondState extends State<Pharmacysecond> {
     }).toList();
 
     try {
-      await _firestore.collection("attendance3rdyear").doc(todayDate).set({
+      await _firestore.collection("Pharmacysecond").doc(todayDate).set({
         "attendance": attendanceList,
       });
 

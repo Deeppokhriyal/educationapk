@@ -88,7 +88,7 @@ class _MechsecondState extends State<Mechsecond> {
     }).toList();
 
     try {
-      await _firestore.collection("attendance3rdyear").doc(todayDate).set({
+      await _firestore.collection("MechSecond").doc(todayDate).set({
         "attendance": attendanceList,
       });
 

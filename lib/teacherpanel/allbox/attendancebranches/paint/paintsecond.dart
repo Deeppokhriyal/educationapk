@@ -74,7 +74,7 @@ class _PaintsecondState extends State<Paintsecond> {
     }).toList();
 
     try {
-      await _firestore.collection("attendance3rdyear").doc(todayDate).set({
+      await _firestore.collection("Paintsecond").doc(todayDate).set({
         "attendance": attendanceList,
       });
 

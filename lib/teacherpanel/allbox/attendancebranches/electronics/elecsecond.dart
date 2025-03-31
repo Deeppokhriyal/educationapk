@@ -85,7 +85,7 @@ class _ElecsecondState extends State<Elecsecond> {
     }).toList();
 
     try {
-      await _firestore.collection("attendance3rdyear").doc(todayDate).set({
+      await _firestore.collection("Elecsecond").doc(todayDate).set({
         "attendance": attendanceList,
       });
 

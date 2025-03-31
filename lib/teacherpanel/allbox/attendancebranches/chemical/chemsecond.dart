@@ -83,7 +83,7 @@ class _ChemsecondState extends State<Chemsecond> {
     }).toList();
 
     try {
-      await _firestore.collection("attendance3rdyear").doc(todayDate).set({
+      await _firestore.collection("Chemsecond").doc(todayDate).set({
         "attendance": attendanceList,
       });
 

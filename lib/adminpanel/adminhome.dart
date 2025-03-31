@@ -8,7 +8,6 @@ import 'package:educationapk/adminpanel/homepagewidgets/chatboxshow.dart';
 import 'package:educationapk/adminpanel/homepagewidgets/helpdeskshow.dart';
 import 'package:educationapk/adminpanel/homepagewidgets/management.dart';
 import 'package:educationapk/homepagewidgets/devpage.dart';
-import 'package:educationapk/teacherpanel/allbox/attendance.dart';
 import 'package:educationapk/teacherpanel/allbox/syllabus.dart';
 import 'package:educationapk/teacherpanel/allbox/teacherdev.dart';
 import 'package:firebase_auth/firebase_auth.dart';

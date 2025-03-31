@@ -14,17 +14,18 @@ class _AdminUserManagementPageState extends State<AdminUserManagementPage> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  String role = 'student';
+  String branch = 'IT'; // Default Branch
+
   Future<void> removeUser(String userId) async {
     await _firestore.collection('users').doc(userId).delete();
-    await _auth.currentUser?.delete();
   }
 
   void _showAddUserDialog() {
-    String role = 'student';
-    String name = '';
-    String email = '';
-    String password = '';
-
     showDialog(
       context: context,
       builder: (context) {
@@ -37,7 +38,7 @@ class _AdminUserManagementPageState extends State<AdminUserManagementPage> {
             mainAxisSize: MainAxisSize.min,
             children: [
               TextField(
-                onChanged: (value) => name = value,
+                controller: nameController,
                 decoration: InputDecoration(
                   labelText: 'Enter Name',
                   labelStyle: TextStyle(fontFamily: 'NexaLight'),
@@ -48,13 +49,11 @@ class _AdminUserManagementPageState extends State<AdminUserManagementPage> {
                 items: [
                   DropdownMenuItem(
                     value: 'student',
-                    child: Text('Student',
-                        style: TextStyle(fontFamily: 'NexaLight')),
+                    child: Text('Student', style: TextStyle(fontFamily: 'NexaLight')),
                   ),
                   DropdownMenuItem(
                     value: 'teacher',
-                    child: Text('Teacher',
-                        style: TextStyle(fontFamily: 'NexaLight')),
+                    child: Text('Teacher', style: TextStyle(fontFamily: 'NexaLight')),
                   ),
                 ],
                 onChanged: (value) {
@@ -67,20 +66,41 @@ class _AdminUserManagementPageState extends State<AdminUserManagementPage> {
                   labelStyle: TextStyle(fontFamily: 'NexaLight'),
                 ),
               ),
+              DropdownButtonFormField(
+                value: branch,
+                items: [
+                  'IT', 'AGRICULTURE', 'CHEMICAL', 'PAINT', 'CIVIL',
+                  'CSE', 'ELEX', 'MECH', 'PHARMACY'
+                ].map((branch) {
+                  return DropdownMenuItem(
+                    value: branch,
+                    child: Text(branch, style: TextStyle(fontFamily: 'NexaLight')),
+                  );
+                }).toList(),
+                onChanged: (value) {
+                  setState(() {
+                    branch = value.toString();
+                  });
+                },
+                decoration: InputDecoration(
+                  labelText: 'Select Branch',
+                  labelStyle: TextStyle(fontFamily: 'NexaLight'),
+                ),
+              ),
               TextField(
-                onChanged: (value) => email = value,
+                controller: emailController,
                 decoration: InputDecoration(
                   labelText: 'Enter Email',
                   labelStyle: TextStyle(fontFamily: 'NexaLight'),
                 ),
               ),
               TextField(
-                onChanged: (value) => password = value,
+                controller: passwordController,
+                obscureText: true,
                 decoration: InputDecoration(
                   labelText: 'Enter Password',
                   labelStyle: TextStyle(fontFamily: 'NexaLight'),
                 ),
-                obscureText: true,
               ),
             ],
           ),
@@ -91,19 +111,30 @@ class _AdminUserManagementPageState extends State<AdminUserManagementPage> {
             ),
             ElevatedButton(
               onPressed: () async {
+                String name = nameController.text.trim();
+                String email = emailController.text.trim();
+                String password = passwordController.text.trim();
+
+                if (name.isEmpty || email.isEmpty || password.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Please fill all fields')),
+                  );
+                  return;
+                }
+
                 try {
                   UserCredential userCredential =
-                      await _auth.createUserWithEmailAndPassword(
+                  await _auth.createUserWithEmailAndPassword(
                     email: email,
                     password: password,
                   );
 
-                  await _firestore
-                      .collection('users')
+                  await _firestore.collection('users')
                       .doc(userCredential.user!.uid)
                       .set({
                     'name': name,
                     'role': role,
+                    'branch': branch,
                     'email': email,
                     'uid': userCredential.user!.uid,
                   });
@@ -112,9 +143,7 @@ class _AdminUserManagementPageState extends State<AdminUserManagementPage> {
                 } catch (e) {
                   print('Error: $e');
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                        content: Text('Failed to add user',
-                            style: TextStyle(fontFamily: 'NexaLight'))),
+                    SnackBar(content: Text('Failed to add user')),
                   );
                 }
               },
@@ -130,33 +159,23 @@ class _AdminUserManagementPageState extends State<AdminUserManagementPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:
-            Text('User Management', style: TextStyle(fontFamily: 'NexaHeavy')),
+        title: Text('User Management', style: TextStyle(fontFamily: 'NexaHeavy')),
       ),
       body: Column(
         children: [
           Divider(thickness: 3, color: Colors.black),
-          Text('Teachers',
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'NexaHeavy')),
+          Text('Teachers', style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold, fontFamily: 'NexaHeavy')),
           Divider(),
           Expanded(
             child: StreamBuilder(
-              stream: _firestore
-                  .collection('users')
-                  .where('role', isEqualTo: 'teacher')
-                  .snapshots(),
+              stream: _firestore.collection('users').where('role', isEqualTo: 'teacher').snapshots(),
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (!snapshot.hasData) return CircularProgressIndicator();
                 return ListView(
                   children: snapshot.data!.docs.map((doc) {
                     return ListTile(
-                      title: Text(doc['name'],
-                          style: TextStyle(fontFamily: 'NexaHeavy')),
-                      subtitle: Text(doc['email'],
-                          style: TextStyle(fontFamily: 'NexaLight')),
+                      title: Text(doc['name'], style: TextStyle(fontFamily: 'NexaHeavy')),
+                      subtitle: Text(doc['email'], style: TextStyle(fontFamily: 'NexaLight')),
                       trailing: IconButton(
                         icon: Icon(Icons.delete, color: Colors.red),
                         onPressed: () => removeUser(doc.id),
@@ -170,7 +189,7 @@ class _AdminUserManagementPageState extends State<AdminUserManagementPage> {
           Divider(thickness: 3, color: Colors.black),
           Text('Students',
               style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 23,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'NexaHeavy')),
           Divider(),
@@ -179,65 +198,65 @@ class _AdminUserManagementPageState extends State<AdminUserManagementPage> {
               children: [
                 ListTile(
                   title: Text('Agriculture',
-                      style: TextStyle(fontFamily: 'NexaHeavy')),
+                      style: TextStyle(fontSize: 19,fontFamily: 'NexaHeavy')),
                   onTap: () {
                     Get.to(() => AgricultureStudentsPage());
                   },
                 ),
                 ListTile(
                   title: Text('Computer Science',
-                      style: TextStyle(fontFamily: 'NexaHeavy')),
+                      style: TextStyle(fontSize: 19,fontFamily: 'NexaHeavy')),
                   onTap: () {
-                    Get.to(() => AgricultureStudentsPage());
+                    Get.to(() => ComputerscienceStudentsPage());
                   },
                 ),
                 ListTile(
                   title: Text('Mechanical',
-                      style: TextStyle(fontFamily: 'NexaHeavy')),
+                      style: TextStyle(fontSize: 19,fontFamily: 'NexaHeavy')),
                   onTap: () {
-                    Get.to(() => AgricultureStudentsPage());
+                    Get.to(() => MechanicalStudentsPage());
                   },
                 ),
                 ListTile(
                   title:
-                      Text('Civil', style: TextStyle(fontFamily: 'NexaHeavy')),
+                  Text('Civil', style: TextStyle(fontSize: 19,fontFamily: 'NexaHeavy')),
                   onTap: () {
-                    Get.to(() => AgricultureStudentsPage());
+                    Get.to(() => CivilStudentsPage());
                   },
                 ),
                 ListTile(
                   title: Text('Chemical',
-                      style: TextStyle(fontFamily: 'NexaHeavy')),
+                      style: TextStyle(fontSize: 19,fontFamily: 'NexaHeavy')),
                   onTap: () {
-                    Get.to(() => AgricultureStudentsPage());
+                    Get.to(() => ChemicalStudentsPage());
                   },
                 ),
                 ListTile(
                   title: Text('Electronics',
-                      style: TextStyle(fontFamily: 'NexaHeavy')),
+                      style: TextStyle(fontSize: 19,fontFamily: 'NexaHeavy')),
                   onTap: () {
-                    Get.to(() => AgricultureStudentsPage());
+                    Get.to(() => ElectronicsStudentsPage());
                   },
                 ),
                 ListTile(
                   title: Text('Information Technology',
-                      style: TextStyle(fontFamily: 'NexaHeavy')),
+                      style: TextStyle(fontSize: 19,fontFamily: 'NexaHeavy')),
                   onTap: () {
                     Get.to(() => InfoTechStudentsPage());
                   },
                 ),
                 ListTile(
                   title: Text('Chemical Paint',
-                      style: TextStyle(fontFamily: 'NexaHeavy')),
+                      style: TextStyle(fontSize: 19,fontFamily: 'NexaHeavy')),
                   onTap: () {
-                    Get.to(() => AgricultureStudentsPage());
+                    Get.to(() => PaintStudentsPage());
                   },
                 ),
                 ListTile(
                   title: Text('Pharmacy',
-                      style: TextStyle(fontFamily: 'NexaHeavy')),
+                      style: TextStyle(fontSize: 19,fontFamily: 'NexaHeavy')),
                   onTap: () {
-                    Get.to(() => AgricultureStudentsPage());
+                    Get.to(() => PharmacyStudentsPage());
                   },
                 ),
               ],
@@ -253,10 +272,15 @@ class _AdminUserManagementPageState extends State<AdminUserManagementPage> {
   }
 }
 
+
 // Student Branches  Student Branches  Student Branches  Student Branches  Student Branches  Student Branches  Student Branches
 
 class AgricultureStudentsPage extends StatelessWidget {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  Future<void> removeUser(String userId) async {
+    await _firestore.collection('users').doc(userId).delete();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -273,7 +297,7 @@ class AgricultureStudentsPage extends StatelessWidget {
               stream: _firestore
                   .collection('users')
                   .where('role', isEqualTo: 'student')
-                  .where('branch', isEqualTo: 'Agriculture')
+                  .where('branch', isEqualTo: 'AGRICULTURE')
                   .snapshots(),
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
@@ -302,6 +326,10 @@ class AgricultureStudentsPage extends StatelessWidget {
                             style: TextStyle(fontFamily: 'NexaHeavy')),
                         subtitle: Text(doc['email'],
                             style: TextStyle(fontFamily: 'NexaLight')),
+                        trailing: IconButton(
+                          icon: Icon(Icons.delete, color: Colors.red),
+                          onPressed: () => removeUser(doc.id),
+                        ),
                       ),
                     );
                   }).toList(),
@@ -315,8 +343,13 @@ class AgricultureStudentsPage extends StatelessWidget {
   }
 }
 
+
 class PharmacyStudentsPage extends StatelessWidget {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  Future<void> removeUser(String userId) async {
+    await _firestore.collection('users').doc(userId).delete();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -333,7 +366,7 @@ class PharmacyStudentsPage extends StatelessWidget {
               stream: _firestore
                   .collection('users')
                   .where('role', isEqualTo: 'student')
-                  .where('branch', isEqualTo: 'Agriculture')
+                  .where('branch', isEqualTo: 'PHARMACY')
                   .snapshots(),
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
@@ -362,6 +395,10 @@ class PharmacyStudentsPage extends StatelessWidget {
                             style: TextStyle(fontFamily: 'NexaHeavy')),
                         subtitle: Text(doc['email'],
                             style: TextStyle(fontFamily: 'NexaLight')),
+                        trailing: IconButton(
+                          icon: Icon(Icons.delete, color: Colors.red),
+                          onPressed: () => removeUser(doc.id),
+                        ),
                       ),
                     );
                   }).toList(),
@@ -375,14 +412,19 @@ class PharmacyStudentsPage extends StatelessWidget {
   }
 }
 
-class MechnicalStudentsPage extends StatelessWidget {
+
+class MechanicalStudentsPage extends StatelessWidget {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  Future<void> removeUser(String userId) async {
+    await _firestore.collection('users').doc(userId).delete();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mechnical Students',
+        title: Text('Mechanical Students',
             style: TextStyle(fontFamily: 'NexaHeavy')),
       ),
       body: Column(
@@ -393,7 +435,7 @@ class MechnicalStudentsPage extends StatelessWidget {
               stream: _firestore
                   .collection('users')
                   .where('role', isEqualTo: 'student')
-                  .where('branch', isEqualTo: 'Agriculture')
+                  .where('branch', isEqualTo: 'MECH')
                   .snapshots(),
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
@@ -422,6 +464,10 @@ class MechnicalStudentsPage extends StatelessWidget {
                             style: TextStyle(fontFamily: 'NexaHeavy')),
                         subtitle: Text(doc['email'],
                             style: TextStyle(fontFamily: 'NexaLight')),
+                        trailing: IconButton(
+                          icon: Icon(Icons.delete, color: Colors.red),
+                          onPressed: () => removeUser(doc.id),
+                        ),
                       ),
                     );
                   }).toList(),
@@ -434,15 +480,20 @@ class MechnicalStudentsPage extends StatelessWidget {
     );
   }
 }
+
 
 class ComputerscienceStudentsPage extends StatelessWidget {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  Future<void> removeUser(String userId) async {
+    await _firestore.collection('users').doc(userId).delete();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Computerscience Students',
+        title: Text('Computer Science Students',
             style: TextStyle(fontFamily: 'NexaHeavy')),
       ),
       body: Column(
@@ -453,7 +504,7 @@ class ComputerscienceStudentsPage extends StatelessWidget {
               stream: _firestore
                   .collection('users')
                   .where('role', isEqualTo: 'student')
-                  .where('branch', isEqualTo: 'Agriculture')
+                  .where('branch', isEqualTo: 'CSE')
                   .snapshots(),
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
@@ -482,6 +533,10 @@ class ComputerscienceStudentsPage extends StatelessWidget {
                             style: TextStyle(fontFamily: 'NexaHeavy')),
                         subtitle: Text(doc['email'],
                             style: TextStyle(fontFamily: 'NexaLight')),
+                        trailing: IconButton(
+                          icon: Icon(Icons.delete, color: Colors.red),
+                          onPressed: () => removeUser(doc.id),
+                        ),
                       ),
                     );
                   }).toList(),
@@ -495,8 +550,13 @@ class ComputerscienceStudentsPage extends StatelessWidget {
   }
 }
 
+
 class InfoTechStudentsPage extends StatelessWidget {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  Future<void> removeUser(String userId) async {
+    await _firestore.collection('users').doc(userId).delete();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -542,6 +602,10 @@ class InfoTechStudentsPage extends StatelessWidget {
                             style: TextStyle(fontFamily: 'NexaHeavy')),
                         subtitle: Text(doc['email'],
                             style: TextStyle(fontFamily: 'NexaLight')),
+                        trailing: IconButton(
+                          icon: Icon(Icons.delete, color: Colors.red),
+                          onPressed: () => removeUser(doc.id),
+                        ),
                       ),
                     );
                   }).toList(),
@@ -555,8 +619,13 @@ class InfoTechStudentsPage extends StatelessWidget {
   }
 }
 
+
 class PaintStudentsPage extends StatelessWidget {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  Future<void> removeUser(String userId) async {
+    await _firestore.collection('users').doc(userId).delete();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -573,7 +642,7 @@ class PaintStudentsPage extends StatelessWidget {
               stream: _firestore
                   .collection('users')
                   .where('role', isEqualTo: 'student')
-                  .where('branch', isEqualTo: 'Agriculture')
+                  .where('branch', isEqualTo: 'PAINT')
                   .snapshots(),
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
@@ -602,6 +671,10 @@ class PaintStudentsPage extends StatelessWidget {
                             style: TextStyle(fontFamily: 'NexaHeavy')),
                         subtitle: Text(doc['email'],
                             style: TextStyle(fontFamily: 'NexaLight')),
+                        trailing: IconButton(
+                          icon: Icon(Icons.delete, color: Colors.red),
+                          onPressed: () => removeUser(doc.id),
+                        ),
                       ),
                     );
                   }).toList(),
@@ -615,8 +688,13 @@ class PaintStudentsPage extends StatelessWidget {
   }
 }
 
+
 class ChemicalStudentsPage extends StatelessWidget {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  Future<void> removeUser(String userId) async {
+    await _firestore.collection('users').doc(userId).delete();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -633,7 +711,7 @@ class ChemicalStudentsPage extends StatelessWidget {
               stream: _firestore
                   .collection('users')
                   .where('role', isEqualTo: 'student')
-                  .where('branch', isEqualTo: 'Agriculture')
+                  .where('branch', isEqualTo: 'CHEMICAL')
                   .snapshots(),
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
@@ -662,6 +740,10 @@ class ChemicalStudentsPage extends StatelessWidget {
                             style: TextStyle(fontFamily: 'NexaHeavy')),
                         subtitle: Text(doc['email'],
                             style: TextStyle(fontFamily: 'NexaLight')),
+                        trailing: IconButton(
+                          icon: Icon(Icons.delete, color: Colors.red),
+                          onPressed: () => removeUser(doc.id),
+                        ),
                       ),
                     );
                   }).toList(),
@@ -675,14 +757,19 @@ class ChemicalStudentsPage extends StatelessWidget {
   }
 }
 
+
 class ElectronicsStudentsPage extends StatelessWidget {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  Future<void> removeUser(String userId) async {
+    await _firestore.collection('users').doc(userId).delete();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Electronics Students',
+        title: Text('Electonics Students',
             style: TextStyle(fontFamily: 'NexaHeavy')),
       ),
       body: Column(
@@ -693,7 +780,7 @@ class ElectronicsStudentsPage extends StatelessWidget {
               stream: _firestore
                   .collection('users')
                   .where('role', isEqualTo: 'student')
-                  .where('branch', isEqualTo: 'Agriculture')
+                  .where('branch', isEqualTo: 'ELEX')
                   .snapshots(),
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
@@ -722,6 +809,10 @@ class ElectronicsStudentsPage extends StatelessWidget {
                             style: TextStyle(fontFamily: 'NexaHeavy')),
                         subtitle: Text(doc['email'],
                             style: TextStyle(fontFamily: 'NexaLight')),
+                        trailing: IconButton(
+                          icon: Icon(Icons.delete, color: Colors.red),
+                          onPressed: () => removeUser(doc.id),
+                        ),
                       ),
                     );
                   }).toList(),
@@ -735,8 +826,13 @@ class ElectronicsStudentsPage extends StatelessWidget {
   }
 }
 
+
 class CivilStudentsPage extends StatelessWidget {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  Future<void> removeUser(String userId) async {
+    await _firestore.collection('users').doc(userId).delete();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -753,7 +849,7 @@ class CivilStudentsPage extends StatelessWidget {
               stream: _firestore
                   .collection('users')
                   .where('role', isEqualTo: 'student')
-                  .where('branch', isEqualTo: 'Agriculture')
+                  .where('branch', isEqualTo: 'CIVIL')
                   .snapshots(),
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
@@ -782,6 +878,10 @@ class CivilStudentsPage extends StatelessWidget {
                             style: TextStyle(fontFamily: 'NexaHeavy')),
                         subtitle: Text(doc['email'],
                             style: TextStyle(fontFamily: 'NexaLight')),
+                        trailing: IconButton(
+                          icon: Icon(Icons.delete, color: Colors.red),
+                          onPressed: () => removeUser(doc.id),
+                        ),
                       ),
                     );
                   }).toList(),

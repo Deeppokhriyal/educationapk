@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:educationapk/adminpanel/beforestart/adminlogin.dart';
 import 'package:educationapk/before%20start/signup.dart';
 import 'package:educationapk/teacherpanel/before%20start/teacherpanel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -202,44 +203,7 @@ class _MyLoginState extends State<MyLogin> {
                                   padding: EdgeInsets.only(left: 12,top: 20),
                                   child: Text('Or Login with',style: TextStyle(color: Colors.black, fontSize: 16,fontFamily: 'nexalight'),textAlign: TextAlign.right,)                     ,
                                 ),
-                                SizedBox(height: 39,),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SizedBox(
-                                      height: 46,
-                                      child: ElevatedButton(
-                                        style: ElevatedButton.styleFrom(
-                                          foregroundColor: Colors.black, backgroundColor: Colors.white, // Set the text color here
-                                        ),
-                                        onPressed: () {},
-                                        child: Image.network('https://cdn-icons-png.flaticon.com/128/5968/5968764.png', height: 30,),
-                                      ),
-                                    ),
-                                    SizedBox(width: 30,),
-                                    SizedBox(
-                                      height: 46,
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                        },
-                                        child: Image.network('https://cdn-icons-png.flaticon.com/128/281/281764.png', height: 29,),
-                                      ),
 
-
-                                    ),
-                                    SizedBox(width: 30,),
-                                    SizedBox(
-                                      height: 46,
-                                      child: ElevatedButton(
-                                        style: ElevatedButton.styleFrom(
-                                          foregroundColor: Colors.black, backgroundColor: Colors.white, // Set the text color here
-                                        ),
-                                        onPressed: () {},
-                                        child: Image.network('https://cdn-icons-png.flaticon.com/128/731/731985.png', height: 30,),
-                                      ),
-                                    ),
-                                  ],
-                                ),
                                 SizedBox(height: 40,),
 
                                 SizedBox(
@@ -253,6 +217,19 @@ class _MyLoginState extends State<MyLogin> {
                                     // Get.to(()=>MyHomePage());
                                   },
                                     child: Text('Teacher Panel',style: TextStyle(color: Colors.white, fontSize: 16,fontFamily: 'sans-serif-light'),),
+                                  ),
+                                ), SizedBox(height: 35,),
+
+                                SizedBox(
+                                  height: 50,
+                                  width: 450,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      foregroundColor: Colors.black, backgroundColor: Colors.blueGrey // Set the text color here
+                                    ),  onPressed: () {
+                                    Get.to(AdminLogin());
+                                  },
+                                    child: Text('Admin Panel',style: TextStyle(color: Colors.white, fontSize: 16,fontFamily: 'sans-serif-light'),),
                                   ),
                                 ),
                               ],

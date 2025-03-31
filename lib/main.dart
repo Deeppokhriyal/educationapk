@@ -3,6 +3,7 @@ import 'dart:isolate';
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:educationapk/adminpanel/adminhome.dart';
 import 'package:educationapk/before%20start/login.dart';
 import 'package:educationapk/bottombar/homepage.dart';
 import 'package:educationapk/teacherpanel/bottombar/teacherbottom.dart';
@@ -25,12 +26,6 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 FlutterLocalNotificationsPlugin();
 
 
-// void main() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-//   await AndroidAlarmManager
-//       .initialize(); // 🔹 Ensure alarm manager is initialized
-//   runApp(MaterialApp(home: AlarmScheduler()));
-// }
 @pragma('vm:entry-point')
 void printHello() {
   final DateTime now = DateTime.now();
@@ -99,12 +94,14 @@ class _SplashScreenState extends State<SplashScreen> {
       if (userData.exists) {
         String role = userData['role'];
 
-        if (role == "teacher") {
-          Get.off(() => Teacherbar());
+        if (role == "admin") {
+          Get.off(() => Adminhome()); // Admin ke liye Admin Dashboard
+        } else if (role == "teacher") {
+          Get.off(() => Teacherbar()); // Teacher ke liye Teacher Bar
         } else if (role == "student") {
-          Get.off(() => Bottombar());
+          Get.off(() => Bottombar()); // Student ke liye Bottom Bar
         } else {
-          Get.off(() => MyLogin());
+          Get.off(() => MyLogin()); // Agar role match nahi kiya toh login screen
         }
       } else {
         Get.off(() => MyLogin());

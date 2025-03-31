@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/adminpanel/adminhome.dart';
-import 'package:educationapk/adminpanel/adminsignup.dart';
 import 'package:educationapk/before%20start/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +10,24 @@ class AdminLogin extends StatefulWidget {
   @override
   _AdminLoginState createState() => _AdminLoginState();
 }
+
+
+void adminLogin(String email, String password, BuildContext context) async {
+  // Example: Firebase Authentication ya custom logic
+  if (email == "admin@gmail.com" && password == "admin123") {
+    await saveAdminStatus(true); // Admin status save karna
+    Navigator.pushReplacementNamed(context, '/adminDashboard'); // Admin screen pe le jana
+  } else {
+    // Normal user login process
+  }
+}
+
+Future<void> saveAdminStatus(bool isAdmin) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.setBool('isAdmin', isAdmin);
+}
+
+
 
 class _AdminLoginState extends State<AdminLogin> {
   final TextEditingController adminusernameController = TextEditingController();
@@ -169,17 +186,23 @@ class _AdminLoginState extends State<AdminLogin> {
                             ),
                           ),
                           SizedBox(height: 30,),
-                          SizedBox(
-                            height: 50,
-                            width: 450,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.lightBlue,
-                              ),
-                              onPressed: () { Get.to(() => Adminsignup());},
-                              child: Text('Sign Up', style: TextStyle(color: Colors.white, fontSize: 16)),
-                            ),
-                          ),
+
+// Admin Signup  Admin Signup  Admin Signup  Admin Signup  Admin Signup  Admin Signup  Admin Signup  Admin Signup  Admin Signup  Admin Signup
+
+                          // SizedBox(
+                          //   height: 50,
+                          //   width: 450,
+                          //   child: ElevatedButton(
+                          //     style: ElevatedButton.styleFrom(
+                          //       backgroundColor: Colors.lightBlue,
+                          //     ),
+                          //     onPressed: () { Get.to(() => Adminsignup());},
+                          //     child: Text('Sign Up', style: TextStyle(color: Colors.white, fontSize: 16)),
+                          //   ),
+                          // ),
+
+// Admin Signup  Admin Signup  Admin Signup  Admin Signup  Admin Signup  Admin Signup  Admin Signup  Admin Signup  Admin Signup  Admin Signup
+
                           Divider(height: 50,),
                           Text('Dear Admin\n'
                               'We Try To Give you Best via This Application.',

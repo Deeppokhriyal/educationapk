@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:educationapk/adminpanel/homepagewidgets/Dashboard.dart';
 import 'package:educationapk/adminpanel/homepagewidgets/applicationshow.dart';
 import 'package:educationapk/adminpanel/homepagewidgets/assignmentshow.dart';
 import 'package:educationapk/adminpanel/homepagewidgets/attendanceshow.dart';
@@ -15,7 +16,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marquee/marquee.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import 'drawer.dart';
 
 class Adminhome extends StatefulWidget {
@@ -168,7 +168,7 @@ class _TeacherMainState extends State<TeacherMain> {
                         ),
                         child: GestureDetector(
                             onTap: () {
-                              // Get.to(() => AdminDashboard());
+                              Get.to(() => UserDashboard());
                             },
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -182,15 +182,10 @@ class _TeacherMainState extends State<TeacherMain> {
                                             .size
                                             .width *
                                             0.7),
-                                    GestureDetector(
-                                      onTap: () {
-                                        Get.to(() => Teacherdev());
-                                      },
-                                      child: Icon(
-                                          Icons.arrow_forward_ios_outlined,
-                                          size: 28,
-                                          color: Colors.black),
-                                    ),
+                                    Icon(
+                                        Icons.arrow_forward_ios_outlined,
+                                        size: 28,
+                                        color: Colors.black),
                                   ],
                                 ),
                                 SizedBox(

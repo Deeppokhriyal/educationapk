@@ -554,7 +554,8 @@ class _BugReportState extends State<BugReport> {
 
 
 // // AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk  AskHelpDesk
-//
+
+
 class AskHelpDesk extends StatefulWidget {
   const AskHelpDesk({super.key});
 
@@ -565,6 +566,8 @@ class AskHelpDesk extends StatefulWidget {
 class _AskHelpDeskState extends State<AskHelpDesk> {
   final TextEditingController _queryController = TextEditingController();
   final TextEditingController _replyController = TextEditingController();
+
+
 
   Future<void> _submitQuery() async {
     if (_queryController.text.isEmpty) {
@@ -585,24 +588,6 @@ class _AskHelpDeskState extends State<AskHelpDesk> {
     }
   }
 
-  Future<void> _submitReply(String docId) async {
-    if (_replyController.text.isEmpty) {
-      showAwesomeSnackBar(context,"Please enter your reply",false);
-      return;
-    }
-    try {
-      await FirebaseFirestore.instance
-          .collection('help_desk_queries')
-          .doc(docId)
-          .update({
-        'reply': _replyController.text,
-      });
-      showAwesomeSnackBar(context,"Reply submitted!",true);
-      _replyController.clear();
-    }catch(e){
-      showAwesomeSnackBar(context, "Reply not submitted", false);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -707,25 +692,6 @@ class _AskHelpDeskState extends State<AskHelpDesk> {
                                   fontSize: 14,
                                   color: Colors.black54),
                             ),
-                            if (doc['reply'].isEmpty) ...[
-                              const SizedBox(height: 10),
-                              TextField(
-                                controller: _replyController,
-                                decoration: const InputDecoration(
-                                  hintText: "Type your reply...",
-                                  hintStyle: TextStyle(fontFamily: 'nexalight'),
-                                  border: OutlineInputBorder(),
-                                ),
-                              ),
-                              const SizedBox(height: 5),
-                              ElevatedButton(
-                                onPressed: () => _submitReply(doc.id),
-                                child: const Text(
-                                  "Submit Reply",
-                                  style: TextStyle(fontFamily: 'nexalight'),
-                                ),
-                              ),
-                            ],
                           ],
                         ),
                       ),

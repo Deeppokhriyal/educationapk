@@ -31,6 +31,19 @@ class _AdminAssignmentPageState extends State<AdminAssignmentPage> {
     );
   }
 
+  Future<String> getTeacherName(String teacherId) async {
+    try {
+      DocumentSnapshot teacherDoc = await FirebaseFirestore.instance.collection('users').doc(teacherId).get();
+      if (teacherDoc.exists) {
+        var teacherData = teacherDoc.data() as Map<String, dynamic>;
+        return teacherData['name'] ?? 'Unknown Teacher';
+      }
+    } catch (e) {
+      print("Error fetching teacher data: $e");
+    }
+    return 'Unknown Teacher';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,45 +75,51 @@ class _AdminAssignmentPageState extends State<AdminAssignmentPage> {
               String subject = assignment['subject'] ?? "N/A";
               String description = assignment['description'] ?? "N/A";
               String deadline = assignment['deadline'] ?? "N/A";
-              String teacherBranch = assignment['teacherBranch'] ?? "Unknown Branch";
+              String teacherId = assignment['teacherId'] ?? ""; // Teacher UID
               List<dynamic> questions = assignment['questions'] ?? [];
 
-              return Card(
-                elevation: 5,
-                margin: EdgeInsets.only(bottom: 16),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        subject,
-                        style: TextStyle(fontFamily: 'nexaheavy', fontSize: 20, color: Colors.indigo),
+              return FutureBuilder<String>(
+                future: getTeacherName(teacherId),
+                builder: (context, teacherSnapshot) {
+                  String teacherName = teacherSnapshot.data ?? "Unknown Teacher";
+                  return Card(
+                    elevation: 5,
+                    margin: EdgeInsets.only(bottom: 16),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            subject,
+                            style: TextStyle(fontFamily: 'nexaheavy', fontSize: 20, color: Colors.indigo),
+                          ),
+                          SizedBox(height: 5),
+                          Text("Teacher: $teacherName", style: TextStyle(fontFamily: 'nexalight', fontSize: 16)),
+                          SizedBox(height: 5),
+                          Text("Deadline: $deadline", style: TextStyle(fontFamily: 'nexalight', fontSize: 16, color: Colors.red)),
+                          SizedBox(height: 10),
+                          Text("Description: $description", style: TextStyle(fontFamily: 'nexalight', fontSize: 16)),
+                          SizedBox(height: 10),
+                          if (questions.isNotEmpty)
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: questions.map((q) => Text("Q : $q", style: TextStyle(fontFamily: 'nexaheavy', fontSize: 18))).toList(),
+                            ),
+                          SizedBox(height: 10),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: IconButton(
+                              icon: Icon(Icons.delete, color: Colors.red),
+                              onPressed: () => deleteAssignment(docId),
+                            ),
+                          ),
+                        ],
                       ),
-                      SizedBox(height: 5),
-                      Text("Branch: $teacherBranch", style: TextStyle(fontFamily: 'nexalight', fontSize: 16)),
-                      SizedBox(height: 5),
-                      Text("Deadline: $deadline", style: TextStyle(fontFamily: 'nexalight', fontSize: 16, color: Colors.red)),
-                      SizedBox(height: 10),
-                      Text("Description: $description", style: TextStyle(fontFamily: 'nexalight', fontSize: 16)),
-                      SizedBox(height: 10),
-                      if (questions.isNotEmpty)
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: questions.map((q) => Text("• $q", style: TextStyle(fontSize: 16))).toList(),
-                        ),
-                      SizedBox(height: 10),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: IconButton(
-                          icon: Icon(Icons.delete, color: Colors.red),
-                          onPressed: () => deleteAssignment(docId),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                    ),
+                  );
+                },
               );
             },
           );

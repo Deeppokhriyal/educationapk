@@ -12,7 +12,7 @@ class _AdminBugReportsPageState extends State<AdminBugReportsPage> {
       await FirebaseFirestore.instance.collection('bug_reports').doc(docId).delete();
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Failed to delete bug report")),
+        SnackBar(content: Text("Failed to delete bug report", style: TextStyle(fontFamily: 'NexaLight'))),
       );
     }
   }
@@ -21,7 +21,7 @@ class _AdminBugReportsPageState extends State<AdminBugReportsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bug Reports'),
+        title: Text('Bug Reports', style: TextStyle(fontFamily: 'NexaHeavy')),
         backgroundColor: Colors.redAccent,
         centerTitle: true,
         elevation: 10,
@@ -34,7 +34,7 @@ class _AdminBugReportsPageState extends State<AdminBugReportsPage> {
             return Center(child: CircularProgressIndicator());
           }
           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-            return Center(child: Text('No bug reports available'));
+            return Center(child: Text('No bug reports available', style: TextStyle(fontFamily: 'NexaLight')));
           }
           return ListView.builder(
             itemCount: snapshot.data!.docs.length,
@@ -64,7 +64,7 @@ class _AdminBugReportsPageState extends State<AdminBugReportsPage> {
                       ElevatedButton(
                         onPressed: () => _deleteBugReport(bugReport.id),
                         style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                        child: Text("Delete Report", style: TextStyle(color: Colors.white)),
+                        child: Text("Delete Report", style: TextStyle(color: Colors.white, fontFamily: 'NexaLight')),
                       ),
                     ],
                   ),

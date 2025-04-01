@@ -81,16 +81,16 @@ class _AdminApplicationsPageState extends State<AdminApplicationsPage> {
                         children: [
                           ElevatedButton(
                             onPressed: () => updateApplicationStatus(docId, "Approved"),
-                            child: Text("Approve", style: TextStyle(fontFamily: 'nexaheavy')),
+                            child: Text("Approve", style: TextStyle(fontFamily: 'nexaheavy',color: Colors.white)),
                             style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
                           ),
                           ElevatedButton(
                             onPressed: () => updateApplicationStatus(docId, "Declined"),
-                            child: Text("Decline", style: TextStyle(fontFamily: 'nexaheavy')),
+                            child: Text("Decline", style: TextStyle(fontFamily: 'nexaheavy',color: Colors.white)),
                             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                           ),
                           IconButton(
-                            icon: Icon(Icons.delete, color: Colors.grey),
+                            icon: Icon(Icons.delete, color: Colors.red),
                             onPressed: () => deleteApplication(docId),
                           ),
                         ],

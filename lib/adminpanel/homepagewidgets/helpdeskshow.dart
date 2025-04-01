@@ -43,7 +43,7 @@ class _AdminHelpDeskPageState extends State<AdminHelpDeskPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Help Desk Queries'),
+        title: Text('Help Desk Queries',style: TextStyle(fontFamily: 'nexaheavy',),),
         backgroundColor: Colors.indigo,
         centerTitle: true,
         elevation: 10,
@@ -101,7 +101,7 @@ class _AdminHelpDeskPageState extends State<AdminHelpDeskPage> {
                       ElevatedButton(
                         onPressed: () => _deleteQuery(query.id),
                         style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                        child: Text("Delete Query", style: TextStyle(color: Colors.white)),
+                        child: Text("Delete Query", style: TextStyle(fontFamily: 'nexaheavy',color: Colors.white)),
                       ),
                     ],
                   ),

@@ -8,9 +8,8 @@ import 'package:educationapk/adminpanel/homepagewidgets/bugreportshow.dart';
 import 'package:educationapk/adminpanel/homepagewidgets/chatboxshow.dart';
 import 'package:educationapk/adminpanel/homepagewidgets/helpdeskshow.dart';
 import 'package:educationapk/adminpanel/homepagewidgets/management.dart';
-import 'package:educationapk/homepagewidgets/devpage.dart';
+import 'package:educationapk/adminpanel/homepagewidgets/reportanalytics.dart';
 import 'package:educationapk/teacherpanel/allbox/syllabus.dart';
-import 'package:educationapk/teacherpanel/allbox/teacherdev.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -810,7 +809,7 @@ class _TeacherMainState extends State<TeacherMain> {
                         ),
                         child: GestureDetector(
                             onTap: () {
-                              Get.to(() => Devpage());
+                              Get.to(() => ReportsAnalyticsPage());
                             },
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -824,15 +823,10 @@ class _TeacherMainState extends State<TeacherMain> {
                                             .size
                                             .width *
                                             0.7),
-                                    GestureDetector(
-                                      onTap: () {
-                                        Get.to(() => Teacherdev());
-                                      },
-                                      child: Icon(
-                                          Icons.arrow_forward_ios_outlined,
-                                          size: 28,
-                                          color: Colors.black),
-                                    ),
+                                    Icon(
+                                        Icons.arrow_forward_ios_outlined,
+                                        size: 28,
+                                        color: Colors.black),
                                   ],
                                 ),
                                 SizedBox(
@@ -859,7 +853,7 @@ class _TeacherMainState extends State<TeacherMain> {
                                   height: 5,
                                 ),
                                 Text(
-                                  'Graph / branch\'s / Student\'s',
+                                  'Chart / branch\'s',
                                   style: TextStyle(
                                       fontFamily: 'sans-serif-thin',
                                       fontSize: 15),

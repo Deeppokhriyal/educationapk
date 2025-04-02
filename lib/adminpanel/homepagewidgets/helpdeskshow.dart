@@ -88,13 +88,18 @@ class _AdminHelpDeskPageState extends State<AdminHelpDeskPage> {
                           controller: _replyController,
                           decoration: InputDecoration(
                             hintText: "Enter reply",
+                            hintStyle: TextStyle(
+                              fontFamily: 'nexaheavy',
+                            ),
                             border: OutlineInputBorder(),
                           ),
                         ),
                         SizedBox(height: 5),
                         ElevatedButton(
                           onPressed: () => _submitReply(query.id),
-                          child: Text("Submit Reply"),
+                          child: Text("Submit Reply",style: TextStyle(
+                            fontFamily: 'nexaheavy',
+                          ),),
                         ),
                       ],
                       SizedBox(height: 5),

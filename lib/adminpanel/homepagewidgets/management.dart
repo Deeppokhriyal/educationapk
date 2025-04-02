@@ -1,6 +1,8 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
@@ -170,18 +172,25 @@ class _AdminUserManagementPageState extends State<AdminUserManagementPage> {
             child: StreamBuilder(
               stream: _firestore.collection('users').where('role', isEqualTo: 'teacher').snapshots(),
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                if (!snapshot.hasData) return CircularProgressIndicator();
-                return ListView(
-                  children: snapshot.data!.docs.map((doc) {
-                    return ListTile(
-                      title: Text(doc['name'], style: TextStyle(fontFamily: 'NexaHeavy')),
-                      subtitle: Text(doc['email'], style: TextStyle(fontFamily: 'NexaLight')),
-                      trailing: IconButton(
-                        icon: Icon(Icons.delete, color: Colors.red),
-                        onPressed: () => removeUser(doc.id),
-                      ),
-                    );
-                  }).toList(),
+                if (!snapshot.hasData) {
+                  return SpinKitRipple(
+                  color: Colors.lightBlueAccent,size: 1,
+                );
+                }
+                return ZoomIn(
+                  duration: Duration(milliseconds: 500),
+                  child: ListView(
+                    children: snapshot.data!.docs.map((doc) {
+                      return ListTile(
+                        title: Text(doc['name'], style: TextStyle(fontFamily: 'NexaHeavy')),
+                        subtitle: Text(doc['email'], style: TextStyle(fontFamily: 'NexaLight')),
+                        trailing: IconButton(
+                          icon: Icon(Icons.delete, color: Colors.red),
+                          onPressed: () => removeUser(doc.id),
+                        ),
+                      );
+                    }).toList(),
+                  ),
                 );
               },
             ),
@@ -265,8 +274,10 @@ class _AdminUserManagementPageState extends State<AdminUserManagementPage> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.lightBlueAccent.shade100,
+        hoverColor: Colors.purple,
         onPressed: _showAddUserDialog,
-        child: Icon(Icons.add),
+        child: Icon(Icons.person_add_alt,color: Colors.black,size: 30,),
       ),
     );
   }

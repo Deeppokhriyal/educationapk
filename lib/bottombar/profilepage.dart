@@ -565,7 +565,6 @@ class AskHelpDesk extends StatefulWidget {
 
 class _AskHelpDeskState extends State<AskHelpDesk> {
   final TextEditingController _queryController = TextEditingController();
-  final TextEditingController _replyController = TextEditingController();
 
 
 

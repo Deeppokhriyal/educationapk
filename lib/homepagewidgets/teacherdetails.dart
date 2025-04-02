@@ -42,19 +42,19 @@ class Teacherdetails extends StatelessWidget {
   ];
 
   final List<Map<String, String>> guesteachers = [
-    {'name': 'Kr. Anuradha', 'designation': 'Agriculture Eng.', 'image': 'assets/librarian.png'},
-    {'name': 'Shri Prashant Kumar', 'designation': 'Chemical Eng.', 'image': 'assets/librarian.png'},
-    {'name': 'Sri A.K.Agarwal', 'designation': 'Chemical Paint Eng.', 'image': 'assets/librarian.png'},
-    {'name': 'Mr. Nitin Chandra', 'designation': 'Civil Eng.', 'image': 'assets/librarian.png'},
-    {'name': 'Miss. Himani Rawat', 'designation': 'Civil Eng.', 'image': 'assets/librarian.png'},
-    {'name': 'Shri O.P.Singh', 'designation': 'Computer Science and Eng.', 'image': 'assets/librarian.png'},
-    {'name': 'Shri Rajeev Yadav', 'designation': 'Electronics ', 'image': 'assets/librarian.png'},
-    {'name': 'Shri R.S.Yadav', 'designation': 'Information Technology', 'image': 'assets/librarian.png'},
-    {'name': 'Mr. Gaurav Shriwal', 'designation': 'Mechanical Eng.', 'image': 'assets/librarian.png'},
-    {'name': 'Miss. Shweta Gola', 'designation': 'Mechanical Eng.', 'image': 'assets/librarian.png'},
-    {'name': 'Mr. Arjun Agarwal', 'designation': 'Mechanical Eng.', 'image': 'assets/librarian.png'},
-    {'name': 'Mr. Pankaj Kumar', 'designation': 'Mechanical Eng.', 'image': 'assets/librarian.png'},
-    {'name': 'Shri Kumar Gaurv', 'designation': 'Pharmacy ', 'image': 'assets/librarian.png'},
+    {'name': 'Kr. Anuradha', 'designation': 'Agriculture Eng.', 'image': 'assets/images/woman.png'},
+    {'name': 'Shri Prashant Kumar', 'designation': 'Chemical Eng.', 'image': 'assets/images/man.png'},
+    {'name': 'Sri A.K.Agarwal', 'designation': 'Chemical Paint Eng.', 'image': 'assets/images/man.png'},
+    {'name': 'Mr. Nitin Chandra', 'designation': 'Civil Eng.', 'image': 'assets/images/man.png'},
+    {'name': 'Miss. Himani Rawat', 'designation': 'Civil Eng.', 'image': 'assets/images/woman.png'},
+    {'name': 'Shri O.P.Singh', 'designation': 'Computer Science and Eng.', 'image': 'assets/images/man.png'},
+    {'name': 'Shri Rajeev Yadav', 'designation': 'Electronics ', 'image': 'assets/images/man.png'},
+    {'name': 'Shri R.S.Yadav', 'designation': 'Information Technology', 'image': 'assets/images/man.png'},
+    {'name': 'Mr. Gaurav Shriwal', 'designation': 'Mechanical Eng.', 'image': 'assets/images/man.png'},
+    {'name': 'Miss. Shweta Gola', 'designation': 'Mechanical Eng.', 'image': 'assets/images/woman.png'},
+    {'name': 'Mr. Arjun Agarwal', 'designation': 'Mechanical Eng.', 'image': 'assets/images/man.png'},
+    {'name': 'Mr. Pankaj Kumar', 'designation': 'Mechanical Eng.', 'image': 'assets/images/man.png'},
+    {'name': 'Shri Kumar Gaurv', 'designation': 'Pharmacy ', 'image': 'assets/images/man.png'},
   ];
 
   @override

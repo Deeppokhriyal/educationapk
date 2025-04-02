@@ -358,6 +358,15 @@ class _MyMainHomeState extends State<MyMainHome> {
                               ),
                               PopupMenuItem<String>(
                                 onTap: () {
+                                  Get.to(() => BugReport());
+                                },
+                                child: Text('Bug Reports',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontFamily: 'sans-serif-light')),
+                              ),
+                              PopupMenuItem<String>(
+                                onTap: () {
                                   Get.to(() => AskHelpDesk());
                                 },
                                 child: Text('Ask Help Desk',
@@ -681,24 +690,26 @@ class _MyMainHomeState extends State<MyMainHome> {
                                   SizedBox(
                                     height: 10,
                                   ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Teachers',
-                                        style: TextStyle(
-                                            fontSize: 30,
-                                            fontFamily: 'sans-serif-light',
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        '68 Members',
-                                        style: TextStyle(
+                                  Row(
+                                    children: [Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Teachers',
+                                          style: TextStyle(
+                                              fontSize: 30,
+                                              fontFamily: 'sans-serif-light',
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Text(
+                                          '68 Members',
+                                          style: TextStyle(
 
-                                            fontFamily: 'sans-serif-thin',
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
+                                              fontFamily: 'sans-serif-thin',
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),]
                                   ),
                                 ],
                               )),

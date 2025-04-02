@@ -122,22 +122,22 @@ class _TeacherMainState extends State<TeacherMain> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: FadeIn(
         duration: Duration(milliseconds: 400),
         child: ListView(padding: EdgeInsets.all(4), children: [
           Stack(alignment: Alignment.center, children: [
             Container(
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.orange.shade100,
-                    Colors.blueGrey,
-                    Colors.lightBlueAccent.shade100
-                  ],
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                ),
+                // gradient: LinearGradient(
+                //   colors: [
+                //     Colors.orange.shade100,
+                //     Colors.blueGrey,
+                //     Colors.lightBlueAccent.shade100
+                //   ],
+                //   begin: Alignment.topRight,
+                //   end: Alignment.bottomLeft,
+                // ),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -276,7 +276,7 @@ class _TeacherMainState extends State<TeacherMain> {
                               'Namskaram',
                               style: TextStyle(
                                   fontSize: 13,
-                                  fontFamily: 'sans-serif-thin',
+                                  fontFamily: 'sans-serif-light',
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black),
                             ),
@@ -324,6 +324,16 @@ class _TeacherMainState extends State<TeacherMain> {
                               ),
                               PopupMenuItem<String>(
                                 onTap: () {
+                                  Get.to(()=>BugReport());
+                                },
+                                value: 'Bug Reports',
+                                child: Text('Bug Reports',
+                                    style: TextStyle(
+                                        fontSize: 17,
+                                        fontFamily: 'sans-serif-light')),
+                              ),
+                              PopupMenuItem<String>(
+                                onTap: () {
                                  Get.to(()=>AskHelpDesk());
                                 },
                                 value: 'Ask Help Desk',
@@ -337,7 +347,7 @@ class _TeacherMainState extends State<TeacherMain> {
                           icon: Icon(Icons.menu,
                               size: 28, color: Colors.black), // Icon to display
                           elevation: 5, // Shadow elevation
-                          color: Colors.white, // Background color
+                          color: Colors.grey[100], // Background color
                           offset: Offset(0, 45), // Positioning of the menu
                         ),
                       )
@@ -355,7 +365,7 @@ class _TeacherMainState extends State<TeacherMain> {
                             " Let's Explore\n      The Polyverse",
                             style: TextStyle(
                                 fontSize: 44,
-                                fontFamily: 'sans-serif-thin',
+                                fontFamily: 'sans-serif-light',
                                 color: Colors.black),
                           ),
                         ],
@@ -369,308 +379,303 @@ class _TeacherMainState extends State<TeacherMain> {
                     children: [
                       Row(
                         children: [
-                          Container(
-                            padding: EdgeInsets.all(10),
-                            margin: EdgeInsets.all(10),
-                            height: 165,
-                            width: MediaQuery.of(context).size.width * 0.43,
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                  colors: [Colors.lightGreen.shade50, Colors.lightGreen.shade400], // Three colors
-                                  begin: Alignment.topRight,
-                                  end: Alignment.bottomLeft), // Background color
-                              borderRadius:
-                                  BorderRadius.circular(20), // Rounded corners
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.lightGreen.shade300, // Shadow color
-                                  blurRadius: 5, // Shadow blur radius
-                                  offset: Offset(0, 4), // Shadow offset
-                                ),
-                              ],
+                          GestureDetector(
+                            onTap: (){Get.to(Devpage());},
+                            child: Container(
+                              padding: EdgeInsets.all(10),
+                              margin: EdgeInsets.all(10),
+                              height: 165,
+                              width: MediaQuery.of(context).size.width * 0.43,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                    colors: [Colors.lightGreen.shade50, Colors.lightGreen.shade400], // Three colors
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft), // Background color
+                                borderRadius:
+                                    BorderRadius.circular(20), // Rounded corners
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.lightGreen.shade300, // Shadow color
+                                    blurRadius: 5, // Shadow blur radius
+                                    offset: Offset(0, 4), // Shadow offset
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Icon(Icons.timelapse_sharp,
+                                          size: 30, color: Colors.black),
+                                      SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.21),
+                                      GestureDetector(
+                                        onTap: () {
+                                          Get.to(() => Teacherdev());
+                                        },
+                                        child: Icon(
+                                            Icons.arrow_forward_ios_outlined,
+                                            size: 28,
+                                            color: Colors.black),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'App',
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontFamily: 'sans-serif-light',
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text(
+                                            'Designing',
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontFamily: 'sans-serif-light',
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Text(
+                                    'Developed By 2 Developer\'s in 90 Days',
+                                    style: TextStyle(
+                                        fontFamily: 'sans-serif-thin',
+                                        fontSize: 12),
+                                  ),
+                                ],
+                              ),
                             ),
-                            child: GestureDetector(
-                                onTap: () {
-                                  Get.to(() => Devpage());
-                                },
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Icon(Icons.timelapse_sharp,
-                                            size: 30, color: Colors.black),
-                                        SizedBox(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.21),
-                                        GestureDetector(
-                                          onTap: () {
-                                            Get.to(() => Teacherdev());
-                                          },
-                                          child: Icon(
-                                              Icons.arrow_forward_ios_outlined,
-                                              size: 28,
-                                              color: Colors.black),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'App',
-                                              style: TextStyle(
-                                                  fontSize: 20,
-                                                  fontFamily: 'sans-serif-light',
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                            Text(
-                                              'Designing',
-                                              style: TextStyle(
-                                                  fontSize: 20,
-                                                  fontFamily: 'sans-serif-light',
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Text(
-                                      'Developed By 2 Developer\'s in 90 Days',
-                                      style: TextStyle(
-                                          fontFamily: 'sans-serif-thin',
-                                          fontSize: 12),
-                                    ),
-                                  ],
-                                )),
                           ),
-                          Container(
-                            padding: EdgeInsets.all(10),
-                            margin: EdgeInsets.all(10),
-                            height: 165,
-                            width: MediaQuery.of(context).size.width * 0.43,
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                  colors: [Colors.lightGreen.shade400, Colors.lightGreen.shade50], // Three colors
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight),  // Background color
-                              borderRadius:
-                                  BorderRadius.circular(20), // Rounded corners
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.lightGreen.shade300, // Shadow color
-                                  blurRadius: 5, // Shadow blur radius
-                                  offset: Offset(0, 4), // Shadow offset
-                                ),
-                              ],
+                          GestureDetector(
+                            onTap: (){Get.to(Teacherdetails());},
+                            child: Container(
+                              padding: EdgeInsets.all(10),
+                              margin: EdgeInsets.all(10),
+                              height: 165,
+                              width: MediaQuery.of(context).size.width * 0.43,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                    colors: [Colors.lightGreen.shade400, Colors.lightGreen.shade50], // Three colors
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight),  // Background color
+                                borderRadius:
+                                    BorderRadius.circular(20), // Rounded corners
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.lightGreen.shade300, // Shadow color
+                                    blurRadius: 5, // Shadow blur radius
+                                    offset: Offset(0, 4), // Shadow offset
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Icon(Icons.timelapse_sharp,
+                                          size: 30, color: Colors.black),
+                                      SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.21),
+                                      Icon(Icons.arrow_forward_ios_outlined,
+                                          size: 28, color: Colors.black),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Teacher\'s',
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontFamily: 'sans-serif-light',
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Text(
+                                    'All Registered Teacher\'s in this Page',
+                                    style: TextStyle(
+                                        fontFamily: 'sans-serif-thin',
+                                        fontSize: 12),
+                                  ),
+                                ],
+                              ),
                             ),
-                            child: GestureDetector(
-                                onTap: () {
-                                  Get.to(Teacherdetails());
-                                },
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Icon(Icons.timelapse_sharp,
-                                            size: 30, color: Colors.black),
-                                        SizedBox(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.21),
-                                        Icon(Icons.arrow_forward_ios_outlined,
-                                            size: 28, color: Colors.black),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Teacher\'s',
-                                              style: TextStyle(
-                                                  fontSize: 20,
-                                                  fontFamily: 'sans-serif-light',
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 20,
-                                    ),
-                                    Text(
-                                      'All Registered Teacher\'s in this Page',
-                                      style: TextStyle(
-                                          fontFamily: 'sans-serif-thin',
-                                          fontSize: 12),
-                                    ),
-                                  ],
-                                )),
                           ),
                         ],
                       ),
                       Row(
                         children: [
-                          Container(
-                            padding: EdgeInsets.all(10),
-                            margin: EdgeInsets.all(10),
-                            height: 165,
-                            width: MediaQuery.of(context).size.width * 0.43,
-                            decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                    colors: [Colors.lightBlue.shade50, Colors.lightBlue.shade400], // Three colors
-                                    begin: Alignment.topLeft,
-                                    end: Alignment.bottomRight),
-                              borderRadius:
-                                  BorderRadius.circular(20), // Rounded corners
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.lightBlue.shade300, // Shadow color
-                                  blurRadius: 5, // Shadow blur radius
-                                  offset: Offset(0, 4), // Shadow offset
-                                ),
-                              ],
+                          GestureDetector(
+                            onTap: (){Get.to(AttendanceScreen());},
+                            child: Container(
+                              padding: EdgeInsets.all(10),
+                              margin: EdgeInsets.all(10),
+                              height: 165,
+                              width: MediaQuery.of(context).size.width * 0.43,
+                              decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                      colors: [Colors.lightBlue.shade50, Colors.lightBlue.shade400], // Three colors
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight),
+                                borderRadius:
+                                    BorderRadius.circular(20), // Rounded corners
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.lightBlue.shade300, // Shadow color
+                                    blurRadius: 5, // Shadow blur radius
+                                    offset: Offset(0, 4), // Shadow offset
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Icon(Icons.timelapse_sharp,
+                                          size: 30, color: Colors.black),
+                                      SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.21),
+                                      Icon(Icons.arrow_forward_ios_outlined,
+                                          size: 28, color: Colors.black),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Attendance',
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontFamily: 'sans-serif-light',
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Text(
+                                    'Mark the Attendance of students',
+                                    style: TextStyle(
+                                        fontFamily: 'sans-serif-thin',
+                                        fontSize: 12),
+                                  ),
+                                ],
+                              ),
                             ),
-                            child: GestureDetector(
-                                onTap: () {
-                                  Get.to(() => AttendanceScreen());
-                                },
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Icon(Icons.timelapse_sharp,
-                                            size: 30, color: Colors.black),
-                                        SizedBox(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.21),
-                                        Icon(Icons.arrow_forward_ios_outlined,
-                                            size: 28, color: Colors.black),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Attendance',
-                                              style: TextStyle(
-                                                  fontSize: 20,
-                                                  fontFamily: 'sans-serif-light',
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 20,
-                                    ),
-                                    Text(
-                                      'Mark the Attendance of students',
-                                      style: TextStyle(
-                                          fontFamily: 'sans-serif-thin',
-                                          fontSize: 12),
-                                    ),
-                                  ],
-                                )),
                           ),
-                          Container(
-                            padding: EdgeInsets.all(10),
-                            margin: EdgeInsets.all(10),
-                            height: 165,
-                            width: MediaQuery.of(context).size.width * 0.43,
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                  colors: [Colors.lightBlue.shade400, Colors.lightBlue.shade50], // Three colors
-                                  begin: Alignment.topRight,
-                                  end: Alignment.bottomLeft),
-                              borderRadius:
-                                  BorderRadius.circular(20), // Rounded corners
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.lightBlue.shade300, // Shadow color
-                                  blurRadius: 5, // Shadow blur radius
-                                  offset: Offset(0, 4), // Shadow offset
-                                ),
-                              ],
+                          GestureDetector(
+                            onTap: (){Get.to(LeaveApplicationsList());},
+                            child: Container(
+                              padding: EdgeInsets.all(10),
+                              margin: EdgeInsets.all(10),
+                              height: 165,
+                              width: MediaQuery.of(context).size.width * 0.43,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                    colors: [Colors.lightBlue.shade400, Colors.lightBlue.shade50], // Three colors
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft),
+                                borderRadius:
+                                    BorderRadius.circular(20), // Rounded corners
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.lightBlue.shade300, // Shadow color
+                                    blurRadius: 5, // Shadow blur radius
+                                    offset: Offset(0, 4), // Shadow offset
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Icon(Icons.timelapse_sharp,
+                                          size: 30, color: Colors.black),
+                                      SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.21),
+                                      Icon(Icons.arrow_forward_ios_outlined,
+                                          size: 28, color: Colors.black),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Application\'s',
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontFamily: 'sans-serif-light',
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Text(
+                                    'Received the Application of the Students',
+                                    style: TextStyle(
+                                        fontFamily: 'sans-serif-thin',
+                                        fontSize: 12),
+                                  ),
+                                ],
+                              ),
                             ),
-                            child: GestureDetector(
-                                onTap: () {
-                                  Get.to(() => LeaveApplicationsList());
-                                  // Navigator.push(context, MaterialPageRoute(builder: (context)=>LeaveApplicationsList() ));
-                                },
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Icon(Icons.timelapse_sharp,
-                                            size: 30, color: Colors.black),
-                                        SizedBox(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.21),
-                                        Icon(Icons.arrow_forward_ios_outlined,
-                                            size: 28, color: Colors.black),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Application\'s',
-                                              style: TextStyle(
-                                                  fontSize: 20,
-                                                  fontFamily: 'sans-serif-light',
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 20,
-                                    ),
-                                    Text(
-                                      'Received the Application of the Students',
-                                      style: TextStyle(
-                                          fontFamily: 'sans-serif-thin',
-                                          fontSize: 12),
-                                    ),
-                                  ],
-                                )),
                           ),
                         ],
                       ),

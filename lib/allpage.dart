@@ -28,27 +28,25 @@ Widget build(BuildContext context) {
               child: Column(
                   children: [
                     SizedBox(height: 70,),
-                    Container(
-                        padding: EdgeInsets.all(10),
-                        margin: EdgeInsets.all(17),
-                        height: 100,
-                        width: 370,
-                        decoration:
-                        BoxDecoration(
-                          color: Colors.lightBlueAccent[100], // Background color
-                          borderRadius: BorderRadius.circular(20),// Rounded corners
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.blue.shade200, // Shadow color
-                              blurRadius: 5, // Shadow blur radius
-                              offset: Offset(0, 4), // Shadow offset
-                            ),
-                          ],
-                        ),
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.to(Branches());
-                          },
+                    GestureDetector(
+                      onTap: (){Get.to(Branches());},
+                      child: Container(
+                          padding: EdgeInsets.all(10),
+                          margin: EdgeInsets.all(17),
+                          height: 100,
+                          width: 370,
+                          decoration:
+                          BoxDecoration(
+                            color: Colors.lightBlueAccent[100], // Background color
+                            borderRadius: BorderRadius.circular(20),// Rounded corners
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.blue.shade200, // Shadow color
+                                blurRadius: 5, // Shadow blur radius
+                                offset: Offset(0, 4), // Shadow offset
+                              ),
+                            ],
+                          ),
                           child: Column(mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -66,31 +64,29 @@ Widget build(BuildContext context) {
                                 ],
                               ),
                             ],
-                          ),
-                        )
+                          )
+                      ),
                     ),
                     SizedBox(height: 15,),
-                    Container(
-                        padding: EdgeInsets.all(10),
-                        margin: EdgeInsets.all(17),
-                        height: 100,
-                        width: 370,
-                        decoration:
-                        BoxDecoration(
-                          color: Colors.lightBlueAccent[100],  // Background color
-                          borderRadius: BorderRadius.circular(20),// Rounded corners
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.blue.shade200, // Shadow color
-                              blurRadius: 5, // Shadow blur radius
-                              offset: Offset(0, 4),// Shadow offset
-                            ),
-                          ],
-                        ),
-                        child: GestureDetector(
-                          onTap: (){
-                            Get.to(Programmingpage());
-                          },
+                    GestureDetector(
+                      onTap: (){Get.to(Programmingpage());},
+                      child: Container(
+                          padding: EdgeInsets.all(10),
+                          margin: EdgeInsets.all(17),
+                          height: 100,
+                          width: 370,
+                          decoration:
+                          BoxDecoration(
+                            color: Colors.lightBlueAccent[100],  // Background color
+                            borderRadius: BorderRadius.circular(20),// Rounded corners
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.blue.shade200, // Shadow color
+                                blurRadius: 5, // Shadow blur radius
+                                offset: Offset(0, 4),// Shadow offset
+                              ),
+                            ],
+                          ),
                           child: Column(mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -108,32 +104,30 @@ Widget build(BuildContext context) {
                                 ],
                               ),
                             ],
-                          ),
-                        )
+                          )
+                      ),
                     ),
                     SizedBox(height: 15,),
-                    Container(
-                        padding: EdgeInsets.all(10),
-                        margin: EdgeInsets.all(17),
-                        height: 100,
-                        width: 370,
-                        decoration:
-                        BoxDecoration(
-                          color: Colors.lightBlueAccent[100],  // Background color
-                          borderRadius: BorderRadius.circular(20),// Rounded corners
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.blue.shade200, // Shadow color
-                              blurRadius: 5, // Shadow blur radius
-                              offset: Offset(0, 4), // Shadow offset
-                            ),
-                          ],
-                        ),
-                        child: GestureDetector(
-                          onTap: (){
-                            Get.to(AttendanceHistory());
-                          },child:
-                          Column(mainAxisAlignment: MainAxisAlignment.start,
+                    GestureDetector(
+                      onTap: (){Get.to(AttendanceHistory());},
+                      child: Container(
+                          padding: EdgeInsets.all(10),
+                          margin: EdgeInsets.all(17),
+                          height: 100,
+                          width: 370,
+                          decoration:
+                          BoxDecoration(
+                            color: Colors.lightBlueAccent[100],  // Background color
+                            borderRadius: BorderRadius.circular(20),// Rounded corners
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.blue.shade200, // Shadow color
+                                blurRadius: 5, // Shadow blur radius
+                                offset: Offset(0, 4), // Shadow offset
+                              ),
+                            ],
+                          ),
+                          child: Column(mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
@@ -150,31 +144,29 @@ Widget build(BuildContext context) {
                                 ],
                               ),
                             ],
-                          ),
-                        )
+                          )
+                      ),
                     ),
                     SizedBox(height: 15,),
-                    Container(
-                        padding: EdgeInsets.all(10),
-                        margin: EdgeInsets.all(17),
-                        height: 100,
-                        width: 370,
-                        decoration:
-                        BoxDecoration(
-                          color: Colors.lightBlueAccent[100],  // Background color
-                          borderRadius: BorderRadius.circular(20),// Rounded corners
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.blue.shade200, // Shadow color
-                              blurRadius: 5, // Shadow blur radius
-                              offset: Offset(0, 4), // Shadow offset
-                            ),
-                          ],
-                        ),
-                        child: GestureDetector(
-                          onTap: (){
-                            Get.to((StudentAssignment()));
-                          },
+                    GestureDetector(
+                      onTap: (){Get.to(StudentAssignment());},
+                      child: Container(
+                          padding: EdgeInsets.all(10),
+                          margin: EdgeInsets.all(17),
+                          height: 100,
+                          width: 370,
+                          decoration:
+                          BoxDecoration(
+                            color: Colors.lightBlueAccent[100],  // Background color
+                            borderRadius: BorderRadius.circular(20),// Rounded corners
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.blue.shade200, // Shadow color
+                                blurRadius: 5, // Shadow blur radius
+                                offset: Offset(0, 4), // Shadow offset
+                              ),
+                            ],
+                          ),
                           child: Column(mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -192,32 +184,29 @@ Widget build(BuildContext context) {
                                 ],
                               ),
                             ],
-                          ),
-                        )
+                          )
+                      ),
                     ),
                     SizedBox(height: 15,),
-                    Container(
-                        padding: EdgeInsets.all(10),
-                        margin: EdgeInsets.all(17),
-                        height: 100,
-                        width: 370,
-                        decoration:
-                        BoxDecoration(
-                          color: Colors.lightBlueAccent[100],  // Background color
-                          borderRadius: BorderRadius.circular(20),// Rounded corners
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.blue.shade200, // Shadow color
-                              blurRadius: 5, // Shadow blur radius
-                              offset: Offset(0, 4), // Shadow offset
-                            ),
-                          ],
-                        ),
-                        child: GestureDetector(
-                          onTap: (){
-                            // Navigator.push(context, MaterialPageRoute(builder: (context)=>MyMap()));
-                            Get.to(MyMap());
-                          },
+                    GestureDetector(
+                      onTap: (){Get.to(MyMap());},
+                      child: Container(
+                          padding: EdgeInsets.all(10),
+                          margin: EdgeInsets.all(17),
+                          height: 100,
+                          width: 370,
+                          decoration:
+                          BoxDecoration(
+                            color: Colors.lightBlueAccent[100],  // Background color
+                            borderRadius: BorderRadius.circular(20),// Rounded corners
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.blue.shade200, // Shadow color
+                                blurRadius: 5, // Shadow blur radius
+                                offset: Offset(0, 4), // Shadow offset
+                              ),
+                            ],
+                          ),
                           child: Column(mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -235,8 +224,8 @@ Widget build(BuildContext context) {
                                 ],
                               ),
                             ],
-                          ),
-                        )
+                          )
+                      ),
                     ),
                     SizedBox(height: 15,),
                     GestureDetector(

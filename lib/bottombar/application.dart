@@ -5,7 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-
 class LeaveApplication extends StatefulWidget {
   @override
   _LeaveApplicationState createState() => _LeaveApplicationState();
@@ -75,8 +74,7 @@ class _LeaveApplicationState extends State<LeaveApplication> {
           'submittedAt': FieldValue.serverTimestamp(),
           'status': 'Pending'
         });
-
-            showAwesomeSnackBar(context, "Leave application submitted successfully!", true);
+        showAwesomeSnackBar(context, "Leave application submitted successfully!", true);
 
         _submitByController.clear();
         _rollNoController.clear();
@@ -87,10 +85,12 @@ class _LeaveApplicationState extends State<LeaveApplication> {
           selectedValue = null;
         });
       } catch (e) {
-        showAwesomeSnackBar(context,'Error submitting application. Try again!',false);
+        // Log the error message
+        print('Error submitting application: $e');
+        showAwesomeSnackBar(context, 'Error submitting application. Try again!', false);
       } finally {
         setState(() {
-          isUpdating = false; //Hide loading animation after completion
+          isUpdating = false;
         });
       }
     }

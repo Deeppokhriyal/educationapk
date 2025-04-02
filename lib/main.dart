@@ -6,10 +6,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/adminpanel/adminhome.dart';
 import 'package:educationapk/before%20start/login.dart';
 import 'package:educationapk/bottombar/homepage.dart';
+import 'package:educationapk/services/firebase_service.dart';
 import 'package:educationapk/teacherpanel/bottombar/teacherbottom.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -36,6 +38,7 @@ void printHello() {
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  FirebaseService.initializeFCM(); // FCM Setup
   await AndroidAlarmManager.initialize();
 
   var androidInitialize =
@@ -53,7 +56,12 @@ void main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -83,7 +91,6 @@ class _SplashScreenState extends State<SplashScreen> {
       checkLoginStatus();
     });
   }
-
   void checkLoginStatus() async {
     User? user = auth.currentUser;
 

@@ -75,7 +75,7 @@ class _LeaveApplicationsListState extends State<LeaveApplicationsList> {
 
       showAwesomeSnackBar(context,"Application marked as $status",true);
 
-      // 🔹 Fetch the latest data from Firestore to ensure UI updates correctly
+      //Fetch the latest data from Firestore to ensure UI updates correctly
       await fetchLeaveApplications();
     } catch (e) {
       // print("Error updating leave status: $e");

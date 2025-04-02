@@ -26,7 +26,7 @@ class UserController extends GetxController {
       if (userData.exists) {
         userName.value = userData["name"];
         userProfileImage.value = userData["profileImage"];
-        userBio.value = userData["bio"];
+        // userBio.value = userData["bio"];
         userBranch.value = userData["branch"];
       }
     }

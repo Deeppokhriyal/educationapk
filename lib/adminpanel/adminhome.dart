@@ -562,7 +562,7 @@ class _TeacherMainState extends State<TeacherMain> {
                                         Text(
                                           'Announcement',
                                           style: TextStyle(
-                                              fontSize: 20,
+                                              fontSize: MediaQuery.of(context).size.width * 0.05,
                                               fontFamily: 'nexaheavy',
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -576,7 +576,7 @@ class _TeacherMainState extends State<TeacherMain> {
                                           'Announcement\'s',
                                       style: TextStyle(
                                           fontFamily: 'nexalight',
-                                          fontSize: 15,
+                                          fontSize: MediaQuery.of(context).size.width * 0.03,
                                       color: Colors.black),
                                     ),
                                   ],

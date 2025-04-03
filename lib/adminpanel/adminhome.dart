@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/adminpanel/homepagewidgets/Dashboard.dart';
 import 'package:educationapk/adminpanel/homepagewidgets/applicationshow.dart';
@@ -887,7 +888,8 @@ class _TeacherMainState extends State<TeacherMain> {
                             children: [
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(25),
-                                child: Image.network(
+                                child: CachedNetworkImage(
+                                  imageUrl:
                                   'https://drive.google.com/uc?export=view&id=1fqQLkDo4CDfsTxdcawPoSGxEUbrFxQ9F',
 
                                   height: 200,
@@ -910,7 +912,8 @@ class _TeacherMainState extends State<TeacherMain> {
                             children: [
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(25),
-                                child: Image.network(
+                                child: CachedNetworkImage(
+                                  imageUrl:
                                   'https://drive.google.com/uc?export=view&id=1CBXD_TpP7qbWF3vRQnlDAcADLhsXl-TH',
 
                                   height: 200,
@@ -933,7 +936,8 @@ class _TeacherMainState extends State<TeacherMain> {
                             children: [
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(25),
-                                child: Image.network(
+                                child:CachedNetworkImage(
+                                  imageUrl:
                                   'https://drive.google.com/uc?export=view&id=1LBisNSnXZh6Ij5ATKeLHd6TpIL1aEtWE',
 
                                   height: 200,
@@ -956,7 +960,8 @@ class _TeacherMainState extends State<TeacherMain> {
                             children: [
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(25),
-                                child: Image.network(
+                                child: CachedNetworkImage(
+                                  imageUrl:
                                   'https://drive.google.com/uc?export=view&id=1jsXLnpawjbDlMZHipx9a2qABbAKweLgi',
 
                                   height: 200,
@@ -979,7 +984,8 @@ class _TeacherMainState extends State<TeacherMain> {
                             children: [
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(25),
-                                child: Image.network(
+                                child: CachedNetworkImage(
+                                  imageUrl:
                                   'https://drive.google.com/uc?export=view&id=1nLRdZA__y1cA2ykHMqXUiyfK0j3lJBvi',
 
                                   height: 200,
@@ -1002,7 +1008,8 @@ class _TeacherMainState extends State<TeacherMain> {
                             children: [
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(25),
-                                child: Image.network(
+                                child: CachedNetworkImage(
+                                  imageUrl:
                                   'https://drive.google.com/uc?export=view&id=1yI3wtdf-Er4DXbFfWAFS6qPtDMio5Uiw',
                                   height: 200,
                                   fit: BoxFit.cover,
@@ -1024,9 +1031,8 @@ class _TeacherMainState extends State<TeacherMain> {
                             children: [
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(25),
-                                child: Image.network(
-                                  'https://drive.google.com/uc?export=view&id=1RQpJ9sgu5e1qXKTzq-txoblfOtD-2KWv',
-
+                                child: CachedNetworkImage(
+                                  imageUrl: 'https://drive.google.com/uc?export=view&id=1RQpJ9sgu5e1qXKTzq-txoblfOtD-2KWv',
                                   height: 200,
                                   fit: BoxFit.cover,
                                 ),

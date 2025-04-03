@@ -138,7 +138,8 @@ class _TeacherMainState extends State<TeacherMain> {
                               style: TextStyle(
                                   fontSize: 44,
                                   fontFamily: 'sans-serif-thin',
-                                  color: Colors.black),
+                                  color: Colors.black,
+                              fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -155,14 +156,21 @@ class _TeacherMainState extends State<TeacherMain> {
                           height: 165,
                           width: MediaQuery.of(context).size.width * 1,
                           decoration: BoxDecoration(
-                            color: Colors.lightGreen[100], // Background color
+                            gradient: LinearGradient(
+                              colors: [
+                                Colors.white70,
+                                Colors.blueGrey.shade400
+                              ],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                            ),
                             borderRadius:
                             BorderRadius.circular(20), // Rounded corners
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.lightGreenAccent, // Shadow color
-                                blurRadius: 15, // Shadow blur radius
-                                offset: Offset(0, 2), // Shadow offset
+                                color: Colors.blueGrey.shade600, // Shadow color
+                                blurRadius: 5, // Shadow blur radius
+                                offset: Offset(0, 4), // Shadow offset
                               ),
                             ],
                           ),
@@ -181,7 +189,7 @@ class _TeacherMainState extends State<TeacherMain> {
                                           width: MediaQuery.of(context)
                                               .size
                                               .width *
-                                              0.68),
+                                              0.65),
                                       Icon(
                                           Icons.arrow_forward_ios_outlined,
                                           size: 28,
@@ -232,14 +240,21 @@ class _TeacherMainState extends State<TeacherMain> {
                                 height: 165,
                                 width: MediaQuery.of(context).size.width * 0.42,
                                 decoration: BoxDecoration(
-                                  color: Colors.lightBlue[100], // Background color
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Colors.grey.shade300,
+                                      Colors.blueGrey.shade600
+                                    ],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                  ),
                                   borderRadius:
                                   BorderRadius.circular(20), // Rounded corners
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.lightBlueAccent, // Shadow color
-                                      blurRadius: 15, // Shadow blur radius
-                                      offset: Offset(0, 2), // Shadow offset
+                                      color: Colors.blueGrey.shade300, // Shadow color
+                                      blurRadius: 5, // Shadow blur radius
+                                      offset: Offset(0, 4), // Shadow offset
                                     ),
                                   ],
                                 ),
@@ -299,14 +314,21 @@ class _TeacherMainState extends State<TeacherMain> {
                                 height: 165,
                                 width: MediaQuery.of(context).size.width * 0.42,
                                 decoration: BoxDecoration(
-                                  color: Colors.lightBlue[100], // Background color
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Colors.grey.shade300,
+                                      Colors.blueGrey.shade300
+                                    ],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                  ),
                                   borderRadius:
                                   BorderRadius.circular(20), // Rounded corners
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.lightBlueAccent, // Shadow color
-                                      blurRadius: 15, // Shadow blur radius
-                                      offset: Offset(0, 2), // Shadow offset
+                                      color: Colors.blueGrey.shade300, // Shadow color
+                                      blurRadius: 5, // Shadow blur radius
+                                      offset: Offset(0, 4), // Shadow offset
                                     ),
                                   ],
                                 ),
@@ -364,14 +386,21 @@ class _TeacherMainState extends State<TeacherMain> {
                                 height: 165,
                                 width: MediaQuery.of(context).size.width * 0.42,
                                 decoration: BoxDecoration(
-                                  color: Colors.pink[100], // Background color
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Colors.grey.shade300,
+                                      Colors.blueGrey.shade300
+                                    ],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                  ),
                                   borderRadius:
                                   BorderRadius.circular(20), // Rounded corners
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.pinkAccent, // Shadow color
-                                      blurRadius: 15, // Shadow blur radius
-                                      offset: Offset(0, 2), // Shadow offset
+                                      color: Colors.blueGrey.shade300, // Shadow color
+                                      blurRadius: 5, // Shadow blur radius
+                                      offset: Offset(0, 4), // Shadow offset
                                     ),
                                   ],
                                 ),
@@ -387,30 +416,26 @@ class _TeacherMainState extends State<TeacherMain> {
                                     SizedBox(
                                       height: 10,
                                     ),
-                                    Row(
+                                    Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.center,
                                       children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Application\'s',
-                                              style: TextStyle(
-                                                  fontSize: 20,
-                                                  fontFamily: 'nexaheavy',
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                            SizedBox(
-                                              height: 20,
-                                            ),
-                                            Text(
-                                              'Manage Application\'s',
-                                              style: TextStyle(
-                                                  fontFamily: 'nexalight',
-                                                  fontSize: 15,
-                                              color: Colors.black),
-                                            ),
-                                          ],
+                                        Text(
+                                          'Application\'s',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontFamily: 'nexaheavy',
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Text(
+                                          'Manage Application\'s',
+                                          style: TextStyle(
+                                              fontFamily: 'nexalight',
+                                              fontSize: 15,
+                                          color: Colors.black),
                                         ),
                                       ],
                                     ),
@@ -418,133 +443,128 @@ class _TeacherMainState extends State<TeacherMain> {
                                 ),
                               ),
                             ),
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.all(10),
-                              height: 165,
-                              width: MediaQuery.of(context).size.width * 0.43,
-                              decoration: BoxDecoration(
-                                color: Colors.pink[100], // Background color
-                                borderRadius:
-                                BorderRadius.circular(20), // Rounded corners
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.pinkAccent, // Shadow color
-                                    blurRadius: 15, // Shadow blur radius
-                                    offset: Offset(0, 2), // Shadow offset
-                                  ),
-                                ],
-                              ),
-                              child: GestureDetector(
-                                  onTap: () {
-                                    Get.to(() => AdminAssignmentPage());
-                                  },
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Icon(Icons.timelapse_sharp,
-                                              size: 30, color: Colors.black),
-                                          SizedBox(
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                                  0.21),
-                                          Icon(Icons.arrow_forward_ios_outlined,
-                                              size: 28, color: Colors.black),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Column(
-                                            crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Assignment\'s',
-                                                style: TextStyle(
-                                                    fontSize: 20,
-                                                    fontFamily: 'nexalight',
-                                                    fontWeight: FontWeight.bold),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 20,
-                                      ),
-                                      Text(
-                                        'Modify/Delete',
-                                        style: TextStyle(
-                                            fontFamily: 'sans-serif-thin',
-                                            fontSize: 12),
-                                      ),
+                            GestureDetector(
+                              onTap: () {
+                                Get.to(() => AdminAssignmentPage());
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(10),
+                                margin: EdgeInsets.all(10),
+                                height: 165,
+                                width: MediaQuery.of(context).size.width * 0.42,
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Colors.grey.shade300,
+                                      Colors.blueGrey.shade600
                                     ],
-                                  )),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.all(10),
-                              height: 165,
-                              width: MediaQuery.of(context).size.width * 0.43,
-                              decoration: BoxDecoration(
-                                color: Colors.yellowAccent[100], // Background color
-                                borderRadius:
-                                BorderRadius.circular(20), // Rounded corners
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.yellow, // Shadow color
-                                    blurRadius: 15, // Shadow blur radius
-                                    offset: Offset(0, 2), // Shadow offset
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
                                   ),
-                                ],
-                              ),
-                              child: GestureDetector(
-                                onTap: () {
-                                  Get.to(() => SyllabusPage());
-                                },
+                                  borderRadius:
+                                  BorderRadius.circular(20), // Rounded corners
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.blueGrey.shade300, // Shadow color
+                                      blurRadius: 5, // Shadow blur radius
+                                      offset: Offset(0, 4), // Shadow offset
+                                    ),
+                                  ],
+                                ),
                                 child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
-                                        Icon(Icons.timelapse_sharp,
-                                            size: 30, color: Colors.black),
-                                        SizedBox(
-                                            width: MediaQuery.of(context).size.width *
-                                                0.21),
-                                        Icon(
-                                            Icons.arrow_forward_ios_outlined,
-                                            size: 28,
-                                            color: Colors.black),
+                                        Icon(Icons.library_books_outlined,
+                                            size: 50, color: Colors.black),
                                       ],
                                     ),
                                     SizedBox(
                                       height: 10,
                                     ),
-                                    Row(
+                                    Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.center,
                                       children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Announcement',
-                                              style: TextStyle(
-                                                  fontSize: 19,
-                                                  fontFamily: 'nexalight',
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ],
+                                        Text(
+                                          'Assignment\'s',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontFamily: 'nexaheavy',
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Text(
+                                      'Modify/Delete',
+                                      style: TextStyle(
+                                          fontFamily: 'nexalight',
+                                          fontSize: 15,
+                                      color: Colors.black),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Get.to(() => SyllabusPage());
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(10),
+                                margin: EdgeInsets.all(10),
+                                height: 165,
+                                width: MediaQuery.of(context).size.width * 0.42,
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Colors.grey.shade300,
+                                      Colors.blueGrey.shade600
+                                    ],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                  ),
+                                  borderRadius:
+                                  BorderRadius.circular(20), // Rounded corners
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.blueGrey.shade300, // Shadow color
+                                      blurRadius: 5, // Shadow blur radius
+                                      offset: Offset(0, 4), // Shadow offset
+                                    ),
+                                  ],
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Icon(Icons.mic_none,
+                                            size: 50, color: Colors.black),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Announcement',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontFamily: 'nexaheavy',
+                                              fontWeight: FontWeight.bold),
                                         ),
                                       ],
                                     ),
@@ -555,140 +575,135 @@ class _TeacherMainState extends State<TeacherMain> {
                                       'Send Important '
                                           'Announcement\'s',
                                       style: TextStyle(
-                                          fontFamily: 'sans-serif-thin',
-                                          fontSize: 12),
+                                          fontFamily: 'nexalight',
+                                          fontSize: 15,
+                                      color: Colors.black),
                                     ),
                                   ],
                                 ),
                               ),
                             ),
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.all(10),
-                              height: 165,
-                              width: MediaQuery.of(context).size.width * 0.43,
-                              decoration: BoxDecoration(
-                                color: Colors.yellowAccent[100], // Background color
-                                borderRadius:
-                                BorderRadius.circular(20), // Rounded corners
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.yellow, // Shadow color
-                                    blurRadius: 15, // Shadow blur radius
-                                    offset: Offset(0, 2), // Shadow offset
-                                  ),
-                                ],
-                              ),
-                              child: GestureDetector(
-                                  onTap: () {
-                                    Get.to(() => AdminHelpDeskPage());
-                                  },
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Icon(Icons.timelapse_sharp,
-                                              size: 30, color: Colors.black),
-                                          SizedBox(
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                                  0.21),
-                                          Icon(Icons.arrow_forward_ios_outlined,
-                                              size: 28, color: Colors.black),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Column(
-                                            crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Help Desk',
-                                                style: TextStyle(
-                                                    fontSize: 20,
-                                                    fontFamily: 'nexalight',
-                                                    fontWeight: FontWeight.bold),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Text(
-                                        'Answer Quesrie\'s',
-                                        style: TextStyle(
-                                            fontFamily: 'sans-serif-thin',
-                                            fontSize: 12),
-                                      ),
+                            GestureDetector(
+                              onTap: () {
+                                Get.to(() => AdminHelpDeskPage());
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(10),
+                                margin: EdgeInsets.all(10),
+                                height: 165,
+                                width: MediaQuery.of(context).size.width * 0.42,
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Colors.grey.shade300,
+                                      Colors.blueGrey.shade300
                                     ],
-                                  )),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.all(10),
-                              height: 165,
-                              width: MediaQuery.of(context).size.width * 0.43,
-                              decoration: BoxDecoration(
-                                color: Colors.green[100], // Background color
-                                borderRadius:
-                                BorderRadius.circular(20), // Rounded corners
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.lightGreen, // Shadow color
-                                    blurRadius: 15, // Shadow blur radius
-                                    offset: Offset(0, 2), // Shadow offset
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
                                   ),
-                                ],
-                              ),
-                              child: GestureDetector(
-                                onTap: () {
-                                  Get.to(() => AdminBugReportsPage());
-                                },
+                                  borderRadius:
+                                  BorderRadius.circular(20), // Rounded corners
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.blueGrey.shade300, // Shadow color
+                                      blurRadius: 5, // Shadow blur radius
+                                      offset: Offset(0, 4), // Shadow offset
+                                    ),
+                                  ],
+                                ),
                                 child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
-                                        Icon(Icons.timelapse_sharp,
-                                            size: 30, color: Colors.black),
-                                        SizedBox(
-                                            width: MediaQuery.of(context).size.width *
-                                                0.21),
-                                        Icon(
-                                            Icons.arrow_forward_ios_outlined,
-                                            size: 28,
-                                            color: Colors.black),
+                                        Icon(Icons.support_agent_outlined,
+                                            size: 50, color: Colors.black),
                                       ],
                                     ),
                                     SizedBox(
                                       height: 10,
                                     ),
-                                    Row(
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Bug\'s & Report',
-                                              style: TextStyle(
-                                                  fontSize: 19,
-                                                  fontFamily: 'nexalight',
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ],
+                                        Text(
+                                          'Help Desk',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontFamily: 'nexaheavy',
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                      'Answer Quesrie\'s',
+                                      style: TextStyle(
+                                          fontFamily: 'nexalight',
+                                          fontSize: 15,
+                                      color: Colors.black),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Get.to(() => AdminBugReportsPage());
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(10),
+                                margin: EdgeInsets.all(10),
+                                height: 165,
+                                width: MediaQuery.of(context).size.width * 0.42,
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Colors.grey.shade300,
+                                      Colors.blueGrey.shade300
+                                    ],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                  ),
+                                  borderRadius:
+                                  BorderRadius.circular(20), // Rounded corners
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.blueGrey.shade300, // Shadow color
+                                      blurRadius: 5, // Shadow blur radius
+                                      offset: Offset(0, 4), // Shadow offset
+                                    ),
+                                  ],
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Icon(Icons.report_gmailerrorred,
+                                            size: 50, color: Colors.black),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Bug\'s & Report',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontFamily: 'nexaheavy',
+                                              fontWeight: FontWeight.bold),
                                         ),
                                       ],
                                     ),
@@ -698,81 +713,80 @@ class _TeacherMainState extends State<TeacherMain> {
                                     Text(
                                           'Fixes Bugs',
                                       style: TextStyle(
-                                          fontFamily: 'sans-serif-thin',
-                                          fontSize: 12),
+                                          fontFamily: 'nexalight',
+                                          fontSize: 15,
+                                      color: Colors.black),
                                     ),
                                   ],
                                 ),
                               ),
                             ),
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.all(10),
-                              height: 165,
-                              width: MediaQuery.of(context).size.width * 0.43,
-                              decoration: BoxDecoration(
-                                color: Colors.green[100], // Background color
-                                borderRadius:
-                                BorderRadius.circular(20), // Rounded corners
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.lightGreen, // Shadow color
-                                    blurRadius: 15, // Shadow blur radius
-                                    offset: Offset(0, 2), // Shadow offset
-                                  ),
-                                ],
-                              ),
-                              child: GestureDetector(
-                                  onTap: () {
-                                    Get.to(() => AdminPolyChatPage());
-                                  },
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Icon(Icons.timelapse_sharp,
-                                              size: 30, color: Colors.black),
-                                          SizedBox(
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                                  0.21),
-                                          Icon(Icons.arrow_forward_ios_outlined,
-                                              size: 28, color: Colors.black),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Column(
-                                            crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Chat Box',
-                                                style: TextStyle(
-                                                    fontSize: 20,
-                                                    fontFamily: 'nexalight',
-                                                    fontWeight: FontWeight.bold),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Text(
-                                        'Manage Chat\'s',
-                                        style: TextStyle(
-                                            fontFamily: 'sans-serif-thin',
-                                            fontSize: 12),
-                                      ),
+                            GestureDetector(
+                              onTap: () {
+                                Get.to(() => AdminPolyChatPage());
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(10),
+                                margin: EdgeInsets.all(10),
+                                height: 165,
+                                width: MediaQuery.of(context).size.width * 0.42,
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Colors.grey.shade300,
+                                      Colors.blueGrey.shade600
                                     ],
-                                  )),
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                  ),
+                                  borderRadius:
+                                  BorderRadius.circular(20), // Rounded corners
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.blueGrey.shade300, // Shadow color
+                                      blurRadius: 5, // Shadow blur radius
+                                      offset: Offset(0, 4), // Shadow offset
+                                    ),
+                                  ],
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Icon(Icons.chat_outlined,
+                                            size: 50, color: Colors.black),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Chat Box',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontFamily: 'nexaheavy',
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                      'Manage Chat\'s',
+                                      style: TextStyle(
+                                          fontFamily: 'nexalight',
+                                          fontSize: 15,
+                                      color: Colors.black),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
                           ],
                         ),
@@ -782,14 +796,21 @@ class _TeacherMainState extends State<TeacherMain> {
                           height: 165,
                           width: MediaQuery.of(context).size.width * 1,
                           decoration: BoxDecoration(
-                            color: Colors.lightBlue[100], // Background color
+                            gradient: LinearGradient(
+                              colors: [
+                                Colors.blueGrey.shade400,
+                                Colors.white70,
+                              ],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
                             borderRadius:
                             BorderRadius.circular(20), // Rounded corners
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.lightBlue, // Shadow color
-                                blurRadius: 15, // Shadow blur radius
-                                offset: Offset(0, 2), // Shadow offset
+                                color: Colors.blueGrey.shade600, // Shadow color
+                                blurRadius: 5, // Shadow blur radius
+                                offset: Offset(0, 4), // Shadow offset
                               ),
                             ],
                           ),
@@ -808,7 +829,7 @@ class _TeacherMainState extends State<TeacherMain> {
                                           width: MediaQuery.of(context)
                                               .size
                                               .width *
-                                              0.69),
+                                              0.65),
                                       Icon(
                                           Icons.arrow_forward_ios_outlined,
                                           size: 28,

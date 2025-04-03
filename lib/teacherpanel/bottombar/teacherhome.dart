@@ -365,7 +365,7 @@ class _TeacherMainState extends State<TeacherMain> {
                             " Let's Explore\n      The Polyverse",
                             style: TextStyle(
                                 fontSize: 44,
-                                fontFamily: 'sans-serif-light',
+                                fontFamily: 'nexalight',
                                 color: Colors.black),
                           ),
                         ],
@@ -1008,7 +1008,7 @@ class _TeacherMainState extends State<TeacherMain> {
                     style: TextStyle(
                         fontSize: 29,
                         fontFamily: 'nexaheavy',
-                        color: Colors.white),
+                        color: Colors.blue[900]),
                   ),
                   Text(
                     '   Govt. Polytechnic Kashipur',

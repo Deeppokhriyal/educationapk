@@ -94,7 +94,7 @@ class _TeacherprofileState extends State<Teacherprofile> {
             ),
             content: TextField(
               controller: controller,
-              style: TextStyle(fontFamily: 'nexalight',color: Colors.black),
+              style: TextStyle(fontFamily: 'nexaheavy',color: Colors.black),
             ),
             actions: [
               TextButton(

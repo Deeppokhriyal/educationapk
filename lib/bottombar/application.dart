@@ -300,13 +300,26 @@ class _LeaveApplicationState extends State<LeaveApplication> {
   }
 }
 
+// History  History  History  History  History  History  History  History  History  History  History
+
 class LeaveStatusPage extends StatelessWidget {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
-    String currentUserId = _auth.currentUser?.uid ?? '';
+    String? currentUserId = _auth.currentUser?.uid;
+
+    if (currentUserId == null) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text('Leave Application Status', style: TextStyle(fontFamily: 'nexaheavy')),
+        ),
+        body: Center(
+          child: Text('User not logged in', style: TextStyle(fontSize: 18, fontFamily: 'nexaheavy')),
+        ),
+      );
+    }
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -320,10 +333,12 @@ class LeaveStatusPage extends StatelessWidget {
       body: StreamBuilder(
         stream: _firestore
             .collection('leave_applications')
-            .where('submitBy', isEqualTo: currentUserId) // ✅ Filtering by user
+            .where('submitBy', isEqualTo: currentUserId) // ✅ Only current user's applications
             .snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (!snapshot.hasData) return Center(child: SpinKitPulse(color: Colors.deepPurpleAccent,size: 50.0,));
+          if (!snapshot.hasData) {
+            return Center(child: CircularProgressIndicator(color: Colors.deepPurpleAccent));
+          }
 
           if (snapshot.data!.docs.isEmpty) {
             return Center(
@@ -347,14 +362,17 @@ class LeaveStatusPage extends StatelessWidget {
                 statusColor = Colors.blue;
               }
 
-              return ListTile(
-                title: Text(
-                  'Student: ${doc['submitName']} (Roll No: ${doc['rollno']})', // ✅ Student ka naam aur roll number dikhayein
-                  style: TextStyle(fontFamily: 'nexaheavy', color: Colors.black, fontSize: 18),
-                ),
-                subtitle: Text(
-                  'Status: ${doc['status']}',
-                  style: TextStyle(fontFamily: 'nexalight', color: statusColor, fontSize: 18),
+              return Card(
+                margin: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                child: ListTile(
+                  title: Text(
+                    'Student: ${doc['submitName']} (Roll No: ${doc['rollno']})',
+                    style: TextStyle(fontFamily: 'nexaheavy', color: Colors.black, fontSize: 18),
+                  ),
+                  subtitle: Text(
+                    'Status: ${doc['status']}',
+                    style: TextStyle(fontFamily: 'nexalight', color: statusColor, fontSize: 18),
+                  ),
                 ),
               );
             }).toList(),

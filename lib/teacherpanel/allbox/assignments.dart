@@ -2,7 +2,7 @@ import 'package:educationapk/main.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:intl/intl.dart'; // For date formatting
+import 'package:intl/intl.dart';
 
 class TeacherAssignmentScreen extends StatefulWidget {
   @override
@@ -15,6 +15,9 @@ class _TeacherAssignmentScreenState extends State<TeacherAssignmentScreen> {
   List<TextEditingController> questionControllers = [];
   DateTime? selectedDeadline;
   bool isLoading = false;
+  String? selectedBranch;
+
+  List<String> branches = ["IT", "CSE", "Mechanical", "Civil", "Pharmacy", "Agriculture", "Electronics", "Chem. Paint", "Chemical"];
 
   void addQuestionField() {
     setState(() {
@@ -47,8 +50,9 @@ class _TeacherAssignmentScreenState extends State<TeacherAssignmentScreen> {
     if (titleController.text.isEmpty ||
         descriptionController.text.isEmpty ||
         selectedDeadline == null ||
-        questionControllers.isEmpty) {
-      showAwesomeSnackBar(context,"Please fill all fields",false);
+        questionControllers.isEmpty ||
+        selectedBranch == null) {
+      showAwesomeSnackBar(context, "Please fill all fields", false);
       return;
     }
 
@@ -59,9 +63,10 @@ class _TeacherAssignmentScreenState extends State<TeacherAssignmentScreen> {
     List<String> questions = questionControllers.map((controller) => controller.text).toList();
 
     await FirebaseFirestore.instance.collection('assignments').add({
+      'branch': selectedBranch,
       'subject': titleController.text,
       'description': descriptionController.text,
-      'deadline': DateFormat('yyyy-MM-dd').format(selectedDeadline!), // Formatting the date
+      'deadline': DateFormat('yyyy-MM-dd').format(selectedDeadline!),
       'questions': questions,
       'timestamp': FieldValue.serverTimestamp(),
     });
@@ -72,9 +77,10 @@ class _TeacherAssignmentScreenState extends State<TeacherAssignmentScreen> {
       descriptionController.clear();
       selectedDeadline = null;
       questionControllers.clear();
+      selectedBranch = null;
     });
 
-    showAwesomeSnackBar(context,"Assignment Added!",true);
+    showAwesomeSnackBar(context, "Assignment Added!", true);
   }
 
   @override
@@ -89,11 +95,33 @@ class _TeacherAssignmentScreenState extends State<TeacherAssignmentScreen> {
       body: Stack(
         children: [
           Padding(
-            padding: const EdgeInsets.only(bottom: 80), // Adjust to prevent overlap with button
+            padding: const EdgeInsets.only(bottom: 80),
             child: ListView(
               padding: const EdgeInsets.all(16.0),
               children: [
                 Divider(color: Colors.lightBlue, thickness: 3),
+
+                // Branch Selection Dropdown
+                DropdownButtonFormField<String>(
+                  value: selectedBranch,
+                  decoration: InputDecoration(
+                    labelText: "Select Branch",
+                    labelStyle: TextStyle(fontFamily: 'nexalight', fontSize: 18),
+                  ),
+                  items: branches.map((branch) {
+                    return DropdownMenuItem(
+                      value: branch,
+                      child: Text(branch, style: TextStyle(fontSize: 18)),
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      selectedBranch = value;
+                    });
+                  },
+                ),
+                SizedBox(height: 10),
+
                 TextField(
                   controller: titleController,
                   decoration: InputDecoration(
@@ -112,7 +140,6 @@ class _TeacherAssignmentScreenState extends State<TeacherAssignmentScreen> {
                 ),
                 SizedBox(height: 10),
 
-                // Deadline Date Picker
                 GestureDetector(
                   onTap: () => selectDeadline(context),
                   child: AbsorbPointer(
@@ -132,7 +159,6 @@ class _TeacherAssignmentScreenState extends State<TeacherAssignmentScreen> {
                 ),
                 SizedBox(height: 25),
 
-                // Dynamic Question Fields
                 Column(
                   children: [
                     for (int i = 0; i < questionControllers.length; i++)
@@ -162,7 +188,6 @@ class _TeacherAssignmentScreenState extends State<TeacherAssignmentScreen> {
             ),
           ),
 
-          // Fixed Upload Button at the Bottom
           Positioned(
             bottom: 20,
             left: 20,

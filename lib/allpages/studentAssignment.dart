@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class StudentAssignment extends StatelessWidget {
+class StudentAssignment extends StatefulWidget {
+  @override
+  _StudentAssignmentState createState() => _StudentAssignmentState();
+}
+
+class _StudentAssignmentState extends State<StudentAssignment> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,14 +21,17 @@ class StudentAssignment extends StatelessWidget {
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.black),
       ),
-      body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('assignments').orderBy('timestamp', descending: true).snapshots(),
+      body: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection('assignments') // Fetching all assignments
+            .orderBy('timestamp', descending: true)
+            .snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: SpinKitSquareCircle(color: Colors.purpleAccent[100],));
+            return Center(child: SpinKitSquareCircle(color: Colors.purpleAccent[100]));
           }
           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-            return _buildNoAssignmentUI(); // Fixed function call
+            return _buildNoAssignmentUI();
           }
 
           return ListView.builder(
@@ -31,6 +39,7 @@ class StudentAssignment extends StatelessWidget {
             itemBuilder: (context, index) {
               var assignment = snapshot.data!.docs[index];
               List<dynamic> questions = assignment['questions'] ?? [];
+              String branch = assignment['branch'] ?? 'Unknown Branch'; // Fetching branch name
 
               return Card(
                 color: Colors.grey.shade100,
@@ -43,6 +52,11 @@ class StudentAssignment extends StatelessWidget {
                       Text(
                         assignment['subject'],
                         style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, fontFamily: 'nexaheavy'),
+                      ),
+                      SizedBox(height: 5),
+                      Text(
+                        "Branch: $branch", // Displaying branch name
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, fontFamily: 'nexaheavy', color: Colors.blue),
                       ),
                       SizedBox(height: 5),
                       Text(
@@ -80,13 +94,12 @@ class StudentAssignment extends StatelessWidget {
     );
   }
 
-  // Fixed function placement
   Widget _buildNoAssignmentUI() {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.my_library_books,size: 190,color: Colors.purpleAccent[100]),
+          Icon(Icons.my_library_books, size: 190, color: Colors.purpleAccent[100]),
           Text(
             "No Assignments Available",
             style: TextStyle(

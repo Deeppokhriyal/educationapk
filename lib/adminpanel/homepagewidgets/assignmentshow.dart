@@ -8,27 +8,34 @@ class AdminAssignmentPage extends StatefulWidget {
 
 class _AdminAssignmentPageState extends State<AdminAssignmentPage> {
 
-  void deleteAssignment(String docId) {
-    showDialog(
+  void deleteAssignment(String docId) async {
+    bool? confirmDelete = await showDialog(
       context: context,
       builder: (context) => AlertDialog(
         title: Text("Delete Assignment"),
         content: Text("Are you sure you want to delete this assignment?"),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () => Navigator.pop(context, false),
             child: Text("Cancel"),
           ),
           TextButton(
-            onPressed: () async {
-              await FirebaseFirestore.instance.collection('assignments').doc(docId).delete();
-              Navigator.pop(context);
-            },
+            onPressed: () => Navigator.pop(context, true),
             child: Text("Delete", style: TextStyle(color: Colors.red)),
           ),
         ],
       ),
     );
+
+    // If confirmed, delete the document
+    if (confirmDelete == true) {
+      try {
+        await FirebaseFirestore.instance.collection('assignments').doc(docId).delete();
+        print("Assignment deleted successfully");
+      } catch (e) {
+        print("Error deleting assignment: $e");
+      }
+    }
   }
 
   Future<String> getTeacherName(String teacherId) async {

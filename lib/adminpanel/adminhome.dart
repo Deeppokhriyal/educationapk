@@ -181,7 +181,7 @@ class _TeacherMainState extends State<TeacherMain> {
                                           width: MediaQuery.of(context)
                                               .size
                                               .width *
-                                              0.69),
+                                              0.68),
                                       Icon(
                                           Icons.arrow_forward_ios_outlined,
                                           size: 28,
@@ -222,216 +222,201 @@ class _TeacherMainState extends State<TeacherMain> {
                         ),
                         Row(
                           children: [
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.all(10),
-                              height: 165,
-                              width: MediaQuery.of(context).size.width * 0.43,
-                              decoration: BoxDecoration(
-                                color: Colors.lightBlue[100], // Background color
-                                borderRadius:
-                                BorderRadius.circular(20), // Rounded corners
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.lightBlueAccent, // Shadow color
-                                    blurRadius: 15, // Shadow blur radius
-                                    offset: Offset(0, 2), // Shadow offset
-                                  ),
-                                ],
+                            GestureDetector(
+                              onTap: () {
+                                Get.to(() => AdminUserManagementPage());
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(10),
+                                margin: EdgeInsets.all(10),
+                                height: 165,
+                                width: MediaQuery.of(context).size.width * 0.42,
+                                decoration: BoxDecoration(
+                                  color: Colors.lightBlue[100], // Background color
+                                  borderRadius:
+                                  BorderRadius.circular(20), // Rounded corners
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.lightBlueAccent, // Shadow color
+                                      blurRadius: 15, // Shadow blur radius
+                                      offset: Offset(0, 2), // Shadow offset
+                                    ),
+                                  ],
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Icon(Icons.manage_accounts_outlined,
+                                            size: 50, color: Colors.black),
+                                        // SizedBox(
+                                        //     width: MediaQuery.of(context)
+                                        //         .size
+                                        //         .width *
+                                        //         0.5),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Management',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontFamily: 'nexaheavy',
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Text(
+                                      'Assign User\'s',
+                                      style: TextStyle(
+                                          fontFamily: 'nexalight',
+                                          fontSize: 15,
+                                      color: Colors.black),
+                                    ),
+                                  ],
+                                ),
                               ),
-                              child: GestureDetector(
-                                  onTap: () {
-                                    Get.to(() => AdminUserManagementPage());
-                                  },
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Icon(Icons.timelapse_sharp,
-                                              size: 30, color: Colors.black),
-                                          SizedBox(
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                                  0.21),
-                                          Icon(Icons.arrow_forward_ios_outlined,
-                                              size: 28, color: Colors.black),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Column(
-                                            crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Management',
-                                                style: TextStyle(
-                                                    fontSize: 20,
-                                                    fontFamily: 'nexalight',
-                                                    fontWeight: FontWeight.bold),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 20,
-                                      ),
-                                      Text(
-                                        'Assign User\'s',
-                                        style: TextStyle(
-                                            fontFamily: 'sans-serif-thin',
-                                            fontSize: 12),
-                                      ),
-                                    ],
-                                  )),
                             ),
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.all(10),
-                              height: 165,
-                              width: MediaQuery.of(context).size.width * 0.43,
-                              decoration: BoxDecoration(
-                                color: Colors.lightBlue[100], // Background color
-                                borderRadius:
-                                BorderRadius.circular(20), // Rounded corners
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.lightBlueAccent, // Shadow color
-                                    blurRadius: 15, // Shadow blur radius
-                                    offset: Offset(0, 2), // Shadow offset
-                                  ),
-                                ],
+                            GestureDetector(
+                              onTap: () {
+                                Get.to(() => AdminAttendancePage());
+                                // Navigator.push(context, MaterialPageRoute(builder: (context)=>LeaveApplicationsList() ));
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(10),
+                                margin: EdgeInsets.all(10),
+                                height: 165,
+                                width: MediaQuery.of(context).size.width * 0.42,
+                                decoration: BoxDecoration(
+                                  color: Colors.lightBlue[100], // Background color
+                                  borderRadius:
+                                  BorderRadius.circular(20), // Rounded corners
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.lightBlueAccent, // Shadow color
+                                      blurRadius: 15, // Shadow blur radius
+                                      offset: Offset(0, 2), // Shadow offset
+                                    ),
+                                  ],
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Icon(Icons.book_outlined,
+                                            size: 50, color: Colors.black),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Attendance',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontFamily: 'nexaheavy',
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Text(
+                                      'Generate Report',
+                                      style: TextStyle(
+                                          fontFamily: 'nexalight',
+                                          fontSize: 15,
+                                      color: Colors.black),
+                                    ),
+                                  ],
+                                ),
                               ),
-                              child: GestureDetector(
-                                  onTap: () {
-                                    Get.to(() => AdminAttendancePage());
-                                    // Navigator.push(context, MaterialPageRoute(builder: (context)=>LeaveApplicationsList() ));
-                                  },
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Icon(Icons.timelapse_sharp,
-                                              size: 30, color: Colors.black),
-                                          SizedBox(
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                                  0.21),
-                                          Icon(Icons.arrow_forward_ios_outlined,
-                                              size: 28, color: Colors.black),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Column(
-                                            crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Attendance',
-                                                style: TextStyle(
-                                                    fontSize: 20,
-                                                    fontFamily: 'nexalight',
-                                                    fontWeight: FontWeight.bold),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 20,
-                                      ),
-                                      Text(
-                                        'Generate Report',
-                                        style: TextStyle(
-                                            fontFamily: 'sans-serif-thin',
-                                            fontSize: 12),
-                                      ),
-                                    ],
-                                  )),
                             ),
                           ],
                         ),
                         Row(
                           children: [
-                            Container(
-                              padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.all(10),
-                              height: 165,
-                              width: MediaQuery.of(context).size.width * 0.43,
-                              decoration: BoxDecoration(
-                                color: Colors.pink[100], // Background color
-                                borderRadius:
-                                BorderRadius.circular(20), // Rounded corners
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.pinkAccent, // Shadow color
-                                    blurRadius: 15, // Shadow blur radius
-                                    offset: Offset(0, 2), // Shadow offset
-                                  ),
-                                ],
+                            GestureDetector(
+                              onTap: () {
+                                Get.to(() => AdminApplicationsPage());
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(10),
+                                margin: EdgeInsets.all(10),
+                                height: 165,
+                                width: MediaQuery.of(context).size.width * 0.42,
+                                decoration: BoxDecoration(
+                                  color: Colors.pink[100], // Background color
+                                  borderRadius:
+                                  BorderRadius.circular(20), // Rounded corners
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.pinkAccent, // Shadow color
+                                      blurRadius: 15, // Shadow blur radius
+                                      offset: Offset(0, 2), // Shadow offset
+                                    ),
+                                  ],
+                                ),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Icon(Icons.note_alt_outlined,
+                                            size: 50, color: Colors.black),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Application\'s',
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontFamily: 'nexaheavy',
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            SizedBox(
+                                              height: 20,
+                                            ),
+                                            Text(
+                                              'Manage Application\'s',
+                                              style: TextStyle(
+                                                  fontFamily: 'nexalight',
+                                                  fontSize: 15,
+                                              color: Colors.black),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
-                              child: GestureDetector(
-                                  onTap: () {
-                                    Get.to(() => AdminApplicationsPage());
-                                  },
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Icon(Icons.timelapse_sharp,
-                                              size: 30, color: Colors.black),
-                                          SizedBox(
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                                  0.21),
-                                          Icon(Icons.arrow_forward_ios_outlined,
-                                              size: 28, color: Colors.black),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Column(
-                                            crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Application\'s',
-                                                style: TextStyle(
-                                                    fontSize: 20,
-                                                    fontFamily: 'nexalight',
-                                                    fontWeight: FontWeight.bold),
-                                              ),
-                                              SizedBox(
-                                                height: 20,
-                                              ),
-                                              Text(
-                                                'Manage Application\'s',
-                                                style: TextStyle(
-                                                    fontFamily: 'sans-serif-thin',
-                                                    fontSize: 12),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  )),
                             ),
                             Container(
                               padding: EdgeInsets.all(10),

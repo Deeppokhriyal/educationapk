@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class UserDashboard extends StatefulWidget {
   @override
@@ -49,33 +50,52 @@ class _UserDashboardState extends State<UserDashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('User Dashboard')),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: studentCount == null || teacherCount == null || adminCount == null
-            ? Center(child: SpinKitThreeBounce(
-          color: Colors.lightBlue,
-          size: 40,
-        ))
-            : Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            _buildStatCard('Total Students', studentCount!, Colors.blue),
-            _buildStatCard('Total Teachers', teacherCount!, Colors.green),
-            _buildStatCard('Total Admins', adminCount!, Colors.red),
-          ],
+      appBar: AppBar(
+        title: Text('User Dashboard', style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'nexaheavy',fontSize: 23)),
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Colors.white,
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.blue.shade300, Colors.purpleAccent.shade200],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Center(
+            child: studentCount == null || teacherCount == null || adminCount == null
+                ? Center(child: SpinKitWave(color: Colors.white, size: 50))
+                : Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('[ Total Users ]',style: TextStyle(fontSize: 25,fontFamily: 'nexaheavy'),),
+                SizedBox(height: 20,),
+                Divider(thickness: 3,),
+                _buildStatCard('Students', studentCount!, FontAwesomeIcons.userGraduate, Colors.blue),
+                _buildStatCard('Teachers', teacherCount!, FontAwesomeIcons.chalkboardTeacher, Colors.green),
+                _buildStatCard('Admins', adminCount!, FontAwesomeIcons.userShield, Colors.red),
+                Divider(thickness: 3,),
+              ],
+            ),
+          ),
         ),
       ),
     );
   }
 
-  Widget _buildStatCard(String title, int count, Color color) {
+  Widget _buildStatCard(String title, int count, IconData icon, Color color) {
     return Card(
-      color: color.withOpacity(0.2),
-      margin: EdgeInsets.symmetric(vertical: 10),
+      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      elevation: 6,
       child: ListTile(
-        title: Text(title, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-        trailing: Text('$count', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: color)),
+        leading: Icon(icon, size: 40, color: color),
+        title: Text(title, style: TextStyle(fontSize: 22, fontFamily: 'nexaheavy')),
+        trailing: Text('$count', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: color)),
       ),
     );
   }

@@ -1,7 +1,19 @@
 import 'package:educationapk/main.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MyDrawer extends StatelessWidget {
+
+  final String url = "https://celestial-deepak.vercel.app/";
+
+  void _launchURL() async {
+    final Uri uri = Uri.parse("https://celestial-deepak.vercel.app/");
+
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      throw 'Could not launch $uri';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -19,10 +31,8 @@ class MyDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.dashboard),
-            title: Text("Dashboard",style: TextStyle(fontFamily: 'nexaheavy',fontSize: 18),),
-            onTap: () {
-              Navigator.pushNamed(context, "/adminDashboard");
-            },
+            title: Text("Developer's",style: TextStyle(fontFamily: 'nexaheavy',fontSize: 18),),
+            onTap: _launchURL,
           ),
           ListTile(
             leading: Icon(Icons.settings),

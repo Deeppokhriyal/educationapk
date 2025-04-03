@@ -879,20 +879,19 @@ class _TeacherMainState extends State<TeacherMain> {
                       height: 10,
                     ),
                     SingleChildScrollView(
+                      padding: EdgeInsets.all(15),
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
                           Column(
                             children: [
-                              Hero(
-                                tag: 'clg7Image', // Unique Hero tag
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(25),
-                                  child: Image.asset(
-                                    'assets/images/clg7.jpg',
-                                    height: 200,
-                                    fit: BoxFit.cover,
-                                  ),
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(25),
+                                child: Image.network(
+                                  'https://drive.google.com/uc?export=view&id=1fqQLkDo4CDfsTxdcawPoSGxEUbrFxQ9F',
+
+                                  height: 200,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                               Text(
@@ -909,15 +908,13 @@ class _TeacherMainState extends State<TeacherMain> {
                           ),
                           Column(
                             children: [
-                              Hero(
-                                tag: 'clg6Image', // Unique Hero tag
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(25),
-                                  child: Image.asset(
-                                    'assets/images/clg6.jpg',
-                                    height: 200,
-                                    fit: BoxFit.cover,
-                                  ),
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(25),
+                                child: Image.network(
+                                  'https://drive.google.com/uc?export=view&id=1CBXD_TpP7qbWF3vRQnlDAcADLhsXl-TH',
+
+                                  height: 200,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                               Text(
@@ -934,15 +931,13 @@ class _TeacherMainState extends State<TeacherMain> {
                           ),
                           Column(
                             children: [
-                              Hero(
-                                tag: 'clg3Image', // Unique Hero tag
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(25),
-                                  child: Image.asset(
-                                    'assets/images/clg3.jpg',
-                                    height: 200,
-                                    fit: BoxFit.cover,
-                                  ),
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(25),
+                                child: Image.network(
+                                  'https://drive.google.com/uc?export=view&id=1LBisNSnXZh6Ij5ATKeLHd6TpIL1aEtWE',
+
+                                  height: 200,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                               Text(
@@ -959,15 +954,13 @@ class _TeacherMainState extends State<TeacherMain> {
                           ),
                           Column(
                             children: [
-                              Hero(
-                                tag: 'clg4Image', // Unique Hero tag
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(25),
-                                  child: Image.asset(
-                                    'assets/images/clg4.jpg',
-                                    height: 200,
-                                    fit: BoxFit.cover,
-                                  ),
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(25),
+                                child: Image.network(
+                                  'https://drive.google.com/uc?export=view&id=1jsXLnpawjbDlMZHipx9a2qABbAKweLgi',
+
+                                  height: 200,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                               Text(
@@ -984,15 +977,13 @@ class _TeacherMainState extends State<TeacherMain> {
                           ),
                           Column(
                             children: [
-                              Hero(
-                                tag: 'clg5Image', // Unique Hero tag
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(25),
-                                  child: Image.asset(
-                                    'assets/images/clg5.jpg',
-                                    height: 200,
-                                    fit: BoxFit.cover,
-                                  ),
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(25),
+                                child: Image.network(
+                                  'https://drive.google.com/uc?export=view&id=1nLRdZA__y1cA2ykHMqXUiyfK0j3lJBvi',
+
+                                  height: 200,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                               Text(
@@ -1009,15 +1000,12 @@ class _TeacherMainState extends State<TeacherMain> {
                           ),
                           Column(
                             children: [
-                              Hero(
-                                tag: 'clg1Image', // Unique Hero tag
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(25),
-                                  child: Image.asset(
-                                    'assets/images/clg1.jpg',
-                                    height: 200,
-                                    fit: BoxFit.cover,
-                                  ),
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(25),
+                                child: Image.network(
+                                  'https://drive.google.com/uc?export=view&id=1yI3wtdf-Er4DXbFfWAFS6qPtDMio5Uiw',
+                                  height: 200,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                               Text(
@@ -1034,15 +1022,13 @@ class _TeacherMainState extends State<TeacherMain> {
                           ),
                           Column(
                             children: [
-                              Hero(
-                                tag: 'clg2Image', // Unique Hero tag
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(25),
-                                  child: Image.asset(
-                                    'assets/images/clg2.jpg',
-                                    height: 200,
-                                    fit: BoxFit.cover,
-                                  ),
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(25),
+                                child: Image.network(
+                                  'https://drive.google.com/uc?export=view&id=1RQpJ9sgu5e1qXKTzq-txoblfOtD-2KWv',
+
+                                  height: 200,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                               Text(

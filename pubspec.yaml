@@ -45,6 +45,7 @@ dependencies:
   firebase_core:
   cloud_firestore:
   intl:
+  cached_network_image:
   firebase_messaging:
   visibility_detector:
   firebase_storage:

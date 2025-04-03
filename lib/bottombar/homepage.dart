@@ -545,114 +545,110 @@ class _MyMainHomeState extends State<MyMainHome> {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        Container(
-                          padding: EdgeInsets.all(10),
-                          margin: EdgeInsets.only(left: 15),
-                          height: 200,
-                          width: 190,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [Colors.green.shade50, Colors.green.shade400],
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                            ),
-                            borderRadius:
-                            BorderRadius.circular(25), // Rounded corners
-                            boxShadow: [
-                              BoxShadow(
-                                color:Colors.green.shade300, // Shadow Color
-                                // spreadRadius: 2, // Spread (Kitna failaaye)
-                                blurRadius: 5, // Blur (Kitna soft ho)
-                                offset:
-                                Offset(0, 4), // Shadow ka direction (X, Y)
+                        GestureDetector(
+                          onTap: (){Get.to(Devpage());},
+                          child: AnimatedContainer(duration:  Duration(milliseconds: 200),
+                            padding: EdgeInsets.all(10),
+                            margin: EdgeInsets.only(left: 15),
+                            height: 200,
+                            width: 190,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [Colors.green.shade50, Colors.green.shade400],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
                               ),
-                            ],
+                              borderRadius:
+                              BorderRadius.circular(25), // Rounded corners
+                              boxShadow: [
+                                BoxShadow(
+                                  color:Colors.green.shade300, // Shadow Color
+                                  // spreadRadius: 2, // Spread (Kitna failaaye)
+                                  blurRadius: 5, // Blur (Kitna soft ho)
+                                  offset:
+                                  Offset(0, 4), // Shadow ka direction (X, Y)
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(Icons.timelapse_rounded,
+                                        size: 30, color: Colors.black),
+                                    SizedBox(
+                                      width: 105,
+                                    ),
+                                    Icon(Icons.arrow_forward_ios_outlined,
+                                        size: 28, color: Colors.black),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'App',
+                                          style: TextStyle(
+                                              fontSize: 30,
+                                              fontFamily: 'sans-serif-light',
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Text(
+                                          'Designing',
+                                          style: TextStyle(
+                                              fontSize: 30,
+                                              fontFamily: 'sans-serif-light',
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 7,
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      '106 Days',
+                                      style: TextStyle(
+                                          fontFamily: 'sans-serif-thin',
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    SizedBox(
+                                      width: 7,
+                                    ),
+                                    Container(
+                                      height: 18,
+                                      width: 1,
+                                      color: Colors.black,
+                                    ),
+                                    SizedBox(
+                                      width: 7,
+                                    ),
+                                    Text(
+                                      '2 Developer\'s',
+                                      style: TextStyle(
+                                          fontFamily: 'sans-serif-thin',
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
                           ),
-                          child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Devpage()));
-                              },
-                              child: Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Icon(Icons.timelapse_rounded,
-                                          size: 30, color: Colors.black),
-                                      SizedBox(
-                                        width: 105,
-                                      ),
-                                      Icon(Icons.arrow_forward_ios_outlined,
-                                          size: 28, color: Colors.black),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            'App',
-                                            style: TextStyle(
-                                                fontSize: 30,
-                                                fontFamily: 'sans-serif-light',
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          Text(
-                                            'Designing',
-                                            style: TextStyle(
-                                                fontSize: 30,
-                                                fontFamily: 'sans-serif-light',
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 7,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        '106 Days',
-                                        style: TextStyle(
-                                            fontFamily: 'sans-serif-thin',
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      SizedBox(
-                                        width: 7,
-                                      ),
-                                      Container(
-                                        height: 18,
-                                        width: 1,
-                                        color: Colors.black,
-                                      ),
-                                      SizedBox(
-                                        width: 7,
-                                      ),
-                                      Text(
-                                        '2 Developer\'s',
-                                        style: TextStyle(
-                                            fontFamily: 'sans-serif-thin',
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              )),
                         ),
                         GestureDetector(
                           onTap: () {
                             Get.to(() => Teacherdetails());
                           },
-                          child: Container(
+                          child: AnimatedContainer(duration:  Duration(milliseconds: 200),
                               padding: EdgeInsets.all(10),
                               margin: EdgeInsets.all(15),
                               height: 200,
@@ -714,108 +710,104 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 ],
                               )),
                         ),
-                        Container(
-                          padding: EdgeInsets.all(10),
-                          margin: EdgeInsets.only(right: 15),
-                          height: 200,
-                          width: 190,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [Colors.pink.shade50, Colors.pink.shade300],
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                            ),
-                            borderRadius: BorderRadius.circular(25),
-                            // Rounded corners
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors
-                                    .pink.shade300, // Shadow Color
-                                blurRadius: 5, // Blur (Kitna soft ho)
-                                offset:
-                                Offset(0, 4), // Shadow ka direction (X, Y)
+                        GestureDetector(
+                          onTap: (){Get.to(EventPage());},
+                          child: AnimatedContainer(duration:  Duration(milliseconds: 200),
+                            padding: EdgeInsets.all(10),
+                            margin: EdgeInsets.only(right: 15),
+                            height: 200,
+                            width: 190,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [Colors.pink.shade50, Colors.pink.shade300],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
                               ),
-                            ],
+                              borderRadius: BorderRadius.circular(25),
+                              // Rounded corners
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors
+                                      .pink.shade300, // Shadow Color
+                                  blurRadius: 5, // Blur (Kitna soft ho)
+                                  offset:
+                                  Offset(0, 4), // Shadow ka direction (X, Y)
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(Icons.event,
+                                        size: 30, color: Colors.black),
+                                    SizedBox(
+                                      width: 105,
+                                    ),
+                                    Icon(
+                                          Icons.arrow_forward_ios_outlined,
+                                          size: 28,
+                                          color: Colors.black),
+                                  ],
+                                ),
+                                SizedBox(height: 10),
+                                Row(
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Events',
+                                          style: TextStyle(
+                                              fontSize: 30,
+                                              fontFamily: 'sans-serif-light',
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Text(
+                                          'Information',
+                                          style: TextStyle(
+                                              fontSize: MediaQuery.of(context).size.width * 0.07,
+                                              fontFamily: 'sans-serif-light',
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 7,
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      'Events info',
+                                      style: TextStyle(
+                                          fontFamily: 'sans-serif-thin',
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    SizedBox(
+                                      width: 7,
+                                    ),
+                                    Container(
+                                      height: 18,
+                                      width: 1,
+                                      color: Colors.black,
+                                    ),
+                                    SizedBox(
+                                      width: 7,
+                                    ),
+                                    Text(
+                                      'Holiday\'s',
+                                      style: TextStyle(
+                                          fontFamily: 'sans-serif-thin',
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
                           ),
-                          child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => EventPage()));
-                              },
-                              child: Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Icon(Icons.event,
-                                          size: 30, color: Colors.black),
-                                      SizedBox(
-                                        width: 105,
-                                      ),
-                                      Icon(
-                                            Icons.arrow_forward_ios_outlined,
-                                            size: 28,
-                                            color: Colors.black),
-                                    ],
-                                  ),
-                                  SizedBox(height: 10),
-                                  Row(
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            'Events',
-                                            style: TextStyle(
-                                                fontSize: 30,
-                                                fontFamily: 'sans-serif-light',
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          Text(
-                                            'Information',
-                                            style: TextStyle(
-                                                fontSize: MediaQuery.of(context).size.width * 0.07,
-                                                fontFamily: 'sans-serif-light',
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 7,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        'Events info',
-                                        style: TextStyle(
-                                            fontFamily: 'sans-serif-thin',
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      SizedBox(
-                                        width: 7,
-                                      ),
-                                      Container(
-                                        height: 18,
-                                        width: 1,
-                                        color: Colors.black,
-                                      ),
-                                      SizedBox(
-                                        width: 7,
-                                      ),
-                                      Text(
-                                        'Holiday\'s',
-                                        style: TextStyle(
-                                            fontFamily: 'sans-serif-thin',
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              )),
                         ),
                       ],
                     ),
@@ -825,33 +817,28 @@ class _MyMainHomeState extends State<MyMainHome> {
                   SizedBox(
                     height: 5,
                   ),
-                  Container(
-                      padding: EdgeInsets.all(15),
-                      margin: EdgeInsets.all(15),
-                      height: 190,
-                      width: 385,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [Colors.lightBlue.shade300,Colors.lightBlue.shade50],
-                          begin: Alignment.topRight,
-                          end: Alignment.bottomLeft,
-                        ),
-                        borderRadius: BorderRadius.circular(30),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.lightBlue.shade300, // Shadow Color
-                            blurRadius: 5, // Blur (Kitna soft ho)
-                            offset: Offset(0, 4), // Shadow ka direction (X, Y)
+                  GestureDetector(
+                    onTap: (){Get.to(Collegeinfo());},
+                    child: AnimatedContainer(duration:  Duration(milliseconds: 200),
+                        padding: EdgeInsets.all(15),
+                        margin: EdgeInsets.all(15),
+                        height: 190,
+                        width: 385,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [Colors.lightBlue.shade300,Colors.lightBlue.shade50],
+                            begin: Alignment.topRight,
+                            end: Alignment.bottomLeft,
                           ),
-                        ], // Rounded corners
-                      ),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Collegeinfo()));
-                        },
+                          borderRadius: BorderRadius.circular(30),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.lightBlue.shade300, // Shadow Color
+                              blurRadius: 5, // Blur (Kitna soft ho)
+                              offset: Offset(0, 4), // Shadow ka direction (X, Y)
+                            ),
+                          ], // Rounded corners
+                        ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -970,8 +957,8 @@ class _MyMainHomeState extends State<MyMainHome> {
                               ],
                             )
                           ],
-                        ),
-                      )),
+                        )),
+                  ),
                   Container(
                       padding: EdgeInsets.all(15),
                       child: Divider(

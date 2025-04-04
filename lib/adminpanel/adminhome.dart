@@ -11,7 +11,6 @@ import 'package:educationapk/adminpanel/homepagewidgets/chatboxshow.dart';
 import 'package:educationapk/adminpanel/homepagewidgets/helpdeskshow.dart';
 import 'package:educationapk/adminpanel/homepagewidgets/management.dart';
 import 'package:educationapk/adminpanel/homepagewidgets/reportanalytics.dart';
-import 'package:educationapk/teacherpanel/allbox/syllabus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

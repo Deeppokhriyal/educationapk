@@ -4,7 +4,6 @@ import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/adminpanel/adminhome.dart';
-import 'package:educationapk/before%20start/login.dart';
 import 'package:educationapk/before%20start/startingpage.dart';
 import 'package:educationapk/bottombar/homepage.dart';
 import 'package:educationapk/services/firebase_service.dart';

@@ -17,7 +17,6 @@ import 'package:get/get.dart';
 import 'package:marquee/marquee.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'drawer.dart';
-import 'homepagewidgets/announcements.dart';
 
 class Adminhome extends StatefulWidget {
   const Adminhome({super.key});
@@ -430,13 +429,13 @@ class _TeacherMainState extends State<TeacherMain> {
                                               fontWeight: FontWeight.bold),
                                         ),
                                         SizedBox(
-                                          height: 10,
+                                          height: 20,
                                         ),
                                         Text(
                                           'Manage Application\'s',
                                           style: TextStyle(
                                               fontFamily: 'nexalight',
-                                              fontSize: 14,
+                                              fontSize: 15,
                                           color: Colors.black),
                                         ),
                                       ],
@@ -519,7 +518,7 @@ class _TeacherMainState extends State<TeacherMain> {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                Get.to(() => AnnouncementPage());
+                                Get.to(() => SyllabusPage());
                               },
                               child: Container(
                                 padding: EdgeInsets.all(10),
@@ -564,21 +563,21 @@ class _TeacherMainState extends State<TeacherMain> {
                                         Text(
                                           'Announcement',
                                           style: TextStyle(
-                                              fontSize: 18,
+                                              fontSize: 20,
                                               fontFamily: 'nexaheavy',
                                               fontWeight: FontWeight.bold),
                                         ),
                                       ],
                                     ),
                                     SizedBox(
-                                      height: 10,
+                                      height: 20,
                                     ),
                                     Text(
                                       'Send Important '
                                           'Announcement\'s',
                                       style: TextStyle(
                                           fontFamily: 'nexalight',
-                                          fontSize: 14,
+                                          fontSize: 15,
                                       color: Colors.black),
                                     ),
                                   ],
@@ -701,15 +700,17 @@ class _TeacherMainState extends State<TeacherMain> {
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
                                         Text(
-                                          'Bug\'s Report',
+                                          'Bug\'s & Report',
                                           style: TextStyle(
-                                              fontSize: 19,
+                                              fontSize: 20,
                                               fontFamily: 'nexaheavy',
                                               fontWeight: FontWeight.bold),
                                         ),
                                       ],
                                     ),
-                                    SizedBox(height: 20,),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
                                     Text(
                                           'Fixes Bugs',
                                       style: TextStyle(

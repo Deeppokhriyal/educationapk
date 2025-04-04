@@ -43,7 +43,7 @@ class _AdminHelpDeskPageState extends State<AdminHelpDeskPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Help Desk Queries',style: TextStyle(fontFamily: 'nexaheavy',),),
+        title: Text('Help Desk Queries',style: TextStyle(fontFamily: 'nexaheavy',color: Colors.white),),
         backgroundColor: Colors.blueGrey,
         centerTitle: true,
         elevation: 10,

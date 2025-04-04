@@ -51,10 +51,10 @@ class _UserDashboardState extends State<UserDashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('User Dashboard', style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'nexaheavy',fontSize: 23)),
+        title: Text('User Dashboard', style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'nexaheavy',fontSize: 23,color: Colors.white)),
         centerTitle: true,
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blueGrey,
       ),
       body: Container(
         decoration: BoxDecoration(

@@ -1,14 +1,13 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:educationapk/adminpanel/beforestart/adminlogin.dart';
 import 'package:educationapk/before%20start/signup.dart';
-import 'package:educationapk/teacherpanel/before%20start/teacherlogin.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
-import 'package:educationapk/before%20start/startingpage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../main.dart';
 
 class MyLogin extends StatefulWidget {
   @override
@@ -64,7 +63,7 @@ class _MyLoginState extends State<MyLogin> {
           prefs.setString("password", passwordController.text);
           prefs.setBool("rememberMe", true);
         }
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Bottombar()));
       } else {
         showError("Not a Student Account!");
       }
@@ -187,39 +186,6 @@ class _MyLoginState extends State<MyLogin> {
                                       // Get.to(()=>MyHomePage());
                                     },
                                       child: Text('Sign up',style: TextStyle(color: Colors.white, fontSize: 16,fontFamily: 'sans-serif-light'),),
-                                    ),
-                                  ),
-                                  SizedBox(height: 20,),
-                                  Container(
-                                    padding: EdgeInsets.only(left: 12,top: 20),
-                                    child: Text('Or Login with',style: TextStyle(color: Colors.black, fontSize: 16,fontFamily: 'nexalight'),textAlign: TextAlign.right,)                     ,
-                                  ),
-
-                                  SizedBox(height: 40,),
-
-                                  SizedBox(
-                                    height: 50,
-                                    width: 450,
-                                    child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        foregroundColor: Colors.black, backgroundColor: Colors.green, // Set the text color here
-                                      ),  onPressed: () {
-                                      Get.to(TeacherLogin());
-                                    },
-                                      child: Text('Teacher Panel',style: TextStyle(color: Colors.white, fontSize: 16,fontFamily: 'sans-serif-light'),),
-                                    ),
-                                  ), SizedBox(height: 35,),
-
-                                  SizedBox(
-                                    height: 50,
-                                    width: 450,
-                                    child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        foregroundColor: Colors.black, backgroundColor: Colors.blueGrey // Set the text color here
-                                      ),  onPressed: () {
-                                      Get.to(AdminLogin());
-                                    },
-                                      child: Text('Admin Panel',style: TextStyle(color: Colors.white, fontSize: 16,fontFamily: 'sans-serif-light'),),
                                     ),
                                   ),
                                 ],

@@ -5,6 +5,7 @@ import 'package:educationapk/before%20start/login.dart';
 import 'package:educationapk/before%20start/startingpage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -149,7 +150,7 @@ class _AdminLoginState extends State<AdminLogin> {
                                   hintText: 'Enter your Email',
                                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(35)),
                                   focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.blue),
+                                      borderSide: BorderSide(color: Colors.blueGrey),
                                       borderRadius: BorderRadius.circular(35)),
                                 ),
                               ),
@@ -167,7 +168,7 @@ class _AdminLoginState extends State<AdminLogin> {
                                   ),
                                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(35)),
                                   focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.blue),
+                                      borderSide: BorderSide(color: Colors.blueGrey),
                                       borderRadius: BorderRadius.circular(35)),
                                 ),
                               ),
@@ -183,7 +184,10 @@ class _AdminLoginState extends State<AdminLogin> {
                                 ],
                               ),
                               isLoading
-                                  ? CircularProgressIndicator()
+                                  ? SpinKitWave(
+                                color: Colors.blueGrey,  // Change color as needed
+                                size: 30.0,          // Adjust size
+                              )
                                   : SizedBox(height: 35,),
                               SizedBox(
                                 height: 50,

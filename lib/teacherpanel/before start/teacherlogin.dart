@@ -5,6 +5,7 @@ import 'package:educationapk/before%20start/startingpage.dart';
 import 'package:educationapk/teacherpanel/bottombar/teacherbottom.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -161,7 +162,10 @@ class _TeacherLoginState extends State<TeacherLogin> {
                               ],
                             ),
                             isLoading
-                                ? CircularProgressIndicator()
+                                ? SpinKitWave(
+                              color: Colors.green,  // Change color as needed
+                              size: 30.0,          // Adjust size
+                            )
                                 :SizedBox(height: 35,),
                             SizedBox(
                               height: 50,

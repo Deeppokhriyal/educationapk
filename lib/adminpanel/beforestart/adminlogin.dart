@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/adminpanel/adminhome.dart';
 import 'package:educationapk/before%20start/login.dart';
+import 'package:educationapk/before%20start/startingpage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -112,7 +113,7 @@ class _AdminLoginState extends State<AdminLogin> {
                           margin: EdgeInsets.fromLTRB(5, 30, 310, 0),
                           child: IconButton(
                               onPressed: () {
-                                Get.offAll(()=> MyLogin());
+                                Get.offAll(()=> Starting());
                               },
                               icon: Icon(Icons.arrow_back_ios, size: 30, color: Colors.black,)
                           )

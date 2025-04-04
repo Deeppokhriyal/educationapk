@@ -100,7 +100,6 @@ class _MySignUpPageState extends State<MySignUpPage> {
               ),
             ),
           ),
-
           Container(
             padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.12, left: 30),
             child: Text(

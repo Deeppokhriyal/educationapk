@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/adminpanel/beforestart/adminlogin.dart';
 import 'package:educationapk/before%20start/signup.dart';
@@ -87,155 +88,146 @@ class _MyLoginState extends State<MyLogin> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image:
-                        NetworkImage('https://img.freepik.com/free-vector/abstract-colorful-low-poly-triangle-shapes_361591-4115.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
-                        // Path to your background image
-                        fit: BoxFit.cover,
-                      ),
+                      gradient: LinearGradient(colors: [Colors.lightBlueAccent,Colors.white],
+                      begin: Alignment.topRight,
+                        end: Alignment.centerLeft
+                      )
                     ),
                   ),
                   Center(
-                    child: ListView( shrinkWrap: true,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.only(right: 30,left: 30),
-                          child: Text('Welcome\nGlad to see you.', style: TextStyle( color: Colors.black, fontSize: 40, fontFamily: 'sans-serif-thin'),),
-                        ),
-                        SizedBox(height: 20,),
-                        SingleChildScrollView(
-                          child: Container(
+                    child: ZoomIn(
+                      duration: Duration(milliseconds: 400),
+                      child: ListView( shrinkWrap: true,
+                        children: [
+                          Container(
                             padding: EdgeInsets.only(right: 30,left: 30),
-                            child: Column(
-                              children: [
-                                TextField( cursorColor: Colors.black,style: TextStyle( fontFamily: 'sans-serif-light'),
-                                  controller: usernameController,
-                                  decoration: InputDecoration(
-                                    fillColor: Colors.pink,
-                                    hintText: 'Enter your Email',
-                                    border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(35)
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(color: Colors.blue),// Focused border color
-                                        borderRadius: BorderRadius.circular(35)
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(height: 30,),
-                                TextField(style: TextStyle( fontFamily: 'nexalight'),
-                                  controller: passwordController,
-                                  cursorColor: Colors.black,
-                                  obscureText:!isPasswordVisible,
-                                  decoration: InputDecoration(
-                                    fillColor: Colors.grey[100],
-                                    hintText: 'Enter your Password',
-                                    suffixIcon: IconButton(
-                                      icon: Icon(isPasswordVisible ? Icons.visibility : Icons.visibility_off),
-                                      onPressed: () => setState(() => isPasswordVisible = !isPasswordVisible),
-                                    ),
-                                    border: OutlineInputBorder( // Unfocused border color
-                                        borderRadius: BorderRadius.circular(35)
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(color: Colors.blue),// Focused border color
-                                        borderRadius: BorderRadius.circular(35)
+                            child: Text('Welcome\nGlad to see you.', style: TextStyle( color: Colors.black, fontSize: 40, fontFamily: 'sans-serif-thin'),),
+                          ),
+                          SizedBox(height: 20,),
+                          SingleChildScrollView(
+                            child: Container(
+                              padding: EdgeInsets.only(right: 30,left: 30),
+                              child: Column(
+                                children: [
+                                  TextField( cursorColor: Colors.black,style: TextStyle( fontFamily: 'sans-serif-light'),
+                                    controller: usernameController,
+                                    decoration: InputDecoration(
+                                      fillColor: Colors.pink,
+                                      hintText: 'Enter your Email',
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(35)
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(color: Colors.blue),// Focused border color
+                                          borderRadius: BorderRadius.circular(35)
+                                      ),
                                     ),
                                   ),
-                                ),
-                                SizedBox(height: 8,),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    GestureDetector(
-                                      onTap: (){
-                                        // Get.to(OtpVerificationPage());
-                                      },
-                                        child: Text('Forget Password?',style: TextStyle(color: Colors.black,fontSize: 13,fontFamily: 'nexaheavy'),textAlign: TextAlign.right,)),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Checkbox(
-                                      value: rememberMe,
-                                      onChanged: (value) => setState(() => rememberMe = value!),
-                                      activeColor: Colors.green,
+                                  SizedBox(height: 30,),
+                                  TextField(style: TextStyle( fontFamily: 'nexalight'),
+                                    controller: passwordController,
+                                    cursorColor: Colors.black,
+                                    obscureText:!isPasswordVisible,
+                                    decoration: InputDecoration(
+                                      fillColor: Colors.grey[100],
+                                      hintText: 'Enter your Password',
+                                      suffixIcon: IconButton(
+                                        icon: Icon(isPasswordVisible ? Icons.visibility : Icons.visibility_off),
+                                        onPressed: () => setState(() => isPasswordVisible = !isPasswordVisible),
+                                      ),
+                                      border: OutlineInputBorder( // Unfocused border color
+                                          borderRadius: BorderRadius.circular(35)
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(color: Colors.blue),// Focused border color
+                                          borderRadius: BorderRadius.circular(35)
+                                      ),
                                     ),
-                                    Text("Remember Me",style: TextStyle(fontFamily: 'nexalight'),)
-                                  ],
-                                ),
-                                isLoading
-                                    ? SpinKitWave(
-                                  color: Colors.blue,  // Change color as needed
-                                  size: 30.0,          // Adjust size
-                                )
-                                :SizedBox(height: 15,),
-                                SizedBox(
-                                  height: 50,
-                                  width: 450,
-                                  child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      foregroundColor: Colors.black, backgroundColor: Colors.black, // Set the text color here
+                                  ),
+                                  SizedBox(height: 8,),
+                                  Row(
+                                    children: [
+                                      Checkbox(
+                                        value: rememberMe,
+                                        onChanged: (value) => setState(() => rememberMe = value!),
+                                        activeColor: Colors.green,
+                                      ),
+                                      Text("Remember Me",style: TextStyle(fontFamily: 'nexalight'),)
+                                    ],
+                                  ),
+                                  isLoading
+                                      ? SpinKitWave(
+                                    color: Colors.blue,  // Change color as needed
+                                    size: 30.0,          // Adjust size
+                                  )
+                                  :SizedBox(height: 15,),
+                                  SizedBox(
+                                    height: 50,
+                                    width: 450,
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        foregroundColor: Colors.black, backgroundColor: Colors.black, // Set the text color here
+                                      ),
+                                      // onPressed: (){
+                                      //   Get.to(()=>MyHomePage());
+                                      // },
+                                      onPressed: () => loginStudent(context),
+                                      child: Text('Login',style: TextStyle(color: Colors.white, fontSize: 16,fontFamily: 'sans-serif-light'),),
                                     ),
-                                    // onPressed: (){
-                                    //   Get.to(()=>MyHomePage());
-                                    // },
-                                    onPressed: () => loginStudent(context),
-                                    child: Text('Login',style: TextStyle(color: Colors.white, fontSize: 16,fontFamily: 'sans-serif-light'),),
                                   ),
-                                ),
-                                SizedBox(height: 30,),
-                                SizedBox(
-                                  height: 50,
-                                  width: 450,
-                                  child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      foregroundColor: Colors.black, backgroundColor: Colors.lightBlueAccent, // Set the text color here
-                                    ),  onPressed: () {
-                                    Get.to(MySignUpPage());
-                                    // Get.to(()=>MyHomePage());
-                                  },
-                                    child: Text('Sign up',style: TextStyle(color: Colors.white, fontSize: 16,fontFamily: 'sans-serif-light'),),
+                                  SizedBox(height: 30,),
+                                  SizedBox(
+                                    height: 50,
+                                    width: 450,
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        foregroundColor: Colors.black, backgroundColor: Colors.lightBlueAccent, // Set the text color here
+                                      ),  onPressed: () {
+                                      Get.to(MySignUpPage());
+                                      // Get.to(()=>MyHomePage());
+                                    },
+                                      child: Text('Sign up',style: TextStyle(color: Colors.white, fontSize: 16,fontFamily: 'sans-serif-light'),),
+                                    ),
                                   ),
-                                ),
-                                SizedBox(height: 20,),
-                                Container(
-                                  padding: EdgeInsets.only(left: 12,top: 20),
-                                  child: Text('Or Login with',style: TextStyle(color: Colors.black, fontSize: 16,fontFamily: 'nexalight'),textAlign: TextAlign.right,)                     ,
-                                ),
+                                  SizedBox(height: 20,),
+                                  Container(
+                                    padding: EdgeInsets.only(left: 12,top: 20),
+                                    child: Text('Or Login with',style: TextStyle(color: Colors.black, fontSize: 16,fontFamily: 'nexalight'),textAlign: TextAlign.right,)                     ,
+                                  ),
 
-                                SizedBox(height: 40,),
+                                  SizedBox(height: 40,),
 
-                                SizedBox(
-                                  height: 50,
-                                  width: 450,
-                                  child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      foregroundColor: Colors.black, backgroundColor: Colors.green, // Set the text color here
-                                    ),  onPressed: () {
-                                    Get.to(TeacherLogin());
-                                  },
-                                    child: Text('Teacher Panel',style: TextStyle(color: Colors.white, fontSize: 16,fontFamily: 'sans-serif-light'),),
-                                  ),
-                                ), SizedBox(height: 35,),
+                                  SizedBox(
+                                    height: 50,
+                                    width: 450,
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        foregroundColor: Colors.black, backgroundColor: Colors.green, // Set the text color here
+                                      ),  onPressed: () {
+                                      Get.to(TeacherLogin());
+                                    },
+                                      child: Text('Teacher Panel',style: TextStyle(color: Colors.white, fontSize: 16,fontFamily: 'sans-serif-light'),),
+                                    ),
+                                  ), SizedBox(height: 35,),
 
-                                SizedBox(
-                                  height: 50,
-                                  width: 450,
-                                  child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      foregroundColor: Colors.black, backgroundColor: Colors.blueGrey // Set the text color here
-                                    ),  onPressed: () {
-                                    Get.to(AdminLogin());
-                                  },
-                                    child: Text('Admin Panel',style: TextStyle(color: Colors.white, fontSize: 16,fontFamily: 'sans-serif-light'),),
+                                  SizedBox(
+                                    height: 50,
+                                    width: 450,
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        foregroundColor: Colors.black, backgroundColor: Colors.blueGrey // Set the text color here
+                                      ),  onPressed: () {
+                                      Get.to(AdminLogin());
+                                    },
+                                      child: Text('Admin Panel',style: TextStyle(color: Colors.white, fontSize: 16,fontFamily: 'sans-serif-light'),),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   )
                 ]

@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/before%20start/signup.dart';
+import 'package:educationapk/before%20start/startingpage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -99,8 +100,16 @@ class _MyLoginState extends State<MyLogin> {
                       child: ListView( shrinkWrap: true,
                         children: [
                           Container(
+                              margin: EdgeInsets.fromLTRB(25, 0, 310, 10),
+                              child: IconButton(onPressed: (){
+                                Get.offAll(()=> Starting());
+                              }, icon: Icon(Icons.arrow_back_ios,size: 30,color: Colors.black,))
+                          ),
+
+                          SizedBox(height: 20,),
+                          Container(
                             padding: EdgeInsets.only(right: 30,left: 30),
-                            child: Text('Welcome\nGlad to see you.', style: TextStyle( color: Colors.black, fontSize: 40, fontFamily: 'sans-serif-thin'),),
+                            child: Text('Welcome\nGlad to see you.', style: TextStyle( color: Colors.black, fontSize: 40, fontFamily: 'sans-serif-thin',fontWeight: FontWeight.bold),),
                           ),
                           SizedBox(height: 20,),
                           SingleChildScrollView(
@@ -188,6 +197,10 @@ class _MyLoginState extends State<MyLogin> {
                                       child: Text('Sign up',style: TextStyle(color: Colors.white, fontSize: 16,fontFamily: 'sans-serif-light'),),
                                     ),
                                   ),
+                                  Divider(height: 50,),
+
+                                  Text('Dear Student\'s\n'
+                                      'We Try To Give you Best via This Application.',style: TextStyle(color: Colors.blue,fontSize: 22,fontFamily: 'nexalight'),),
                                 ],
                               ),
                             ),

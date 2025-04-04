@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:educationapk/allpage.dart';
 import 'package:educationapk/allpages/AttendancePage/attendance.dart';
 import 'package:educationapk/allpages/Study/branches.dart';
@@ -12,6 +13,12 @@ import 'package:educationapk/popupmenu/privacypolicies.dart';
 import 'package:educationapk/popupmenu/termscondition.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marquee/marquee.dart';
+
+import '../../allpages/E_library.dart';
+import '../../allpages/studentAssignment.dart';
+import '../../bottombar/profilepage.dart';
+import '../../popupmenu/fetchannouncements.dart';
 
 
 class Studentview extends StatefulWidget {
@@ -22,14 +29,14 @@ class Studentview extends StatefulWidget {
 }
 
 class _StudentviewState extends State<Studentview> {
-  List<String> listName=[
+  List<String> Name=[
     "All",
     "Study",
     "Programming",
     "Attendance",
     "Branches",
     "Map",
-    "Hostel",
+    "E-Library",
   ];
   
 
@@ -42,10 +49,11 @@ class _StudentviewState extends State<Studentview> {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage('https://img.freepik.com/free-vector/white-gradient-background-modern-design_361591-4475.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
-                      // image: NetworkImage('https://img.freepik.com/free-vector/dark-blue-blurred-background_1034-589.jpg?uid=R186427419&ga=GA1.1.722819559.1729949704&semt=ais_hybrid'), // Path to your background image
-                      fit: BoxFit.cover,
+                    gradient: LinearGradient(
+                        colors: [Colors.white, Colors.lightBlue.shade100,  Colors.white], // Three colors
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        stops: [0.2,0.6,0.8]
                     ),
                   ),
                   child: Column(
@@ -64,40 +72,63 @@ class _StudentviewState extends State<Studentview> {
                               Text('you logged in as a Student,', style: TextStyle(fontSize: 15,fontFamily: 'nexaheavy',fontWeight: FontWeight.bold,color: Colors.black),),                            ],
                           ),
                           Container(
-                            padding: EdgeInsets.only(left: 90,top: 50),
-                            child:
-                            PopupMenuButton<String>(
+                            padding: EdgeInsets.only(left: 117, top: 20),
+                            child: PopupMenuButton<String>(
                               onSelected: (String value) {
                                 // Handle menu item selection
-                                print('Selected: $value');
+                                // print('Selected: $value');
                               },
                               itemBuilder: (BuildContext context) {
                                 return [
                                   PopupMenuItem<String>(
-                                    onTap: (){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Termscondition()));
+                                    onTap: () {
+                                      Get.to(() => Termscondition());
                                     },
-                                    value: 'Profile',
-                                    child: Text('Terms and \nCondition\'s', style: TextStyle(fontSize: 15,fontFamily: 'sans-serif-thin')),
+                                    child: Text('Terms and \nCondition\'s',
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontFamily: 'nexalight')),
                                   ),
                                   PopupMenuItem<String>(
-                                    onTap: (){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Privacypolicies()));
+                                    onTap: () {
+                                      Get.to(() => Privacypolicies());
                                     },
-                                    value: 'Settings',
-                                    child: Text('Privacy  Policies', style: TextStyle(fontSize: 15,fontFamily: 'sans-serif-thin')),
+                                    child: Text('Privacy  Policies',
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontFamily: 'nexalight')),
                                   ),
                                   PopupMenuItem<String>(
-                                    onTap: (){
-
-                                      // Navigator.push(context, MaterialPageRoute(builder: (context)=>MyLogin()));
+                                    onTap: () {
+                                      Get.to(() => BugReport());
                                     },
-                                    value: 'Logout',
-                                    child: Text('Logout', style: TextStyle(fontSize: 15,fontFamily: 'sans-serif-thin')),
+                                    child: Text('Bug Reports',
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontFamily: 'nexalight')),
+                                  ),
+                                  PopupMenuItem<String>(
+                                    onTap: () {
+                                      Get.to(() => AskHelpDesk());
+                                    },
+                                    child: Text('Ask Help Desk',
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontFamily: 'nexalight')),
+                                  ),
+                                  PopupMenuItem<String>(
+                                    onTap: () {
+                                      Get.to(() => AnnouncementListPage());
+                                    },
+                                    child: Text('Announcements',
+                                        style: TextStyle(
+                                            fontSize: 17,
+                                            fontFamily: 'nexaheavy')),
                                   ),
                                 ];
                               },
-                              icon: Icon(Icons.menu,size: 30,color: Colors.black), // Icon to display
+                              icon: Icon(Icons.menu,
+                                  size: 30, color: Colors.black), // Icon to display
                               elevation: 5, // Shadow elevation
                               color: Colors.white, // Background color
                               offset: Offset(0, 45), // Positioning of the menu
@@ -105,414 +136,565 @@ class _StudentviewState extends State<Studentview> {
                           )
                         ],
                       ),
-                      SizedBox(height: 15,),
-                      SlideInLeft(
-                        duration: Duration(milliseconds: 250),
-                        child: Container(
-                          margin: EdgeInsets.all(16),
-                          child:TextField(style: TextStyle( fontFamily: 'sans-serif-light',height: 1.2,color: Colors.black),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(children: [
+                          TextField(
+                            style: TextStyle(
+                                fontFamily: 'sans-serif-light',
+                                height: 1.2,
+                                color: Colors.black),
                             cursorColor: Colors.black,
                             decoration: InputDecoration(
-                              suffixIcon: Icon(Icons.search,size: 30,color: Colors.black),
-                              fillColor: Colors.black,
-                              hintText: 'Search',hintStyle: TextStyle(color: Colors.black),
-                              border: OutlineInputBorder( // Unfocused border color
+                              suffixIcon:
+                              Icon(Icons.search, size: 30, color: Colors.black),
+                              hintText: 'Search',
+                              hintStyle: TextStyle(color: Colors.black),
+                              border: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black),
                                 borderRadius: BorderRadius.circular(35),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.blue),// Focused border color
-                                  borderRadius: BorderRadius.circular(35)
+                                borderSide: BorderSide(color: Colors.blue),
+                                borderRadius: BorderRadius.circular(35),
                               ),
-
                             ),
-
                           ),
-                        ),
+                        ]),
                       ),
-                      SlideInRight(
-                        duration: Duration(milliseconds: 300),
+                      Row(
+                        children: [
+                          Text(
+                            "Let's Explore\n        The Polyverse",
+                            style: TextStyle(
+                                fontSize: 42,
+                                fontFamily: 'sans-serif-thin',
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 7,
+                      ),
+                      SizedBox(
+                        height: 83,
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("    Let's Explore\n        The Polyverse",style: TextStyle(fontSize: 42,fontFamily:'sans-serif-thin',color: Colors.black),),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 7,),
-
-                      SlideInLeft(
-                        duration: Duration(milliseconds: 350),
-                        child: SizedBox(
-                          height: 83,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: ListView.builder(
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.horizontal,
-                                  itemCount: listName.length,
-                                  itemBuilder: (_, index) {
-                                    return Padding(
-                                      padding: EdgeInsets.all(10.0),
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          if (listName[index] == "All") {
-                                            Get.to(()=> MainScrollPage()
-                                            );
-                                          }if (listName[index] == "Attendance") {
-                                            Get.to(()=> AttendanceHistory()
-                                            );
-                                          }if (listName[index] == "Branches") {
-                                            Get.to(()=>MainScrollPage()
-                                            );
-                                          }
-                                          if (listName[index] == "Study") {
-                                            Get.to(()=>Branches()
-                                            );
-                                          }
-                                          if (listName[index] == "Programming") {
-                                            Get.to(()=>Programmingpage()
-                                            );
-                                          }
-                                          if (listName[index] == "Map") {
-                                            Get.to(()=>MyMap()
-                                            );
-                                          }
-                                          if (listName[index] == "Hostels") {
-
-
-
-
-                                            Get.to(()=>MyMap()
-                                            );
-                                          }
-
-
-                                        },
-                                        child: Container(
-                                          width: 125,
-                                          height: 40,
-                                          padding: EdgeInsets.all(10),
-                                          margin: EdgeInsets.all(10),
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius: BorderRadius.circular(25),
-                                            border: Border.all(color: Colors.black26, width: 1),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: Colors.deepPurple.shade200,
-                                                blurRadius: 7,
-                                                offset: Offset(0, 4),
-                                              ),
-                                            ],
-                                          ),
-                                          child: Center(
-                                            child: Text(
-                                              listName[index],
-                                              style: TextStyle(fontFamily: 'sans-serif-thin', fontSize: 15),
-                                              textAlign: TextAlign.center, // Center align the text
+                            Expanded(
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                scrollDirection: Axis.horizontal,
+                                itemCount: Name.length,
+                                itemBuilder: (_, index) {
+                                  return Padding(
+                                    padding: EdgeInsets.all(10.0),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        if (Name[index] == "All") {
+                                          Get.to(() => MainScrollPage());
+                                        }
+                                        if (Name[index] == "Attendance") {
+                                          Get.to(() => AttendanceHistory());
+                                        }
+                                        if (Name[index] == "Assignments") {
+                                          Get.to(() => StudentAssignment());
+                                        }
+                                        if (Name[index] == "Study") {
+                                          Get.to(() => Branches());
+                                        }
+                                        if (Name[index] == "Programming") {
+                                          Get.to(() => Programmingpage());
+                                        }
+                                        if (Name[index] == "Map") {
+                                          Get.to(() => MyMap());
+                                        }
+                                        if (Name[index] == "E-Library") {
+                                          Get.to(() => ELibrary());
+                                        }
+                                      },
+                                      child: Container(
+                                        width: 140,
+                                        height: 40,
+                                        padding: EdgeInsets.all(5),
+                                        margin: EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(25),
+                                          border: Border.all(
+                                              color: Colors.black26, width: 1),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.lightBlue.shade800,
+                                              blurRadius: 7,
+                                              offset: Offset(0, 4),
                                             ),
+                                          ],
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            Name[index],
+                                            style: TextStyle(
+                                                fontFamily: 'nexalight',
+                                                fontSize: 15),
+                                            textAlign: TextAlign
+                                                .center, // Center align the text
                                           ),
                                         ),
                                       ),
-                                    );
-                                  },
-                                ),
+                                    ),
+                                  );
+                                },
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                      SlideInRight(
-                        duration: Duration(milliseconds: 400),
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: [
-                              Container(
-
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            GestureDetector(
+                              onTap: (){Get.to(Devpage());},
+                              child: AnimatedContainer(duration:  Duration(milliseconds: 200),
                                 padding: EdgeInsets.all(10),
                                 margin: EdgeInsets.only(left: 15),
                                 height: 200,
                                 width: 190,
-                                decoration:
-                                BoxDecoration(
-                                  color: Color(0xFF00BFA6),
-                                  // color: Colors.purple[200], // Background color
-                                  // color: Color(0xCCCCCCFF), // Background color
-                                  borderRadius: BorderRadius.circular(25),// Rounded corners
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [Colors.green.shade50, Colors.green.shade400],
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                  ),
+                                  borderRadius:
+                                  BorderRadius.circular(25), // Rounded corners
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Color(0xFF00BFA6), // Shadow Color
-                                      spreadRadius: 3, // Spread (Kitna failaaye)
-                                      blurRadius: 10, // Blur (Kitna soft ho)
-                                      offset: Offset(0, 4), // Shadow ka direction (X, Y)
+                                      color:Colors.green.shade300, // Shadow Color
+                                      // spreadRadius: 2, // Spread (Kitna failaaye)
+                                      blurRadius: 5, // Blur (Kitna soft ho)
+                                      offset:
+                                      Offset(0, 4), // Shadow ka direction (X, Y)
                                     ),
                                   ],
                                 ),
-
-                                child:  GestureDetector(
-                                    onTap: (){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Devpage()));
-                                    },
-                                    child: Column(
+                                child: Column(
+                                  children: [
+                                    Row(
                                       children: [
-                                        Row(
-                                          children: [
-                                            Icon(Icons.timelapse_rounded,size: 30,color: Colors.black),
-                                            SizedBox(width: 105,),
-                                            Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                          ],
+                                        Icon(Icons.timelapse_rounded,
+                                            size: 30, color: Colors.black),
+                                        SizedBox(
+                                          width: 105,
                                         ),
-                                        SizedBox(height: 10,),
-                                        Row(
-                                          children: [
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text('App',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                                Text('Designing',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(height: 7,),
-                                        Row(
-                                          children: [
-                                            Text('106 Days',style: TextStyle(fontFamily: 'sans-serif-thin'),),
-                                            SizedBox(width: 7,),
-                                            Container(
-                                              height: 18,
-                                              width: 1,
-                                              color: Colors.black,
-                                            ),
-                                            SizedBox(width: 7,),
-                                            Text('2 Developer\'s',style: TextStyle(fontFamily: 'sans-serif-thin'),),
-                                          ],
-                                        )
+                                        Icon(Icons.arrow_forward_ios_outlined,
+                                            size: 28, color: Colors.black),
                                       ],
-                                    )
-                                ),
-                              ),
-                              GestureDetector(
-                                onTap: (){
-                                  Get.to(()=>Teacherdetails());
-                                },
-                                child: Container(
-
-                                    padding: EdgeInsets.all(10),
-                                    margin: EdgeInsets.all(15),
-                                    height: 200,
-                                    width: 155,
-                                    decoration:
-                                    BoxDecoration(
-                                      // color: Color(0xFFFFC107),
-                                      // color: Colors.greenAccent, // Background color
-                                      color: Color(0xFFFFAB91), // Background color
-                                      borderRadius: BorderRadius.circular(25),// Rounded corners
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Color(0xFFFFAB91), // Shadow Color
-                                          spreadRadius: 3, // Spread (Kitna failaaye)
-                                          blurRadius: 10, // Blur (Kitna soft ho)
-                                          offset: Offset(0, 4), // Shadow ka direction (X, Y)
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'App',
+                                              style: TextStyle(
+                                                  fontSize: 30,
+                                                  fontFamily: 'sans-serif-light',
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            Text(
+                                              'Designing',
+                                              style: TextStyle(
+                                                  fontSize: 30,
+                                                  fontFamily: 'sans-serif-light',
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
                                         ),
                                       ],
                                     ),
-
-                                    child: Column(
+                                    SizedBox(
+                                      height: 7,
+                                    ),
+                                    Row(
                                       children: [
-                                        Row(
-                                          children: [
-                                            Icon(Icons.person_pin_rounded,size: 30,color: Colors.black),
-                                            SizedBox(width: 70,),
-                                            Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
-                                          ],
+                                        Text(
+                                          '106 Days',
+                                          style: TextStyle(
+                                              fontFamily: 'sans-serif-thin',
+                                              fontWeight: FontWeight.bold),
                                         ),
-                                        SizedBox(height: 8,),
-                                        Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Text('Teachers',style: TextStyle(fontSize: 24,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                            Text('68 Members',style: TextStyle(fontSize: 14,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                          ],
+                                        SizedBox(
+                                          width: 7,
                                         ),
-                                        Row(
-                                          children: [
-
-                                          ],
-                                        )
+                                        Container(
+                                          height: 18,
+                                          width: 1,
+                                          color: Colors.black,
+                                        ),
+                                        SizedBox(
+                                          width: 7,
+                                        ),
+                                        Text(
+                                          '2 Developer\'s',
+                                          style: TextStyle(
+                                              fontFamily: 'sans-serif-thin',
+                                              fontWeight: FontWeight.bold),
+                                        ),
                                       ],
                                     )
+                                  ],
                                 ),
                               ),
-                              Container(
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Get.to(() => Teacherdetails());
+                              },
+                              child: AnimatedContainer(duration:  Duration(milliseconds: 200),
+                                  padding: EdgeInsets.all(10),
+                                  margin: EdgeInsets.all(15),
+                                  height: 200,
+                                  width: 190,
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      colors: [Colors.amber.shade50, Colors.yellow.shade400],
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                    ),
+                                    borderRadius: BorderRadius.circular(
+                                        25), // Rounded corners
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.yellow.shade300, // Shadow Color
+                                        blurRadius: 5, // Blur (Kitna soft ho)
+                                        offset: Offset(
+                                            0, 4), // Shadow ka direction (X, Y)
+                                      ),
+                                    ],
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Icon(Icons.person_pin_rounded,
+                                              size: 30, color: Colors.black),
+                                          SizedBox(
+                                            width: 105,
+                                          ),
+                                          Icon(Icons.arrow_forward_ios_outlined,
+                                              size: 28, color: Colors.black),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Row(
+                                          children: [Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Teachers',
+                                                style: TextStyle(
+                                                    fontSize: 30,
+                                                    fontFamily: 'sans-serif-light',
+                                                    fontWeight: FontWeight.bold),
+                                              ),
+                                              Text(
+                                                '68 Members',
+                                                style: TextStyle(
 
+                                                    fontFamily: 'sans-serif-thin',
+                                                    fontWeight: FontWeight.bold),
+                                              ),
+                                            ],
+                                          ),]
+                                      ),
+                                    ],
+                                  )),
+                            ),
+                            GestureDetector(
+                              onTap: (){Get.to(EventPage());},
+                              child: AnimatedContainer(duration:  Duration(milliseconds: 200),
                                 padding: EdgeInsets.all(10),
                                 margin: EdgeInsets.only(right: 15),
                                 height: 200,
                                 width: 190,
-                                decoration:
-                                BoxDecoration(
-                                  color: Color(0xFF90CAF9), // Background color
-                                  // color: Colors.blueAccent[200], // Background color
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [Colors.pink.shade50, Colors.pink.shade300],
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                  ),
                                   borderRadius: BorderRadius.circular(25),
                                   // Rounded corners
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Color(0xFF90CAF9), // Shadow Color
-                                      spreadRadius: 3, // Spread (Kitna failaaye)
-                                      blurRadius: 10, // Blur (Kitna soft ho)
-                                      offset: Offset(0, 4), // Shadow ka direction (X, Y)
+                                      color: Colors
+                                          .pink.shade300, // Shadow Color
+                                      blurRadius: 5, // Blur (Kitna soft ho)
+                                      offset:
+                                      Offset(0, 4), // Shadow ka direction (X, Y)
                                     ),
                                   ],
                                 ),
-
-                                child:  GestureDetector(
-                                    onTap: (){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>EventPage()));
-                                    },
-                                    child: Column(
+                                child: Column(
+                                  children: [
+                                    Row(
                                       children: [
-                                        Row(
+                                        Icon(Icons.event,
+                                            size: 30, color: Colors.black),
+                                        SizedBox(
+                                          width: 105,
+                                        ),
+                                        Icon(
+                                            Icons.arrow_forward_ios_outlined,
+                                            size: 28,
+                                            color: Colors.black),
+                                      ],
+                                    ),
+                                    SizedBox(height: 10),
+                                    Row(
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                           children: [
-                                            Icon(Icons.event,size: 30,color: Colors.black),
-                                            SizedBox(width: 105,),
-                                            GestureDetector(
-                                              onTap: (){
-                                                Navigator.push(context, MaterialPageRoute(builder: (context)=>EventPage()));
-                                              },
-                                              child:
-                                              Icon(Icons.arrow_forward_ios_outlined,size: 28,color: Colors.black),
+                                            Text(
+                                              'Events',
+                                              style: TextStyle(
+                                                  fontSize: 30,
+                                                  fontFamily: 'sans-serif-light',
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            Text(
+                                              'Information',
+                                              style: TextStyle(
+                                                  fontSize: MediaQuery.of(context).size.width * 0.07,
+                                                  fontFamily: 'sans-serif-light',
+                                                  fontWeight: FontWeight.bold),
                                             ),
                                           ],
                                         ),
-                                        Row(
-                                          children: [
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text('Events',style: TextStyle(fontSize: 30,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                                Text('Information',style: TextStyle(fontSize: 28,fontFamily: 'sans-serif-light',fontWeight: FontWeight.bold),),
-                                              ],
-                                            ),
-                                          ],
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 7,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Events info',
+                                          style: TextStyle(
+                                              fontFamily: 'sans-serif-thin',
+                                              fontWeight: FontWeight.bold),
                                         ),
-                                        Row(
-                                          children: [
-                                            Text('Holidays',style: TextStyle(fontFamily: 'sans-serif-thin'),),
-                                            SizedBox(width: 23,),
-                                            Text('Calender',style: TextStyle(fontFamily: 'sans-serif-thin'),),
-                                          ],
-                                        )
+                                        SizedBox(
+                                          width: 7,
+                                        ),
+                                        Container(
+                                          height: 18,
+                                          width: 1,
+                                          color: Colors.black,
+                                        ),
+                                        SizedBox(
+                                          width: 7,
+                                        ),
+                                        Text(
+                                          'Holiday\'s',
+                                          style: TextStyle(
+                                              fontFamily: 'sans-serif-thin',
+                                              fontWeight: FontWeight.bold),
+                                        ),
                                       ],
                                     )
+                                  ],
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
 
                       //blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container blue container
-
-                      SlideInUp(
-                        duration: Duration(milliseconds: 400),
-                        child: Container(
-
+                      SizedBox(
+                        height: 5,
+                      ),
+                      GestureDetector(
+                        onTap: (){Get.to(Collegeinfo());},
+                        child: AnimatedContainer(duration:  Duration(milliseconds: 200),
                             padding: EdgeInsets.all(15),
-                            margin: EdgeInsets.all( 15),
+                            margin: EdgeInsets.all(15),
                             height: 190,
                             width: 385,
-                            decoration:
-                            BoxDecoration(
-                              color: Color(0xFFCE93D8),// Background color
-                              // color: Color(0xfffebee3), // Background color
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [Colors.lightBlue.shade300,Colors.lightBlue.shade50],
+                                begin: Alignment.topRight,
+                                end: Alignment.bottomLeft,
+                              ),
                               borderRadius: BorderRadius.circular(30),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Color(0xFFCE93D8), // Shadow Color
-                                  spreadRadius: 3, // Spread (Kitna failaaye)
-                                  blurRadius: 10, // Blur (Kitna soft ho)
+                                  color: Colors.lightBlue.shade300, // Shadow Color
+                                  blurRadius: 5, // Blur (Kitna soft ho)
                                   offset: Offset(0, 4), // Shadow ka direction (X, Y)
                                 ),
-                              ],// Rounded corners
-
+                              ], // Rounded corners
                             ),
-
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Collegeinfo()));
-                              },
-                              child: Column(mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Image.asset('assets/images/clgbglogo.png',height: 65,),
-                                      SizedBox(width: 8,),
-                                      Column(mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Text('Government',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
-                                          Text('Polytechnic Kashipur',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 22),),
-                                        ],
-                                      ),
-                                      SizedBox(width: 20,),
-                                      GestureDetector(
-                                          onTap: () {
-                                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Collegeinfo()));
-                                          },
-                                          child: Icon(Icons.arrow_forward_ios_outlined,size: 30,color: Colors.black)),
-                                    ],
-                                  ),
-                                  SizedBox(height: 12,),
-                                  Row(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Column(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Text('9 Branches',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
-                                          Text('Engineering',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 16),),
-                                          Text('Pharmacy',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 13),),
-                                        ],
-                                      ),
-                                      SizedBox(width: 40,),
-                                      SizedBox(
-                                          child: Container(
-                                            height: 70,
-                                            width: 2,
-                                            color: Colors.black,
-                                          )
-                                      ),
-                                      SizedBox(width: 10,),
-                                      Column(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Text('Hostels',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 18),),
-                                          Text('Boys',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 16),),
-                                          Text('Girls',style: TextStyle(fontFamily: 'sans-serif-light',fontSize: 13),),
-                                        ],
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            )
-                        ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Image.asset(
+                                      'assets/images/clgbglogo.png',
+                                      height: 65,
+                                    ),
+                                    SizedBox(
+                                      width: 8,
+                                    ),
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Government',
+                                          style: TextStyle(
+                                              fontFamily: 'sans-serif-light',
+                                              fontSize: 22),
+                                        ),
+                                        Text(
+                                          'Polytechnic Kashipur',
+                                          style: TextStyle(
+                                              fontFamily: 'sans-serif-light',
+                                              fontSize: 22),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      width:
+                                      MediaQuery.of(context).size.width * 0.016,
+                                    ),
+                                    GestureDetector(
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      Collegeinfo()));
+                                        },
+                                        child: Icon(
+                                            Icons.arrow_forward_ios_outlined,
+                                            size: 30,
+                                            color: Colors.black)),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 12,
+                                ),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          '9 Branches',
+                                          style: TextStyle(
+                                              fontFamily: 'sans-serif-thin',
+                                              fontSize: 18),
+                                        ),
+                                        Text(
+                                          'Engineering',
+                                          style: TextStyle(
+                                              fontFamily: 'sans-serif-light',
+                                              fontSize: 16),
+                                        ),
+                                        Text(
+                                          'Pharmacy',
+                                          style: TextStyle(
+                                              fontFamily: 'sans-serif-light',
+                                              fontSize: 13),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      width: 40,
+                                    ),
+                                    SizedBox(
+                                        child: Container(
+                                          height: 70,
+                                          width: 2,
+                                          color: Colors.black,
+                                        )),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Hostels',
+                                          style: TextStyle(
+                                              fontFamily: 'sans-serif-thin',
+                                              fontSize: 18),
+                                        ),
+                                        Text(
+                                          'Boys',
+                                          style: TextStyle(
+                                              fontFamily: 'sans-serif-light',
+                                              fontSize: 16),
+                                        ),
+                                        Text(
+                                          'Girls',
+                                          style: TextStyle(
+                                              fontFamily: 'sans-serif-light',
+                                              fontSize: 13),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                )
+                              ],
+                            )),
                       ),
                       Container(
                           padding: EdgeInsets.all(15),
-                          child:
-                          Divider(height: 20,color: Colors.black,)
+                          child: Divider(
+                            height: 20,
+                            color: Colors.black,
+                          )),
+                      Text(
+                        '  Gallery',
+                        style: TextStyle(
+                            fontSize: 29,
+                            fontFamily: 'nexaheavy',
+                            color: Colors.black),
                       ),
-                      Text('  Gallery',style: TextStyle(fontSize: 29,fontFamily: 'nexaheavy',color: Colors.black),),
-                      Text('   Govt. Polytechnic Kashipur',style: TextStyle(fontSize: 16,fontFamily: 'nexaheavy',color: Colors.blue),),
-                      SizedBox(height: 10,),
+                      Text(
+                        '   Govt. Polytechnic Kashipur',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: 'nexaheavy',
+                            color: Colors.blue),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
                       SingleChildScrollView(
                         padding: EdgeInsets.all(15),
                         scrollDirection: Axis.horizontal,
@@ -520,15 +702,14 @@ class _StudentviewState extends State<Studentview> {
                           children: [
                             Column(
                               children: [
-                                Hero(
-                                  tag: 'clg7Image', // Unique Hero tag
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(25),
-                                    child: Image.asset(
-                                      'assets/images/clg7.jpg',
-                                      height: 200,
-                                      fit: BoxFit.cover,
-                                    ),
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(25),
+                                  child: CachedNetworkImage(
+                                    imageUrl:
+                                    'https://drive.google.com/uc?export=view&id=1fqQLkDo4CDfsTxdcawPoSGxEUbrFxQ9F',
+
+                                    height: 200,
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                                 Text(
@@ -545,15 +726,14 @@ class _StudentviewState extends State<Studentview> {
                             ),
                             Column(
                               children: [
-                                Hero(
-                                  tag: 'clg6Image', // Unique Hero tag
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(25),
-                                    child: Image.asset(
-                                      'assets/images/clg6.jpg',
-                                      height: 200,
-                                      fit: BoxFit.cover,
-                                    ),
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(25),
+                                  child: CachedNetworkImage(
+                                    imageUrl:
+                                    'https://drive.google.com/uc?export=view&id=1CBXD_TpP7qbWF3vRQnlDAcADLhsXl-TH',
+
+                                    height: 200,
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                                 Text(
@@ -570,15 +750,14 @@ class _StudentviewState extends State<Studentview> {
                             ),
                             Column(
                               children: [
-                                Hero(
-                                  tag: 'clg3Image', // Unique Hero tag
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(25),
-                                    child: Image.asset(
-                                      'assets/images/clg3.jpg',
-                                      height: 200,
-                                      fit: BoxFit.cover,
-                                    ),
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(25),
+                                  child:CachedNetworkImage(
+                                    imageUrl:
+                                    'https://drive.google.com/uc?export=view&id=1LBisNSnXZh6Ij5ATKeLHd6TpIL1aEtWE',
+
+                                    height: 200,
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                                 Text(
@@ -595,15 +774,14 @@ class _StudentviewState extends State<Studentview> {
                             ),
                             Column(
                               children: [
-                                Hero(
-                                  tag: 'clg4Image', // Unique Hero tag
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(25),
-                                    child: Image.asset(
-                                      'assets/images/clg4.jpg',
-                                      height: 200,
-                                      fit: BoxFit.cover,
-                                    ),
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(25),
+                                  child: CachedNetworkImage(
+                                    imageUrl:
+                                    'https://drive.google.com/uc?export=view&id=1jsXLnpawjbDlMZHipx9a2qABbAKweLgi',
+
+                                    height: 200,
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                                 Text(
@@ -620,15 +798,14 @@ class _StudentviewState extends State<Studentview> {
                             ),
                             Column(
                               children: [
-                                Hero(
-                                  tag: 'clg5Image', // Unique Hero tag
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(25),
-                                    child: Image.asset(
-                                      'assets/images/clg5.jpg',
-                                      height: 200,
-                                      fit: BoxFit.cover,
-                                    ),
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(25),
+                                  child: CachedNetworkImage(
+                                    imageUrl:
+                                    'https://drive.google.com/uc?export=view&id=1nLRdZA__y1cA2ykHMqXUiyfK0j3lJBvi',
+
+                                    height: 200,
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                                 Text(
@@ -645,15 +822,13 @@ class _StudentviewState extends State<Studentview> {
                             ),
                             Column(
                               children: [
-                                Hero(
-                                  tag: 'clg1Image', // Unique Hero tag
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(25),
-                                    child: Image.asset(
-                                      'assets/images/clg1.jpg',
-                                      height: 200,
-                                      fit: BoxFit.cover,
-                                    ),
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(25),
+                                  child: CachedNetworkImage(
+                                    imageUrl:
+                                    'https://drive.google.com/uc?export=view&id=1yI3wtdf-Er4DXbFfWAFS6qPtDMio5Uiw',
+                                    height: 200,
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                                 Text(
@@ -670,15 +845,12 @@ class _StudentviewState extends State<Studentview> {
                             ),
                             Column(
                               children: [
-                                Hero(
-                                  tag: 'clg2Image', // Unique Hero tag
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(25),
-                                    child: Image.asset(
-                                      'assets/images/clg2.jpg',
-                                      height: 200,
-                                      fit: BoxFit.cover,
-                                    ),
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(25),
+                                  child: CachedNetworkImage(
+                                    imageUrl: 'https://drive.google.com/uc?export=view&id=1RQpJ9sgu5e1qXKTzq-txoblfOtD-2KWv',
+                                    height: 200,
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                                 Text(
@@ -693,22 +865,46 @@ class _StudentviewState extends State<Studentview> {
                           ],
                         ),
                       ),
-                      Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.horizontal(),
-                            color: Colors.blueAccent,
-
-                          ),
+                      GestureDetector(
+                        child: Container(
+                          width: double.infinity,
+                          height: 30,
+                          color: Colors.blue[300],
                           alignment: Alignment.center,
-
-                          child: Text('©2025 All Rights Reserved by Teamcelestial',style: TextStyle(fontFamily: 'nexalight',fontSize: 12,color: Colors.black),))
+                          child: Marquee(
+                            text:
+                            "©2025 All Rights Reserved by TeamCelestial    ", // Text scroll hoga
+                            style: TextStyle(
+                                fontFamily: 'nexalight',
+                                fontSize: 13,
+                                color: Colors.white),
+                            scrollAxis: Axis.horizontal,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            blankSpace: 50.0, // Space between loops
+                            velocity: 50.0, // Speed of scrolling
+                            pauseAfterRound: Duration(
+                                seconds:
+                                1), // Ek baar complete hone ke baad pause
+                            startPadding: 10.0,
+                            accelerationDuration: Duration(seconds: 1),
+                            accelerationCurve: Curves.linear,
+                            decelerationDuration: Duration(seconds: 1),
+                            decelerationCurve: Curves.easeOut,
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ),
-              ]
-          ),
-          ]
-      ),
+              ]),
+          ]),
+    floatingActionButton: FloatingActionButton(
+    onPressed: () {},
+    child: Icon(Icons.mark_unread_chat_alt_outlined,color: Colors.lightBlueAccent,size: 35,),
+    backgroundColor: Colors.white,
+    shape: OvalBorder(),
+
+    ),
       bottomNavigationBar: Container(
         height: 50,
           alignment: Alignment.center,

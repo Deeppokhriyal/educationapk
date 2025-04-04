@@ -48,6 +48,8 @@ class _ProfilePageState extends State<ProfilePage> {
     }
   }
 
+
+
   Future<void> fetchUserData() async {
     setState(() => _isLoading = true);
     try {
@@ -152,8 +154,6 @@ class _ProfilePageState extends State<ProfilePage> {
                 size: 50.0, // Adjust size
               ),
             )
-          // : userData == null
-          // ? Center(child: Text("User not found!"))
           : ListView(
               children: [
                 Stack(
@@ -161,10 +161,6 @@ class _ProfilePageState extends State<ProfilePage> {
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                          // image: DecorationImage(
-                          //   image: AssetImage('assets/images/profiledee.avif'),
-                          //   fit: BoxFit.cover,
-                          // ),
                           gradient: LinearGradient(
                         colors: [
                           Colors.deepPurple,

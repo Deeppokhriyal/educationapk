@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/adminpanel/homepagewidgets/Dashboard.dart';
+import 'package:educationapk/adminpanel/homepagewidgets/announcements.dart';
 import 'package:educationapk/adminpanel/homepagewidgets/applicationshow.dart';
 import 'package:educationapk/adminpanel/homepagewidgets/assignmentshow.dart';
 import 'package:educationapk/adminpanel/homepagewidgets/attendanceshow.dart';
@@ -291,13 +292,13 @@ class _TeacherMainState extends State<TeacherMain> {
                                       ],
                                     ),
                                     SizedBox(
-                                      height: 20,
+                                      height: 10,
                                     ),
                                     Text(
                                       'Assign User\'s',
                                       style: TextStyle(
                                           fontFamily: 'nexalight',
-                                          fontSize: 15,
+                                          fontSize: 12,
                                       color: Colors.black),
                                     ),
                                   ],
@@ -360,13 +361,13 @@ class _TeacherMainState extends State<TeacherMain> {
                                       ],
                                     ),
                                     SizedBox(
-                                      height: 20,
+                                      height: 10,
                                     ),
                                     Text(
                                       'Generate Report',
                                       style: TextStyle(
                                           fontFamily: 'nexalight',
-                                          fontSize: 15,
+                                          fontSize: 12,
                                       color: Colors.black),
                                     ),
                                   ],
@@ -429,13 +430,13 @@ class _TeacherMainState extends State<TeacherMain> {
                                               fontWeight: FontWeight.bold),
                                         ),
                                         SizedBox(
-                                          height: 20,
+                                          height: 10,
                                         ),
                                         Text(
                                           'Manage Application\'s',
                                           style: TextStyle(
                                               fontFamily: 'nexalight',
-                                              fontSize: 15,
+                                              fontSize: 12,
                                           color: Colors.black),
                                         ),
                                       ],
@@ -499,13 +500,13 @@ class _TeacherMainState extends State<TeacherMain> {
                                       ],
                                     ),
                                     SizedBox(
-                                      height: 20,
+                                      height: 10,
                                     ),
                                     Text(
                                       'Modify/Delete',
                                       style: TextStyle(
                                           fontFamily: 'nexalight',
-                                          fontSize: 15,
+                                          fontSize: 12,
                                       color: Colors.black),
                                     ),
                                   ],
@@ -518,7 +519,7 @@ class _TeacherMainState extends State<TeacherMain> {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                Get.to(() => SyllabusPage());
+                                Get.to(() => AnnouncementPage());
                               },
                               child: Container(
                                 padding: EdgeInsets.all(10),
@@ -563,21 +564,21 @@ class _TeacherMainState extends State<TeacherMain> {
                                         Text(
                                           'Announcement',
                                           style: TextStyle(
-                                              fontSize: 20,
+                                              fontSize: 18,
                                               fontFamily: 'nexaheavy',
                                               fontWeight: FontWeight.bold),
                                         ),
                                       ],
                                     ),
                                     SizedBox(
-                                      height: 20,
+                                      height: 10,
                                     ),
                                     Text(
                                       'Send Important '
                                           'Announcement\'s',
                                       style: TextStyle(
                                           fontFamily: 'nexalight',
-                                          fontSize: 15,
+                                          fontSize: 12,
                                       color: Colors.black),
                                     ),
                                   ],
@@ -644,7 +645,7 @@ class _TeacherMainState extends State<TeacherMain> {
                                       'Answer Quesrie\'s',
                                       style: TextStyle(
                                           fontFamily: 'nexalight',
-                                          fontSize: 15,
+                                          fontSize: 12,
                                       color: Colors.black),
                                     ),
                                   ],
@@ -702,20 +703,20 @@ class _TeacherMainState extends State<TeacherMain> {
                                         Text(
                                           'Bug\'s & Report',
                                           style: TextStyle(
-                                              fontSize: 20,
+                                              fontSize: 18,
                                               fontFamily: 'nexaheavy',
                                               fontWeight: FontWeight.bold),
                                         ),
                                       ],
                                     ),
                                     SizedBox(
-                                      height: 20,
+                                      height: 10,
                                     ),
                                     Text(
                                           'Fixes Bugs',
                                       style: TextStyle(
                                           fontFamily: 'nexalight',
-                                          fontSize: 15,
+                                          fontSize: 12,
                                       color: Colors.black),
                                     ),
                                   ],
@@ -782,7 +783,7 @@ class _TeacherMainState extends State<TeacherMain> {
                                       'Manage Chat\'s',
                                       style: TextStyle(
                                           fontFamily: 'nexalight',
-                                          fontSize: 15,
+                                          fontSize: 12,
                                       color: Colors.black),
                                     ),
                                   ],

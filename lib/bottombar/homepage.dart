@@ -347,7 +347,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 child: Text('Terms and \nCondition\'s',
                                     style: TextStyle(
                                         fontSize: 16,
-                                        fontFamily: 'sans-serif-light')),
+                                        fontFamily: 'nexalight')),
                               ),
                               PopupMenuItem<String>(
                                 onTap: () {
@@ -356,7 +356,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 child: Text('Privacy  Policies',
                                     style: TextStyle(
                                         fontSize: 16,
-                                        fontFamily: 'sans-serif-light')),
+                                        fontFamily: 'nexalight')),
                               ),
                               PopupMenuItem<String>(
                                 onTap: () {
@@ -365,7 +365,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 child: Text('Bug Reports',
                                     style: TextStyle(
                                         fontSize: 16,
-                                        fontFamily: 'sans-serif-light')),
+                                        fontFamily: 'nexalight')),
                               ),
                               PopupMenuItem<String>(
                                 onTap: () {
@@ -374,7 +374,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 child: Text('Ask Help Desk',
                                     style: TextStyle(
                                         fontSize: 16,
-                                        fontFamily: 'sans-serif-light')),
+                                        fontFamily: 'nexalight')),
                               ),
                               PopupMenuItem<String>(
                                 onTap: () {
@@ -382,8 +382,8 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 },
                                 child: Text('Announcements',
                                     style: TextStyle(
-                                        fontSize: 16,
-                                        fontFamily: 'sans-serif-light')),
+                                        fontSize: 17,
+                                        fontFamily: 'nexaheavy')),
                               ),
                             ];
                           },

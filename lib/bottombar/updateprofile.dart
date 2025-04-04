@@ -60,6 +60,17 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
     }
   }
 
+  Future<void> removeImage() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove("StudentProfile");
+
+    setState(() {
+      _image = null;
+      imageBase64 = "";
+    });
+  }
+
+
   Future<void> pickImage() async {
     setState(() => isImageLoading = true);
     final pickedFile =
@@ -141,45 +152,65 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                           color: Colors.purple,
                           size: 50.0,
                         )
-                            : (_image != null && _image!.path.isNotEmpty
-                            ? ClipOval(
-                          child: Image.file(
-                            _image!,
-                            width: 90,
-                            height: 90,
-                            fit: BoxFit.cover,
-                          ),
-                        )
-                            : (imageBase64.isNotEmpty
-                            ? ClipOval(
-                          child: Image.memory(
+                            : ClipOval(
+                          child: imageBase64.isNotEmpty
+                              ? Image.memory(
                             base64Decode(imageBase64),
                             width: 90,
                             height: 90,
                             fit: BoxFit.cover,
-                          ),
+                          )
+                              : (_image != null
+                              ? Image.file(
+                            _image!,
+                            width: 90,
+                            height: 90,
+                            fit: BoxFit.cover,
+                          )
+                              : const Icon(Icons.person, size: 50, color: Colors.black)),
                         )
-                            : const Icon(Icons.person,
-                            size: 50, color: Colors.black))),
+
                       ),
                       Positioned(
                         bottom: 0,
                         right: 0,
-                        child: GestureDetector(
-                          onTap: pickImage,
-                          child: Container(
-                            width: 30,
-                            height: 30,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.yellow[700],
-                              border: Border.all(color: Colors.white, width: 2),
+                        child: Row(
+                          children: [
+                            // 🖊️ Edit Icon
+                            GestureDetector(
+                              onTap: pickImage,
+                              child: Container(
+                                width: 30,
+                                height: 30,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.yellow[700],
+                                  border: Border.all(color: Colors.white, width: 2),
+                                ),
+                                child: const Icon(LineAwesomeIcons.pencil_alt_solid,
+                                    size: 18, color: Colors.white),
+                              ),
                             ),
-                            child: const Icon(LineAwesomeIcons.pencil_alt_solid,
-                                size: 18, color: Colors.white),
-                          ),
+                            SizedBox(width: 8),
+                            // 🗑️ Delete Icon
+                            GestureDetector(
+                              onTap: removeImage,
+                              child: Container(
+                                width: 30,
+                                height: 30,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.red[600],
+                                  border: Border.all(color: Colors.white, width: 2),
+                                ),
+                                child: const Icon(Icons.delete,
+                                    size: 18, color: Colors.white),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
+
                     ],
                   ),
                 ),
@@ -237,23 +268,3 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
     );
   }
 }
-
-
-
-
-// void showAwesomeSnackBar(BuildContext context, String message, bool isSuccess) {
-//   final snackBar = SnackBar(
-//     elevation: 0,
-//     behavior: SnackBarBehavior.floating,
-//     backgroundColor: Colors.transparent,
-//     content: AwesomeSnackbarContent(
-//       title: isSuccess ? 'Success' : 'Error',
-//       message: message,
-//       contentType: isSuccess ? ContentType.success : ContentType.failure,
-//     ),
-//   );
-//
-//   ScaffoldMessenger.of(context).showSnackBar(snackBar);
-// }
-
-

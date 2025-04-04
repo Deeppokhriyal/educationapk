@@ -163,7 +163,7 @@ class _AdminUserManagementPageState extends State<AdminUserManagementPage> {
       appBar: AppBar(
         backgroundColor: Colors.blueGrey,
 
-        title: Text('User Management', style: TextStyle(fontFamily: 'NexaHeavy')),
+        title: Text('User Management', style: TextStyle(fontFamily: 'NexaHeavy',color: Colors.white)),
       ),
       body: Column(
         children: [

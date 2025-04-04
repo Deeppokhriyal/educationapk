@@ -21,7 +21,7 @@ class _AdminBugReportsPageState extends State<AdminBugReportsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bug Reports', style: TextStyle(fontFamily: 'NexaHeavy')),
+        title: Text('Bug Reports', style: TextStyle(fontFamily: 'NexaHeavy',color: Colors.white)),
         backgroundColor: Colors.blueGrey,
         centerTitle: true,
         elevation: 10,

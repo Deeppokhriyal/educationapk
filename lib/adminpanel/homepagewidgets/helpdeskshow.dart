@@ -44,7 +44,7 @@ class _AdminHelpDeskPageState extends State<AdminHelpDeskPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Help Desk Queries',style: TextStyle(fontFamily: 'nexaheavy',),),
-        backgroundColor: Colors.indigo,
+        backgroundColor: Colors.blueGrey,
         centerTitle: true,
         elevation: 10,
         shadowColor: Colors.black45,

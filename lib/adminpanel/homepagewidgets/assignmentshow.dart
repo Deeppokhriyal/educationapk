@@ -59,7 +59,7 @@ class _AdminAssignmentPageState extends State<AdminAssignmentPage> {
           "Assignments Overview",
           style: TextStyle(fontFamily: 'nexaheavy', fontSize: 24, color: Colors.white),
         ),
-        backgroundColor: Colors.indigo,
+        backgroundColor: Colors.blueGrey,
       ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection('assignments').snapshots(),

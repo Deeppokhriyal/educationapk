@@ -24,6 +24,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../allpages/E_library.dart';
 import '../allpages/Study/branches.dart';
+import '../popupmenu/fetchannouncements.dart';
 
 class MyMainHome extends StatefulWidget {
   @override
@@ -371,6 +372,15 @@ class _MyMainHomeState extends State<MyMainHome> {
                                   Get.to(() => AskHelpDesk());
                                 },
                                 child: Text('Ask Help Desk',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontFamily: 'sans-serif-light')),
+                              ),
+                              PopupMenuItem<String>(
+                                onTap: () {
+                                  Get.to(() => AnnouncementListPage());
+                                },
+                                child: Text('Announcements',
                                     style: TextStyle(
                                         fontSize: 16,
                                         fontFamily: 'sans-serif-light')),

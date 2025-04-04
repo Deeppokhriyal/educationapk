@@ -59,6 +59,7 @@ dependencies:
   animate_do:
   firebase_app_check:
   flutter_spinkit:
+  shimmer:
   rename:
   flutter_email_sender:
   permission_handler:

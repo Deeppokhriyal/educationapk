@@ -161,11 +161,12 @@ class _AdminUserManagementPageState extends State<AdminUserManagementPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blueGrey,
+
         title: Text('User Management', style: TextStyle(fontFamily: 'NexaHeavy')),
       ),
       body: Column(
         children: [
-          Divider(thickness: 3, color: Colors.black),
           Text('Teachers', style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold, fontFamily: 'NexaHeavy')),
           Divider(),
           Expanded(

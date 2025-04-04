@@ -49,7 +49,7 @@ class _ReportsAnalyticsPageState extends State<ReportsAnalyticsPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Reports & Analytics", style: TextStyle(fontFamily: 'NexaHeavy', fontSize: 22)),
-        backgroundColor: Colors.deepOrangeAccent,
+        backgroundColor: Colors.blueGrey,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

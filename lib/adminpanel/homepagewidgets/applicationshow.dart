@@ -25,7 +25,7 @@ class _AdminApplicationsPageState extends State<AdminApplicationsPage> {
           "Leave Applications",
           style: TextStyle(fontFamily: 'nexaheavy', fontSize: 24, color: Colors.white),
         ),
-        backgroundColor: Colors.indigo,
+        backgroundColor: Colors.blueGrey,
       ),
       body: StreamBuilder(
         stream: _firestore.collection('leave_applications').snapshots(),

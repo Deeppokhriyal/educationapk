@@ -22,7 +22,7 @@ class _AdminBugReportsPageState extends State<AdminBugReportsPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Bug Reports', style: TextStyle(fontFamily: 'NexaHeavy')),
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Colors.blueGrey,
         centerTitle: true,
         elevation: 10,
         shadowColor: Colors.black45,

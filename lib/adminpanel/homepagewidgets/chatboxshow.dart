@@ -20,7 +20,7 @@ class AdminPolyChatPage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Global Chat (Admin View)",
             style: TextStyle(fontFamily: 'nexaheavy', fontSize: 20, color: Colors.white)),
-        backgroundColor: Colors.indigo,
+        backgroundColor: Colors.blueGrey,
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance

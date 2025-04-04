@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/adminpanel/beforestart/adminlogin.dart';
 import 'package:educationapk/before%20start/signup.dart';
-import 'package:educationapk/teacherpanel/before%20start/teacherpanel.dart';
+import 'package:educationapk/teacherpanel/before%20start/teacherlogin.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -213,8 +213,7 @@ class _MyLoginState extends State<MyLogin> {
                                     style: ElevatedButton.styleFrom(
                                       foregroundColor: Colors.black, backgroundColor: Colors.green, // Set the text color here
                                     ),  onPressed: () {
-                                    Get.to(Teacherpanel());
-                                    // Get.to(()=>MyHomePage());
+                                    Get.to(TeacherLogin());
                                   },
                                     child: Text('Teacher Panel',style: TextStyle(color: Colors.white, fontSize: 16,fontFamily: 'sans-serif-light'),),
                                   ),

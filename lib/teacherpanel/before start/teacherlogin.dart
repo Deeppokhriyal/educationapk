@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:educationapk/teacherpanel/before%20start/teacherpanel.dart';
+import 'package:educationapk/before%20start/login.dart';
 import 'package:educationapk/teacherpanel/bottombar/teacherbottom.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -91,7 +91,7 @@ class _TeacherLoginState extends State<TeacherLogin> {
                   Container(
                       margin: EdgeInsets.fromLTRB(5, 30, 310, 0),
                       child: IconButton(onPressed: (){
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Teacherpanel()));
+                        Get.to(()=>MyLogin());
                       }, icon: Icon(Icons.arrow_back_ios,size: 30,color: Colors.black,))
                   ),
 

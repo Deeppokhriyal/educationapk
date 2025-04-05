@@ -19,40 +19,6 @@ class _AdminAttendancePageState extends State<AdminAttendancePage> {
       '2nd Year': 'CS2ndyear',
       '3rd Year': 'CS3rdyear',
     },
-    'CHEMICAL': {
-      '1st Year': 'Chemfirst',
-      '2nd Year': 'Chemsecond',
-      '3rd Year': 'Chemthird',
-    },
-    'CHEM. PAINT': {
-      '1st Year': 'Paintfirst',
-      '2nd Year': 'Paintsecond',
-      '3rd Year': 'Paintthird',
-    },
-    'ELECTRONICS': {
-      '1st Year': 'Elecfirst',
-      '2nd Year': 'Elecsecond',
-      '3rd Year': 'Electhird',
-    },
-    'PHARMACY': {
-      '1st Year': 'Pharmacyfirst',
-      '2nd Year': 'Pharmacysecond',
-    },
-    'MECHANICAL': {
-      '1st Year': 'Mechfirst',
-      '2nd Year': 'Mechsecond',
-      '3rd Year': 'Mechthird',
-    },
-    'AGRICULTURE': {
-      '1st Year': 'Agrifirst',
-      '2nd Year': 'Agrisecond',
-      '3rd Year': 'Agrithird',
-    },
-    'CIVIL': {
-      '1st Year': 'Civilfirst',
-      '2nd Year': 'Civilsecond',
-      '3rd Year': 'Civilthird',
-    },
   };
 
   String? selectedBranch;
@@ -100,6 +66,8 @@ class _AdminAttendancePageState extends State<AdminAttendancePage> {
 
     String collectionPath = branchCollections[selectedBranch]![selectedYear]!;
     String formattedDate = DateFormat('yyyy-MM-dd').format(selectedDate!);
+
+    print("Fetching from collection: $collectionPath, document: $formattedDate");
 
     try {
       // First check if the date document exists
@@ -321,3 +289,40 @@ class _AdminAttendancePageState extends State<AdminAttendancePage> {
     );
   }
 }
+
+
+//
+// 'CHEMICAL': {
+// '1st Year': 'Chemfirst',
+// '2nd Year': 'Chemsecond',
+// '3rd Year': 'Chemthird',
+// },
+// 'CHEM. PAINT': {
+// '1st Year': 'Paintfirst',
+// '2nd Year': 'Paintsecond',
+// '3rd Year': 'Paintthird',
+// },
+// 'ELECTRONICS': {
+// '1st Year': 'Elecfirst',
+// '2nd Year': 'Elecsecond',
+// '3rd Year': 'Electhird',
+// },
+// 'PHARMACY': {
+// '1st Year': 'Pharmacyfirst',
+// '2nd Year': 'Pharmacysecond',
+// },
+// 'MECHANICAL': {
+// '1st Year': 'Mechfirst',
+// '2nd Year': 'Mechsecond',
+// '3rd Year': 'Mechthird',
+// },
+// 'AGRICULTURE': {
+// '1st Year': 'Agrifirst',
+// '2nd Year': 'Agrisecond',
+// '3rd Year': 'Agrithird',
+// },
+// 'CIVIL': {
+// '1st Year': 'Civilfirst',
+// '2nd Year': 'Civilsecond',
+// '3rd Year': 'Civilthird',
+// },

@@ -50,35 +50,51 @@ class _UserDashboardState extends State<UserDashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text('User Dashboard', style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'nexaheavy',fontSize: 23,color: Colors.white)),
+        title: Text(
+          'User Dashboard',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontFamily: 'nexaheavy',
+            fontSize: 23,
+            color: Colors.white,
+          ),
+        ),
         centerTitle: true,
+        backgroundColor: Colors.blueGrey[900],
         elevation: 0,
-        backgroundColor: Colors.blueGrey,
       ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.blue.shade300, Colors.purpleAccent.shade200],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+            colors: [Colors.black, Colors.blueGrey.shade900],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(16.0),
           child: Center(
             child: studentCount == null || teacherCount == null || adminCount == null
-                ? Center(child: SpinKitWave(color: Colors.white, size: 50))
+                ? SpinKitWave(color: Colors.white, size: 50)
                 : Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('[ Total Users ]',style: TextStyle(fontSize: 25,fontFamily: 'nexaheavy'),),
-                SizedBox(height: 20,),
-                Divider(thickness: 3,),
-                _buildStatCard('Students', studentCount!, FontAwesomeIcons.userGraduate, Colors.blue),
-                _buildStatCard('Teachers', teacherCount!, FontAwesomeIcons.chalkboardTeacher, Colors.green),
-                _buildStatCard('Admins', adminCount!, FontAwesomeIcons.userShield, Colors.red),
-                Divider(thickness: 3,),
+                Text(
+                  '[ Total Users ]',
+                  style: TextStyle(
+                    fontSize: 26,
+                    fontFamily: 'nexaheavy',
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(height: 20),
+                Divider(color: Colors.white70, thickness: 2),
+                _buildStatCard('Students', studentCount!, FontAwesomeIcons.userGraduate, Colors.lightBlueAccent),
+                _buildStatCard('Teachers', teacherCount!, FontAwesomeIcons.chalkboardTeacher, Colors.tealAccent),
+                _buildStatCard('Admins', adminCount!, FontAwesomeIcons.userShield, Colors.redAccent),
+                Divider(color: Colors.white70, thickness: 2),
               ],
             ),
           ),
@@ -87,15 +103,30 @@ class _UserDashboardState extends State<UserDashboard> {
     );
   }
 
-  Widget _buildStatCard(String title, int count, IconData icon, Color color) {
+  Widget _buildStatCard(String title, int count, IconData icon, Color iconColor) {
     return Card(
-      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      elevation: 6,
+      color: Colors.blueGrey[800],
+      margin: EdgeInsets.symmetric(vertical: 12, horizontal: 10),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      elevation: 5,
       child: ListTile(
-        leading: Icon(icon, size: 40, color: color),
-        title: Text(title, style: TextStyle(fontSize: 22, fontFamily: 'nexaheavy')),
-        trailing: Text('$count', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: color)),
+        leading: Icon(icon, size: 35, color: iconColor),
+        title: Text(
+          title,
+          style: TextStyle(
+            fontSize: 20,
+            fontFamily: 'nexaheavy',
+            color: Colors.white,
+          ),
+        ),
+        trailing: Text(
+          '$count',
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: iconColor,
+          ),
+        ),
       ),
     );
   }

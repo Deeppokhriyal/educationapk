@@ -20,7 +20,7 @@ class _ThirdyearState extends State<Thirdyear> {
     {"id": 3, "name": "Ashish Rawat", 'status': 'Absent'},
     {"id": 4, "name": "Ayush Kohli", 'status': 'Absent'},
     {"id": 5, "name": "Bharat S. Rawat", 'status': 'Absent'},
-    {"id": 6, "name": "Deepak Pokhriyal", 'status': 'Absent'},
+    {"id": 6, "name": "Deepak Pokhriyal ", 'status': 'Absent'},
     {"id": 7, "name": "Deepak Rawat", 'status': 'Absent'},
     {"id": 8, "name": "Farheen Saifi", 'status': 'Absent'},
     {"id": 9, "name": "Gaytri Kaushik", 'status': 'Absent'},

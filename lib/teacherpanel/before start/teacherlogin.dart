@@ -1,6 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:educationapk/before%20start/login.dart';
 import 'package:educationapk/before%20start/startingpage.dart';
 import 'package:educationapk/teacherpanel/bottombar/teacherbottom.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -180,8 +179,13 @@ class _TeacherLoginState extends State<TeacherLogin> {
 
                             Divider(height: 50,),
 
-                            Text('Dear Teacher\'s\n'
-                                'We Try To Give you Best via This Application.',style: TextStyle(color: Colors.green,fontSize: 18,fontFamily: 'nexalight'),),
+                            GestureDetector(
+                              onTap: (){
+                                Get.to(()=>Teacherbar());
+                              },
+                              child: Text('Dear Teacher\'s\n'
+                                  'We Try To Give you Best via This Application.',style: TextStyle(color: Colors.green,fontSize: 18,fontFamily: 'nexalight'),),
+                            ),
                           ],
                         ),
                       ),

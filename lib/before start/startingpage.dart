@@ -43,8 +43,13 @@ class _StartingState extends State<Starting> {
                   child: Image.asset(
                     'assets/images/startrow.jpg',
                     alignment: Alignment.center,
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    height: MediaQuery.of(context).size.height * 0.5,
+                    fit: BoxFit.cover,
                   ),
+
                 ),
+
                 SizedBox(height: 10),
                 Text(
                   'The only study app\n   you\'ll ever need',
@@ -58,8 +63,8 @@ class _StartingState extends State<Starting> {
                 SizedBox(height: 20),
                 Text(
                   '             Uploaded all study materials,\n'
-                      'create and explore the polyverse with us and\n'
-                      '      learn some programming knowledge.',
+                  'create and explore the polyverse with us and\n'
+                  '      learn some programming knowledge.',
                   style: TextStyle(
                     fontFamily: 'sans-serif-thin',
                     fontSize: 17,
@@ -83,15 +88,14 @@ class _StartingState extends State<Starting> {
                       borderRadius: BorderRadius.circular(15),
                       items: ['Student', 'Teacher', 'Principal']
                           .map((role) => DropdownMenuItem(
-                        value: role,
-    child: Padding(
-    padding:
-    const EdgeInsets.symmetric(vertical: 8.0),
-                        child: Text(role,
-                            style: TextStyle(
-                                fontSize: 18, color: Colors.black)),
-    )
-                      ))
+                              value: role,
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 8.0),
+                                child: Text(role,
+                                    style: TextStyle(
+                                        fontSize: 18, color: Colors.black)),
+                              )))
                           .toList(),
                       onChanged: (newValue) {
                         setState(() {

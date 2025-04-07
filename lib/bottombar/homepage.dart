@@ -213,7 +213,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       CircleAvatar(
-                                        radius: 50.r,
+                                        radius: 50,
                                         backgroundColor: Colors.transparent, // Remove backgroundAsdx color
 
                                         backgroundImage: StudentProfile.isNotEmpty
@@ -229,21 +229,21 @@ class _MyMainHomeState extends State<MyMainHome> {
                                         onBackgroundImageError: (_, __) =>
                                             setState(() => StudentProfile = ''),
                                       ),
-                                      SizedBox(height: 16.h),
+                                      SizedBox(height: 16),
                                       Text(
                                         userName.isNotEmpty ? userName : "name",
                                         style: TextStyle(
-                                            fontSize: 17.sp,
+                                            fontSize: 17,
                                             fontFamily: 'nexaheavy'),
                                       ),
-                                      SizedBox(height: 6.h),
+                                      SizedBox(height: 6),
                                       Text(
                                         userBio.isNotEmpty ? userBio : "bio",
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontFamily: 'nexalight'),
                                       ),
-                                      SizedBox(height: 6.h),
+                                      SizedBox(height: 6),
                                       Text(
                                         userBranch.isNotEmpty
                                             ? userBranch
@@ -252,14 +252,14 @@ class _MyMainHomeState extends State<MyMainHome> {
                                             color: Colors.black,
                                             fontFamily: 'nexalight'),
                                       ),
-                                      SizedBox(height: 6.h),
+                                      SizedBox(height: 6),
                                       Text(
                                         'Govt. Polytechnic Kashipur',
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontFamily: 'nexaheavy'),
                                       ),
-                                      SizedBox(height: 25.h),
+                                      SizedBox(height: 25),
                                       Row(
                                         mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
@@ -272,7 +272,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                               'Close',
                                               style: TextStyle(
                                                   fontFamily: 'sans-serif-light',
-                                                  fontSize: 14.sp),
+                                                  fontSize: 14),
                                             ),
                                           ),
                                         ],
@@ -285,10 +285,10 @@ class _MyMainHomeState extends State<MyMainHome> {
                           );
                         },
                         child: Container(
-                          padding: EdgeInsets.only(left: 13.w, top: 20.h),
+                          padding: EdgeInsets.only(left: 13, top: 20),
                           child:
                           CircleAvatar(
-                            radius: 25.r,
+                            radius: 25,
                             backgroundColor: Colors.transparent, // Remove background color
                             backgroundImage: StudentProfile.isNotEmpty
                                 ? (StudentProfile.startsWith("http")
@@ -306,7 +306,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                         ),
                       ),
                       SizedBox(
-                        width: 23.w,
+                        width: 23,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -316,7 +316,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                             child: Text(
                               'Hii Dear,',
                               style: TextStyle(
-                                  fontSize: 13.sp,
+                                  fontSize: 13,
                                   fontFamily: 'nexaheavy',
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black),
@@ -325,7 +325,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                           Text(
                             userName.isNotEmpty ? userName : "user",
                             style: TextStyle(
-                                fontSize: 15.sp,
+                                fontSize: 15,
                                 fontFamily: 'nexalight',
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black),
@@ -333,7 +333,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                         ],
                       ),
                       Container(
-                        padding: EdgeInsets.only(left: 117.w, top: 20.h),
+                        padding: EdgeInsets.only(left: 117, top: 20),
                         child: PopupMenuButton<String>(
                           onSelected: (String value) {
                             // Handle menu item selection
@@ -347,7 +347,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 },
                                 child: Text('Terms and \nCondition\'s',
                                     style: TextStyle(
-                                        fontSize: 16.sp,
+                                        fontSize: 16,
                                         fontFamily: 'nexalight')),
                               ),
                               PopupMenuItem<String>(
@@ -356,7 +356,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 },
                                 child: Text('Privacy  Policies',
                                     style: TextStyle(
-                                        fontSize: 16.sp,
+                                        fontSize: 16,
                                         fontFamily: 'nexalight')),
                               ),
                               PopupMenuItem<String>(
@@ -365,7 +365,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 },
                                 child: Text('Bug Reports',
                                     style: TextStyle(
-                                        fontSize: 16.sp,
+                                        fontSize: 16,
                                         fontFamily: 'nexalight')),
                               ),
                               PopupMenuItem<String>(
@@ -374,7 +374,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 },
                                 child: Text('Ask Help Desk',
                                     style: TextStyle(
-                                        fontSize: 16.sp,
+                                        fontSize: 16,
                                         fontFamily: 'nexalight')),
                               ),
                               PopupMenuItem<String>(
@@ -383,13 +383,13 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 },
                                 child: Text('Announcements',
                                     style: TextStyle(
-                                        fontSize: 17.sp,
+                                        fontSize: 17,
                                         fontFamily: 'nexaheavy')),
                               ),
                             ];
                           },
                           icon: Icon(Icons.menu,
-                              size: 30.r, color: Colors.black), // Icon to display
+                              size: 30, color: Colors.black), // Icon to display
                           elevation: 5, // Shadow elevation
                           color: Colors.white, // Background color
                           offset: Offset(0, 45), // Positioning of the menu
@@ -398,32 +398,32 @@ class _MyMainHomeState extends State<MyMainHome> {
                     ],
                   ),
                   SizedBox(
-                    height: 15.h,
+                    height: 15,
                   ),
 
                   Padding(
-                    padding:EdgeInsets.all(16.0.r),
+                    padding:EdgeInsets.all(16.0),
                     child: Column(children: [
                       TextField(
                         controller: searchController,
                         onChanged: _filterSearch,
                         style: TextStyle(
                             fontFamily: 'sans-serif-light',
-                            height: 1.2.h,
+                            height: 1.2,
                             color: Colors.black),
                         cursorColor: Colors.black,
                         decoration: InputDecoration(
                           suffixIcon:
-                          Icon(Icons.search, size: 30.r, color: Colors.black),
+                          Icon(Icons.search, size: 30, color: Colors.black),
                           hintText: 'Search',
                           hintStyle: TextStyle(color: Colors.black),
                           border: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.black),
-                            borderRadius: BorderRadius.circular(35.r),
+                            borderRadius: BorderRadius.circular(35),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.blue),
-                            borderRadius: BorderRadius.circular(35.r),
+                            borderRadius: BorderRadius.circular(35),
                           ),
                         ),
                       ),
@@ -431,14 +431,14 @@ class _MyMainHomeState extends State<MyMainHome> {
                       // 🔹 Dropdown List for Search Results
                       if (isSearching)
                         Container(
-                          height: 200.h,
+                          height: 200,
                           decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(10.r),
+                            borderRadius: BorderRadius.circular(10),
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.black26,
-                                blurRadius: 5.r,
+                                blurRadius: 5,
                               ),
                             ],
                           ),
@@ -449,7 +449,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 title: Text(
                                   filteredList[index],
                                   style: TextStyle(
-                                      fontSize: 16.sp, fontFamily: 'nexalight'),
+                                      fontSize: 16, fontFamily: 'nexalight'),
                                 ),
                                 onTap: () {
                                   _navigateToPage(filteredList[index]);
@@ -469,7 +469,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                       Text(
                         "Let's Explore\n        The Polyverse",
                         style: TextStyle(
-                            fontSize: 42.sp,
+                            fontSize: 42,
                             fontFamily: 'sans-serif-thin',
                             fontWeight: FontWeight.bold,
                             color: Colors.black),textAlign: TextAlign.center,
@@ -477,10 +477,10 @@ class _MyMainHomeState extends State<MyMainHome> {
                     ],
                   ),
                   SizedBox(
-                    height: 7.h,
+                    height: 7,
                   ),
                   SizedBox(
-                    height: 83.h,
+                    height: 83,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -491,7 +491,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                             itemCount: Name.length,
                             itemBuilder: (_, index) {
                               return Padding(
-                                padding: EdgeInsets.all(10.0.r),
+                                padding: EdgeInsets.all(10.0),
                                 child: GestureDetector(
                                   onTap: () {
                                     if (Name[index] == "All") {
@@ -517,19 +517,19 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     }
                                   },
                                   child: Container(
-                                    width: 140.w,
-                                    height: 40.h,
-                                    padding: EdgeInsets.all(5.r),
-                                    margin: EdgeInsets.all(10.r),
+                                    width: 140,
+                                    height: 40,
+                                    padding: EdgeInsets.all(5),
+                                    margin: EdgeInsets.all(10),
                                     decoration: BoxDecoration(
                                       color: Colors.white,
-                                      borderRadius: BorderRadius.circular(25.r),
+                                      borderRadius: BorderRadius.circular(25),
                                       border: Border.all(
-                                          color: Colors.black26, width: 1.w),
+                                          color: Colors.black26, width: 1),
                                       boxShadow: [
                                         BoxShadow(
                                           color: Colors.lightBlue.shade800,
-                                          blurRadius: 7.r,
+                                          blurRadius: 7,
                                           offset: Offset(0, 4),
                                         ),
                                       ],
@@ -539,7 +539,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                         Name[index],
                                         style: TextStyle(
                                             fontFamily: 'nexalight',
-                                            fontSize: 15.sp),
+                                            fontSize: 15),
                                         textAlign: TextAlign
                                             .center, // Center align the text
                                       ),
@@ -560,10 +560,10 @@ class _MyMainHomeState extends State<MyMainHome> {
                         GestureDetector(
                           onTap: (){Get.to(Devpage());},
                           child: AnimatedContainer(duration:  Duration(milliseconds: 200),
-                            padding: EdgeInsets.all(10.r),
-                            margin: EdgeInsets.only(left: 15.w),
-                            height: 200.h,
-                            width: 190.w,
+                            padding: EdgeInsets.all(10),
+                            margin: EdgeInsets.only(left: 15),
+                            height: 200,
+                            width: 190,
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
                                 colors: [Colors.green.shade50, Colors.green.shade400],
@@ -571,12 +571,12 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 end: Alignment.bottomRight,
                               ),
                               borderRadius:
-                              BorderRadius.circular(25.r), // Rounded corners
+                              BorderRadius.circular(25), // Rounded corners
                               boxShadow: [
                                 BoxShadow(
                                   color:Colors.green.shade300, // Shadow Color
                                   // spreadRadius: 2, // Spread (Kitna failaaye)
-                                  blurRadius: 5.r, // Blur (Kitna soft ho)
+                                  blurRadius: 5, // Blur (Kitna soft ho)
                                   offset:
                                   Offset(0, 4), // Shadow ka direction (X, Y)
                                 ),
@@ -587,16 +587,16 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 Row(
                                   children: [
                                     Icon(Icons.timelapse_rounded,
-                                        size: 30.r, color: Colors.black),
+                                        size: 30, color: Colors.black),
                                     SizedBox(
-                                      width: 105.w,
+                                      width: 105,
                                     ),
                                     Icon(Icons.arrow_forward_ios_outlined,
-                                        size: 28.r, color: Colors.black),
+                                        size: 28, color: Colors.black),
                                   ],
                                 ),
                                 SizedBox(
-                                  height: 10.h,
+                                  height: 10,
                                 ),
                                 Row(
                                   children: [
@@ -607,14 +607,14 @@ class _MyMainHomeState extends State<MyMainHome> {
                                         Text(
                                           'App',
                                           style: TextStyle(
-                                              fontSize: 30.sp,
+                                              fontSize: 30,
                                               fontFamily: 'sans-serif-light',
                                               fontWeight: FontWeight.bold),
                                         ),
                                         Text(
                                           'Designing',
                                           style: TextStyle(
-                                              fontSize: 30.sp,
+                                              fontSize: 30,
                                               fontFamily: 'sans-serif-light',
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -623,7 +623,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                   ],
                                 ),
                                 SizedBox(
-                                  height: 7.h,
+                                  height: 7,
                                 ),
                                 Row(
                                   children: [
@@ -634,15 +634,15 @@ class _MyMainHomeState extends State<MyMainHome> {
                                           fontWeight: FontWeight.bold),
                                     ),
                                     SizedBox(
-                                      width: 7.w,
+                                      width: 7,
                                     ),
                                     Container(
-                                      height: 18.h,
-                                      width: 1.w,
+                                      height: 18,
+                                      width: 1,
                                       color: Colors.black,
                                     ),
                                     SizedBox(
-                                      width: 7.w,
+                                      width: 7,
                                     ),
                                     Text(
                                       '2 Developer\'s',
@@ -779,7 +779,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                         Text(
                                           'Information',
                                           style: TextStyle(
-                                              fontSize: MediaQuery.of(context).size.width * 0.07,
+                                              fontSize: 0.07.sw,
                                               fontFamily: 'sans-serif-light',
                                               fontWeight: FontWeight.bold),
                                         ),

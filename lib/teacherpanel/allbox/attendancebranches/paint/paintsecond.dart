@@ -29,7 +29,7 @@ class _PaintsecondState extends State<Paintsecond> {
     { "id": 8, "name": "Lalit Kumar", "status": "Absent" },
     { "id": 9, "name": "Ashish", "status": "Absent" },
     { "id": 10, "name": "Vansh", "status": "Absent" },
-    { "id": 11, "name": "Tara Singh Kaptoti", "status": "Absent" },
+    { "id": 11, "name": "Tara S. Kaptoti", "status": "Absent" },
     { "id": 12, "name": "Abhay Singh", "status": "Absent" },
     { "id": 13, "name": "Harshita Sharma", "status": "Absent" },
     { "id": 14, "name": "Avinash Singh", "status": "Absent" },

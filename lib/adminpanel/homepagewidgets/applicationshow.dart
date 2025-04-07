@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class AdminApplicationsPage extends StatefulWidget {
   @override
@@ -31,7 +32,8 @@ class _AdminApplicationsPageState extends State<AdminApplicationsPage> {
         stream: _firestore.collection('leave_applications').snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return Center(child: SpinKitDualRing(color: Colors.green,  // Change color as needed
+              size: 30.0,));
           }
           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
             return Center(child: Text("No leave applications found"));

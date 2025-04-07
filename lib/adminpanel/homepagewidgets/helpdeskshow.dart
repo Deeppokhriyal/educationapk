@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class AdminHelpDeskPage extends StatefulWidget {
   @override
@@ -42,6 +43,7 @@ class _AdminHelpDeskPageState extends State<AdminHelpDeskPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('Help Desk Queries',style: TextStyle(fontFamily: 'nexaheavy',color: Colors.white),),
         backgroundColor: Colors.blueGrey,
@@ -53,7 +55,8 @@ class _AdminHelpDeskPageState extends State<AdminHelpDeskPage> {
         stream: FirebaseFirestore.instance.collection('help_desk_queries').snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return Center(child: SpinKitDualRing(color: Colors.red,  // Change color as needed
+              size: 30.0,));
           }
           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
             return Center(child: Text('No queries available'));

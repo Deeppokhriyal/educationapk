@@ -13,6 +13,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'dart:async';
 import 'package:get/get.dart';
@@ -63,9 +64,16 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+    return ScreenUtilInit(
+        designSize: const Size(360, 800),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) {
+          return GetMaterialApp(
+              debugShowCheckedModeBanner: false,
+              home: SplashScreen(),
+          );
+        },
     );
   }
 }
@@ -202,23 +210,23 @@ class _BottombarState extends State<Bottombar> {
     return Scaffold(
       body: pages[_selectedIndex], // Correctly displays the selected page
       bottomNavigationBar: SizedBox(
-        height: 70,
+        height: 70.h,
         child: GNav(
           backgroundColor: Colors.black,
           color: Colors.white,
           activeColor: Colors.blue,
           tabBackgroundColor: Colors.lightBlueAccent[100]!,
           gap: 5,
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+          padding:  EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h),
           onTabChange: (index) {
             _onItemTapped(index); // Use the function to handle navigation
           },
           selectedIndex: _selectedIndex, // Ensure the correct tab is highlighted
-          tabs: const [
-            GButton(icon: Icons.home, iconSize: 25, text: 'Home'),
-            GButton(icon: Icons.timer, iconSize: 25, text: 'Scheduler'),
-            GButton(icon: Icons.library_books_outlined, iconSize: 25, text: 'Application'),
-            GButton(icon: Icons.person, iconSize: 25, text: 'Profile'),
+          tabs:[
+            GButton(icon: Icons.home, iconSize: 25.r, text: 'Home'),
+            GButton(icon: Icons.timer, iconSize: 25.r, text: 'Scheduler'),
+            GButton(icon: Icons.library_books_outlined, iconSize: 25.r, text: 'Application'),
+            GButton(icon: Icons.person, iconSize: 25.r, text: 'Profile'),
           ],
         ),
       ),
@@ -260,9 +268,9 @@ void showAwesomeSnackBar(BuildContext context, String message, bool isSuccess) {
     snackPosition: SnackPosition.BOTTOM,
     backgroundColor: Colors.black26,
     colorText: Colors.white,
-    borderRadius: 20,
-    margin: EdgeInsets.all(8),
-    padding: EdgeInsets.all(8),
+    borderRadius: 20.r,
+    margin: EdgeInsets.all(8.r),
+    padding: EdgeInsets.all(8.r),
     icon: Icon(
       isSuccess ? Icons.check_circle : Icons.error,
       color: isSuccess ? Colors.greenAccent : Colors.redAccent,
@@ -280,10 +288,10 @@ void showAwesomeSnackBarUp(BuildContext context, String message, bool isSuccess)
     snackPosition: SnackPosition.TOP,
     backgroundColor: Colors.black38,
     colorText: Colors.white,
-    borderRadius: 20,
+    borderRadius: 20.r,
 
-    margin: EdgeInsets.all(8),
-    padding: EdgeInsets.all(8),
+    margin: EdgeInsets.all(8.r),
+    padding: EdgeInsets.all(8.r),
     icon: Icon(
       isSuccess ? Icons.check_circle : Icons.error,
       color: isSuccess ? Colors.greenAccent : Colors.redAccent,

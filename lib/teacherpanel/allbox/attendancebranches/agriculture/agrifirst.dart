@@ -28,7 +28,7 @@ class _AgrifirstState extends State<Agrifirst> {
     { "id": 8, "name": "Ayush Rudhiyal", "status": "Absent" },
     { "id": 9, "name": "Deepu Kumar", "status": "Absent" },
     { "id": 10, "name": "Dhruv Bharti", "status": "Absent" },
-    { "id": 11, "name": "Dinesh Kumar Arya", "status": "Absent" },
+    { "id": 11, "name": "Dinesh K. Arya", "status": "Absent" },
     { "id": 12, "name": "Gaurav Gusain", "status": "Absent" },
     { "id": 13, "name": "Harkesh Singh", "status": "Absent" },
     { "id": 14, "name": "Himesh Kanyal", "status": "Absent" },
@@ -45,7 +45,7 @@ class _AgrifirstState extends State<Agrifirst> {
     { "id": 25, "name": "Pawan Singh", "status": "Absent" },
     { "id": 26, "name": "Payal", "status": "Absent" },
     { "id": 27, "name": "Piyush Saini", "status": "Absent" },
-    { "id": 28, "name": "Pradeep Kumar Yadav", "status": "Absent" },
+    { "id": 28, "name": "Pradeep K. Yadav", "status": "Absent" },
     { "id": 29, "name": "Prakarti Chabra", "status": "Absent" },
     { "id": 30, "name": "Priyanshu Yadav", "status": "Absent" },
     { "id": 31, "name": "Raghav", "status": "Absent" },
@@ -57,7 +57,7 @@ class _AgrifirstState extends State<Agrifirst> {
     { "id": 37, "name": "Shifa", "status": "Absent" },
     { "id": 38, "name": "Shobhit Kumar", "status": "Absent" },
     { "id": 39, "name": "Sohan Mandal", "status": "Absent" },
-    { "id": 40, "name": "Sunil Singh Rawat", "status": "Absent" },
+    { "id": 40, "name": "Sunil S. Rawat", "status": "Absent" },
     { "id": 41, "name": "Tushar Kumar", "status": "Absent" },
     { "id": 42, "name": "Yogesh Kumar", "status": "Absent" }
   ]

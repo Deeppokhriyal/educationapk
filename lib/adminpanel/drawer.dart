@@ -1,5 +1,9 @@
 import 'package:educationapk/main.dart';
+import 'package:educationapk/popupmenu/privacypolicies.dart';
+import 'package:educationapk/popupmenu/termscondition.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -35,9 +39,19 @@ class MyDrawer extends StatelessWidget {
             onTap: _launchURL,
           ),
           ListTile(
-            leading: Icon(Icons.settings),
-            title: Text("Settings",style: TextStyle(fontFamily: 'nexaheavy',fontSize: 18),),
-            onTap: () {},
+            leading: Icon(Icons.library_books),
+            title: Text("Terms & Conditions",style: TextStyle(fontFamily: 'nexaheavy',fontSize: 18),),
+            onTap: () {
+              Get.to(()=>Termscondition());
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.shield_outlined),
+            title: Text("Privacy Policies",style: TextStyle(fontFamily: 'nexaheavy',fontSize: 18),),
+            onTap: () {
+              Get.to(()=>Privacypolicies());
+
+            },
           ),
           ListTile(
             leading: Icon(Icons.logout),

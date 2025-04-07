@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class AdminAssignmentPage extends StatefulWidget {
   @override
@@ -65,7 +66,8 @@ class _AdminAssignmentPageState extends State<AdminAssignmentPage> {
         stream: FirebaseFirestore.instance.collection('assignments').snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return Center(child: SpinKitDualRing(color: Colors.green,
+              size: 30.0,));
           }
           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
             return Center(child: Text("No assignments found"));

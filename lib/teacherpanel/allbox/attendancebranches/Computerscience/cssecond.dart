@@ -50,7 +50,7 @@ class _CssecondState extends State<Cssecond> {
     {"id": 30, "name": "Khushboo", 'status': 'Absent'},
     {"id": 31, "name": "Rahul Arya", 'status': 'Absent'},
     {"id": 32, "name": "Arti Balodi", 'status': 'Absent'},
-    {"id": 33, "name": "Lalit Singh Kanyal", 'status': 'Absent'},
+    {"id": 33, "name": "Lalit S. Kanyal", 'status': 'Absent'},
     {"id": 34, "name": "Ajay Petshali", 'status': 'Absent'},
     {"id": 35, "name": "Ajay", 'status': 'Absent'},
     {"id": 36, "name": "Anshika Gulati", 'status': 'Absent'},

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class AdminBugReportsPage extends StatefulWidget {
   @override
@@ -31,7 +32,8 @@ class _AdminBugReportsPageState extends State<AdminBugReportsPage> {
         stream: FirebaseFirestore.instance.collection('bug_reports').orderBy('timestamp', descending: true).snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return Center(child: SpinKitDualRing(color: Colors.red,
+              size: 30.0,));
           }
           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
             return Center(child: Text('No bug reports available', style: TextStyle(fontFamily: 'NexaLight')));

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:intl/intl.dart';
 
 class AdminAttendancePage extends StatefulWidget {
@@ -18,6 +19,40 @@ class _AdminAttendancePageState extends State<AdminAttendancePage> {
       '1st Year': 'CS1styear',
       '2nd Year': 'CS2ndyear',
       '3rd Year': 'CS3rdyear',
+    },
+    'CHEMICAL': {
+      '1st Year': 'Chemfirst',
+      '2nd Year': 'Chemsecond',
+      '3rd Year': 'Chemthird',
+    },
+    'CHEM. PAINT': {
+      '1st Year': 'Paintfirst',
+      '2nd Year': 'Paintsecond',
+      '3rd Year': 'Paintthird',
+    },
+    'ELECTRONICS': {
+      '1st Year': 'Elecfirst',
+      '2nd Year': 'Elecsecond',
+      '3rd Year': 'Electhird',
+    },
+    'PHARMACY': {
+      '1st Year': 'Pharmacyfirst',
+      '2nd Year': 'Pharmacysecond',
+    },
+    'MECHANICAL': {
+      '1st Year': 'Mechfirst',
+      '2nd Year': 'Mechsecond',
+      '3rd Year': 'Mechthird',
+    },
+    'AGRICULTURE': {
+      '1st Year': 'Agrifirst',
+      '2nd Year': 'Agrisecond',
+      '3rd Year': 'Agrithird',
+    },
+    'CIVIL': {
+      '1st Year': 'Civilfirst',
+      '2nd Year': 'Civilsecond',
+      '3rd Year': 'Civilthird',
     },
   };
 
@@ -83,16 +118,11 @@ class _AdminAttendancePageState extends State<AdminAttendancePage> {
         return;
       }
 
-      // Get all student documents from the attendance subcollection
-      QuerySnapshot attendanceSnapshot = await FirebaseFirestore.instance
-          .collection(collectionPath)
-          .doc(formattedDate)
-          .collection('attendance')
-          .get();
+      List<dynamic> attendanceList = dateDoc.data()?['attendance'] ?? [];
 
-      if (attendanceSnapshot.docs.isEmpty) {
+      if (attendanceList.isEmpty) {
         setState(() {
-          errorMessage = 'No student records found for selected date';
+          errorMessage = 'No student attendance found for selected date';
         });
         return;
       }
@@ -101,15 +131,15 @@ class _AdminAttendancePageState extends State<AdminAttendancePage> {
       int present = 0;
       int absent = 0;
 
-      for (var doc in attendanceSnapshot.docs) {
-        var studentData = doc.data() as Map<String, dynamic>;
+      for (var studentData in attendanceList) {
+        final status = (studentData['status']?.toString().toLowerCase() ?? 'absent');
         students.add({
           'name': studentData['name'] ?? 'Unknown',
           'status': studentData['status']?.toString().toLowerCase() ?? 'absent',
           'rollNo': studentData['rollNo']?.toString() ?? '',
         });
 
-        if (studentData['status']?.toString().toLowerCase() == 'present') {
+        if (status == 'present') {
           present++;
         } else {
           absent++;
@@ -182,7 +212,10 @@ class _AdminAttendancePageState extends State<AdminAttendancePage> {
           if (isLoading)
             Padding(
               padding: EdgeInsets.all(16),
-              child: CircularProgressIndicator(),
+              child: SpinKitFadingCircle(
+    color: Colors.green,  // Change color as needed
+    size: 30.0,          // Adjust size
+    ),
             ),
 
           // Error Message
@@ -291,38 +324,3 @@ class _AdminAttendancePageState extends State<AdminAttendancePage> {
 }
 
 
-//
-// 'CHEMICAL': {
-// '1st Year': 'Chemfirst',
-// '2nd Year': 'Chemsecond',
-// '3rd Year': 'Chemthird',
-// },
-// 'CHEM. PAINT': {
-// '1st Year': 'Paintfirst',
-// '2nd Year': 'Paintsecond',
-// '3rd Year': 'Paintthird',
-// },
-// 'ELECTRONICS': {
-// '1st Year': 'Elecfirst',
-// '2nd Year': 'Elecsecond',
-// '3rd Year': 'Electhird',
-// },
-// 'PHARMACY': {
-// '1st Year': 'Pharmacyfirst',
-// '2nd Year': 'Pharmacysecond',
-// },
-// 'MECHANICAL': {
-// '1st Year': 'Mechfirst',
-// '2nd Year': 'Mechsecond',
-// '3rd Year': 'Mechthird',
-// },
-// 'AGRICULTURE': {
-// '1st Year': 'Agrifirst',
-// '2nd Year': 'Agrisecond',
-// '3rd Year': 'Agrithird',
-// },
-// 'CIVIL': {
-// '1st Year': 'Civilfirst',
-// '2nd Year': 'Civilsecond',
-// '3rd Year': 'Civilthird',
-// },

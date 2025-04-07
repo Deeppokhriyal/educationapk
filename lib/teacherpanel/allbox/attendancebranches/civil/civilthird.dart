@@ -61,11 +61,11 @@ class _CivilthirdState extends State<Civilthird> {
     {"id": 41, "name": "Yuvank Chauhan", "status": "Absent"},
     {"id": 42, "name": "Mohd Rihan Noori", "status": "Absent"},
     {"id": 43, "name": "Siya", "status": "Absent"},
-    {"id": 44, "name": "Rahul Singh Dhanik", "status": "Absent"},
+    {"id": 44, "name": "Rahul S. Dhanik", "status": "Absent"},
     {"id": 45, "name": "Virendra Singh", "status": "Absent"},
     {"id": 46, "name": "Himanshu Bangwal", "status": "Absent"},
     {"id": 47, "name": "Radhika", "status": "Absent"},
-    {"id": 48, "name": "Harvansh Kumar Gangwar", "status": "Absent"},
+    {"id": 48, "name": "Harvansh K. Gangwar", "status": "Absent"},
     {"id": 49, "name": "Devesh Kumar", "status": "Absent"},
     {"id": 50, "name": "Farman Ali", "status": "Absent"}
   ]

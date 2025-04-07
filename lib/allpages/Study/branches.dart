@@ -9,6 +9,7 @@ import 'package:educationapk/allpages/Study/cse_syllabus.dart';
 import 'package:educationapk/allpages/Study/electronic_syllabus.dart';
 import 'package:educationapk/allpages/Study/pharmacy_syllabus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 class Branches extends StatelessWidget {
   @override
@@ -81,8 +82,6 @@ Widget build(BuildContext context) {
                                         // Text(' Material',style: TextStyle(fontFamily: 'sans-serif-thin',fontSize: 13),),
                                       ],
                                     ),
-                                    SizedBox(width: MediaQuery.of(context).size.width * 0.29,),
-                                    Icon(Icons.arrow_forward_ios_outlined,size: 25,color: Colors.black),
                                   ],
                                 ),
                               ],
@@ -128,8 +127,6 @@ Widget build(BuildContext context) {
                                         Text('(Paint)',style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
                                       ],
                                     ),
-                                    SizedBox(width: MediaQuery.of(context).size.width * 0.32,),
-                                    Icon(Icons.arrow_forward_ios_outlined,size: 25,color: Colors.black),
                                   ],
                                 ),
                               ],
@@ -174,8 +171,6 @@ Widget build(BuildContext context) {
                                         Text('Chemical \nEngineering',style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
                                       ],
                                     ),
-                                    SizedBox(width: MediaQuery.of(context).size.width * 0.3,),
-                                    Icon(Icons.arrow_forward_ios_outlined,size:25,color: Colors.black),
                                   ],
                                 ),
                               ],
@@ -220,8 +215,6 @@ Widget build(BuildContext context) {
                                         Text('Civil \nEngineering',style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
                                                ],
                                     ),
-                                    SizedBox(width: MediaQuery.of(context).size.width * 0.28,),
-                                    Icon(Icons.arrow_forward_ios_outlined,size: 25,color: Colors.black),
                                   ],
                                 ),
                               ],
@@ -266,8 +259,6 @@ Widget build(BuildContext context) {
                                         Text('Computer Science \n& Engineering',style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
                                            ],
                                     ),
-                                    SizedBox(width: MediaQuery.of(context).size.width * 0.1,),
-                                    Icon(Icons.arrow_forward_ios_outlined,size: 25,color: Colors.black),
                                   ],
                                 ),
                               ],
@@ -312,8 +303,6 @@ Widget build(BuildContext context) {
                                         Text('Electronics \nEngineering',style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
                                            ],
                                     ),
-                                    SizedBox(width: MediaQuery.of(context).size.width * 0.3,),
-                                    Icon(Icons.arrow_forward_ios_outlined,size: 25,color: Colors.black),
                                   ],
                                 ),
                               ],
@@ -358,8 +347,6 @@ Widget build(BuildContext context) {
                                         Text('Information \nTechnology',style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
                                       ],
                                     ),
-                                    SizedBox(width: MediaQuery.of(context).size.width * 0.3,),
-                                    Icon(Icons.arrow_forward_ios_outlined,size: 25,color: Colors.black),
                                   ],
                                 ),
                               ],
@@ -404,8 +391,6 @@ Widget build(BuildContext context) {
                                         Text('Mechanical \nEngineering',style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
                                       ],
                                     ),
-                                    SizedBox(width: MediaQuery.of(context).size.width * 0.3,),
-                                    Icon(Icons.arrow_forward_ios_outlined,size: 25,color: Colors.black),
                                   ],
                                 ),
                               ],
@@ -450,8 +435,6 @@ Widget build(BuildContext context) {
                                         Text('Pharmacy',style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
                                       ],
                                     ),
-                                    SizedBox(width: MediaQuery.of(context).size.width * 0.34,),
-                                    Icon(Icons.arrow_forward_ios_outlined,size: 25,color: Colors.black),
                                   ],
                                 ),
                               ],

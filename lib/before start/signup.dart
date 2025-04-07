@@ -3,6 +3,7 @@ import 'package:educationapk/before%20start/login.dart';
 import 'package:educationapk/controllers/signupController.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class MySignUpPage extends StatefulWidget {
@@ -101,15 +102,15 @@ class _MySignUpPageState extends State<MySignUpPage> {
             ),
           ),
           Container(
-            padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.12, left: 30),
+            padding: EdgeInsets.only(top:0.12.sh, left: 30.w),
             child: Text(
               'Welcome !\nCreate Your Account',
-              style: TextStyle(color: Colors.black, fontSize: 38, fontFamily: 'sans-serif-thin'),
+              style: TextStyle(color: Colors.black, fontSize: 38.sp, fontFamily: 'sans-serif-thin'),
             ),
           ),
           SingleChildScrollView(
             child: Container(
-              padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.26, right: 30, left: 30),
+              padding: EdgeInsets.only(top:0.26.sh, right: 30.w, left: 30.w),
               child: Column(
                 children: [
                   Divider(color: Colors.black),
@@ -119,8 +120,8 @@ class _MySignUpPageState extends State<MySignUpPage> {
                     width: double.infinity, // Full width
                     child: DropdownButton<String>(
                       isExpanded: true,
-                      style: TextStyle(color: Colors.purple, fontSize: 20, fontFamily: 'nexalight'),
-                      borderRadius: BorderRadius.circular(35),
+                      style: TextStyle(color: Colors.purple, fontSize: 20.sp, fontFamily: 'nexalight'),
+                      borderRadius: BorderRadius.circular(35.r),
                       value: selectedYear,
                       hint: Text('Select Your Year'),
                       items: yearItems.map((String item) {
@@ -136,14 +137,14 @@ class _MySignUpPageState extends State<MySignUpPage> {
                       },
                     ),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   // 🔽 Branch Dropdown
                   SizedBox(
                     width: double.infinity, // Full width
                     child: DropdownButton<String>(
                       isExpanded: true, // Ensures full width inside SizedBox
-                      style: TextStyle(color: Colors.purple, fontSize: 20, fontFamily: 'nexalight'),
-                      borderRadius: BorderRadius.circular(35),
+                      style: TextStyle(color: Colors.purple, fontSize: 20.sp, fontFamily: 'nexalight'),
+                      borderRadius: BorderRadius.circular(35.r),
                       value: selectedBranch,
                       hint: Text('Select Your Branch'),
                       items: branchItems.map((String item) {
@@ -160,7 +161,7 @@ class _MySignUpPageState extends State<MySignUpPage> {
                     ),
                   ),
 
-                  SizedBox(height: 20),
+                  SizedBox(height: 20.h),
 
                   TextField(
                     controller: nameController,
@@ -168,11 +169,11 @@ class _MySignUpPageState extends State<MySignUpPage> {
                     style: TextStyle(fontFamily: 'nexalight'),
                     decoration: InputDecoration(
                       hintText: 'Enter your Name',
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(35)),
-                      focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.blue), borderRadius: BorderRadius.circular(35)),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(35.r)),
+                      focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.blue), borderRadius: BorderRadius.circular(35.r)),
                     ),
                   ),
-                  SizedBox(height: 30),
+                  SizedBox(height: 30.h),
 
                   TextField(
                     controller: usernameController,
@@ -180,11 +181,11 @@ class _MySignUpPageState extends State<MySignUpPage> {
                     style: TextStyle(fontFamily: 'nexalight'),
                     decoration: InputDecoration(
                       hintText: 'Enter your Email',
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(35)),
-                      focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.blue), borderRadius: BorderRadius.circular(35)),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(35.r)),
+                      focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.blue), borderRadius: BorderRadius.circular(35.r)),
                     ),
                   ),
-                  SizedBox(height: 30),
+                  SizedBox(height: 30.h),
 
                   TextField(
                     controller: passwordController,
@@ -193,11 +194,11 @@ class _MySignUpPageState extends State<MySignUpPage> {
                     style: TextStyle(fontFamily: 'nexalight'),
                     decoration: InputDecoration(
                       hintText: 'Enter your Password',
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(35)),
-                      focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.blue), borderRadius: BorderRadius.circular(35)),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(35.r)),
+                      focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.blue), borderRadius: BorderRadius.circular(35.r)),
                     ),
                   ),
-                  SizedBox(height: 35),
+                  SizedBox(height: 35.h),
 
                   SizedBox(
                     width: double.infinity,
@@ -205,24 +206,24 @@ class _MySignUpPageState extends State<MySignUpPage> {
                       onPressed: () => signUpStudent(),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black,
-                        padding: EdgeInsets.symmetric(vertical: 15),
-                        textStyle: TextStyle(fontSize: 18),
+                        padding: EdgeInsets.symmetric(vertical: 15.h),
+                        textStyle: TextStyle(fontSize: 18.sp),
                       ),
                       child: Text('Sign up', style: TextStyle(color: Colors.white)),
                     ),
                   ),
-                  SizedBox(height: 80),
+                  SizedBox(height: 80.h),
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Already Have an Account?', style: TextStyle(color: Colors.black, fontSize: 14, fontFamily: 'nexalight')),
-                      SizedBox(width: 50),
+                      Text('Already Have an Account?', style: TextStyle(color: Colors.black, fontSize: 14.sp, fontFamily: 'nexalight')),
+                      SizedBox(width: 50.w),
                       InkWell(
                         onTap: () {
                           Navigator.pop(context);
                         },
-                        child: Text('Log in', style: TextStyle(color: Colors.blue, fontSize: 18)),
+                        child: Text('Log in', style: TextStyle(color: Colors.blue, fontSize: 18.sp)),
                       ),
                     ],
                   ),

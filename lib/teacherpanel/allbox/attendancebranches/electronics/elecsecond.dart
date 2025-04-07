@@ -39,7 +39,7 @@ class _ElecsecondState extends State<Elecsecond> {
     {"id": 19, "name": "Karan Kumar", "status": "Absent"},
     {"id": 20, "name": "Priyanshu Rawat", "status": "Absent"},
     {"id": 21, "name": "Aditya", "status": "Absent"},
-    {"id": 22, "name": "Kumari Pallavi Sati", "status": "Absent"},
+    {"id": 22, "name": "Km. Pallavi Sati", "status": "Absent"},
     {"id": 23, "name": "Parul", "status": "Absent"},
     {"id": 24, "name": "Priya", "status": "Absent"},
     {"id": 25, "name": "Km. Kajal", "status": "Absent"},

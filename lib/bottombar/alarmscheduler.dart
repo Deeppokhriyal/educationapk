@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:educationapk/main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:android_intent_plus/android_intent.dart';
@@ -49,14 +50,10 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
           'time': time
         });
       });
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Alarm set for ${time.format(context)}')),
-      );
+      showAwesomeSnackBar(context,'Alarm set for ${time.format(context)}',true);
     } catch (e) {
       print('Error launching alarm intent: $e');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to set alarm. Please try manually.')),
-      );
+      showAwesomeSnackBar(context,'Failed to set alarm. Please try manually.',false);
     }
   }
 
@@ -69,9 +66,7 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
       await androidIntent.launch();
     } catch (e) {
       print('Error opening alarm app: $e');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to open alarm app.')),
-      );
+      showAwesomeSnackBar(context,'Failed to open alarm app.',false);
     }
   }
 
@@ -113,7 +108,7 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
           ),
           SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 50),
+              padding:EdgeInsets.symmetric(horizontal: 16.w, vertical: 50.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -125,54 +120,54 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
                           onTap: () {
                             Get.offAll(() => Bottombar());
                           },
-                          child: const Icon(Icons.arrow_back, size: 35),
+                          child: Icon(Icons.arrow_back, size: 35.r),
                         ),
-                        const SizedBox(width: 20),
-                        const Text(
+                        SizedBox(width: 20.w),
+                        Text(
                           "Task's Scheduler",
-                          style: TextStyle(fontFamily: 'nexaheavy', fontSize: 28),
+                          style: TextStyle(fontFamily: 'nexaheavy', fontSize: 28.sp),
                         ),
                       ],
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  SizedBox(height: 30.h),
                   SlideInUp(
                     duration: const Duration(milliseconds: 700),
                     child: TextField(
-                      style: const TextStyle(fontFamily: 'nexalight', fontSize: 20),
+                      style: TextStyle(fontFamily: 'nexalight', fontSize: 20.sp),
                       controller: descriptionController,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         labelText: "Create your Own Task",
                         labelStyle: TextStyle(
                           fontFamily: 'nexaheavy',
                           color: Colors.blue,
-                          fontSize: 19,
+                          fontSize: 19.sp,
                         ),
                         focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                          borderSide: BorderSide(color: Colors.blue, width: 2.0.w),
                         ),
                         enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey, width: 1.5),
+                          borderSide: BorderSide(color: Colors.grey, width: 1.5.w),
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(height: 40),
+                  SizedBox(height: 40.h),
                   SlideInUp(
                     duration: const Duration(milliseconds: 700),
                     child: ElevatedButton(
                       onPressed: () => _pickTime(context),
-                      child: const Text(
+                      child: Text(
                         "Select Time",
                         style: TextStyle(
                           fontFamily: 'nexaheavy',
-                          fontSize: 18,
+                          fontSize: 18.sp,
                           color: Colors.blue,
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(height: 40),
+                  SizedBox(height: 40.h),
 
                   // Selected Time Text
                   SlideInUp(
@@ -181,10 +176,10 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
                       selectedTime != null
                           ? "Selected Time = ${selectedTime!.format(context)}"
                           : "Selected Time = _ _ : _ _",
-                      style: const TextStyle(fontFamily: 'nexalight', fontSize: 18),
+                      style: TextStyle(fontFamily: 'nexalight', fontSize: 18.sp),
                     ),
                   ),
-                  const SizedBox(height: 45),
+                  SizedBox(height: 45.h),
     SlideInUp(
     duration: const Duration(milliseconds: 700),
     child:ElevatedButton(
@@ -196,21 +191,21 @@ class _AlarmSchedulerState extends State<AlarmScheduler> {
                         selectedTime = null;
                       }
                     },
-                    child: const Text(
+                    child: Text(
                       "Add Task",
                       style: TextStyle(
                         fontFamily: 'nexaheavy',
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         color: Colors.blue,
                       ),
                     ),
                   ),
     ),
-                      const SizedBox(height: 40),
+                      SizedBox(height: 40.h),
 
     // Task List (Fixed Layout Issues)
     SizedBox(
-    height: 300, // Set height to prevent overflow
+    height: 300.h, // Set height to prevent overflow
     child:ListView.builder(
                     shrinkWrap: true,
                     itemCount: tasks.length,

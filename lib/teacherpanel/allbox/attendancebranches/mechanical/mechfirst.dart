@@ -33,7 +33,7 @@ class _MechfirstState extends State<Mechfirst> {
     { "id": 14, "name": "Dhruv Kumar", "status": "Absent" },
     { "id": 15, "name": "Dipanshu Bisht", "status": "Absent" },
     { "id": 16, "name": "Divyanshu Bisht", "status": "Absent" },
-    { "id": 17, "name": "Gaurav Singh Kotaliya", "status": "Absent" },
+    { "id": 17, "name": "Gaurav S. Kotaliya", "status": "Absent" },
     { "id": 18, "name": "Himanshi Rani", "status": "Absent" },
     { "id": 19, "name": "Jeevan Singh", "status": "Absent" },
     { "id": 20, "name": "Karan Kumar", "status": "Absent" },

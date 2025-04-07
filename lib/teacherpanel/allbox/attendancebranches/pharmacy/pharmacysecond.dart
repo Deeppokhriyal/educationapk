@@ -27,7 +27,7 @@ class _PharmacysecondState extends State<Pharmacysecond> {
     {"id": 7, "name": "Bhawana Rana", "status": "Absent"},
     {"id": 8, "name": "Bhumika Joshi", "status": "Absent"},
     {"id": 9, "name": "Dharmendra Palariya", "status": "Absent"},
-    {"id": 10, "name": "Harshit Kumar Joshi", "status": "Absent"},
+    {"id": 10, "name": "Harshit K. Joshi", "status": "Absent"},
     {"id": 11, "name": "Himanshi", "status": "Absent"},
     {"id": 12, "name": "Himanshu Khati", "status": "Absent"},
     {"id": 13, "name": "Iqra", "status": "Absent"},
@@ -50,7 +50,7 @@ class _PharmacysecondState extends State<Pharmacysecond> {
     {"id": 30, "name": "Sejal Rana", "status": "Absent"},
     {"id": 31, "name": "Shahreen", "status": "Absent"},
     {"id": 32, "name": "Simran", "status": "Absent"},
-    {"id": 33, "name": "Pramod Kumar Shukla", "status": "Absent"},
+    {"id": 33, "name": "Pramod K. Shukla", "status": "Absent"},
     {"id": 34, "name": "Nirmal Singh", "status": "Absent"},
     {"id": 35, "name": "Arpit Shah", "status": "Absent"},
     {"id": 36, "name": "Krish", "status": "Absent"}

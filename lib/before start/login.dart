@@ -4,6 +4,7 @@ import 'package:educationapk/before%20start/signup.dart';
 import 'package:educationapk/before%20start/startingpage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -100,21 +101,21 @@ class _MyLoginState extends State<MyLogin> {
                       child: ListView( shrinkWrap: true,
                         children: [
                           Container(
-                              margin: EdgeInsets.fromLTRB(25, 0, 310, 10),
+                              margin: EdgeInsets.fromLTRB(25.w, 0.h, 310.w, 10.h),
                               child: IconButton(onPressed: (){
                                 Get.offAll(()=> Starting());
-                              }, icon: Icon(Icons.arrow_back_ios,size: 30,color: Colors.black,))
+                              }, icon: Icon(Icons.arrow_back_ios,size: 30.r,color: Colors.black,))
                           ),
 
-                          SizedBox(height: 20,),
+                          SizedBox(height: 20.h,),
                           Container(
-                            padding: EdgeInsets.only(right: 30,left: 30),
-                            child: Text('Welcome\nGlad to see you.', style: TextStyle( color: Colors.black, fontSize: 40, fontFamily: 'sans-serif-thin',fontWeight: FontWeight.bold),),
+                            padding: EdgeInsets.only(right: 30.w,left: 30.w),
+                            child: Text('Welcome\nGlad to see you.', style: TextStyle( color: Colors.black, fontSize: 40.sp, fontFamily: 'sans-serif-thin',fontWeight: FontWeight.bold),),
                           ),
-                          SizedBox(height: 20,),
+                          SizedBox(height: 20.h,),
                           SingleChildScrollView(
                             child: Container(
-                              padding: EdgeInsets.only(right: 30,left: 30),
+                              padding: EdgeInsets.only(right: 30.w,left: 30.w),
                               child: Column(
                                 children: [
                                   TextField( cursorColor: Colors.black,style: TextStyle( fontFamily: 'sans-serif-light'),
@@ -123,15 +124,15 @@ class _MyLoginState extends State<MyLogin> {
                                       fillColor: Colors.pink,
                                       hintText: 'Enter your Email',
                                       border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(35)
+                                          borderRadius: BorderRadius.circular(35.r)
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                           borderSide: BorderSide(color: Colors.blue),// Focused border color
-                                          borderRadius: BorderRadius.circular(35)
+                                          borderRadius: BorderRadius.circular(35.r)
                                       ),
                                     ),
                                   ),
-                                  SizedBox(height: 30,),
+                                  SizedBox(height: 30.h,),
                                   TextField(style: TextStyle( fontFamily: 'nexalight'),
                                     controller: passwordController,
                                     cursorColor: Colors.black,
@@ -144,15 +145,15 @@ class _MyLoginState extends State<MyLogin> {
                                         onPressed: () => setState(() => isPasswordVisible = !isPasswordVisible),
                                       ),
                                       border: OutlineInputBorder( // Unfocused border color
-                                          borderRadius: BorderRadius.circular(35)
+                                          borderRadius: BorderRadius.circular(35.r)
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                           borderSide: BorderSide(color: Colors.blue),// Focused border color
-                                          borderRadius: BorderRadius.circular(35)
+                                          borderRadius: BorderRadius.circular(35.r)
                                       ),
                                     ),
                                   ),
-                                  SizedBox(height: 8,),
+                                  SizedBox(height: 8.h),
                                   Row(
                                     children: [
                                       Checkbox(
@@ -168,10 +169,10 @@ class _MyLoginState extends State<MyLogin> {
                                     color: Colors.blue,  // Change color as needed
                                     size: 30.0,          // Adjust size
                                   )
-                                  :SizedBox(height: 15,),
+                                  :SizedBox(height: 15.h),
                                   SizedBox(
-                                    height: 50,
-                                    width: 450,
+                                    height: 50.h,
+                                    width: 450.w,
                                     child: ElevatedButton(
                                       style: ElevatedButton.styleFrom(
                                         foregroundColor: Colors.black, backgroundColor: Colors.black, // Set the text color here
@@ -180,13 +181,13 @@ class _MyLoginState extends State<MyLogin> {
                                       //   Get.to(()=>MyHomePage());
                                       // },
                                       onPressed: () => loginStudent(context),
-                                      child: Text('Login',style: TextStyle(color: Colors.white, fontSize: 16,fontFamily: 'sans-serif-light'),),
+                                      child: Text('Login',style: TextStyle(color: Colors.white, fontSize: 16.sp,fontFamily: 'sans-serif-light'),),
                                     ),
                                   ),
-                                  SizedBox(height: 30,),
+                                  SizedBox(height: 30.h),
                                   SizedBox(
-                                    height: 50,
-                                    width: 450,
+                                    height: 50.h,
+                                    width: 450.w,
                                     child: ElevatedButton(
                                       style: ElevatedButton.styleFrom(
                                         foregroundColor: Colors.black, backgroundColor: Colors.lightBlueAccent, // Set the text color here
@@ -194,13 +195,16 @@ class _MyLoginState extends State<MyLogin> {
                                       Get.to(MySignUpPage());
                                       // Get.to(()=>MyHomePage());
                                     },
-                                      child: Text('Sign up',style: TextStyle(color: Colors.white, fontSize: 16,fontFamily: 'sans-serif-light'),),
+                                      child: Text('Sign up',style: TextStyle(color: Colors.white, fontSize: 16.sp,fontFamily: 'sans-serif-light'),),
                                     ),
                                   ),
-                                  Divider(height: 50,),
+                                  Divider(height: 50.h),
 
-                                  Text('Dear Student\'s\n'
-                                      'We Try To Give you Best via This Application.',style: TextStyle(color: Colors.blue,fontSize: 22,fontFamily: 'nexalight'),),
+                                  GestureDetector(
+                                    onTap:() {Get.to(Bottombar());},
+                                    child: Text('Dear Student\'s\n'
+                                        'We Try To Give you Best via This Application.',style: TextStyle(color: Colors.blue,fontSize: 22.sp,fontFamily: 'nexalight'),),
+                                  ),
                                 ],
                               ),
                             ),

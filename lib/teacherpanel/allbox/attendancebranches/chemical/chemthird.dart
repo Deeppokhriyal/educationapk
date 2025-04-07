@@ -55,7 +55,7 @@ class _ChemthirdState extends State<Chemthird> {
     {"id": 34, "name": "Vishal Saini", "status": "Absent"},
     {"id": 35, "name": "Vivek", "status": "Absent"},
     {"id": 36, "name": "Vivek Anand", "status": "Absent"},
-    {"id": 37, "name": "Yogesh Singh Bohra", "status": "Absent"},
+    {"id": 37, "name": "Yogesh S. Bohra", "status": "Absent"},
     {"id": 38, "name": "Arjun Chilwal", "status": "Absent"},
     {"id": 39, "name": "Hem Chandra", "status": "Absent"},
     {"id": 40, "name": "Rohit Roshan", "status": "Absent"},

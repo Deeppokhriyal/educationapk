@@ -37,7 +37,7 @@ class _PaintthirdState extends State<Paintthird> {
     {"id": 15, "name": "Ritesh Singh", "status": "Absent"},
     {"id": 16, "name": "Shivam Singh", "status": "Absent"},
     {"id": 17, "name": "Sushmita Singh", "status": "Absent"},
-    {"id": 18, "name": "Udit Kumar Kashyap", "status": "Absent"},
+    {"id": 18, "name": "Udit K. Kashyap", "status": "Absent"},
     {"id": 19, "name": "Rohit Mishra", "status": "Absent"},
     {"id": 20, "name": "Ansh Jaiswal", "status": "Absent"},
     {"id": 21, "name": "Manish Saini", "status": "Absent"},

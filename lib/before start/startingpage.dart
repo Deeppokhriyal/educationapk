@@ -3,6 +3,7 @@ import 'package:educationapk/adminpanel/beforestart/adminlogin.dart';
 import 'package:educationapk/before%20start/login.dart';
 import 'package:educationapk/teacherpanel/before%20start/teacherlogin.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Starting extends StatefulWidget {
   const Starting({super.key});
@@ -39,57 +40,56 @@ class _StartingState extends State<Starting> {
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                  margin: EdgeInsets.fromLTRB(20.w, 20.h, 20.w, 20.h),
                   child: Image.asset(
                     'assets/images/startrow.jpg',
                     alignment: Alignment.center,
                   ),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 10.h),
                 Text(
                   'The only study app\n   you\'ll ever need',
                   style: TextStyle(
                     fontFamily: 'sans-serif-medium',
                     fontWeight: FontWeight.bold,
-                    fontSize: 35,
+                    fontSize: 35.sp,
                     color: Colors.black,
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 Text(
                   '             Uploaded all study materials,\n'
                       'create and explore the polyverse with us and\n'
                       '      learn some programming knowledge.',
                   style: TextStyle(
                     fontFamily: 'sans-serif-thin',
-                    fontSize: 17,
+                    fontSize: 17.sp,
                     color: Colors.black,
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 20.h),
 
                 // Dropdown for role selection
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 80, vertical: 5),
+                  padding: EdgeInsets.symmetric(horizontal: 80.w, vertical: 5.h),
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black, width: 1.5),
-                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: Colors.black, width: 1.5.w),
+                    borderRadius: BorderRadius.circular(16.r),
                   ),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<String>(
                       value: selectedRole,
                       dropdownColor: Colors.white,
-                      style: TextStyle(fontSize: 18, color: Colors.black),
-                      borderRadius: BorderRadius.circular(15),
+                      style: TextStyle(fontSize: 18.sp, color: Colors.black),
+                      borderRadius: BorderRadius.circular(15.r),
                       items: ['Student', 'Teacher', 'Principal']
                           .map((role) => DropdownMenuItem(
                         value: role,
     child: Padding(
-    padding:
-    const EdgeInsets.symmetric(vertical: 8.0),
+    padding: EdgeInsets.symmetric(vertical: 8.0.h),
                         child: Text(role,
                             style: TextStyle(
-                                fontSize: 18, color: Colors.black)),
+                                fontSize: 18.sp, color: Colors.black)),
     )
                       ))
                           .toList(),
@@ -102,19 +102,19 @@ class _StartingState extends State<Starting> {
                   ),
                 ),
 
-                SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 70, vertical: 2),
+                  padding: EdgeInsets.symmetric(horizontal: 70.w, vertical: 2.h),
                   decoration: BoxDecoration(
                     color: Colors.black,
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(width: 6),
+                    borderRadius: BorderRadius.circular(20.r),
+                    border: Border.all(width: 6.w),
                   ),
                   child: TextButton(
                     onPressed: navigateToLogin,
                     child: Text(
                       'Let\'s start',
-                      style: TextStyle(fontSize: 20, color: Colors.white),
+                      style: TextStyle(fontSize: 20.sp, color: Colors.white),
                     ),
                   ),
                 )

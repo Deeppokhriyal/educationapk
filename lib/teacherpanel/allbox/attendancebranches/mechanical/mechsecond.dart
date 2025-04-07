@@ -49,7 +49,7 @@ class _MechsecondState extends State<Mechsecond> {
     {"id": 28, "name": "Nikhil", "status": "Absent"},
     {"id": 29, "name": "Vikas Kumar", "status": "Absent"},
     {"id": 30, "name": "Rohit Singh", "status": "Absent"},
-    {"id": 31, "name": "Shantanu Singh Negi", "status": "Absent"},
+    {"id": 31, "name": "Shantanu S. Negi", "status": "Absent"},
     {"id": 32, "name": "Gautam Tewari", "status": "Absent"},
     {"id": 33, "name": "Gulshan", "status": "Absent"},
     {"id": 34, "name": "Garima Chauhan", "status": "Absent"},
@@ -66,7 +66,7 @@ class _MechsecondState extends State<Mechsecond> {
     {"id": 45, "name": "Rahul Kashyap", "status": "Absent"},
     {"id": 46, "name": "Shashank Pal", "status": "Absent"},
     {"id": 47, "name": "Umang Joshi", "status": "Absent"},
-    {"id": 48, "name": "Vaibhav Kumar Upadhaya", "status": "Absent"},
+    {"id": 48, "name": "Vaibhav K. Upadhaya", "status": "Absent"},
     {"id": 49, "name": "Yogesh Pandey", "status": "Absent"}
   ]
   ;

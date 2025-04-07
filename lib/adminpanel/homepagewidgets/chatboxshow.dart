@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:intl/intl.dart'; // For formatting timestamp
 
 class AdminPolyChatPage extends StatelessWidget {
@@ -29,7 +30,8 @@ class AdminPolyChatPage extends StatelessWidget {
             .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return Center(child: SpinKitFadingCircle(color: Colors.blueGrey,  // Change color as needed
+              size: 30.0,));
           }
           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
             return Center(

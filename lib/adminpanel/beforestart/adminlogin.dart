@@ -1,7 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/adminpanel/adminhome.dart';
-import 'package:educationapk/before%20start/login.dart';
 import 'package:educationapk/before%20start/startingpage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -219,9 +218,14 @@ class _AdminLoginState extends State<AdminLogin> {
                             // Admin Signup  Admin Signup  Admin Signup  Admin Signup  Admin Signup  Admin Signup  Admin Signup  Admin Signup  Admin Signup  Admin Signup
 
                               Divider(height: 50,),
-                              Text('Dear Admin\n'
-                                  'We Try To Give you Best via This Application.',
-                                style: TextStyle(color: Colors.green, fontSize: 18, fontFamily: 'nexalight'),),
+                              GestureDetector(
+                                onTap: (){
+                                  Get.to(()=>Adminhome());
+                                },
+                                child: Text('Dear Admin\n'
+                                    'We Try To Give you Best via This Application.',
+                                  style: TextStyle(color: Colors.green, fontSize: 18, fontFamily: 'nexalight'),),
+                              ),
                             ],
                           ),
                         ),

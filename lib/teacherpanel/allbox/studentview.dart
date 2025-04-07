@@ -1,4 +1,3 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:educationapk/allpage.dart';
 import 'package:educationapk/allpages/AttendancePage/attendance.dart';
@@ -72,7 +71,7 @@ class _StudentviewState extends State<Studentview> {
                               Text('you logged in as a Student,', style: TextStyle(fontSize: 15,fontFamily: 'nexaheavy',fontWeight: FontWeight.bold,color: Colors.black),),                            ],
                           ),
                           Container(
-                            padding: EdgeInsets.only(left: 117, top: 20),
+                            padding: EdgeInsets.only(left: 80, top: 20),
                             child: PopupMenuButton<String>(
                               onSelected: (String value) {
                                 // Handle menu item selection

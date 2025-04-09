@@ -9,7 +9,6 @@ import 'package:educationapk/allpages/Study/cse_syllabus.dart';
 import 'package:educationapk/allpages/Study/electronic_syllabus.dart';
 import 'package:educationapk/allpages/Study/pharmacy_syllabus.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 class Branches extends StatelessWidget {
   @override
@@ -55,7 +54,7 @@ Widget build(BuildContext context) {
                             padding: EdgeInsets.all(10),
                             margin: EdgeInsets.all(17),
                             height: 100,
-                            width: 370,
+                            width: MediaQuery.of(context).size.width * 1,
                             decoration:
                             BoxDecoration(
                               color:Color(0xfffebee3), // Background color
@@ -100,7 +99,7 @@ Widget build(BuildContext context) {
                             padding: EdgeInsets.all(10),
                             margin: EdgeInsets.all(17),
                             height: 127,
-                            width: 370,
+                            width: MediaQuery.of(context).size.width * 1,
                             decoration:
                             BoxDecoration(
                               color: Color(0xfffebee3),  // Background color
@@ -145,7 +144,7 @@ Widget build(BuildContext context) {
                             padding: EdgeInsets.all(10),
                             margin: EdgeInsets.all(17),
                             height: 100,
-                            width: 370,
+                            width: MediaQuery.of(context).size.width * 1,
                             decoration:
                             BoxDecoration(
                               color: Color(0xfffebee3),  // Background color
@@ -189,7 +188,7 @@ Widget build(BuildContext context) {
                             padding: EdgeInsets.all(10),
                             margin: EdgeInsets.all(17),
                             height: 100,
-                            width: 370,
+                            width: MediaQuery.of(context).size.width * 1,
                             decoration:
                             BoxDecoration(
                               color:Color(0xfffebee3),  // Background color
@@ -233,7 +232,7 @@ Widget build(BuildContext context) {
                             padding: EdgeInsets.all(10),
                             margin: EdgeInsets.all(17),
                             height: 100,
-                            width: 370,
+                            width: MediaQuery.of(context).size.width * 1,
                             decoration:
                             BoxDecoration(
                               color:Color(0xfffebee3),  // Background color
@@ -277,7 +276,7 @@ Widget build(BuildContext context) {
                             padding: EdgeInsets.all(10),
                             margin: EdgeInsets.all(17),
                             height: 100,
-                            width: 370,
+                            width: MediaQuery.of(context).size.width * 1,
                             decoration:
                             BoxDecoration(
                               color:Color(0xfffebee3), // Background color
@@ -321,7 +320,7 @@ Widget build(BuildContext context) {
                             padding: EdgeInsets.all(10),
                             margin: EdgeInsets.all(17),
                             height: 100,
-                            width: 370,
+                            width: MediaQuery.of(context).size.width * 1,
                             decoration:
                             BoxDecoration(
                               color: Color(0xfffebee3), // Background color
@@ -365,7 +364,7 @@ Widget build(BuildContext context) {
                             padding: EdgeInsets.all(10),
                             margin: EdgeInsets.all(17),
                             height: 100,
-                            width: 370,
+                            width: MediaQuery.of(context).size.width * 1,
                             decoration:
                             BoxDecoration(
                               color: Color(0xfffebee3), // Background color
@@ -409,7 +408,7 @@ Widget build(BuildContext context) {
                             padding: EdgeInsets.all(10),
                             margin: EdgeInsets.all(17),
                             height: 100,
-                            width: 370,
+                            width: MediaQuery.of(context).size.width * 1,
                             decoration:
                             BoxDecoration(
                               color: Color(0xfffebee3), // Background color

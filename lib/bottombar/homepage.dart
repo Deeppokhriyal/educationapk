@@ -723,8 +723,11 @@ class _MyMainHomeState extends State<MyMainHome> {
                               )),
                         ),
                         GestureDetector(
-                          onTap: (){Get.to(EventPage());},
-                          child: AnimatedContainer(duration:  Duration(milliseconds: 200),
+                          onTap: () {
+                            Get.to(EventPage());
+                          },
+                          child: AnimatedContainer(
+                            duration: Duration(milliseconds: 200),
                             padding: EdgeInsets.all(10),
                             margin: EdgeInsets.only(right: 15),
                             height: 200,
@@ -736,14 +739,11 @@ class _MyMainHomeState extends State<MyMainHome> {
                                 end: Alignment.bottomRight,
                               ),
                               borderRadius: BorderRadius.circular(25),
-                              // Rounded corners
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors
-                                      .pink.shade300, // Shadow Color
-                                  blurRadius: 5, // Blur (Kitna soft ho)
-                                  offset:
-                                  Offset(0, 4), // Shadow ka direction (X, Y)
+                                  color: Colors.pink.shade300,
+                                  blurRadius: 5,
+                                  offset: Offset(0, 4),
                                 ),
                               ],
                             ),
@@ -751,72 +751,65 @@ class _MyMainHomeState extends State<MyMainHome> {
                               children: [
                                 Row(
                                   children: [
-                                    Icon(Icons.event,
-                                        size: 30, color: Colors.black),
-                                    SizedBox(
-                                      width: 105,
-                                    ),
-                                    Icon(
-                                          Icons.arrow_forward_ios_outlined,
-                                          size: 28,
-                                          color: Colors.black),
+                                    Icon(Icons.event, size: 30, color: Colors.black),
+                                    SizedBox(width: 105),
+                                    Icon(Icons.arrow_forward_ios_outlined, size: 28, color: Colors.black),
                                   ],
                                 ),
                                 SizedBox(height: 10),
                                 Row(
                                   children: [
                                     Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Events',
                                           style: TextStyle(
-                                              fontSize: 30,
-                                              fontFamily: 'sans-serif-light',
-                                              fontWeight: FontWeight.bold),
+                                            fontSize: 22, // fixed size
+                                            fontFamily: 'sans-serif-light',
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
                                         Text(
                                           'Information',
                                           style: TextStyle(
-                                              fontSize: 0.07.sw,
-                                              fontFamily: 'sans-serif-light',
-                                              fontWeight: FontWeight.bold),
+                                            fontSize: 14, // fixed size
+                                            fontFamily: 'sans-serif-light',
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
                                       ],
                                     ),
                                   ],
                                 ),
-                                SizedBox(
-                                  height: 7,
-                                ),
+                                SizedBox(height: 7),
                                 Row(
                                   children: [
                                     Text(
                                       'Events info',
                                       style: TextStyle(
-                                          fontFamily: 'sans-serif-thin',
-                                          fontWeight: FontWeight.bold),
+                                        fontSize: 12, // fixed size
+                                        fontFamily: 'sans-serif-thin',
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
-                                    SizedBox(
-                                      width: 7,
-                                    ),
+                                    SizedBox(width: 7),
                                     Container(
                                       height: 18,
                                       width: 1,
                                       color: Colors.black,
                                     ),
-                                    SizedBox(
-                                      width: 7,
-                                    ),
+                                    SizedBox(width: 7),
                                     Text(
                                       'Holiday\'s',
                                       style: TextStyle(
-                                          fontFamily: 'sans-serif-thin',
-                                          fontWeight: FontWeight.bold),
+                                        fontSize: 12, // fixed size
+                                        fontFamily: 'sans-serif-thin',
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ],
-                                )
+                                ),
                               ],
                             ),
                           ),

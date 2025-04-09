@@ -15,7 +15,8 @@ class _MainScrollPageState extends State<MainScrollPage> {
 Widget build(BuildContext context) {
   return Scaffold(
     backgroundColor: Colors.transparent,
-      body: Container(
+      body:
+      Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [Colors.black, Colors.blueAccent.shade100, Colors.black],
@@ -33,7 +34,7 @@ Widget build(BuildContext context) {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.all(17),
                       height: 100,
-                      width: 370,
+                      width: MediaQuery.of(context).size.width * 1,
                       decoration:
                       BoxDecoration(
                         color: Colors.lightBlueAccent[100], // Background color
@@ -73,7 +74,7 @@ Widget build(BuildContext context) {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.all(17),
                       height: 100,
-                      width: 370,
+                      width: MediaQuery.of(context).size.width * 1,
                       decoration:
                       BoxDecoration(
                         color: Colors.lightBlueAccent[100],  // Background color
@@ -113,7 +114,7 @@ Widget build(BuildContext context) {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.all(17),
                       height: 100,
-                      width: 370,
+                      width: MediaQuery.of(context).size.width * 1,
                       decoration:
                       BoxDecoration(
                         color: Colors.lightBlueAccent[100],  // Background color
@@ -153,7 +154,7 @@ Widget build(BuildContext context) {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.all(17),
                       height: 100,
-                      width: 370,
+                      width: MediaQuery.of(context).size.width * 1,
                       decoration:
                       BoxDecoration(
                         color: Colors.lightBlueAccent[100],  // Background color
@@ -193,7 +194,7 @@ Widget build(BuildContext context) {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.all(17),
                       height: 100,
-                      width: 370,
+                      width: MediaQuery.of(context).size.width * 1,
                       decoration:
                       BoxDecoration(
                         color: Colors.lightBlueAccent[100],  // Background color
@@ -235,7 +236,7 @@ Widget build(BuildContext context) {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.all(17),
                       height: 100,
-                      width: 370,
+                      width: MediaQuery.of(context).size.width * 1,
                       decoration:
                       BoxDecoration(
                         color: Colors.lightBlueAccent[100], // Background color

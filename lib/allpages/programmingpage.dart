@@ -56,7 +56,7 @@ class _ProgrammingpageState extends State<Programmingpage> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.all(17),
                       height: 110,
-                      width: 370,
+                      width: MediaQuery.of(context).size.width * 1,
                       decoration: BoxDecoration(
                         color: Colors.white, // Background color
                         borderRadius: BorderRadius.circular(20), // Rounded corners
@@ -150,7 +150,7 @@ class _ProgrammingpageState extends State<Programmingpage> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.all(17),
                       height: 110,
-                      width: 370,
+                      width: MediaQuery.of(context).size.width * 1,
                       decoration: BoxDecoration(
                         color: Colors.white, // Background color
                         borderRadius: BorderRadius.circular(20), // Rounded corners
@@ -243,7 +243,7 @@ class _ProgrammingpageState extends State<Programmingpage> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.all(17),
                       height: 110,
-                      width: 370,
+                      width: MediaQuery.of(context).size.width * 1,
                       decoration: BoxDecoration(
                         color: Colors.white, // Background color
                         borderRadius: BorderRadius.circular(20), // Rounded corners
@@ -336,7 +336,7 @@ class _ProgrammingpageState extends State<Programmingpage> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.all(17),
                       height: 110,
-                      width: 370,
+                      width: MediaQuery.of(context).size.width * 1,
                       decoration: BoxDecoration(
                         color: Colors.white, // Background color
                         borderRadius: BorderRadius.circular(20), // Rounded corners
@@ -429,7 +429,7 @@ class _ProgrammingpageState extends State<Programmingpage> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.all(17),
                       height: 110,
-                      width: 370,
+                      width: MediaQuery.of(context).size.width * 1,
                       decoration: BoxDecoration(
                         color: Colors.white, // Background color
                         borderRadius: BorderRadius.circular(20), // Rounded corners
@@ -522,7 +522,7 @@ class _ProgrammingpageState extends State<Programmingpage> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.all(17),
                       height: 110,
-                      width: 370,
+                      width: MediaQuery.of(context).size.width * 1,
                       decoration: BoxDecoration(
                         color: Colors.white, // Background color
                         borderRadius: BorderRadius.circular(20), // Rounded corners
@@ -610,7 +610,7 @@ class _ProgrammingpageState extends State<Programmingpage> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.all(17),
                       height: 110,
-                      width: 370,
+                      width: MediaQuery.of(context).size.width * 1,
                       decoration: BoxDecoration(
                         color: Colors.white, // Background color
                         borderRadius: BorderRadius.circular(20), // Rounded corners
@@ -698,7 +698,7 @@ class _ProgrammingpageState extends State<Programmingpage> {
                       padding: EdgeInsets.all(10),
                       margin: EdgeInsets.all(17),
                       height: 110,
-                      width: 370,
+                      width: MediaQuery.of(context).size.width * 1,
                       decoration: BoxDecoration(
                         color: Colors.white, // Background color
                         borderRadius: BorderRadius.circular(20), // Rounded corners
@@ -789,7 +789,7 @@ class _ProgrammingpageState extends State<Programmingpage> {
                     padding: EdgeInsets.all(10),
                     margin: EdgeInsets.all(17),
                     height: 110,
-                    width: 370,
+                    width: MediaQuery.of(context).size.width * 1,
                     decoration: BoxDecoration(
                       color: Colors.white, // Background color
                       borderRadius: BorderRadius.circular(20), // Rounded corners
@@ -879,7 +879,7 @@ class _ProgrammingpageState extends State<Programmingpage> {
                     padding: EdgeInsets.all(10),
                     margin: EdgeInsets.all(17),
                     height: 110,
-                    width: 370,
+                    width: MediaQuery.of(context).size.width * 1,
                     decoration: BoxDecoration(
                       color: Colors.white, // Background color
                       borderRadius: BorderRadius.circular(20), // Rounded corners

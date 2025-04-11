@@ -110,7 +110,7 @@ class _MyLoginState extends State<MyLogin> {
                           SizedBox(height: 20.h,),
                           Container(
                             padding: EdgeInsets.only(right: 30.w,left: 30.w),
-                            child: Text('Welcome\nGlad to see you.', style: TextStyle( color: Colors.black, fontSize: 40.sp, fontFamily: 'sans-serif-thin',fontWeight: FontWeight.bold),),
+                            child: Text('Welcome\nGlad to see you.', style: TextStyle( color: Colors.black, fontSize: 25.sp, fontFamily: 'sans-serif-thin',fontWeight: FontWeight.bold),),
                           ),
                           SizedBox(height: 20.h,),
                           SingleChildScrollView(
@@ -145,7 +145,7 @@ class _MyLoginState extends State<MyLogin> {
                                         onPressed: () => setState(() => isPasswordVisible = !isPasswordVisible),
                                       ),
                                       border: OutlineInputBorder( // Unfocused border color
-                                          borderRadius: BorderRadius.circular(35.r)
+                                               borderRadius: BorderRadius.circular(35.r)
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                           borderSide: BorderSide(color: Colors.blue),// Focused border color
@@ -181,7 +181,7 @@ class _MyLoginState extends State<MyLogin> {
                                       //   Get.to(()=>MyHomePage());
                                       // },
                                       onPressed: () => loginStudent(context),
-                                      child: Text('Login',style: TextStyle(color: Colors.white, fontSize: 16.sp,fontFamily: 'sans-serif-light'),),
+                                      child: Text('Login',style: TextStyle(color: Colors.white, fontSize: 10.sp,fontFamily: 'sans-serif-light'),),
                                     ),
                                   ),
                                   SizedBox(height: 30.h),
@@ -195,7 +195,7 @@ class _MyLoginState extends State<MyLogin> {
                                       Get.to(MySignUpPage());
                                       // Get.to(()=>MyHomePage());
                                     },
-                                      child: Text('Sign up',style: TextStyle(color: Colors.white, fontSize: 16.sp,fontFamily: 'sans-serif-light'),),
+                                      child: Text('Sign up',style: TextStyle(color: Colors.white, fontSize: 10.sp,fontFamily: 'sans-serif-light'),),
                                     ),
                                   ),
                                   Divider(height: 50.h),
@@ -203,7 +203,7 @@ class _MyLoginState extends State<MyLogin> {
                                   GestureDetector(
                                     onTap:() {Get.to(Bottombar());},
                                     child: Text('Dear Student\'s\n'
-                                        'We Try To Give you Best via This Application.',style: TextStyle(color: Colors.blue,fontSize: 22.sp,fontFamily: 'nexalight'),),
+                                        'We Try To Give you Best via This Application.',style: TextStyle(color: Colors.blue,fontSize: 16.sp,fontFamily: 'nexalight'),),
                                   ),
                                 ],
                               ),

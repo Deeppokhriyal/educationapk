@@ -39,10 +39,10 @@ class _StartingState extends State<Starting> {
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                  margin: EdgeInsets.only(top: 25),
                   child: Image.asset(
                     'assets/images/startrow.jpg',
-                    alignment: Alignment.center,
+                    alignment: Alignment.center,height: 400,
                   ),
                 ),
                 SizedBox(height: 10),

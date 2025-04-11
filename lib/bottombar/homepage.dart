@@ -465,9 +465,9 @@ class _MyMainHomeState extends State<MyMainHome> {
                     ]),
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        "Let's Explore\n        The Polyverse",
+                      Text("Let's Explore\n          The Polyverse",
                         style: TextStyle(
                             fontSize: 42,
                             fontFamily: 'sans-serif-thin',

@@ -110,7 +110,7 @@ class _MyLoginState extends State<MyLogin> {
                           SizedBox(height: 20.h,),
                           Container(
                             padding: EdgeInsets.only(right: 30.w,left: 30.w),
-                            child: Text('Welcome\nGlad to see you.', style: TextStyle( color: Colors.black, fontSize: 25.sp, fontFamily: 'sans-serif-thin',fontWeight: FontWeight.bold),),
+                            child: Text('Welcome\nGlad to see you.', style: TextStyle( color: Colors.black, fontSize: 30.sp, fontFamily: 'sans-serif-thin',fontWeight: FontWeight.bold),),
                           ),
                           SizedBox(height: 20.h,),
                           SingleChildScrollView(

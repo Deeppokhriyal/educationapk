@@ -9,45 +9,49 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-
-  Map<String, List<QueryDocumentSnapshot>> groupMessagesByDate(List<QueryDocumentSnapshot> messages) {
-    Map<String, List<QueryDocumentSnapshot>> groupedMessages = {};
-
-    for (var message in messages) {
-      // Check if timestamp exists and is not null
-      Timestamp? timestamp = message['timestamp'] as Timestamp?;
-
-      if (timestamp != null) {
-        DateTime date = timestamp.toDate();
-        String formattedDate = "${date.day}-${date.month}-${date.year}";
-
-        if (groupedMessages[formattedDate] == null) {
-          groupedMessages[formattedDate] = [];
-        }
-        groupedMessages[formattedDate]!.add(message);
-      }
-    }
-
-    return groupedMessages;
-  }
-
-
-
-  TextEditingController messageController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final TextEditingController messageController = TextEditingController();
+  final ScrollController _scrollController = ScrollController();
 
   void sendMessage() {
     if (messageController.text.isNotEmpty) {
       _firestore.collection('messages').add({
         'text': messageController.text.trim(),
         'sender': _auth.currentUser?.email ?? "Unknown",
-        'timestamp': FieldValue.serverTimestamp(), // Ensure timestamp is set
+        'timestamp': FieldValue.serverTimestamp(),
       });
       messageController.clear();
     }
   }
 
+  Map<String, List<QueryDocumentSnapshot>> groupMessagesByDate(List<QueryDocumentSnapshot> messages) {
+    Map<String, List<QueryDocumentSnapshot>> groupedMessages = {};
+    for (var message in messages) {
+      Timestamp? timestamp = message['timestamp'] as Timestamp?;
+      if (timestamp != null) {
+        DateTime date = timestamp.toDate();
+        String formattedDate = "${date.day}-${date.month}-${date.year}";
+        if (groupedMessages[formattedDate] == null) {
+          groupedMessages[formattedDate] = [];
+        }
+        groupedMessages[formattedDate]!.add(message);
+      }
+    }
+    return groupedMessages;
+  }
+
+  void scrollToBottom() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (_scrollController.hasClients) {
+        _scrollController.animateTo(
+          _scrollController.position.maxScrollExtent,
+          duration: Duration(milliseconds: 300),
+          curve: Curves.easeOut,
+        );
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,8 +63,8 @@ class _ChatScreenState extends State<ChatScreen> {
               "PolyChat",
               style: TextStyle(fontFamily: 'nexaheavy', fontSize: 24),
             ),
-            SizedBox(width: 5,),
-            Icon(Icons.language_outlined,size: 35,)
+            SizedBox(width: 5),
+            Icon(Icons.language_outlined, size: 35)
           ],
         ),
         backgroundColor: Colors.lightBlueAccent,
@@ -83,13 +87,19 @@ class _ChatScreenState extends State<ChatScreen> {
                     .snapshots(),
                 builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (!snapshot.hasData) {
-                    return Center(child: SpinKitFadingCircle(
-                      color: Colors.lightBlueAccent,
-                      size: 50,
-                    ));
+                    return Center(
+                      child: SpinKitFadingCircle(
+                        color: Colors.lightBlueAccent,
+                        size: 50,
+                      ),
+                    );
                   }
 
+                  // Scroll to bottom when data changes
+                  scrollToBottom();
+
                   return ListView(
+                    controller: _scrollController,
                     reverse: false,
                     children: groupMessagesByDate(snapshot.data!.docs).entries.map((entry) {
                       String date = entry.key;
@@ -127,8 +137,8 @@ class _ChatScreenState extends State<ChatScreen> {
                                 margin: EdgeInsets.only(
                                   top: 6,
                                   bottom: 6,
-                                  left: isMe ? 50 : 10, // Space between messages
-                                  right: isMe ? 10 : 50, // Space between messages
+                                  left: isMe ? 50 : 10,
+                                  right: isMe ? 10 : 50,
                                 ),
                                 decoration: BoxDecoration(
                                   color: isMe ? Colors.lightBlueAccent : Colors.grey.shade200,
@@ -194,34 +204,33 @@ class _ChatScreenState extends State<ChatScreen> {
                 Expanded(
                   child: TextField(
                     controller: messageController,
-                    cursorColor: Colors.lightBlue, // Set cursor color to light blue
+                    cursorColor: Colors.lightBlue,
                     decoration: InputDecoration(
                       hintText: "Type a message...",
                       hintStyle: TextStyle(fontFamily: 'nexalight', fontSize: 17, color: Colors.grey),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(35),
-                        borderSide: BorderSide(color: Colors.lightBlue), // Default border color
+                        borderSide: BorderSide(color: Colors.lightBlue),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(35),
-                        borderSide: BorderSide(color: Colors.black), // Non-focused border
+                        borderSide: BorderSide(color: Colors.black),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(35),
-                        borderSide: BorderSide(color: Colors.lightBlue, width: 2.0), // Light blue border when tapped
+                        borderSide: BorderSide(color: Colors.lightBlue, width: 2.0),
                       ),
                       filled: true,
                       fillColor: Colors.grey.shade100,
                     ),
                   ),
-
                 ),
                 SizedBox(width: 10),
                 CircleAvatar(
-                  radius: 27, // Make the CircleAvatar bigger
+                  radius: 27,
                   backgroundColor: Colors.lightBlueAccent,
                   child: IconButton(
-                    icon: Icon(Icons.send, color: Colors.white, size: 32), // Increase icon size
+                    icon: Icon(Icons.send, color: Colors.white, size: 32),
                     onPressed: sendMessage,
                   ),
                 ),

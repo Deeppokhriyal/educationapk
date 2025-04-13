@@ -200,11 +200,8 @@ class _MyLoginState extends State<MyLogin> {
                                   ),
                                   Divider(height: 50.h),
 
-                                  GestureDetector(
-                                    onTap:() {Get.to(Bottombar());},
-                                    child: Text('Dear Student\'s\n'
-                                        'We Try To Give you Best via This Application.',style: TextStyle(color: Colors.blue,fontSize: 16.sp,fontFamily: 'nexalight'),),
-                                  ),
+                                  Text('Dear Student\'s\n'
+                                      'We Try To Give you Best via This Application.',style: TextStyle(color: Colors.blue,fontSize: 16.sp,fontFamily: 'nexalight'),),
                                 ],
                               ),
                             ),

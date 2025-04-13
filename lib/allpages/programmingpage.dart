@@ -110,13 +110,13 @@ class _ProgrammingpageState extends State<Programmingpage> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  height: 34,
+                                  height: 33,
                                 ),
                                 Text(
                                   'Dennis Ritchie',
                                   style: TextStyle(
                                       fontFamily: 'sans-serif-light',
-                                      fontSize: 20,
+                                      fontSize: 19,
                                       fontWeight: FontWeight.normal),
                                 ),
                                 SizedBox(
@@ -204,13 +204,13 @@ class _ProgrammingpageState extends State<Programmingpage> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  height: 34,
+                                  height: 33,
                                 ),
                                 Text(
                                   'Tim Berners-Lee',
                                   style: TextStyle(
                                       fontFamily: 'sans-serif-light',
-                                      fontSize: 20,
+                                      fontSize: 19,
                                       fontWeight: FontWeight.normal),
                                 ),
                                 SizedBox(
@@ -297,13 +297,13 @@ class _ProgrammingpageState extends State<Programmingpage> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  height: 34,
+                                  height: 33,
                                 ),
                                 Text(
                                   'Hakon Wium Lie',
                                   style: TextStyle(
                                       fontFamily: 'sans-serif-light',
-                                      fontSize: 20,
+                                      fontSize: 19,
                                       fontWeight: FontWeight.normal),
                                 ),
                                 SizedBox(
@@ -390,13 +390,13 @@ class _ProgrammingpageState extends State<Programmingpage> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  height: 34,
+                                  height: 33,
                                 ),
                                 Text(
                                   'Brendan Eichin',
                                   style: TextStyle(
                                       fontFamily: 'sans-serif-light',
-                                      fontSize: 20,
+                                      fontSize: 19,
                                       fontWeight: FontWeight.normal),
                                 ),
                                 SizedBox(
@@ -483,13 +483,13 @@ class _ProgrammingpageState extends State<Programmingpage> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  height: 34,
+                                  height: 33,
                                 ),
                                 Text(
                                   'Bajarne Stroustrup',
                                   style: TextStyle(
                                       fontFamily: 'sans-serif-light',
-                                      fontSize: 20,
+                                      fontSize: 19,
                                       fontWeight: FontWeight.normal),
                                 ),
                                 SizedBox(
@@ -571,7 +571,7 @@ class _ProgrammingpageState extends State<Programmingpage> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  height: 34,
+                                  height: 33,
                                 ),
                                 Text(
                                   'Guido Van Rossum',
@@ -659,7 +659,7 @@ class _ProgrammingpageState extends State<Programmingpage> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  height: 34,
+                                  height: 33,
                                 ),
                                 Text(
                                   'James Gosling',
@@ -752,13 +752,13 @@ class _ProgrammingpageState extends State<Programmingpage> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  height: 34,
+                                  height: 33,
                                 ),
                                 Text(
                                   'Rasmus Lerdorf',
                                   style: TextStyle(
                                       fontFamily: 'sans-serif-light',
-                                      fontSize: 20,
+                                      fontSize: 19,
                                       fontWeight: FontWeight.normal),
                                 ),
                                 SizedBox(
@@ -843,7 +843,7 @@ class _ProgrammingpageState extends State<Programmingpage> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               SizedBox(
-                                height: 34,
+                                height: 33,
                               ),
                               Text(
                                 'Charles Goldfarb',
@@ -933,7 +933,7 @@ class _ProgrammingpageState extends State<Programmingpage> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               SizedBox(
-                                height: 34,
+                                height: 33,
                               ),
                               Text(
                                 'Microsoft',

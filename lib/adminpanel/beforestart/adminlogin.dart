@@ -218,14 +218,9 @@ class _AdminLoginState extends State<AdminLogin> {
                             // Admin Signup  Admin Signup  Admin Signup  Admin Signup  Admin Signup  Admin Signup  Admin Signup  Admin Signup  Admin Signup  Admin Signup
 
                               Divider(height: 50,),
-                              GestureDetector(
-                                onTap: (){
-                                  Get.to(()=>Adminhome());
-                                },
-                                child: Text('Dear Admin\n'
-                                    'We Try To Give you Best via This Application.',
-                                  style: TextStyle(color: Colors.green, fontSize: 18, fontFamily: 'nexalight'),),
-                              ),
+                              Text('Dear Admin\n'
+                                  'We Try To Give you Best via This Application.',
+                                style: TextStyle(color: Colors.green, fontSize: 18, fontFamily: 'nexalight'),),
                             ],
                           ),
                         ),

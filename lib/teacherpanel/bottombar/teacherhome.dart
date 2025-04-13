@@ -452,13 +452,13 @@ class _TeacherMainState extends State<TeacherMain> {
                                     ],
                                   ),
                                   SizedBox(
-                                    height: 5,
+                                    height: 1,
                                   ),
                                   Text(
                                     'Developed By 2 Developer\'s in 90 Days',
                                     style: TextStyle(
                                         fontFamily: 'sans-serif-thin',
-                                        fontSize: 12),
+                                        fontSize: 11),
                                   ),
                                 ],
                               ),
@@ -821,7 +821,7 @@ class _TeacherMainState extends State<TeacherMain> {
                                       ],
                                     ),
                                     SizedBox(
-                                      height: 20,
+                                      height: 19,
                                     ),
                                     Text(
                                       'See Student Panel',
@@ -977,13 +977,13 @@ class _TeacherMainState extends State<TeacherMain> {
                                       ],
                                     ),
                                     SizedBox(
-                                      height: 5,
+                                      height: 1,
                                     ),
                                     Text(
                                       'Only your Branch Registered Student\'s',
                                       style: TextStyle(
                                           fontFamily: 'sans-serif-thin',
-                                          fontSize: 12),
+                                          fontSize: 11),
                                     ),
                                   ],
                                 )),

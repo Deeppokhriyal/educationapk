@@ -630,6 +630,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     Text(
                                       '106 Days',
                                       style: TextStyle(
+                                        fontSize: 12,
                                           fontFamily: 'sans-serif-thin',
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -647,6 +648,7 @@ class _MyMainHomeState extends State<MyMainHome> {
                                     Text(
                                       '2 Developer\'s',
                                       style: TextStyle(
+                                        fontSize: 12,
                                           fontFamily: 'sans-serif-thin',
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -907,19 +909,19 @@ class _MyMainHomeState extends State<MyMainHome> {
                                       '9 Branches',
                                       style: TextStyle(
                                           fontFamily: 'sans-serif-thin',
-                                          fontSize: 18),
+                                          fontSize: 17),
                                     ),
                                     Text(
                                       'Engineering',
                                       style: TextStyle(
                                           fontFamily: 'sans-serif-light',
-                                          fontSize: 16),
+                                          fontSize: 15),
                                     ),
                                     Text(
                                       'Pharmacy',
                                       style: TextStyle(
                                           fontFamily: 'sans-serif-light',
-                                          fontSize: 13),
+                                          fontSize: 12),
                                     ),
                                   ],
                                 ),
@@ -943,19 +945,19 @@ class _MyMainHomeState extends State<MyMainHome> {
                                       'Hostels',
                                       style: TextStyle(
                                           fontFamily: 'sans-serif-thin',
-                                          fontSize: 18),
+                                          fontSize: 17),
                                     ),
                                     Text(
                                       'Boys',
                                       style: TextStyle(
                                           fontFamily: 'sans-serif-light',
-                                          fontSize: 16),
+                                          fontSize: 15),
                                     ),
                                     Text(
                                       'Girls',
                                       style: TextStyle(
                                           fontFamily: 'sans-serif-light',
-                                          fontSize: 13),
+                                          fontSize: 12),
                                     ),
                                   ],
                                 ),

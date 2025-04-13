@@ -123,7 +123,7 @@ Widget build(BuildContext context) {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text('Chemical \nTechnology',style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
-                                        Text('(Paint)',style: TextStyle(fontFamily: 'nexalight',fontSize: 22),),
+                                        Text('(Paint)',style: TextStyle(fontFamily: 'nexalight',fontSize: 21),),
                                       ],
                                     ),
                                   ],

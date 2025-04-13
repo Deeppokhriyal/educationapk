@@ -179,13 +179,8 @@ class _TeacherLoginState extends State<TeacherLogin> {
 
                             Divider(height: 50,),
 
-                            GestureDetector(
-                              onTap: (){
-                                Get.to(()=>Teacherbar());
-                              },
-                              child: Text('Dear Teacher\'s\n'
-                                  'We Try To Give you Best via This Application.',style: TextStyle(color: Colors.green,fontSize: 18,fontFamily: 'nexalight'),),
-                            ),
+                            Text('Dear Teacher\'s\n'
+                                'We Try To Give you Best via This Application.',style: TextStyle(color: Colors.green,fontSize: 18,fontFamily: 'nexalight'),),
                           ],
                         ),
                       ),

@@ -20,6 +20,7 @@ class _UpdateTeacherProfilePageState extends State<UpdateTeacherProfilePage> {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
+  final TextEditingController postController = TextEditingController();
 
   File? _image;
   String? _base64Image; // Base64 encoded image string
@@ -40,6 +41,7 @@ class _UpdateTeacherProfilePageState extends State<UpdateTeacherProfilePage> {
         setState(() {
           nameController.text = userData["name"] ?? "";
           emailController.text = userData["email"] ?? "";
+          postController.text = userData["post"] ?? "";
           _base64Image = userData["profileImage"]; // Load Base64 image from Firestore
         });
       }
@@ -102,6 +104,7 @@ class _UpdateTeacherProfilePageState extends State<UpdateTeacherProfilePage> {
       await userDoc.update({
         "name": nameController.text,
         "email": emailController.text,
+        "post": postController.text,
         "profileImage": _base64Image, // Save Base64 image string to Firestore
       });
 
@@ -124,6 +127,7 @@ class _UpdateTeacherProfilePageState extends State<UpdateTeacherProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.lightBlue,
       body: Stack(
         children: [
           Container(
@@ -133,79 +137,83 @@ class _UpdateTeacherProfilePageState extends State<UpdateTeacherProfilePage> {
                 end: Alignment.centerLeft,
               )
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(height: 70),
-
-                // Profile Image
-                Center(
-                  child: Stack(
-                    children: [
-                      ClipOval(
-                        child: CircleAvatar(
-                          radius: 50,
-                          backgroundImage: _image != null
-                              ? FileImage(_image!)
-                              : (_base64Image != null
-                              ? MemoryImage(base64Decode(_base64Image!)) // Decode Base64
-                              : AssetImage("assets/default_avatar.png") as ImageProvider),
-                          child: _image == null && _base64Image == null
-                              ? Icon(Icons.person, size: 50, color: Colors.black)
-                              : null,
-                        ),
-                      ),
-                      // Edit Icon
-                      Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: GestureDetector(
-                          onTap: pickImage,
-                          child: Container(
-                            width: 32,
-                            height: 32,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.yellow[700],
-                              border: Border.all(color: Colors.white, width: 2),
-                            ),
-                            child: Icon(LineAwesomeIcons.pencil_alt_solid, size: 18, color: Colors.white),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(height: 70),
+              
+                  // Profile Image
+                  Center(
+                    child: Stack(
+                      children: [
+                        ClipOval(
+                          child: CircleAvatar(
+                            radius: 50,
+                            backgroundImage: _image != null
+                                ? FileImage(_image!)
+                                : (_base64Image != null
+                                ? MemoryImage(base64Decode(_base64Image!)) // Decode Base64
+                                : AssetImage("assets/default_avatar.png") as ImageProvider),
+                            child: _image == null && _base64Image == null
+                                ? Icon(Icons.person, size: 50, color: Colors.black)
+                                : null,
                           ),
                         ),
-                      ),
-                    ],
+                        // Edit Icon
+                        Positioned(
+                          bottom: 0,
+                          right: 0,
+                          child: GestureDetector(
+                            onTap: pickImage,
+                            child: Container(
+                              width: 32,
+                              height: 32,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.yellow[700],
+                                border: Border.all(color: Colors.white, width: 2),
+                              ),
+                              child: Icon(LineAwesomeIcons.pencil_alt_solid, size: 18, color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-
-                SizedBox(height: 50),
-
-                // Text Fields
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    children: [
-                      buildTextField("Enter New Username", nameController),
-                      SizedBox(height: 20),
-                      buildTextField("Enter Your New Email", emailController),
-                    ],
+              
+                  SizedBox(height: 50),
+              
+                  // Text Fields
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      children: [
+                        buildTextField("Enter New Username", nameController),
+                        SizedBox(height: 20),
+                        buildTextField("Enter Your New Email", emailController),
+                        SizedBox(height: 20),
+                        buildTextField("Enter Your Post", postController),
+                      ],
+                    ),
                   ),
-                ),
-
-                SizedBox(height: 60),
-
-                // Update Button
-                isLoading
-                    ? SpinKitHourGlass(color: Colors.white,)
-                    : ElevatedButton(
-                  onPressed: uploadProfileData,
-                  style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(45)),
-                    backgroundColor: Colors.white,
+              
+                  SizedBox(height: 150),
+              
+                  // Update Button
+                  isLoading
+                      ? SpinKitHourGlass(color: Colors.white,)
+                      : ElevatedButton(
+                    onPressed: uploadProfileData,
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(45)),
+                      backgroundColor: Colors.white,
+                    ),
+                    child: Text("Update", style: TextStyle(fontSize: 20, color: Colors.lightBlue)),
                   ),
-                  child: Text("Update", style: TextStyle(fontSize: 20, color: Colors.lightBlue)),
-                ),
-               ],
+                 ],
+              ),
             ),
           ),
         ],

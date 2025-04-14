@@ -4,7 +4,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/bottombar/profilepage.dart';
 import 'package:educationapk/homepagewidgets/devpage.dart';
-import 'package:educationapk/popupmenu/fetchannouncements.dart';
 import 'package:educationapk/popupmenu/privacypolicies.dart';
 import 'package:educationapk/popupmenu/termscondition.dart';
 import 'package:educationapk/teacherpanel/allbox/applications.dart';
@@ -21,6 +20,7 @@ import 'package:marquee/marquee.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../homepagewidgets/teacherdetails.dart';
+import '../../popupmenu/fetchannouncements.dart';
 
 class TeacherHome extends StatefulWidget {
   const TeacherHome({super.key});

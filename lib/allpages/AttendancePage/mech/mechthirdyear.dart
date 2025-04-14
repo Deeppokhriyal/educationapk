@@ -33,7 +33,7 @@ class _MechthirdyearState extends State<Mechthirdyear> {
   // Function to fetch attendance for selected date
   Future<void> fetchAttendanceByDate(String date) async {
     DocumentSnapshot snapshot =
-    await _firestore.collection("Mechthird").doc(date).get();
+    await _firestore.collection("MechThird").doc(date).get();
 
     if (snapshot.exists) {
       List<dynamic> attendanceList = snapshot["attendance"];

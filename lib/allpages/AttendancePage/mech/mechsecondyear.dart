@@ -32,20 +32,29 @@ class _MechsecondyearState extends State<Mechsecondyear> {
 
   // Function to fetch attendance for selected date
   Future<void> fetchAttendanceByDate(String date) async {
-    DocumentSnapshot snapshot =
-    await _firestore.collection("Mechsecond").doc(date).get();
+    try {
+      DocumentSnapshot snapshot =
+      await _firestore.collection("MechSecond").doc(date).get();
 
-    if (snapshot.exists) {
-      List<dynamic> attendanceList = snapshot["attendance"];
-      setState(() {
-        attendanceRecords = attendanceList.cast<Map<String, dynamic>>();
-      });
-    } else {
+      if (snapshot.exists) {
+        List<dynamic> attendanceList = snapshot.get("attendance");
+        setState(() {
+          attendanceRecords = attendanceList.cast<Map<String, dynamic>>();
+        });
+      } else {
+        print("No document found for date: $date");
+        setState(() {
+          attendanceRecords = [];
+        });
+      }
+    } catch (e) {
+      print("Error fetching attendance: $e");
       setState(() {
         attendanceRecords = [];
       });
     }
   }
+
 
   @override
   Widget build(BuildContext context) {

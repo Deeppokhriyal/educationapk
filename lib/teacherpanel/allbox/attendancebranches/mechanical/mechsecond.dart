@@ -16,14 +16,6 @@ class Mechsecond extends StatefulWidget {
 class _MechsecondState extends State<Mechsecond> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   bool isLoading = false;
-
-  @override
-  void initState() {
-    super.initState();
-    print("🔍 INIT STATE CHALA");
-    markAttendance();//🔄 Fetch attendance on load
-  }
-
   // ✅ Ensured "id" values are correctly formatted and displayed
   List<Map<String, dynamic>> students = [
     {"id": 1, "name": "Ashok Kumar", "status": "Absent"},
@@ -86,26 +78,24 @@ class _MechsecondState extends State<Mechsecond> {
 
     String todayDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
+    List<Map<String, dynamic>> attendanceList = students.map((student) {
+      return {
+        "id": student['id'],
+        "name": student['name'],
+        "status": student['status']
+      };
+    }).toList();
+
     try {
-      DocumentSnapshot docSnapshot = await _firestore.collection("MechSecond").doc(todayDate).get();
+      await _firestore.collection("MechSecond").doc(todayDate).set({
+        "attendance": attendanceList,
+      });
 
-      if (docSnapshot.exists) {
-        List<dynamic> fetchedAttendance = docSnapshot['attendance'];
-        print("Fetched attendance: $fetchedAttendance");
+      // Beautiful Green SnackBar for Success
 
-        setState(() {
-          students = fetchedAttendance.map<Map<String, dynamic>>((student) {
-            return {
-              'id': student['id'],
-              'name': student['name'],
-              'status': student['status'],
-            };
-          }).toList();
-        });
-      }else {
-        print("No attendance found for today.");
-      }
-    } catch (e) {
+      showAwesomeSnackBarUp(context, "Attendance submitted successfully!", true);
+
+    }  catch (e) {
       print("Error fetching attendance: $e");
       // ❌ Red SnackBar for Errors
       showAwesomeSnackBarUp(context, "Error Saving Attendance", false);

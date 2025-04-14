@@ -37,6 +37,13 @@ class _ProfilePageState extends State<ProfilePage> {
     getStudentProfile();
   }
 
+  void refreshStudentProfile() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      StudentProfile = prefs.getString('StudentProfile') ?? "";
+    });
+  }
+
   void getStudentProfile() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? storedImage = prefs.getString('StudentProfile');
@@ -73,6 +80,7 @@ class _ProfilePageState extends State<ProfilePage> {
           github = userData["github"] ?? "";
           instagram = userData["instagram"] ?? "";
           location = userData["location"] ?? "";
+          StudentProfile = userData["StudentProfile"] ?? "";
           _isLoading = false; // Data load hone ke baad loader band karo
         });
 

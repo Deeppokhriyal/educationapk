@@ -41,8 +41,8 @@ class _AdminAttendancePageState extends State<AdminAttendancePage> {
     },
     'MECHANICAL': {
       '1st Year': 'Mechfirst',
-      '2nd Year': 'Mechsecond',
-      '3rd Year': 'Mechthird',
+      '2nd Year': 'MechSecond',
+      '3rd Year': 'MechThird',
     },
     'AGRICULTURE': {
       '1st Year': 'Agrifirst',

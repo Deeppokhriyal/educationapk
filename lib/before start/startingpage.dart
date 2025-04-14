@@ -36,14 +36,14 @@ class _StartingState extends State<Starting> {
       body: ListView(
         children: [
           FadeIn(
-            duration: Duration(milliseconds: 1200),
+            duration: Duration(milliseconds: 1199),
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 25),
+                  margin: EdgeInsets.fromLTRB(20, 20, 20, 20),
                   child: Image.asset(
                     'assets/images/startrow.jpg',
-                    alignment: Alignment.center,height: 400,
+                    alignment: Alignment.center,
                   ),
                 ),
                 SizedBox(height: 10),

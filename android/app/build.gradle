@@ -17,14 +17,14 @@ android {
     compileSdkVersion 33
 
     defaultConfig {
-        applicationId "com.example.yourapp"
+        applicationId "com.polyverse.yourapp"
         minSdkVersion 21
         targetSdkVersion 33 // or your current target SDK version
         versionCode 1
         versionName "1.0"
     }
 
-    namespace = "com.example.educationapk"
+    namespace = "com.polyverse.educationapk"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -39,7 +39,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.educationapk"
+        applicationId "com.polyverse.educationapk"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk 24

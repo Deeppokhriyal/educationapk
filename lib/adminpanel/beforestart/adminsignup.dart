@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:educationapk/adminpanel/beforestart/adminlogin.dart';
 import 'package:educationapk/teacherpanel/before%20start/teacherlogin.dart';
 import 'package:educationapk/controllers/signupController.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -158,7 +159,7 @@ class _AdminsignupState extends State<Adminsignup> {
                       SizedBox(width: 50),
                       InkWell(
                         onTap: () {
-                          Get.off(() => TeacherLogin());
+                          Get.off(() => AdminLogin());
                         },
                         child: Text('Log in', style: TextStyle(color: Colors.green, fontSize: 18)),
                       ),

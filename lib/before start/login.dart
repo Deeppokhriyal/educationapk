@@ -110,7 +110,7 @@ class _MyLoginState extends State<MyLogin> {
                           SizedBox(height: 20.h,),
                           Container(
                             padding: EdgeInsets.only(right: 30.w,left: 30.w),
-                            child: Text('Welcome\nGlad to see you.', style: TextStyle( color: Colors.black, fontSize: 30.sp, fontFamily: 'sans-serif-thin',fontWeight: FontWeight.bold),),
+                            child: Text('Welcome\nGlad to see you.', style: TextStyle( color: Colors.black, fontSize: 35.sp, fontFamily: 'sans-serif-thin',fontWeight: FontWeight.bold),),
                           ),
                           SizedBox(height: 20.h,),
                           SingleChildScrollView(
@@ -181,7 +181,7 @@ class _MyLoginState extends State<MyLogin> {
                                       //   Get.to(()=>MyHomePage());
                                       // },
                                       onPressed: () => loginStudent(context),
-                                      child: Text('Login',style: TextStyle(color: Colors.white, fontSize: 10.sp,fontFamily: 'sans-serif-light'),),
+                                      child: Text('Login',style: TextStyle(color: Colors.white, fontSize: 15.sp,fontFamily: 'sans-serif-light'),),
                                     ),
                                   ),
                                   SizedBox(height: 30.h),
@@ -195,7 +195,7 @@ class _MyLoginState extends State<MyLogin> {
                                       Get.to(MySignUpPage());
                                       // Get.to(()=>MyHomePage());
                                     },
-                                      child: Text('Sign up',style: TextStyle(color: Colors.white, fontSize: 10.sp,fontFamily: 'sans-serif-light'),),
+                                      child: Text('Sign up',style: TextStyle(color: Colors.white, fontSize: 15.sp,fontFamily: 'sans-serif-light'),),
                                     ),
                                   ),
                                   Divider(height: 50.h),

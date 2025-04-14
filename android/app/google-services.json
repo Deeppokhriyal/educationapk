@@ -1,44 +1,26 @@
 {
   "project_info": {
-    "project_number": "990132845704",
-    "project_id": "celestial-68f85",
-    "storage_bucket": "celestial-68f85.firebasestorage.app"
+    "project_number": "533944953926",
+    "project_id": "educationapk-e1b1e",
+    "storage_bucket": "educationapk-e1b1e.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:990132845704:android:b097667451b1d99e72733d",
+        "mobilesdk_app_id": "1:533944953926:android:debe8a4457c2c4221b6e47",
         "android_client_info": {
-          "package_name": "com.example.educationapk"
+          "package_name": "com.polyverse.educationapk"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "990132845704-1lo33nbvheqhbhrelot1lo9joe2qsqge.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.educationapk",
-            "certificate_hash": "a9bafce24129ea6fc02f5db4c90156f6ec50ea18"
-          }
-        },
-        {
-          "client_id": "990132845704-l7j22adt64r1ti16v4abg7ujqjp6ld9m.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyByU6O4GGCvNqoZKtrc47fY0CDM7EYZ1tw"
+          "current_key": "AIzaSyCNcUZIEQI3GngZTScdyeSDozEKq6Ac4vg"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "990132845704-l7j22adt64r1ti16v4abg7ujqjp6ld9m.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

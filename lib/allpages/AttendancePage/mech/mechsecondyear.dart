@@ -51,7 +51,7 @@ class _MechsecondyearState extends State<Mechsecondyear> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Attendance 1st year",style: TextStyle(fontFamily: 'nexaheavy'),),
+        title: Text("Attendance 2nd year",style: TextStyle(fontFamily: 'nexaheavy'),),
         backgroundColor: Colors.blue[200],
       ),
       body: Column(

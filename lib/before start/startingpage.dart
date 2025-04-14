@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:educationapk/adminpanel/beforestart/adminlogin.dart';
+import 'package:educationapk/adminpanel/beforestart/adminsignup.dart';
 import 'package:educationapk/before%20start/login.dart';
 import 'package:educationapk/teacherpanel/before%20start/teacherlogin.dart';
 import 'package:flutter/material.dart';

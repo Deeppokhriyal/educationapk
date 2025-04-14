@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educationapk/bottombar/profilepage.dart';
 import 'package:educationapk/homepagewidgets/devpage.dart';
+import 'package:educationapk/popupmenu/fetchannouncements.dart';
 import 'package:educationapk/popupmenu/privacypolicies.dart';
 import 'package:educationapk/popupmenu/termscondition.dart';
 import 'package:educationapk/teacherpanel/allbox/applications.dart';
@@ -342,6 +343,15 @@ class _TeacherMainState extends State<TeacherMain> {
                                     style: TextStyle(
                                         fontSize: 17,
                                         fontFamily: 'sans-serif-light')),
+                              ),
+                              PopupMenuItem<String>(
+                                onTap: () {
+                                  Get.to(() => AnnouncementListPage());
+                                },
+                                child: Text('Announcements',
+                                    style: TextStyle(
+                                        fontSize: 17,
+                                        fontFamily: 'nexaheavy')),
                               ),
                             ];
                           },

@@ -35,7 +35,7 @@ class _StartingState extends State<Starting> {
       body: ListView(
         children: [
           FadeIn(
-            duration: Duration(milliseconds: 1200),
+            duration: Duration(milliseconds: 1199),
             child: Column(
               children: [
                 Container(

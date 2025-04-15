@@ -207,27 +207,38 @@ class _BottombarState extends State<Bottombar> {
       ProfilePage(),
     ];
 
-    return Scaffold(
-      body: pages[_selectedIndex], // Correctly displays the selected page
-      bottomNavigationBar: SizedBox(
-        height: 70.h,
-        child: GNav(
-          backgroundColor: Colors.black,
-          color: Colors.white,
-          activeColor: Colors.blue,
-          tabBackgroundColor: Colors.lightBlueAccent[100]!,
-          gap: 5,
-          padding:  EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h),
-          onTabChange: (index) {
-            _onItemTapped(index); // Use the function to handle navigation
-          },
-          selectedIndex: _selectedIndex, // Ensure the correct tab is highlighted
-          tabs:[
-            GButton(icon: Icons.home, iconSize: 25.r, text: 'Home'),
-            GButton(icon: Icons.timer, iconSize: 25.r, text: 'Scheduler'),
-            GButton(icon: Icons.library_books_outlined, iconSize: 25.r, text: 'Application'),
-            GButton(icon: Icons.person, iconSize: 25.r, text: 'Profile'),
-          ],
+    return WillPopScope(
+      onWillPop: () async {
+        if (_selectedIndex != 0) {
+          setState(() {
+            _selectedIndex = 0; // Go back to Home tab
+          });
+          return false; // Don't exit the app
+        }
+        return true; // Only exit app when already on Home
+      },
+      child: Scaffold(
+        body: pages[_selectedIndex], // Correctly displays the selected page
+        bottomNavigationBar: SizedBox(
+          height: 70.h,
+          child: GNav(
+            backgroundColor: Colors.black,
+            color: Colors.white,
+            activeColor: Colors.blue,
+            tabBackgroundColor: Colors.lightBlueAccent[100]!,
+            gap: 5,
+            padding:  EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h),
+            onTabChange: (index) {
+              _onItemTapped(index); // Use the function to handle navigation
+            },
+            selectedIndex: _selectedIndex, // Ensure the correct tab is highlighted
+            tabs:[
+              GButton(icon: Icons.home, iconSize: 25.r, text: 'Home'),
+              GButton(icon: Icons.timer, iconSize: 25.r, text: 'Scheduler'),
+              GButton(icon: Icons.library_books_outlined, iconSize: 25.r, text: 'Application'),
+              GButton(icon: Icons.person, iconSize: 25.r, text: 'Profile'),
+            ],
+          ),
         ),
       ),
     );

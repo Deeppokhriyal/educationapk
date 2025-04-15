@@ -30,25 +30,36 @@ class _TeacherbarState extends State<Teacherbar> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _pages[_selectedIndex],
-      bottomNavigationBar: SizedBox(
-        height: 70,
-        child: GNav(
-          backgroundColor: Colors.black,
-          color: Colors.white,
-          activeColor: Colors.blue,
-          tabBackgroundColor: Colors.lightBlueAccent[100]!,
-          gap: 5,
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-          onTabChange: _onItemTapped,
-          selectedIndex: _selectedIndex,
-          tabs: const [
-            GButton(icon: Icons.home, iconSize: 25, text: 'Home'),
-            GButton(icon: Icons.event, iconSize: 25, text: 'Events'),
-            GButton(icon: Icons.timer, iconSize: 25, text: 'Scheduler'),
-            GButton(icon: Icons.person, iconSize: 25, text: 'Profile'),
-          ],
+    return WillPopScope(
+      onWillPop: () async {
+        if (_selectedIndex != 0) {
+          setState(() {
+            _selectedIndex = 0; // Go back to Home tab
+          });
+          return false; // Don't exit the app
+        }
+        return true; // Only exit app when already on Home
+      },
+      child: Scaffold(
+        body: _pages[_selectedIndex],
+        bottomNavigationBar: SizedBox(
+          height: 70,
+          child: GNav(
+            backgroundColor: Colors.black,
+            color: Colors.white,
+            activeColor: Colors.blue,
+            tabBackgroundColor: Colors.lightBlueAccent[100]!,
+            gap: 5,
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            onTabChange: _onItemTapped,
+            selectedIndex: _selectedIndex,
+            tabs: const [
+              GButton(icon: Icons.home, iconSize: 25, text: 'Home'),
+              GButton(icon: Icons.event, iconSize: 25, text: 'Events'),
+              GButton(icon: Icons.timer, iconSize: 25, text: 'Scheduler'),
+              GButton(icon: Icons.person, iconSize: 25, text: 'Profile'),
+            ],
+          ),
         ),
       ),
     );

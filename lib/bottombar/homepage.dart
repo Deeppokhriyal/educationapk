@@ -46,6 +46,10 @@ class _MyMainHomeState extends State<MyMainHome> {
     "Ask Help Desk ",
     "Bug Report",
     "Edit Profile",
+    "Events",
+    "Teachers",
+    "App Designer",
+    "Announcements",
   ];
 
   List<String> Name = [
@@ -148,6 +152,18 @@ class _MyMainHomeState extends State<MyMainHome> {
       Get.to(() => BugReport());
     } else if (name == "Edit Profile") {
       Get.to(() => UpdateProfilePage());
+    }
+    else if (name == "Events") {
+      Get.to(() => EventPage());
+    }
+    else if (name == "Teachers") {
+      Get.to(() => Teacherdetails());
+    }
+    else if (name == "App Designer") {
+      Get.to(() => Devpage());
+    }
+    else if (name == "Announcements") {
+      Get.to(() => AnnouncementListPage());
     }
   }
 
@@ -466,15 +482,25 @@ class _MyMainHomeState extends State<MyMainHome> {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Let's Explore\n          The Polyverse",
-                        style: TextStyle(
-                            fontSize: 42,
-                            fontFamily: 'sans-serif-thin',
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),textAlign: TextAlign.center,
-                      ),
-                    ],
+                    children:[ Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text("Let's Explore",
+                          style: TextStyle(
+                              fontSize: 42,
+                              fontFamily: 'sans-serif-thin',
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),textAlign: TextAlign.center,
+                        ),
+                        Text("The Polyverse",
+                          style: TextStyle(
+                              fontSize: 42,
+                              fontFamily: 'sans-serif-thin',
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),]
                   ),
                   SizedBox(
                     height: 7,

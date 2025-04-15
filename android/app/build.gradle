@@ -1,10 +1,10 @@
 plugins {
     id "com.android.application"
     id "kotlin-android"
-    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
     id 'com.google.gms.google-services'
 }
+
 // Load keystore properties from key.properties
 def keystorePropertiesFile = rootProject.file("key.properties")
 def keystoreProperties = new Properties()
@@ -13,40 +13,18 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-
-    compileSdkVersion 33
-
-    defaultConfig {
-        applicationId "com.polyverse.yourapp"
-        minSdkVersion 21
-        targetSdkVersion 33 // or your current target SDK version
-        versionCode 1
-        versionName "1.0"
-    }
-
     namespace = "com.polyverse.educationapk"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 34  // ✅ Updated to 34
     ndkVersion = flutter.ndkVersion
-
-    compileOptions {
-        coreLibraryDesugaringEnabled true  // Enable desugaring
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
-    }
 
     defaultConfig {
         applicationId "com.polyverse.educationapk"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk 24
-        targetSdk 33
-        versionCode 1
-        versionName "1.1"
+        minSdk = 24
+        targetSdk = 34  // ✅ Updated to 34
+        versionCode = 3
+        versionName = "1.3"
     }
+
     signingConfigs {
         release {
             storeFile file(keystoreProperties['storeFile'])
@@ -64,13 +42,23 @@ android {
             signingConfig signingConfigs.release
         }
     }
+
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
 }
 
 flutter {
     source = "../.."
 }
 
-dependencies{
+dependencies {
     implementation platform('com.google.firebase:firebase-bom:33.8.0')
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-auth'

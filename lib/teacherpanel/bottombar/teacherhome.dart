@@ -368,20 +368,26 @@ class _TeacherMainState extends State<TeacherMain> {
                     height: 30,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children:[ Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(
-                            "Let's Explore\n    The Polyverse",
+                          Text("Let's Explore",
                             style: TextStyle(
-                                fontSize: 44,
-                                fontFamily: 'nexalight',
-                                color: Colors.black),
+                                fontSize: 42,
+                                fontFamily: 'sans-serif-thin',
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),textAlign: TextAlign.center,
+                          ),
+                          Text("The Polyverse",
+                            style: TextStyle(
+                                fontSize: 42,
+                                fontFamily: 'sans-serif-thin',
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),textAlign: TextAlign.center,
                           ),
                         ],
-                      ),
-                    ],
+                      ),]
                   ),
                   SizedBox(
                     height: 7,
